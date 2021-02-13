@@ -1,0 +1,25 @@
+---
+title: "write_physiology_sets"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{write_physiology_sets}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(bugphyzz)
+```
+
+```{r}
+bergeys <- bergeys_abstracts()
+head(bergeys)
+```
+
