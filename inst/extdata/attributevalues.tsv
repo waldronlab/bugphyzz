@@ -3,10 +3,24 @@ attributevalue	description	link
 "aerobic"	NA	NA
 "microaerobic"	NA	NA
 "anaerobic"	NA	NA
-"facultatively aerobic"	NA	NA
-"facultatively anaerobic"	NA	NA
-"facultatively microaerophilic"	NA	NA
-"weakly facultatively anaerobic"	NA	NA
-"microaerotolerant anaerobic"	NA	NA
-"obligate aerobic"	NA	NA
-"obligate anaerobic"	NA	NA
+"facultative	aerobic"	NA	NA
+"facultative	anaerobic"	NA	NA
+"facultative	microaerophilic"	NA	NA
+"microaerotolerant	anaerobic"	NA	NA
+"obligate	aerobic"	NA	NA
+"obligate	anaerobic"	NA	NA
+"endospore"	NA	NA
+"spore"	NA	NA
+"myxospores"	NA	NA
+"rods"	NA	NA
+"oval"	NA	NA
+"spiral"	NA	NA
+"spiny"	NA	NA
+"round"	NA	NA
+"exospore"	NA	NA
+"ellipsoidal"	NA	NA
+"cylindrical"	NA	NA
+"coccoid"	NA	NA
+"branched"	NA	NA
+"chains"	NA	NA
+"s-shaped"	NA	NA
