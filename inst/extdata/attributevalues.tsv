@@ -24,3 +24,102 @@ attributevalue	description	link
 "branched"	NA	NA
 "chains"	NA	NA
 "s-shaped"	NA	NA
+"TRUE"	NA	NA
+"FALSE"	NA	NA
+"amikacin resistant"	NA	NA
+"aztreonam resistant"	NA	NA
+"beta-lactam resistant"	NA	NA
+"capreomycin resistant"	NA	NA
+"carbapenem resistant"	NA	NA
+"cefepime resistant"	NA	NA
+"cefoxitin resistant"	NA	NA
+"chloramphenicol resistant"	NA	NA
+"ciprofloxacin resistant"	NA	NA
+"clindamycin resistant"	NA	NA
+"co-trimoxazole resistant"	NA	NA
+"ertapenem resistant"	NA	NA
+"erythromycin resistant"	NA	NA
+"ethambutol resistant"	NA	NA
+"gentamicin resistant"	NA	NA
+"imipenem resistant"	NA	NA
+"isoniazid resistant"	NA	NA
+"kanamycin resistant"	NA	NA
+"levofloxacin resistant"	NA	NA
+"meropenem resistant"	NA	NA
+"methicillin resistant"	NA	NA
+"ofloxacin resistant"	NA	NA
+"penicillin resistant"	NA	NA
+"piperacillin/tazobactam resistant"	NA	NA
+"rifampicin resistant"	NA	NA
+"rifampin resistant"	NA	NA
+"streptomycin resistant"	NA	NA
+"tetracycline resistant"	NA	NA
+"tobramycin resistant"	NA	NA
+"trimethoprim/sulfamethoxazole resistant"	NA	NA
+"amikacin sensitive"	NA	NA
+"aztreonam sensitive"	NA	NA
+"beta-lactam sensitive"	NA	NA
+"capreomycin sensitive"	NA	NA
+"carbapenem sensitive"	NA	NA
+"cefepime sensitive"	NA	NA
+"cefoxitin sensitive"	NA	NA
+"chloramphenicol sensitive"	NA	NA
+"ciprofloxacin sensitive"	NA	NA
+"clindamycin sensitive"	NA	NA
+"co-trimoxazole sensitive"	NA	NA
+"ertapenem sensitive"	NA	NA
+"erythromycin sensitive"	NA	NA
+"ethambutol sensitive"	NA	NA
+"gentamicin sensitive"	NA	NA
+"imipenem sensitive"	NA	NA
+"isoniazid sensitive"	NA	NA
+"kanamycin sensitive"	NA	NA
+"levofloxacin sensitive"	NA	NA
+"meropenem sensitive"	NA	NA
+"methicillin sensitive"	NA	NA
+"ofloxacin sensitive"	NA	NA
+"penicillin sensitive"	NA	NA
+"piperacillin/tazobactam sensitive"	NA	NA
+"rifampicin sensitive"	NA	NA
+"rifampin sensitive"	NA	NA
+"streptomycin sensitive"	NA	NA
+"tetracycline sensitive"	NA	NA
+"tobramycin sensitive"	NA	NA
+"trimethoprim/sulfamethoxazole sensitive"	NA	NA
+"Wastewater"
+"Terrestrial"
+"Specialized"
+"Soil"
+"Sludge"
+"Sediment"
+"Sea water"
+"Saline water"
+"Oil fields""
+"Ponds""
+"Rhizosphere""
+"Root nodule"
+"Not host-associated"
+"Human"
+"Multiple"
+"Mud"
+"Human microbiome"
+"Marine"
+"Hydrothermal vent"
+"Solfataric field"
+"Hot spring"
+"Host-associated"
+"Fresh water"
+"Solar saltern"
+"Sulfur spring"
+"Surface water"
+"Groundwater"
+"Oil fields"
+"Rice paddies"
+"Deep subsurface"
+"Deep sea"
+"Dairy isolate"
+"Creosote-contaminated soil"
+"Aquatic"
+"Animal intestinal microflora"
+"Air"
+
