@@ -1,0 +1,170 @@
+---
+title: "Example of a Signature Score for a Categorical Attribute (Cellular Respiration)"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Example of Signature Score for a Categorical Attribute (Cellular Respiration)}
+  %\VignetteEncoding{UTF-8}
+  %\VignetteEngine{knitr::rmarkdown}
+editor_options: 
+  chunk_output_type: inline
+---
+
+```{r , include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup, message=FALSE, warning=FALSE}
+library(bugphyzz)
+library(readr)
+library(dplyr)
+library(tidyr)
+library(purrr)
+library(ComplexHeatmap)
+```
+
+Import attribute values of cellular respiration ("oxygen" data set).
+
+```{r}
+oxygen <- attribute(keyword = "oxygen")
+oxygen <- tibble::as_tibble(oxygen[[1]])
+oxygen[ , c("NCBI_ID", "Attribute_value")] %>% 
+  head() %>% 
+  knitr::kable()
+```
+
+For this example, the AsnicarF_2017 metaphlan bugs lists are used, which have been filtered so that they only contain the relative abundance of the bacteria at the genus level.
+
+The metaphlan bugs list of each of the 26 samples from the AsnicarF_2017 data set are provided as separate data frames in `AsnicarF_2017_genus`. Each data frame contains two columns: "NCBI_ID" (NCBI TaxIDs) and "Abundance."
+
+```{r}
+str(AsnicarF2017_genus, max.level = 1)
+AsnicarF2017_genus[[1]] %>% 
+  knitr::kable()
+```
+
+NCBI taxids can be matched between a data frame in `AsnicarF2017_genus` and the NCBI_ID column in the cellular respiration data set ("oxygen") of the bugphyzz package. For example, for the first sample in `AsnicarF2017_genus`:
+
+```{r}
+
+sample1_taxids <- AsnicarF2017_genus[[1]]$NCBI_ID
+oxygen_taxids <- oxygen$NCBI_ID
+
+AsnicarF2017_genus[[1]][sample1_taxids %in% oxygen_taxids, ] %>% 
+  knitr::kable()
+```
+
+In the example above, only 12 taxids in the `AsnicarF2017_genus[[1]]` data frame matched a taxid in the oxygen database.
+
+We can use the `add_attributes` function to add the attribute values as columns to each data frame. The inputs are a data frame (containing taxids and relative abundance data) and the oxygen data set from bugphyzz (containing taxids and attribute values).
+
+Moreover, the `add_hierarchy` function, which implements the `taxize::classification` function, can be used to add a column with the genus name of each taxid.
+
+The output is the same metaphlan bugs list with added attribute value columns--one per attribute value. The values in the new columns match the abundance values for each genus.
+
+```{r, message=FALSE, warning=FALSE}
+x <- map(AsnicarF2017_genus, ~add_attributes(.x, oxygen))
+df <- x[[1]] %>% 
+  add_hierarchy("genus") 
+df %>% 
+  knitr::kable()
+
+```
+
+To get the signature scores for a single sample, relative abundance values per attribute column are added up, reflecting the total relative abundance of bacteria per attribute value.
+
+Notice that the score cannot be higher than 100 for each attribute value, but if a single genus have more than one attribute value in the bugphyzz database, its abundance value is added up in two different columns.
+ 
+In the example below, in a single sample 84% of bacteria are areobic and 67% are facultative anaerobic.
+
+```{r}
+x_score <- get_score(x[[1]])
+x_score %>% 
+  knitr::kable()
+```
+
+This can be applied to all the samples (data frames) of the `AsnicarF2017_genus` data set, getting a singature per sample:
+
+```{r}
+y <- map(x, ~get_score(.x))
+str(y, max.level = 1)
+```
+
+And the scores of all samples can be merged into a single matrix:
+
+```{r, message=FALSE, warning=FALSE}
+for (i in seq_along(y)) {
+    names(y[[i]])[[2]] <- names(y)[i]
+}
+
+df <- purrr::reduce(y, full_join)
+mat <- as.matrix(df[,-1])
+mat[is.na(mat)] <- 0
+rownames(mat) <- df$Attribute
+
+mat[, 1:5] %>% 
+  knitr::kable()
+```
+
+Create a heatmap:
+
+```{r, message=FALSE, warning=FALSE, fig.align='center', fig.dim=c(10,5)}
+
+mat <- mat[rowSums(mat) >= 1, ]
+
+ht1 <- ComplexHeatmap::Heatmap(mat, col = viridis::viridis(1024))
+# See heatmap below
+```
+
+Merge the relative abundance of each genus of bacteria of all samples  into a single data frame:
+
+
+```{r, warning=FALSE, message=FALSE}
+output <- vector("list", length(AsnicarF2017_genus))
+
+for (i in seq_along(output)) {
+    
+    output[[i]] <- AsnicarF2017_genus[[i]]
+    names(output[[i]])[[2]] <- names(AsnicarF2017_genus[i])
+
+}
+
+abundance <- purrr::reduce(output, dplyr::full_join) %>%
+    add_hierarchy("genus")
+
+abundance <- abundance[abundance$NCBI_ID %in% oxygen_taxids, ]
+
+abundance[1:10,1:5] %>% 
+  knitr::kable()
+```
+
+Create a matrix of relative abundance per genus of all samples:
+
+```{r}
+abundance_matrix <- as.matrix(abundance[,-c(1,2)])
+abundance_matrix[is.na(abundance_matrix)] <- 0
+rownames(abundance_matrix) <- abundance$genus
+
+head(abundance_matrix[,1:5]) %>% 
+  knitr::kable()
+```
+
+Create a heatmap
+
+```{r,warning=FALSE, message=FALSE, fig.dim=c(10,15)}
+
+abundance_matrix <- abundance_matrix[ rowSums(abundance_matrix) > 8,]
+ht2 <- Heatmap(abundance_matrix, col = viridis::viridis(1024),
+              cluster_columns = FALSE)
+```
+
+Visualize both heatmaps:
+
+```{r, message=FALSE, warning=FALSE, fig.dim=c(10,10)}
+ht_list = ht1 %v% ht2
+draw(ht_list)
+```
+
