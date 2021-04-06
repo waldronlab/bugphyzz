@@ -24,8 +24,6 @@ attributevalue	description	link
 "branched"	NA	NA
 "chains"	NA	NA
 "s-shaped"	NA	NA
-"TRUE"	NA	NA
-"FALSE"	NA	NA
 "amikacin resistant"	NA	NA
 "aztreonam resistant"	NA	NA
 "beta-lactam resistant"	NA	NA
@@ -170,60 +168,96 @@ attributevalue	description	link
 "Trypticase soy agar"	NA	NA
 "Trypticase soy agar w/ 0.1% yeast extract"	NA	NA
 "Van Baalen"	NA	NA
-"Gram stain negative"
-"Gram stain positive"
-"Gram stain variable"
-"aggregates"
-"branched"
-"chains"
-"clusters"
-"eight parallel rows"
-"encapsulated"
-"filamentous"
-"netlike structures"
-"packets"
-"pairs"
-"palisades"
-"rosettes"
-"s-formation"
-"sarcina packets"
-"seriate"
-"sheath layers"
-"single"
-"star aggregates"
-"tetrads"
-"unbranched"
-"v-formations"
-"y-branched formations"
-"bent rods"
-"boat"
-"club"
-"coccobacilli"
-"coccoid"
-"curved rods"
-"cylindrical rods"
-"disk"
-"ellipsoidal"
-"elongated rods"
-"filamentous rods"
-"flat"
-"flexible rods"
-"fusiform rods"
-"helical"
-"horseshoe"
-"irregular"
-"mushroom-like"
-"needle rods"
-"oval"
-"pear"
-"pleiomorphic"
-"polyhedral"
-"rods"
-"s-shaped"
-"sigmoid"
-"spiral"
-"tetrahedral"
-"triangle"
-"dumbbell"
-"vibrio"
-"wrinkled"
+"Gram stain negative"	NA	NA
+"Gram stain positive"	NA	NA
+"Gram stain variable"	NA	NA
+"aggregates"	NA	NA
+"branched"	NA	NA
+"chains"	NA	NA
+"clusters"	NA	NA
+"eight parallel rows"	NA	NA
+"encapsulated"	NA	NA
+"filamentous"	NA	NA
+"netlike structures"	NA	NA
+"packets"	NA	NA
+"pairs"	NA	NA
+"palisades"	NA	NA
+"rosettes"	NA	NA
+"s-formation"	NA	NA
+"sarcina packets"	NA	NA
+"seriate"	NA	NA
+"sheath layers"	NA	NA
+"single"	NA	NA
+"star aggregates"	NA	NA
+"tetrads"	NA	NA
+"unbranched"	NA	NA
+"v-formations"	NA	NA
+"y-branched formations"	NA	NA
+"bent rods"	NA	NA
+"boat"	NA	NA
+"club"	NA	NA
+"coccobacilli"	NA	NA
+"coccoid"	NA	NA
+"curved rods"	NA	NA
+"cylindrical rods"	NA	NA
+"disk"	NA	NA
+"ellipsoidal"	NA	NA
+"elongated rods"	NA	NA
+"filamentous rods"	NA	NA
+"flat"	NA	NA
+"flexible rods"	NA	NA
+"fusiform rods"	NA	NA
+"helical"	NA	NA
+"horseshoe"	NA	NA
+"irregular"	NA	NA
+"mushroom-like"	NA	NA
+"needle rods"	NA	NA
+"oval"	NA	NA
+"pear"	NA	NA
+"pleiomorphic"	NA	NA
+"polyhedral"	NA	NA
+"rods"	NA	NA
+"s-shaped"	NA	NA
+"sigmoid"	NA	NA
+"spiral"	NA	NA
+"tetrahedral"	NA	NA
+"triangle"	NA	NA
+"dumbbell"	NA	NA
+"vibrio"	NA	NA
+"wrinkled"	NA	NA
+"Oxygen utilization"	NA	NA
+"Gram stain"	NA	NA
+"Size"	NA	NA
+"Cell arrangement"	NA	NA
+"Cell shape"	NA	NA
+"Spore shape"	NA	NA
+"Extreme environment"	NA	NA
+"Plant pathogenicity"	NA	NA
+"COGEM pathogenicity rating"	NA	NA
+"Animal pathogen"	NA	NA
+"Optimal pH"	NA	NA
+"Biofilm forming"	NA	NA
+"Growth temperature"	NA	NA
+"Antimicrobial sensitivity"	NA	NA
+"Habitat"	NA	NA
+"Butyrate producing"	NA	NA
+"Acetate producing"	NA	NA
+"Lactate producing"	NA	NA
+"Mutation per generation"	NA	NA
+"Mutation per site"	NA	NA
+"Fatty acid composition" 	NA	NA
+"Growth medium"	NA	NA
+"Antimicrobial resistance"	NA	NA
+"T cell receptor"	NA	NA
+"Glycolysis Gluconeogenesis"
+"Citrate Cycle TCA"
+"Pentose phosphate pathway"	NA	NA
+"Pentose and glucuronate pathway"	NA	NA
+"Fructose and mannose metabolism"	NA	NA
+"Galactose metabolism"	NA	NA
+"Ascorbate and aldarate metabolism"	NA	NA
+"Fatty acid metabolism"	NA	NA
+"Methan metabolism"	NA	NA
+"Pilin"	NA	NA
+
+
