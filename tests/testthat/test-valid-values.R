@@ -1,18 +1,35 @@
+
+database <- attribute()
+
+test_that("headers are valid.", {
+
+  x <- lapply(database, function(x) names(x))
+  actual_headers <- sort(unique(unlist(x, use.names = FALSE)))
+  valid_headers <- sort(unique(c("NCBI_ID",
+                     "Genome_ID",
+                     "Accession_number",
+                     "Taxon_name",
+                     "Attribute",
+                     "Attribute_ontology_term",
+                     "Attribute_value",
+                     "Attribute_value_ontology_term",
+                     "Attribute_source",
+                     "Evidence",
+                     "Confidence_interval")))
+
+  expect_identical(actual_headers, valid_headers)
+
+  })
+
 test_that("attribute values are valid.", {
 
-  x <- attribute()
-  y <- lapply(x, function(x) x[["Attribute_value"]])
+  y <- lapply(database, function(x) x[["Attribute_value"]])
+  actual_values <- sort(unique(unlist(y, use.names = FALSE)))
+  filename <- system.file("extdata", "attributevalues.tsv",
+                          package = "bugphyzz")
+  df <- read.table(filename, sep = "\t", header = TRUE)
+  valid_values <- sort(unique(df[["attributevalue"]]))
 
-  # TODO - Function to test all data frames in y instead of one by one.
-
-  # Oxygen ------------------------------------------------------------------
-  # Valid values for oxygen
-  oxygen_filename <- system.file("extdata", "attributevalues.tsv", package = "bugphyzz")
-  oxygen_valid_df <- read.table(oxygen_filename, sep = "\t", header = TRUE)
-  oxygen_valid_values <- sort(unique(oxygen_valid_df[["attributevalue"]]))
-  # Test values for oxygen
-  oxygen_test_values <- sort(unique(y[["oxygen"]]))
-  # Testing
-  expect_identical(oxygen_test_values, oxygen_valid_values)
+  expect_identical(actual_values, valid_values)
 
 })
