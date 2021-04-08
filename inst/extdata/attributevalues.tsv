@@ -24,3 +24,240 @@ attributevalue	description	link
 "branched"	NA	NA
 "chains"	NA	NA
 "s-shaped"	NA	NA
+"amikacin resistant"	NA	NA
+"aztreonam resistant"	NA	NA
+"beta-lactam resistant"	NA	NA
+"capreomycin resistant"	NA	NA
+"carbapenem resistant"	NA	NA
+"cefepime resistant"	NA	NA
+"cefoxitin resistant"	NA	NA
+"chloramphenicol resistant"	NA	NA
+"ciprofloxacin resistant"	NA	NA
+"clindamycin resistant"	NA	NA
+"co-trimoxazole resistant"	NA	NA
+"ertapenem resistant"	NA	NA
+"erythromycin resistant"	NA	NA
+"ethambutol resistant"	NA	NA
+"gentamicin resistant"	NA	NA
+"imipenem resistant"	NA	NA
+"isoniazid resistant"	NA	NA
+"kanamycin resistant"	NA	NA
+"levofloxacin resistant"	NA	NA
+"meropenem resistant"	NA	NA
+"methicillin resistant"	NA	NA
+"ofloxacin resistant"	NA	NA
+"penicillin resistant"	NA	NA
+"piperacillin/tazobactam resistant"	NA	NA
+"rifampicin resistant"	NA	NA
+"rifampin resistant"	NA	NA
+"streptomycin resistant"	NA	NA
+"tetracycline resistant"	NA	NA
+"tobramycin resistant"	NA	NA
+"trimethoprim/sulfamethoxazole resistant"	NA	NA
+"amikacin sensitive"	NA	NA
+"aztreonam sensitive"	NA	NA
+"beta-lactam sensitive"	NA	NA
+"capreomycin sensitive"	NA	NA
+"carbapenem sensitive"	NA	NA
+"cefepime sensitive"	NA	NA
+"cefoxitin sensitive"	NA	NA
+"chloramphenicol sensitive"	NA	NA
+"ciprofloxacin sensitive"	NA	NA
+"clindamycin sensitive"	NA	NA
+"co-trimoxazole sensitive"	NA	NA
+"ertapenem sensitive"	NA	NA
+"erythromycin sensitive"	NA	NA
+"ethambutol sensitive"	NA	NA
+"gentamicin sensitive"	NA	NA
+"imipenem sensitive"	NA	NA
+"isoniazid sensitive"	NA	NA
+"kanamycin sensitive"	NA	NA
+"levofloxacin sensitive"	NA	NA
+"meropenem sensitive"	NA	NA
+"methicillin sensitive"	NA	NA
+"ofloxacin sensitive"	NA	NA
+"penicillin sensitive"	NA	NA
+"piperacillin/tazobactam sensitive"	NA	NA
+"rifampicin sensitive"	NA	NA
+"rifampin sensitive"	NA	NA
+"streptomycin sensitive"	NA	NA
+"tetracycline sensitive"	NA	NA
+"tobramycin sensitive"	NA	NA
+"trimethoprim/sulfamethoxazole sensitive"	NA	NA
+"Wastewater"	NA	NA
+"Terrestrial"	NA	NA
+"Specialized"	NA	NA
+"Soil"	NA	NA
+"Sludge"	NA	NA
+"Sediment"	NA	NA
+"Sea water"	NA	NA
+"Saline water"	NA	NA
+"Oil fields"	NA	NA
+"Ponds"	NA	NA
+"Rhizosphere"	NA	NA
+"Root nodule"	NA	NA
+"Not host-associated"	NA	NA
+"Human"	NA	NA
+"Multiple"	NA	NA
+"Mud"	NA	NA
+"Human microbiome"	NA	NA
+"Marine"	NA	NA
+"Hydrothermal vent"	NA	NA
+"Solfataric field"	NA	NA
+"Hot spring"	NA	NA
+"Host-associated"	NA	NA
+"Fresh water"	NA	NA
+"Solar saltern"	NA	NA
+"Sulfur spring"	NA	NA
+"Surface water"	NA	NA
+"Groundwater"	NA	NA
+"Oil fields"	NA	NA
+"Rice paddies"	NA	NA
+"Deep subsurface"	NA	NA
+"Deep sea"	NA	NA
+"Dairy isolate"	NA	NA
+"Creosote-contaminated soil"	NA	NA
+"Aquatic"	NA	NA
+"Animal intestinal microflora"	NA	NA
+"Air"	NA	NA
+"10% horse blood chocolate agar"	NA	NA
+"10% salts"	NA	NA
+"20% salts"	NA	NA
+"30% salts"	NA	NA
+"5% salts"	NA	NA
+"5% sheep blood agar"	NA	NA
+"ASP-2"	NA	NA
+"Basal Salts"	NA	NA
+"BG11"	NA	NA
+"C"	NA	NA
+"Casitone-yeast extract agar"	NA	NA
+"Charcoal-Yeast Extract"	NA	NA
+"Conway"	NA	NA
+"Defined medium"	NA	NA
+"Defined medium Plus 1 mM glycine betaine"	NA	NA
+"f/2"	NA	NA
+"f2"	NA	NA
+"fE"	NA	NA
+"Fildes agar"	NA	NA
+"G2"	NA	NA
+"General purpose"	NA	NA
+"GSe"	NA	NA
+"Heart infusion agar"	NA	NA
+"Heart infusion agar + isoleucine"	NA	NA
+"Heart infusion agar + leucine"	NA	NA
+"IsoVitaleX-hemin agar"	NA	NA
+"Kratz and Meyers"	NA	NA
+"LB agar"	NA	NA
+"M31"	NA	NA
+"Marine 2216"	NA	NA
+"Marine agar"	NA	NA
+"mjANHOX medium"	NA	NA
+"modified LB"	NA	NA
+"Modified Shieh agar"	NA	NA
+"MRS broth"	NA	NA
+"MRS broth with cholesterol"	NA	NA
+"MRS broth with oxgall-bile salts"	NA	NA
+"MRS broth with oxgall-bile salts and cholesterol"	NA	NA
+"Mueller-Hinton"	NA	NA
+"PYG broth"	NA	NA
+"PYG broth with volatile fatty acids"	NA	NA
+"Pyruvate medium"	NA	NA
+"SM agar"	NA	NA
+"Staley PYG"	NA	NA
+"Tryptic soy broth"	NA	NA
+"Trypticase soy agar"	NA	NA
+"Trypticase soy agar w/ 0.1% yeast extract"	NA	NA
+"Van Baalen"	NA	NA
+"Gram stain negative"	NA	NA
+"Gram stain positive"	NA	NA
+"Gram stain variable"	NA	NA
+"aggregates"	NA	NA
+"branched"	NA	NA
+"chains"	NA	NA
+"clusters"	NA	NA
+"eight parallel rows"	NA	NA
+"encapsulated"	NA	NA
+"filamentous"	NA	NA
+"netlike structures"	NA	NA
+"packets"	NA	NA
+"pairs"	NA	NA
+"palisades"	NA	NA
+"rosettes"	NA	NA
+"s-formation"	NA	NA
+"sarcina packets"	NA	NA
+"seriate"	NA	NA
+"sheath layers"	NA	NA
+"single"	NA	NA
+"star aggregates"	NA	NA
+"tetrads"	NA	NA
+"unbranched"	NA	NA
+"v-formations"	NA	NA
+"y-branched formations"	NA	NA
+"bent rods"	NA	NA
+"boat"	NA	NA
+"club"	NA	NA
+"coccobacilli"	NA	NA
+"coccoid"	NA	NA
+"curved rods"	NA	NA
+"cylindrical rods"	NA	NA
+"disk"	NA	NA
+"ellipsoidal"	NA	NA
+"elongated rods"	NA	NA
+"filamentous rods"	NA	NA
+"flat"	NA	NA
+"flexible rods"	NA	NA
+"fusiform rods"	NA	NA
+"helical"	NA	NA
+"horseshoe"	NA	NA
+"irregular"	NA	NA
+"mushroom-like"	NA	NA
+"needle rods"	NA	NA
+"oval"	NA	NA
+"pear"	NA	NA
+"pleiomorphic"	NA	NA
+"polyhedral"	NA	NA
+"rods"	NA	NA
+"s-shaped"	NA	NA
+"sigmoid"	NA	NA
+"spiral"	NA	NA
+"tetrahedral"	NA	NA
+"triangle"	NA	NA
+"dumbbell"	NA	NA
+"vibrio"	NA	NA
+"wrinkled"	NA	NA
+"Oxygen utilization"	NA	NA
+"Gram stain"	NA	NA
+"Size"	NA	NA
+"Cell arrangement"	NA	NA
+"Cell shape"	NA	NA
+"Spore shape"	NA	NA
+"Extreme environment"	NA	NA
+"Plant pathogenicity"	NA	NA
+"COGEM pathogenicity rating"	NA	NA
+"Animal pathogen"	NA	NA
+"Optimal pH"	NA	NA
+"Biofilm forming"	NA	NA
+"Growth temperature"	NA	NA
+"Antimicrobial sensitivity"	NA	NA
+"Habitat"	NA	NA
+"Butyrate producing"	NA	NA
+"Acetate producing"	NA	NA
+"Lactate producing"	NA	NA
+"Mutation per generation"	NA	NA
+"Mutation per site"	NA	NA
+"Fatty acid composition" 	NA	NA
+"Growth medium"	NA	NA
+"Antimicrobial resistance"	NA	NA
+"T cell receptor"	NA	NA
+"Glycolysis Gluconeogenesis"
+"Citrate Cycle TCA"
+"Pentose phosphate pathway"	NA	NA
+"Pentose and glucuronate pathway"	NA	NA
+"Fructose and mannose metabolism"	NA	NA
+"Galactose metabolism"	NA	NA
+"Ascorbate and aldarate metabolism"	NA	NA
+"Fatty acid metabolism"	NA	NA
+"Methan metabolism"	NA	NA
+"Pilin"	NA	NA
+
+
