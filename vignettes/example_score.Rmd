@@ -18,6 +18,11 @@ knitr::opts_chunk$set(
 ```
 
 ```{r setup, message=FALSE, warning=FALSE}
+if (!requireNamespace("BiocManager", quietly = TRUE))
+    install.packages("BiocManager")
+
+BiocManager::install("ComplexHeatmap")
+
 library(bugphyzz)
 library(readr)
 library(dplyr)
