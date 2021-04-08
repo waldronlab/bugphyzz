@@ -172,4 +172,3 @@ Visualize both heatmaps:
 ht_list = ht1 %v% ht2
 draw(ht_list)
 ```
-
