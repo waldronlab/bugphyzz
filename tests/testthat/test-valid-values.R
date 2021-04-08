@@ -3,20 +3,16 @@ database <- attribute()
 
 is_attrval_c <- function(x) {
   for (i in seq_along(x)) {
-    if ( names(x[i]) == "Attribute_value" &&
-         is.character(x[[i]])
-         # !is.numeric(x[[i]]) &&
-         # !is.double(x[[i]])
-    )
+    if ( names(x[i]) == "Attribute_value" && is.character(x[[i]]) ) {
       return(x[[i]])
+    }
   }
 }
 
-test_that("all headers are present and valid.", {
+test_that("all headers are present and valid in each data set (
+          except for PATRIC and FAC).", {
 
-  x <- lapply(database, function(x) names(x))
-  actual_headers <- sort(unique(unlist(x, use.names = FALSE)))
-  valid_headers <- sort(unique(c("NCBI_ID",
+  valid_headers <- c("NCBI_ID",
                      "Genome_ID",
                      "Accession_number",
                      "Taxon_name",
@@ -26,17 +22,27 @@ test_that("all headers are present and valid.", {
                      "Attribute_value_ontology_term",
                      "Attribute_source",
                      "Evidence",
-                     "Confidence_interval")))
+                     "Confidence_interval")
 
-  expect_identical(actual_headers, valid_headers)
+  no_names <- c("fatty acid composition", "PATRIC_pathway_human_only")
+  db <- database[!(names(database) %in% no_names)]
 
-  })
+  for (i in seq_along(db)) {
+
+    actual_headers <- names(db[[i]])
+    expect_identical(actual_headers, valid_headers)
+
+  }
+
+})
+
 
 test_that("all categorical attribute values are present and valid.", {
 
   y <- lapply(database, function(x) is_attrval_c(x))
-  y <- y[-which(sapply(y, is.null))]
+  y <- y[!sapply(y, is.null)]
   actual_values <- sort(unique(unlist(y, use.names = FALSE)))
+
   filename <- system.file("extdata", "attributevalues.tsv",
                           package = "bugphyzz")
   df <- read.table(filename, sep = "\t", header = TRUE)
