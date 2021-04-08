@@ -1,4 +1,4 @@
-attributevalue	description	link
+attributevalue	variable type description	link
 "microaerophilic"	NA	NA
 "aerobic"	NA	NA
 "microaerobic"	NA	NA
@@ -245,12 +245,12 @@ attributevalue	description	link
 "Lactate producing"	NA	NA
 "Mutation per generation"	NA	NA
 "Mutation per site"	NA	NA
-"Fatty acid composition" 	NA	NA
+"Fatty acid composition"	NA	NA
 "Growth medium"	NA	NA
 "Antimicrobial resistance"	NA	NA
 "T cell receptor"	NA	NA
-"Glycolysis Gluconeogenesis"
-"Citrate Cycle TCA"
+"Glycolysis Gluconeogenesis"	NA	NA
+"Citrate Cycle TCA"	NA	NA
 "Pentose phosphate pathway"	NA	NA
 "Pentose and glucuronate pathway"	NA	NA
 "Fructose and mannose metabolism"	NA	NA
@@ -259,5 +259,3 @@ attributevalue	description	link
 "Fatty acid metabolism"	NA	NA
 "Methan metabolism"	NA	NA
 "Pilin"	NA	NA
-
-
