@@ -9,45 +9,31 @@ is_attrval_c <- function(x) {
   }
 }
 
-test_that("all headers are present and valid in each data set (
-          except for PATRIC and FAC).", {
-
-  valid_headers <- c("NCBI_ID",
-                     "Genome_ID",
-                     "Accession_number",
-                     "Taxon_name",
-                     "Attribute",
-                     "Attribute_ontology_term",
-                     "Attribute_value",
-                     "Attribute_value_ontology_term",
-                     "Attribute_source",
-                     "Evidence",
-                     "Confidence_interval")
-
-  no_names <- c("fatty acid composition", "PATRIC_pathway_human_only")
-  db <- database[!(names(database) %in% no_names)]
-
-  for (i in seq_along(db)) {
-
-    actual_headers <- names(db[[i]])
-    expect_identical(actual_headers, valid_headers)
-
-  }
-
-})
+# my_fun <- function(x, y) {
+#   test_output <- all(bugphyzz::valid_headers %in% colnames(x))
+#   expect(test_output == TRUE, paste0("Error: The \"", y, "\" data set does not have all of the valid values."))
+# }
 
 
-test_that("all categorical attribute values are present and valid.", {
 
-  y <- lapply(database, function(x) is_attrval_c(x))
-  y <- y[!sapply(y, is.null)]
-  actual_values <- sort(unique(unlist(y, use.names = FALSE)))
+test_that("all headers are present and valid in each data set", {
+            for (i in seq_along(database)) {
+              expect_valid_headers(database[[i]], names(database[i]))
+              }
+  })
 
-  filename <- system.file("extdata", "attributevalues.tsv",
-                          package = "bugphyzz")
-  df <- read.table(filename, sep = "\t", header = TRUE)
-  valid_values <- sort(unique(df[["attributevalue"]]))
 
-  expect_identical(actual_values, valid_values)
-
-})
+# test_that("all categorical attribute values are present and valid.", {
+#
+#   y <- lapply(database, function(x) is_attrval_c(x))
+#   y <- y[!sapply(y, is.null)]
+#   actual_values <- sort(unique(unlist(y, use.names = FALSE)))
+#
+#   filename <- system.file("extdata", "attributevalues.tsv",
+#                           package = "bugphyzz")
+#   df <- read.table(filename, sep = "\t", header = TRUE)
+#   valid_values <- sort(unique(df[["attributevalue"]]))
+#
+#   expect_identical(actual_values, valid_values)
+#
+# })
