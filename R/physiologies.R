@@ -1,34 +1,34 @@
-#' Fetch physiological data sheets
+#' Fetch physiological attribute data
 #'
-#' @param keyword a character vector of physiologies (see \code{\link{curationLinks}}). For the available
-#' physiologies, run bugphyzz::physiologies_list()
+#' @param keyword a character vector of attribute names desired (see \code{\link{curationLinks}}). For the available
+#' attributes, run bugphyzz::attribute_list()
 #'
 #' @return a large list of tidy data.frames
 #' @export
 #'
 #' @examples
-#' x <- physiologies()
+#' x <- attribute()
 #' head(x[[1]])
 #'
-#' y <- physiologies(c("gram", "aerophilicity"))
+#' y <- attribute(c("gram", "aerophilicity"))
 #' head(y[[1]])
-physiologies <- function(keyword = "all"){
+attribute <- function(keyword = "all"){
   links <- curationLinks(keyword = keyword)
 
-  ifelse(keyword[1] == "all", links, links <- links[links$physiology %in% keyword,])
+  ifelse(keyword[1] == "all", links, links <- links[links$Physiology %in% keyword,])
 
-  sheets <- as.list(links$link)
+  sheets <- as.list(links[[2]])
   dat <- lapply(sheets, read.csv)
-  names(dat) <- links$physiology
+  names(dat) <- links[[1]]
   dat
 }
 
 #' Show links to curation spreadsheets
 #'
-#' @param keyword a character vector of physiologies names desired. For the available
-#' physiologies, run bugphyzz::physiologies_list(). Use "all" for all available physiologies.
+#' @param keyword a character vector of attribute names desired. For the available
+#' attributes, run bugphyzz::attribute_list(). Use "all" for all available attributes.
 #'
-#' @return a data.frame with physiologies names and URLs
+#' @return a data.frame with attribute names and URLs
 #' @export
 #'
 #' @examples
@@ -38,8 +38,8 @@ physiologies <- function(keyword = "all"){
 curationLinks <- function(keyword = "all"){
   fname <-
     system.file(file.path("extdata", "links.tsv"), package = "bugphyzz")
-  links <- read.table(fname, sep = "\t", header = TRUE)
+  links <- read.table(fname, sep = "\t")
   ifelse(keyword[1] == "all", links, links <-
-           links[links$physiology %in% keyword,])
+           links[links$Physiology %in% keyword,])
   return(links)
 }
