@@ -2,15 +2,15 @@
 % Please edit documentation in R/physiologies_list.R
 \name{physiologies_list}
 \alias{physiologies_list}
-\title{Fetch list of available physiological physiologies names}
+\title{Fetch list of available physiologies}
 \usage{
 physiologies_list()
 }
 \value{
-a character vector of physiological physiologies names
+a character vector of physiologies
 }
 \description{
-Fetch list of available physiological physiologies names
+Fetch list of available physiologies
 }
 \examples{
 x <- physiologies_list()

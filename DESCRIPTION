@@ -1,6 +1,6 @@
 Package: bugphyzz
 Title: Access to microbial physiologies in high throughput
-Version: 0.0.1.0
+Version: 0.0.1.1
 Authors@R: 
     person(given = "First",
            family = "Last",

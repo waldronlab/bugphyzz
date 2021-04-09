@@ -2,19 +2,19 @@
 % Please edit documentation in R/physiologies.R
 \name{physiologies}
 \alias{physiologies}
-\title{Fetch physiological data sheets}
+\title{Fetch physiological data}
 \usage{
 physiologies(keyword = "all")
 }
 \arguments{
-\item{keyword}{a character vector of physiologies (see \code{\link{curationLinks}}). For the available
+\item{keyword}{a character vector of physiologies desired (see \code{\link{curationLinks}}). For the available
 physiologies, run bugphyzz::physiologies_list()}
 }
 \value{
 a large list of tidy data.frames
 }
 \description{
-Fetch physiological data sheets
+Fetch physiological data
 }
 \examples{
 x <- physiologies()

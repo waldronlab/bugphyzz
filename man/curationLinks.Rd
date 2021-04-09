@@ -7,11 +7,11 @@
 curationLinks(keyword = "all")
 }
 \arguments{
-\item{keyword}{a character vector of physiologies names desired. For the available
+\item{keyword}{a character vector of physiologies desired. For the available
 physiologies, run bugphyzz::physiologies_list(). Use "all" for all available physiologies.}
 }
 \value{
-a data.frame with physiologies names and URLs
+a data.frame with physiology names and URLs
 }
 \description{
 Show links to curation spreadsheets
