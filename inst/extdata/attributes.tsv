@@ -2,12 +2,9 @@
 "aerobic"	TRUE|FALSE	MICRO_0000494	"A prokaryotic metabolic quality where the organism grows in the presence of oxygen."
 "microaerophilic"	TRUE|FALSE	MICRO_0000515	"A prokaryotic metabolic quality where the organism grows in the presence of oxygen, where the oxygen concentration is less than atmospheric levels."
 "obligately	aerobic"	TRUE|FALSE	MICRO_0000516	"A prokaryotic metabolic quality where the organism grows in the presence of oxygen. Is incapable of anaerobic growth (growth in the absence of oxygen)."
-"anaerobic"	NA	NA	NA
-"facultative aerobic"	NA	NA	"Note, the MICRO ontology above uses adverbs, need to clarify which ontology is in use for these."
-"facultative anaerobic"	NA	NA	NA
-"facultative microaerophilic"	NA	NA	NA
-"microaerotolerant anaerobic"	NA	NA	NA
-"obligate	anaerobic"	NA	NA	NA
+"anaerobic"	TRUE|FALSE	MICRO_0000495	"A prokaryotic metabolic quality where the organism grows in the absence of oxygen""
+"facultatively anaerobe"	TRUE|FALSE	MICRO_0000504	"A prokaryote which is capable of growth in the presence of oxygen or in the absence of oxygen."
+"aerotolerant"	TRUE|FALSE	MICRO:0000502	"A prokaryotic metabolic quality where the organism grows in the absence of oxygen. Can grow or live in the presence of oxygen.""
 "endospore"	NA	NA	NA
 "spore"	NA	NA	NA
 "myxospores"	NA	NA	NA
