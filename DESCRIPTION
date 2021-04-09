@@ -17,6 +17,7 @@ Suggests:
     lattice,
     viridis,
     ComplexHeatmap,
+    HMP16SData,
     tibble
 Config/testthat/edition: 3
 Encoding: UTF-8

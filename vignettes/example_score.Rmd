@@ -167,3 +167,23 @@ Visualize both heatmaps:
 ht_list = ht1 %v% ht2
 draw(ht_list)
 ```
+
+# Application to HMP 2012 16S dataset
+
+```{r}
+suppressPackageStartupMessages(library(HMP16SData))
+v13dat <- V13()
+dim(v13dat)
+```
+
+Sum OTUs by genus
+```{r}
+v13summed <- assay(v13dat) %>%
+  as_tibble() %>%
+  filter(!is.na(rowData(v13dat)$GENUS)) %>%
+  group_by(rowData(v13genus)$GENUS) %>%
+  summarise_all(sum)
+v13genus <- 
+dim(v13summed)
+```
+
