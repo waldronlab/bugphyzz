@@ -7,7 +7,7 @@
 attribute(keyword = "all")
 }
 \arguments{
-\item{keyword}{a character vector of attribute names desired. For the available
+\item{keyword}{a character vector of attribute names desired (see \code{\link{curationLinks}}). For the available
 attributes, run bugphyzz::attribute_list()}
 }
 \value{
