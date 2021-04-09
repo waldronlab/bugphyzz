@@ -18,6 +18,6 @@ Show links to curation spreadsheets
 }
 \examples{
 curationLinks()
-curationLinks(keyword = "oxygen")
-curationLinks(keyword = c("oxygen", "gram"))
+curationLinks(keyword = "aerophilicity")
+curationLinks(keyword = c("aerophilicity", "gram"))
 }

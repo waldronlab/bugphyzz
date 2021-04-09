@@ -17,7 +17,7 @@ A data frame of two columns: "Attributes" and "Score."
 }
 \examples{
 df <- AsnicarF2017_genus[[1]]
-db <- attribute(keyword = "oxygen")[[1]]
+db <- attribute(keyword = "aerophilicity")[[1]]
 
 x <- add_attributes(df, db)
 x

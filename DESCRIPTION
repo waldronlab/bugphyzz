@@ -1,6 +1,6 @@
 Package: bugphyzz
-Title: What the Package Does (One Line, Title Case)
-Version: 0.0.0.9000
+Title: Access to microbial physiologies in high throughput
+Version: 0.0.0.9001
 Authors@R: 
     person(given = "First",
            family = "Last",
