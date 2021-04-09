@@ -10,7 +10,7 @@
 #' x <- attribute()
 #' head(x[[1]])
 #'
-#' y <- attribute(c("gram", "oxygen"))
+#' y <- attribute(c("gram", "aerophilicity"))
 #' head(y[[1]])
 attribute <- function(keyword = "all"){
   links <- curationLinks(keyword = keyword)
@@ -33,8 +33,8 @@ attribute <- function(keyword = "all"){
 #'
 #' @examples
 #' curationLinks()
-#' curationLinks(keyword = "oxygen")
-#' curationLinks(keyword = c("oxygen", "gram"))
+#' curationLinks(keyword = "aerophilicity")
+#' curationLinks(keyword = c("aerophilicity", "gram"))
 curationLinks <- function(keyword = "all"){
   fname <-
     system.file(file.path("extdata", "links.tsv"), package = "bugphyzz")

@@ -20,6 +20,6 @@ Fetch physiological attribute data
 x <- attribute()
 head(x[[1]])
 
-y <- attribute(c("gram", "oxygen"))
+y <- attribute(c("gram", "aerophilicity"))
 head(y[[1]])
 }
