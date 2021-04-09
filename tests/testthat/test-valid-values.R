@@ -17,9 +17,7 @@ test_that("all headers are present and valid in each data set (
                      "Accession_number",
                      "Taxon_name",
                      "Attribute",
-                     "Attribute_ontology_term",
                      "Attribute_value",
-                     "Attribute_value_ontology_term",
                      "Attribute_source",
                      "Evidence",
                      "Confidence_interval")
