@@ -17,9 +17,9 @@ physiologies <- function(keyword = "all"){
 
   ifelse(keyword[1] == "all", links, links <- links[links$physiology %in% keyword,])
 
-  sheets <- as.list(links[[2]])
+  sheets <- as.list(links[["link"]])
   dat <- lapply(sheets, read.csv)
-  names(dat) <- links[[1]]
+  names(dat) <- links[["physiology"]]
   dat
 }
 
@@ -38,7 +38,7 @@ physiologies <- function(keyword = "all"){
 curationLinks <- function(keyword = "all"){
   fname <-
     system.file(file.path("extdata", "links.tsv"), package = "bugphyzz")
-  links <- read.table(fname, sep = "\t")
+  links <- read.table(fname, sep = "\t", header = TRUE)
   ifelse(keyword[1] == "all", links, links <-
            links[links$physiology %in% keyword,])
   return(links)
