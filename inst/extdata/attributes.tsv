@@ -219,26 +219,9 @@
 "dumbbell"	NA	NA	NA
 "vibrio"	NA	NA	NA
 "wrinkled"	NA	NA	NA
-"aerophilicity"	NA	NA	NA
-"gram stain"	NA	NA	NA
-"size"	NA	NA	NA
-"cell arrangement"	NA	NA	NA
-"cell shape"	NA	NA	NA
-"cpore shape"	NA	NA	NA
-"extreme environment"	NA	NA	NA
-"plant pathogenicity"	NA	NA	NA
-"COGEM pathogenicity rating"	NA	NA	NA
 "animal pathogen"	NA	NA	NA
-"optimal pH"	NA	NA	NA
-"biofilm forming"	NA	NA	NA
-"growth temperature"	NA	NA	NA
+"extreme environment"	NA	NA	NA
+"COGEM pathogenicity rating"	NA	NA	NA
 "antimicrobial sensitivity"	NA	NA	NA
-"habitat"	NA	NA	NA
-"butyrate producing"	NA	NA	NA
-"acetate producing"	NA	NA	NA
-"lactate producing"	NA	NA	NA
-"mutation per generation"	NA	NA	NA
-"mutation per site"	NA	NA	NA
-"fatty acid composition"	NA	NA	NA
-"growth medium"	NA	NA	NA
-"antimicrobial resistance"	NA	NA	NA
+"biofilm forming"	NA	NA	NA
+
