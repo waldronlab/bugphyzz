@@ -18,7 +18,6 @@ physiologies <- function(keyword = "all") {
     stop("I don't recognize one or more of the provided physiologies ",
          "Check valid physiologies with physiologies_list()")
   }
-
   links <- curationLinks(keyword = keyword)[, c("physiology", "link")]
   database <- vector("list", nrow(links))
   for (i in seq_along(database)) {
