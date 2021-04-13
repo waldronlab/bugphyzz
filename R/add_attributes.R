@@ -1,4 +1,4 @@
-utils::globalVariables(c("Attribute_value", "value"))
+utils::globalVariables(c("Attribute", "value"))
 
 #' Add BugPhyzz attribute values as columns to a data frame
 #'
@@ -6,7 +6,7 @@ utils::globalVariables(c("Attribute_value", "value"))
 #'
 #' The **data frame** must have a column named "NCBI_ID" with NCBI taxids and a column named "Abundance" with relative abundance values.
 #'
-#' The **database** (downloaded from BugPhyzz) must have a column named "NCBI_ID" with NCBI taxids and a column named "Attribute_value."
+#' The **database** (downloaded from BugPhyzz) must have a column named "NCBI_ID" with NCBI taxids and a column named "Attribute."
 #'
 #' NAs are converted to 0s.
 #'
@@ -27,7 +27,7 @@ utils::globalVariables(c("Attribute_value", "value"))
 #' @examples
 #' # Add cellular respiration attributes
 #' df <- AsnicarF2017_genus[[1]]
-#' db <- attribute(keyword = "aerophilicity")[[1]]
+#' db <- physiologies(keyword = "aerophilicity")[[1]]
 #'
 #' x <- add_attributes(df, db)
 #' x
@@ -36,15 +36,15 @@ add_attributes <- function(data, database) {
 
     db <- database %>%
         dplyr::mutate(
-            Attribute_value = stringr::str_to_lower(Attribute_value) %>%
+            Attribute = stringr::str_to_lower(Attribute) %>%
                 stringr::str_squish()
         )
 
-    attr_values <- unique(db[["Attribute_value"]])
+    attr_values <- unique(db[["Attribute"]])
 
     for ( attr in attr_values) {
 
-        taxids <- db[db[["Attribute_value"]] == attr, ][["NCBI_ID"]]
+        taxids <- db[db[["Attribute"]] == attr, ][["NCBI_ID"]]
         output <- vector("double", length(data[["NCBI_ID"]]))
 
         for (i in seq_along(output)) {
@@ -75,14 +75,14 @@ add_attributes <- function(data, database) {
 #
 #     db <- database %>%
 #         dplyr::mutate(
-#             Attribute_value = stringr::str_to_lower(Attribute_value)
+#             Attribute = stringr::str_to_lower(Attribute)
 #         )
 #
-#     attr_values <- unique(db$Attribute_value)
+#     attr_values <- unique(db$Attribute)
 #
 #     for (i in attr_values) {
 #
-#         taxids <- db[db$Attribute_value == i, ]$NCBI_ID
+#         taxids <- db[db$Attribute == i, ]$NCBI_ID
 #         data[[i]] <- data$NCBI_ID %in% taxids
 #
 #     }

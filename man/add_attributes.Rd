@@ -20,14 +20,14 @@ A data frame with new columns corresponding to BugPhyzz attribute values.
 \details{
 The \strong{data frame} must have a column named "NCBI_ID" with NCBI taxids and a column named "Abundance" with relative abundance values.
 
-The \strong{database} (downloaded from BugPhyzz) must have a column named "NCBI_ID" with NCBI taxids and a column named "Attribute_value."
+The \strong{database} (downloaded from BugPhyzz) must have a column named "NCBI_ID" with NCBI taxids and a column named "Attribute."
 
 NAs are converted to 0s.
 }
 \examples{
 # Add cellular respiration attributes
 df <- AsnicarF2017_genus[[1]]
-db <- attribute(keyword = "aerophilicity")[[1]]
+db <- physiologies(keyword = "aerophilicity")[[1]]
 
 x <- add_attributes(df, db)
 x
