@@ -2,12 +2,10 @@
 "aerobic"	TRUE|FALSE	MICRO_0000494	"A prokaryotic metabolic quality where the organism grows in the presence of oxygen."
 "microaerophilic"	TRUE|FALSE	MICRO_0000515	"A prokaryotic metabolic quality where the organism grows in the presence of oxygen, where the oxygen concentration is less than atmospheric levels."
 "obligately	aerobic"	TRUE|FALSE	MICRO_0000516	"A prokaryotic metabolic quality where the organism grows in the presence of oxygen. Is incapable of anaerobic growth (growth in the absence of oxygen)."
-"anaerobic"	NA	NA	NA
-"facultative aerobic"	NA	NA	"Note, the MICRO ontology above uses adverbs, need to clarify which ontology is in use for these."
-"facultative anaerobic"	NA	NA	NA
-"facultative microaerophilic"	NA	NA	NA
-"microaerotolerant anaerobic"	NA	NA	NA
-"obligate	anaerobic"	NA	NA	NA
+"obligately anaerobic"	TRUE|FALSE	MICRO_0000504	"A prokaryotic metabolic quality where the organism grows in the absence of oxygen. Cannot grow or live in the presence of oxygen."
+"anaerobic"	TRUE|FALSE	MICRO_0000495	"A prokaryotic metabolic quality where the organism grows in the absence of oxygen""
+"facultatively anaerobe"	TRUE|FALSE	MICRO_0000503	"A prokaryotic metabolic quality where the organism grows in the presence of oxygen or in the absence of oxygen.
+"aerotolerant"	TRUE|FALSE	MICRO:0000502	"A prokaryotic metabolic quality where the organism grows in the absence of oxygen. Can grow or live in the presence of oxygen.""
 "endospore"	NA	NA	NA
 "spore"	NA	NA	NA
 "myxospores"	NA	NA	NA
@@ -83,93 +81,90 @@
 "tetracycline sensitive"	NA	NA	NA
 "tobramycin sensitive"	NA	NA	NA
 "trimethoprim/sulfamethoxazole sensitive"	NA	NA	NA
-"Wastewater"	NA	NA	NA
-"Terrestrial"	NA	NA	NA
-"Specialized"	NA	NA	NA
-"Soil"	NA	NA	NA
-"Sludge"	NA	NA	NA
-"Sediment"	NA	NA	NA
-"Sea water"	NA	NA	NA
-"Saline water"	NA	NA	NA
-"Oil fields"	NA	NA	NA
-"Ponds"	NA	NA	NA
-"Rhizosphere"	NA	NA	NA
-"Root nodule"	NA	NA	NA
-"Not host-associated"	NA	NA	NA
-"Human"	NA	NA	NA
-"Multiple"	NA	NA	NA
-"Mud"	NA	NA	NA
-"Human microbiome"	NA	NA	NA
-"Marine"	NA	NA	NA
-"Hydrothermal vent"	NA	NA	NA
-"Solfataric field"	NA	NA	NA
-"Hot spring"	NA	NA	NA
-"Host-associated"	NA	NA	NA
-"Fresh water"	NA	NA	NA
-"Solar saltern"	NA	NA	NA
-"Sulfur spring"	NA	NA	NA
-"Surface water"	NA	NA	NA
-"Groundwater"	NA	NA	NA
-"Oil fields"	NA	NA	NA
-"Rice paddies"	NA	NA	NA
-"Deep subsurface"	NA	NA	NA
-"Deep sea"	NA	NA	NA
-"Dairy isolate"	NA	NA	NA
-"Creosote-contaminated soil"	NA	NA	NA
-"Aquatic"	NA	NA	NA
-"Animal intestinal microflora"	NA	NA	NA
-"Air"	NA	NA	NA
+"wastewater"	NA	NA	NA
+"terrestrial"	NA	NA	NA
+"specialized"	NA	NA	NA
+"soil"	NA	NA	NA
+"sludge"	NA	NA	NA
+"sediment"	NA	NA	NA
+"sea water"	NA	NA	NA
+"saline water"	NA	NA	NA
+"oil fields"	NA	NA	NA
+"ponds"	NA	NA	NA
+"rhizosphere"	NA	NA	NA
+"root nodule"	NA	NA	NA
+"not host-associated"	NA	NA	NA
+"human"	NA	NA	NA
+"multiple"	NA	NA	NA
+"mud"	NA	NA	NA
+"human microbiome"	NA	NA	NA
+"marine"	NA	NA	NA
+"hydrothermal vent"	NA	NA	NA
+"solfataric field"	NA	NA	NA
+"hot spring"	NA	NA	NA
+"host-associated"	NA	NA	NA
+"fresh water"	NA	NA	NA
+"solar saltern"	NA	NA	NA
+"sulfur spring"	NA	NA	NA
+"surface water"	NA	NA	NA
+"groundwater"	NA	NA	NA
+"oil fields"	NA	NA	NA
+"rice paddies"	NA	NA	NA
+"deep subsurface"	NA	NA	NA
+"deep sea"	NA	NA	NA
+"dairy isolate"	NA	NA	NA
+"creosote-contaminated soil"	NA	NA	NA
+"aquatic"	NA	NA	NA
+"animal intestinal microflora"	NA	NA	NA
+"air"	NA	NA	NA
 "10% horse blood chocolate agar"	NA	NA	NA
 "10% salts"	NA	NA	NA
 "20% salts"	NA	NA	NA
 "30% salts"	NA	NA	NA
 "5% salts"	NA	NA	NA
 "5% sheep blood agar"	NA	NA	NA
-"ASP-2"	NA	NA	NA
-"Basal Salts"	NA	NA	NA
-"BG11"	NA	NA	NA
-"C"	NA	NA	NA
-"Casitone-yeast extract agar"	NA	NA	NA
-"Charcoal-Yeast Extract"	NA	NA	NA
-"Conway"	NA	NA	NA
-"Defined medium"	NA	NA	NA
-"Defined medium Plus 1 mM glycine betaine"	NA	NA	NA
+"asp-2"	NA	NA	NA
+"basal salts"	NA	NA	NA
+"bg11"	NA	NA	NA
+"c"	NA	NA	NA
+"casitone-yeast extract agar"	NA	NA	NA
+"charcoal-yeast extract"	NA	NA	NA
+"conway"	NA	NA	NA
+"defined medium"	NA	NA	NA
+"defined medium plus 1 mM glycine betaine"	NA	NA	NA
 "f/2"	NA	NA	NA
-"f2"	NA	NA	NA
-"fE"	NA	NA	NA
-"Fildes agar"	NA	NA	NA
-"G2"	NA	NA	NA
-"General purpose"	NA	NA	NA
-"GSe"	NA	NA	NA
-"Heart infusion agar"	NA	NA	NA
-"Heart infusion agar + isoleucine"	NA	NA	NA
-"Heart infusion agar + leucine"	NA	NA	NA
-"IsoVitaleX-hemin agar"	NA	NA	NA
-"Kratz and Meyers"	NA	NA	NA
-"LB agar"	NA	NA	NA
-"M31"	NA	NA	NA
-"Marine 2216"	NA	NA	NA
-"Marine agar"	NA	NA	NA
-"mjANHOX medium"	NA	NA	NA
-"modified LB"	NA	NA	NA
-"Modified Shieh agar"	NA	NA	NA
-"MRS broth"	NA	NA	NA
-"MRS broth with cholesterol"	NA	NA	NA
-"MRS broth with oxgall-bile salts"	NA	NA	NA
-"MRS broth with oxgall-bile salts and cholesterol"	NA	NA	NA
-"Mueller-Hinton"	NA	NA	NA
-"PYG broth"	NA	NA	NA
-"PYG broth with volatile fatty acids"	NA	NA	NA
-"Pyruvate medium"	NA	NA	NA
-"SM agar"	NA	NA	NA
-"Staley PYG"	NA	NA	NA
-"Tryptic soy broth"	NA	NA	NA
-"Trypticase soy agar"	NA	NA	NA
-"Trypticase soy agar w/ 0.1% yeast extract"	NA	NA	NA
-"Van Baalen"	NA	NA	NA
-"Gram stain negative"	NA	NA	NA
-"Gram stain positive"	NA	NA	NA
-"Gram stain variable"	NA	NA	NA
+"fildes agar"	NA	NA	NA
+"general purpose"	NA	NA	NA
+"gse"	NA	NA	NA
+"heart infusion agar"	NA	NA	NA
+"heart infusion agar + isoleucine"	NA	NA	NA
+"heart infusion agar + leucine"	NA	NA	NA
+"isovitalex-hemin agar"	NA	NA	NA
+"kratz and meyers"	NA	NA	NA
+"lb agar"	NA	NA	NA
+"m31"	NA	NA	NA
+"marine 2216"	NA	NA	NA
+"marine agar"	NA	NA	NA
+"mjanhox medium"	NA	NA	NA
+"modified lb"	NA	NA	NA
+"modified shieh agar"	NA	NA	NA
+"mrs broth"	NA	NA	NA
+"mrs broth with cholesterol"	NA	NA	NA
+"mrs broth with oxgall-bile salts"	NA	NA	NA
+"mrs broth with oxgall-bile salts and cholesterol"	NA	NA	NA
+"mueller-hinton"	NA	NA	NA
+"pyg broth"	NA	NA	NA
+"pyg broth with volatile fatty acids"	NA	NA	NA
+"pyruvate medium"	NA	NA	NA
+"sm agar"	NA	NA	NA
+"staley pyg"	NA	NA	NA
+"tryptic soy broth"	NA	NA	NA
+"trypticase soy agar"	NA	NA	NA
+"trypticase soy agar w/ 0.1% yeast extract"	NA	NA	NA
+"van baalen"	NA	NA	NA
+"gram stain negative"	NA	NA	NA
+"gram stain positive"	NA	NA	NA
+"gram stain variable"	NA	NA	NA
 "aggregates"	NA	NA	NA
 "branched"	NA	NA	NA
 "chains"	NA	NA	NA
@@ -190,7 +185,7 @@
 "star aggregates"	NA	NA	NA
 "tetrads"	NA	NA	NA
 "unbranched"	NA	NA	NA
-"v-formations"	NA	NA	NA
+"v-formation"	NA	NA	NA
 "y-branched formations"	NA	NA	NA
 "bent rods"	NA	NA	NA
 "boat"	NA	NA	NA
@@ -224,37 +219,9 @@
 "dumbbell"	NA	NA	NA
 "vibrio"	NA	NA	NA
 "wrinkled"	NA	NA	NA
-"Oxygen utilization"	NA	NA	NA
-"Gram stain"	NA	NA	NA
-"Size"	NA	NA	NA
-"Cell arrangement"	NA	NA	NA
-"Cell shape"	NA	NA	NA
-"Spore shape"	NA	NA	NA
-"Extreme environment"	NA	NA	NA
-"Plant pathogenicity"	NA	NA	NA
+"animal pathogen"	NA	NA	NA
+"extreme environment"	NA	NA	NA
 "COGEM pathogenicity rating"	NA	NA	NA
-"Animal pathogen"	NA	NA	NA
-"Optimal pH"	NA	NA	NA
-"Biofilm forming"	NA	NA	NA
-"Growth temperature"	NA	NA	NA
-"Antimicrobial sensitivity"	NA	NA	NA
-"Habitat"	NA	NA	NA
-"Butyrate producing"	NA	NA	NA
-"Acetate producing"	NA	NA	NA
-"Lactate producing"	NA	NA	NA
-"Mutation per generation"	NA	NA	NA
-"Mutation per site"	NA	NA	NA
-"Fatty acid composition"	NA	NA	NA
-"Growth medium"	NA	NA	NA
-"Antimicrobial resistance"	NA	NA	NA
-"T cell receptor"	NA	NA	NA
-"Glycolysis Gluconeogenesis"	NA	NA	NA
-"Citrate Cycle TCA"	NA	NA	NA
-"Pentose phosphate pathway"	NA	NA	NA
-"Pentose and glucuronate pathway"	NA	NA	NA
-"Fructose and mannose metabolism"	NA	NA	NA
-"Galactose metabolism"	NA	NA	NA
-"Ascorbate and aldarate metabolism"	NA	NA	NA
-"Fatty acid metabolism"	NA	NA	NA
-"Methan metabolism"	NA	NA	NA
-"Pilin"	NA	NA	NA
+"antimicrobial sensitivity"	NA	NA	NA
+"biofilm forming"	NA	NA	NA
+
