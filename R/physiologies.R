@@ -12,16 +12,31 @@
 #'
 #' y <- physiologies(c("gram", "aerophilicity"))
 #' head(y[[1]])
-physiologies <- function(keyword = "all"){
-  links <- curationLinks(keyword = keyword)
+physiologies <- function(keyword = "all") {
 
-  ifelse(keyword[1] == "all", links, links <- links[links$physiology %in% keyword,])
-
-  sheets <- as.list(links[["link"]])
-  dat <- lapply(sheets, read.csv)
-  names(dat) <- links[["physiology"]]
-  dat
+  if (all(keyword != "all") & !all(keyword %in% physiologies_list())) {
+    stop("I don't recognize one or more of the provided physiologies ",
+         "Check valid physiologies with physiologies_list()")
+  }
+  links <- curationLinks(keyword = keyword)[, c("physiology", "link")]
+  database <- vector("list", nrow(links))
+  for (i in seq_along(database)) {
+    names(database)[i] <- links[i, "physiology"]
+    database[[i]] <- read.csv(links[i, "link"])
+  }
+  return(database)
 }
+
+# physiologies <- function(keyword = "all"){
+#   links <- curationLinks(keyword = keyword)
+#
+#   ifelse(keyword[1] == "all", links, links <- links[links$physiology %in% keyword,])
+#
+#   sheets <- as.list(links[[2]])
+#   dat <- lapply(sheets, read.csv)
+#   names(dat) <- links[[1]]
+#   dat
+# }
 
 #' Show links to curation spreadsheets
 #'
