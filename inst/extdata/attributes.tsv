@@ -3,22 +3,17 @@
 "microaerophilic"	TRUE|FALSE	MICRO_0000515	"A prokaryotic metabolic quality where the organism grows in the presence of oxygen, where the oxygen concentration is less than atmospheric levels."
 "obligately	aerobic"	TRUE|FALSE	MICRO_0000516	"A prokaryotic metabolic quality where the organism grows in the presence of oxygen. Is incapable of anaerobic growth (growth in the absence of oxygen)."
 "obligately anaerobic"	TRUE|FALSE	MICRO_0000504	"A prokaryotic metabolic quality where the organism grows in the absence of oxygen. Cannot grow or live in the presence of oxygen."
-"anaerobic"	TRUE|FALSE	MICRO_0000495	"A prokaryotic metabolic quality where the organism grows in the absence of oxygen""
-"facultatively anaerobe"	TRUE|FALSE	MICRO_0000503	"A prokaryotic metabolic quality where the organism grows in the presence of oxygen or in the absence of oxygen.
-"aerotolerant"	TRUE|FALSE	MICRO:0000502	"A prokaryotic metabolic quality where the organism grows in the absence of oxygen. Can grow or live in the presence of oxygen.""
+"anaerobic"	TRUE|FALSE	MICRO_0000495	"A prokaryotic metabolic quality where the organism grows in the absence of oxygen."
+"facultatively anaerobe"	TRUE|FALSE	MICRO_0000503	"A prokaryotic metabolic quality where the organism grows in the presence of oxygen or in the absence of oxygen."
+"aerotolerant"	TRUE|FALSE	MICRO:0000502	"A prokaryotic metabolic quality where the organism grows in the absence of oxygen. Can grow or live in the presence of oxygen."
 "endospore"	TRUE|FALSE	MICRO_0000213	"A differentiated prokaryotic cell, found in the Firmicutes, which is specialized for extreme tolerance to desiccation, radiation, and exposure to ultraviolet light. Characterized by thick cell walls."
 "bacillus"	TRUE|FALSE	MICRO_0000401	"A prokaryotic cell, where one axis (the long axis, the length) of the cell is longer than the other axis (the short axis, the width) of the cell."
-"oval"	TRUE|FALSE	NA	NA
-"spiral"	TRUE|FALSE	NA	NA
-"spiny"	TRUE|FALSE	NA	NA
-"round"	TRUE|FALSE	NA	NA
-"exospore"	TRUE|FALSE	NA	NA
-"ellipsoidal"	TRUE|FALSE	NA	NA
+"spirillum"	TRUE|FALSE	MICRO_0000367	"A prokaryotic cell, where the long axis of the cell twists in a spiral."
+"elliptic"	TRUE|FALSE	PATO_0000947	"A spheroid quality inhering in a bearer by virtue of the bearer's being oval with two axes of symmetry, as produced by a conical section."
 "cylindrical"	TRUE|FALSE	NA	NA
 "coccoid"	TRUE|FALSE	NA	NA
 "branched"	TRUE|FALSE	NA	NA
 "chains"	TRUE|FALSE	NA	NA
-"s-shaped"	TRUE|FALSE	NA	NA
 "amikacin resistant"	TRUE|FALSE	NA	NA
 "aztreonam resistant"	TRUE|FALSE	NA	NA
 "beta-lactam resistant"	TRUE|FALSE	NA	NA
@@ -205,7 +200,8 @@
 "pear"	TRUE|FALSE	NA	NA
 "pleiomorphic"	TRUE|FALSE	NA	NA
 "polyhedral"	TRUE|FALSE	NA	NA
-"sigmoid"	TRUE|FALSE	NA	NA
+"sigmoid"	TRUE|FALSE	PATO_0001878
+"A shape quality inhering in a bearer by virtue of the bearer's consisting of two curves, in opposite directions. S-shaped"
 "tetrahedral"	TRUE|FALSE	NA	NA
 "triangle"	TRUE|FALSE	NA	NA
 "dumbbell"	TRUE|FALSE	NA	NA
