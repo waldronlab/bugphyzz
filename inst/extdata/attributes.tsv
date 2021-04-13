@@ -6,222 +6,222 @@
 "anaerobic"	TRUE|FALSE	MICRO_0000495	"A prokaryotic metabolic quality where the organism grows in the absence of oxygen""
 "facultatively anaerobe"	TRUE|FALSE	MICRO_0000503	"A prokaryotic metabolic quality where the organism grows in the presence of oxygen or in the absence of oxygen.
 "aerotolerant"	TRUE|FALSE	MICRO:0000502	"A prokaryotic metabolic quality where the organism grows in the absence of oxygen. Can grow or live in the presence of oxygen.""
-"endospore"	NA	NA	NA
-"spore"	NA	NA	NA
-"myxospores"	NA	NA	NA
-"rods"	NA	NA	NA
-"oval"	NA	NA	NA
-"spiral"	NA	NA	NA
-"spiny"	NA	NA	NA
-"round"	NA	NA	NA
-"exospore"	NA	NA	NA
-"ellipsoidal"	NA	NA	NA
-"cylindrical"	NA	NA	NA
-"coccoid"	NA	NA	NA
-"branched"	NA	NA	NA
-"chains"	NA	NA	NA
-"s-shaped"	NA	NA	NA
-"amikacin resistant"	NA	NA	NA
-"aztreonam resistant"	NA	NA	NA
-"beta-lactam resistant"	NA	NA	NA
-"capreomycin resistant"	NA	NA	NA
-"carbapenem resistant"	NA	NA	NA
-"cefepime resistant"	NA	NA	NA
-"cefoxitin resistant"	NA	NA	NA
-"chloramphenicol resistant"	NA	NA	NA
-"ciprofloxacin resistant"	NA	NA	NA
-"clindamycin resistant"	NA	NA	NA
-"co-trimoxazole resistant"	NA	NA	NA
-"ertapenem resistant"	NA	NA	NA
-"erythromycin resistant"	NA	NA	NA
-"ethambutol resistant"	NA	NA	NA
-"gentamicin resistant"	NA	NA	NA
-"imipenem resistant"	NA	NA	NA
-"isoniazid resistant"	NA	NA	NA
-"kanamycin resistant"	NA	NA	NA
-"levofloxacin resistant"	NA	NA	NA
-"meropenem resistant"	NA	NA	NA
-"methicillin resistant"	NA	NA	NA
-"ofloxacin resistant"	NA	NA	NA
-"penicillin resistant"	NA	NA	NA
-"piperacillin/tazobactam resistant"	NA	NA	NA
-"rifampicin resistant"	NA	NA	NA
-"rifampin resistant"	NA	NA	NA
-"streptomycin resistant"	NA	NA	NA
-"tetracycline resistant"	NA	NA	NA
-"tobramycin resistant"	NA	NA	NA
-"trimethoprim/sulfamethoxazole resistant"	NA	NA	NA
-"amikacin sensitive"	NA	NA	NA
-"aztreonam sensitive"	NA	NA	NA
-"beta-lactam sensitive"	NA	NA	NA
-"capreomycin sensitive"	NA	NA	NA
-"carbapenem sensitive"	NA	NA	NA
-"cefepime sensitive"	NA	NA	NA
-"cefoxitin sensitive"	NA	NA	NA
-"chloramphenicol sensitive"	NA	NA	NA
-"ciprofloxacin sensitive"	NA	NA	NA
-"clindamycin sensitive"	NA	NA	NA
-"co-trimoxazole sensitive"	NA	NA	NA
-"ertapenem sensitive"	NA	NA	NA
-"erythromycin sensitive"	NA	NA	NA
-"ethambutol sensitive"	NA	NA	NA
-"gentamicin sensitive"	NA	NA	NA
-"imipenem sensitive"	NA	NA	NA
-"isoniazid sensitive"	NA	NA	NA
-"kanamycin sensitive"	NA	NA	NA
-"levofloxacin sensitive"	NA	NA	NA
-"meropenem sensitive"	NA	NA	NA
-"methicillin sensitive"	NA	NA	NA
-"ofloxacin sensitive"	NA	NA	NA
-"penicillin sensitive"	NA	NA	NA
-"piperacillin/tazobactam sensitive"	NA	NA	NA
-"rifampicin sensitive"	NA	NA	NA
-"rifampin sensitive"	NA	NA	NA
-"streptomycin sensitive"	NA	NA	NA
-"tetracycline sensitive"	NA	NA	NA
-"tobramycin sensitive"	NA	NA	NA
-"trimethoprim/sulfamethoxazole sensitive"	NA	NA	NA
-"wastewater"	NA	NA	NA
-"terrestrial"	NA	NA	NA
-"specialized"	NA	NA	NA
-"soil"	NA	NA	NA
-"sludge"	NA	NA	NA
-"sediment"	NA	NA	NA
-"sea water"	NA	NA	NA
-"saline water"	NA	NA	NA
-"oil fields"	NA	NA	NA
-"ponds"	NA	NA	NA
-"rhizosphere"	NA	NA	NA
-"root nodule"	NA	NA	NA
-"not host-associated"	NA	NA	NA
-"human"	NA	NA	NA
-"multiple"	NA	NA	NA
-"mud"	NA	NA	NA
-"human microbiome"	NA	NA	NA
-"marine"	NA	NA	NA
-"hydrothermal vent"	NA	NA	NA
-"solfataric field"	NA	NA	NA
-"hot spring"	NA	NA	NA
-"host-associated"	NA	NA	NA
-"fresh water"	NA	NA	NA
-"solar saltern"	NA	NA	NA
-"sulfur spring"	NA	NA	NA
-"surface water"	NA	NA	NA
-"groundwater"	NA	NA	NA
-"oil fields"	NA	NA	NA
-"rice paddies"	NA	NA	NA
-"deep subsurface"	NA	NA	NA
-"deep sea"	NA	NA	NA
-"dairy isolate"	NA	NA	NA
-"creosote-contaminated soil"	NA	NA	NA
-"aquatic"	NA	NA	NA
-"animal intestinal microflora"	NA	NA	NA
-"air"	NA	NA	NA
-"10% horse blood chocolate agar"	NA	NA	NA
-"10% salts"	NA	NA	NA
-"20% salts"	NA	NA	NA
-"30% salts"	NA	NA	NA
-"5% salts"	NA	NA	NA
-"5% sheep blood agar"	NA	NA	NA
-"asp-2"	NA	NA	NA
-"basal salts"	NA	NA	NA
-"bg11"	NA	NA	NA
-"c"	NA	NA	NA
-"casitone-yeast extract agar"	NA	NA	NA
-"charcoal-yeast extract"	NA	NA	NA
-"conway"	NA	NA	NA
-"defined medium"	NA	NA	NA
-"defined medium plus 1 mM glycine betaine"	NA	NA	NA
-"f/2"	NA	NA	NA
-"fildes agar"	NA	NA	NA
-"general purpose"	NA	NA	NA
-"gse"	NA	NA	NA
-"heart infusion agar"	NA	NA	NA
-"heart infusion agar + isoleucine"	NA	NA	NA
-"heart infusion agar + leucine"	NA	NA	NA
-"isovitalex-hemin agar"	NA	NA	NA
-"kratz and meyers"	NA	NA	NA
-"lb agar"	NA	NA	NA
-"m31"	NA	NA	NA
-"marine 2216"	NA	NA	NA
-"marine agar"	NA	NA	NA
-"mjanhox medium"	NA	NA	NA
-"modified lb"	NA	NA	NA
-"modified shieh agar"	NA	NA	NA
-"mrs broth"	NA	NA	NA
-"mrs broth with cholesterol"	NA	NA	NA
-"mrs broth with oxgall-bile salts"	NA	NA	NA
-"mrs broth with oxgall-bile salts and cholesterol"	NA	NA	NA
-"mueller-hinton"	NA	NA	NA
-"pyg broth"	NA	NA	NA
-"pyg broth with volatile fatty acids"	NA	NA	NA
-"pyruvate medium"	NA	NA	NA
-"sm agar"	NA	NA	NA
-"staley pyg"	NA	NA	NA
-"tryptic soy broth"	NA	NA	NA
-"trypticase soy agar"	NA	NA	NA
-"trypticase soy agar w/ 0.1% yeast extract"	NA	NA	NA
-"van baalen"	NA	NA	NA
-"gram stain negative"	NA	NA	NA
-"gram stain positive"	NA	NA	NA
-"gram stain variable"	NA	NA	NA
-"aggregates"	NA	NA	NA
-"branched"	NA	NA	NA
-"chains"	NA	NA	NA
-"clusters"	NA	NA	NA
-"eight parallel rows"	NA	NA	NA
-"encapsulated"	NA	NA	NA
-"filamentous"	NA	NA	NA
-"netlike structures"	NA	NA	NA
-"packets"	NA	NA	NA
-"pairs"	NA	NA	NA
-"palisades"	NA	NA	NA
-"rosettes"	NA	NA	NA
-"s-formation"	NA	NA	NA
-"sarcina packets"	NA	NA	NA
-"seriate"	NA	NA	NA
-"sheath layers"	NA	NA	NA
-"single"	NA	NA	NA
-"star aggregates"	NA	NA	NA
-"tetrads"	NA	NA	NA
-"unbranched"	NA	NA	NA
-"v-formation"	NA	NA	NA
-"y-branched formations"	NA	NA	NA
-"bent rods"	NA	NA	NA
-"boat"	NA	NA	NA
-"club"	NA	NA	NA
-"coccobacilli"	NA	NA	NA
-"coccoid"	NA	NA	NA
-"curved rods"	NA	NA	NA
-"cylindrical rods"	NA	NA	NA
-"disk"	NA	NA	NA
-"ellipsoidal"	NA	NA	NA
-"elongated rods"	NA	NA	NA
-"filamentous rods"	NA	NA	NA
-"flat"	NA	NA	NA
-"flexible rods"	NA	NA	NA
-"fusiform rods"	NA	NA	NA
-"helical"	NA	NA	NA
-"horseshoe"	NA	NA	NA
-"irregular"	NA	NA	NA
-"mushroom-like"	NA	NA	NA
-"needle rods"	NA	NA	NA
-"oval"	NA	NA	NA
-"pear"	NA	NA	NA
-"pleiomorphic"	NA	NA	NA
-"polyhedral"	NA	NA	NA
-"rods"	NA	NA	NA
-"s-shaped"	NA	NA	NA
-"sigmoid"	NA	NA	NA
-"spiral"	NA	NA	NA
-"tetrahedral"	NA	NA	NA
-"triangle"	NA	NA	NA
-"dumbbell"	NA	NA	NA
-"vibrio"	NA	NA	NA
-"wrinkled"	NA	NA	NA
-"animal pathogen"	NA	NA	NA
-"extreme environment"	NA	NA	NA
-"COGEM pathogenicity rating"	NA	NA	NA
-"antimicrobial sensitivity"	NA	NA	NA
-"biofilm forming"	NA	NA	NA
+"endospore"	TRUE|FALSE	MICRO_0000213	"A differentiated prokaryotic cell, found in the Firmicutes, which is specialized for extreme tolerance to desiccation, radiation, and exposure to ultraviolet light. Characterized by thick cell walls."
+"bacillus"	TRUE|FALSE	MICRO_0000401	"A prokaryotic cell, where one axis (the long axis, the length) of the cell is longer than the other axis (the short axis, the width) of the cell."
+"oval"	TRUE|FALSE	NA	NA
+"spiral"	TRUE|FALSE	NA	NA
+"spiny"	TRUE|FALSE	NA	NA
+"round"	TRUE|FALSE	NA	NA
+"exospore"	TRUE|FALSE	NA	NA
+"ellipsoidal"	TRUE|FALSE	NA	NA
+"cylindrical"	TRUE|FALSE	NA	NA
+"coccoid"	TRUE|FALSE	NA	NA
+"branched"	TRUE|FALSE	NA	NA
+"chains"	TRUE|FALSE	NA	NA
+"s-shaped"	TRUE|FALSE	NA	NA
+"amikacin resistant"	TRUE|FALSE	NA	NA
+"aztreonam resistant"	TRUE|FALSE	NA	NA
+"beta-lactam resistant"	TRUE|FALSE	NA	NA
+"capreomycin resistant"	TRUE|FALSE	NA	NA
+"carbapenem resistant"	TRUE|FALSE	NA	NA
+"cefepime resistant"	TRUE|FALSE	NA	NA
+"cefoxitin resistant"	TRUE|FALSE	NA	NA
+"chloramphenicol resistant"	TRUE|FALSE	NA	NA
+"ciprofloxacin resistant"	TRUE|FALSE	NA	NA
+"clindamycin resistant"	TRUE|FALSE	NA	NA
+"co-trimoxazole resistant"	TRUE|FALSE	NA	NA
+"ertapenem resistant"	TRUE|FALSE	NA	NA
+"erythromycin resistant"	TRUE|FALSE	NA	NA
+"ethambutol resistant"	TRUE|FALSE	NA	NA
+"gentamicin resistant"	TRUE|FALSE	NA	NA
+"imipenem resistant"	TRUE|FALSE	NA	NA
+"isoniazid resistant"	TRUE|FALSE	NA	NA
+"kanamycin resistant"	TRUE|FALSE	NA	NA
+"levofloxacin resistant"	TRUE|FALSE	NA	NA
+"meropenem resistant"	TRUE|FALSE	NA	NA
+"methicillin resistant"	TRUE|FALSE	NA	NA
+"ofloxacin resistant"	TRUE|FALSE	NA	NA
+"penicillin resistant"	TRUE|FALSE	NA	NA
+"piperacillin/tazobactam resistant"	TRUE|FALSE	NA	NA
+"rifampicin resistant"	TRUE|FALSE	NA	NA
+"rifampin resistant"	TRUE|FALSE	NA	NA
+"streptomycin resistant"	TRUE|FALSE	NA	NA
+"tetracycline resistant"	TRUE|FALSE	NA	NA
+"tobramycin resistant"	TRUE|FALSE	NA	NA
+"trimethoprim/sulfamethoxazole resistant"	TRUE|FALSE	NA	NA
+"amikacin sensitive"	TRUE|FALSE	NA	NA
+"aztreonam sensitive"	TRUE|FALSE	NA	NA
+"beta-lactam sensitive"	TRUE|FALSE	NA	NA
+"capreomycin sensitive"	TRUE|FALSE	NA	NA
+"carbapenem sensitive"	TRUE|FALSE	NA	NA
+"cefepime sensitive"	TRUE|FALSE	NA	NA
+"cefoxitin sensitive"	TRUE|FALSE	NA	NA
+"chloramphenicol sensitive"	TRUE|FALSE	NA	NA
+"ciprofloxacin sensitive"	TRUE|FALSE	NA	NA
+"clindamycin sensitive"	TRUE|FALSE	NA	NA
+"co-trimoxazole sensitive"	TRUE|FALSE	NA	NA
+"ertapenem sensitive"	TRUE|FALSE	NA	NA
+"erythromycin sensitive"	TRUE|FALSE	NA	NA
+"ethambutol sensitive"	TRUE|FALSE	NA	NA
+"gentamicin sensitive"	TRUE|FALSE	NA	NA
+"imipenem sensitive"	TRUE|FALSE	NA	NA
+"isoniazid sensitive"	TRUE|FALSE	NA	NA
+"kanamycin sensitive"	TRUE|FALSE	NA	NA
+"levofloxacin sensitive"	TRUE|FALSE	NA	NA
+"meropenem sensitive"	TRUE|FALSE	NA	NA
+"methicillin sensitive"	TRUE|FALSE	NA	NA
+"ofloxacin sensitive"	TRUE|FALSE	NA	NA
+"penicillin sensitive"	TRUE|FALSE	NA	NA
+"piperacillin/tazobactam sensitive"	TRUE|FALSE	NA	NA
+"rifampicin sensitive"	TRUE|FALSE	NA	NA
+"rifampin sensitive"	TRUE|FALSE	NA	NA
+"streptomycin sensitive"	TRUE|FALSE	NA	NA
+"tetracycline sensitive"	TRUE|FALSE	NA	NA
+"tobramycin sensitive"	TRUE|FALSE	NA	NA
+"trimethoprim/sulfamethoxazole sensitive"	TRUE|FALSE	NA	NA
+"wastewater"	TRUE|FALSE	NA	NA
+"terrestrial"	TRUE|FALSE	NA	NA
+"specialized"	TRUE|FALSE	NA	NA
+"soil"	TRUE|FALSE	NA	NA
+"sludge"	TRUE|FALSE	NA	NA
+"sediment"	TRUE|FALSE	NA	NA
+"sea water"	TRUE|FALSE	NA	NA
+"saline water"	TRUE|FALSE	NA	NA
+"oil fields"	TRUE|FALSE	NA	NA
+"ponds"	TRUE|FALSE	NA	NA
+"rhizosphere"	TRUE|FALSE	NA	NA
+"root nodule"	TRUE|FALSE	NA	NA
+"not host-associated"	TRUE|FALSE	NA	NA
+"multiple"	TRUE|FALSE	NA	NA
+"mud"	TRUE|FALSE	NA	NA
+"human microbiome"	TRUE|FALSE	NA	NA
+"marine"	TRUE|FALSE	NA	NA
+"hydrothermal vent"	TRUE|FALSE	NA	NA
+"solfataric field"	TRUE|FALSE	NA	NA
+"hot spring"	TRUE|FALSE	NA	NA
+"host-associated"	TRUE|FALSE	NA	NA
+"fresh water"	TRUE|FALSE	NA	NA
+"solar saltern"	TRUE|FALSE	NA	NA
+"sulfur spring"	TRUE|FALSE	NA	NA
+"surface water"	TRUE|FALSE	NA	NA
+"groundwater"	TRUE|FALSE	NA	NA
+"oil fields"	TRUE|FALSE	NA	NA
+"rice paddies"	TRUE|FALSE	NA	NA
+"deep subsurface"	TRUE|FALSE	NA	NA
+"deep sea"	TRUE|FALSE	NA	NA
+"dairy isolate"	TRUE|FALSE	NA	NA
+"creosote-contaminated soil"	TRUE|FALSE	NA	NA
+"aquatic"	TRUE|FALSE	NA	NA
+"animal intestinal microflora"	TRUE|FALSE	NA	NA
+"air"	TRUE|FALSE	NA	NA
+"10% horse blood chocolate agar"	TRUE|FALSE	NA	NA
+"10% salts"	TRUE|FALSE	NA	NA
+"20% salts"	TRUE|FALSE	NA	NA
+"30% salts"	TRUE|FALSE	NA	NA
+"5% salts"	TRUE|FALSE	NA	NA
+"5% sheep blood agar"	TRUE|FALSE	NA	NA
+"asp-2"	TRUE|FALSE	NA	NA
+"basal salts"	TRUE|FALSE	NA	NA
+"bg11"	TRUE|FALSE	NA	NA
+"c"	TRUE|FALSE	NA	NA
+"casitone-yeast extract agar"	TRUE|FALSE	NA	NA
+"charcoal-yeast extract"	TRUE|FALSE	NA	NA
+"conway"	TRUE|FALSE	NA	NA
+"defined medium"	TRUE|FALSE	NA	NA
+"defined medium plus 1 mM glycine betaine"	TRUE|FALSE	NA	NA
+"f/2"	TRUE|FALSE	NA	NA
+"fildes agar"	TRUE|FALSE	NA	NA
+"general purpose"	TRUE|FALSE	NA	NA
+"gse"	TRUE|FALSE	NA	NA
+"heart infusion agar"	TRUE|FALSE	NA	NA
+"heart infusion agar + isoleucine"	TRUE|FALSE	NA	NA
+"heart infusion agar + leucine"	TRUE|FALSE	NA	NA
+"isovitalex-hemin agar"	TRUE|FALSE	NA	NA
+"kratz and meyers"	TRUE|FALSE	NA	NA
+"lb agar"	TRUE|FALSE	NA	NA
+"m31"	TRUE|FALSE	NA	NA
+"marine 2216"	TRUE|FALSE	NA	NA
+"marine agar"	TRUE|FALSE	NA	NA
+"mjanhox medium"	TRUE|FALSE	NA	NA
+"modified lb"	TRUE|FALSE	NA	NA
+"modified shieh agar"	TRUE|FALSE	NA	NA
+"mrs broth"	TRUE|FALSE	NA	NA
+"mrs broth with cholesterol"	TRUE|FALSE	NA	NA
+"mrs broth with oxgall-bile salts"	TRUE|FALSE	NA	NA
+"mrs broth with oxgall-bile salts and cholesterol"	TRUE|FALSE	NA	NA
+"mueller-hinton"	TRUE|FALSE	NA	NA
+"pyg broth"	TRUE|FALSE	NA	NA
+"pyg broth with volatile fatty acids"	TRUE|FALSE	NA	NA
+"pyruvate medium"	TRUE|FALSE	NA	NA
+"sm agar"	TRUE|FALSE	NA	NA
+"staley pyg"	TRUE|FALSE	NA	NA
+"tryptic soy broth"	TRUE|FALSE	NA	NA
+"trypticase soy agar"	TRUE|FALSE	NA	NA
+"trypticase soy agar w/ 0.1% yeast extract"	TRUE|FALSE	NA	NA
+"van baalen"	TRUE|FALSE	NA	NA
+"gram stain negative"	TRUE|FALSE	NA	NA
+"gram stain positive"	TRUE|FALSE	NA	NA
+"gram stain variable"	TRUE|FALSE	NA	NA
+"aggregates"	TRUE|FALSE	NA	NA
+"branched"	TRUE|FALSE	NA	NA
+"chains"	TRUE|FALSE	NA	NA
+"clusters"	TRUE|FALSE	NA	NA
+"eight parallel rows"	TRUE|FALSE	NA	NA
+"encapsulated"	TRUE|FALSE	NA	NA
+"filamentous"	TRUE|FALSE	NA	NA
+"netlike structures"	TRUE|FALSE	NA	NA
+"packets"	TRUE|FALSE	NA	NA
+"pairs"	TRUE|FALSE	NA	NA
+"palisades"	TRUE|FALSE	NA	NA
+"rosettes"	TRUE|FALSE	NA	NA
+"s-formation"	TRUE|FALSE	NA	NA
+"sarcina packets"	TRUE|FALSE	NA	NA
+"seriate"	TRUE|FALSE	NA	NA
+"sheath layers"	TRUE|FALSE	NA	NA
+"single"	TRUE|FALSE	NA	NA
+"star aggregates"	TRUE|FALSE	NA	NA
+"tetrads"	NA	TRUE|FALSE	NA
+"unbranched"	TRUE|FALSE	NA	NA
+"v-formation"	TRUE|FALSE	NA	NA
+"y-branched formations"	TRUE|FALSE	NA	NA
+"bent rods"	TRUE|FALSE	NA	NA
+"boat"	TRUE|FALSE	NA	NA
+"club"	TRUE|FALSE	NA	NA
+"coccobacilli"	TRUE|FALSE	NA	NA
+"curved rods"	TRUE|FALSE	NA	NA
+"cylindrical rods"	TRUE|FALSE	NA	NA
+"disk"	TRUE|FALSE	NA	NA
+"elongated rods"	TRUE|FALSE	NA	NA
+"filamentous rods"	TRUE|FALSE	NA	NA
+"flat"	TRUE|FALSE	NA	NA
+"flexible rods"	TRUE|FALSE	NA	NA
+"fusiform rods"	TRUE|FALSE	NA	NA
+"helical"	TRUE|FALSE	NA	NA
+"horseshoe"	TRUE|FALSE	NA	NA
+"irregular"	TRUE|FALSE	NA	NA
+"mushroom-like"	TRUE|FALSE	NA	NA
+"needle rods"	TRUE|FALSE	NA	NA
+"oval"	TRUE|FALSE	NA	NA
+"pear"	TRUE|FALSE	NA	NA
+"pleiomorphic"	TRUE|FALSE	NA	NA
+"polyhedral"	TRUE|FALSE	NA	NA
+"sigmoid"	TRUE|FALSE	NA	NA
+"tetrahedral"	TRUE|FALSE	NA	NA
+"triangle"	TRUE|FALSE	NA	NA
+"dumbbell"	TRUE|FALSE	NA	NA
+"vibrio"	TRUE|FALSE	NA	NA
+"wrinkled"	TRUE|FALSE	NA	NA
+"animal pathogen"	TRUE|FALSE	NA	NA
+"extreme environment"	TRUE|FALSE	NA	NA
+"COGEM pathogenicity rating"	integer	NA	NA
+"antimicrobial sensitivity"	TRUE|FALSE	NA	NA
+"biofilm forming"	TRUE|FALSE	NA	NA
+"butyrate producing"	numeric	NA	NA
+"acetate producing"	numeric		NA	NA
+"lactate producing"	numeric		NA	NA
+"mutation rate per site per year"	numeric		NA	NA
+"mutation rate per site per generation"	numeric		NA	NA
+"hydrogen gas producing"	numeric		NA	NA
+"width"	numeric		NA	NA
+"length"	numeric	NA	NA
 
