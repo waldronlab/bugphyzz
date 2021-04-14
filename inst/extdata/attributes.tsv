@@ -85,24 +85,23 @@
 "rhizosphere"	TRUE|FALSE	ENVO:00005801	"The narrow region of soil that is directly influenced by root secretions and associated soil microorganisms"
 "root nodule"	TRUE|FALSE	ENVO:01000164	"Root nodules occur on the roots of plants that associate with symbiotic nitrogen-fixing bacteria"
 "not host-associated"	TRUE|FALSE	NA	NA
-"multiple"	TRUE|FALSE	NA	NA
-"mud"	TRUE|FALSE	NA	NA
-"human microbiome"	TRUE|FALSE	NA	NA
-"marine"	TRUE|FALSE	NA	NA
-"hydrothermal vent"	TRUE|FALSE	NA	NA
-"hot spring"	TRUE|FALSE	NA	NA
-"host-associated"	TRUE|FALSE	NA	NA
-"fresh water"	TRUE|FALSE	NA	NA
-"groundwater"	TRUE|FALSE	NA	NA
+"multiple"	TRUE|FALSE	NCIT_C17648	"Having, relating to, or consisting of more than one individual, element, part, or other component; manifold."
+"mud"	TRUE|FALSE	http://purl.obolibrary.org/obo/ENVO_01000001	"A liquid or semi-liquid mixture of water and some combination of soil, silt, and clay."
+"human microbiome"	TRUE|FALSE	OHMI:0000002	"A microbiome located in a human body"
+"marine water body"	TRUE|FALSE	ENVO_00001999	"A significant accumulation of water which is part of a marine biome."
+"hydrothermal vent"	TRUE|FALSE	ENVO:00000215	"A fissure in the Earths's surface from which geothermally heated water issues"
+"hot spring"	TRUE|FALSE	ENVO_00000051	"A spring that is produced by the emergence of geothermally-heated groundwater from the Earth's crust"
+"colonization of host"	TRUE|FALSE	IDO:0000604	"An establishment of localization in host process in which an organism establishes itself in a host."
+"fresh water"	TRUE|FALSE	ENVO_00002011	"Water which has a low concentration of dissolved solutes, particularly that of sodium chloride."
+"groundwater"	TRUE|FALSE	ENVO:01001004	"Underground water which is located in pore spaces found in rock or unconsolidated deposits such as soil, clay, or gravel."
 "oil field production water"	TRUE|FALSE	ENVO:00002194	NA
-"rice paddies"	TRUE|FALSE	NA	NA
-"deep subsurface"	TRUE|FALSE	NA	NA
-"deep sea"	TRUE|FALSE	NA	NA
-"dairy isolate"	TRUE|FALSE	NA	NA
-"creosote-contaminated soil"	TRUE|FALSE	NA	NA
-"aquatic"	TRUE|FALSE	NA	NA
-"animal intestinal microflora"	TRUE|FALSE	NA	NA
-"air"	TRUE|FALSE	NA	NA
+"rice paddies"	TRUE|FALSE	ENVO:00000296	"A paddy field for the cultivation of rice"
+"ocean trench"	TRUE|FALSE	ENVO:00000275	"Hemispheric-scale long but narrow topographic depressions of the sea floor. They are the deepest parts of the ocean floor"
+"dairy"	TRUE|FALSE	ENVO:00003862	"A dairy is a building in which animal milk is harvested and, optionally, processed for human consumption."
+"creosote contaminated soil"	TRUE|FALSE	ENVO:00002117	"Soil which has elevated concentrations of creosote."
+"aquatic biome"	TRUE|FALSE	ENVO:00002030	"A biome which is determined by a water body and which has ecological climax communities adapted to life in or on water."
+"intestinal microflora"	TRUE|FALSE	NCIT:C93019	"Bacteria and other organisms that live inside the intestines. They help digest food. Vitamins such as biotin and vitamin K are made by gut flora."
+"air"	TRUE|FALSE	ENVO:00002005	"The mixture of gases (roughly (by molar content/volume: 78% nitrogen, 20.95% oxygen, 0.93% argon, 0.038% carbon dioxide, trace amounts of other gases, and a variable amount (average around 1%) of water vapor) that surrounds the planet Earth"
 "10% horse blood chocolate agar"	TRUE|FALSE	NA	NA
 "10% salts"	TRUE|FALSE	NA	NA
 "20% salts"	TRUE|FALSE	NA	NA
