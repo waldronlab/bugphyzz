@@ -81,9 +81,9 @@
 "sediment"	TRUE|FALSE	ENVO:00002007	"Sediment is an environmental substance comprised of any particulate matter that can be transported by fluid flow and which eventually is deposited as a layer of solid particles on the bedor bottom of a body of water or other liquid."
 "sea water"	TRUE|FALSE	ENVO:00002149	"Water which has physicochemical properties that have been determined by the processes occuring in a sea or ocean."
 "saline water"	TRUE|FALSE	ENVO:00002010	"Water which contains a significant concentration of dissolved salts."
-"ponds"	TRUE|FALSE	NA	NA
-"rhizosphere"	TRUE|FALSE	NA	NA
-"root nodule"	TRUE|FALSE	NA	NA
+"pond"	TRUE|FALSE	ENVO:00000033	"A body of water, usually of smaller size than a lake."
+"rhizosphere"	TRUE|FALSE	ENVO:00005801	"The narrow region of soil that is directly influenced by root secretions and associated soil microorganisms"
+"root nodule"	TRUE|FALSE	ENVO:01000164	"Root nodules occur on the roots of plants that associate with symbiotic nitrogen-fixing bacteria"
 "not host-associated"	TRUE|FALSE	NA	NA
 "multiple"	TRUE|FALSE	NA	NA
 "mud"	TRUE|FALSE	NA	NA
