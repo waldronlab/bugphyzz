@@ -13,7 +13,9 @@ editor_options:
 ```{r , include = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
-  comment = "#>"
+  comment = "#>",
+  message = FALSE,
+  warning=FALSE
 )
 ```
 
@@ -26,12 +28,12 @@ library(purrr)
 library(ComplexHeatmap)
 ```
 
-Import attribute values of cellular respiration ("aerophilicity" data set).
+
+Example using the **aerophilicity** data set
 
 ```{r}
-aerophilicity <- physiologies(keyword = "aerophilicity")
-aerophilicity <- tibble::as_tibble(aerophilicity[[1]])
-aerophilicity[ , c("NCBI_ID", "Attribute_value")] %>% 
+aerophilicity <- physiologies("aerophilicity")[[1]]
+aerophilicity[ , c("NCBI_ID", "Attribute")] %>% 
   head() %>% 
   knitr::kable()
 ```
@@ -178,12 +180,17 @@ dim(v13dat)
 
 Sum OTUs by genus
 ```{r}
-v13summed <- assay(v13dat) %>%
-  as_tibble() %>%
-  filter(!is.na(rowData(v13dat)$GENUS)) %>%
-  group_by(rowData(v13genus)$GENUS) %>%
+
+v13assay <- assay(v13dat) %>%
+  as_tibble()
+v13assay$GENUS <- rowData(v13dat)$GENUS
+v13asay <- v13assay %>% 
+  relocate(GENUS, everything())
+
+v13summed <- v13assay %>% 
+  filter(!is.na(GENUS)) %>%
+  group_by(GENUS) %>%
   summarise_all(sum)
-v13genus <- 
 dim(v13summed)
 ```
 
