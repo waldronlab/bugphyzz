@@ -68,15 +68,19 @@
 "sensitive to streptomycin"	TRUE|FALSE	PHIPO:0000779	"A growth phenotype which describes the sensitivity of individuals or populations after exposure to streptomycin. Typically, organisms are deemed sensitive to a chemical if they stop growing (and may die) at a concentration of the chemical that allows wild type individuals or populations to grow."
 "sensitive to tetracycline"	TRUE|FALSE	PHIPO:0000882	"A growth phenotype which describes the sensitivity of individuals or populations after exposure to tetracycline. Typically, organisms are deemed sensitive to a chemical if they stop growing (and may die) at a concentration of the chemical that allows wild type individuals or populations to grow."
 "sensitive to trimethoprim"	TRUE|FALSE	PHIPO:0000781	"A growth phenotype which describes the sensitivity of individuals or populations after exposure to trimethoprim. Typically, organisms are deemed sensitive to a chemical if they stop growing (and may die) at a concentration of the chemical that allows wild type individuals or populations to grow."
-"wastewater"	TRUE|FALSE	NA	NA
-"terrestrial"	TRUE|FALSE	NA	NA
-"specialized"	TRUE|FALSE	NA	NA
-"soil"	TRUE|FALSE	NA	NA
-"sludge"	TRUE|FALSE	NA	NA
-"sediment"	TRUE|FALSE	NA	NA
-"sea water"	TRUE|FALSE	NA	NA
-"saline water"	TRUE|FALSE	NA	NA
-"oil fields"	TRUE|FALSE	NA	NA
+"waste water"	TRUE|FALSE	ENVO:00002001	"Water that has been adversely affected in quality by anthropogenic influence"
+"terrestrial biome"	TRUE|FALSE	ENVO_00000446	"A biome which is primarily or completely situated on a landmass"
+"water surface"	TRUE|FALSE	ENVO:01001191	"The surface layer of a volume of water."
+"sulfur spring"	TRUE|FALSE	ENVO:00000126	"A spring whose water contains a significant amount of dissolved derivatives of sulfur."
+"submarine"	TRUE|FALSE	ERO_0001431	"An instrument that is designed to move across or through water and is capable of independent operation below the surface of the water."
+"specialized"	TRUE|FALSE	NCIT:C44274	"Developed or designed for a special activity or function"
+"soil"	TRUE|FALSE	ENVO:00001998	"Soil is an environmental material which is primarily composed of minerals, varying proportions of sand, silt, and clay, organic material such as humus, gases, liquids, and a broad range of resident micro- and macroorganisms"
+"volcanic field"	TRUE|FALSE	ENVO_00000354	"A geothermal field which is prone to localized volcanic activity."
+"hypersaline salinity"	TRUE|FALSE	MICRO_0001293	"Culture medium salinity quality where the salinity is greater than 5 % salts."
+"sludge"	TRUE|FALSE	ENVO:00002044	"The residual semi-solid material left from domestic or industrial processes, or wastewater treatment processes."
+"sediment"	TRUE|FALSE	ENVO:00002007	"Sediment is an environmental substance comprised of any particulate matter that can be transported by fluid flow and which eventually is deposited as a layer of solid particles on the bedor bottom of a body of water or other liquid."
+"sea water"	TRUE|FALSE	ENVO:00002149	"Water which has physicochemical properties that have been determined by the processes occuring in a sea or ocean."
+"saline water"	TRUE|FALSE	ENVO:00002010	"Water which contains a significant concentration of dissolved salts."
 "ponds"	TRUE|FALSE	NA	NA
 "rhizosphere"	TRUE|FALSE	NA	NA
 "root nodule"	TRUE|FALSE	NA	NA
@@ -86,15 +90,11 @@
 "human microbiome"	TRUE|FALSE	NA	NA
 "marine"	TRUE|FALSE	NA	NA
 "hydrothermal vent"	TRUE|FALSE	NA	NA
-"solfataric field"	TRUE|FALSE	NA	NA
 "hot spring"	TRUE|FALSE	NA	NA
 "host-associated"	TRUE|FALSE	NA	NA
 "fresh water"	TRUE|FALSE	NA	NA
-"solar saltern"	TRUE|FALSE	NA	NA
-"sulfur spring"	TRUE|FALSE	NA	NA
-"surface water"	TRUE|FALSE	NA	NA
 "groundwater"	TRUE|FALSE	NA	NA
-"oil fields"	TRUE|FALSE	NA	NA
+"oil field production water"	TRUE|FALSE	ENVO:00002194	NA
 "rice paddies"	TRUE|FALSE	NA	NA
 "deep subsurface"	TRUE|FALSE	NA	NA
 "deep sea"	TRUE|FALSE	NA	NA
