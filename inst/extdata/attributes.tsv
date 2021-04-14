@@ -1,227 +1,210 @@
 "attribute"	"validity"	"ontology"	"desription"
-"aerobic"	TRUE|FALSE	MICRO_0000494	"A prokaryotic metabolic quality where the organism grows in the presence of oxygen."
-"microaerophilic"	TRUE|FALSE	MICRO_0000515	"A prokaryotic metabolic quality where the organism grows in the presence of oxygen, where the oxygen concentration is less than atmospheric levels."
-"obligately	aerobic"	TRUE|FALSE	MICRO_0000516	"A prokaryotic metabolic quality where the organism grows in the presence of oxygen. Is incapable of anaerobic growth (growth in the absence of oxygen)."
-"obligately anaerobic"	TRUE|FALSE	MICRO_0000504	"A prokaryotic metabolic quality where the organism grows in the absence of oxygen. Cannot grow or live in the presence of oxygen."
-"anaerobic"	TRUE|FALSE	MICRO_0000495	"A prokaryotic metabolic quality where the organism grows in the absence of oxygen"
+"anaerobic"	TRUE|FALSE	MICRO_0000495	"A prokaryotic metabolic quality where the organism grows in the absence of oxygen."
 "facultatively anaerobe"	TRUE|FALSE	MICRO_0000503	"A prokaryotic metabolic quality where the organism grows in the presence of oxygen or in the absence of oxygen."
 "aerotolerant"	TRUE|FALSE	MICRO:0000502	"A prokaryotic metabolic quality where the organism grows in the absence of oxygen. Can grow or live in the presence of oxygen."
-"endospore"	NA	NA	NA
-"spore"	NA	NA	NA
-"myxospores"	NA	NA	NA
-"rods"	NA	NA	NA
-"oval"	NA	NA	NA
-"spiral"	NA	NA	NA
-"spiny"	NA	NA	NA
-"round"	NA	NA	NA
-"exospore"	NA	NA	NA
-"ellipsoidal"	NA	NA	NA
-"cylindrical"	NA	NA	NA
-"coccoid"	NA	NA	NA
-"branched"	NA	NA	NA
-"chains"	NA	NA	NA
-"s-shaped"	NA	NA	NA
-"amikacin resistant"	NA	NA	NA
-"aztreonam resistant"	NA	NA	NA
-"beta-lactam resistant"	NA	NA	NA
-"capreomycin resistant"	NA	NA	NA
-"carbapenem resistant"	NA	NA	NA
-"cefepime resistant"	NA	NA	NA
-"cefoxitin resistant"	NA	NA	NA
-"chloramphenicol resistant"	NA	NA	NA
-"ciprofloxacin resistant"	NA	NA	NA
-"clindamycin resistant"	NA	NA	NA
-"co-trimoxazole resistant"	NA	NA	NA
-"ertapenem resistant"	NA	NA	NA
-"erythromycin resistant"	NA	NA	NA
-"ethambutol resistant"	NA	NA	NA
-"gentamicin resistant"	NA	NA	NA
-"imipenem resistant"	NA	NA	NA
-"isoniazid resistant"	NA	NA	NA
-"kanamycin resistant"	NA	NA	NA
-"levofloxacin resistant"	NA	NA	NA
-"meropenem resistant"	NA	NA	NA
-"methicillin resistant"	NA	NA	NA
-"ofloxacin resistant"	NA	NA	NA
-"penicillin resistant"	NA	NA	NA
-"piperacillin/tazobactam resistant"	NA	NA	NA
-"rifampicin resistant"	NA	NA	NA
-"rifampin resistant"	NA	NA	NA
-"streptomycin resistant"	NA	NA	NA
-"tetracycline resistant"	NA	NA	NA
-"tobramycin resistant"	NA	NA	NA
-"trimethoprim/sulfamethoxazole resistant"	NA	NA	NA
-"amikacin sensitive"	NA	NA	NA
-"aztreonam sensitive"	NA	NA	NA
-"beta-lactam sensitive"	NA	NA	NA
-"capreomycin sensitive"	NA	NA	NA
-"carbapenem sensitive"	NA	NA	NA
-"cefepime sensitive"	NA	NA	NA
-"cefoxitin sensitive"	NA	NA	NA
-"chloramphenicol sensitive"	NA	NA	NA
-"ciprofloxacin sensitive"	NA	NA	NA
-"clindamycin sensitive"	NA	NA	NA
-"co-trimoxazole sensitive"	NA	NA	NA
-"ertapenem sensitive"	NA	NA	NA
-"erythromycin sensitive"	NA	NA	NA
-"ethambutol sensitive"	NA	NA	NA
-"gentamicin sensitive"	NA	NA	NA
-"imipenem sensitive"	NA	NA	NA
-"isoniazid sensitive"	NA	NA	NA
-"kanamycin sensitive"	NA	NA	NA
-"levofloxacin sensitive"	NA	NA	NA
-"meropenem sensitive"	NA	NA	NA
-"methicillin sensitive"	NA	NA	NA
-"ofloxacin sensitive"	NA	NA	NA
-"penicillin sensitive"	NA	NA	NA
-"piperacillin/tazobactam sensitive"	NA	NA	NA
-"rifampicin sensitive"	NA	NA	NA
-"rifampin sensitive"	NA	NA	NA
-"streptomycin sensitive"	NA	NA	NA
-"tetracycline sensitive"	NA	NA	NA
-"tobramycin sensitive"	NA	NA	NA
-"trimethoprim/sulfamethoxazole sensitive"	NA	NA	NA
-"wastewater"	NA	NA	NA
-"terrestrial"	NA	NA	NA
-"specialized"	NA	NA	NA
-"soil"	NA	NA	NA
-"sludge"	NA	NA	NA
-"sediment"	NA	NA	NA
-"sea water"	NA	NA	NA
-"saline water"	NA	NA	NA
-"oil fields"	NA	NA	NA
-"ponds"	NA	NA	NA
-"rhizosphere"	NA	NA	NA
-"root nodule"	NA	NA	NA
-"not host-associated"	NA	NA	NA
-"human"	NA	NA	NA
-"multiple"	NA	NA	NA
-"mud"	NA	NA	NA
-"human microbiome"	NA	NA	NA
-"marine"	NA	NA	NA
-"hydrothermal vent"	NA	NA	NA
-"solfataric field"	NA	NA	NA
-"hot spring"	NA	NA	NA
-"host-associated"	NA	NA	NA
-"fresh water"	NA	NA	NA
-"solar saltern"	NA	NA	NA
-"sulfur spring"	NA	NA	NA
-"surface water"	NA	NA	NA
-"groundwater"	NA	NA	NA
-"oil fields"	NA	NA	NA
-"rice paddies"	NA	NA	NA
-"deep subsurface"	NA	NA	NA
-"deep sea"	NA	NA	NA
-"dairy isolate"	NA	NA	NA
-"creosote-contaminated soil"	NA	NA	NA
-"aquatic"	NA	NA	NA
-"animal intestinal microflora"	NA	NA	NA
-"air"	NA	NA	NA
-"10% horse blood chocolate agar"	NA	NA	NA
-"10% salts"	NA	NA	NA
-"20% salts"	NA	NA	NA
-"30% salts"	NA	NA	NA
-"5% salts"	NA	NA	NA
-"5% sheep blood agar"	NA	NA	NA
-"asp-2"	NA	NA	NA
-"basal salts"	NA	NA	NA
-"bg11"	NA	NA	NA
-"c"	NA	NA	NA
-"casitone-yeast extract agar"	NA	NA	NA
-"charcoal-yeast extract"	NA	NA	NA
-"conway"	NA	NA	NA
-"defined medium"	NA	NA	NA
-"defined medium plus 1 mM glycine betaine"	NA	NA	NA
-"f/2"	NA	NA	NA
-"fildes agar"	NA	NA	NA
-"general purpose"	NA	NA	NA
-"gse"	NA	NA	NA
-"heart infusion agar"	NA	NA	NA
-"heart infusion agar + isoleucine"	NA	NA	NA
-"heart infusion agar + leucine"	NA	NA	NA
-"isovitalex-hemin agar"	NA	NA	NA
-"kratz and meyers"	NA	NA	NA
-"lb agar"	NA	NA	NA
-"m31"	NA	NA	NA
-"marine 2216"	NA	NA	NA
-"marine agar"	NA	NA	NA
-"mjanhox medium"	NA	NA	NA
-"modified lb"	NA	NA	NA
-"modified shieh agar"	NA	NA	NA
-"mrs broth"	NA	NA	NA
-"mrs broth with cholesterol"	NA	NA	NA
-"mrs broth with oxgall-bile salts"	NA	NA	NA
-"mrs broth with oxgall-bile salts and cholesterol"	NA	NA	NA
-"mueller-hinton"	NA	NA	NA
-"pyg broth"	NA	NA	NA
-"pyg broth with volatile fatty acids"	NA	NA	NA
-"pyruvate medium"	NA	NA	NA
-"sm agar"	NA	NA	NA
-"staley pyg"	NA	NA	NA
-"tryptic soy broth"	NA	NA	NA
-"trypticase soy agar"	NA	NA	NA
-"trypticase soy agar w/ 0.1% yeast extract"	NA	NA	NA
-"van baalen"	NA	NA	NA
-"gram stain negative"	NA	NA	NA
-"gram stain positive"	NA	NA	NA
-"gram stain variable"	NA	NA	NA
-"aggregates"	NA	NA	NA
-"branched"	NA	NA	NA
-"chains"	NA	NA	NA
-"clusters"	NA	NA	NA
-"eight parallel rows"	NA	NA	NA
-"encapsulated"	NA	NA	NA
-"filamentous"	NA	NA	NA
-"netlike structures"	NA	NA	NA
-"packets"	NA	NA	NA
-"pairs"	NA	NA	NA
-"palisades"	NA	NA	NA
-"rosettes"	NA	NA	NA
-"s-formation"	NA	NA	NA
-"sarcina packets"	NA	NA	NA
-"seriate"	NA	NA	NA
-"sheath layers"	NA	NA	NA
-"single"	NA	NA	NA
-"star aggregates"	NA	NA	NA
-"tetrads"	NA	NA	NA
-"unbranched"	NA	NA	NA
-"v-formation"	NA	NA	NA
-"y-branched formations"	NA	NA	NA
-"bent rods"	NA	NA	NA
-"boat"	NA	NA	NA
-"club"	NA	NA	NA
-"coccobacilli"	NA	NA	NA
-"coccoid"	NA	NA	NA
-"curved rods"	NA	NA	NA
-"cylindrical rods"	NA	NA	NA
-"disk"	NA	NA	NA
-"ellipsoidal"	NA	NA	NA
-"elongated rods"	NA	NA	NA
-"filamentous rods"	NA	NA	NA
-"flat"	NA	NA	NA
-"flexible rods"	NA	NA	NA
-"fusiform rods"	NA	NA	NA
-"helical"	NA	NA	NA
-"horseshoe"	NA	NA	NA
-"irregular"	NA	NA	NA
-"mushroom-like"	NA	NA	NA
-"needle rods"	NA	NA	NA
-"oval"	NA	NA	NA
-"pear"	NA	NA	NA
-"pleiomorphic"	NA	NA	NA
-"polyhedral"	NA	NA	NA
-"rods"	NA	NA	NA
-"s-shaped"	NA	NA	NA
-"sigmoid"	NA	NA	NA
-"spiral"	NA	NA	NA
-"tetrahedral"	NA	NA	NA
-"triangle"	NA	NA	NA
-"dumbbell"	NA	NA	NA
-"vibrio"	NA	NA	NA
-"wrinkled"	NA	NA	NA
-"animal pathogen"	NA	NA	NA
-"extreme environment"	NA	NA	NA
-"COGEM pathogenicity rating"	NA	NA	NA
-"antimicrobial sensitivity"	NA	NA	NA
-"biofilm forming"	NA	NA	NA
+"endospore"	TRUE|FALSE	MICRO_0000213	"A differentiated prokaryotic cell, found in the Firmicutes, which is specialized for extreme tolerance to desiccation, radiation, and exposure to ultraviolet light. Characterized by thick cell walls."
+"bacillus"	TRUE|FALSE	MICRO_0000401	"A prokaryotic cell, where one axis (the long axis, the length) of the cell is longer than the other axis (the short axis, the width) of the cell."
+"spirillum"	TRUE|FALSE	MICRO_0000367	"A prokaryotic cell, where the long axis of the cell twists in a spiral."
+"elliptic"	TRUE|FALSE	PATO_0000947	"A spheroid quality inhering in a bearer by virtue of the bearer's being oval with two axes of symmetry, as produced by a conical section."
+"coccus"	TRUE|FALSE	MICRO_0000402	"A prokaryotic cell that is spherical with no apparent long axis."
+"branched"	TRUE|FALSE	PATO_0000402	"A branchiness quality inhering in a bearer by virtue of the bearer's having branches"
+"cell chain"	TRUE|FALSE	MICRO_0000373	"A multicellular relationship of prokaryotic cells where cells are attached to one another end-to-end to form chains. Forms when cell division occurs in one plane and cells become detached after cell division takes place."
+"resistance to amikacin"	TRUE|FALSE	PHIPO_0000601	"A growth phenotype which describes the resistance of individuals or populations after exposure to amikacin. Typically, organisms are deemed resistant to a chemical if they survive at a concentration of the chemical that does not allow wild type individuals or populations to grow."
+"resistance to aztreonam"	TRUE|FALSE	PHIPO:0000553	"A growth phenotype which describes the resistance of individuals or populations after exposure to aztreonam. Typically, organisms are deemed resistant to a chemical if they survive at a concentration of the chemical that does not allow wild type individuals or populations to grow."
+"resistant to beta-lactam"	TRUE|FALSE	OMP_0006047	"An beta-lactam compound resistance phenotype where an organism or cell is resistant to one or more beta-lactam compounds"
+"resistance to capreomycin"	TRUE|FALSE	PHIPO_0000600	"A growth phenotype which describes the resistance of individuals or populations after exposure to capreomycin. Typically, organisms are deemed resistant to a chemical if they survive at a concentration of the chemical that does not allow wild type individuals or populations to grow."
+"carbapenem-resistant Acinetobacter"	TRUE|FALSE	ARO:3004311	"Any strain of Acinetobacter spp. that has tested either Intermediate or Resistant to at least one of the following carbapenem-class antibiotics by standard testing using approved breakpoints: imipenem, meropenem, doripenem."
+"resistance to cefepime"	TRUE|FALSE	PHIPO_0000631	"A growth phenotype which describes the resistance of individuals or populations after exposure to cefepime. Typically, organisms are deemed resistant to a chemical if they survive at a concentration of the chemical that does not allow wild type individuals or populations to grow."
+"resistance to cefoxitin"	TRUE|FALSE	PHIPO_0000668	"A growth phenotype which describes the resistance of individuals or populations after exposure to cefoxitin. Typically, organisms are deemed resistant to a chemical if they survive at a concentration of the chemical that does not allow wild type individuals or populations to grow."
+"resistance to chloramphenicol"	TRUE|FALSE	PHIPO_0000689	"A growth phenotype which describes the resistance of individuals or populations after exposure to chloramphenicol. Typically, organisms are deemed resistant to a chemical if they survive at a concentration of the chemical that does not allow wild type individuals or populations to grow"
+"resistance to ciprofloxacin"	TRUE|FALSE	PHIPO:0000539	"A growth phenotype which describes the resistance of individuals or populations after exposure to ciprofloxacin. Typically, organisms are deemed resistant to a chemical if they survive at a concentration of the chemical that does not allow wild type individuals or populations to grow"
+"resistance to clindamycin"	TRUE|FALSE	PHIPO:0000560	"A growth phenotype which describes the resistance of individuals or populations after exposure to clindamycin. Typically, organisms are deemed resistant to a chemical if they survive at a concentration of the chemical that does not allow wild type individuals or populations to grow."
+"resistance to clindamycin"	TRUE|FALSE	PHIPO_0000560	"A growth phenotype which describes the resistance of individuals or populations after exposure to clindamycin. Typically, organisms are deemed resistant to a chemical if they survive at a concentration of the chemical that does not allow wild type individuals or populations to grow."
+"resistance to ertapenem"	TRUE|FALSE	PHIPO:0000650	"A growth phenotype which describes the resistance of individuals or populations after exposure to ertapenem. Typically, organisms are deemed resistant to a chemical if they survive at a concentration of the chemical that does not allow wild type individuals or populations to grow."
+"resistance to erythromycin A"	TRUE|FALSE	PHIPO_0000622	"A growth phenotype which describes the resistance of individuals or populations after exposure to erythromycin A. Typically, organisms are deemed resistant to a chemical if they survive at a concentration of the chemical that does not allow wild type individuals or populations to grow."
+"resistance to ethambutol"	TRUE|FALSE	PHIPO:0000542	"A growth phenotype which describes the resistance of individuals or populations after exposure to ethambutol. Typically, organisms are deemed resistant to a chemical if they survive at a concentration of the chemical that does not allow wild type individuals or populations to grow"
+"resistance to gentamicin"	TRUE|FALSE	PHIPO_0000659	"A growth phenotype which describes the resistance of individuals or populations after exposure to gentamicin. Typically, organisms are deemed resistant to a chemical if they survive at a concentration of the chemical that does not allow wild type individuals or populations to grow."
+"resistance to imipenem"	TRUE|FALSE	PHIPO:0000643	"A growth phenotype which describes the resistance of individuals or populations after exposure to imipenem. Typically, organisms are deemed resistant to a chemical if they survive at a concentration of the chemical that does not allow wild type individuals or populations to grow."
+"resistance to isoniazid"	TRUE|FALSE	PHIPO:0000538	"A growth phenotype which describes the resistance of individuals or populations after exposure to isoniazid. Typically, organisms are deemed resistant to a chemical if they survive at a concentration of the chemical that does not allow wild type individuals or populations to grow."
+"resistance to kanamycin A"	TRUE|FALSE	PHIPO_0000616	"A growth phenotype which describes the resistance of individuals or populations after exposure to kanamycin A. Typically, organisms are deemed resistant to a chemical if they survive at a concentration of the chemical that does not allow wild type individuals or populations to grow."
+"resistance to levofloxacin"	TRUE|FALSE	PHIPO:0000670	"A growth phenotype which describes the resistance of individuals or populations after exposure to levofloxacin. Typically, organisms are deemed resistant to a chemical if they survive at a concentration of the chemical that does not allow wild type individuals or populations to grow."
+"resistance to meropenem"	TRUE|FALSE	PHIPO:0000604	"A growth phenotype which describes the resistance of individuals or populations after exposure to meropenem. Typically, organisms are deemed resistant to a chemical if they survive at a concentration of the chemical that does not allow wild type individuals or populations to grow."
+"resistance to methicillin"	TRUE|FALSE	PHIPO:0000649	"A growth phenotype which describes the resistance of individuals or populations after exposure to methicillin. Typically, organisms are deemed resistant to a chemical if they survive at a concentration of the chemical that does not allow wild type individuals or populations to grow."
+"resistance to ofloxacin"	TRUE|FALSE	PHIPO:0000665	"A growth phenotype which describes the resistance of individuals or populations after exposure to ofloxacin. Typically, organisms are deemed resistant to a chemical if they survive at a concentration of the chemical that does not allow wild type individuals or populations to grow."
+"resistance to penicillin"	TRUE|FALSE	PHIPO:0000692	"A growth phenotype which describes the resistance of individuals or populations after exposure to penicillin. Typically, organisms are deemed resistant to a chemical if they survive at a concentration of the chemical that does not allow wild type individuals or populations to grow."
+"resistance to piperacillin"	TRUE|FALSE	PHIPO:0000519	"A growth phenotype which describes the resistance of individuals or populations after exposure to piperacillin. Typically, organisms are deemed resistant to a chemical if they survive at a concentration of the chemical that does not allow wild type individuals or populations to grow"
+"resistance to rifampicin"	TRUE|FALSE	PHIPO:0000606	"A growth phenotype which describes the resistance of individuals or populations after exposure to rifampicin. Typically, organisms are deemed resistant to a chemical if they survive at a concentration of the chemical that does not allow wild type individuals or populations to grow."
+"resistance to streptomycin"	TRUE|FALSE	PHIPO:0000644	"A growth phenotype which describes the resistance of individuals or populations after exposure to streptomycin. Typically, organisms are deemed resistant to a chemical if they survive at a concentration of the chemical that does not allow wild type individuals or populations to grow."
+"resistance to tetracycline"	TRUE|FALSE	PHIPO:0000555	"A growth phenotype which describes the resistance of individuals or populations after exposure to tetracycline. Typically, organisms are deemed resistant to a chemical if they survive at a concentration of the chemical that does not allow wild type individuals or populations to grow."
+"resistance to tobramycin"	TRUE|FALSE	PHIPO:0000685	"A growth phenotype which describes the resistance of individuals or populations after exposure to tobramycin. Typically, organisms are deemed resistant to a chemical if they survive at a concentration of the chemical that does not allow wild type individuals or populations to grow."
+"resistance to trimethoprim"	TRUE|FALSE	PHIPO:0000588	"A growth phenotype which describes the resistance of individuals or populations after exposure to trimethoprim. Typically, organisms are deemed resistant to a chemical if they survive at a concentration of the chemical that does not allow wild type individuals or populations to grow."
+"sensitive to amikacin"	TRUE|FALSE	PHIPO:0000755	"A growth phenotype which describes the sensitivity of individuals or populations after exposure to amikacin. Typically, organisms are deemed sensitive to a chemical if they stop growing (and may die) at a concentration of the chemical that allows wild type individuals or populations to grow."
+"sensitive to aztreonam"	TRUE|FALSE	PHIPO:0000750	"A growth phenotype which describes the sensitivity of individuals or populations after exposure to aztreonam. Typically, organisms are deemed sensitive to a chemical if they stop growing (and may die) at a concentration of the chemical that allows wild type individuals or populations to grow."
+"not resistant to beta-lactam"	TRUE|FALSE	OMP:0006046	"A beta-lactam compound resistance phenotype where an organism or cell is sensitive to one or more beta-lactam compounds."
+"sensitive to capreomycin"	TRUE|FALSE	PHIPO:0000853	"A growth phenotype which describes the sensitivity of individuals or populations after exposure to capreomycin. Typically, organisms are deemed sensitive to a chemical if they stop growing (and may die) at a concentration of the chemical that allows wild type individuals or populations to grow."
+"sensitive to carbapenems"	TRUE|FALSE	PHIPO:0000819	"A growth phenotype which describes the sensitivity of individuals or populations after exposure to carbapenems. Typically, organisms are deemed sensitive to a chemical if they stop growing (and may die) at a concentration of the chemical that allows wild type individuals or populations to grow."
+"sensitive to cefoxitin"	TRUE|FALSE	PHIPO_0000877	"A growth phenotype which describes the sensitivity of individuals or populations after exposure to cefoxitin. Typically, organisms are deemed sensitive to a chemical if they stop growing (and may die) at a concentration of the chemical that allows wild type individuals or populations to grow."
+"sensitive to chloramphenicol"	TRUE|FALSE	PHIPO:0000726	"A growth phenotype which describes the sensitivity of individuals or populations after exposure to chloramphenicol. Typically, organisms are deemed sensitive to a chemical if they stop growing (and may die) at a concentration of the chemical that allows wild type individuals or populations to grow."
+"sensitive to ciprofloxacin"	TRUE|FALSE	PHIPO:0000799	"A growth phenotype which describes the sensitivity of individuals or populations after exposure to ciprofloxacin. Typically, organisms are deemed sensitive to a chemical if they stop growing (and may die) at a concentration of the chemical that allows wild type individuals or populations to grow."
+"sensitive to clindamycin"	TRUE|FALSE	PHIPO:0000889	"A growth phenotype which describes the sensitivity of individuals or populations after exposure to clindamycin. Typically, organisms are deemed sensitive to a chemical if they stop growing (and may die) at a concentration of the chemical that allows wild type individuals or populations to grow."
+"sensitive to ertapenem"	TRUE|FALSE	PHIPO_0000860	"A growth phenotype which describes the sensitivity of individuals or populations after exposure to ertapenem. Typically, organisms are deemed sensitive to a chemical if they stop growing (and may die) at a concentration of the chemical that allows wild type individuals or populations to grow."
+"sensitive to erythromycin A"	TRUE|FALSE	PHIPO:0000871	"A growth phenotype which describes the sensitivity of individuals or populations after exposure to erythromycin A. Typically, organisms are deemed sensitive to a chemical if they stop growing (and may die) at a concentration of the chemical that allows wild type individuals or populations to grow."
+"sensitive to ethambutol"	TRUE|FALSE	PHIPO:0000887	"A growth phenotype which describes the sensitivity of individuals or populations after exposure to ethambutol. Typically, organisms are deemed sensitive to a chemical if they stop growing (and may die) at a concentration of the chemical that allows wild type individuals or populations to grow."
+"sensitive to gentamicin"	TRUE|FALSE	PHIPO:0000760	"A growth phenotype which describes the sensitivity of individuals or populations after exposure to gentamicin. Typically, organisms are deemed sensitive to a chemical if they stop growing (and may die) at a concentration of the chemical that allows wild type individuals or populations to grow."
+"sensitive to imipenem"	TRUE|FALSE	PHIPO:0000833	"A growth phenotype which describes the sensitivity of individuals or populations after exposure to imipenem. Typically, organisms are deemed sensitive to a chemical if they stop growing (and may die) at a concentration of the chemical that allows wild type individuals or populations to grow."
+"sensitive to isoniazid"	TRUE|FALSE	PHIPO:0000817	"A growth phenotype which describes the sensitivity of individuals or populations after exposure to isoniazid. Typically, organisms are deemed sensitive to a chemical if they stop growing (and may die) at a concentration of the chemical that allows wild type individuals or populations to grow."
+"sensitive to kanamycin A"	TRUE|FALSE	PHIPO:0000764	"A growth phenotype which describes the sensitivity of individuals or populations after exposure to kanamycin A. Typically, organisms are deemed sensitive to a chemical if they stop growing (and may die) at a concentration of the chemical that allows wild type individuals or populations to grow."
+"sensitive to levofloxacin"	TRUE|FALSE	PHIPO:0000883	"A growth phenotype which describes the sensitivity of individuals or populations after exposure to levofloxacin. Typically, organisms are deemed sensitive to a chemical if they stop growing (and may die) at a concentration of the chemical that allows wild type individuals or populations to grow."
+"sensitive to meropenem"	TRUE|FALSE	PHIPO:0000845	"A growth phenotype which describes the sensitivity of individuals or populations after exposure to meropenem. Typically, organisms are deemed sensitive to a chemical if they stop growing (and may die) at a concentration of the chemical that allows wild type individuals or populations to grow."
+"sensitive to methicillin"	TRUE|FALSE	PHIPO:0000765	"A growth phenotype which describes the sensitivity of individuals or populations after exposure to methicillin. Typically, organisms are deemed sensitive to a chemical if they stop growing (and may die) at a concentration of the chemical that allows wild type individuals or populations to grow."
+"sensitive to ofloxacin"	TRUE|FALSE	PHIPO:0000830	"A growth phenotype which describes the sensitivity of individuals or populations after exposure to ofloxacin. Typically, organisms are deemed sensitive to a chemical if they stop growing (and may die) at a concentration of the chemical that allows wild type individuals or populations to grow."
+"sensitive to penicillin"	TRUE|FALSE	PHIPO:0000815	"A growth phenotype which describes the sensitivity of individuals or populations after exposure to penicillin. Typically, organisms are deemed sensitive to a chemical if they stop growing (and may die) at a concentration of the chemical that allows wild type individuals or populations to grow."
+"sensitive to piperacillin"	TRUE|FALSE	PHIPO:0000842	"A growth phenotype which describes the sensitivity of individuals or populations after exposure to piperacillin. Typically, organisms are deemed sensitive to a chemical if they stop growing (and may die) at a concentration of the chemical that allows wild type individuals or populations to grow."
+"sensitive to rifampicin"	TRUE|FALSE	PHIPO:0000836	"A growth phenotype which describes the sensitivity of individuals or populations after exposure to rifampicin. Typically, organisms are deemed sensitive to a chemical if they stop growing (and may die) at a concentration of the chemical that allows wild type individuals or populations to grow."
+"sensitive to streptomycin"	TRUE|FALSE	PHIPO:0000779	"A growth phenotype which describes the sensitivity of individuals or populations after exposure to streptomycin. Typically, organisms are deemed sensitive to a chemical if they stop growing (and may die) at a concentration of the chemical that allows wild type individuals or populations to grow."
+"sensitive to tetracycline"	TRUE|FALSE	PHIPO:0000882	"A growth phenotype which describes the sensitivity of individuals or populations after exposure to tetracycline. Typically, organisms are deemed sensitive to a chemical if they stop growing (and may die) at a concentration of the chemical that allows wild type individuals or populations to grow."
+"sensitive to trimethoprim"	TRUE|FALSE	PHIPO:0000781	"A growth phenotype which describes the sensitivity of individuals or populations after exposure to trimethoprim. Typically, organisms are deemed sensitive to a chemical if they stop growing (and may die) at a concentration of the chemical that allows wild type individuals or populations to grow."
+"waste water"	TRUE|FALSE	ENVO:00002001	"Water that has been adversely affected in quality by anthropogenic influence"
+"terrestrial biome"	TRUE|FALSE	ENVO_00000446	"A biome which is primarily or completely situated on a landmass"
+"water surface"	TRUE|FALSE	ENVO:01001191	"The surface layer of a volume of water."
+"sulfur spring"	TRUE|FALSE	ENVO:00000126	"A spring whose water contains a significant amount of dissolved derivatives of sulfur."
+"submarine"	TRUE|FALSE	ERO_0001431	"An instrument that is designed to move across or through water and is capable of independent operation below the surface of the water."
+"specialized"	TRUE|FALSE	NCIT:C44274	"Developed or designed for a special activity or function"
+"soil"	TRUE|FALSE	ENVO:00001998	"Soil is an environmental material which is primarily composed of minerals, varying proportions of sand, silt, and clay, organic material such as humus, gases, liquids, and a broad range of resident micro- and macroorganisms"
+"volcanic field"	TRUE|FALSE	ENVO_00000354	"A geothermal field which is prone to localized volcanic activity."
+"hypersaline salinity"	TRUE|FALSE	MICRO_0001293	"Culture medium salinity quality where the salinity is greater than 5 % salts."
+"sludge"	TRUE|FALSE	ENVO:00002044	"The residual semi-solid material left from domestic or industrial processes, or wastewater treatment processes."
+"sediment"	TRUE|FALSE	ENVO:00002007	"Sediment is an environmental substance comprised of any particulate matter that can be transported by fluid flow and which eventually is deposited as a layer of solid particles on the bedor bottom of a body of water or other liquid."
+"sea water"	TRUE|FALSE	ENVO:00002149	"Water which has physicochemical properties that have been determined by the processes occuring in a sea or ocean."
+"saline water"	TRUE|FALSE	ENVO:00002010	"Water which contains a significant concentration of dissolved salts."
+"pond"	TRUE|FALSE	ENVO:00000033	"A body of water, usually of smaller size than a lake."
+"rhizosphere"	TRUE|FALSE	ENVO:00005801	"The narrow region of soil that is directly influenced by root secretions and associated soil microorganisms"
+"root nodule"	TRUE|FALSE	ENVO:01000164	"Root nodules occur on the roots of plants that associate with symbiotic nitrogen-fixing bacteria"
+"not host-associated"	TRUE|FALSE	NA	NA
+"multiple"	TRUE|FALSE	NA	NA
+"mud"	TRUE|FALSE	NA	NA
+"human microbiome"	TRUE|FALSE	NA	NA
+"marine"	TRUE|FALSE	NA	NA
+"hydrothermal vent"	TRUE|FALSE	NA	NA
+"hot spring"	TRUE|FALSE	NA	NA
+"host-associated"	TRUE|FALSE	NA	NA
+"fresh water"	TRUE|FALSE	NA	NA
+"groundwater"	TRUE|FALSE	NA	NA
+"oil field production water"	TRUE|FALSE	ENVO:00002194	NA
+"rice paddies"	TRUE|FALSE	NA	NA
+"deep subsurface"	TRUE|FALSE	NA	NA
+"deep sea"	TRUE|FALSE	NA	NA
+"dairy isolate"	TRUE|FALSE	NA	NA
+"creosote-contaminated soil"	TRUE|FALSE	NA	NA
+"aquatic"	TRUE|FALSE	NA	NA
+"animal intestinal microflora"	TRUE|FALSE	NA	NA
+"air"	TRUE|FALSE	NA	NA
+"10% horse blood chocolate agar"	TRUE|FALSE	NA	NA
+"10% salts"	TRUE|FALSE	NA	NA
+"20% salts"	TRUE|FALSE	NA	NA
+"30% salts"	TRUE|FALSE	NA	NA
+"5% salts"	TRUE|FALSE	NA	NA
+"5% sheep blood agar"	TRUE|FALSE	NA	NA
+"asp-2"	TRUE|FALSE	NA	NA
+"basal salts"	TRUE|FALSE	NA	NA
+"bg11"	TRUE|FALSE	NA	NA
+"c"	TRUE|FALSE	NA	NA
+"casitone-yeast extract agar"	TRUE|FALSE	NA	NA
+"charcoal-yeast extract"	TRUE|FALSE	NA	NA
+"conway"	TRUE|FALSE	NA	NA
+"defined medium"	TRUE|FALSE	NA	NA
+"defined medium plus 1 mM glycine betaine"	TRUE|FALSE	NA	NA
+"f/2"	TRUE|FALSE	NA	NA
+"fildes agar"	TRUE|FALSE	NA	NA
+"general purpose"	TRUE|FALSE	NA	NA
+"gse"	TRUE|FALSE	NA	NA
+"heart infusion agar"	TRUE|FALSE	NA	NA
+"heart infusion agar + isoleucine"	TRUE|FALSE	NA	NA
+"heart infusion agar + leucine"	TRUE|FALSE	NA	NA
+"isovitalex-hemin agar"	TRUE|FALSE	NA	NA
+"kratz and meyers"	TRUE|FALSE	NA	NA
+"lb agar"	TRUE|FALSE	NA	NA
+"m31"	TRUE|FALSE	NA	NA
+"marine 2216"	TRUE|FALSE	NA	NA
+"marine agar"	TRUE|FALSE	NA	NA
+"mjanhox medium"	TRUE|FALSE	NA	NA
+"modified lb"	TRUE|FALSE	NA	NA
+"modified shieh agar"	TRUE|FALSE	NA	NA
+"mrs broth"	TRUE|FALSE	NA	NA
+"mrs broth with cholesterol"	TRUE|FALSE	NA	NA
+"mrs broth with oxgall-bile salts"	TRUE|FALSE	NA	NA
+"mrs broth with oxgall-bile salts and cholesterol"	TRUE|FALSE	NA	NA
+"mueller-hinton"	TRUE|FALSE	NA	NA
+"pyg broth"	TRUE|FALSE	NA	NA
+"pyg broth with volatile fatty acids"	TRUE|FALSE	NA	NA
+"pyruvate medium"	TRUE|FALSE	NA	NA
+"sm agar"	TRUE|FALSE	NA	NA
+"staley pyg"	TRUE|FALSE	NA	NA
+"tryptic soy broth"	TRUE|FALSE	NA	NA
+"trypticase soy agar"	TRUE|FALSE	NA	NA
+"trypticase soy agar w/ 0.1% yeast extract"	TRUE|FALSE	NA	NA
+"van baalen"	TRUE|FALSE	NA	NA
+"gram stain negative"	TRUE|FALSE	NA	NA
+"gram stain positive"	TRUE|FALSE	NA	NA
+"gram stain variable"	TRUE|FALSE	NA	NA
+"aggregates"	TRUE|FALSE	NA	NA
+"branched"	TRUE|FALSE	NA	NA
+"chains"	TRUE|FALSE	NA	NA
+"clusters"	TRUE|FALSE	NA	NA
+"eight parallel rows"	TRUE|FALSE	NA	NA
+"encapsulated"	TRUE|FALSE	NA	NA
+"filamentous"	TRUE|FALSE	NA	NA
+"netlike structures"	TRUE|FALSE	NA	NA
+"packets"	TRUE|FALSE	NA	NA
+"pairs"	TRUE|FALSE	NA	NA
+"palisades"	TRUE|FALSE	NA	NA
+"rosettes"	TRUE|FALSE	NA	NA
+"s-formation"	TRUE|FALSE	NA	NA
+"sarcina packets"	TRUE|FALSE	NA	NA
+"seriate"	TRUE|FALSE	NA	NA
+"sheath layers"	TRUE|FALSE	NA	NA
+"single"	TRUE|FALSE	NA	NA
+"star aggregates"	TRUE|FALSE	NA	NA
+"tetrads"	NA	TRUE|FALSE	NA
+"unbranched"	TRUE|FALSE	NA	NA
+"v-formation"	TRUE|FALSE	NA	NA
+"y-branched formations"	TRUE|FALSE	NA	NA
+"bent rods"	TRUE|FALSE	NA	NA
+"club"	TRUE|FALSE	NA	NA
+"coccobacilli"	TRUE|FALSE	NA	NA
+"cylindrical rods"	TRUE|FALSE	NA	NA
+"disk"	TRUE|FALSE	NA	NA
+"elongated rods"	TRUE|FALSE	NA	NA
+"filamentous rods"	TRUE|FALSE	NA	NA
+"flat"	TRUE|FALSE	NA	NA
+"flexible rods"	TRUE|FALSE	NA	NA
+"fusiform rods"	TRUE|FALSE	NA	NA
+"helical"	TRUE|FALSE	NA	NA
+"horseshoe"	TRUE|FALSE	NA	NA
+"irregular"	TRUE|FALSE	NA	NA
+"mushroom-like"	TRUE|FALSE	NA	NA
+"needle rods"	TRUE|FALSE	NA	NA
+"pear"	TRUE|FALSE	NA	NA
+"pleiomorphic"	TRUE|FALSE	NA	NA
+"polyhedral"	TRUE|FALSE	NA	NA
+"sigmoid"	TRUE|FALSE	PATO_0001878
+"A shape quality inhering in a bearer by virtue of the bearer's consisting of two curves, in opposite directions. S-shaped"
+"tetrahedral"	TRUE|FALSE	NA	NA
+"triangle"	TRUE|FALSE	NA	NA
+"dumbbell"	TRUE|FALSE	NA	NA
+"vibriod cells"	TRUE|FALSE	MICRO_0000414	A prokaryotic cell, being a bacillus where the elongated axis of the cells is curved (but not spiral).
+"wrinkled"	TRUE|FALSE	NA	NA
+"animal pathogen"	TRUE|FALSE	NA	NA
+"extreme environment"	TRUE|FALSE	NA	NA
+"COGEM pathogenicity rating"	integer	NA	NA
+"antimicrobial sensitivity"	TRUE|FALSE	NA	NA
+"biofilm forming"	TRUE|FALSE	NA	NA
+"butyrate producing"	numeric	NA	NA
+"acetate producing"	numeric		NA	NA
+"lactate producing"	numeric		NA	NA
+"mutation rate per site per year"	numeric		NA	NA
+"mutation rate per site per generation"	numeric		NA	NA
+"hydrogen gas producing"	numeric		NA	NA
+"width"	numeric		NA	NA
+"length"	numeric	NA	NA
 
