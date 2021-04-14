@@ -24,55 +24,50 @@
 "resistance to ciprofloxacin"	TRUE|FALSE	PHIPO:0000539	"A growth phenotype which describes the resistance of individuals or populations after exposure to ciprofloxacin. Typically, organisms are deemed resistant to a chemical if they survive at a concentration of the chemical that does not allow wild type individuals or populations to grow"
 "resistance to clindamycin"	TRUE|FALSE	PHIPO:0000560	"A growth phenotype which describes the resistance of individuals or populations after exposure to clindamycin. Typically, organisms are deemed resistant to a chemical if they survive at a concentration of the chemical that does not allow wild type individuals or populations to grow."
 "resistance to clindamycin"	TRUE|FALSE	PHIPO_0000560	"A growth phenotype which describes the resistance of individuals or populations after exposure to clindamycin. Typically, organisms are deemed resistant to a chemical if they survive at a concentration of the chemical that does not allow wild type individuals or populations to grow."
-"ertapenem resistant"	TRUE|FALSE	NA	NA
-"erythromycin resistant"	TRUE|FALSE	NA	NA
-"ethambutol resistant"	TRUE|FALSE	NA	NA
-"gentamicin resistant"	TRUE|FALSE	NA	NA
-"imipenem resistant"	TRUE|FALSE	NA	NA
-"isoniazid resistant"	TRUE|FALSE	NA	NA
-"kanamycin resistant"	TRUE|FALSE	NA	NA
-"levofloxacin resistant"	TRUE|FALSE	NA	NA
-"meropenem resistant"	TRUE|FALSE	NA	NA
-"methicillin resistant"	TRUE|FALSE	NA	NA
-"ofloxacin resistant"	TRUE|FALSE	NA	NA
-"penicillin resistant"	TRUE|FALSE	NA	NA
-"piperacillin/tazobactam resistant"	TRUE|FALSE	NA	NA
-"rifampicin resistant"	TRUE|FALSE	NA	NA
-"rifampin resistant"	TRUE|FALSE	NA	NA
-"streptomycin resistant"	TRUE|FALSE	NA	NA
-"tetracycline resistant"	TRUE|FALSE	NA	NA
-"tobramycin resistant"	TRUE|FALSE	NA	NA
-"trimethoprim/sulfamethoxazole resistant"	TRUE|FALSE	NA	NA
-"amikacin sensitive"	TRUE|FALSE	NA	NA
-"aztreonam sensitive"	TRUE|FALSE	NA	NA
-"beta-lactam sensitive"	TRUE|FALSE	NA	NA
-"capreomycin sensitive"	TRUE|FALSE	NA	NA
-"carbapenem sensitive"	TRUE|FALSE	NA	NA
-"cefepime sensitive"	TRUE|FALSE	NA	NA
-"cefoxitin sensitive"	TRUE|FALSE	NA	NA
-"chloramphenicol sensitive"	TRUE|FALSE	NA	NA
-"ciprofloxacin sensitive"	TRUE|FALSE	NA	NA
-"clindamycin sensitive"	TRUE|FALSE	NA	NA
-"co-trimoxazole sensitive"	TRUE|FALSE	NA	NA
-"ertapenem sensitive"	TRUE|FALSE	NA	NA
-"erythromycin sensitive"	TRUE|FALSE	NA	NA
-"ethambutol sensitive"	TRUE|FALSE	NA	NA
-"gentamicin sensitive"	TRUE|FALSE	NA	NA
-"imipenem sensitive"	TRUE|FALSE	NA	NA
-"isoniazid sensitive"	TRUE|FALSE	NA	NA
-"kanamycin sensitive"	TRUE|FALSE	NA	NA
-"levofloxacin sensitive"	TRUE|FALSE	NA	NA
-"meropenem sensitive"	TRUE|FALSE	NA	NA
-"methicillin sensitive"	TRUE|FALSE	NA	NA
-"ofloxacin sensitive"	TRUE|FALSE	NA	NA
-"penicillin sensitive"	TRUE|FALSE	NA	NA
-"piperacillin/tazobactam sensitive"	TRUE|FALSE	NA	NA
-"rifampicin sensitive"	TRUE|FALSE	NA	NA
-"rifampin sensitive"	TRUE|FALSE	NA	NA
-"streptomycin sensitive"	TRUE|FALSE	NA	NA
-"tetracycline sensitive"	TRUE|FALSE	NA	NA
-"tobramycin sensitive"	TRUE|FALSE	NA	NA
-"trimethoprim/sulfamethoxazole sensitive"	TRUE|FALSE	NA	NA
+"resistance to ertapenem"	TRUE|FALSE	PHIPO:0000650	"A growth phenotype which describes the resistance of individuals or populations after exposure to ertapenem. Typically, organisms are deemed resistant to a chemical if they survive at a concentration of the chemical that does not allow wild type individuals or populations to grow."
+"resistance to erythromycin A"	TRUE|FALSE	PHIPO_0000622	"A growth phenotype which describes the resistance of individuals or populations after exposure to erythromycin A. Typically, organisms are deemed resistant to a chemical if they survive at a concentration of the chemical that does not allow wild type individuals or populations to grow."
+"resistance to ethambutol"	TRUE|FALSE	PHIPO:0000542	"A growth phenotype which describes the resistance of individuals or populations after exposure to ethambutol. Typically, organisms are deemed resistant to a chemical if they survive at a concentration of the chemical that does not allow wild type individuals or populations to grow"
+"resistance to gentamicin"	TRUE|FALSE	PHIPO_0000659	"A growth phenotype which describes the resistance of individuals or populations after exposure to gentamicin. Typically, organisms are deemed resistant to a chemical if they survive at a concentration of the chemical that does not allow wild type individuals or populations to grow."
+"resistance to imipenem"	TRUE|FALSE	PHIPO:0000643	"A growth phenotype which describes the resistance of individuals or populations after exposure to imipenem. Typically, organisms are deemed resistant to a chemical if they survive at a concentration of the chemical that does not allow wild type individuals or populations to grow."
+"resistance to isoniazid"	TRUE|FALSE	PHIPO:0000538	"A growth phenotype which describes the resistance of individuals or populations after exposure to isoniazid. Typically, organisms are deemed resistant to a chemical if they survive at a concentration of the chemical that does not allow wild type individuals or populations to grow."
+"resistance to kanamycin A"	TRUE|FALSE	PHIPO_0000616	"A growth phenotype which describes the resistance of individuals or populations after exposure to kanamycin A. Typically, organisms are deemed resistant to a chemical if they survive at a concentration of the chemical that does not allow wild type individuals or populations to grow."
+"resistance to levofloxacin"	TRUE|FALSE	PHIPO:0000670	"A growth phenotype which describes the resistance of individuals or populations after exposure to levofloxacin. Typically, organisms are deemed resistant to a chemical if they survive at a concentration of the chemical that does not allow wild type individuals or populations to grow."
+"resistance to meropenem"	TRUE|FALSE	PHIPO:0000604	"A growth phenotype which describes the resistance of individuals or populations after exposure to meropenem. Typically, organisms are deemed resistant to a chemical if they survive at a concentration of the chemical that does not allow wild type individuals or populations to grow."
+"resistance to methicillin"	TRUE|FALSE	PHIPO:0000649	"A growth phenotype which describes the resistance of individuals or populations after exposure to methicillin. Typically, organisms are deemed resistant to a chemical if they survive at a concentration of the chemical that does not allow wild type individuals or populations to grow."
+"resistance to ofloxacin"	TRUE|FALSE	PHIPO:0000665	"A growth phenotype which describes the resistance of individuals or populations after exposure to ofloxacin. Typically, organisms are deemed resistant to a chemical if they survive at a concentration of the chemical that does not allow wild type individuals or populations to grow."
+"resistance to penicillin"	TRUE|FALSE	PHIPO:0000692	"A growth phenotype which describes the resistance of individuals or populations after exposure to penicillin. Typically, organisms are deemed resistant to a chemical if they survive at a concentration of the chemical that does not allow wild type individuals or populations to grow."
+"resistance to piperacillin"	TRUE|FALSE	PHIPO:0000519	"A growth phenotype which describes the resistance of individuals or populations after exposure to piperacillin. Typically, organisms are deemed resistant to a chemical if they survive at a concentration of the chemical that does not allow wild type individuals or populations to grow"
+"resistance to rifampicin"	TRUE|FALSE	PHIPO:0000606	"A growth phenotype which describes the resistance of individuals or populations after exposure to rifampicin. Typically, organisms are deemed resistant to a chemical if they survive at a concentration of the chemical that does not allow wild type individuals or populations to grow."
+"resistance to streptomycin"	TRUE|FALSE	PHIPO:0000644	"A growth phenotype which describes the resistance of individuals or populations after exposure to streptomycin. Typically, organisms are deemed resistant to a chemical if they survive at a concentration of the chemical that does not allow wild type individuals or populations to grow."
+"resistance to tetracycline"	TRUE|FALSE	PHIPO:0000555	"A growth phenotype which describes the resistance of individuals or populations after exposure to tetracycline. Typically, organisms are deemed resistant to a chemical if they survive at a concentration of the chemical that does not allow wild type individuals or populations to grow."
+"resistance to tobramycin"	TRUE|FALSE	PHIPO:0000685	"A growth phenotype which describes the resistance of individuals or populations after exposure to tobramycin. Typically, organisms are deemed resistant to a chemical if they survive at a concentration of the chemical that does not allow wild type individuals or populations to grow."
+"resistance to trimethoprim"	TRUE|FALSE	PHIPO:0000588	"A growth phenotype which describes the resistance of individuals or populations after exposure to trimethoprim. Typically, organisms are deemed resistant to a chemical if they survive at a concentration of the chemical that does not allow wild type individuals or populations to grow."
+"sensitive to amikacin"	TRUE|FALSE	PHIPO:0000755	"A growth phenotype which describes the sensitivity of individuals or populations after exposure to amikacin. Typically, organisms are deemed sensitive to a chemical if they stop growing (and may die) at a concentration of the chemical that allows wild type individuals or populations to grow."
+"sensitive to aztreonam"	TRUE|FALSE	PHIPO:0000750	"A growth phenotype which describes the sensitivity of individuals or populations after exposure to aztreonam. Typically, organisms are deemed sensitive to a chemical if they stop growing (and may die) at a concentration of the chemical that allows wild type individuals or populations to grow."
+"not resistant to beta-lactam"	TRUE|FALSE	OMP:0006046	"A beta-lactam compound resistance phenotype where an organism or cell is sensitive to one or more beta-lactam compounds."
+"sensitive to capreomycin"	TRUE|FALSE	PHIPO:0000853	"A growth phenotype which describes the sensitivity of individuals or populations after exposure to capreomycin. Typically, organisms are deemed sensitive to a chemical if they stop growing (and may die) at a concentration of the chemical that allows wild type individuals or populations to grow."
+"sensitive to carbapenems"	TRUE|FALSE	PHIPO:0000819	"A growth phenotype which describes the sensitivity of individuals or populations after exposure to carbapenems. Typically, organisms are deemed sensitive to a chemical if they stop growing (and may die) at a concentration of the chemical that allows wild type individuals or populations to grow."
+"sensitive to cefoxitin"	TRUE|FALSE	PHIPO_0000877	"A growth phenotype which describes the sensitivity of individuals or populations after exposure to cefoxitin. Typically, organisms are deemed sensitive to a chemical if they stop growing (and may die) at a concentration of the chemical that allows wild type individuals or populations to grow."
+"sensitive to chloramphenicol"	TRUE|FALSE	PHIPO:0000726	"A growth phenotype which describes the sensitivity of individuals or populations after exposure to chloramphenicol. Typically, organisms are deemed sensitive to a chemical if they stop growing (and may die) at a concentration of the chemical that allows wild type individuals or populations to grow."
+"sensitive to ciprofloxacin"	TRUE|FALSE	PHIPO:0000799	"A growth phenotype which describes the sensitivity of individuals or populations after exposure to ciprofloxacin. Typically, organisms are deemed sensitive to a chemical if they stop growing (and may die) at a concentration of the chemical that allows wild type individuals or populations to grow."
+"sensitive to clindamycin"	TRUE|FALSE	PHIPO:0000889	"A growth phenotype which describes the sensitivity of individuals or populations after exposure to clindamycin. Typically, organisms are deemed sensitive to a chemical if they stop growing (and may die) at a concentration of the chemical that allows wild type individuals or populations to grow."
+"sensitive to ertapenem"	TRUE|FALSE	PHIPO_0000860	"A growth phenotype which describes the sensitivity of individuals or populations after exposure to ertapenem. Typically, organisms are deemed sensitive to a chemical if they stop growing (and may die) at a concentration of the chemical that allows wild type individuals or populations to grow."
+"sensitive to erythromycin A"	TRUE|FALSE	PHIPO:0000871	"A growth phenotype which describes the sensitivity of individuals or populations after exposure to erythromycin A. Typically, organisms are deemed sensitive to a chemical if they stop growing (and may die) at a concentration of the chemical that allows wild type individuals or populations to grow."
+"sensitive to ethambutol"	TRUE|FALSE	PHIPO:0000887	"A growth phenotype which describes the sensitivity of individuals or populations after exposure to ethambutol. Typically, organisms are deemed sensitive to a chemical if they stop growing (and may die) at a concentration of the chemical that allows wild type individuals or populations to grow."
+"sensitive to gentamicin"	TRUE|FALSE	PHIPO:0000760	"A growth phenotype which describes the sensitivity of individuals or populations after exposure to gentamicin. Typically, organisms are deemed sensitive to a chemical if they stop growing (and may die) at a concentration of the chemical that allows wild type individuals or populations to grow."
+"sensitive to imipenem"	TRUE|FALSE	PHIPO:0000833	"A growth phenotype which describes the sensitivity of individuals or populations after exposure to imipenem. Typically, organisms are deemed sensitive to a chemical if they stop growing (and may die) at a concentration of the chemical that allows wild type individuals or populations to grow."
+"sensitive to isoniazid"	TRUE|FALSE	PHIPO:0000817	"A growth phenotype which describes the sensitivity of individuals or populations after exposure to isoniazid. Typically, organisms are deemed sensitive to a chemical if they stop growing (and may die) at a concentration of the chemical that allows wild type individuals or populations to grow."
+"sensitive to kanamycin A"	TRUE|FALSE	PHIPO:0000764	"A growth phenotype which describes the sensitivity of individuals or populations after exposure to kanamycin A. Typically, organisms are deemed sensitive to a chemical if they stop growing (and may die) at a concentration of the chemical that allows wild type individuals or populations to grow."
+"sensitive to levofloxacin"	TRUE|FALSE	PHIPO:0000883	"A growth phenotype which describes the sensitivity of individuals or populations after exposure to levofloxacin. Typically, organisms are deemed sensitive to a chemical if they stop growing (and may die) at a concentration of the chemical that allows wild type individuals or populations to grow."
+"sensitive to meropenem"	TRUE|FALSE	PHIPO:0000845	"A growth phenotype which describes the sensitivity of individuals or populations after exposure to meropenem. Typically, organisms are deemed sensitive to a chemical if they stop growing (and may die) at a concentration of the chemical that allows wild type individuals or populations to grow."
+"sensitive to methicillin"	TRUE|FALSE	PHIPO:0000765	"A growth phenotype which describes the sensitivity of individuals or populations after exposure to methicillin. Typically, organisms are deemed sensitive to a chemical if they stop growing (and may die) at a concentration of the chemical that allows wild type individuals or populations to grow."
+"sensitive to ofloxacin"	TRUE|FALSE	PHIPO:0000830	"A growth phenotype which describes the sensitivity of individuals or populations after exposure to ofloxacin. Typically, organisms are deemed sensitive to a chemical if they stop growing (and may die) at a concentration of the chemical that allows wild type individuals or populations to grow."
+"sensitive to penicillin"	TRUE|FALSE	PHIPO:0000815	"A growth phenotype which describes the sensitivity of individuals or populations after exposure to penicillin. Typically, organisms are deemed sensitive to a chemical if they stop growing (and may die) at a concentration of the chemical that allows wild type individuals or populations to grow."
+"sensitive to piperacillin"	TRUE|FALSE	PHIPO:0000842	"A growth phenotype which describes the sensitivity of individuals or populations after exposure to piperacillin. Typically, organisms are deemed sensitive to a chemical if they stop growing (and may die) at a concentration of the chemical that allows wild type individuals or populations to grow."
+"sensitive to rifampicin"	TRUE|FALSE	PHIPO:0000836	"A growth phenotype which describes the sensitivity of individuals or populations after exposure to rifampicin. Typically, organisms are deemed sensitive to a chemical if they stop growing (and may die) at a concentration of the chemical that allows wild type individuals or populations to grow."
+"sensitive to streptomycin"	TRUE|FALSE	PHIPO:0000779	"A growth phenotype which describes the sensitivity of individuals or populations after exposure to streptomycin. Typically, organisms are deemed sensitive to a chemical if they stop growing (and may die) at a concentration of the chemical that allows wild type individuals or populations to grow."
+"sensitive to tetracycline"	TRUE|FALSE	PHIPO:0000882	"A growth phenotype which describes the sensitivity of individuals or populations after exposure to tetracycline. Typically, organisms are deemed sensitive to a chemical if they stop growing (and may die) at a concentration of the chemical that allows wild type individuals or populations to grow."
+"sensitive to trimethoprim"	TRUE|FALSE	PHIPO:0000781	"A growth phenotype which describes the sensitivity of individuals or populations after exposure to trimethoprim. Typically, organisms are deemed sensitive to a chemical if they stop growing (and may die) at a concentration of the chemical that allows wild type individuals or populations to grow."
 "wastewater"	TRUE|FALSE	NA	NA
 "terrestrial"	TRUE|FALSE	NA	NA
 "specialized"	TRUE|FALSE	NA	NA
