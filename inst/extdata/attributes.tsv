@@ -10,21 +10,20 @@
 "bacillus"	TRUE|FALSE	MICRO_0000401	"A prokaryotic cell, where one axis (the long axis, the length) of the cell is longer than the other axis (the short axis, the width) of the cell."
 "spirillum"	TRUE|FALSE	MICRO_0000367	"A prokaryotic cell, where the long axis of the cell twists in a spiral."
 "elliptic"	TRUE|FALSE	PATO_0000947	"A spheroid quality inhering in a bearer by virtue of the bearer's being oval with two axes of symmetry, as produced by a conical section."
-"cylindrical"	TRUE|FALSE	NA	NA
-"coccoid"	TRUE|FALSE	NA	NA
-"branched"	TRUE|FALSE	NA	NA
-"chains"	TRUE|FALSE	NA	NA
-"amikacin resistant"	TRUE|FALSE	NA	NA
-"aztreonam resistant"	TRUE|FALSE	NA	NA
-"beta-lactam resistant"	TRUE|FALSE	NA	NA
-"capreomycin resistant"	TRUE|FALSE	NA	NA
-"carbapenem resistant"	TRUE|FALSE	NA	NA
-"cefepime resistant"	TRUE|FALSE	NA	NA
-"cefoxitin resistant"	TRUE|FALSE	NA	NA
-"chloramphenicol resistant"	TRUE|FALSE	NA	NA
-"ciprofloxacin resistant"	TRUE|FALSE	NA	NA
-"clindamycin resistant"	TRUE|FALSE	NA	NA
-"co-trimoxazole resistant"	TRUE|FALSE	NA	NA
+"coccus"	TRUE|FALSE	MICRO_0000402	"A prokaryotic cell that is spherical with no apparent long axis."
+"branched"	TRUE|FALSE	PATO_0000402	"A branchiness quality inhering in a bearer by virtue of the bearer's having branches"
+"cell chain"	TRUE|FALSE	MICRO_0000373	"A multicellular relationship of prokaryotic cells where cells are attached to one another end-to-end to form chains. Forms when cell division occurs in one plane and cells become detached after cell division takes place."
+"resistance to amikacin"	TRUE|FALSE	PHIPO_0000601	"A growth phenotype which describes the resistance of individuals or populations after exposure to amikacin. Typically, organisms are deemed resistant to a chemical if they survive at a concentration of the chemical that does not allow wild type individuals or populations to grow."
+"resistance to aztreonam"	TRUE|FALSE	PHIPO:0000553	"A growth phenotype which describes the resistance of individuals or populations after exposure to aztreonam. Typically, organisms are deemed resistant to a chemical if they survive at a concentration of the chemical that does not allow wild type individuals or populations to grow."
+"resistant to beta-lactam"	TRUE|FALSE	OMP_0006047	"An beta-lactam compound resistance phenotype where an organism or cell is resistant to one or more beta-lactam compounds"
+"resistance to capreomycin"	TRUE|FALSE	PHIPO_0000600	"A growth phenotype which describes the resistance of individuals or populations after exposure to capreomycin. Typically, organisms are deemed resistant to a chemical if they survive at a concentration of the chemical that does not allow wild type individuals or populations to grow."
+"carbapenem-resistant Acinetobacter"	TRUE|FALSE	ARO:3004311	"Any strain of Acinetobacter spp. that has tested either Intermediate or Resistant to at least one of the following carbapenem-class antibiotics by standard testing using approved breakpoints: imipenem, meropenem, doripenem."
+"resistance to cefepime"	TRUE|FALSE	PHIPO_0000631	"A growth phenotype which describes the resistance of individuals or populations after exposure to cefepime. Typically, organisms are deemed resistant to a chemical if they survive at a concentration of the chemical that does not allow wild type individuals or populations to grow."
+"resistance to cefoxitin"	TRUE|FALSE	PHIPO_0000668	"A growth phenotype which describes the resistance of individuals or populations after exposure to cefoxitin. Typically, organisms are deemed resistant to a chemical if they survive at a concentration of the chemical that does not allow wild type individuals or populations to grow."
+"resistance to chloramphenicol"	TRUE|FALSE	PHIPO_0000689	"A growth phenotype which describes the resistance of individuals or populations after exposure to chloramphenicol. Typically, organisms are deemed resistant to a chemical if they survive at a concentration of the chemical that does not allow wild type individuals or populations to grow"
+"resistance to ciprofloxacin"	TRUE|FALSE	PHIPO:0000539	"A growth phenotype which describes the resistance of individuals or populations after exposure to ciprofloxacin. Typically, organisms are deemed resistant to a chemical if they survive at a concentration of the chemical that does not allow wild type individuals or populations to grow"
+"resistance to clindamycin"	TRUE|FALSE	PHIPO:0000560	"A growth phenotype which describes the resistance of individuals or populations after exposure to clindamycin. Typically, organisms are deemed resistant to a chemical if they survive at a concentration of the chemical that does not allow wild type individuals or populations to grow."
+"resistance to clindamycin"	TRUE|FALSE	PHIPO_0000560	"A growth phenotype which describes the resistance of individuals or populations after exposure to clindamycin. Typically, organisms are deemed resistant to a chemical if they survive at a concentration of the chemical that does not allow wild type individuals or populations to grow."
 "ertapenem resistant"	TRUE|FALSE	NA	NA
 "erythromycin resistant"	TRUE|FALSE	NA	NA
 "ethambutol resistant"	TRUE|FALSE	NA	NA
@@ -180,10 +179,8 @@
 "v-formation"	TRUE|FALSE	NA	NA
 "y-branched formations"	TRUE|FALSE	NA	NA
 "bent rods"	TRUE|FALSE	NA	NA
-"boat"	TRUE|FALSE	NA	NA
 "club"	TRUE|FALSE	NA	NA
 "coccobacilli"	TRUE|FALSE	NA	NA
-"curved rods"	TRUE|FALSE	NA	NA
 "cylindrical rods"	TRUE|FALSE	NA	NA
 "disk"	TRUE|FALSE	NA	NA
 "elongated rods"	TRUE|FALSE	NA	NA
@@ -196,7 +193,6 @@
 "irregular"	TRUE|FALSE	NA	NA
 "mushroom-like"	TRUE|FALSE	NA	NA
 "needle rods"	TRUE|FALSE	NA	NA
-"oval"	TRUE|FALSE	NA	NA
 "pear"	TRUE|FALSE	NA	NA
 "pleiomorphic"	TRUE|FALSE	NA	NA
 "polyhedral"	TRUE|FALSE	NA	NA
@@ -205,7 +201,7 @@
 "tetrahedral"	TRUE|FALSE	NA	NA
 "triangle"	TRUE|FALSE	NA	NA
 "dumbbell"	TRUE|FALSE	NA	NA
-"vibrio"	TRUE|FALSE	NA	NA
+"vibriod cells"	TRUE|FALSE	MICRO_0000414	A prokaryotic cell, being a bacillus where the elongated axis of the cells is curved (but not spiral).
 "wrinkled"	TRUE|FALSE	NA	NA
 "animal pathogen"	TRUE|FALSE	NA	NA
 "extreme environment"	TRUE|FALSE	NA	NA
