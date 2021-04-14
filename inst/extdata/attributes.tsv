@@ -102,7 +102,7 @@
 "aquatic biome"	TRUE|FALSE	ENVO:00002030	"A biome which is determined by a water body and which has ecological climax communities adapted to life in or on water."
 "intestinal microflora"	TRUE|FALSE	NCIT:C93019	"Bacteria and other organisms that live inside the intestines. They help digest food. Vitamins such as biotin and vitamin K are made by gut flora."
 "air"	TRUE|FALSE	ENVO:00002005	"The mixture of gases (roughly (by molar content/volume: 78% nitrogen, 20.95% oxygen, 0.93% argon, 0.038% carbon dioxide, trace amounts of other gases, and a variable amount (average around 1%) of water vapor) that surrounds the planet Earth"
-"10% horse blood chocolate agar"	TRUE|FALSE	NA	NA
+"horse blood agar"	TRUE|FALSE	MICRO_0000096	"A solid microbiological culture medium (a blood agar), containing horse blood"
 "10% salts"	TRUE|FALSE	NA	NA
 "20% salts"	TRUE|FALSE	NA	NA
 "30% salts"	TRUE|FALSE	NA	NA
@@ -110,15 +110,15 @@
 "5% sheep blood agar"	TRUE|FALSE	NA	NA
 "asp-2"	TRUE|FALSE	NA	NA
 "basal salts"	TRUE|FALSE	NA	NA
-"bg11"	TRUE|FALSE	NA	NA
+"bg11"	TRUE|FALSE	MICRO_0001348	"A liquid, mineral-salts microbiological culture medium. Used to support the autotrophic growth of cyanobacteria."
 "c"	TRUE|FALSE	NA	NA
 "casitone-yeast extract agar"	TRUE|FALSE	NA	NA
 "charcoal-yeast extract"	TRUE|FALSE	NA	NA
 "conway"	TRUE|FALSE	NA	NA
-"defined medium"	TRUE|FALSE	NA	NA
+"defined microbiological culture medium"	TRUE|FALSE	MICRO:0000068	"A chemically defined microbiological culture medium where all chemicals used are known. Does not contain any plant, animal, or microbiological cell extracts."
 "defined medium plus 1 mM glycine betaine"	TRUE|FALSE	NA	NA
 "f/2"	TRUE|FALSE	NA	NA
-"fildes agar"	TRUE|FALSE	NA	NA
+"fildes enrichment"	TRUE|FALSE	MICRO:0001597	"Blood medium ingredient comprised of a peptic digest of sheep (Ovis aries) or horse (Equus caballus) blood, serves as a source of hemin and NAD (nicotinamide adenine dinucleotide). Used in the cultivation of microorganisms."
 "general purpose"	TRUE|FALSE	NA	NA
 "gse"	TRUE|FALSE	NA	NA
 "heart infusion agar"	TRUE|FALSE	NA	NA
@@ -137,16 +137,14 @@
 "mrs broth with cholesterol"	TRUE|FALSE	NA	NA
 "mrs broth with oxgall-bile salts"	TRUE|FALSE	NA	NA
 "mrs broth with oxgall-bile salts and cholesterol"	TRUE|FALSE	NA	NA
-"mueller-hinton"	TRUE|FALSE	NA	NA
-"pyg broth"	TRUE|FALSE	NA	NA
-"pyg broth with volatile fatty acids"	TRUE|FALSE	NA	NA
+"mueller-hinton"	TRUE|FALSE	MICRO_0000557	"An organic-rich, solid microbiological culture medium containing beef extract, casein hydrolysate, and starch. Used for the cultivation of Neisseria."
+"pyg medium"	TRUE|FALSE	MICRO:0000547	"An organic-rich, liquid microbiological culture medium containing casitone and yeast extract. Used for the growth of Pseudarcicella sp"
 "pyruvate medium"	TRUE|FALSE	NA	NA
-"sm agar"	TRUE|FALSE	NA	NA
+"sm agar"	TRUE|FALSE	MICRO_0000531	"A liquid microbiological culture medium containing gelatin, magnesium sulfate, and sodium chloride. Used for the storage and dilution of Escherichia coli bacteriophage lambda."
 "staley pyg"	TRUE|FALSE	NA	NA
-"tryptic soy broth"	TRUE|FALSE	NA	NA
-"trypticase soy agar"	TRUE|FALSE	NA	NA
-"trypticase soy agar w/ 0.1% yeast extract"	TRUE|FALSE	NA	NA
-"van baalen"	TRUE|FALSE	NA	NA
+"tryptic soy broth"	TRUE|FALSE	MICRO:0000113	"An organic-rich, liquid culture medium comprised of pancreatic digest of casein (casitone), papaic digest of soybean (soy peptone), dextrose (D-glucose), sodium chloride, and dipotassium phosphate (potassium dibasic phosphate)."
+"tryptic soy agar"	TRUE|FALSE	MICRO:0000114	"An organic-rich, solid medium containing casitone (pancreatic digest of casein), Phytone peptone (papaic digest of soybean), and sodium chloride. Used for the cultivation of aerobic heterotrophic microorganisms."
+"tryptic soy broth"	TRUE|FALSE	MICRO:0000113	"An organic-rich, liquid culture medium comprised of pancreatic digest of casein (casitone), papaic digest of soybean (soy peptone), dextrose (D-glucose), sodium chloride, and dipotassium phosphate (potassium dibasic phosphate)."
 "gram stain negative"	TRUE|FALSE	NA	NA
 "gram stain positive"	TRUE|FALSE	NA	NA
 "gram stain variable"	TRUE|FALSE	NA	NA
