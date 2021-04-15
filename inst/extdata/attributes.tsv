@@ -81,25 +81,24 @@
 "rhizosphere"	TRUE|FALSE	ENVO:00005801	"The narrow region of soil that is directly influenced by root secretions and associated soil microorganisms"
 "root nodule"	TRUE|FALSE	ENVO:01000164	"Root nodules occur on the roots of plants that associate with symbiotic nitrogen-fixing bacteria"
 "not host-associated"	TRUE|FALSE	NA	NA
-"multiple"	TRUE|FALSE	NA	NA
-"mud"	TRUE|FALSE	NA	NA
-"human microbiome"	TRUE|FALSE	NA	NA
-"marine"	TRUE|FALSE	NA	NA
-"hydrothermal vent"	TRUE|FALSE	NA	NA
-"hot spring"	TRUE|FALSE	NA	NA
-"host-associated"	TRUE|FALSE	NA	NA
-"fresh water"	TRUE|FALSE	NA	NA
-"groundwater"	TRUE|FALSE	NA	NA
+"multiple"	TRUE|FALSE	NCIT_C17648	"Having, relating to, or consisting of more than one individual, element, part, or other component; manifold."
+"mud"	TRUE|FALSE	http://purl.obolibrary.org/obo/ENVO_01000001	"A liquid or semi-liquid mixture of water and some combination of soil, silt, and clay."
+"human microbiome"	TRUE|FALSE	OHMI:0000002	"A microbiome located in a human body"
+"marine water body"	TRUE|FALSE	ENVO_00001999	"A significant accumulation of water which is part of a marine biome."
+"hydrothermal vent"	TRUE|FALSE	ENVO:00000215	"A fissure in the Earths's surface from which geothermally heated water issues"
+"hot spring"	TRUE|FALSE	ENVO_00000051	"A spring that is produced by the emergence of geothermally-heated groundwater from the Earth's crust"
+"colonization of host"	TRUE|FALSE	IDO:0000604	"An establishment of localization in host process in which an organism establishes itself in a host."
+"fresh water"	TRUE|FALSE	ENVO_00002011	"Water which has a low concentration of dissolved solutes, particularly that of sodium chloride."
+"groundwater"	TRUE|FALSE	ENVO:01001004	"Underground water which is located in pore spaces found in rock or unconsolidated deposits such as soil, clay, or gravel."
 "oil field production water"	TRUE|FALSE	ENVO:00002194	NA
-"rice paddies"	TRUE|FALSE	NA	NA
-"deep subsurface"	TRUE|FALSE	NA	NA
-"deep sea"	TRUE|FALSE	NA	NA
-"dairy isolate"	TRUE|FALSE	NA	NA
-"creosote-contaminated soil"	TRUE|FALSE	NA	NA
-"aquatic"	TRUE|FALSE	NA	NA
-"animal intestinal microflora"	TRUE|FALSE	NA	NA
-"air"	TRUE|FALSE	NA	NA
-"10% horse blood chocolate agar"	TRUE|FALSE	NA	NA
+"rice paddies"	TRUE|FALSE	ENVO:00000296	"A paddy field for the cultivation of rice"
+"ocean trench"	TRUE|FALSE	ENVO:00000275	"Hemispheric-scale long but narrow topographic depressions of the sea floor. They are the deepest parts of the ocean floor"
+"dairy"	TRUE|FALSE	ENVO:00003862	"A dairy is a building in which animal milk is harvested and, optionally, processed for human consumption."
+"creosote contaminated soil"	TRUE|FALSE	ENVO:00002117	"Soil which has elevated concentrations of creosote."
+"aquatic biome"	TRUE|FALSE	ENVO:00002030	"A biome which is determined by a water body and which has ecological climax communities adapted to life in or on water."
+"intestinal microflora"	TRUE|FALSE	NCIT:C93019	"Bacteria and other organisms that live inside the intestines. They help digest food. Vitamins such as biotin and vitamin K are made by gut flora."
+"air"	TRUE|FALSE	ENVO:00002005	"The mixture of gases (roughly (by molar content/volume: 78% nitrogen, 20.95% oxygen, 0.93% argon, 0.038% carbon dioxide, trace amounts of other gases, and a variable amount (average around 1%) of water vapor) that surrounds the planet Earth"
+"horse blood agar"	TRUE|FALSE	MICRO_0000096	"A solid microbiological culture medium (a blood agar), containing horse blood"
 "10% salts"	TRUE|FALSE	NA	NA
 "20% salts"	TRUE|FALSE	NA	NA
 "30% salts"	TRUE|FALSE	NA	NA
@@ -107,50 +106,38 @@
 "5% sheep blood agar"	TRUE|FALSE	NA	NA
 "asp-2"	TRUE|FALSE	NA	NA
 "basal salts"	TRUE|FALSE	NA	NA
-"bg11"	TRUE|FALSE	NA	NA
+"bg11"	TRUE|FALSE	MICRO_0001348	"A liquid, mineral-salts microbiological culture medium. Used to support the autotrophic growth of cyanobacteria."
 "c"	TRUE|FALSE	NA	NA
 "casitone-yeast extract agar"	TRUE|FALSE	NA	NA
 "charcoal-yeast extract"	TRUE|FALSE	NA	NA
 "conway"	TRUE|FALSE	NA	NA
-"defined medium"	TRUE|FALSE	NA	NA
+"defined microbiological culture medium"	TRUE|FALSE	MICRO:0000068	"A chemically defined microbiological culture medium where all chemicals used are known. Does not contain any plant, animal, or microbiological cell extracts."
 "defined medium plus 1 mM glycine betaine"	TRUE|FALSE	NA	NA
-"f/2"	TRUE|FALSE	NA	NA
-"fildes agar"	TRUE|FALSE	NA	NA
-"general purpose"	TRUE|FALSE	NA	NA
-"gse"	TRUE|FALSE	NA	NA
-"heart infusion agar"	TRUE|FALSE	NA	NA
-"heart infusion agar + isoleucine"	TRUE|FALSE	NA	NA
-"heart infusion agar + leucine"	TRUE|FALSE	NA	NA
-"isovitalex-hemin agar"	TRUE|FALSE	NA	NA
-"kratz and meyers"	TRUE|FALSE	NA	NA
-"lb agar"	TRUE|FALSE	NA	NA
-"m31"	TRUE|FALSE	NA	NA
-"marine 2216"	TRUE|FALSE	NA	NA
-"marine agar"	TRUE|FALSE	NA	NA
-"mjanhox medium"	TRUE|FALSE	NA	NA
-"modified lb"	TRUE|FALSE	NA	NA
+"artificial seawater"	TRUE|FALSE	MICRO_0001715	"An inorganic salts solution that mimics sea water."
+"fildes enrichment"	TRUE|FALSE	MICRO:0001597	"Blood medium ingredient comprised of a peptic digest of sheep (Ovis aries) or horse (Equus caballus) blood, serves as a source of hemin and NAD (nicotinamide adenine dinucleotide). Used in the cultivation of microorganisms."
+"nutrient broth"	TRUE|FALSE	MICRO_0000082	An organic-rich, liquid culture medium comprised of beef extract and peptone.
+"gse"	TRUE|FALSE	NA	"https://research.csiro.au/anaccmethods/wp-content/uploads/sites/337/2020/04/GSe_CSIRO_2020.pdf"
+"heart infusion agar"	TRUE|FALSE	MICRO_0000567	"An organic-rich, solid microbiological culture medium that contains (beef) heart infusion and tryptose. Used to grow a wide range of heterotrophic microorganisms."
+"chocolate agar"	TRUE|FALSE	MICRO_0000591	"A solid microbiological culture medium where blood has been been treated by heating in order to lyse the blood cells."
+"brackish microbiological culture medium"	TRUE|FALSE	MICRO:0000483	"A microbiological culture medium that has a salinity of greater than 0.05 % salts and less than 3% salts."
+"lb agar"	TRUE|FALSE	MICRO:0000563	"An organic-rich, solid microbiological culture medium containing tryptone, yeast extract, and sodium chloride. Used to cultivate Escherichia coli."
+"medium 31 agar"	TRUE|FALSE	NA	NA
+"zobell marine agar"	TRUE|FALSE	MICRO:0000112	"An organic-rich, mineral-salts, solid microbiological culture medium containing peptones and yeast extract in a base of artificial sea water. Used for the cultivation of heterotrophic marine microorganisms. Zobell Marine Agar 2216 Zobell Marine Agar 2216 is recommended for cultivation, isolation and enumeration of heterotrophic marine bacteria."
+"DSMZ Medium 1000"	TRUE|FALSE	MICRO_0001609	"A minerals-salts, liquid culture medium comprised of sodium chloride, potassium phosphate, calcium chloride, ammonium chloride, magnesium sulfate, magnesium chloride, potassium chloride, ferric sulfate, nickel chloride, sotium selenate, sodium silicate, and trace minerals. Prepared under at atmosphere of hydrogen and carbon dioxide."
+"lb medium"	TRUE|FALSE	MICRO_0000562	"An organic-rich, liquid microbiological culture medium containing tryptone, yeast extract, and sodium chloride. Used to cultivate Escherichia coli."
 "modified shieh agar"	TRUE|FALSE	NA	NA
-"mrs broth"	TRUE|FALSE	NA	NA
-"mrs broth with cholesterol"	TRUE|FALSE	NA	NA
-"mrs broth with oxgall-bile salts"	TRUE|FALSE	NA	NA
-"mrs broth with oxgall-bile salts and cholesterol"	TRUE|FALSE	NA	NA
-"mueller-hinton"	TRUE|FALSE	NA	NA
-"pyg broth"	TRUE|FALSE	NA	NA
-"pyg broth with volatile fatty acids"	TRUE|FALSE	NA	NA
-"pyruvate medium"	TRUE|FALSE	NA	NA
-"sm agar"	TRUE|FALSE	NA	NA
+"mrs agar"	TRUE|FALSE	MICRO:0000554	"A slightly-acidic, organic-rich, solid microbiological culture medium containing peptones, egg extract, yeast extract, glucose, Tween 80, and minerals salts. Used for the cultivation of Lactobacilli."
+"mueller-hinton"	TRUE|FALSE	MICRO_0000557	"An organic-rich, solid microbiological culture medium containing beef extract, casein hydrolysate, and starch. Used for the cultivation of Neisseria."
+"pyg medium"	TRUE|FALSE	MICRO:0000547	"An organic-rich, liquid microbiological culture medium containing casitone and yeast extract. Used for the growth of Pseudarcicella sp"
+"sm agar"	TRUE|FALSE	MICRO_0000531	"A liquid microbiological culture medium containing gelatin, magnesium sulfate, and sodium chloride. Used for the storage and dilution of Escherichia coli bacteriophage lambda."
 "staley pyg"	TRUE|FALSE	NA	NA
-"tryptic soy broth"	TRUE|FALSE	NA	NA
-"trypticase soy agar"	TRUE|FALSE	NA	NA
-"trypticase soy agar w/ 0.1% yeast extract"	TRUE|FALSE	NA	NA
-"van baalen"	TRUE|FALSE	NA	NA
-"gram stain negative"	TRUE|FALSE	NA	NA
-"gram stain positive"	TRUE|FALSE	NA	NA
-"gram stain variable"	TRUE|FALSE	NA	NA
-"aggregates"	TRUE|FALSE	NA	NA
-"branched"	TRUE|FALSE	NA	NA
-"chains"	TRUE|FALSE	NA	NA
-"clusters"	TRUE|FALSE	NA	NA
+"tryptic soy broth"	TRUE|FALSE	MICRO:0000113	"An organic-rich, liquid culture medium comprised of pancreatic digest of casein (casitone), papaic digest of soybean (soy peptone), dextrose (D-glucose), sodium chloride, and dipotassium phosphate (potassium dibasic phosphate)."
+"tryptic soy agar"	TRUE|FALSE	MICRO:0000114	"An organic-rich, solid medium containing casitone (pancreatic digest of casein), Phytone peptone (papaic digest of soybean), and sodium chloride. Used for the cultivation of aerobic heterotrophic microorganisms."
+"tryptic soy broth"	TRUE|FALSE	MICRO:0000113	"An organic-rich, liquid culture medium comprised of pancreatic digest of casein (casitone), papaic digest of soybean (soy peptone), dextrose (D-glucose), sodium chloride, and dipotassium phosphate (potassium dibasic phosphate)."
+"gram stain negative"	TRUE|FALSE	MICRO:0000617	"A gram stain quality where microorganisms do not stain purple with Crystal Violet used in the Gram stain, but stain red due to uptake of the counter stain (Safranin or Fuchsin). Fuchsin is also called Magenta"
+"gram stain positive"	TRUE|FALSE	MICRO:0000616	"A gram stain quality where microorganisms stain purple with crystal violet used in the Gram stain."
+"gram stain variable"	TRUE|FALSE	MICRO:0000618	"Microorganisms that are not definitively stained Gram positive or Gram negative; may stain variably as either Gram positive or Gram negative."
+"cell cluster"	TRUE|FALSE	MICRO:0000372	"A multicellular relationship of prokaryotic cells where cells are attached to one another end-to-end and side-to-side to form clumps or sheets after dividing. This morphology forms as a result of cell division taking place in multiple planes."
 "eight parallel rows"	TRUE|FALSE	NA	NA
 "encapsulated"	TRUE|FALSE	NA	NA
 "filamentous"	TRUE|FALSE	NA	NA
@@ -187,8 +174,7 @@
 "pear"	TRUE|FALSE	NA	NA
 "pleiomorphic"	TRUE|FALSE	NA	NA
 "polyhedral"	TRUE|FALSE	NA	NA
-"sigmoid"	TRUE|FALSE	PATO_0001878
-"A shape quality inhering in a bearer by virtue of the bearer's consisting of two curves, in opposite directions. S-shaped"
+"sigmoid"	TRUE|FALSE	PATO_0001878	"A shape quality inhering in a bearer by virtue of the bearer's consisting of two curves, in opposite directions. S-shaped"
 "tetrahedral"	TRUE|FALSE	NA	NA
 "triangle"	TRUE|FALSE	NA	NA
 "dumbbell"	TRUE|FALSE	NA	NA
