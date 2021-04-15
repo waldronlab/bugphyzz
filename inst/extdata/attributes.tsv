@@ -6,7 +6,6 @@
 "bacillus"	TRUE|FALSE	MICRO_0000401	"A prokaryotic cell, where one axis (the long axis, the length) of the cell is longer than the other axis (the short axis, the width) of the cell."
 "spirillum"	TRUE|FALSE	MICRO_0000367	"A prokaryotic cell, where the long axis of the cell twists in a spiral."
 "elliptic"	TRUE|FALSE	PATO_0000947	"A spheroid quality inhering in a bearer by virtue of the bearer's being oval with two axes of symmetry, as produced by a conical section."
-"coccus"	TRUE|FALSE	MICRO_0000402	"A prokaryotic cell that is spherical with no apparent long axis."
 "branched"	TRUE|FALSE	PATO_0000402	"A branchiness quality inhering in a bearer by virtue of the bearer's having branches"
 "cell chain"	TRUE|FALSE	MICRO_0000373	"A multicellular relationship of prokaryotic cells where cells are attached to one another end-to-end to form chains. Forms when cell division occurs in one plane and cells become detached after cell division takes place."
 "resistance to amikacin"	TRUE|FALSE	PHIPO_0000601	"A growth phenotype which describes the resistance of individuals or populations after exposure to amikacin. Typically, organisms are deemed resistant to a chemical if they survive at a concentration of the chemical that does not allow wild type individuals or populations to grow."
@@ -138,59 +137,42 @@
 "gram stain positive"	TRUE|FALSE	MICRO:0000616	"A gram stain quality where microorganisms stain purple with crystal violet used in the Gram stain."
 "gram stain variable"	TRUE|FALSE	MICRO:0000618	"Microorganisms that are not definitively stained Gram positive or Gram negative; may stain variably as either Gram positive or Gram negative."
 "cell cluster"	TRUE|FALSE	MICRO:0000372	"A multicellular relationship of prokaryotic cells where cells are attached to one another end-to-end and side-to-side to form clumps or sheets after dividing. This morphology forms as a result of cell division taking place in multiple planes."
-"eight parallel rows"	TRUE|FALSE	NA	NA
-"encapsulated"	TRUE|FALSE	NA	NA
-"filamentous"	TRUE|FALSE	NA	NA
-"netlike structures"	TRUE|FALSE	NA	NA
-"packets"	TRUE|FALSE	NA	NA
-"pairs"	TRUE|FALSE	NA	NA
-"palisades"	TRUE|FALSE	NA	NA
+"paired cells"	TRUE|FALSE	MICRO_0000369	"A multicellular relationship of prokaryotic cells where two cells are attached to one another in pairs."
+"palisade"	TRUE|FALSE	MICRO_0000941	"A multicellular prokaryotic morphological quality where cells so that their long axes are stacked parallel to one another (like in a fence)"
 "rosettes"	TRUE|FALSE	NA	NA
-"s-formation"	TRUE|FALSE	NA	NA
-"sarcina packets"	TRUE|FALSE	NA	NA
-"seriate"	TRUE|FALSE	NA	NA
-"sheath layers"	TRUE|FALSE	NA	NA
-"single"	TRUE|FALSE	NA	NA
-"star aggregates"	TRUE|FALSE	NA	NA
-"tetrads"	NA	TRUE|FALSE	NA
-"unbranched"	TRUE|FALSE	NA	NA
-"v-formation"	TRUE|FALSE	NA	NA
-"y-branched formations"	TRUE|FALSE	NA	NA
-"bent rods"	TRUE|FALSE	NA	NA
-"club"	TRUE|FALSE	NA	NA
-"coccobacilli"	TRUE|FALSE	NA	NA
-"cylindrical rods"	TRUE|FALSE	NA	NA
-"disk"	TRUE|FALSE	NA	NA
-"elongated rods"	TRUE|FALSE	NA	NA
-"filamentous rods"	TRUE|FALSE	NA	NA
-"flat"	TRUE|FALSE	NA	NA
-"flexible rods"	TRUE|FALSE	NA	NA
-"fusiform rods"	TRUE|FALSE	NA	NA
-"helical"	TRUE|FALSE	NA	NA
-"horseshoe"	TRUE|FALSE	NA	NA
-"irregular"	TRUE|FALSE	NA	NA
-"mushroom-like"	TRUE|FALSE	NA	NA
-"needle rods"	TRUE|FALSE	NA	NA
-"pear"	TRUE|FALSE	NA	NA
-"pleiomorphic"	TRUE|FALSE	NA	NA
-"polyhedral"	TRUE|FALSE	NA	NA
+"single"	TRUE|FALSE	NCIT_C48440	"Not accompanied by another or others; exclusive of anyone or anything else"
+"tetrads"	NA	TRUE|FALSE	MICRO:0000374	"A multicellular prokaryotic morphological quality where cells are attached to one another in multiples of four. Forms when cell division occurs in two planes at right angles to one another."
+"unbranched"	TRUE|FALSE	PATO:0000414	"A branchiness quality inhering in a bearer by virtue of the bearer's lacking branches."
+"V-branched filaments"	TRUE|FALSE	MICRO:0000127	"True-branched filaments, where an apical cell divides longitudinally, from which grows obliquely two equivalent branches."
+"reverse Y-branched filaments"	TRUE|FALSE	MICRO_0000128	"True-branched filaments, where branches arise in the intercalary (medial) cells after oblique cell division at an intercalary (medial cell)."
+"bent filament"	TRUE|FALSE	MICRO:0000389	"A filament shape where the filament has an appearance of being bent at an angle."
+"clavate"	TRUE|FALSE	PATO:0001883	"A concave 3-D shape quality inhering in a bearer by virtue of the bearer's gradually becoming thicker towards the end."
+"coccobacillus"	TRUE|FALSE	MICRO:0000366	"A prokaryotic cell, being a bacillus where the long axis of the cell is only slightly longer than the short axis of the cell."
+"coccus"	TRUE|FALSE	MICRO:0000402	"A prokaryotic cell that is spherical with no apparent long axis."
+"discoid"	TRUE|FALSE	PATO:0001874	"A shape quality inhering in a bearer by virtue of the bearer's being cylindrical, in which the height is less than the diameter."
+"dumbbell-shaped"	TRUE|FALSE	PATO:0001876	"A concave 3-D shape quality inhering in a bearer by virtue of the bearer's having two parts, roughly spherical and of equal size, connected by a bar."
+"filamentous"	TRUE|FALSE	PATO:0001360	"A shape quality inhering in a bearer by virtue of the bearer's having thin filamentous extensions at its edge."
+"flat"	TRUE|FALSE	PATO:0000407	"A quality inhering in a bearer by virtue of the bearer's having a horizontal surface without a slope, tilt, or curvature."
+"u-shaped"	TRUE|FALSE	PATO_0001879	"A concave 3-D shape quality inhering in a bearer by virtue of the bearer's being shaped in the form of the letter U."
+"pleiomorphic cell"	TRUE|FALSE	MICRO:0000427	"A prokaryotic cell that is irregular in shape, where the shapes of the cells are irregular and variable (pleomorphic). Cell shapes may be variable in size and shape, depending on the environmental conditions."
+"polyhedral shape"	TRUE|FALSE	OMP:0005394	"A capsid morphology phenotype where the capsid is shaped like a polyhedron which is a solid formed by plane faces."
 "sigmoid"	TRUE|FALSE	PATO_0001878	"A shape quality inhering in a bearer by virtue of the bearer's consisting of two curves, in opposite directions. S-shaped"
-"tetrahedral"	TRUE|FALSE	NA	NA
-"triangle"	TRUE|FALSE	NA	NA
-"dumbbell"	TRUE|FALSE	NA	NA
+"rectangle	TRUE|FALSE	SIO_000518	"A rectangle is a quadrilateral in which one pair of line segments are parallel and the other pair are perpendicular to the first pair."
+"tetrahedral"	TRUE|FALSE	ENM_9000065	NA
+"triangle"	TRUE|FALSE	SIO:000520	"A triangle is a polygon composed of three points and three line segments, in which each point is fully connected to another point along through the line segment."
 "vibriod cells"	TRUE|FALSE	MICRO_0000414	A prokaryotic cell, being a bacillus where the elongated axis of the cells is curved (but not spiral).
-"wrinkled"	TRUE|FALSE	NA	NA
+"wrinkled"	TRUE|FALSE	PATO:0001810	"A grooved texture quality inhering in a bearer by virtue of the bearer's being marked by one or more creases in a normally smooth surface."
 "animal pathogen"	TRUE|FALSE	NA	NA
 "extreme environment"	TRUE|FALSE	NA	NA
 "COGEM pathogenicity rating"	integer	NA	NA
 "antimicrobial sensitivity"	TRUE|FALSE	NA	NA
-"biofilm forming"	TRUE|FALSE	NA	NA
-"butyrate producing"	numeric	NA	NA
+"biofilm formation"	TRUE|FALSE	APO:0000159	"The ability to form a layer on solid surfaces with or without other microorganisms."
+"Butyrate-Producing Bacteria"	numeric	NCIT:C126417	"Any anaerobic bacteria that metabolizes complex carbohydrates to produce butyrate. These microorganisms may form colonies in the intestines of mammals; their presence may aid the host by catabolizing undigested fiber and starch. Additionally, butyrate is metabolized by colonic epithelial cells and may protect the host against ulcerative colitis and cancer."
 "acetate producing"	numeric		NA	NA
 "lactate producing"	numeric		NA	NA
 "mutation rate per site per year"	numeric		NA	NA
 "mutation rate per site per generation"	numeric		NA	NA
 "hydrogen gas producing"	numeric		NA	NA
-"width"	numeric		NA	NA
-"length"	numeric	NA	NA
+"width"	numeric		PATO:0000921	"A 1-D extent quality which is equal to the distance from one side of an object to another side which is opposite."
+"length"	numeric	PATO:0000122	"A 1-D extent quality which is equal to the distance between two points"
 
