@@ -138,12 +138,10 @@
 "tryptic soy broth"	TRUE|FALSE	MICRO:0000113	"An organic-rich, liquid culture medium comprised of pancreatic digest of casein (casitone), papaic digest of soybean (soy peptone), dextrose (D-glucose), sodium chloride, and dipotassium phosphate (potassium dibasic phosphate)."
 "tryptic soy agar"	TRUE|FALSE	MICRO:0000114	"An organic-rich, solid medium containing casitone (pancreatic digest of casein), Phytone peptone (papaic digest of soybean), and sodium chloride. Used for the cultivation of aerobic heterotrophic microorganisms."
 "tryptic soy broth"	TRUE|FALSE	MICRO:0000113	"An organic-rich, liquid culture medium comprised of pancreatic digest of casein (casitone), papaic digest of soybean (soy peptone), dextrose (D-glucose), sodium chloride, and dipotassium phosphate (potassium dibasic phosphate)."
-"gram stain negative"	TRUE|FALSE	NA	NA
-"gram stain positive"	TRUE|FALSE	NA	NA
-"gram stain variable"	TRUE|FALSE	NA	NA
-"aggregates"	TRUE|FALSE	NA	NA
-"branched"	TRUE|FALSE	NA	NA
-"clusters"	TRUE|FALSE	NA	NA
+"gram stain negative"	TRUE|FALSE	MICRO:0000617	"A gram stain quality where microorganisms do not stain purple with Crystal Violet used in the Gram stain, but stain red due to uptake of the counter stain (Safranin or Fuchsin). Fuchsin is also called Magenta"
+"gram stain positive"	TRUE|FALSE	MICRO:0000616	"A gram stain quality where microorganisms stain purple with crystal violet used in the Gram stain."
+"gram stain variable"	TRUE|FALSE	MICRO:0000618	"Microorganisms that are not definitively stained Gram positive or Gram negative; may stain variably as either Gram positive or Gram negative."
+"cell cluster"	TRUE|FALSE	MICRO:0000372	"A multicellular relationship of prokaryotic cells where cells are attached to one another end-to-end and side-to-side to form clumps or sheets after dividing. This morphology forms as a result of cell division taking place in multiple planes."
 "eight parallel rows"	TRUE|FALSE	NA	NA
 "encapsulated"	TRUE|FALSE	NA	NA
 "filamentous"	TRUE|FALSE	NA	NA
@@ -180,8 +178,7 @@
 "pear"	TRUE|FALSE	NA	NA
 "pleiomorphic"	TRUE|FALSE	NA	NA
 "polyhedral"	TRUE|FALSE	NA	NA
-"sigmoid"	TRUE|FALSE	PATO_0001878
-"A shape quality inhering in a bearer by virtue of the bearer's consisting of two curves, in opposite directions. S-shaped"
+"sigmoid"	TRUE|FALSE	PATO_0001878	"A shape quality inhering in a bearer by virtue of the bearer's consisting of two curves, in opposite directions. S-shaped"
 "tetrahedral"	TRUE|FALSE	NA	NA
 "triangle"	TRUE|FALSE	NA	NA
 "dumbbell"	TRUE|FALSE	NA	NA
