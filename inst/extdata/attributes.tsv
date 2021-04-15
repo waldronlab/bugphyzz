@@ -117,29 +117,22 @@
 "conway"	TRUE|FALSE	NA	NA
 "defined microbiological culture medium"	TRUE|FALSE	MICRO:0000068	"A chemically defined microbiological culture medium where all chemicals used are known. Does not contain any plant, animal, or microbiological cell extracts."
 "defined medium plus 1 mM glycine betaine"	TRUE|FALSE	NA	NA
-"f/2"	TRUE|FALSE	NA	NA
+"artificial seawater"	TRUE|FALSE	MICRO_0001715	"An inorganic salts solution that mimics sea water."
 "fildes enrichment"	TRUE|FALSE	MICRO:0001597	"Blood medium ingredient comprised of a peptic digest of sheep (Ovis aries) or horse (Equus caballus) blood, serves as a source of hemin and NAD (nicotinamide adenine dinucleotide). Used in the cultivation of microorganisms."
-"general purpose"	TRUE|FALSE	NA	NA
-"gse"	TRUE|FALSE	NA	NA
-"heart infusion agar"	TRUE|FALSE	NA	NA
-"heart infusion agar + isoleucine"	TRUE|FALSE	NA	NA
-"heart infusion agar + leucine"	TRUE|FALSE	NA	NA
-"isovitalex-hemin agar"	TRUE|FALSE	NA	NA
-"kratz and meyers"	TRUE|FALSE	NA	NA
-"lb agar"	TRUE|FALSE	NA	NA
-"m31"	TRUE|FALSE	NA	NA
-"marine 2216"	TRUE|FALSE	NA	NA
-"marine agar"	TRUE|FALSE	NA	NA
-"mjanhox medium"	TRUE|FALSE	NA	NA
-"modified lb"	TRUE|FALSE	NA	NA
+"nutrient broth"	TRUE|FALSE	MICRO_0000082	An organic-rich, liquid culture medium comprised of beef extract and peptone.
+"gse"	TRUE|FALSE	NA	"https://research.csiro.au/anaccmethods/wp-content/uploads/sites/337/2020/04/GSe_CSIRO_2020.pdf"
+"heart infusion agar"	TRUE|FALSE	MICRO_0000567	"An organic-rich, solid microbiological culture medium that contains (beef) heart infusion and tryptose. Used to grow a wide range of heterotrophic microorganisms."
+"chocolate agar"	TRUE|FALSE	MICRO_0000591	"A solid microbiological culture medium where blood has been been treated by heating in order to lyse the blood cells."
+"brackish microbiological culture medium"	TRUE|FALSE	MICRO:0000483	"A microbiological culture medium that has a salinity of greater than 0.05 % salts and less than 3% salts."
+"lb agar"	TRUE|FALSE	MICRO:0000563	"An organic-rich, solid microbiological culture medium containing tryptone, yeast extract, and sodium chloride. Used to cultivate Escherichia coli."
+"medium 31 agar"	TRUE|FALSE	NA	NA
+"zobell marine agar"	TRUE|FALSE	MICRO:0000112	"An organic-rich, mineral-salts, solid microbiological culture medium containing peptones and yeast extract in a base of artificial sea water. Used for the cultivation of heterotrophic marine microorganisms. Zobell Marine Agar 2216 Zobell Marine Agar 2216 is recommended for cultivation, isolation and enumeration of heterotrophic marine bacteria."
+"DSMZ Medium 1000"	TRUE|FALSE	MICRO_0001609	"A minerals-salts, liquid culture medium comprised of sodium chloride, potassium phosphate, calcium chloride, ammonium chloride, magnesium sulfate, magnesium chloride, potassium chloride, ferric sulfate, nickel chloride, sotium selenate, sodium silicate, and trace minerals. Prepared under at atmosphere of hydrogen and carbon dioxide."
+"lb medium"	TRUE|FALSE	MICRO_0000562	"An organic-rich, liquid microbiological culture medium containing tryptone, yeast extract, and sodium chloride. Used to cultivate Escherichia coli."
 "modified shieh agar"	TRUE|FALSE	NA	NA
-"mrs broth"	TRUE|FALSE	NA	NA
-"mrs broth with cholesterol"	TRUE|FALSE	NA	NA
-"mrs broth with oxgall-bile salts"	TRUE|FALSE	NA	NA
-"mrs broth with oxgall-bile salts and cholesterol"	TRUE|FALSE	NA	NA
+"mrs agar"	TRUE|FALSE	MICRO:0000554	"A slightly-acidic, organic-rich, solid microbiological culture medium containing peptones, egg extract, yeast extract, glucose, Tween 80, and minerals salts. Used for the cultivation of Lactobacilli."
 "mueller-hinton"	TRUE|FALSE	MICRO_0000557	"An organic-rich, solid microbiological culture medium containing beef extract, casein hydrolysate, and starch. Used for the cultivation of Neisseria."
 "pyg medium"	TRUE|FALSE	MICRO:0000547	"An organic-rich, liquid microbiological culture medium containing casitone and yeast extract. Used for the growth of Pseudarcicella sp"
-"pyruvate medium"	TRUE|FALSE	NA	NA
 "sm agar"	TRUE|FALSE	MICRO_0000531	"A liquid microbiological culture medium containing gelatin, magnesium sulfate, and sodium chloride. Used for the storage and dilution of Escherichia coli bacteriophage lambda."
 "staley pyg"	TRUE|FALSE	NA	NA
 "tryptic soy broth"	TRUE|FALSE	MICRO:0000113	"An organic-rich, liquid culture medium comprised of pancreatic digest of casein (casitone), papaic digest of soybean (soy peptone), dextrose (D-glucose), sodium chloride, and dipotassium phosphate (potassium dibasic phosphate)."
@@ -150,7 +143,6 @@
 "gram stain variable"	TRUE|FALSE	NA	NA
 "aggregates"	TRUE|FALSE	NA	NA
 "branched"	TRUE|FALSE	NA	NA
-"chains"	TRUE|FALSE	NA	NA
 "clusters"	TRUE|FALSE	NA	NA
 "eight parallel rows"	TRUE|FALSE	NA	NA
 "encapsulated"	TRUE|FALSE	NA	NA
