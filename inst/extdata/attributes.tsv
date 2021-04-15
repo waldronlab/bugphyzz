@@ -138,24 +138,14 @@
 "gram stain positive"	TRUE|FALSE	MICRO:0000616	"A gram stain quality where microorganisms stain purple with crystal violet used in the Gram stain."
 "gram stain variable"	TRUE|FALSE	MICRO:0000618	"Microorganisms that are not definitively stained Gram positive or Gram negative; may stain variably as either Gram positive or Gram negative."
 "cell cluster"	TRUE|FALSE	MICRO:0000372	"A multicellular relationship of prokaryotic cells where cells are attached to one another end-to-end and side-to-side to form clumps or sheets after dividing. This morphology forms as a result of cell division taking place in multiple planes."
-"eight parallel rows"	TRUE|FALSE	NA	NA
-"encapsulated"	TRUE|FALSE	NA	NA
-"filamentous"	TRUE|FALSE	NA	NA
-"netlike structures"	TRUE|FALSE	NA	NA
-"packets"	TRUE|FALSE	NA	NA
-"pairs"	TRUE|FALSE	NA	NA
-"palisades"	TRUE|FALSE	NA	NA
+"paired cells"	TRUE|FALSE	MICRO_0000369	"A multicellular relationship of prokaryotic cells where two cells are attached to one another in pairs."
+"palisade"	TRUE|FALSE	MICRO_0000941	"A multicellular prokaryotic morphological quality where cells so that their long axes are stacked parallel to one another (like in a fence)"
 "rosettes"	TRUE|FALSE	NA	NA
-"s-formation"	TRUE|FALSE	NA	NA
-"sarcina packets"	TRUE|FALSE	NA	NA
-"seriate"	TRUE|FALSE	NA	NA
-"sheath layers"	TRUE|FALSE	NA	NA
-"single"	TRUE|FALSE	NA	NA
-"star aggregates"	TRUE|FALSE	NA	NA
-"tetrads"	NA	TRUE|FALSE	NA
-"unbranched"	TRUE|FALSE	NA	NA
-"v-formation"	TRUE|FALSE	NA	NA
-"y-branched formations"	TRUE|FALSE	NA	NA
+"single"	TRUE|FALSE	NCIT_C48440	"Not accompanied by another or others; exclusive of anyone or anything else"
+"tetrads"	NA	TRUE|FALSE	MICRO:0000374	"A multicellular prokaryotic morphological quality where cells are attached to one another in multiples of four. Forms when cell division occurs in two planes at right angles to one another."
+"unbranched"	TRUE|FALSE	PATO:0000414	"A branchiness quality inhering in a bearer by virtue of the bearer's lacking branches."
+"V-branched filaments"	TRUE|FALSE	MICRO:0000127	"True-branched filaments, where an apical cell divides longitudinally, from which grows obliquely two equivalent branches."
+"reverse Y-branched filaments"	TRUE|FALSE	MICRO_0000128	"True-branched filaments, where branches arise in the intercalary (medial) cells after oblique cell division at an intercalary (medial cell)."
 "bent rods"	TRUE|FALSE	NA	NA
 "club"	TRUE|FALSE	NA	NA
 "coccobacilli"	TRUE|FALSE	NA	NA
