@@ -1,6 +1,6 @@
 Package: bugphyzz
 Title: Access to microbial physiologies in high throughput
-Version: 0.0.1.1
+Version: 0.0.1.2
 Authors@R: 
     person(given = "First",
            family = "Last",
@@ -34,6 +34,7 @@ Imports:
     taxize,
     tidyr,
     tidyselect,
+    testthat,
     readr
 Depends: 
     R (>= 2.10)

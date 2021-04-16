@@ -5,6 +5,7 @@
 #'
 #' @return A character vector with valid header names.
 #' @export
+#' @importFrom testthat expect
 #'
 #' @examples
 #' x <- valid_headers()
