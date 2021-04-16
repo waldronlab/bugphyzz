@@ -1,6 +1,6 @@
 #' Makes taxid signatures for physiologies
 #'
-#' @param physiologies the desired physiology
+#' @param df A `data.frame` output by the \link{physiologies} function
 #' @param taxids identification of the bugs (Taxon name, NCBI ID, etc.)
 #' @param rank Nothing yet
 #'
@@ -8,11 +8,13 @@
 #' @export
 #'
 #' @examples
-#' x <- make_signatures("aerophilicity")
-#' head(x[["aerobic"]])
-make_signatures <- function(physiologies = "all", taxids = "Taxon_name", rank = "all"){
-  phyzzlist <- bugphyzz::physiologies(keyword = physiologies)
-  df <- phyzzlist[[1]]
+#' aero <- physiologies("aerophilicity")
+#' x <- make_signatures(aero[[1]], taxids = "Taxon_name")
+#' lapply(x, head)
+#' x <- make_signatures(aero[[1]], taxids = "NCBI_ID")
+#' lapply(x, head)
+
+make_signatures <- function(df, taxids = "Taxon_name", rank = "all"){
   attribute_names <- unique(df[["Attribute"]])
   dat <- lapply(attribute_names, fetch_bugs, dat = df, taxids = taxids)
   names(dat) <- attribute_names

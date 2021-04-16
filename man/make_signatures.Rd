@@ -4,10 +4,10 @@
 \alias{make_signatures}
 \title{Makes taxid signatures for physiologies}
 \usage{
-make_signatures(physiologies = "all", taxids = "Taxon_name", rank = "all")
+make_signatures(df, taxids = "Taxon_name", rank = "all")
 }
 \arguments{
-\item{physiologies}{the desired physiology}
+\item{df}{A \code{data.frame} output by the \link{physiologies} function}
 
 \item{taxids}{identification of the bugs (Taxon name, NCBI ID, etc.)}
 
