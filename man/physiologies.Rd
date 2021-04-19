@@ -20,6 +20,6 @@ Fetch physiological data
 x <- physiologies()
 head(x[[1]])
 
-y <- physiologies(c("gram", "aerophilicity"))
+y <- physiologies(c("gram stain", "aerophilicity"))
 head(y[[1]])
 }

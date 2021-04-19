@@ -15,16 +15,6 @@ A data frame of two columns: "Attributes" and "Score."
 \description{
 \code{get_score} calculates a signature score for each attribute value (one attribute per column) by adding up the relative abundance values. Since the abundance values are added up by column, the values are always between 0 and 100.
 }
-\examples{
-df <- AsnicarF2017_genus[[1]]
-db <- physiologies(keyword = "aerophilicity")[[1]]
-
-x <- add_attributes(df, db)
-x
-
-y <- get_score(x)
-y
-}
 \seealso{
 \code{\link{add_attributes}}
 

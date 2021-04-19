@@ -4,13 +4,15 @@
 #' physiologies, run bugphyzz::physiologies_list()
 #'
 #' @return a large list of tidy data.frames
+#' @importFrom utils read.table
+#' @importFrom utils read.csv
 #' @export
 #'
 #' @examples
 #' x <- physiologies()
 #' head(x[[1]])
 #'
-#' y <- physiologies(c("gram", "aerophilicity"))
+#' y <- physiologies(c("gram stain", "aerophilicity"))
 #' head(y[[1]])
 physiologies <- function(keyword = "all") {
 
@@ -22,7 +24,7 @@ physiologies <- function(keyword = "all") {
   database <- vector("list", nrow(links))
   for (i in seq_along(database)) {
     names(database)[i] <- links[i, "physiology"]
-    database[[i]] <- read.csv(links[i, "link"])
+    database[[i]] <- utils::read.csv(links[i, "link"])
   }
   return(database)
 }
@@ -49,11 +51,11 @@ physiologies <- function(keyword = "all") {
 #' @examples
 #' curationLinks()
 #' curationLinks(keyword = "aerophilicity")
-#' curationLinks(keyword = c("aerophilicity", "gram"))
+#' curationLinks(keyword = c("aerophilicity", "gram stain"))
 curationLinks <- function(keyword = "all"){
   fname <-
     system.file(file.path("extdata", "links.tsv"), package = "bugphyzz")
-  links <- read.table(fname, sep = "\t", header = TRUE)
+  links <- utils::read.table(fname, sep = "\t", header = TRUE)
   ifelse(keyword[1] == "all", links, links <-
            links[links$physiology %in% keyword,])
   return(links)

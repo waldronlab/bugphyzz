@@ -17,11 +17,6 @@ Data frame with an additional column containing taxa names.
 \description{
 Add a column containing taxonomic rank names to a data frame.
 }
-\examples{
-df <- AsnicarF2017_genus[[1]]
-df <- add_hierarchy(df, "genus")
-df
-}
 \seealso{
 \code{\link{get_hierarchy}};
 \code{\link[taxize]{classification}}
