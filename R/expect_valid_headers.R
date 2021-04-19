@@ -55,8 +55,8 @@ expect_valid_headers <- function(x, y = "current" ) {
   # test_output <- all(valid_headers() %in% colnames(x))
   test_output <- identical(valid_headers(),
                            colnames(x)[1:length(valid_headers())])
-  expect(test_output == TRUE,
-         paste0("Oops! The \"", y, "\" data set does not have ",
+  testthat::expect(test_output == TRUE,
+         paste0("ERROR! The \"", y, "\" data set does not have ",
          "all of the valid headers or they are not in the correct order."))
 }
 #' Expect that headers are valid in a list of data frames
