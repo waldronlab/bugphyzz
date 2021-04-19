@@ -10,15 +10,15 @@ Authors@R:
 Description: What the package does (one paragraph).
 License: MIT + file LICENSE
 Suggests: 
-    testthat (>= 3.0.0),
-    knitr,
-    rmarkdown,
-    grid,
-    lattice,
-    viridis,
     ComplexHeatmap,
+    ggplot2,
+    grid,
     HMP16SData,
-    tibble
+    knitr,
+    lattice,
+    rmarkdown,
+    tibble,
+    viridis
 Config/testthat/edition: 3
 Encoding: UTF-8
 LazyData: true
@@ -26,15 +26,16 @@ Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.1
 VignetteBuilder: knitr
 Imports: 
-    magrittr,
     dplyr,
+    utils,
+    magrittr,
     purrr,
+    readr,
     rlang,
     stringr,
     taxize,
+    testthat (>= 3.0.0),
     tidyr,
-    tidyselect,
-    testthat,
-    readr
+    tidyselect
 Depends: 
-    R (>= 2.10)
+    R (>= 4.0.0)
