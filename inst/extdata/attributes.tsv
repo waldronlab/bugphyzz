@@ -161,7 +161,7 @@
 "pleiomorphic cell"	"logical"	MICRO:0000427	"A prokaryotic cell that is irregular in shape, where the shapes of the cells are irregular and variable (pleomorphic). Cell shapes may be variable in size and shape, depending on the environmental conditions."
 "polyhedral shape"	"logical"	OMP:0005394	"A capsid morphology phenotype where the capsid is shaped like a polyhedron which is a solid formed by plane faces."
 "sigmoid"	"logical"	PATO_0001878	"A shape quality inhering in a bearer by virtue of the bearer's consisting of two curves, in opposite directions. S-shaped"
-"rectangle	"logical"	SIO_000518	"A rectangle is a quadrilateral in which one pair of line segments are parallel and the other pair are perpendicular to the first pair."
+"rectangle"	"logical"	SIO_000518	"A rectangle is a quadrilateral in which one pair of line segments are parallel and the other pair are perpendicular to the first pair."
 "tetrahedral"	"logical"	ENM_9000065	NA
 "triangle"	"logical"	SIO:000520	"A triangle is a polygon composed of three points and three line segments, in which each point is fully connected to another point along through the line segment."
 "vibriod cells"	"logical"	MICRO_0000414	A prokaryotic cell, being a bacillus where the elongated axis of the cells is curved (but not spiral).
