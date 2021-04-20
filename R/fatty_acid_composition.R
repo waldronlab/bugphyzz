@@ -6,7 +6,7 @@ library(tidyr)
 #load fatty acid composition sheet from customlinks.tsv
 #test to check whether custom link exists
 
-fatty_acid_composition <- function(keyword = "all")
+fatty_acid_composition <- function(keyword = "all"){
   customlinks.tsv()[["link"]]
 
   if (all(keyword != "all") & !all(keyword %in% physiologies_list())) {
@@ -17,10 +17,10 @@ fatty_acid_composition <- function(keyword = "all")
   database <- vector("list", nrow(links))
   for (i in seq_along(database)) {
     names(database)[i] <- links[i, "physiology"]
-    database[[i]] <- read.csv(links[i, "link"])
+    database[[i]] <- tidyr_function(read.csv(links[i, "link"]))
   }
   return(database)
-
+}
 
 #' Show links to custom link spreadsheet
 #'
@@ -42,3 +42,4 @@ customLinks <- function(keyword = "all"){
            links[links$physiology %in% keyword,])
   return(links)
 }
+
