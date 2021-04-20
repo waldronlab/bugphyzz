@@ -20,8 +20,8 @@ a character vector of taxids
 Fetch bugs based on taxid and corresponding attribute
 }
 \examples{
-physiology_list <- bugphyzz::physiologies(keyword = physiologies)
+physiology_list <- bugphyzz::physiologies(keyword = "aerophilicity")
 df <- physiology_list[[1]]
-x <- fetchBugs(attribute_name = "aerobic", dat = df, taxids = "Taxon_name")
+x <- fetch_bugs(attribute_name = "aerobic", dat = df, taxids = "Taxon_name")
 head(x)
 }

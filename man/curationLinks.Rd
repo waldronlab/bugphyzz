@@ -19,5 +19,5 @@ Show links to curation spreadsheets
 \examples{
 curationLinks()
 curationLinks(keyword = "aerophilicity")
-curationLinks(keyword = c("aerophilicity", "gram"))
+curationLinks(keyword = c("aerophilicity", "gram stain"))
 }
