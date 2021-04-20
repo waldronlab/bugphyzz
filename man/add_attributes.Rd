@@ -24,15 +24,6 @@ The \strong{database} (downloaded from BugPhyzz) must have a column named "NCBI_
 
 NAs are converted to 0s.
 }
-\examples{
-# Add cellular respiration attributes
-df <- AsnicarF2017_genus[[1]]
-db <- physiologies(keyword = "aerophilicity")[[1]]
-
-x <- add_attributes(df, db)
-x
-
-}
 \seealso{
 \code{\link{get_score}}
 

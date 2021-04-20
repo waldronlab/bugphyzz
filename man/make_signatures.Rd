@@ -20,6 +20,9 @@ a large list of character vectors
 Makes taxid signatures for physiologies
 }
 \examples{
-x <- make_signatures("aerophilicity")
-head(x[["aerobic"]])
+aero <- physiologies("aerophilicity")
+x <- make_signatures(aero[[1]], taxids = "Taxon_name")
+lapply(x, head)
+x <- make_signatures(aero[[1]], taxids = "NCBI_ID")
+lapply(x, head)
 }

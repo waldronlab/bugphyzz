@@ -15,15 +15,6 @@ utils::globalVariables(c("Attribute", "value"))
 #' \code{\link{add_attributes}}
 #' @export
 #'
-#' @examples
-#' df <- AsnicarF2017_genus[[1]]
-#' db <- physiologies(keyword = "aerophilicity")[[1]]
-#'
-#' x <- add_attributes(df, db)
-#' x
-#'
-#' y <- get_score(x)
-#' y
 get_score <- function(x) {
     df <- x[, -c(1,2)] %>%
         tidyr::pivot_longer(names_to = "Attribute", tidyselect::everything()) %>%

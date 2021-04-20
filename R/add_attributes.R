@@ -23,15 +23,6 @@ utils::globalVariables(c("Attribute", "value"))
 #' \code{\link{get_score}}
 #'
 #' @export
-#'
-#' @examples
-#' # Add cellular respiration attributes
-#' df <- AsnicarF2017_genus[[1]]
-#' db <- physiologies(keyword = "aerophilicity")[[1]]
-#'
-#' x <- add_attributes(df, db)
-#' x
-#'
 add_attributes <- function(data, database) {
 
     db <- database %>%
@@ -67,8 +58,6 @@ add_attributes <- function(data, database) {
     return(data)
 
 }
-
-
 # The function below only adds TRUE FALSE values.
 #
 # add_attributes2 <- function(data, database) {
@@ -92,8 +81,3 @@ add_attributes <- function(data, database) {
 # }
 #
 #
-
-
-
-
-
