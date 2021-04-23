@@ -48,10 +48,6 @@ get_hierarchy <- function(x, y) {
 #'
 #' @export
 #'
-#' @examples
-#' df <- AsnicarF2017_genus[[1]]
-#' df <- add_hierarchy(df, "genus")
-#' df
 add_hierarchy <- function(df, y) {
 
     y_var <- rlang::enquo(y)

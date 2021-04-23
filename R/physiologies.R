@@ -4,24 +4,41 @@
 #' physiologies, run bugphyzz::physiologies_list()
 #'
 #' @return a large list of tidy data.frames
+#' @importFrom utils read.table
+#' @importFrom utils read.csv
 #' @export
 #'
 #' @examples
 #' x <- physiologies()
 #' head(x[[1]])
 #'
-#' y <- physiologies(c("gram", "aerophilicity"))
+#' y <- physiologies(c("gram stain", "aerophilicity"))
 #' head(y[[1]])
-physiologies <- function(keyword = "all"){
-  links <- curationLinks(keyword = keyword)
+physiologies <- function(keyword = "all") {
 
-  ifelse(keyword[1] == "all", links, links <- links[links$physiology %in% keyword,])
-
-  sheets <- as.list(links[["link"]])
-  dat <- lapply(sheets, read.csv)
-  names(dat) <- links[["physiology"]]
-  dat
+  if (all(keyword != "all") & !all(keyword %in% physiologies_list())) {
+    stop("I don't recognize one or more of the provided physiologies ",
+         "Check valid physiologies with physiologies_list()")
+  }
+  links <- curationLinks(keyword = keyword)[, c("physiology", "link")]
+  database <- vector("list", nrow(links))
+  for (i in seq_along(database)) {
+    names(database)[i] <- links[i, "physiology"]
+    database[[i]] <- utils::read.csv(links[i, "link"])
+  }
+  return(database)
 }
+
+# physiologies <- function(keyword = "all"){
+#   links <- curationLinks(keyword = keyword)
+#
+#   ifelse(keyword[1] == "all", links, links <- links[links$physiology %in% keyword,])
+#
+#   sheets <- as.list(links[[2]])
+#   dat <- lapply(sheets, read.csv)
+#   names(dat) <- links[[1]]
+#   dat
+# }
 
 #' Show links to curation spreadsheets
 #'
@@ -34,11 +51,11 @@ physiologies <- function(keyword = "all"){
 #' @examples
 #' curationLinks()
 #' curationLinks(keyword = "aerophilicity")
-#' curationLinks(keyword = c("aerophilicity", "gram"))
+#' curationLinks(keyword = c("aerophilicity", "gram stain"))
 curationLinks <- function(keyword = "all"){
   fname <-
     system.file(file.path("extdata", "links.tsv"), package = "bugphyzz")
-  links <- read.table(fname, sep = "\t", header = TRUE)
+  links <- utils::read.table(fname, sep = "\t", header = TRUE)
   ifelse(keyword[1] == "all", links, links <-
            links[links$physiology %in% keyword,])
   return(links)
