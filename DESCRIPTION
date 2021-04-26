@@ -11,13 +11,13 @@ Description: What the package does (one paragraph).
 License: MIT + file LICENSE
 Suggests: 
     ComplexHeatmap,
+    curatedMetagenomicData,
     ggplot2,
     grid,
     HMP16SData,
     knitr,
     lattice,
     rmarkdown,
-    tibble,
     viridis
 Config/testthat/edition: 3
 Encoding: UTF-8
@@ -36,6 +36,7 @@ Imports:
     taxize,
     testthat (>= 3.0.0),
     tidyr,
-    tidyselect
+    tidyselect,
+    tibble
 Depends: 
     R (>= 4.0.0)
