@@ -1,7 +1,7 @@
 #function for shaping fatty acid composition from Google Sheets using tidyR
 
-library(bugphyzz)
-library(tidyr)
+# library(bugphyzz)
+# library(tidyr)
 
 #load fatty acid composition sheet from customlinks.tsv
 #test to check whether custom link exists
