@@ -28,12 +28,12 @@ fatty_acid_composition <- function(keyword = "all"){
   for (i in seq_along(database)) {
     names(database)[i] <- links[i, "physiology"]
 
+    database[[i]] <- tidyr_function(read.csv(links[i, "link"]))
+
     fac_long <- fac_wide %>%
       pivot_longer(cols = `Br-C10:1`:`Oxo-C19:1`,
                    names_to = "new_attribute",
                    values_to = "new_attribute_value")
-
-    database[[i]] <- tidyr_function(read.csv(links[i, "link"]))
   }
   return(database)
 
