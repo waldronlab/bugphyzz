@@ -6,8 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Fetch Bergeys abstracts
-This function fetches Kelly Eckenrode's and Jonathan Ye's scraping of the Bergey's abstracts and returns a tidy data.frame — bergeys_abstracts • bugphyzz</title>
+<title>Makes taxid signatures for physiologies — make_signatures • bugphyzz</title>
 
 
 <!-- jquery -->
@@ -40,10 +39,8 @@ This function fetches Kelly Eckenrode's and Jonathan Ye's scraping of the Bergey
 
 
 
-<meta property="og:title" content="Fetch Bergeys abstracts
-This function fetches Kelly Eckenrode's and Jonathan Ye's scraping of the Bergey's abstracts and returns a tidy data.frame — bergeys_abstracts" />
-<meta property="og:description" content="Fetch Bergeys abstracts
-This function fetches Kelly Eckenrode's and Jonathan Ye's scraping of the Bergey's abstracts and returns a tidy data.frame" />
+<meta property="og:title" content="Makes taxid signatures for physiologies — make_signatures" />
+<meta property="og:description" content="Makes taxid signatures for physiologies" />
 
 
 
@@ -118,28 +115,91 @@ This function fetches Kelly Eckenrode's and Jonathan Ye's scraping of the Bergey
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Fetch Bergeys abstracts
-This function fetches Kelly Eckenrode's and Jonathan Ye's scraping of the Bergey's abstracts and returns a tidy data.frame</h1>
+    <h1>Makes taxid signatures for physiologies</h1>
     
-    <div class="hidden name"><code>bergeys_abstracts.Rd</code></div>
+    <div class="hidden name"><code>make_signatures.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Fetch Bergeys abstracts
-This function fetches Kelly Eckenrode's and Jonathan Ye's scraping of the Bergey's abstracts and returns a tidy data.frame</p>
+    <p>Makes taxid signatures for physiologies</p>
     </div>
 
-    <pre class="usage"><span class='fu'>bergeys_abstracts</span><span class='op'>(</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>make_signatures</span><span class='op'>(</span><span class='va'>df</span>, taxids <span class='op'>=</span> <span class='st'>"Taxon_name"</span>, rank <span class='op'>=</span> <span class='st'>"all"</span><span class='op'>)</span></pre>
 
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>df</th>
+      <td><p>A <code>data.frame</code> output by the <a href='physiologies.html'>physiologies</a> function</p></td>
+    </tr>
+    <tr>
+      <th>taxids</th>
+      <td><p>identification of the bugs (Taxon name, NCBI ID, etc.)</p></td>
+    </tr>
+    <tr>
+      <th>rank</th>
+      <td><p>Nothing yet</p></td>
+    </tr>
+    </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A tidy data.frame</p>
+    <p>a large list of character vectors</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'>bergeys_abstracts</span><span class='op'>(</span><span class='op'>)</span>
-<span class='fu'><a href='https://rdrr.io/r/base/dim.html'>dim</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] 17335    94</div></pre>
+    <pre class="examples"><div class='input'><span class='va'>aero</span> <span class='op'>&lt;-</span> <span class='fu'><a href='physiologies.html'>physiologies</a></span><span class='op'>(</span><span class='st'>"aerophilicity"</span><span class='op'>)</span>
+<span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'>make_signatures</span><span class='op'>(</span><span class='va'>aero</span><span class='op'>[[</span><span class='fl'>1</span><span class='op'>]</span><span class='op'>]</span>, taxids <span class='op'>=</span> <span class='st'>"Taxon_name"</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/base/lapply.html'>lapply</a></span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>head</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; $microaerophilic
+#&gt; [1] "Sodalis"       "Agromyces"     "Alcanivorax"   "Alpinimonas"  
+#&gt; [5] "Aquabacterium" "Aquaspirillum"
+#&gt; 
+#&gt; $aerobic
+#&gt; [1] "Acaricomes"        "Acidicapsa"        "Acidiphilium"     
+#&gt; [4] "Acidipila"         "Acidisphaera"      "Acidithiobacillus"
+#&gt; 
+#&gt; $aerotolerant
+#&gt; [1] "Malonomonas"
+#&gt; 
+#&gt; $anaerobic
+#&gt; [1] "Thermicanus"     "Malonomonas"     "Acetatifactor"   "Acetobacterium" 
+#&gt; [5] "Acetofilamentum" "Acetohalobium"  
+#&gt; 
+#&gt; $`facultatively anaerobic`
+#&gt; [1] "Thermothrix"     "Aquifex"         "Brumimicrobium"  "Cardiobacterium"
+#&gt; [5] "Enhydrobacter"   "Erythromos"     
+#&gt; 
+#&gt; $`obligately aerobic`
+#&gt; [1] "Acanthopleuribacter" "Acetobacter"         "Achromobacter"      
+#&gt; [4] "Acidobacterium"      "Agreia"              "Albibacter"         
+#&gt; 
+#&gt; $`obligately anaerobic`
+#&gt; [1] "Acetanaerobacterium" "Acetitomaculum"      "Acetivibrio"        
+#&gt; [4] "Acetoanaerobium"     "Alistipes"           "Anaeroarcus"        
+#&gt; </div><div class='input'><span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'>make_signatures</span><span class='op'>(</span><span class='va'>aero</span><span class='op'>[[</span><span class='fl'>1</span><span class='op'>]</span><span class='op'>]</span>, taxids <span class='op'>=</span> <span class='st'>"NCBI_ID"</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/base/lapply.html'>lapply</a></span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>head</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; $microaerophilic
+#&gt; [1]   84565   33877   59753 1132766   92793     187
+#&gt; 
+#&gt; $aerobic
+#&gt; [1]  291967 1078830     522 1000999   50714  119977
+#&gt; 
+#&gt; $aerotolerant
+#&gt; [1] 57039
+#&gt; 
+#&gt; $anaerobic
+#&gt; [1]   94008   57039 1427378   33951  558418   28186
+#&gt; 
+#&gt; $`facultatively anaerobic`
+#&gt; [1]  48381   2713 200473   2717 212791  47670
+#&gt; 
+#&gt; $`obligately aerobic`
+#&gt; [1] 442869    434    222  33973 110934 160700
+#&gt; 
+#&gt; $`obligately anaerobic`
+#&gt; [1] 258514  31980  35829 186831 239759 151038
+#&gt; </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
