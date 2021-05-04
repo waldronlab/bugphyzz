@@ -11,7 +11,7 @@ is_attr_c <- function(x) {
 
 test_that("all headers are present and valid in each data set", {
             for (i in seq_along(database)) {
-              expect_valid_headers(database[[i]], names(database[i]))
+              expectValidHeaders(database[[i]], names(database[i]))
               }
   })
 
