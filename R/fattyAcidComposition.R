@@ -19,7 +19,10 @@
 #test to check whether custom link exists
 
 fattyAcidComposition <- function(){
-  fac_wide <- read.csv(customLinks()[["link"]],check.names = FALSE)
+  link <- customLinks() %>%
+    dplyr::filter(functionname == "fattyAcidComposition") %>%
+    dplyr::pull(link)
+  fac_wide <- read.csv(link,check.names = FALSE)
   fac_long <- fac_wide %>%
     pivot_longer(cols = `Br-C10:1`:`Oxo-C19:1`,
                    names_to = "new_attribute",
@@ -27,8 +30,6 @@ fattyAcidComposition <- function(){
 
   return(fac_long)
 }
-
-  #I also want to include column with the numeric values next to Attribute_value .
 
 customLinks <- function(keyword = "all"){
   fname <-
