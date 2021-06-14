@@ -1,11 +1,10 @@
-#function for shaping fatty acid composition from Google Sheets using tidyR
-
+#' function for shaping fatty acid composition from Google Sheets using tidyR
 #' @param keyword a character vector of custom links desired. For the available
 #' custom links, run bugphyzz::custom_link(). Use "all" for all available custom links.
 #'
 #' @return a tidy data frame of fattyacidComposition from customlinks.tsv
 #'
-#' @import tidyr pivot_longer
+#' @importFrom  tidyr pivot_longer
 #'
 #' @export
 #'

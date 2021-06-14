@@ -20,10 +20,10 @@
 #' @examples
 #' library(bugphyzz)
 #' taxids <- c(1578, 745, 562, 2)
-#' rank_names <- get_taxonomy_ranks(taxids)
+#' rank_names <- ncbiRank(taxids)
 #'
 #'
-get_taxonomy_ranks <- function(x) {
+ncbiRank <- function(x) {
 
   ncbi_results <- suppressMessages(taxize::classification(x, db = "ncbi"))
   ranks<- c("superkingdom", "phylum", "class", "order", "family", "genus", "species")

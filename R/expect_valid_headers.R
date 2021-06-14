@@ -1,6 +1,6 @@
 #' Valid headers of bugphyzz data sets
 #'
-#' \code{valid_headers} contains the valid names and order of the mandatory
+#' \code{validHeaders} contains the valid names and order of the mandatory
 #' headers of a bugphyzz data set.
 #'
 #' @return A character vector with valid header names.
@@ -8,9 +8,9 @@
 #' @importFrom testthat expect
 #'
 #' @examples
-#' x <- valid_headers()
+#' x <- validHeaders()
 #' x
-valid_headers <- function() {
+validHeaders <- function() {
   c(
     "NCBI_ID",
     "Genome_ID",
@@ -25,7 +25,7 @@ valid_headers <- function() {
   }
 #' Expect that headers are valid in a single data frame
 #'
-#' \code{expect_valid_headers} tests if the first mandatory columns of a
+#' \code{expectValidHeaders} tests if the first mandatory columns of a
 #' bugphyzz data set have valid header names and are in the correct order.
 #'
 #' @param x A data frame from the bugphyzz database.
@@ -43,18 +43,18 @@ valid_headers <- function() {
 #' datasets <- curationLinks()[, c("physiology", "link")]
 #' link1 <- datasets[1, "link"]
 #' df1 <- read.csv(link1)
-#' expect_valid_headers(df1) # Error expected
+#' expectValidHeaders(df1) # Error expected
 #'
 #' # Example 2
 #' library(bugphyzz)
 #' link2 <- datasets[datasets[["physiology"]] == "aerophilicity", "link"]
 #' df2 <- read.csv(link2)
-#' expect_valid_headers(df2) # No error expected
+#' expectValidHeaders(df2) # No error expected
 #' }
-expect_valid_headers <- function(x, y = "current" ) {
-  # test_output <- all(valid_headers() %in% colnames(x))
-  test_output <- identical(valid_headers(),
-                           colnames(x)[1:length(valid_headers())])
+expectValidHeaders <- function(x, y = "current" ) {
+  # test_output <- all(validHeaders() %in% colnames(x))
+  test_output <- identical(validHeaders(),
+                           colnames(x)[1:length(validHeaders())])
   testthat::expect(test_output == TRUE,
          paste0("ERROR! The \"", y, "\" data set does not have ",
          "all of the valid headers or they are not in the correct order."))
@@ -76,12 +76,12 @@ expect_valid_headers <- function(x, y = "current" ) {
 #'   names(database)[i] <- datasets[i, "physiology"]
 #'   database[[i]] <- read.csv(datasets[i, "link"])
 #' }
-#' expect_valid_headers_all(database)
+#' expectValidHeaders_all(database)
 #'}
-expect_valid_headers_all <- function(x) {
+expectValidHeadersAll <- function(x) {
   for (i in seq_along(x)) {
     tryCatch({
-      expect_valid_headers(x[[i]], names(x[i]))
+      expectValidHeaders(x[[i]], names(x[i]))
       },
       error = function(e) {message(conditionMessage(e))})
   }

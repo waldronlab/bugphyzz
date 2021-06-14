@@ -25,6 +25,13 @@ physiologies <- function(keyword = "all") {
   for (i in seq_along(database)) {
     names(database)[i] <- links[i, "physiology"]
     database[[i]] <- utils::read.csv(links[i, "link"])
+    nmissing <- sum(is.na(database[[i]]$Attribute_value))
+    if(nmissing > 0){
+      message("Dropped ", nmissing, " rows with missing Attribute_value from ", names(database)[[i]])
+    }else{
+      message("Finished ", names(database)[[i]])
+    }
+    database[[i]] <- database[[i]][!is.na(database[[i]]$Attribute_value), ]
   }
   return(database)
 }
