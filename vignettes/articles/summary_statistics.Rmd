@@ -97,7 +97,7 @@ sunburstDF <- function(x, taxa_ranks) {
 ```
 
 
-```{r}
+```{r, fig.dim = c(8,8)}
 taxonomies_genera <- taxonomies |> 
   select(-NCBI_ID, -species) |> 
   distinct()
