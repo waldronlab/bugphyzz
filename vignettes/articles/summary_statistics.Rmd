@@ -111,27 +111,6 @@ plotly::plot_ly(df, type = "sunburst",  values = ~values, labels = ~labels, pare
 
 ```
 
-# Number of genera
-
-```{r}
-taxonomies |> 
-  select(-NCBI_ID, -species) |> 
-  distinct() |> 
-  count(superkingdom) |>
-  ggplot(aes(reorder(superkingdom, -n), n)) +
-  geom_col(fill = "firebrick3") +
-  geom_label(aes(label = n)) +
-  labs(title = "Genera in BugPhyzz",
-       x = "Superkingdom", y = "Number of Genera") +
-  theme_bw()
-```
-
-
-
-
-
-
-
 
 ```{r}
 summary_table <- sapply(physiologies, function(x) {
@@ -149,10 +128,6 @@ summary_table <- sapply(physiologies, function(x) {
 ```{r}
 summary_table |> 
   knitr::kable()
-```
-
-```{r}
-rownames(summary_table)
 ```
 
 

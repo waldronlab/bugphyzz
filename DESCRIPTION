@@ -34,4 +34,4 @@ Imports:
     tidyselect,
     tibble
 Depends: 
-    R (>= 4.0.0)
+    R (>= 4.1.0)
