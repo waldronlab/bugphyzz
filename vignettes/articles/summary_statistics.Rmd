@@ -1,0 +1,160 @@
+---
+title: "Summary Statistics of Microbes and Their Attributes in BugPhyzz"
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(bugphyzz)
+library(dplyr)
+library(ggplot2)
+library(plotly)
+```
+
+# All Taxa
+
+```{r}
+physiologies <- physiologies(keyword = "all")
+```
+
+## How many taxa in bugphyz with taxids?
+
+```{r}
+# How many taxa with NCBI Taxonomy IDs
+bugphyzz_ncbi_ids <- lapply(physiologies, function(x) x$NCBI_ID) |> 
+  unlist() |> 
+  as.integer() |> 
+  suppressWarnings() |> 
+  {\(x) x[!is.na(x)]}() |> 
+  unique() 
+length(bugphyzz_ncbi_ids)
+```
+
+```{r}
+taxonomies <- ncbiRank(bugphyzz_ncbi_ids)
+
+```
+
+```{r}
+head(taxonomies)
+
+```
+
+```{r, include=FALSE}
+delete_na <- function(x){ 
+  output <- gsub("(( - NA)+ - NA$)", "", x) |> 
+    {\(x) gsub("(( - NA)+ - )", " - ", x)}() |> 
+    {\(x) gsub("( - NA$)", "", x)}()
+}
+
+sunburstDF <- function(x, taxa_ranks) {
+  
+  x <- x |> 
+    dplyr::mutate(ROOT = "ROOT") |> 
+    relocate(ROOT)
+    
+  all_cols <- c("ROOT", taxa_ranks)
+  
+  output <- vector("list", length(taxa_ranks))
+  
+  for (i in seq_along(taxa_ranks)) {
+    counter <- i + 1 
+    select_cols <- all_cols[1:counter]
+    select_cols2 <- rlang::enquo(select_cols)
+    output[[i]] <- x |> 
+      dplyr::select(!!select_cols2) |> 
+      dplyr::group_by_at(.vars = select_cols) |> 
+      dplyr::summarise(values = n()) |>
+      dplyr::ungroup() |> 
+      tidyr::unite(col = ids, !!select_cols2, sep = " - ") |> 
+      dplyr::mutate(ids = delete_na(ids))
+  }
+  
+  output <- dplyr::bind_rows(output) |> 
+    dplyr::group_by(ids) |> 
+    dplyr::slice_max(order_by = values, with_ties = FALSE) |> 
+    dplyr::ungroup() |> 
+    dplyr::mutate(labels = sub("^.+ - ", "", ids),
+           parents = sub("^(.+) - .*$", "\\1", ids ),
+           parents = sub("ROOT - ", "", parents),
+           parents = sub("ROOT", "", parents),
+           parents = sub("^.+ - ", "", parents)) |> 
+    dplyr::group_by(labels, parents) |> 
+    dplyr::slice_max(order_by = values, with_ties = FALSE) |> 
+    dplyr::ungroup() |> 
+    dplyr::select(-ids) |> 
+    as.data.frame()
+  
+  return(output)
+}
+
+
+```
+
+
+```{r}
+taxonomies_genera <- taxonomies |> 
+  select(-NCBI_ID, -species) |> 
+  distinct()
+
+taxa <- c("superkingdom", "kingdom", "phylum")
+
+df <- sunburstDF(taxonomies_genera, taxa)
+plotly::plot_ly(df, type = "sunburst",  values = ~values, labels = ~labels, parents = ~parents,
+        branchvalues = "total") |> 
+  layout(title = "Number of Genera in BugPhyzz")
+
+```
+
+# Number of genera
+
+```{r}
+taxonomies |> 
+  select(-NCBI_ID, -species) |> 
+  distinct() |> 
+  count(superkingdom) |>
+  ggplot(aes(reorder(superkingdom, -n), n)) +
+  geom_col(fill = "firebrick3") +
+  geom_label(aes(label = n)) +
+  labs(title = "Genera in BugPhyzz",
+       x = "Superkingdom", y = "Number of Genera") +
+  theme_bw()
+```
+
+
+
+
+
+
+
+
+```{r}
+summary_table <- sapply(physiologies, function(x) {
+  c(NCBI_ID = sum(!is.na(x$NCBI_ID)), Taxon_name = sum(!is.na(x$Taxon_name)), 
+    Attribute = sum(!is.na(x$Attribute)), Attribute_value_true = sum(as.character(x$Attribute_value) == "TRUE", na.rm = TRUE),
+    Attribute_value_false = sum(as.character(x$Attribute_value) == "FALSE", na.rm = TRUE))
+}) |> 
+  t() |> 
+  as.data.frame() |> 
+  mutate(Type = ifelse(Attribute_value_true > 0, "Categorical", "Continuous")) |> 
+  arrange( Type, -NCBI_ID, -Taxon_name, -Attribute,-Attribute_value_true)
+  
+```
+
+```{r}
+summary_table |> 
+  knitr::kable()
+```
+
+```{r}
+rownames(summary_table)
+```
+
+
+
+

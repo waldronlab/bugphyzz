@@ -9,3 +9,4 @@
 ^pkgdown$
 ^data-raw$
 ^jupyter_notebooks$
+^vignettes/articles$

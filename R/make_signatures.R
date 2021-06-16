@@ -37,7 +37,7 @@ make_signatures <- function(df, taxids = "Taxon_name", rank = "all"){
 #' head(x)
 fetch_bugs <- function(attribute_name, dat, taxids = "Taxon_name"){
   bugs <- c(dat[dat[["Attribute"]] == attribute_name,])
-  bugs <- bugs[[taxids]]
+  bugs <- unique(bugs[[taxids]])
   return(bugs[!is.na(bugs)])
 }
 
