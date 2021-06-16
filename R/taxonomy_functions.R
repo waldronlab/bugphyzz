@@ -1,15 +1,17 @@
-#' Get Taxonomy Ranks from NCBI TaxIDs
+#' Get Taxonomy Ranks from NCBI Taxonomy IDs
 #'
-#' \code{get_taxonomy_ranks} retrieves taxonomy names for input NCBI taxids at
-#' different taxonomy ranks.
+#' \code{ncbiRank} retrieves taxonomy rank names (or IDs) at the kingdom, phylum, class,
+#' order, family, genus, and species level for given NCBI taxonomy IDs.
 #'
 #' @param x
-#' A numeric vector of valid NCBI taxids.
+#' A numeric vector or character vector of valid NCBI taxonomy IDs.
+#'
+#' @param taxid
+#' A logical vector of lenght 1. If TRUE, taxonomy IDs (taxids) are returned instead of rank names.
+#' Default is FALSE.
 #'
 #' @return
-#' A tibble in which each row contains the input NCBI IDs and each column contains
-#' the taxonomy names of the following ranks: kingdom, phylum, class, order,
-#' family, genus, species.
+#' A tibble. The first column, NCB_ID, contains the input taxonomy IDs.
 #'
 #' @export
 #'
@@ -19,29 +21,38 @@
 #'
 #' @examples
 #' library(bugphyzz)
-#' taxids <- c(1578, 745, 562, 2)
-#' rank_names <- ncbiRank(taxids)
+#' taxonomy_ids <- c(1578, 745, 562, 2)
 #'
+#' # Example 1
+#' rank_names <- ncbiRank(taxonomy_ids)
+#' rank_names
 #'
-ncbiRank <- function(x) {
+#' # Example 2
+#' rank_ids <- ncbiRank(taxonomy_ids, taxid = TRUE)
+#' rank_ids
+#'
+ncbiRank <- function(x, taxid = FALSE) {
 
   ncbi_results <- suppressMessages(taxize::classification(x, db = "ncbi"))
-  ranks<- c("superkingdom", "phylum", "class", "order", "family", "genus", "species")
-  output <- vector("list", 8)
+
+  ranks<- c("superkingdom", "kingdom", "phylum", "class", "order", "family", "genus", "species")
+  output <- vector("list", length(ranks) + 1) # ranks + 1 because of NCBI_ID column
   names(output) <- c("NCBI_ID", ranks)
-  output[[1]] <- names(ncbi_results)
+  output[[1]] <- as.integer(names(ncbi_results)) # Column of NCBI_IDs
 
   for (i in seq_along(ranks)) {
       output[[i + 1]] <- purrr::map_chr(ncbi_results, function(x) {
-        rank_name <- x$name[x$rank == ranks[[i]]]
-        names(rank_name) <- NULL
+
+        if (taxid) {
+          rank_name <- x$id[ x$rank == ranks[i] ]
+        } else{
+          rank_name <- x$name[ x$rank == ranks[i] ]
+        }
+
         ifelse(!length(rank_name), NA, rank_name)})
   }
 
   output <- tibble::as_tibble(output)
-  output[["NCBI_ID"]] <- as.integer(output[["NCBI_ID"]])
-  names(output)[2] <- "kingdom"
   return(output)
 
 }
-

@@ -2,26 +2,33 @@
 % Please edit documentation in R/taxonomy_functions.R
 \name{ncbiRank}
 \alias{ncbiRank}
-\title{Get Taxonomy Ranks from NCBI TaxIDs}
+\title{Get Taxonomy Ranks from NCBI Taxonomy IDs}
 \usage{
-ncbiRank(x)
+ncbiRank(x, taxid = FALSE)
 }
 \arguments{
-\item{x}{A numeric vector of valid NCBI taxids.}
+\item{x}{A numeric vector or character vector of valid NCBI taxonomy IDs.}
+
+\item{taxid}{A logical vector of lenght 1. If TRUE, taxonomy IDs (taxids) are returned instead of rank names.
+Default is FALSE.}
 }
 \value{
-A tibble in which each row contains the input NCBI IDs and each column contains
-the taxonomy names of the following ranks: kingdom, phylum, class, order,
-family, genus, species.
+A tibble. The first column, NCB_ID, contains the input taxonomy IDs.
 }
 \description{
-\code{get_taxonomy_ranks} retrieves taxonomy names for input NCBI taxids at
-different taxonomy ranks.
+\code{ncbiRank} retrieves taxonomy rank names (or IDs) at the kingdom, phylum, class,
+order, family, genus, and species level for given NCBI taxonomy IDs.
 }
 \examples{
 library(bugphyzz)
-taxids <- c(1578, 745, 562, 2)
-rank_names <- ncbiRank(taxids)
+taxonomy_ids <- c(1578, 745, 562, 2)
 
+# Example 1
+rank_names <- ncbiRank(taxonomy_ids)
+rank_names
+
+# Example 2
+rank_ids <- ncbiRank(taxonomy_ids, taxid = TRUE)
+rank_ids
 
 }
