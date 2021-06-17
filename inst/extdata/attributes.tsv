@@ -1,7 +1,7 @@
 "attribute"	"validity"	"ontology"	"desription"
 "aerobic"	"logical"	MICRO_0000494	"A prokaryotic metabolic quality where the organism grows in the presence of oxygen."
 "microaerophilic"	"logical"	MICRO_0000515	"A prokaryotic metabolic quality where the organism grows in the presence of oxygen, where the oxygen concentration is less than atmospheric levels."
-"obligately	aerobic"	"logical"	MICRO_0000516	"A prokaryotic metabolic quality where the organism grows in the presence of oxygen. Is incapable of anaerobic growth (growth in the absence of oxygen)."
+"obligately aerobic"	"logical"	MICRO_0000516	"A prokaryotic metabolic quality where the organism grows in the presence of oxygen. Is incapable of anaerobic growth (growth in the absence of oxygen)."
 "aerotolerant"	"logical"	MICRO:0000502	"A prokaryotic metabolic quality where the organism grows in the absence of oxygen. Can grow or live in the presence of oxygen."
 "anaerobic"	"logical"	MICRO_0000495	"A prokaryotic metabolic quality where the organism grows in the absence of oxygen"
 "facultatively anaerobic"	"logical"	MICRO_0000504	"A prokaryote which is capable of growth in the presence of oxygen or in the absence of oxygen."
@@ -145,7 +145,7 @@
 "palisade"	"logical"	MICRO_0000941	"A multicellular prokaryotic morphological quality where cells so that their long axes are stacked parallel to one another (like in a fence)"
 "rosettes"	"logical"	NA	NA
 "single"	"logical"	NCIT_C48440	"Not accompanied by another or others; exclusive of anyone or anything else"
-"tetrads"	NA	"logical"	MICRO:0000374	"A multicellular prokaryotic morphological quality where cells are attached to one another in multiples of four. Forms when cell division occurs in two planes at right angles to one another."
+"tetrads"	"logical"	MICRO:0000374	"A multicellular prokaryotic morphological quality where cells are attached to one another in multiples of four. Forms when cell division occurs in two planes at right angles to one another."
 "unbranched"	"logical"	PATO:0000414	"A branchiness quality inhering in a bearer by virtue of the bearer's lacking branches."
 "V-branched filaments"	"logical"	MICRO:0000127	"True-branched filaments, where an apical cell divides longitudinally, from which grows obliquely two equivalent branches."
 "reverse Y-branched filaments"	"logical"	MICRO_0000128	"True-branched filaments, where branches arise in the intercalary (medial) cells after oblique cell division at an intercalary (medial cell)."
@@ -172,13 +172,12 @@
 "antimicrobial sensitivity"	"logical"	NA	NA
 "biofilm formation"	"logical"	APO:0000159	"The ability to form a layer on solid surfaces with or without other microorganisms."
 "Butyrate-Producing Bacteria"	"numeric"	NCIT:C126417	"Any anaerobic bacteria that metabolizes complex carbohydrates to produce butyrate. These microorganisms may form colonies in the intestines of mammals; their presence may aid the host by catabolizing undigested fiber and starch. Additionally, butyrate is metabolized by colonic epithelial cells and may protect the host against ulcerative colitis and cancer."
-"acetate producing"	"numeric"		NA	NA
-"lactate producing"	"numeric"		NA	NA
-"mutation rate per site per year"	"numeric"		NA	NA
-"mutation rate per site per generation"	"numeric"		NA	NA
-"hydrogen gas producing"	"numeric"		NA	NA
-"width"	"numeric"		PATO:0000921	"A 1-D extent quality which is equal to the distance from one side of an object to another side which is opposite."
+"acetate producing"	"numeric"	NA	NA
+"lactate producing"	"numeric"	NA	NA
+"mutation rate per site per year"	"numeric"	NA	NA
+"mutation rate per site per generation"	"numeric"	NA	NA
+"hydrogen gas producing"	"numeric"	NA	NA
+"width"	"numeric"	PATO:0000921	"A 1-D extent quality which is equal to the distance from one side of an object to another side which is opposite."
 "length"	"numeric"	PATO:0000122	"A 1-D extent quality which is equal to the distance between two points"
 "fatty acid composition"	NA	NA	NA
-"human urine"	MCO:0000662	"No definition provided"
-
+"human urine"	"logical"	MCO:0000662	"No definition provided"
