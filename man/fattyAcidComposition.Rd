@@ -2,23 +2,20 @@
 % Please edit documentation in R/fattyAcidComposition.R
 \name{fattyAcidComposition}
 \alias{fattyAcidComposition}
-\title{function for shaping fatty acid composition from Google Sheets using tidyR}
+\title{Function for shaping fatty acid composition from Google Sheets using tidyR}
 \usage{
 fattyAcidComposition()
 }
-\arguments{
-\item{keyword}{a character vector of custom links desired. For the available
-custom links, run bugphyzz::custom_link(). Use "all" for all available custom links.}
-}
 \value{
-a tidy data frame of fattyacidComposition from customlinks.tsv
+a tidy data frame of fattyAcidComposition from customlinks.tsv
 }
 \description{
-function for shaping fatty acid composition from Google Sheets using tidyR
+Function for shaping fatty acid composition from Google Sheets using tidyR
 }
 \examples{
+library(bugphyzz)
 fattyAcidComposition()
 x <- fattyAcidComposition()
-View(x)
+dplyr::glimpse(x)
 
 }
