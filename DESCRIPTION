@@ -32,6 +32,7 @@ Imports:
     testthat (>= 3.0.0),
     tidyr,
     tidyselect,
-    tibble
+    tibble,
+    crayon
 Depends: 
     R (>= 4.1.0)
