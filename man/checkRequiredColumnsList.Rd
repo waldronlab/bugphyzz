@@ -10,20 +10,63 @@ checkRequiredColumnsList(x)
 \item{x}{A list of bugphyzz datasets.}
 }
 \value{
-An error message if any of the required columns is missing or is not in the right order.
-Otherwise, it returns a message indicating that the required columns are present and in the right order.
+\code{checkRequiredColumnsList} invisibly returns a list of error conditions ("required_columns_missing" or
+"required_columns_misplaced"), and it also prints an error message for each error found.
+If no errors are found, \code{checkRequiredColumns} prints a message indicating that the required
+columns are present and in the right order.
 }
 \description{
 \code{checkRequiredColumnsList} applies the \code{\link{checkRequiredColumns}} function to a list of
-bugphyzz datasets. If a required column is missing or is not in the right order, it prints a
-message indicating which columns must be added or reordered.
+bugphyzz datasets. If a required column (see \code{\link{requiredColumns}}) is missing or is not in the right order in a dataset,
+\code{checkRequiredColumnsList} prints a message indicating which columns are missing or must be
+reordered.
 }
 \examples{
 
 \dontrun{
 
+# Example 1 - a list of datasets with errors
+
+list_of_datasets <- list(
+ dataset_with_missing_required_columns = data.frame(
+   NCBI_ID = 1:10,
+   Attribute = letters[1:10]
+ ),
+
+ dataset_with_misplaced_required_columns = data.frame(
+   NCBI_ID = 1:10,
+   Taxon_name = letters[1:10],
+   Genome_ID = 1:10,
+   Accession_number = 1:10,
+   Attribute = 1:10,
+   Attribute_value = 1:10,
+   Attribute_source = 1:10,
+   Evidence = 1:10,
+   Note = 1:10,
+   Confidence_interval = 1:10
+ ),
+
+ dataset_with_required_columns_ok = data.frame(
+   NCBI_ID = 1:10,
+   Genome_ID = 1:10,
+   Accession_number = 1:10,
+   Taxon_name = letters[1:10],
+   Attribute = 1:10,
+   Attribute_value = 1:10,
+   Attribute_source = 1:10,
+   Evidence = 1:10,
+   Confidence_interval = 1:10,
+   Note = 1:10
+ )
+)
+
+list_of_errors <- bugphyzz::checkRequiredColumnsList(list_of_datasets)
+list_of_errors
+
+# Example 2 - a list of bugphyzz datasets
+
 bp = bugphyzz::physiologies(keyword = "all")
-bugphyzz::checkRequiredColumnsList(bp)
+list_of_errors_bp = bugphyzz::checkRequiredColumnsList(bp)
 
 }
 
@@ -32,4 +75,11 @@ bugphyzz::checkRequiredColumnsList(bp)
 \code{\link{requiredColumns}};
 \code{\link{checkRequiredColumns}};
 \code{\link{checkRequiredColumnsList}}
+
+Other check functions: 
+\code{\link{checkColumnValuesDF}()},
+\code{\link{checkColumnValuesList}()},
+\code{\link{checkColumnValues}()},
+\code{\link{checkRequiredColumns}()}
 }
+\concept{check functions}

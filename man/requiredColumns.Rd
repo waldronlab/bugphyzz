@@ -16,6 +16,7 @@ bugphyzz data sets.
 \examples{
 x <- requiredColumns()
 x
+
 }
 \seealso{
 \code{\link{requiredColumns}};

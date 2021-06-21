@@ -2,33 +2,81 @@
 % Please edit documentation in R/check_functions.R
 \name{checkColumnValues}
 \alias{checkColumnValues}
-\title{Check if values are valid across the columns of a bugphyzz dataset}
+\title{Check column values}
 \usage{
-checkColumnValues(x, dataset_name = NULL)
+checkColumnValues(
+  column_name,
+  dataset,
+  dataset_name = NULL,
+  quiet_success = TRUE
+)
 }
 \arguments{
-\item{x}{A dataset from bugphyzz, e.g. aerophilicity.}
+\item{column_name}{A character vector of length 1; name of the column.}
 
-\item{dataset_name}{Character vector of length 1; optional name for the dataset.}
+\item{dataset}{A data frame.}
+
+\item{dataset_name}{A character vector of length 1; name of the dataset. Default is NULL.}
+
+\item{quiet_success}{If FALSE, an error message is printed when no errors are found. Default is TRUE.}
 }
 \value{
-Prints a message on screen if invalid values are found in one or more columns.
+\code{checkColumnValues} invisibly returns an error condition (subclass "invalid_column_values" or
+"invalid_column_class"), and it also prints an error message if the column contains invalid values.
+If \code{quiet_success} is FALSE, it prints a message indicating that no errors were found if that is
+the case.
 }
 \description{
-\code{checkColumnValues} compares the values in each column of a bugphyzz dataset with
-the set of valid values or characters defined in the \code{valid_values} column in the template.tsv
-file, and prints an error message to screen if invalid values are found in a column.
+\code{checkColumnValues} checks if a single column in a data frame contains valid values as
+according to the template.tsv file.
 }
 \examples{
 
 \dontrun{
 
-oxygen <- bugphyzz::phyisiologies(keyword = "aerophilicity")
-bugphyzz::checkColumnValues(x = oxygen[[1]], dataset_name = names(oxygen)[1])#'
+# Example 1
+
+dataset_with_bad_values <- data.frame(
+  NCBI_ID = letters[1:10],
+  Genome_ID = 1:10,
+  Accession_number = 1:10,
+  Taxon_name = letters[1:10],
+  Attribute = 1:10,
+  Attribute_value = letters[1:10],
+  Attribute_source = 1:10,
+  Evidence = 1:10,
+  Confidence_interval = 1:10,
+  Note = 1:10
+)
+
+err1 = bugphyzz::checkColumnValues("NCBI_ID",  dataset_with_bad_values)
+err1
+err1$bad_values
+
+err2 = bugphyzz::checkColumnValues("Attribute", dataset_with_bad_values)
+err2
+err2$bad_values
+
+err3 = bugphyzz::checkColumnValues("Attribute_value", dataset_with_bad_values)
+err3
+
+# Example 2
+
+aerophilicity <- bugphyzz::physiologies(keyword = "aerophilicity")[[1]]
+aerophilicity_NCBI_ID_errors <- bugphyzz::checkColumnValues("NCBI_ID", aerophilicity) # no errors
 
 }
 
 }
 \seealso{
-\code{\link{checkColumnValues}}; \code{\link{checkColumnValuesList}}
+\code{\link{checkColumnValues}};
+\code{\link{checkColumnValuesDF}};
+\code{\link{checkColumnValuesList}}
+
+Other check functions: 
+\code{\link{checkColumnValuesDF}()},
+\code{\link{checkColumnValuesList}()},
+\code{\link{checkRequiredColumnsList}()},
+\code{\link{checkRequiredColumns}()}
 }
+\concept{check functions}

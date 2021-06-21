@@ -2,30 +2,63 @@
 % Please edit documentation in R/check_functions.R
 \name{checkColumnValuesList}
 \alias{checkColumnValuesList}
-\title{Check if values are valid across the columns of a list of bugphyzz datasets}
+\title{Check column values in a list of bugphyzz datasets}
 \usage{
 checkColumnValuesList(x)
 }
 \arguments{
-\item{x}{A named list of datasets in bugphyzz.}
+\item{x}{A list of bugphyzz datasets.}
 }
 \value{
-Prints a message on screen if invalid values are found in one or more columns of each dataset.
+\code{checkColumnValuesList} invisibly returns a list of error conditions (subclass
+"invalid_column_values" or "invalid_column_class"), and it also prints an error message if
+a column contains invalid values in any of the datasets of the list.
 }
 \description{
-\code{checkColumnValuesList} applies the \code{checkColumnValues} function to a list of dataframes
-imported from the bugphyzz package. The \code{checkColumnValues} function prints a message if
-columns don't have valid values as specified in the template.tsv file.
+\code{checkColumnValuesDF} applies the \code{checkColumnValuesDF} function to a list of
+bugphyzz datasets.
 }
 \examples{
+
 \dontrun{
 
+# Example 1
+
+list_of_df <- list(dataset_with_bad_values = data.frame(
+    NCBI_ID = letters[1:10],
+    Genome_ID = 1:10,
+    Accession_number = 1:10,
+    Taxon_name = letters[1:10],
+    Attribute = 1:10,
+    Attribute_value = letters[1:10],
+    Attribute_source = 1:10,
+    Evidence = 1:10,
+    Confidence_interval = 1:10,
+    Note = 1:10
+  )
+)
+
+err <- bugphyzz::checkColumnValuesList(list_of_df)
+err
+
+# Example 2
+
 bp <- bugphyzz::physiologies(keyword = "all")
-bugphyzz::checkColumnValuesList(bp)
+bp_list_of_errors <- bugphyzz::checkColumnValuesList(bp)
+bp_list_of_errors$aerophilicity$Evidence$bad_values
 
 }
 
 }
 \seealso{
-\code{\link{checkColumnValues}}; \code{\link{checkColumnValuesList}}
+\code{\link{checkColumnValues}};
+\code{\link{checkColumnValuesDF}};
+\code{\link{checkColumnValuesList}}
+
+Other check functions: 
+\code{\link{checkColumnValuesDF}()},
+\code{\link{checkColumnValues}()},
+\code{\link{checkRequiredColumnsList}()},
+\code{\link{checkRequiredColumns}()}
 }
+\concept{check functions}

@@ -22,43 +22,6 @@
   stop(err)
 }
 
-#' Stop condition for invalid values in a column of a bugphyzz dataset
-#'
-#' \code{.stop_invalid_column_values} generates an error condition if a column contains invalid values.
-#'
-#' @param col
-#' Character of length 1; a single column name.
-#' @param dataset_name
-#' Character of length 1; dataset name.
-#' @param n_rows
-#' Integer of length 1; number of rows with invalid values.
-#' @param values
-#' Optional. Invalid values in column. Only the first three will be printed.
-#' @param ...
-#' Any other argument useful to identify the source of the error and how to fix it.
-#'
-#' @importFrom utils head
-#'
-#' @return
-#' Object of class "invalid_column_names", "error", "condition".
-#'
-.stop_invalid_column_values <- function(col, n_rows, dataset_name = NULL, values = NULL, ...) {
-
-  if(!is.null(dataset_name)) {
-    msg <- paste0(">>> The column `", col, "` in dataset `", dataset_name,"` contains invalid values in ", n_rows," rows.")
-  } else {
-    msg <- paste0(">>> The column `", col, "` contains invalid values in ", n_rows," rows.")
-  }
-
-  if(!is.null(values)) {
-    values <-  paste0(utils::head(as.character(values), n = 3), collapse = ", ")
-    # paste0(as.character(utils::head(values, n = 3)), collapse = ", ")
-    msg <- paste0(msg, " The first invalid values are: ", values, "...")
-  }
-
-  .stop_custom(subclass = "invalid_column_values", message = msg, ...)
-
-}
 
 #' Stop condition for missing required columns in a bugphyzz dataset
 #'
@@ -81,13 +44,13 @@
   cols <- paste0(cols, collapse = ", ")
 
   if (!is.null(dataset_name)) {
-    msg <- paste0(">>> The following required columns are missing from the `", dataset_name, "` dataset: ", cols, ".",
+    msg <- paste0(">>> Required columns missing. The following required columns are missing from the `", dataset_name, "` dataset: ", cols, ".",
                   " Please check the required columns with `requiredColumns()`.")
   } else {
-    msg <- paste0(">>> The following required columns are missing: ", cols, ".", " Please check the required columns with `requiredColumns()`")
+    msg <- paste0(">>> Required columns missing. The following required columns are missing: ", cols, ".", " Please check the required columns with `requiredColumns()`")
   }
 
-  .stop_custom(subclass = "required_columns_missing", message = msg, ...)
+  .stop_custom(subclass = "required_columns_missing", message = msg,  ...)
 
 }
 
@@ -112,12 +75,77 @@
   cols <- paste0(cols, collapse = ", ")
 
   if (!is.null(dataset_name)) {
-    msg <- paste0(">>> The following required columns in the `", dataset_name, "` dataset are not in the right place: ", cols, ".",
+    msg <- paste0(">>> Misplaced required columns. The following required columns in the `", dataset_name, "` dataset are not in the right place: ", cols, ".",
                   " Please check the correct order with `requiredColumns()`.")
   } else {
-    msg <- paste0(">>> The following required columns are not in the right place: ", cols, ".",
+    msg <- paste0(">>> Misplaced required columns. The following required columns are not in the right place: ", cols, ".",
                   " Please check the correct order with `requiredColumns()`.")
   }
 
   .stop_custom(subclass = "required_columns_misplaced", message = msg, ...)
+}
+
+#' Stop condition for invalid values in a column of a bugphyzz dataset
+#'
+#' \code{.stop_invalid_column_values} generates an error condition if a column contains invalid values.
+#'
+#' @param col
+#' Character of length 1; a single column name.
+#' @param dataset_name
+#' Character of length 1; dataset name.
+#' @param n_rows
+#' Integer of length 1; number of rows with invalid values.
+#' @param values
+#' Optional. Invalid values in column. Only the first three will be printed.
+#' @param ...
+#' Any other argument useful to identify the source of the error and how to fix it.
+#'
+#' @importFrom utils head
+#'
+#' @return
+#' Object of class "invalid_column_names", "error", "condition".
+#'
+.stop_invalid_column_values <- function(col, n_rows, dataset_name = NULL, values = NULL, ...) {
+
+  if(!is.null(dataset_name)) {
+    msg <- paste0(">>> Invalid values. The column `", col, "` in dataset `", dataset_name,"` contains invalid values in ", n_rows," rows.")
+  } else {
+    msg <- paste0(">>> Invalid values. The column `", col, "` contains invalid values in ", n_rows," rows.")
+  }
+
+  if(!is.null(values)) {
+    values <-  paste0(utils::head(as.character(values), n = 3), collapse = ", ")
+    # paste0(as.character(utils::head(values, n = 3)), collapse = ", ")
+    msg <- paste0(msg, " The first invalid values are: ", values, "...")
+  }
+
+  .stop_custom(subclass = "invalid_column_values", message = msg, ...)
+
+}
+
+#' Stop condition for invalid column class (in Attribute_value column)
+#'
+#' \code{.stop_invalid_column_class} generates an error condition if a column (Attribute_value)
+#' is not logical or numeric.
+#'
+#' @param col_class
+#' Character vector of length 1; name of invalid class.
+#' @param dataset_name
+#' Character vector of length 1; name of the dataset.
+#' @param ...
+#' Any other argument useful to identify the source of the error and how to fix it.
+#'
+#' @return
+#' Object of class: "invalid_column_class", "error", "condition".
+#'
+.stop_invalid_column_class <- function(col_class, dataset_name = NULL, ...) {
+
+  if(!is.null(dataset_name)){
+    msg <- paste0(">>> Incorrect column class in ", dataset_name, ". The `Attribute_value` column` should be of class logical or numeric, not ", col_class)
+  } else {
+    msg <- paste0(">>> Incorrect column class. The `Attribute_value` column` should be of class logical or numeric, not ", col_class, "." )
+  }
+
+  .stop_custom(subclass = "invalid_column_class", message = msg, ...)
+
 }
