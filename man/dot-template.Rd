@@ -2,7 +2,7 @@
 % Please edit documentation in R/check_functions.R
 \name{.template}
 \alias{.template}
-\title{Generates a template for a bugphyzz dataset}
+\title{Generate a template for a bugphyzz dataset}
 \usage{
 .template(x)
 }
@@ -10,8 +10,25 @@
 \item{x}{A data.frame or tibble; a dataset from bugphyzz.}
 }
 \value{
-A tibble with column names and valid values for a given bugphyzz dataset.
+A dataset specific template. A tibble with only column names and valid values for a given bugphyzz dataset.
 }
 \description{
-Generates a template for a bugphyzz dataset
+\code{.template} is a helper function for the \code{\link{checkColumnValues}} function.
+\code{.template} generates a subset of
+the template.tsv file based on the columns present in a given bugphyzz dataset.
 }
+\details{
+A bugphyzz dataset contains a number of mandatory columns (referred to as required columns; see
+\code{\link{requiredColumns}}), but optionally, it can contain other columns. The purpose of
+\code{template} is to create a subset of the template.tsv file (which contains all columns
+of all datasets across bugphyzz) containing only the columns specific for a given bugphyzz dataset.
+}
+\seealso{
+\code{\link{.template}};
+\code{\link{.attributes}};
+\code{\link{checkColumnValues}}
+
+Other helper functions: 
+\code{\link{.attributes}()}
+}
+\concept{helper functions}

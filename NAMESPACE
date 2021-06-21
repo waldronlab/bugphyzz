@@ -2,6 +2,7 @@
 
 export(bergeys_abstracts)
 export(checkColumnValues)
+export(checkColumnValuesDF)
 export(checkColumnValuesList)
 export(checkRequiredColumns)
 export(checkRequiredColumnsList)
