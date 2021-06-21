@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Check if values are valid across the columns of a list of bugphyzz datasets — checkColumnValuesList • bugphyzz</title>
+<title>Check column values in a list of bugphyzz datasets — checkColumnValuesList • bugphyzz</title>
 
 
 <!-- jquery -->
@@ -39,10 +39,9 @@
 
 
 
-<meta property="og:title" content="Check if values are valid across the columns of a list of bugphyzz datasets — checkColumnValuesList" />
-<meta property="og:description" content="checkColumnValuesList applies the checkColumnValues function to a list of dataframes
-imported from the bugphyzz package. The checkColumnValues function prints a message if
-columns don't have valid values as specified in the template.tsv file." />
+<meta property="og:title" content="Check column values in a list of bugphyzz datasets — checkColumnValuesList" />
+<meta property="og:description" content="checkColumnValuesDF applies the checkColumnValuesDF function to a list of
+bugphyzz datasets." />
 
 
 
@@ -120,15 +119,14 @@ columns don't have valid values as specified in the template.tsv file." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Check if values are valid across the columns of a list of bugphyzz datasets</h1>
+    <h1>Check column values in a list of bugphyzz datasets</h1>
     
     <div class="hidden name"><code>checkColumnValuesList.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p><code>checkColumnValuesList</code> applies the <code>checkColumnValues</code> function to a list of dataframes
-imported from the bugphyzz package. The <code>checkColumnValues</code> function prints a message if
-columns don't have valid values as specified in the template.tsv file.</p>
+    <p><code>checkColumnValuesDF</code> applies the <code>checkColumnValuesDF</code> function to a list of
+bugphyzz datasets.</p>
     </div>
 
     <pre class="usage"><span class='fu'>checkColumnValuesList</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span></pre>
@@ -138,22 +136,54 @@ columns don't have valid values as specified in the template.tsv file.</p>
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>x</th>
-      <td><p>A named list of datasets in bugphyzz.</p></td>
+      <td><p>A list of bugphyzz datasets.</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>Prints a message on screen if invalid values are found in one or more columns of each dataset.</p>
+    <p><code>checkColumnValuesList</code> invisibly returns a list of error conditions (subclass
+"invalid_column_values" or "invalid_column_class"), and it also prints an error message if
+a column contains invalid values in any of the datasets of the list.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><code><a href='checkColumnValues.html'>checkColumnValues</a></code>; <code>checkColumnValuesList</code></p></div>
+    <div class='dont-index'><p><code><a href='checkColumnValues.html'>checkColumnValues</a></code>;
+<code><a href='checkColumnValuesDF.html'>checkColumnValuesDF</a></code>;
+<code>checkColumnValuesList</code></p>
+<p>Other check functions: 
+<code><a href='checkColumnValuesDF.html'>checkColumnValuesDF</a>()</code>,
+<code><a href='checkColumnValues.html'>checkColumnValues</a>()</code>,
+<code><a href='checkRequiredColumnsList.html'>checkRequiredColumnsList</a>()</code>,
+<code><a href='checkRequiredColumns.html'>checkRequiredColumns</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
+    <pre class="examples"><div class='input'>
+<span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
+
+<span class='co'># Example 1</span>
+
+<span class='va'>list_of_df</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>dataset_with_bad_values <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span>
+    NCBI_ID <span class='op'>=</span> <span class='va'>letters</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>10</span><span class='op'>]</span>,
+    Genome_ID <span class='op'>=</span> <span class='fl'>1</span><span class='op'>:</span><span class='fl'>10</span>,
+    Accession_number <span class='op'>=</span> <span class='fl'>1</span><span class='op'>:</span><span class='fl'>10</span>,
+    Taxon_name <span class='op'>=</span> <span class='va'>letters</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>10</span><span class='op'>]</span>,
+    Attribute <span class='op'>=</span> <span class='fl'>1</span><span class='op'>:</span><span class='fl'>10</span>,
+    Attribute_value <span class='op'>=</span> <span class='va'>letters</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>10</span><span class='op'>]</span>,
+    Attribute_source <span class='op'>=</span> <span class='fl'>1</span><span class='op'>:</span><span class='fl'>10</span>,
+    Evidence <span class='op'>=</span> <span class='fl'>1</span><span class='op'>:</span><span class='fl'>10</span>,
+    Confidence_interval <span class='op'>=</span> <span class='fl'>1</span><span class='op'>:</span><span class='fl'>10</span>,
+    Note <span class='op'>=</span> <span class='fl'>1</span><span class='op'>:</span><span class='fl'>10</span>
+  <span class='op'>)</span>
+<span class='op'>)</span>
+
+<span class='va'>err</span> <span class='op'>&lt;-</span> <span class='fu'>bugphyzz</span><span class='fu'>::</span><span class='fu'>checkColumnValuesList</span><span class='op'>(</span><span class='va'>list_of_df</span><span class='op'>)</span>
+<span class='va'>err</span>
+
+<span class='co'># Example 2</span>
 
 <span class='va'>bp</span> <span class='op'>&lt;-</span> <span class='fu'>bugphyzz</span><span class='fu'>::</span><span class='fu'><a href='physiologies.html'>physiologies</a></span><span class='op'>(</span>keyword <span class='op'>=</span> <span class='st'>"all"</span><span class='op'>)</span>
-<span class='fu'>bugphyzz</span><span class='fu'>::</span><span class='fu'>checkColumnValuesList</span><span class='op'>(</span><span class='va'>bp</span><span class='op'>)</span>
+<span class='va'>bp_list_of_errors</span> <span class='op'>&lt;-</span> <span class='fu'>bugphyzz</span><span class='fu'>::</span><span class='fu'>checkColumnValuesList</span><span class='op'>(</span><span class='va'>bp</span><span class='op'>)</span>
+<span class='va'>bp_list_of_errors</span><span class='op'>$</span><span class='va'>aerophilicity</span><span class='op'>$</span><span class='va'>Evidence</span><span class='op'>$</span><span class='va'>bad_values</span>
 
 <span class='op'>}</span>
 

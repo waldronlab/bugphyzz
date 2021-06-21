@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Required columns — requiredColumns • bugphyzz</title>
+<title>Print valid attributes — .attributes • bugphyzz</title>
 
 
 <!-- jquery -->
@@ -39,9 +39,9 @@
 
 
 
-<meta property="og:title" content="Required columns — requiredColumns" />
-<meta property="og:description" content="requiredColumns prints the names and order of the columns that must be present in all
-bugphyzz data sets." />
+<meta property="og:title" content="Print valid attributes — .attributes" />
+<meta property="og:description" content=".attributes is a helper function for the checkColumnValues function.
+.attributes print the valid attribute names as indicated in the attributes.tsv file." />
 
 
 
@@ -119,35 +119,30 @@ bugphyzz data sets." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Required columns</h1>
+    <h1>Print valid attributes</h1>
     
-    <div class="hidden name"><code>requiredColumns.Rd</code></div>
+    <div class="hidden name"><code>dot-attributes.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p><code>requiredColumns</code> prints the names and order of the columns that must be present in all
-bugphyzz data sets.</p>
+    <p><code>.attributes</code> is a helper function for the <code><a href='checkColumnValues.html'>checkColumnValues</a></code> function.
+<code>.attributes</code> print the valid attribute names as indicated in the attributes.tsv file.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>requiredColumns</span><span class='op'>(</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>.attributes</span><span class='op'>(</span><span class='op'>)</span></pre>
 
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A character vector with mandatory column names (required columns).</p>
+    <p>A character vector with valid attribute names.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><code>requiredColumns</code>;
-<code><a href='checkRequiredColumns.html'>checkRequiredColumns</a></code>;
-<code><a href='checkRequiredColumnsList.html'>checkRequiredColumnsList</a></code></p></div>
+    <div class='dont-index'><p><code><a href='.template.html'>.template</a></code>;
+<code>.attributes</code>;
+<code><a href='checkColumnValues.html'>checkColumnValues</a></code></p>
+<p>Other helper functions: 
+<code><a href='.template.html'>.template</a>()</code></p></div>
 
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'>requiredColumns</span><span class='op'>(</span><span class='op'>)</span>
-<span class='va'>x</span>
-</div><div class='output co'>#&gt; [1] "NCBI_ID"             "Genome_ID"           "Accession_number"   
-#&gt; [4] "Taxon_name"          "Attribute"           "Attribute_value"    
-#&gt; [7] "Attribute_source"    "Evidence"            "Confidence_interval"</div><div class='input'>
-</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

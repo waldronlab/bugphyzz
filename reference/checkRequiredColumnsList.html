@@ -41,8 +41,9 @@
 
 <meta property="og:title" content="Check required columns across a list of bugphyzz datasets — checkRequiredColumnsList" />
 <meta property="og:description" content="checkRequiredColumnsList applies the checkRequiredColumns function to a list of
-bugphyzz datasets. If a required column is missing or is not in the right order, it prints a
-message indicating which columns must be added or reordered." />
+bugphyzz datasets. If a required column (see requiredColumns) is missing or is not in the right order in a dataset,
+checkRequiredColumnsList prints a message indicating which columns are missing or must be
+reordered." />
 
 
 
@@ -127,8 +128,9 @@ message indicating which columns must be added or reordered." />
 
     <div class="ref-description">
     <p><code>checkRequiredColumnsList</code> applies the <code><a href='checkRequiredColumns.html'>checkRequiredColumns</a></code> function to a list of
-bugphyzz datasets. If a required column is missing or is not in the right order, it prints a
-message indicating which columns must be added or reordered.</p>
+bugphyzz datasets. If a required column (see <code><a href='requiredColumns.html'>requiredColumns</a></code>) is missing or is not in the right order in a dataset,
+<code>checkRequiredColumnsList</code> prints a message indicating which columns are missing or must be
+reordered.</p>
     </div>
 
     <pre class="usage"><span class='fu'>checkRequiredColumnsList</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span></pre>
@@ -144,20 +146,67 @@ message indicating which columns must be added or reordered.</p>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>An error message if any of the required columns is missing or is not in the right order.
-Otherwise, it returns a message indicating that the required columns are present and in the right order.</p>
+    <p><code>checkRequiredColumnsList</code> invisibly returns a list of error conditions ("required_columns_missing" or
+"required_columns_misplaced"), and it also prints an error message for each error found.
+If no errors are found, <code>checkRequiredColumns</code> prints a message indicating that the required
+columns are present and in the right order.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p><code><a href='requiredColumns.html'>requiredColumns</a></code>;
 <code><a href='checkRequiredColumns.html'>checkRequiredColumns</a></code>;
-<code>checkRequiredColumnsList</code></p></div>
+<code>checkRequiredColumnsList</code></p>
+<p>Other check functions: 
+<code><a href='checkColumnValuesDF.html'>checkColumnValuesDF</a>()</code>,
+<code><a href='checkColumnValuesList.html'>checkColumnValuesList</a>()</code>,
+<code><a href='checkColumnValues.html'>checkColumnValues</a>()</code>,
+<code><a href='checkRequiredColumns.html'>checkRequiredColumns</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
 <span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
 
+<span class='co'># Example 1 - a list of datasets with errors</span>
+
+<span class='va'>list_of_datasets</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>
+ dataset_with_missing_required_columns <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span>
+   NCBI_ID <span class='op'>=</span> <span class='fl'>1</span><span class='op'>:</span><span class='fl'>10</span>,
+   Attribute <span class='op'>=</span> <span class='va'>letters</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>10</span><span class='op'>]</span>
+ <span class='op'>)</span>,
+
+ dataset_with_misplaced_required_columns <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span>
+   NCBI_ID <span class='op'>=</span> <span class='fl'>1</span><span class='op'>:</span><span class='fl'>10</span>,
+   Taxon_name <span class='op'>=</span> <span class='va'>letters</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>10</span><span class='op'>]</span>,
+   Genome_ID <span class='op'>=</span> <span class='fl'>1</span><span class='op'>:</span><span class='fl'>10</span>,
+   Accession_number <span class='op'>=</span> <span class='fl'>1</span><span class='op'>:</span><span class='fl'>10</span>,
+   Attribute <span class='op'>=</span> <span class='fl'>1</span><span class='op'>:</span><span class='fl'>10</span>,
+   Attribute_value <span class='op'>=</span> <span class='fl'>1</span><span class='op'>:</span><span class='fl'>10</span>,
+   Attribute_source <span class='op'>=</span> <span class='fl'>1</span><span class='op'>:</span><span class='fl'>10</span>,
+   Evidence <span class='op'>=</span> <span class='fl'>1</span><span class='op'>:</span><span class='fl'>10</span>,
+   Note <span class='op'>=</span> <span class='fl'>1</span><span class='op'>:</span><span class='fl'>10</span>,
+   Confidence_interval <span class='op'>=</span> <span class='fl'>1</span><span class='op'>:</span><span class='fl'>10</span>
+ <span class='op'>)</span>,
+
+ dataset_with_required_columns_ok <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span>
+   NCBI_ID <span class='op'>=</span> <span class='fl'>1</span><span class='op'>:</span><span class='fl'>10</span>,
+   Genome_ID <span class='op'>=</span> <span class='fl'>1</span><span class='op'>:</span><span class='fl'>10</span>,
+   Accession_number <span class='op'>=</span> <span class='fl'>1</span><span class='op'>:</span><span class='fl'>10</span>,
+   Taxon_name <span class='op'>=</span> <span class='va'>letters</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>10</span><span class='op'>]</span>,
+   Attribute <span class='op'>=</span> <span class='fl'>1</span><span class='op'>:</span><span class='fl'>10</span>,
+   Attribute_value <span class='op'>=</span> <span class='fl'>1</span><span class='op'>:</span><span class='fl'>10</span>,
+   Attribute_source <span class='op'>=</span> <span class='fl'>1</span><span class='op'>:</span><span class='fl'>10</span>,
+   Evidence <span class='op'>=</span> <span class='fl'>1</span><span class='op'>:</span><span class='fl'>10</span>,
+   Confidence_interval <span class='op'>=</span> <span class='fl'>1</span><span class='op'>:</span><span class='fl'>10</span>,
+   Note <span class='op'>=</span> <span class='fl'>1</span><span class='op'>:</span><span class='fl'>10</span>
+ <span class='op'>)</span>
+<span class='op'>)</span>
+
+<span class='va'>list_of_errors</span> <span class='op'>&lt;-</span> <span class='fu'>bugphyzz</span><span class='fu'>::</span><span class='fu'>checkRequiredColumnsList</span><span class='op'>(</span><span class='va'>list_of_datasets</span><span class='op'>)</span>
+<span class='va'>list_of_errors</span>
+
+<span class='co'># Example 2 - a list of bugphyzz datasets</span>
+
 <span class='va'>bp</span> <span class='op'>=</span> <span class='fu'>bugphyzz</span><span class='fu'>::</span><span class='fu'><a href='physiologies.html'>physiologies</a></span><span class='op'>(</span>keyword <span class='op'>=</span> <span class='st'>"all"</span><span class='op'>)</span>
-<span class='fu'>bugphyzz</span><span class='fu'>::</span><span class='fu'>checkRequiredColumnsList</span><span class='op'>(</span><span class='va'>bp</span><span class='op'>)</span>
+<span class='va'>list_of_errors_bp</span> <span class='op'>=</span> <span class='fu'>bugphyzz</span><span class='fu'>::</span><span class='fu'>checkRequiredColumnsList</span><span class='op'>(</span><span class='va'>bp</span><span class='op'>)</span>
 
 <span class='op'>}</span>
 
