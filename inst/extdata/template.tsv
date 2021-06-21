@@ -4,7 +4,7 @@ Genome_ID	character|numeric	.+	string	TRUE
 Accession_number	character|numeric	.+	string	TRUE
 Taxon_name	character	.+	string	TRUE
 Attribute	character	.attributes	function	TRUE
-Attribute_value	logical|numeric	^logical|numeric$	class	TRUE
+Attribute_value	logical|numeric	^logical|numeric|integer$	class	TRUE
 Attribute_source	character	.+	string	TRUE
 Evidence	character	^asr|exp$	string	TRUE
 Confidence_interval	character	^unknown|exp|usually|always|sometimes$	string	TRUE
