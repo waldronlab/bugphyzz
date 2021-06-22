@@ -3,6 +3,7 @@ pkgdown: 1.6.1
 pkgdown_sha: ~
 articles:
   articles/summary_statistics: summary_statistics.html
+  checks: checks.html
   write_physiology_sets: write_physiology_sets.html
-last_built: 2021-06-21T08:00Z
+last_built: 2021-06-22T19:51Z
 

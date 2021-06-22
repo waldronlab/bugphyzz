@@ -98,6 +98,9 @@
       <a href="../articles/articles/summary_statistics.html">Summary Statistics of Microbes and Their Attributes in BugPhyzz</a>
     </li>
     <li>
+      <a href="../articles/checks.html">Check Functions for BugPhyzz</a>
+    </li>
+    <li>
       <a href="../articles/write_physiology_sets.html">write_physiology_sets</a>
     </li>
   </ul>
@@ -154,29 +157,29 @@
     <pre class="examples"><div class='input'><span class='va'>aero</span> <span class='op'>&lt;-</span> <span class='fu'><a href='physiologies.html'>physiologies</a></span><span class='op'>(</span><span class='st'>"aerophilicity"</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; <span class='message'>Finished aerophilicity</span></div><div class='input'><span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'>make_signatures</span><span class='op'>(</span><span class='va'>aero</span><span class='op'>[[</span><span class='fl'>1</span><span class='op'>]</span><span class='op'>]</span>, taxids <span class='op'>=</span> <span class='st'>"Taxon_name"</span><span class='op'>)</span>
 <span class='fu'><a href='https://rdrr.io/r/base/lapply.html'>lapply</a></span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>head</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; $aerobic
-#&gt; [1] "Cellvibrio"       "Methylophilus"    "Phenylobacterium" "Lysobacter"      
-#&gt; [5] "Simonsiella"      "Hyphomonas"      
+</div><div class='output co'>#&gt; $`obligately aerobic`
+#&gt; [1] "Acanthopleuribacter " "Acetobacter"          "Achromobacter "      
+#&gt; [4] "Acidobacterium "      "Agreia"               "Albibacter "         
 #&gt; 
-#&gt; $anaerobic
-#&gt; [1] "Pelobacter"     "Gallionella"    "Treponema"      "Xanthobacter"  
-#&gt; [5] "Photobacterium" "Bacteroides"   
-#&gt; 
-#&gt; $`facultatively anaerobic`
-#&gt; [1] "Citrobacter"  "Enterobacter" "Hafnia"       "Klebsiella"   "Kluyvera"    
-#&gt; [6] "Morganella"  
-#&gt; 
-#&gt; $microaerophilic
-#&gt; [1] "Azorhizobium"     "Azospirillum"     "Herbaspirillum"   "Magnetospirillum"
-#&gt; [5] "Lawsonia"         "Sulfurospirillum"
-#&gt; 
-#&gt; $`obligately aerobic`
-#&gt; [1] "Ancylobacter"   "Pirellula"      "Leptospirillum" "Xanthomonas"   
-#&gt; [5] "Acetobacter"    "Gluconobacter" 
+#&gt; $aerobic
+#&gt; [1] "Acaricomes"     "Acidicapsa "    "Acidimicrobium" "Acidiphilium"  
+#&gt; [5] "Acidipila"      "Acidisphaera"  
 #&gt; 
 #&gt; $`obligately anaerobic`
-#&gt; [1] "Fibrobacter"   "Porphyromonas" "Fusobacterium" "Pectinatus"   
-#&gt; [5] "Ruminobacter"  "Desulfovibrio"
+#&gt; [1] "Acetanaerobacterium " "Acetitomaculum"       "Acetivibrio"         
+#&gt; [4] "Acetoanaerobium"      "Alistipes"            "Anaeroarcus"         
+#&gt; 
+#&gt; $anaerobic
+#&gt; [1] "Acetatifactor"   "Acetobacterium"  "Acetofilamentum" "Acetohalobium"  
+#&gt; [5] "Acetomicrobium"  "Acetonema"      
+#&gt; 
+#&gt; $`facultatively anaerobic`
+#&gt; [1] "Acholeplasma"    "Acidianus "      "Acidiplasma"     "Actinobacillus "
+#&gt; [5] "Aerococcus"      "Aeromonas"      
+#&gt; 
+#&gt; $microaerophilic
+#&gt; [1] "Agrococcus "    "Azoarcus "      "Azorhizobium"   "Azospirillum"  
+#&gt; [5] "Coenonia "      "Herbaspirillum"
 #&gt; 
 #&gt; $`obligate aerobic`
 #&gt; [1] "Cellulosilyticum " "Sulfolobus "      
@@ -185,23 +188,23 @@
 #&gt; [1] "Spirillum "
 #&gt; </div><div class='input'><span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'>make_signatures</span><span class='op'>(</span><span class='va'>aero</span><span class='op'>[[</span><span class='fl'>1</span><span class='op'>]</span><span class='op'>]</span>, taxids <span class='op'>=</span> <span class='st'>"NCBI_ID"</span><span class='op'>)</span>
 <span class='fu'><a href='https://rdrr.io/r/base/lapply.html'>lapply</a></span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>head</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; $aerobic
-#&gt; [1] 10 16 20 68 71 85
+</div><div class='output co'>#&gt; $`obligately aerobic`
+#&gt; [1] 442869    434    222  33973 110934 160700
 #&gt; 
-#&gt; $anaerobic
-#&gt; [1]  18  96 157 279 657 816
-#&gt; 
-#&gt; $`facultatively anaerobic`
-#&gt; [1] 544 547 568 570 579 581
-#&gt; 
-#&gt; $microaerophilic
-#&gt; [1]     6   191   963 13134 41707 57665
-#&gt; 
-#&gt; $`obligately aerobic`
-#&gt; [1]  99 123 179 338 434 441
+#&gt; $aerobic
+#&gt; [1]  291967 1078830   53634     522   50714  119977
 #&gt; 
 #&gt; $`obligately anaerobic`
-#&gt; [1] 832 836 848 864 866 872
+#&gt; [1] 258514  31980  35829 186831 239759 151038
+#&gt; 
+#&gt; $anaerobic
+#&gt; [1]  33951 558418  28186  49894   2373  65402
+#&gt; 
+#&gt; $`facultatively anaerobic`
+#&gt; [1]   2147  12914 507753    713   1375    642
+#&gt; 
+#&gt; $microaerophilic
+#&gt; [1] 46352 12960     6   191 78328   963
 #&gt; 
 #&gt; $`obligate aerobic`
 #&gt; [1] 698776   2284
