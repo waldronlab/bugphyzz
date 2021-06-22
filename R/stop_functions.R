@@ -107,13 +107,13 @@
 #'
 .stop_invalid_column_values <- function(col, n_rows, dataset_name = NULL, values = NULL, ...) {
 
-  if(!is.null(dataset_name)) {
+  if (!is.null(dataset_name)) {
     msg <- paste0(">>> Invalid values. The column `", col, "` in dataset `", dataset_name,"` contains invalid values in ", n_rows," rows.")
   } else {
     msg <- paste0(">>> Invalid values. The column `", col, "` contains invalid values in ", n_rows," rows.")
   }
 
-  if(!is.null(values)) {
+  if (!is.null(values)) {
     values <-  paste0(utils::head(as.character(values), n = 3), collapse = ", ")
     # paste0(as.character(utils::head(values, n = 3)), collapse = ", ")
     msg <- paste0(msg, " The first invalid values are: ", values, "...")

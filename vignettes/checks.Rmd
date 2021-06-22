@@ -1,0 +1,42 @@
+---
+title: "Check Functions for BugPhyzz"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Check Functions for BugPhyzz}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+# library(bugphyzz)
+```
+
+Import bugphyzz
+
+```{r}
+bp <- bugphyzz::physiologies(keyword = "all")
+```
+
+
+# Check headers
+
+
+
+
+# Check syntax
+
+
+
+
+
+```{r}
+error_list <- bugphyzz::checkColumnValuesList(bp)
+```
+

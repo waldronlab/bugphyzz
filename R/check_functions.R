@@ -337,7 +337,7 @@ checkColumnValues <- function(column_name, dataset, dataset_name = NULL, quiet_s
 
       values <- column_values[!values_lgl]
 
-      output_error <- tryCatch(.stop_invalid_column_values(col = column_name, dataset_name = dataset_name, n_rows = length(values), values = values, bad_values = values),
+      output_error <- tryCatch(.stop_invalid_column_values(col = column_name, dataset_name = dataset_name, n_rows = length(values), values = values, invalid_values = values),
                                invalid_column_values = function(cnd) {
                                  cat(crayon::red(conditionMessage(cnd), "\n"))
                                  cnd
@@ -517,7 +517,7 @@ checkColumnValuesList <- function(x) {
   output <- vector("list", length(x))
   names(output) <- names(x)
 
-  for ( i in seq_along(x)) {
+  for (i in seq_along(x)) {
     dataset <- x[[i]]
     dataset_name = names(x)[i]
 
