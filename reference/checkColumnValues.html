@@ -196,21 +196,21 @@ the case.</p>
   Note <span class='op'>=</span> <span class='fl'>1</span><span class='op'>:</span><span class='fl'>10</span>
 <span class='op'>)</span>
 
-<span class='va'>err1</span> <span class='op'>=</span> <span class='fu'>bugphyzz</span><span class='fu'>::</span><span class='fu'>checkColumnValues</span><span class='op'>(</span><span class='st'>"NCBI_ID"</span>,  <span class='va'>dataset_with_bad_values</span><span class='op'>)</span>
+<span class='va'>err1</span> <span class='op'>=</span> <span class='fu'>bugphyzz</span><span class='fu'>:::</span><span class='fu'>checkColumnValues</span><span class='op'>(</span><span class='st'>"NCBI_ID"</span>,  <span class='va'>dataset_with_bad_values</span><span class='op'>)</span>
 <span class='va'>err1</span>
 <span class='va'>err1</span><span class='op'>$</span><span class='va'>bad_values</span>
 
-<span class='va'>err2</span> <span class='op'>=</span> <span class='fu'>bugphyzz</span><span class='fu'>::</span><span class='fu'>checkColumnValues</span><span class='op'>(</span><span class='st'>"Attribute"</span>, <span class='va'>dataset_with_bad_values</span><span class='op'>)</span>
+<span class='va'>err2</span> <span class='op'>=</span> <span class='fu'>bugphyzz</span><span class='fu'>:::</span><span class='fu'>checkColumnValues</span><span class='op'>(</span><span class='st'>"Attribute"</span>, <span class='va'>dataset_with_bad_values</span><span class='op'>)</span>
 <span class='va'>err2</span>
 <span class='va'>err2</span><span class='op'>$</span><span class='va'>bad_values</span>
 
-<span class='va'>err3</span> <span class='op'>=</span> <span class='fu'>bugphyzz</span><span class='fu'>::</span><span class='fu'>checkColumnValues</span><span class='op'>(</span><span class='st'>"Attribute_value"</span>, <span class='va'>dataset_with_bad_values</span><span class='op'>)</span>
+<span class='va'>err3</span> <span class='op'>=</span> <span class='fu'>bugphyzz</span><span class='fu'>:::</span><span class='fu'>checkColumnValues</span><span class='op'>(</span><span class='st'>"Attribute_value"</span>, <span class='va'>dataset_with_bad_values</span><span class='op'>)</span>
 <span class='va'>err3</span>
 
 <span class='co'># Example 2</span>
 
-<span class='va'>aerophilicity</span> <span class='op'>&lt;-</span> <span class='fu'>bugphyzz</span><span class='fu'>::</span><span class='fu'><a href='physiologies.html'>physiologies</a></span><span class='op'>(</span>keyword <span class='op'>=</span> <span class='st'>"aerophilicity"</span><span class='op'>)</span><span class='op'>[[</span><span class='fl'>1</span><span class='op'>]</span><span class='op'>]</span>
-<span class='va'>aerophilicity_NCBI_ID_errors</span> <span class='op'>&lt;-</span> <span class='fu'>bugphyzz</span><span class='fu'>::</span><span class='fu'>checkColumnValues</span><span class='op'>(</span><span class='st'>"NCBI_ID"</span>, <span class='va'>aerophilicity</span><span class='op'>)</span> <span class='co'># no errors</span>
+<span class='va'>aerophilicity</span> <span class='op'>&lt;-</span> <span class='fu'>bugphyzz</span><span class='fu'>:::</span><span class='fu'><a href='physiologies.html'>physiologies</a></span><span class='op'>(</span>keyword <span class='op'>=</span> <span class='st'>"aerophilicity"</span><span class='op'>)</span><span class='op'>[[</span><span class='fl'>1</span><span class='op'>]</span><span class='op'>]</span>
+<span class='va'>aerophilicity_NCBI_ID_errors</span> <span class='op'>&lt;-</span> <span class='fu'>bugphyzz</span><span class='fu'>:::</span><span class='fu'>checkColumnValues</span><span class='op'>(</span><span class='st'>"NCBI_ID"</span>, <span class='va'>aerophilicity</span><span class='op'>)</span> <span class='co'># no errors</span>
 
 <span class='op'>}</span>
 

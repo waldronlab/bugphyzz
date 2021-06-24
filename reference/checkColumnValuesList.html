@@ -132,13 +132,13 @@ bugphyzz datasets." />
 bugphyzz datasets.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>checkColumnValuesList</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>checkColumnValuesList</span><span class='op'>(</span><span class='va'>list</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>x</th>
+      <th>list</th>
       <td><p>A list of bugphyzz datasets.</p></td>
     </tr>
     </table>
@@ -179,13 +179,13 @@ a column contains invalid values in any of the datasets of the list.</p>
   <span class='op'>)</span>
 <span class='op'>)</span>
 
-<span class='va'>err</span> <span class='op'>&lt;-</span> <span class='fu'>bugphyzz</span><span class='fu'>::</span><span class='fu'>checkColumnValuesList</span><span class='op'>(</span><span class='va'>list_of_df</span><span class='op'>)</span>
+<span class='va'>err</span> <span class='op'>&lt;-</span> <span class='fu'>bugphyzz</span><span class='fu'>:::</span><span class='fu'>checkColumnValuesList</span><span class='op'>(</span><span class='va'>list_of_df</span><span class='op'>)</span>
 <span class='va'>err</span>
 
 <span class='co'># Example 2</span>
 
-<span class='va'>bp</span> <span class='op'>&lt;-</span> <span class='fu'>bugphyzz</span><span class='fu'>::</span><span class='fu'><a href='physiologies.html'>physiologies</a></span><span class='op'>(</span>keyword <span class='op'>=</span> <span class='st'>"all"</span><span class='op'>)</span>
-<span class='va'>bp_list_of_errors</span> <span class='op'>&lt;-</span> <span class='fu'>bugphyzz</span><span class='fu'>::</span><span class='fu'>checkColumnValuesList</span><span class='op'>(</span><span class='va'>bp</span><span class='op'>)</span>
+<span class='va'>bp</span> <span class='op'>&lt;-</span> <span class='fu'>bugphyzz</span><span class='fu'>:::</span><span class='fu'><a href='physiologies.html'>physiologies</a></span><span class='op'>(</span>keyword <span class='op'>=</span> <span class='st'>"all"</span><span class='op'>)</span>
+<span class='va'>bp_list_of_errors</span> <span class='op'>&lt;-</span> <span class='fu'>bugphyzz</span><span class='fu'>:::</span><span class='fu'>checkColumnValuesList</span><span class='op'>(</span><span class='va'>bp</span><span class='op'>)</span>
 <span class='va'>bp_list_of_errors</span><span class='op'>$</span><span class='va'>aerophilicity</span><span class='op'>$</span><span class='va'>Evidence</span><span class='op'>$</span><span class='va'>bad_values</span>
 
 <span class='op'>}</span>

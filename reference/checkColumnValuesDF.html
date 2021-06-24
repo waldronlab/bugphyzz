@@ -132,13 +132,13 @@ a single dataset." />
 a single dataset.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>checkColumnValuesDF</span><span class='op'>(</span><span class='va'>x</span>, dataset_name <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>checkColumnValuesDF</span><span class='op'>(</span><span class='va'>dataset</span>, dataset_name <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>x</th>
+      <th>dataset</th>
       <td><p>A data frame.</p></td>
     </tr>
     <tr>
@@ -182,14 +182,14 @@ a column contains invalid values</p>
   Note <span class='op'>=</span> <span class='fl'>1</span><span class='op'>:</span><span class='fl'>10</span>
 <span class='op'>)</span>
 
-<span class='va'>err</span> <span class='op'>&lt;-</span> <span class='fu'>bugphyzz</span><span class='fu'>::</span><span class='fu'>checkColumnValuesDF</span><span class='op'>(</span><span class='va'>dataset_with_bad_values</span><span class='op'>)</span>
+<span class='va'>err</span> <span class='op'>&lt;-</span> <span class='fu'>bugphyzz</span><span class='fu'>:::</span><span class='fu'>checkColumnValuesDF</span><span class='op'>(</span><span class='va'>dataset_with_bad_values</span><span class='op'>)</span>
 <span class='va'>err</span>
 <span class='va'>err</span><span class='op'>$</span><span class='va'>NCBI_ID</span><span class='op'>$</span><span class='va'>bad_values</span>
 
 <span class='co'># Example 2</span>
 
-<span class='va'>aerophilicity</span> <span class='op'>&lt;-</span> <span class='fu'>bugphyzz</span><span class='fu'>::</span><span class='fu'><a href='physiologies.html'>physiologies</a></span><span class='op'>(</span>keyword <span class='op'>=</span> <span class='st'>"aerophilicity"</span><span class='op'>)</span><span class='op'>[[</span><span class='fl'>1</span><span class='op'>]</span><span class='op'>]</span>
-<span class='va'>aerophilicity_errors</span> <span class='op'>&lt;-</span> <span class='fu'>bugphyzz</span><span class='fu'>::</span><span class='fu'>checkColumnValuesDF</span><span class='op'>(</span><span class='va'>aerophilicity</span><span class='op'>)</span>
+<span class='va'>aerophilicity</span> <span class='op'>&lt;-</span> <span class='fu'>bugphyzz</span><span class='fu'>:::</span><span class='fu'><a href='physiologies.html'>physiologies</a></span><span class='op'>(</span>keyword <span class='op'>=</span> <span class='st'>"aerophilicity"</span><span class='op'>)</span><span class='op'>[[</span><span class='fl'>1</span><span class='op'>]</span><span class='op'>]</span>
+<span class='va'>aerophilicity_errors</span> <span class='op'>&lt;-</span> <span class='fu'>bugphyzz</span><span class='fu'>:::</span><span class='fu'>checkColumnValuesDF</span><span class='op'>(</span><span class='va'>aerophilicity</span><span class='op'>)</span>
 <span class='va'>aerophilicity_errors</span><span class='op'>$</span><span class='va'>Evidence</span><span class='op'>$</span><span class='va'>bad_values</span>
 
 <span class='op'>}</span>
