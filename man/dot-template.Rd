@@ -4,10 +4,10 @@
 \alias{.template}
 \title{Generate a template for a bugphyzz dataset}
 \usage{
-.template(x)
+.template(dataset)
 }
 \arguments{
-\item{x}{A data.frame or tibble; a dataset from bugphyzz.}
+\item{dataset}{A data frame or tibble; a dataset from bugphyzz.}
 }
 \value{
 A dataset specific template. A tibble with only column names and valid values for a given bugphyzz dataset.

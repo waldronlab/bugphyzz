@@ -4,10 +4,10 @@
 \alias{checkRequiredColumns}
 \title{Check required columns in a single bugphyzz dataset}
 \usage{
-checkRequiredColumns(x, dataset_name = NULL)
+checkRequiredColumns(dataset, dataset_name = NULL)
 }
 \arguments{
-\item{x}{A dataset from bugphyzz}
+\item{dataset}{A data frame from bugphyzz}
 
 \item{dataset_name}{Character of length 1; name of dataset. Default is NULL.}
 }
@@ -33,7 +33,7 @@ dataset_with_missing_required_columns = data.frame(
   NCBI_ID = 1:10,
   Attribute = letters[1:10]
 )
-err1 <- bugphyzz::checkRequiredColumns(dataset_with_missing_required_columns)
+err1 <- bugphyzz:::checkRequiredColumns(dataset_with_missing_required_columns)
 err1
 
 # Example 2 - dataset with misplaced required columns
@@ -51,7 +51,7 @@ dataset_with_misplaced_required_columns = data.frame(
   Confidence_interval = 1:10
 )
 
-err2 <- bugphyzz::checkRequiredColumns(dataset_with_misplaced_required_columns)
+err2 <- bugphyzz:::checkRequiredColumns(dataset_with_misplaced_required_columns)
 err2
 
 # Example 3 (dataset wit no errors)
@@ -69,12 +69,12 @@ dataset_with_required_columns_ok = data.frame(
   Note = 1:10
 )
 
-bugphyzz::checkRequiredColumns(dataset_with_required_columns_ok)
+bugphyzz:::checkRequiredColumns(dataset_with_required_columns_ok)
 
 # Example 4 - A bugphyzz dataset
 
-oxygen <- bugphyzz::physiologies(keyword = "aerophilicity")
-bugphyzz::checkRequiredColumns(x = oxygen[[1]], dataset_name = names(oxygen)[1])
+oxygen <- bugphyzz:::physiologies(keyword = "aerophilicity")
+bugphyzz:::checkRequiredColumns(x = oxygen[[1]], dataset_name = names(oxygen)[1])
 
 }
 

@@ -49,21 +49,21 @@ dataset_with_bad_values <- data.frame(
   Note = 1:10
 )
 
-err1 = bugphyzz::checkColumnValues("NCBI_ID",  dataset_with_bad_values)
+err1 = bugphyzz:::checkColumnValues("NCBI_ID",  dataset_with_bad_values)
 err1
 err1$bad_values
 
-err2 = bugphyzz::checkColumnValues("Attribute", dataset_with_bad_values)
+err2 = bugphyzz:::checkColumnValues("Attribute", dataset_with_bad_values)
 err2
 err2$bad_values
 
-err3 = bugphyzz::checkColumnValues("Attribute_value", dataset_with_bad_values)
+err3 = bugphyzz:::checkColumnValues("Attribute_value", dataset_with_bad_values)
 err3
 
 # Example 2
 
-aerophilicity <- bugphyzz::physiologies(keyword = "aerophilicity")[[1]]
-aerophilicity_NCBI_ID_errors <- bugphyzz::checkColumnValues("NCBI_ID", aerophilicity) # no errors
+aerophilicity <- bugphyzz:::physiologies(keyword = "aerophilicity")[[1]]
+aerophilicity_NCBI_ID_errors <- bugphyzz:::checkColumnValues("NCBI_ID", aerophilicity) # no errors
 
 }
 

@@ -14,7 +14,7 @@ A character vector with mandatory column names (required columns).
 bugphyzz data sets.
 }
 \examples{
-x <- requiredColumns()
+x <- bugphyzz:::requiredColumns()
 x
 
 }

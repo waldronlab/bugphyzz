@@ -15,28 +15,234 @@ knitr::opts_chunk$set(
 ```
 
 ```{r setup}
-# library(bugphyzz)
+library(bugphyzz)
+library(magrittr)
+library(dplyr)
+library(purrr)
 ```
 
-Import bugphyzz
+# Introduction
+
+This vignette describes how to run some checks on data frames imported from bugphyzz using the "check
+family" of functions included in the package. These functions are not exported because they will be mainly
+used by curators of the data. The functions can be accessed using the triple colon `:::` operator and
+help can be accessed using the `?` operator; for example, `?bugphyzz:::checkRequiredColumns`.
+
+Currently, there are two sets of checks:
+
+1. Check that all *mandatory columns* are present and in the right order in a *single* data frame
+imported from bugphyzz. The function that performs this check is `checkRequiredColumns`. The
+package includes a wrapper function to apply `checkRequiredColumns` to a *list* of bugphyzz
+data frames: `checkRequiredColumnsList`.
+
+2. Check that the *syntax* or *values* of a *single* column are valied in a *single* data frame imported
+from bugphyzz. The function that performs this check is `checkColumnValues`. There is a wrapper
+function to apply `checkColumnValues` to all the columns of a *single* data frame: `checkColumnValuesDF`. 
+In turn, there is a wrapper function to apply `checkColumnValuesDF` across a *list* of data frames
+imported from bugphyzz: `checkColumnValuesList`.
+
+Below, a more detailed description with some examples.
+
+# Explanation of the functions
+
+## Check required columns
+
+Not all data frames imported by bugphyzz functions (`physiologies`, `fattyAcidComposition`) have the
+same columns. However, there are some mandatory columns, referred to as "required columns" in the
+package, that must be present in all datasets. These required columns, currently nine, can be accessed
+with the `requiredColumns` function:
 
 ```{r}
-bp <- bugphyzz::physiologies(keyword = "all")
+requiredColumns()
 ```
 
+The `checkRequiredColumns` function checks: 1) that all columns are present in a single data frame, and 2) that
+all columns are in the correct order in that data frame. If any of those conditions is not met, the function will print
+an error message on screen indicating which columns are missing or misplaced. If no errors are found,
+the function returns a message indicting that all of the required columns are present and in the
+right order. Furthermore, the `checkRequiredColumns` function invisibly returns an error condition object,
+which can be checked later.
 
-# Check headers
+Examples with toy data:
+
+```{r}
+
+list_of_datasets <- list(
+  # a dataset with missing required columns (only two are present)
+  dataset_with_missing_required_columns = data.frame(
+    NCBI_ID = 1:10,
+    Attribute = letters[1:10]),
+  # a dataset with misplaced required columns
+  dataset_with_misplaced_required_columns = data.frame(
+    NCBI_ID = 1:10,
+    Taxon_name = letters[1:10],
+    Genome_ID = 1:10,
+    Accession_number = 1:10,
+    Attribute = 1:10,
+    Attribute_value = 1:10,
+    Attribute_source = 1:10,
+    Evidence = 1:10,
+    Note = 1:10,
+    Confidence_interval = 1:10),
+  # a dataset with all columns in the right order
+  dataset_with_required_columns_ok = data.frame(
+    NCBI_ID = 1:10,
+    Genome_ID = 1:10,
+    Accession_number = 1:10,
+    Taxon_name = letters[1:10],
+    Attribute = 1:10,
+    Attribute_value = 1:10,
+    Attribute_source = 1:10,
+    Evidence = 1:10,
+    Confidence_interval = 1:10,
+    Note = 1:10)
+  )
+```
+
+A column with missing required columns:
+
+```{r}
+err1 <- bugphyzz:::checkRequiredColumns(dataset = list_of_datasets[[1]], dataset_name = "missing_columns")
+err1
+```
+
+In the case of misplaced required columns, the function also prints a data frame indicating which columns
+are misplaced and what should be their right order:
+
+```{r}
+err2 <- bugphyzz:::checkRequiredColumns(dataset = list_of_datasets[[2]], dataset_name = "misplaced_columns")
+err2
+```
+
+If no errors are found, then `checkRequiredColumns` prints a message indicating it:
+
+```{r}
+no_err <- bugphyzz:::checkRequiredColumns(dataset = list_of_datasets[[3]], dataset_name = "required_columns_ok")
+no_err
+```
+
+It's more convenient to apply this check to a list of data frames with `checkRequiredColumnsList`:
+
+```{r}
+err3 <- bugphyzz:::checkRequiredColumnsList(list = list_of_datasets)
+err3
+```
+
+## Check syntax/validity of values
+
+Valid syntax/values are determined according to the
+[template.tsv file](https://github.com/waldronlab/bugphyzz/blob/main/inst/extdata/template.tsv),
+which is installed with bugphyzz:
+
+```{r}
+template.tsv <- system.file("extdata/template.tsv", package = "bugphyzz")
+template <- read.table(template.tsv, header = TRUE, sep = "\t")
+template[,c("column_name", "valid_values", "test")]
+```
+
+The syntax/validity check is performed by `grepl` searches of the values in the "valid_values" column in the template file
+against the values in specific columns of a data frame imported by a bugphyzz function (indicated in the
+"column_name" column of the template file). These `grepl` searches are performed by the
+`checkColumnValues` function. 
+
+There are two special cases. In the first case, the values in the "Attribute" column, one of the required
+columns of a bugphyzz data frame, are compared against the values in the [attributes.tsv](https://github.com/waldronlab/bugphyzz/blob/main/inst/extdata/attributes.tsv)
+file (installed with the bugphyzz package) thanks to the `.attribues` helper function. In the second case,
+the "Attribute_value" column, another of the required columns of a bugphyzz data frame, is checked
+for class instead of specific syntax/valid values. These differences are indicated in the "test" column
+of the template file.
+
+The `checkColumnValues` function perform the checks described above in single column of a data frame.
+Here is an example with toy data:
+
+```{r}
+# a list with only one data frame
+list_of_df <- list(dataset_with_bad_values = data.frame(
+    NCBI_ID = letters[1:10],
+    Genome_ID = 1:10,
+    Accession_number = 1:10,
+    Taxon_name = letters[1:10],
+    Attribute = 1:10,
+    Attribute_value = letters[1:10],
+    Attribute_source = 1:10,
+    Evidence = 1:10,
+    Confidence_interval = 1:10,
+    Note = 1:10
+  )
+)
+```
+
+Checking the "NCBI_ID" column, which should contain only integers according to the template file:
+
+```{r}
+err4 <- bugphyzz:::checkColumnValues(column_name = "NCBI_ID", dataset = list_of_df[[1]], dataset_name = "dataset_with_invalid_ncbi_column")
+err4
+```
+If an error is found, the `checkColumnValues` function prints an error message on screen and invisibly
+returns an error condition object. Metadata can be extracted from this object: for example, a character
+with invalid values.
 
 
+The `checkColumnValuesDF` function is a wrapper that applies the `checkColumnValuesDF` function to all
+the columns of a data frame. The function then returns (invisibly) a list with error conditions. Example:
 
+```{r}
+err5 <- bugphyzz:::checkColumnValuesDF(dataset = list_of_df[[1]], dataset_name = "dataset_with_invalid_column")
+err5
+```
+Lastly, the `checkColumnValuesList` function applies the `checkColumnValuesDF` function to a list
+of data frames imported from bugphyzz. The function returns invisibly a nested list of error conditions.
+Example:
 
-# Check syntax
+```{r}
+err6 <- bugphyzz:::checkColumnValuesList(list = list_of_df)
+err6
+```
 
+```{r}
+str(err6)
+```
+# Checking colum values of bugphyzz
 
+Import bugphyzz data:
 
+```{r}
+bp <- physiologies(keyword = "all")
+```
+Generate list of errors:
+
+```{r}
+list_of_errors <- bugphyzz:::checkColumnValuesList(bp)
+```
+
+Turn list of errors into a table with links:
 
 
 ```{r}
-error_list <- bugphyzz::checkColumnValuesList(bp)
+my_fun <- function(x) {
+  
+  output <- list(
+  message = x$message,
+  number_of_rows = length(x$invalid_values),
+  invalid_values = paste0(head(x$invalid_values), collapse = ", ")
+  )
+  return(output)
+}
+
+error_table = purrr::modify_depth(list_of_errors, 2, ~ my_fun(.x)) %>% 
+  purrr::modify_depth(1, ~ bind_rows(.x, .id = "Column")) %>% 
+  bind_rows(.id = "Dataset")
+
+fname <- system.file("extdata/links.tsv", package = "bugphyzz")
+data_links <- readr::read_tsv(fname, col_types = "ccc") %>% 
+  select(physiology, link)
+
+error_table <- left_join(error_table, data_links, by = c("Dataset" = "physiology"))
+
+knitr::kable(error_table)
+
+
 ```
+
+
 

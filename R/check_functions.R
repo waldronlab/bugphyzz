@@ -6,7 +6,6 @@ utils::globalVariables(c("attribute"))
 #'
 #' @return A character vector with mandatory column names (required columns).
 #'
-#' @export
 #'
 #' @seealso
 #' \code{\link{requiredColumns}};
@@ -14,10 +13,10 @@ utils::globalVariables(c("attribute"))
 #' \code{\link{checkRequiredColumnsList}}
 #'
 #' @examples
-#' x <- requiredColumns()
+#' x <- bugphyzz:::requiredColumns()
 #' x
 #'
-requiredColumns<- function() {
+requiredColumns <- function() {
   c(
     "NCBI_ID",
     "Genome_ID",
@@ -37,8 +36,8 @@ requiredColumns<- function() {
 #' present and in the right order in a single bugphyzz dataset. If a required column is missing or
 #' is not in the right order, it prints a message indicating which columns must be added or reordered.
 #'
-#' @param x
-#' A dataset from bugphyzz
+#' @param dataset
+#' A data frame from bugphyzz
 #'
 #' @param dataset_name
 #' Character of length 1; name of dataset. Default is NULL.
@@ -54,7 +53,6 @@ requiredColumns<- function() {
 #' @importFrom crayon green
 #' @importFrom utils capture.output
 #'
-#' @export
 #'
 #' @family check functions
 #' @seealso
@@ -72,7 +70,7 @@ requiredColumns<- function() {
 #'   NCBI_ID = 1:10,
 #'   Attribute = letters[1:10]
 #' )
-#' err1 <- bugphyzz::checkRequiredColumns(dataset_with_missing_required_columns)
+#' err1 <- bugphyzz:::checkRequiredColumns(dataset_with_missing_required_columns)
 #' err1
 #'
 #' # Example 2 - dataset with misplaced required columns
@@ -90,7 +88,7 @@ requiredColumns<- function() {
 #'   Confidence_interval = 1:10
 #' )
 #'
-#' err2 <- bugphyzz::checkRequiredColumns(dataset_with_misplaced_required_columns)
+#' err2 <- bugphyzz:::checkRequiredColumns(dataset_with_misplaced_required_columns)
 #' err2
 #'
 #' # Example 3 (dataset wit no errors)
@@ -108,20 +106,23 @@ requiredColumns<- function() {
 #'   Note = 1:10
 #' )
 #'
-#' bugphyzz::checkRequiredColumns(dataset_with_required_columns_ok)
+#' bugphyzz:::checkRequiredColumns(dataset_with_required_columns_ok)
 #'
 #' # Example 4 - A bugphyzz dataset
 #'
-#' oxygen <- bugphyzz::physiologies(keyword = "aerophilicity")
-#' bugphyzz::checkRequiredColumns(x = oxygen[[1]], dataset_name = names(oxygen)[1])
+#' oxygen <- bugphyzz:::physiologies(keyword = "aerophilicity")
+#' bugphyzz:::checkRequiredColumns(x = oxygen[[1]], dataset_name = names(oxygen)[1])
 #'
 #' }
 #'
 #'
-checkRequiredColumns <- function(x, dataset_name = NULL) {
+checkRequiredColumns <- function(dataset, dataset_name = NULL) {
+
+  if (!any(class(dataset) %in% c("data.frame")))
+    stop("Not a data.frame. You must provide a data.frame or tibble imported from bugphyzz")
 
   # Check if any of the required columns is missing
-  columns_lgl <- requiredColumns() %in% colnames(x)
+  columns_lgl <- requiredColumns() %in% colnames(dataset)
 
   if (!all(columns_lgl)) {
 
@@ -134,7 +135,7 @@ checkRequiredColumns <- function(x, dataset_name = NULL) {
   }
 
   # Check if the required columns are in the correct order
-  first_columns <- colnames(x)[seq_along(requiredColumns())]
+  first_columns <- colnames(dataset)[seq_along(requiredColumns())]
   columns_lgl <- requiredColumns() == first_columns
 
   if (!all(columns_lgl)) {
@@ -143,7 +144,7 @@ checkRequiredColumns <- function(x, dataset_name = NULL) {
 
     required_column = requiredColumns()
     expected_position = seq_along(requiredColumns())
-    actual_position = purrr::map_int(requiredColumns(), ~ grep(paste0("^", .x, "$"), colnames(x)))
+    actual_position = purrr::map_int(requiredColumns(), ~ grep(paste0("^", .x, "$"), colnames(dataset)))
     misplaced = ifelse(expected_position != actual_position, "*", "")
 
     data_frame <- data.frame(required_column, expected_position, actual_position, misplaced)
@@ -171,7 +172,7 @@ checkRequiredColumns <- function(x, dataset_name = NULL) {
 #' \code{checkRequiredColumnsList} prints a message indicating which columns are missing or must be
 #' reordered.
 #'
-#' @param x
+#' @param list
 #' A list of bugphyzz datasets.
 #'
 #' @return
@@ -180,7 +181,7 @@ checkRequiredColumns <- function(x, dataset_name = NULL) {
 #' If no errors are found, \code{checkRequiredColumns} prints a message indicating that the required
 #' columns are present and in the right order.
 #'
-#' @export
+#' @importFrom purrr discard
 #'
 #' @family check functions
 #' @seealso
@@ -227,26 +228,29 @@ checkRequiredColumns <- function(x, dataset_name = NULL) {
 #'  )
 #' )
 #'
-#' list_of_errors <- bugphyzz::checkRequiredColumnsList(list_of_datasets)
+#' list_of_errors <- bugphyzz:::checkRequiredColumnsList(list_of_datasets)
 #' list_of_errors
 #'
 #' # Example 2 - a list of bugphyzz datasets
 #'
-#' bp = bugphyzz::physiologies(keyword = "all")
-#' list_of_errors_bp = bugphyzz::checkRequiredColumnsList(bp)
+#' bp = bugphyzz:::physiologies(keyword = "all")
+#' list_of_errors_bp = bugphyzz:::checkRequiredColumnsList(bp)
 #'
 #' }
 #'
-checkRequiredColumnsList <- function(x) {
+checkRequiredColumnsList <- function(list) {
 
-  output <- vector("list", length(x))
-  names(output) <- names(x)
+  if (class(list) != "list")
+    stop("Not a list. Please provide a list of data frames imported with bugphyzz functions.")
 
-  for ( i in seq_along(x)) {
-    dataset <- x[[i]]
-    dataset_name = names(x)[i]
+  output <- vector("list", length(list))
+  names(output) <- names(list)
 
-    output[[i]] <- checkRequiredColumns(x = dataset, dataset_name = dataset_name)
+  for (i in seq_along(list)) {
+    dataset <- list[[i]]
+    dataset_name = names(list)[i]
+
+    output[[i]] <- checkRequiredColumns(dataset = dataset, dataset_name = dataset_name)
   }
 
   output <- purrr::discard(.x = output, is.null)
@@ -254,8 +258,6 @@ checkRequiredColumnsList <- function(x) {
   return(invisible(output))
 
 }
-
-
 
 #' Check column values
 #'
@@ -277,7 +279,6 @@ checkRequiredColumnsList <- function(x) {
 #' If `quiet_success` is FALSE, it prints a message indicating that no errors were found if that is
 #' the case.
 #'
-#' @export
 #'
 #' @family check functions
 #' @seealso
@@ -304,21 +305,21 @@ checkRequiredColumnsList <- function(x) {
 #'   Note = 1:10
 #' )
 #'
-#' err1 = bugphyzz::checkColumnValues("NCBI_ID",  dataset_with_bad_values)
+#' err1 = bugphyzz:::checkColumnValues("NCBI_ID",  dataset_with_bad_values)
 #' err1
 #' err1$bad_values
 #'
-#' err2 = bugphyzz::checkColumnValues("Attribute", dataset_with_bad_values)
+#' err2 = bugphyzz:::checkColumnValues("Attribute", dataset_with_bad_values)
 #' err2
 #' err2$bad_values
 #'
-#' err3 = bugphyzz::checkColumnValues("Attribute_value", dataset_with_bad_values)
+#' err3 = bugphyzz:::checkColumnValues("Attribute_value", dataset_with_bad_values)
 #' err3
 #'
 #' # Example 2
 #'
-#' aerophilicity <- bugphyzz::physiologies(keyword = "aerophilicity")[[1]]
-#' aerophilicity_NCBI_ID_errors <- bugphyzz::checkColumnValues("NCBI_ID", aerophilicity) # no errors
+#' aerophilicity <- bugphyzz:::physiologies(keyword = "aerophilicity")[[1]]
+#' aerophilicity_NCBI_ID_errors <- bugphyzz:::checkColumnValues("NCBI_ID", aerophilicity) # no errors
 #'
 #' }
 #'
@@ -337,11 +338,19 @@ checkColumnValues <- function(column_name, dataset, dataset_name = NULL, quiet_s
 
       values <- column_values[!values_lgl]
 
-      output_error <- tryCatch(.stop_invalid_column_values(col = column_name, dataset_name = dataset_name, n_rows = length(values), values = values, invalid_values = values),
-                               invalid_column_values = function(cnd) {
-                                 cat(crayon::red(conditionMessage(cnd), "\n"))
-                                 cnd
-                               })
+      output_error <- tryCatch(.stop_invalid_column_values(
+        col = column_name,
+        dataset_name = dataset_name,
+        n_rows = length(values),
+        values = values,
+        # --- Metadata starts here ---
+        invalid_values = values,
+        invalid_positions = seq_along(values)[!values_lgl]),
+
+        invalid_column_values = function(cnd) {
+          cat(crayon::red(conditionMessage(cnd), "\n"))
+          cnd
+          })
       return(invisible(output_error))
 
     }
@@ -356,11 +365,20 @@ checkColumnValues <- function(column_name, dataset, dataset_name = NULL, quiet_s
     if (!all(values_lgl)) {
 
       values <- column_values[!values_lgl]
-      output_error <- tryCatch(.stop_invalid_column_values(col = column_name, dataset_name = dataset_name, n_rows = length(values), values = values, bad_values = values),
-                               invalid_column_values = function(cnd) {
-                                 cat(crayon::red(conditionMessage(cnd), "\n"))
-                                 cnd
-                               })
+      output_error <- tryCatch(.stop_invalid_column_values(
+        col = column_name,
+        dataset_name = dataset_name,
+        n_rows = length(values),
+        values = values,
+
+        # ---metadata starts here---
+        invalid_values = values,
+        invalid_positions = seq_along(values)[!values_lgl]),
+
+        invalid_column_values = function(cnd) {
+          cat(crayon::red(conditionMessage(cnd), "\n"))
+          cnd
+          })
       return(invisible(output_error))
 
     }
@@ -401,7 +419,7 @@ checkColumnValues <- function(column_name, dataset, dataset_name = NULL, quiet_s
 #' \code{checkColumnValuesDF} applies the \code{\link{checkColumnValues}} function to the columns of
 #' a single dataset.
 #'
-#' @param x
+#' @param dataset
 #' A data frame.
 #' @param dataset_name
 #' Character string of length 1; name of the dataset. Default is NULL.
@@ -411,7 +429,9 @@ checkColumnValues <- function(column_name, dataset, dataset_name = NULL, quiet_s
 #' "invalid_column_values" or "invalid_column_class"), and it also prints an error message if
 #' a column contains invalid values
 #'
-#' @export
+#' @importFrom purrr map
+#' @importFrom magrittr set_names
+#' @importFrom purrr discard
 #'
 #' @family check functions
 #' @seealso
@@ -438,23 +458,23 @@ checkColumnValues <- function(column_name, dataset, dataset_name = NULL, quiet_s
 #'   Note = 1:10
 #' )
 #'
-#' err <- bugphyzz::checkColumnValuesDF(dataset_with_bad_values)
+#' err <- bugphyzz:::checkColumnValuesDF(dataset_with_bad_values)
 #' err
 #' err$NCBI_ID$bad_values
 #'
 #' # Example 2
 #'
-#' aerophilicity <- bugphyzz::physiologies(keyword = "aerophilicity")[[1]]
-#' aerophilicity_errors <- bugphyzz::checkColumnValuesDF(aerophilicity)
+#' aerophilicity <- bugphyzz:::physiologies(keyword = "aerophilicity")[[1]]
+#' aerophilicity_errors <- bugphyzz:::checkColumnValuesDF(aerophilicity)
 #' aerophilicity_errors$Evidence$bad_values
 #'
 #' }
 #'
 #'
-checkColumnValuesDF <- function(x, dataset_name = NULL) {
+checkColumnValuesDF <- function(dataset, dataset_name = NULL) {
 
-  output <- purrr::map(colnames(x), ~ checkColumnValues(.x, x, dataset_name = dataset_name)) %>%
-    magrittr::set_names(colnames(x)) %>%
+  output <- purrr::map(colnames(dataset), ~ checkColumnValues(.x, dataset, dataset_name = dataset_name)) %>%
+    magrittr::set_names(colnames(dataset)) %>%
     purrr::discard(is.null)
   return(invisible(output))
 
@@ -465,7 +485,7 @@ checkColumnValuesDF <- function(x, dataset_name = NULL) {
 #' \code{checkColumnValuesDF} applies the \code{checkColumnValuesDF} function to a list of
 #' bugphyzz datasets.
 #'
-#' @param x
+#' @param list
 #' A list of bugphyzz datasets.
 #'
 #' @return
@@ -473,13 +493,14 @@ checkColumnValuesDF <- function(x, dataset_name = NULL) {
 #' "invalid_column_values" or "invalid_column_class"), and it also prints an error message if
 #' a column contains invalid values in any of the datasets of the list.
 #'
+#' @importFrom purrr discard
+#'
 #' @family check functions
 #' @seealso
 #' \code{\link{checkColumnValues}};
 #' \code{\link{checkColumnValuesDF}};
 #' \code{\link{checkColumnValuesList}}
 #'
-#' @export
 #'
 #' @examples
 #'
@@ -501,27 +522,27 @@ checkColumnValuesDF <- function(x, dataset_name = NULL) {
 #'   )
 #' )
 #'
-#' err <- bugphyzz::checkColumnValuesList(list_of_df)
+#' err <- bugphyzz:::checkColumnValuesList(list_of_df)
 #' err
 #'
 #' # Example 2
 #'
-#' bp <- bugphyzz::physiologies(keyword = "all")
-#' bp_list_of_errors <- bugphyzz::checkColumnValuesList(bp)
+#' bp <- bugphyzz:::physiologies(keyword = "all")
+#' bp_list_of_errors <- bugphyzz:::checkColumnValuesList(bp)
 #' bp_list_of_errors$aerophilicity$Evidence$bad_values
 #'
 #' }
 #'
-checkColumnValuesList <- function(x) {
+checkColumnValuesList <- function(list) {
 
-  output <- vector("list", length(x))
-  names(output) <- names(x)
+  output <- vector("list", length(list))
+  names(output) <- names(list)
 
-  for (i in seq_along(x)) {
-    dataset <- x[[i]]
-    dataset_name = names(x)[i]
+  for (i in seq_along(list)) {
+    dataset <- list[[i]]
+    dataset_name = names(list)[i]
 
-    output[[i]] <- checkColumnValuesDF(x = dataset, dataset_name = dataset_name)
+    output[[i]] <- checkColumnValuesDF(dataset = dataset, dataset_name = dataset_name)
   }
 
   output <- purrr::discard(.x = output, is.null)
@@ -542,21 +563,24 @@ checkColumnValuesList <- function(x) {
 #' of all datasets across bugphyzz) containing only the columns specific for a given bugphyzz dataset.
 #'
 #' @family helper functions
+#'
+#' @importFrom readr read_tsv
+#'
 #' @seealso
 #' \code{\link{.template}};
 #' \code{\link{.attributes}};
 #' \code{\link{checkColumnValues}}
 #'
-#' @param x
-#' A data.frame or tibble; a dataset from bugphyzz.
+#' @param dataset
+#' A data frame or tibble; a dataset from bugphyzz.
 #'
 #' @return
 #' A dataset specific template. A tibble with only column names and valid values for a given bugphyzz dataset.
 #'
-.template <- function(x) {
+.template <- function(dataset) {
   template_tsv <- system.file("extdata/template.tsv", package = "bugphyzz")
   template <- readr::read_tsv(template_tsv, col_types = "ccccc")
-  template <- template[template$column_name %in% colnames(x),]
+  template <- template[template$column_name %in% colnames(dataset),]
   return(template)
 }
 
@@ -567,6 +591,8 @@ checkColumnValuesList <- function(x) {
 #'
 #' @return
 #' A character vector with valid attribute names.
+#'
+#' @importFrom dplyr pull
 #'
 #' @family helper functions
 #' @seealso

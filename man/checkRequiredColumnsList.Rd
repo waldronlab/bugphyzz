@@ -4,10 +4,10 @@
 \alias{checkRequiredColumnsList}
 \title{Check required columns across a list of bugphyzz datasets}
 \usage{
-checkRequiredColumnsList(x)
+checkRequiredColumnsList(list)
 }
 \arguments{
-\item{x}{A list of bugphyzz datasets.}
+\item{list}{A list of bugphyzz datasets.}
 }
 \value{
 \code{checkRequiredColumnsList} invisibly returns a list of error conditions ("required_columns_missing" or
@@ -60,13 +60,13 @@ list_of_datasets <- list(
  )
 )
 
-list_of_errors <- bugphyzz::checkRequiredColumnsList(list_of_datasets)
+list_of_errors <- bugphyzz:::checkRequiredColumnsList(list_of_datasets)
 list_of_errors
 
 # Example 2 - a list of bugphyzz datasets
 
-bp = bugphyzz::physiologies(keyword = "all")
-list_of_errors_bp = bugphyzz::checkRequiredColumnsList(bp)
+bp = bugphyzz:::physiologies(keyword = "all")
+list_of_errors_bp = bugphyzz:::checkRequiredColumnsList(bp)
 
 }
 

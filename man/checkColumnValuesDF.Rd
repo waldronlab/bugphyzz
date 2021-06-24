@@ -4,10 +4,10 @@
 \alias{checkColumnValuesDF}
 \title{Check column values in a data frame}
 \usage{
-checkColumnValuesDF(x, dataset_name = NULL)
+checkColumnValuesDF(dataset, dataset_name = NULL)
 }
 \arguments{
-\item{x}{A data frame.}
+\item{dataset}{A data frame.}
 
 \item{dataset_name}{Character string of length 1; name of the dataset. Default is NULL.}
 }
@@ -39,14 +39,14 @@ dataset_with_bad_values <- data.frame(
   Note = 1:10
 )
 
-err <- bugphyzz::checkColumnValuesDF(dataset_with_bad_values)
+err <- bugphyzz:::checkColumnValuesDF(dataset_with_bad_values)
 err
 err$NCBI_ID$bad_values
 
 # Example 2
 
-aerophilicity <- bugphyzz::physiologies(keyword = "aerophilicity")[[1]]
-aerophilicity_errors <- bugphyzz::checkColumnValuesDF(aerophilicity)
+aerophilicity <- bugphyzz:::physiologies(keyword = "aerophilicity")[[1]]
+aerophilicity_errors <- bugphyzz:::checkColumnValuesDF(aerophilicity)
 aerophilicity_errors$Evidence$bad_values
 
 }

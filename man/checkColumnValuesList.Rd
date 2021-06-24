@@ -4,10 +4,10 @@
 \alias{checkColumnValuesList}
 \title{Check column values in a list of bugphyzz datasets}
 \usage{
-checkColumnValuesList(x)
+checkColumnValuesList(list)
 }
 \arguments{
-\item{x}{A list of bugphyzz datasets.}
+\item{list}{A list of bugphyzz datasets.}
 }
 \value{
 \code{checkColumnValuesList} invisibly returns a list of error conditions (subclass
@@ -38,13 +38,13 @@ list_of_df <- list(dataset_with_bad_values = data.frame(
   )
 )
 
-err <- bugphyzz::checkColumnValuesList(list_of_df)
+err <- bugphyzz:::checkColumnValuesList(list_of_df)
 err
 
 # Example 2
 
-bp <- bugphyzz::physiologies(keyword = "all")
-bp_list_of_errors <- bugphyzz::checkColumnValuesList(bp)
+bp <- bugphyzz:::physiologies(keyword = "all")
+bp_list_of_errors <- bugphyzz:::checkColumnValuesList(bp)
 bp_list_of_errors$aerophilicity$Evidence$bad_values
 
 }
