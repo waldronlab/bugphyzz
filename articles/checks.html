@@ -468,16 +468,8 @@
 
 <span class="va">error_table</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join</a></span><span class="op">(</span><span class="va">error_table</span>, <span class="va">data_links</span>, by <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Dataset"</span> <span class="op">=</span> <span class="st">"physiology"</span><span class="op">)</span><span class="op">)</span>
 
-<span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span><span class="op">(</span><span class="va">error_table</span><span class="op">)</span></code></pre></div>
+<span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span><span class="op">(</span><span class="va">error_table</span>, format <span class="op">=</span> <span class="st">"simple"</span>, escape <span class="op">=</span> <span class="cn">TRUE</span> <span class="op">)</span></code></pre></div>
 <table class="table">
-<colgroup>
-<col width="5%">
-<col width="3%">
-<col width="37%">
-<col width="2%">
-<col width="25%">
-<col width="24%">
-</colgroup>
 <thead><tr class="header">
 <th align="left">Dataset</th>
 <th align="left">Column</th>
@@ -570,7 +562,39 @@
 <tr class="odd">
 <td align="left">acetate producing</td>
 <td align="left">Attribute_value</td>
-<td align="left">&gt;&gt;&gt; Incorrect column class in acetate producing. The <code>Attribute_value</code> column<code>should be of class logical or numeric, not character                                                                                                                  |              0|                                                                                                                                                                      |https://docs.google.com/spreadsheets/d/e/2PACX-1vQb6gDQdhCMWHLQdkzMM4bgTPPosYCZvjzJu4NyOYaSBGOCaOPoQh0OiUr4btnJ8EAWn7NiF-T9JaCE/pub?gid=0&amp;single=true&amp;output=csv | |acetate producing                     |Evidence            |&gt;&gt;&gt; Invalid values. The column</code>Evidence<code>in dataset</code>acetate producing<code>contains invalid values in 24 rows. The first invalid values are: EXP, EXP, EXP...                                                                                          |             24|EXP, EXP, EXP, EXP, EXP, EXP                                                                                                                                          |https://docs.google.com/spreadsheets/d/e/2PACX-1vQb6gDQdhCMWHLQdkzMM4bgTPPosYCZvjzJu4NyOYaSBGOCaOPoQh0OiUr4btnJ8EAWn7NiF-T9JaCE/pub?gid=0&amp;single=true&amp;output=csv | |acetate producing                     |Confidence_interval |&gt;&gt;&gt; Invalid values. The column</code>Confidence_interval<code>in dataset</code>acetate producing<code>contains invalid values in 24 rows. The first invalid values are: Unknown, Unknown, Unknown...                                                                   |             24|Unknown, Unknown, Unknown, Unknown, Unknown, Unknown                                                                                                                  |https://docs.google.com/spreadsheets/d/e/2PACX-1vQb6gDQdhCMWHLQdkzMM4bgTPPosYCZvjzJu4NyOYaSBGOCaOPoQh0OiUr4btnJ8EAWn7NiF-T9JaCE/pub?gid=0&amp;single=true&amp;output=csv | |lactate producing                     |NCBI_ID             |&gt;&gt;&gt; Invalid values. The column</code>NCBI_ID<code>in dataset</code>lactate producing<code>contains invalid values in 24 rows. The first invalid values are: Unidentified, Unidentified, Unidentified...                                                                |             24|Unidentified, Unidentified, Unidentified, Unidentified, Unidentified, Unidentified                                                                                    |https://docs.google.com/spreadsheets/d/e/2PACX-1vSDYef_4xX2-RVfxhz7XrHIglvHjB5a9bagpApN_zHNhnswhFXN7CRsaQr3pKW6bAyrh8b26tndxCFi/pub?output=csv                   | |lactate producing                     |Attribute_value     |&gt;&gt;&gt; Incorrect column class in lactate producing. The</code>Attribute_value<code>column</code> should be of class logical or numeric, not character</td>
+<td align="left">&gt;&gt;&gt; Incorrect column class in acetate producing. The <code>Attribute_value</code> column` should be of class logical or numeric, not character</td>
+<td align="right">0</td>
+<td align="left"></td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQb6gDQdhCMWHLQdkzMM4bgTPPosYCZvjzJu4NyOYaSBGOCaOPoQh0OiUr4btnJ8EAWn7NiF-T9JaCE/pub?gid=0&amp;single=true&amp;output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQb6gDQdhCMWHLQdkzMM4bgTPPosYCZvjzJu4NyOYaSBGOCaOPoQh0OiUr4btnJ8EAWn7NiF-T9JaCE/pub?gid=0&amp;single=true&amp;output=csv</a></td>
+</tr>
+<tr class="even">
+<td align="left">acetate producing</td>
+<td align="left">Evidence</td>
+<td align="left">&gt;&gt;&gt; Invalid values. The column <code>Evidence</code> in dataset <code>acetate producing</code> contains invalid values in 24 rows. The first invalid values are: EXP, EXP, EXP…</td>
+<td align="right">24</td>
+<td align="left">EXP, EXP, EXP, EXP, EXP, EXP</td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQb6gDQdhCMWHLQdkzMM4bgTPPosYCZvjzJu4NyOYaSBGOCaOPoQh0OiUr4btnJ8EAWn7NiF-T9JaCE/pub?gid=0&amp;single=true&amp;output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQb6gDQdhCMWHLQdkzMM4bgTPPosYCZvjzJu4NyOYaSBGOCaOPoQh0OiUr4btnJ8EAWn7NiF-T9JaCE/pub?gid=0&amp;single=true&amp;output=csv</a></td>
+</tr>
+<tr class="odd">
+<td align="left">acetate producing</td>
+<td align="left">Confidence_interval</td>
+<td align="left">&gt;&gt;&gt; Invalid values. The column <code>Confidence_interval</code> in dataset <code>acetate producing</code> contains invalid values in 24 rows. The first invalid values are: Unknown, Unknown, Unknown…</td>
+<td align="right">24</td>
+<td align="left">Unknown, Unknown, Unknown, Unknown, Unknown, Unknown</td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQb6gDQdhCMWHLQdkzMM4bgTPPosYCZvjzJu4NyOYaSBGOCaOPoQh0OiUr4btnJ8EAWn7NiF-T9JaCE/pub?gid=0&amp;single=true&amp;output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQb6gDQdhCMWHLQdkzMM4bgTPPosYCZvjzJu4NyOYaSBGOCaOPoQh0OiUr4btnJ8EAWn7NiF-T9JaCE/pub?gid=0&amp;single=true&amp;output=csv</a></td>
+</tr>
+<tr class="even">
+<td align="left">lactate producing</td>
+<td align="left">NCBI_ID</td>
+<td align="left">&gt;&gt;&gt; Invalid values. The column <code>NCBI_ID</code> in dataset <code>lactate producing</code> contains invalid values in 24 rows. The first invalid values are: Unidentified, Unidentified, Unidentified…</td>
+<td align="right">24</td>
+<td align="left">Unidentified, Unidentified, Unidentified, Unidentified, Unidentified, Unidentified</td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vSDYef_4xX2-RVfxhz7XrHIglvHjB5a9bagpApN_zHNhnswhFXN7CRsaQr3pKW6bAyrh8b26tndxCFi/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vSDYef_4xX2-RVfxhz7XrHIglvHjB5a9bagpApN_zHNhnswhFXN7CRsaQr3pKW6bAyrh8b26tndxCFi/pub?output=csv</a></td>
+</tr>
+<tr class="odd">
+<td align="left">lactate producing</td>
+<td align="left">Attribute_value</td>
+<td align="left">&gt;&gt;&gt; Incorrect column class in lactate producing. The <code>Attribute_value</code> column` should be of class logical or numeric, not character</td>
 <td align="right">0</td>
 <td align="left"></td>
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vSDYef_4xX2-RVfxhz7XrHIglvHjB5a9bagpApN_zHNhnswhFXN7CRsaQr3pKW6bAyrh8b26tndxCFi/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vSDYef_4xX2-RVfxhz7XrHIglvHjB5a9bagpApN_zHNhnswhFXN7CRsaQr3pKW6bAyrh8b26tndxCFi/pub?output=csv</a></td>
@@ -866,7 +890,71 @@
 <tr class="even">
 <td align="left">width</td>
 <td align="left">Attribute_value</td>
-<td align="left">&gt;&gt;&gt; Incorrect column class in width. The <code>Attribute_value</code> column<code>should be of class logical or numeric, not character                                                                                                                              |              0|                                                                                                                                                                      |https://docs.google.com/spreadsheets/d/e/2PACX-1vR45vzAobXMOH1SCECpkBkIvxTsG5d8jAweSHaUst-gFKQcS0tTYUjivmLVByOLbFZgF59miCyF11TC/pub?output=csv                   | |width                                 |Evidence            |&gt;&gt;&gt; Invalid values. The column</code>Evidence<code>in dataset</code>width<code>contains invalid values in 865 rows. The first invalid values are: EXP, EXP, EXP...                                                                                                     |            865|EXP, EXP, EXP, EXP, EXP, EXP                                                                                                                                          |https://docs.google.com/spreadsheets/d/e/2PACX-1vR45vzAobXMOH1SCECpkBkIvxTsG5d8jAweSHaUst-gFKQcS0tTYUjivmLVByOLbFZgF59miCyF11TC/pub?output=csv                   | |width                                 |Confidence_interval |&gt;&gt;&gt; Invalid values. The column</code>Confidence_interval<code>in dataset</code>width<code>contains invalid values in 12 rows. The first invalid values are: , , ...                                                                                                    |             12|, , , , ,                                                                                                                                                             |https://docs.google.com/spreadsheets/d/e/2PACX-1vR45vzAobXMOH1SCECpkBkIvxTsG5d8jAweSHaUst-gFKQcS0tTYUjivmLVByOLbFZgF59miCyF11TC/pub?output=csv                   | |spore shape                           |Evidence            |&gt;&gt;&gt; Invalid values. The column</code>Evidence<code>in dataset</code>spore shape<code>contains invalid values in 153 rows. The first invalid values are: EXP, EXP, EXP...                                                                                               |            153|EXP, EXP, EXP, EXP, EXP, EXP                                                                                                                                          |https://docs.google.com/spreadsheets/d/e/2PACX-1vQSMzIaqrE8gCV20sDu_8VBmu1WkpQ_vngaWzLCK2qe5E8IJL7-sOF8qEY0sHeUEavvLHpKVp-vmUxh/pub?output=csv                   | |isolation site                        |Attribute           |&gt;&gt;&gt; Invalid values. The column</code>Attribute<code>in dataset</code>isolation site<code>contains invalid values in 1107 rows. The first invalid values are: blade of grass from raritan river nj, usa, hot swamp from kunashir island, russia, 1940s by lilleengen... |           1107|blade of grass from raritan river nj, usa, hot swamp from kunashir island, russia, 1940s by lilleengen, 1940s by lilleengen, 1940s by lilleengen, 1940s by lilleengen |https://docs.google.com/spreadsheets/d/e/2PACX-1vR5qKaSI_iXovASXA2U8figFKFBRNOuuFcnr-wSedtGuxAu2m8IjHp1uD23NGTWK9NmnKcO0m7FfkIx/pub?output=csv                   | |isolation site                        |Evidence            |&gt;&gt;&gt; Invalid values. The column</code>Evidence<code>in dataset</code>isolation site<code>contains invalid values in 1176 rows. The first invalid values are: EXP, EXP, EXP...                                                                                           |           1176|EXP, EXP, EXP, EXP, EXP, EXP                                                                                                                                          |https://docs.google.com/spreadsheets/d/e/2PACX-1vR5qKaSI_iXovASXA2U8figFKFBRNOuuFcnr-wSedtGuxAu2m8IjHp1uD23NGTWK9NmnKcO0m7FfkIx/pub?output=csv                   | |disease association                   |Attribute           |&gt;&gt;&gt; Invalid values. The column</code>Attribute<code>in dataset</code>disease association<code>contains invalid values in 184 rows. The first invalid values are: anaplasmosis, anemia, anthrax...                                                                      |            184|anaplasmosis, anemia, anthrax, anthrax, anthrax, anthrax                                                                                                              |https://docs.google.com/spreadsheets/d/e/2PACX-1vTboJM7necIfjgRgyYJ4LJWkCv_1y7O00yvyiSGzFdSfJDkeLqWrQ8FpcsYKFSOrQw75wCRst6KA0_a/pub?output=csv                   | |hydrogen gas producing                |NCBI_ID             |&gt;&gt;&gt; Invalid values. The column</code>NCBI_ID<code>in dataset</code>hydrogen gas producing<code>contains invalid values in 24 rows. The first invalid values are: Unidentified, Unidentified, Unidentified...                                                           |             24|Unidentified, Unidentified, Unidentified, Unidentified, Unidentified, Unidentified                                                                                    |https://docs.google.com/spreadsheets/d/e/2PACX-1vSpucXiYrMe_iYvnZDuNSNkRVnEWRQhykCCXoIvtmTiKAVUdkVnRYvl17nbwGqZDg2xVDwaUXccGYsF/pub?output=csv                   | |hydrogen gas producing                |Attribute_value     |&gt;&gt;&gt; Incorrect column class in hydrogen gas producing. The</code>Attribute_value<code>column</code> should be of class logical or numeric, not character</td>
+<td align="left">&gt;&gt;&gt; Incorrect column class in width. The <code>Attribute_value</code> column` should be of class logical or numeric, not character</td>
+<td align="right">0</td>
+<td align="left"></td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vR45vzAobXMOH1SCECpkBkIvxTsG5d8jAweSHaUst-gFKQcS0tTYUjivmLVByOLbFZgF59miCyF11TC/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vR45vzAobXMOH1SCECpkBkIvxTsG5d8jAweSHaUst-gFKQcS0tTYUjivmLVByOLbFZgF59miCyF11TC/pub?output=csv</a></td>
+</tr>
+<tr class="odd">
+<td align="left">width</td>
+<td align="left">Evidence</td>
+<td align="left">&gt;&gt;&gt; Invalid values. The column <code>Evidence</code> in dataset <code>width</code> contains invalid values in 865 rows. The first invalid values are: EXP, EXP, EXP…</td>
+<td align="right">865</td>
+<td align="left">EXP, EXP, EXP, EXP, EXP, EXP</td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vR45vzAobXMOH1SCECpkBkIvxTsG5d8jAweSHaUst-gFKQcS0tTYUjivmLVByOLbFZgF59miCyF11TC/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vR45vzAobXMOH1SCECpkBkIvxTsG5d8jAweSHaUst-gFKQcS0tTYUjivmLVByOLbFZgF59miCyF11TC/pub?output=csv</a></td>
+</tr>
+<tr class="even">
+<td align="left">width</td>
+<td align="left">Confidence_interval</td>
+<td align="left">&gt;&gt;&gt; Invalid values. The column <code>Confidence_interval</code> in dataset <code>width</code> contains invalid values in 12 rows. The first invalid values are: , , …</td>
+<td align="right">12</td>
+<td align="left">, , , , ,</td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vR45vzAobXMOH1SCECpkBkIvxTsG5d8jAweSHaUst-gFKQcS0tTYUjivmLVByOLbFZgF59miCyF11TC/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vR45vzAobXMOH1SCECpkBkIvxTsG5d8jAweSHaUst-gFKQcS0tTYUjivmLVByOLbFZgF59miCyF11TC/pub?output=csv</a></td>
+</tr>
+<tr class="odd">
+<td align="left">spore shape</td>
+<td align="left">Evidence</td>
+<td align="left">&gt;&gt;&gt; Invalid values. The column <code>Evidence</code> in dataset <code>spore shape</code> contains invalid values in 153 rows. The first invalid values are: EXP, EXP, EXP…</td>
+<td align="right">153</td>
+<td align="left">EXP, EXP, EXP, EXP, EXP, EXP</td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQSMzIaqrE8gCV20sDu_8VBmu1WkpQ_vngaWzLCK2qe5E8IJL7-sOF8qEY0sHeUEavvLHpKVp-vmUxh/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQSMzIaqrE8gCV20sDu_8VBmu1WkpQ_vngaWzLCK2qe5E8IJL7-sOF8qEY0sHeUEavvLHpKVp-vmUxh/pub?output=csv</a></td>
+</tr>
+<tr class="even">
+<td align="left">isolation site</td>
+<td align="left">Attribute</td>
+<td align="left">&gt;&gt;&gt; Invalid values. The column <code>Attribute</code> in dataset <code>isolation site</code> contains invalid values in 1107 rows. The first invalid values are: blade of grass from raritan river nj, usa, hot swamp from kunashir island, russia, 1940s by lilleengen…</td>
+<td align="right">1107</td>
+<td align="left">blade of grass from raritan river nj, usa, hot swamp from kunashir island, russia, 1940s by lilleengen, 1940s by lilleengen, 1940s by lilleengen, 1940s by lilleengen</td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vR5qKaSI_iXovASXA2U8figFKFBRNOuuFcnr-wSedtGuxAu2m8IjHp1uD23NGTWK9NmnKcO0m7FfkIx/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vR5qKaSI_iXovASXA2U8figFKFBRNOuuFcnr-wSedtGuxAu2m8IjHp1uD23NGTWK9NmnKcO0m7FfkIx/pub?output=csv</a></td>
+</tr>
+<tr class="odd">
+<td align="left">isolation site</td>
+<td align="left">Evidence</td>
+<td align="left">&gt;&gt;&gt; Invalid values. The column <code>Evidence</code> in dataset <code>isolation site</code> contains invalid values in 1176 rows. The first invalid values are: EXP, EXP, EXP…</td>
+<td align="right">1176</td>
+<td align="left">EXP, EXP, EXP, EXP, EXP, EXP</td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vR5qKaSI_iXovASXA2U8figFKFBRNOuuFcnr-wSedtGuxAu2m8IjHp1uD23NGTWK9NmnKcO0m7FfkIx/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vR5qKaSI_iXovASXA2U8figFKFBRNOuuFcnr-wSedtGuxAu2m8IjHp1uD23NGTWK9NmnKcO0m7FfkIx/pub?output=csv</a></td>
+</tr>
+<tr class="even">
+<td align="left">disease association</td>
+<td align="left">Attribute</td>
+<td align="left">&gt;&gt;&gt; Invalid values. The column <code>Attribute</code> in dataset <code>disease association</code> contains invalid values in 184 rows. The first invalid values are: anaplasmosis, anemia, anthrax…</td>
+<td align="right">184</td>
+<td align="left">anaplasmosis, anemia, anthrax, anthrax, anthrax, anthrax</td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vTboJM7necIfjgRgyYJ4LJWkCv_1y7O00yvyiSGzFdSfJDkeLqWrQ8FpcsYKFSOrQw75wCRst6KA0_a/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vTboJM7necIfjgRgyYJ4LJWkCv_1y7O00yvyiSGzFdSfJDkeLqWrQ8FpcsYKFSOrQw75wCRst6KA0_a/pub?output=csv</a></td>
+</tr>
+<tr class="odd">
+<td align="left">hydrogen gas producing</td>
+<td align="left">NCBI_ID</td>
+<td align="left">&gt;&gt;&gt; Invalid values. The column <code>NCBI_ID</code> in dataset <code>hydrogen gas producing</code> contains invalid values in 24 rows. The first invalid values are: Unidentified, Unidentified, Unidentified…</td>
+<td align="right">24</td>
+<td align="left">Unidentified, Unidentified, Unidentified, Unidentified, Unidentified, Unidentified</td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vSpucXiYrMe_iYvnZDuNSNkRVnEWRQhykCCXoIvtmTiKAVUdkVnRYvl17nbwGqZDg2xVDwaUXccGYsF/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vSpucXiYrMe_iYvnZDuNSNkRVnEWRQhykCCXoIvtmTiKAVUdkVnRYvl17nbwGqZDg2xVDwaUXccGYsF/pub?output=csv</a></td>
+</tr>
+<tr class="even">
+<td align="left">hydrogen gas producing</td>
+<td align="left">Attribute_value</td>
+<td align="left">&gt;&gt;&gt; Incorrect column class in hydrogen gas producing. The <code>Attribute_value</code> column` should be of class logical or numeric, not character</td>
 <td align="right">0</td>
 <td align="left"></td>
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vSpucXiYrMe_iYvnZDuNSNkRVnEWRQhykCCXoIvtmTiKAVUdkVnRYvl17nbwGqZDg2xVDwaUXccGYsF/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vSpucXiYrMe_iYvnZDuNSNkRVnEWRQhykCCXoIvtmTiKAVUdkVnRYvl17nbwGqZDg2xVDwaUXccGYsF/pub?output=csv</a></td>
@@ -906,7 +994,31 @@
 <tr class="odd">
 <td align="left">length</td>
 <td align="left">Attribute_value</td>
-<td align="left">&gt;&gt;&gt; Incorrect column class in length. The <code>Attribute_value</code> column<code>should be of class logical or numeric, not character                                                                                                                             |              0|                                                                                                                                                                      |https://docs.google.com/spreadsheets/d/e/2PACX-1vQkcQ7CJ0LjgE0928maxcVEiqq7QHl6vuosL7qdWaCMVuqHCDwsPJA7yNSeXm9FIip-mDRaU6pMk4Ww/pub?output=csv                   | |length                                |Attribute_source    |&gt;&gt;&gt; Invalid values. The column</code>Attribute_source<code>in dataset</code>length<code>contains invalid values in 1296 rows. The first invalid values are: , , ...                                                                                                    |           1296|, , , , ,                                                                                                                                                             |https://docs.google.com/spreadsheets/d/e/2PACX-1vQkcQ7CJ0LjgE0928maxcVEiqq7QHl6vuosL7qdWaCMVuqHCDwsPJA7yNSeXm9FIip-mDRaU6pMk4Ww/pub?output=csv                   | |length                                |Evidence            |&gt;&gt;&gt; Invalid values. The column</code>Evidence<code>in dataset</code>length<code>contains invalid values in 2161 rows. The first invalid values are: EXP, EXP, EXP...                                                                                                   |           2161|EXP, EXP, EXP, EXP, EXP, EXP                                                                                                                                          |https://docs.google.com/spreadsheets/d/e/2PACX-1vQkcQ7CJ0LjgE0928maxcVEiqq7QHl6vuosL7qdWaCMVuqHCDwsPJA7yNSeXm9FIip-mDRaU6pMk4Ww/pub?output=csv                   | |length                                |Confidence_interval |&gt;&gt;&gt; Invalid values. The column</code>Confidence_interval<code>in dataset</code>length` contains invalid values in 1492 rows. The first invalid values are: , , …</td>
+<td align="left">&gt;&gt;&gt; Incorrect column class in length. The <code>Attribute_value</code> column` should be of class logical or numeric, not character</td>
+<td align="right">0</td>
+<td align="left"></td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQkcQ7CJ0LjgE0928maxcVEiqq7QHl6vuosL7qdWaCMVuqHCDwsPJA7yNSeXm9FIip-mDRaU6pMk4Ww/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQkcQ7CJ0LjgE0928maxcVEiqq7QHl6vuosL7qdWaCMVuqHCDwsPJA7yNSeXm9FIip-mDRaU6pMk4Ww/pub?output=csv</a></td>
+</tr>
+<tr class="even">
+<td align="left">length</td>
+<td align="left">Attribute_source</td>
+<td align="left">&gt;&gt;&gt; Invalid values. The column <code>Attribute_source</code> in dataset <code>length</code> contains invalid values in 1296 rows. The first invalid values are: , , …</td>
+<td align="right">1296</td>
+<td align="left">, , , , ,</td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQkcQ7CJ0LjgE0928maxcVEiqq7QHl6vuosL7qdWaCMVuqHCDwsPJA7yNSeXm9FIip-mDRaU6pMk4Ww/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQkcQ7CJ0LjgE0928maxcVEiqq7QHl6vuosL7qdWaCMVuqHCDwsPJA7yNSeXm9FIip-mDRaU6pMk4Ww/pub?output=csv</a></td>
+</tr>
+<tr class="odd">
+<td align="left">length</td>
+<td align="left">Evidence</td>
+<td align="left">&gt;&gt;&gt; Invalid values. The column <code>Evidence</code> in dataset <code>length</code> contains invalid values in 2161 rows. The first invalid values are: EXP, EXP, EXP…</td>
+<td align="right">2161</td>
+<td align="left">EXP, EXP, EXP, EXP, EXP, EXP</td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQkcQ7CJ0LjgE0928maxcVEiqq7QHl6vuosL7qdWaCMVuqHCDwsPJA7yNSeXm9FIip-mDRaU6pMk4Ww/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQkcQ7CJ0LjgE0928maxcVEiqq7QHl6vuosL7qdWaCMVuqHCDwsPJA7yNSeXm9FIip-mDRaU6pMk4Ww/pub?output=csv</a></td>
+</tr>
+<tr class="even">
+<td align="left">length</td>
+<td align="left">Confidence_interval</td>
+<td align="left">&gt;&gt;&gt; Invalid values. The column <code>Confidence_interval</code> in dataset <code>length</code> contains invalid values in 1492 rows. The first invalid values are: , , …</td>
 <td align="right">1492</td>
 <td align="left">, , , , ,</td>
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQkcQ7CJ0LjgE0928maxcVEiqq7QHl6vuosL7qdWaCMVuqHCDwsPJA7yNSeXm9FIip-mDRaU6pMk4Ww/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQkcQ7CJ0LjgE0928maxcVEiqq7QHl6vuosL7qdWaCMVuqHCDwsPJA7yNSeXm9FIip-mDRaU6pMk4Ww/pub?output=csv</a></td>
