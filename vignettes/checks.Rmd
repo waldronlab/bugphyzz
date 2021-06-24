@@ -53,7 +53,7 @@ package, that must be present in all datasets. These required columns, currently
 with the `requiredColumns` function:
 
 ```{r}
-requiredColumns()
+bugphyzz:::requiredColumns()
 ```
 
 The `checkRequiredColumns` function checks: 1) that all columns are present in a single data frame, and 2) that
