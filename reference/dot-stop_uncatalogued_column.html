@@ -6,8 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Fetch Bergeys abstracts
-This function fetches Kelly Eckenrode's and Jonathan Ye's scraping of the Bergey's abstracts and returns a tidy data.frame — bergeys_abstracts • bugphyzz</title>
+<title>Stop condition for a column not catalogued in the template file — .stop_uncatalogued_column • bugphyzz</title>
 
 
 <!-- jquery -->
@@ -40,10 +39,8 @@ This function fetches Kelly Eckenrode's and Jonathan Ye's scraping of the Bergey
 
 
 
-<meta property="og:title" content="Fetch Bergeys abstracts
-This function fetches Kelly Eckenrode's and Jonathan Ye's scraping of the Bergey's abstracts and returns a tidy data.frame — bergeys_abstracts" />
-<meta property="og:description" content="Fetch Bergeys abstracts
-This function fetches Kelly Eckenrode's and Jonathan Ye's scraping of the Bergey's abstracts and returns a tidy data.frame" />
+<meta property="og:title" content="Stop condition for a column not catalogued in the template file — .stop_uncatalogued_column" />
+<meta property="og:description" content="Stop condition for a column not catalogued in the template file" />
 
 
 
@@ -124,28 +121,38 @@ This function fetches Kelly Eckenrode's and Jonathan Ye's scraping of the Bergey
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Fetch Bergeys abstracts
-This function fetches Kelly Eckenrode's and Jonathan Ye's scraping of the Bergey's abstracts and returns a tidy data.frame</h1>
+    <h1>Stop condition for a column not catalogued in the template file</h1>
     
-    <div class="hidden name"><code>bergeys_abstracts.Rd</code></div>
+    <div class="hidden name"><code>dot-stop_uncatalogued_column.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Fetch Bergeys abstracts
-This function fetches Kelly Eckenrode's and Jonathan Ye's scraping of the Bergey's abstracts and returns a tidy data.frame</p>
+    <p>Stop condition for a column not catalogued in the template file</p>
     </div>
 
-    <pre class="usage"><span class='fu'>bergeys_abstracts</span><span class='op'>(</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>.stop_uncatalogued_column</span><span class='op'>(</span><span class='va'>col</span>, dataset_name <span class='op'>=</span> <span class='cn'>NULL</span>, <span class='va'>...</span><span class='op'>)</span></pre>
 
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>col</th>
+      <td><p>Character vector of length 1; column name.</p></td>
+    </tr>
+    <tr>
+      <th>dataset_name</th>
+      <td><p>Character vector of length 1; dataset name.</p></td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td><p>Any other argument useful to identify the source of the error and how to fix it.</p></td>
+    </tr>
+    </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A tidy data.frame</p>
+    <p>Error condition. Object of class: "invalid_column_class", "error", "condition".</p>
 
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'>bergeys_abstracts</span><span class='op'>(</span><span class='op'>)</span>
-<span class='fu'><a href='https://rdrr.io/r/base/dim.html'>dim</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] 17335    94</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

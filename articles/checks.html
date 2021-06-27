@@ -5,13 +5,13 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Check Functions for BugPhyzz • bugphyzz</title>
+<title>Check Functions • bugphyzz</title>
 <!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script><!-- bootstrap-toc --><link rel="stylesheet" href="../bootstrap-toc.css">
 <script src="../bootstrap-toc.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
-<script src="../pkgdown.js"></script><meta property="og:title" content="Check Functions for BugPhyzz">
+<script src="../pkgdown.js"></script><meta property="og:title" content="Check Functions">
 <meta property="og:description" content="bugphyzz">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -54,10 +54,10 @@
   </a>
   <ul class="dropdown-menu" role="menu">
 <li>
-      <a href="../articles/articles/summary_statistics.html">Summary Statistics of Microbes and Their Attributes in BugPhyzz</a>
+      <a href="../articles/checks.html">Check Functions</a>
     </li>
     <li>
-      <a href="../articles/checks.html">Check Functions for BugPhyzz</a>
+      <a href="../articles/summary_statistics.html">Summary Statistics of Microbes and Their Attributes in BugPhyzz</a>
     </li>
     <li>
       <a href="../articles/write_physiology_sets.html">write_physiology_sets</a>
@@ -78,7 +78,7 @@
       </header><script src="checks_files/header-attrs-2.9/header-attrs.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
-      <h1 data-toc-skip>Check Functions for BugPhyzz</h1>
+      <h1 data-toc-skip>Check Functions</h1>
             
       
       
@@ -89,41 +89,26 @@
     
     
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">bugphyzz</span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://magrittr.tidyverse.org">magrittr</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Attaching package: 'dplyr'</span>
-<span class="co">#&gt; The following objects are masked from 'package:stats':</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt;     filter, lag</span>
-<span class="co">#&gt; The following objects are masked from 'package:base':</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt;     intersect, setdiff, setequal, union</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://purrr.tidyverse.org">purrr</a></span><span class="op">)</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Attaching package: 'purrr'</span>
-<span class="co">#&gt; The following object is masked from 'package:magrittr':</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt;     set_names</span></code></pre></div>
-<div id="introduction" class="section level1">
-<h1 class="hasAnchor">
-<a href="#introduction" class="anchor"></a>Introduction</h1>
-<p>This vignette describes how to run some checks on data frames imported from bugphyzz using the “check family” of functions included in the package. These functions are not exported because they will be mainly used by curators of the data. The functions can be accessed using the triple colon <code><a href="https://rdrr.io/r/base/ns-dblcolon.html">:::</a></code> operator and help can be accessed using the <code><a href="https://rdrr.io/r/utils/Question.html">?</a></code> operator; for example, <code>?bugphyzz:::checkRequiredColumns</code>.</p>
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/message.html">suppressMessages</a></span><span class="op">(</span><span class="op">{</span>
+  <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">bugphyzz</span><span class="op">)</span>
+  <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://magrittr.tidyverse.org">magrittr</a></span><span class="op">)</span>
+  <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span>
+  <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://purrr.tidyverse.org">purrr</a></span><span class="op">)</span>
+<span class="op">}</span><span class="op">)</span></code></pre></div>
+<p>This vignette describes how to run some checks on data frames imported from bugphyzz using the check functions included in the package. These functions are not exported because they will be mainly used by curators of the data and not the final users of the package. The check functions can be accessed using the triple colon <code><a href="https://rdrr.io/r/base/ns-dblcolon.html">:::</a></code> operator and help can be accessed using the <code><a href="https://rdrr.io/r/utils/Question.html">?</a></code> operator; for example, <code>?bugphyzz:::checkRequiredColumns</code>.</p>
 <p>Currently, there are two sets of checks:</p>
 <ol style="list-style-type: decimal">
-<li><p>Check that all <em>mandatory columns</em> are present and in the right order in a <em>single</em> data frame imported from bugphyzz. The function that performs this check is <code>checkRequiredColumns</code>. The package includes a wrapper function to apply <code>checkRequiredColumns</code> to a <em>list</em> of bugphyzz data frames: <code>checkRequiredColumnsList</code>.</p></li>
-<li><p>Check that the <em>syntax</em> or <em>values</em> of a <em>single</em> column are valied in a <em>single</em> data frame imported from bugphyzz. The function that performs this check is <code>checkColumnValues</code>. There is a wrapper function to apply <code>checkColumnValues</code> to all the columns of a <em>single</em> data frame: <code>checkColumnValuesDF</code>. In turn, there is a wrapper function to apply <code>checkColumnValuesDF</code> across a <em>list</em> of data frames imported from bugphyzz: <code>checkColumnValuesList</code>.</p></li>
+<li><p>Check that all <em>mandatory columns</em> are present and in the right order in a <em>single</em> data frame imported by bugphyzz. The function that performs this check is <code>checkRequiredColumns</code>. The package includes a wrapper function to apply <code>checkRequiredColumns</code> to a <em>list</em> of bugphyzz data frames: <code>checkRequiredColumnsList</code>.</p></li>
+<li><p>Check that the <em>syntax</em> or <em>values</em> of a <em>single</em> column are valid in a <em>single</em> data frame imported from bugphyzz. The function that performs this check is <code>checkColumnValues</code>. There is a wrapper function to apply <code>checkColumnValues</code> to all the columns of a <em>single</em> data frame: <code>checkColumnValuesDF</code>. In turn, there is a wrapper function to apply <code>checkColumnValuesDF</code> across a <em>list</em> of data frames imported from bugphyzz: <code>checkColumnValuesList</code>.</p></li>
 </ol>
-<p>Below, a more detailed description with some examples.</p>
-</div>
-<div id="explanation-of-the-functions" class="section level1">
+<p>Below, a more detailed explanation of the checks with some examples using “toy data”. Then, the functions are applied to generate reports of possible errors across bugphyzz datasets.</p>
+<div id="explanation-of-the-check-functions" class="section level1">
 <h1 class="hasAnchor">
-<a href="#explanation-of-the-functions" class="anchor"></a>Explanation of the functions</h1>
+<a href="#explanation-of-the-check-functions" class="anchor"></a>Explanation of the check functions</h1>
 <div id="check-required-columns" class="section level2">
 <h2 class="hasAnchor">
 <a href="#check-required-columns" class="anchor"></a>Check required columns</h2>
-<p>Not all data frames imported by bugphyzz functions (<code>physiologies</code>, <code>fattyAcidComposition</code>) have the same columns. However, there are some mandatory columns, referred to as “required columns” in the package, that must be present in all datasets. These required columns, currently nine, can be accessed with the <code>requiredColumns</code> function:</p>
+<p>Not all data frames imported with the bugphyzz functions (<code>physiologies</code>, <code>fattyAcidComposition</code>) have the same columns. However, there are some mandatory columns, referred to as “required columns” in the package, that must be present in all datasets. These required columns, currently nine, can be accessed with the <code>requiredColumns</code> function:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">bugphyzz</span><span class="fu">:::</span><span class="fu"><a href="../reference/requiredColumns.html">requiredColumns</a></span><span class="op">(</span><span class="op">)</span>
 <span class="co">#&gt; [1] "NCBI_ID"             "Genome_ID"           "Accession_number"   </span>
@@ -163,16 +148,20 @@
     Confidence_interval <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">10</span>,
     Note <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">)</span>
   <span class="op">)</span></code></pre></div>
-<p>A column with missing required columns:</p>
+<ul>
+<li>Case 1: Several “required columns” are missing from a data frame:</li>
+</ul>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">err1</span> <span class="op">&lt;-</span> <span class="fu">bugphyzz</span><span class="fu">:::</span><span class="fu"><a href="../reference/checkRequiredColumns.html">checkRequiredColumns</a></span><span class="op">(</span>dataset <span class="op">=</span> <span class="va">list_of_datasets</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span>, dataset_name <span class="op">=</span> <span class="st">"missing_columns"</span><span class="op">)</span>
-<span class="co">#&gt; &gt;&gt;&gt; Required columns missing. The following required columns are missing from the `missing_columns` dataset: Genome_ID, Accession_number, Taxon_name, Attribute_value, Attribute_source, Evidence, Confidence_interval. Please check the required columns with `requiredColumns()`.</span>
+<span class="co">#&gt; &gt;&gt;&gt; Required columns missing. The following required columns are missing from the `missing_columns` dataset: Genome_ID, Accession_number, Taxon_name, Attribute_value, Attribute_source, Evidence, Confidence_interval. Please check the required columns with `bugphyzz:::requiredColumns()`.</span>
 <span class="va">err1</span>
-<span class="co">#&gt; &lt;required_columns_missing: &gt;&gt;&gt; Required columns missing. The following required columns are missing from the `missing_columns` dataset: Genome_ID, Accession_number, Taxon_name, Attribute_value, Attribute_source, Evidence, Confidence_interval. Please check the required columns with `requiredColumns()`.&gt;</span></code></pre></div>
-<p>In the case of misplaced required columns, the function also prints a data frame indicating which columns are misplaced and what should be their right order:</p>
+<span class="co">#&gt; &lt;required_columns_missing: &gt;&gt;&gt; Required columns missing. The following required columns are missing from the `missing_columns` dataset: Genome_ID, Accession_number, Taxon_name, Attribute_value, Attribute_source, Evidence, Confidence_interval. Please check the required columns with `bugphyzz:::requiredColumns()`.&gt;</span></code></pre></div>
+<ul>
+<li>Case 2: A few of the required columns are not in the right order:</li>
+</ul>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">err2</span> <span class="op">&lt;-</span> <span class="fu">bugphyzz</span><span class="fu">:::</span><span class="fu"><a href="../reference/checkRequiredColumns.html">checkRequiredColumns</a></span><span class="op">(</span>dataset <span class="op">=</span> <span class="va">list_of_datasets</span><span class="op">[[</span><span class="fl">2</span><span class="op">]</span><span class="op">]</span>, dataset_name <span class="op">=</span> <span class="st">"misplaced_columns"</span><span class="op">)</span>
-<span class="co">#&gt; &gt;&gt;&gt; Misplaced required columns. The following required columns in the `misplaced_columns` dataset are not in the right place: Genome_ID, Accession_number, Taxon_name, Confidence_interval. Please check the correct order with `requiredColumns()`. </span>
+<span class="co">#&gt; &gt;&gt;&gt; Misplaced required columns. The following required columns in the `misplaced_columns` dataset are not in the right place: Genome_ID, Accession_number, Taxon_name, Confidence_interval. Please check the correct order with `bugphyz:::requiredColumns()`. </span>
 <span class="co">#&gt;  The misplaed columns are: </span>
 <span class="co">#&gt;        required_column expected_position actual_position misplaced</span>
 <span class="co">#&gt; 1             NCBI_ID                 1               1          </span>
@@ -185,18 +174,22 @@
 <span class="co">#&gt; 8            Evidence                 8               8          </span>
 <span class="co">#&gt; 9 Confidence_interval                 9              10         *</span>
 <span class="va">err2</span>
-<span class="co">#&gt; &lt;required_columns_misplaced: &gt;&gt;&gt; Misplaced required columns. The following required columns in the `misplaced_columns` dataset are not in the right place: Genome_ID, Accession_number, Taxon_name, Confidence_interval. Please check the correct order with `requiredColumns()`.&gt;</span></code></pre></div>
-<p>If no errors are found, then <code>checkRequiredColumns</code> prints a message indicating it:</p>
+<span class="co">#&gt; &lt;required_columns_misplaced: &gt;&gt;&gt; Misplaced required columns. The following required columns in the `misplaced_columns` dataset are not in the right place: Genome_ID, Accession_number, Taxon_name, Confidence_interval. Please check the correct order with `bugphyz:::requiredColumns()`.&gt;</span></code></pre></div>
+<ul>
+<li>Case 3: All required columns are present and in the rigth order.</li>
+</ul>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">no_err</span> <span class="op">&lt;-</span> <span class="fu">bugphyzz</span><span class="fu">:::</span><span class="fu"><a href="../reference/checkRequiredColumns.html">checkRequiredColumns</a></span><span class="op">(</span>dataset <span class="op">=</span> <span class="va">list_of_datasets</span><span class="op">[[</span><span class="fl">3</span><span class="op">]</span><span class="op">]</span>, dataset_name <span class="op">=</span> <span class="st">"required_columns_ok"</span><span class="op">)</span>
 <span class="co">#&gt; &gt;&gt;&gt; All columns in the `required_columns_ok` dataset are present and in the right order.</span>
 <span class="va">no_err</span>
 <span class="co">#&gt; NULL</span></code></pre></div>
-<p>It’s more convenient to apply this check to a list of data frames with <code>checkRequiredColumnsList</code>:</p>
+<ul>
+<li>It’s more convenient to apply this check to a list of data frames with <code>checkRequiredColumnsList</code>:</li>
+</ul>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">err3</span> <span class="op">&lt;-</span> <span class="fu">bugphyzz</span><span class="fu">:::</span><span class="fu"><a href="../reference/checkRequiredColumnsList.html">checkRequiredColumnsList</a></span><span class="op">(</span>list <span class="op">=</span> <span class="va">list_of_datasets</span><span class="op">)</span>
-<span class="co">#&gt; &gt;&gt;&gt; Required columns missing. The following required columns are missing from the `dataset_with_missing_required_columns` dataset: Genome_ID, Accession_number, Taxon_name, Attribute_value, Attribute_source, Evidence, Confidence_interval. Please check the required columns with `requiredColumns()`. </span>
-<span class="co">#&gt; &gt;&gt;&gt; Misplaced required columns. The following required columns in the `dataset_with_misplaced_required_columns` dataset are not in the right place: Genome_ID, Accession_number, Taxon_name, Confidence_interval. Please check the correct order with `requiredColumns()`. </span>
+<span class="co">#&gt; &gt;&gt;&gt; Required columns missing. The following required columns are missing from the `dataset_with_missing_required_columns` dataset: Genome_ID, Accession_number, Taxon_name, Attribute_value, Attribute_source, Evidence, Confidence_interval. Please check the required columns with `bugphyzz:::requiredColumns()`. </span>
+<span class="co">#&gt; &gt;&gt;&gt; Misplaced required columns. The following required columns in the `dataset_with_misplaced_required_columns` dataset are not in the right place: Genome_ID, Accession_number, Taxon_name, Confidence_interval. Please check the correct order with `bugphyz:::requiredColumns()`. </span>
 <span class="co">#&gt;  The misplaed columns are: </span>
 <span class="co">#&gt;        required_column expected_position actual_position misplaced</span>
 <span class="co">#&gt; 1             NCBI_ID                 1               1          </span>
@@ -211,10 +204,10 @@
 <span class="co">#&gt; &gt;&gt;&gt; All columns in the `dataset_with_required_columns_ok` dataset are present and in the right order.</span>
 <span class="va">err3</span>
 <span class="co">#&gt; $dataset_with_missing_required_columns</span>
-<span class="co">#&gt; &lt;required_columns_missing: &gt;&gt;&gt; Required columns missing. The following required columns are missing from the `dataset_with_missing_required_columns` dataset: Genome_ID, Accession_number, Taxon_name, Attribute_value, Attribute_source, Evidence, Confidence_interval. Please check the required columns with `requiredColumns()`.&gt;</span>
+<span class="co">#&gt; &lt;required_columns_missing: &gt;&gt;&gt; Required columns missing. The following required columns are missing from the `dataset_with_missing_required_columns` dataset: Genome_ID, Accession_number, Taxon_name, Attribute_value, Attribute_source, Evidence, Confidence_interval. Please check the required columns with `bugphyzz:::requiredColumns()`.&gt;</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; $dataset_with_misplaced_required_columns</span>
-<span class="co">#&gt; &lt;required_columns_misplaced: &gt;&gt;&gt; Misplaced required columns. The following required columns in the `dataset_with_misplaced_required_columns` dataset are not in the right place: Genome_ID, Accession_number, Taxon_name, Confidence_interval. Please check the correct order with `requiredColumns()`.&gt;</span></code></pre></div>
+<span class="co">#&gt; &lt;required_columns_misplaced: &gt;&gt;&gt; Misplaced required columns. The following required columns in the `dataset_with_misplaced_required_columns` dataset are not in the right place: Genome_ID, Accession_number, Taxon_name, Confidence_interval. Please check the correct order with `bugphyz:::requiredColumns()`.&gt;</span></code></pre></div>
 </div>
 <div id="check-syntaxvalidity-of-values" class="section level2">
 <h2 class="hasAnchor">
@@ -237,9 +230,10 @@
 <span class="co">#&gt; 10                Note                                     .+   string</span>
 <span class="co">#&gt; 11              Strain                                     .+   string</span>
 <span class="co">#&gt; 12                Unit                                     .+   string</span></code></pre></div>
-<p>The syntax/validity check is performed by <code>grepl</code> searches of the values in the “valid_values” column in the template file against the values in specific columns of a data frame imported by a bugphyzz function (indicated in the “column_name” column of the template file). These <code>grepl</code> searches are performed by the <code>checkColumnValues</code> function.</p>
-<p>There are two special cases. In the first case, the values in the “Attribute” column, one of the required columns of a bugphyzz data frame, are compared against the values in the <a href="https://github.com/waldronlab/bugphyzz/blob/main/inst/extdata/attributes.tsv">attributes.tsv</a> file (installed with the bugphyzz package) thanks to the <code>.attribues</code> helper function. In the second case, the “Attribute_value” column, another of the required columns of a bugphyzz data frame, is checked for class instead of specific syntax/valid values. These differences are indicated in the “test” column of the template file.</p>
-<p>The <code>checkColumnValues</code> function perform the checks described above in single column of a data frame. Here is an example with toy data:</p>
+<p>The syntax/validity check is performed by the <code>checkColumnValues</code> function. This function implements <code>grepl</code> searches of the values in the “valid_values” column of the template file against the different columns of a data frame imported from bugphyzz (as specified by the “column_name” column of the template file). For example, the “NCBI_ID” column in a data frame imported from bugphyzz should only contain integer values (<code>^[0-9]+$</code>).</p>
+<p>In the case of the “Attribute” column (in a data frame imported from bugphyzz), the regex used by <code>checkColumnValues</code> is generated with the helper function <code>.attributes</code>, which prints the unique attribute values found in the <a href="https://github.com/waldronlab/bugphyzz/blob/main/inst/extdata/attributes.tsv">attributes.tsv</a> file. This difference in behavior is indicated in the column “test” of the template file.</p>
+<p>In the case of the “Attribute_value” column (in a data frame imported from bugphyzz), the <code>checkColumnValues</code> function checks the class instead of values (as indicated in the "test column of the template file).</p>
+<p>Toy data:</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># a list with only one data frame</span>
 <span class="va">list_of_df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>dataset_with_bad_values <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>
@@ -255,100 +249,95 @@
     Note <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">10</span>
   <span class="op">)</span>
 <span class="op">)</span></code></pre></div>
-<p>Checking the “NCBI_ID” column, which should contain only integers according to the template file:</p>
+<ul>
+<li>Case 1: Check the values in the NCBI_ID column of a single data frame:</li>
+</ul>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">err4</span> <span class="op">&lt;-</span> <span class="fu">bugphyzz</span><span class="fu">:::</span><span class="fu"><a href="../reference/checkColumnValues.html">checkColumnValues</a></span><span class="op">(</span>column_name <span class="op">=</span> <span class="st">"NCBI_ID"</span>, dataset <span class="op">=</span> <span class="va">list_of_df</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span>, dataset_name <span class="op">=</span> <span class="st">"dataset_with_invalid_ncbi_column"</span><span class="op">)</span>
-<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `NCBI_ID` in dataset `dataset_with_invalid_ncbi_column` contains invalid values in 10 rows. The first invalid values are: a, b, c...</span>
+<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `NCBI_ID` in dataset `dataset_with_invalid_ncbi_column` contains invalid values in 10 rows. The first invalid values are: a; b; c...</span>
 <span class="va">err4</span>
-<span class="co">#&gt; &lt;invalid_column_values: &gt;&gt;&gt; Invalid values. The column `NCBI_ID` in dataset `dataset_with_invalid_ncbi_column` contains invalid values in 10 rows. The first invalid values are: a, b, c...&gt;</span></code></pre></div>
-<p>If an error is found, the <code>checkColumnValues</code> function prints an error message on screen and invisibly returns an error condition object. Metadata can be extracted from this object: for example, a character with invalid values.</p>
-<p>The <code>checkColumnValuesDF</code> function is a wrapper that applies the <code>checkColumnValuesDF</code> function to all the columns of a data frame. The function then returns (invisibly) a list with error conditions. Example:</p>
+<span class="co">#&gt; &lt;invalid_column_values: &gt;&gt;&gt; Invalid values. The column `NCBI_ID` in dataset `dataset_with_invalid_ncbi_column` contains invalid values in 10 rows. The first invalid values are: a; b; c...&gt;</span></code></pre></div>
+<p>In the example above the invalid values (and other metadata) can be obtained from the error condition object (<code>err4</code>) with the <code><a href="https://rdrr.io/r/base/Extract.html">$</a></code> operator:</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># Print invalid values</span>
+<span class="va">err4</span><span class="op">$</span><span class="va">invalid_values</span>
+<span class="co">#&gt;  [1] "a" "b" "c" "d" "e" "f" "g" "h" "i" "j"</span>
+
+<span class="co"># Print row with invalid values</span>
+<span class="va">err4</span><span class="op">$</span><span class="va">invalid_positions</span>
+<span class="co">#&gt;  [1]  1  2  3  4  5  6  7  8  9 10</span></code></pre></div>
+<ul>
+<li>Case 2: Check the values of all of the columns of a single data frame with the <code>checkColumnValuesDF</code> function.</li>
+</ul>
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">err5</span> <span class="op">&lt;-</span> <span class="fu">bugphyzz</span><span class="fu">:::</span><span class="fu"><a href="../reference/checkColumnValuesDF.html">checkColumnValuesDF</a></span><span class="op">(</span>dataset <span class="op">=</span> <span class="va">list_of_df</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span>, dataset_name <span class="op">=</span> <span class="st">"dataset_with_invalid_column"</span><span class="op">)</span>
-<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `NCBI_ID` in dataset `dataset_with_invalid_column` contains invalid values in 10 rows. The first invalid values are: a, b, c... </span>
-<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Attribute` in dataset `dataset_with_invalid_column` contains invalid values in 10 rows. The first invalid values are: 1, 2, 3... </span>
-<span class="co">#&gt; &gt;&gt;&gt; Incorrect column class in dataset_with_invalid_column. The `Attribute_value` column` should be of class logical or numeric, not character </span>
-<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Evidence` in dataset `dataset_with_invalid_column` contains invalid values in 10 rows. The first invalid values are: 1, 2, 3... </span>
-<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Confidence_interval` in dataset `dataset_with_invalid_column` contains invalid values in 10 rows. The first invalid values are: 1, 2, 3...</span>
+<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `NCBI_ID` in dataset `dataset_with_invalid_column` contains invalid values in 10 rows. The first invalid values are: a; b; c... </span>
+<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Attribute` in dataset `dataset_with_invalid_column` contains invalid values in 10 rows. The first invalid values are: 1; 2; 3... </span>
+<span class="co">#&gt; &gt;&gt;&gt; Invalid column class in dataset_with_invalid_column. The `Attribute_value` column` should be of class logical or numeric, not character </span>
+<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Evidence` in dataset `dataset_with_invalid_column` contains invalid values in 10 rows. The first invalid values are: 1; 2; 3... </span>
+<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Confidence_interval` in dataset `dataset_with_invalid_column` contains invalid values in 10 rows. The first invalid values are: 1; 2; 3...</span>
 <span class="va">err5</span>
 <span class="co">#&gt; $NCBI_ID</span>
-<span class="co">#&gt; &lt;invalid_column_values: &gt;&gt;&gt; Invalid values. The column `NCBI_ID` in dataset `dataset_with_invalid_column` contains invalid values in 10 rows. The first invalid values are: a, b, c...&gt;</span>
+<span class="co">#&gt; &lt;invalid_column_values: &gt;&gt;&gt; Invalid values. The column `NCBI_ID` in dataset `dataset_with_invalid_column` contains invalid values in 10 rows. The first invalid values are: a; b; c...&gt;</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; $Attribute</span>
-<span class="co">#&gt; &lt;invalid_column_values: &gt;&gt;&gt; Invalid values. The column `Attribute` in dataset `dataset_with_invalid_column` contains invalid values in 10 rows. The first invalid values are: 1, 2, 3...&gt;</span>
+<span class="co">#&gt; &lt;invalid_column_values: &gt;&gt;&gt; Invalid values. The column `Attribute` in dataset `dataset_with_invalid_column` contains invalid values in 10 rows. The first invalid values are: 1; 2; 3...&gt;</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; $Attribute_value</span>
-<span class="co">#&gt; &lt;invalid_column_class: &gt;&gt;&gt; Incorrect column class in dataset_with_invalid_column. The `Attribute_value` column` should be of class logical or numeric, not character&gt;</span>
+<span class="co">#&gt; &lt;invalid_column_class: &gt;&gt;&gt; Invalid column class in dataset_with_invalid_column. The `Attribute_value` column` should be of class logical or numeric, not character&gt;</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; $Evidence</span>
-<span class="co">#&gt; &lt;invalid_column_values: &gt;&gt;&gt; Invalid values. The column `Evidence` in dataset `dataset_with_invalid_column` contains invalid values in 10 rows. The first invalid values are: 1, 2, 3...&gt;</span>
+<span class="co">#&gt; &lt;invalid_column_values: &gt;&gt;&gt; Invalid values. The column `Evidence` in dataset `dataset_with_invalid_column` contains invalid values in 10 rows. The first invalid values are: 1; 2; 3...&gt;</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; $Confidence_interval</span>
-<span class="co">#&gt; &lt;invalid_column_values: &gt;&gt;&gt; Invalid values. The column `Confidence_interval` in dataset `dataset_with_invalid_column` contains invalid values in 10 rows. The first invalid values are: 1, 2, 3...&gt;</span></code></pre></div>
-<p>Lastly, the <code>checkColumnValuesList</code> function applies the <code>checkColumnValuesDF</code> function to a list of data frames imported from bugphyzz. The function returns invisibly a nested list of error conditions. Example:</p>
-<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<span class="co">#&gt; &lt;invalid_column_values: &gt;&gt;&gt; Invalid values. The column `Confidence_interval` in dataset `dataset_with_invalid_column` contains invalid values in 10 rows. The first invalid values are: 1; 2; 3...&gt;</span></code></pre></div>
+<p>In the case above, the output is a list of error conditions. Metadata can be accessed with the <code><a href="https://rdrr.io/r/base/Extract.html">$</a></code> operator.</p>
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># accessing invalid values</span>
+<span class="va">err5</span><span class="op">$</span><span class="va">NCBI_ID</span><span class="op">$</span><span class="va">invalid_values</span>
+<span class="co">#&gt;  [1] "a" "b" "c" "d" "e" "f" "g" "h" "i" "j"</span></code></pre></div>
+<ul>
+<li>Case 3: Check the values of all of the columns of all of the data frames contained in a list with the <code>checkColumnValuesList</code> function.</li>
+</ul>
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">err6</span> <span class="op">&lt;-</span> <span class="fu">bugphyzz</span><span class="fu">:::</span><span class="fu"><a href="../reference/checkColumnValuesList.html">checkColumnValuesList</a></span><span class="op">(</span>list <span class="op">=</span> <span class="va">list_of_df</span><span class="op">)</span>
-<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `NCBI_ID` in dataset `dataset_with_bad_values` contains invalid values in 10 rows. The first invalid values are: a, b, c... </span>
-<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Attribute` in dataset `dataset_with_bad_values` contains invalid values in 10 rows. The first invalid values are: 1, 2, 3... </span>
-<span class="co">#&gt; &gt;&gt;&gt; Incorrect column class in dataset_with_bad_values. The `Attribute_value` column` should be of class logical or numeric, not character </span>
-<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Evidence` in dataset `dataset_with_bad_values` contains invalid values in 10 rows. The first invalid values are: 1, 2, 3... </span>
-<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Confidence_interval` in dataset `dataset_with_bad_values` contains invalid values in 10 rows. The first invalid values are: 1, 2, 3...</span>
+<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `NCBI_ID` in dataset `dataset_with_bad_values` contains invalid values in 10 rows. The first invalid values are: a; b; c... </span>
+<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Attribute` in dataset `dataset_with_bad_values` contains invalid values in 10 rows. The first invalid values are: 1; 2; 3... </span>
+<span class="co">#&gt; &gt;&gt;&gt; Invalid column class in dataset_with_bad_values. The `Attribute_value` column` should be of class logical or numeric, not character </span>
+<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Evidence` in dataset `dataset_with_bad_values` contains invalid values in 10 rows. The first invalid values are: 1; 2; 3... </span>
+<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Confidence_interval` in dataset `dataset_with_bad_values` contains invalid values in 10 rows. The first invalid values are: 1; 2; 3...</span>
 <span class="va">err6</span>
 <span class="co">#&gt; $dataset_with_bad_values</span>
 <span class="co">#&gt; $dataset_with_bad_values$NCBI_ID</span>
-<span class="co">#&gt; &lt;invalid_column_values: &gt;&gt;&gt; Invalid values. The column `NCBI_ID` in dataset `dataset_with_bad_values` contains invalid values in 10 rows. The first invalid values are: a, b, c...&gt;</span>
+<span class="co">#&gt; &lt;invalid_column_values: &gt;&gt;&gt; Invalid values. The column `NCBI_ID` in dataset `dataset_with_bad_values` contains invalid values in 10 rows. The first invalid values are: a; b; c...&gt;</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; $dataset_with_bad_values$Attribute</span>
-<span class="co">#&gt; &lt;invalid_column_values: &gt;&gt;&gt; Invalid values. The column `Attribute` in dataset `dataset_with_bad_values` contains invalid values in 10 rows. The first invalid values are: 1, 2, 3...&gt;</span>
+<span class="co">#&gt; &lt;invalid_column_values: &gt;&gt;&gt; Invalid values. The column `Attribute` in dataset `dataset_with_bad_values` contains invalid values in 10 rows. The first invalid values are: 1; 2; 3...&gt;</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; $dataset_with_bad_values$Attribute_value</span>
-<span class="co">#&gt; &lt;invalid_column_class: &gt;&gt;&gt; Incorrect column class in dataset_with_bad_values. The `Attribute_value` column` should be of class logical or numeric, not character&gt;</span>
+<span class="co">#&gt; &lt;invalid_column_class: &gt;&gt;&gt; Invalid column class in dataset_with_bad_values. The `Attribute_value` column` should be of class logical or numeric, not character&gt;</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; $dataset_with_bad_values$Evidence</span>
-<span class="co">#&gt; &lt;invalid_column_values: &gt;&gt;&gt; Invalid values. The column `Evidence` in dataset `dataset_with_bad_values` contains invalid values in 10 rows. The first invalid values are: 1, 2, 3...&gt;</span>
+<span class="co">#&gt; &lt;invalid_column_values: &gt;&gt;&gt; Invalid values. The column `Evidence` in dataset `dataset_with_bad_values` contains invalid values in 10 rows. The first invalid values are: 1; 2; 3...&gt;</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; $dataset_with_bad_values$Confidence_interval</span>
-<span class="co">#&gt; &lt;invalid_column_values: &gt;&gt;&gt; Invalid values. The column `Confidence_interval` in dataset `dataset_with_bad_values` contains invalid values in 10 rows. The first invalid values are: 1, 2, 3...&gt;</span></code></pre></div>
-<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">err6</span><span class="op">)</span>
-<span class="co">#&gt; List of 1</span>
-<span class="co">#&gt;  $ dataset_with_bad_values:List of 5</span>
-<span class="co">#&gt;   ..$ NCBI_ID            :List of 4</span>
-<span class="co">#&gt;   .. ..$ message          : chr "&gt;&gt;&gt; Invalid values. The column `NCBI_ID` in dataset `dataset_with_bad_values` contains invalid values in 10 row"| __truncated__</span>
-<span class="co">#&gt;   .. ..$ call             : NULL</span>
-<span class="co">#&gt;   .. ..$ invalid_values   : chr [1:10] "a" "b" "c" "d" ...</span>
-<span class="co">#&gt;   .. ..$ invalid_positions: int [1:10] 1 2 3 4 5 6 7 8 9 10</span>
-<span class="co">#&gt;   .. ..- attr(*, "class")= chr [1:3] "invalid_column_values" "error" "condition"</span>
-<span class="co">#&gt;   ..$ Attribute          :List of 4</span>
-<span class="co">#&gt;   .. ..$ message          : chr "&gt;&gt;&gt; Invalid values. The column `Attribute` in dataset `dataset_with_bad_values` contains invalid values in 10 r"| __truncated__</span>
-<span class="co">#&gt;   .. ..$ call             : NULL</span>
-<span class="co">#&gt;   .. ..$ invalid_values   : int [1:10] 1 2 3 4 5 6 7 8 9 10</span>
-<span class="co">#&gt;   .. ..$ invalid_positions: int [1:10] 1 2 3 4 5 6 7 8 9 10</span>
-<span class="co">#&gt;   .. ..- attr(*, "class")= chr [1:3] "invalid_column_values" "error" "condition"</span>
-<span class="co">#&gt;   ..$ Attribute_value    :List of 2</span>
-<span class="co">#&gt;   .. ..$ message: chr "&gt;&gt;&gt; Incorrect column class in dataset_with_bad_values. The `Attribute_value` column` should be of class logical"| __truncated__</span>
-<span class="co">#&gt;   .. ..$ call   : NULL</span>
-<span class="co">#&gt;   .. ..- attr(*, "class")= chr [1:3] "invalid_column_class" "error" "condition"</span>
-<span class="co">#&gt;   ..$ Evidence           :List of 4</span>
-<span class="co">#&gt;   .. ..$ message          : chr "&gt;&gt;&gt; Invalid values. The column `Evidence` in dataset `dataset_with_bad_values` contains invalid values in 10 ro"| __truncated__</span>
-<span class="co">#&gt;   .. ..$ call             : NULL</span>
-<span class="co">#&gt;   .. ..$ invalid_values   : int [1:10] 1 2 3 4 5 6 7 8 9 10</span>
-<span class="co">#&gt;   .. ..$ invalid_positions: int [1:10] 1 2 3 4 5 6 7 8 9 10</span>
-<span class="co">#&gt;   .. ..- attr(*, "class")= chr [1:3] "invalid_column_values" "error" "condition"</span>
-<span class="co">#&gt;   ..$ Confidence_interval:List of 4</span>
-<span class="co">#&gt;   .. ..$ message          : chr "&gt;&gt;&gt; Invalid values. The column `Confidence_interval` in dataset `dataset_with_bad_values` contains invalid valu"| __truncated__</span>
-<span class="co">#&gt;   .. ..$ call             : NULL</span>
-<span class="co">#&gt;   .. ..$ invalid_values   : int [1:10] 1 2 3 4 5 6 7 8 9 10</span>
-<span class="co">#&gt;   .. ..$ invalid_positions: int [1:10] 1 2 3 4 5 6 7 8 9 10</span>
-<span class="co">#&gt;   .. ..- attr(*, "class")= chr [1:3] "invalid_column_values" "error" "condition"</span></code></pre></div>
+<span class="co">#&gt; &lt;invalid_column_values: &gt;&gt;&gt; Invalid values. The column `Confidence_interval` in dataset `dataset_with_bad_values` contains invalid values in 10 rows. The first invalid values are: 1; 2; 3...&gt;</span></code></pre></div>
+<p>The output (if any errors are found) is a nested list of error conditions and metadata can be accessed in the same way as in the examples above with the <code><a href="https://rdrr.io/r/base/Extract.html">$</a></code> operator:</p>
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># access invalid values</span>
+<span class="va">err6</span><span class="op">$</span><span class="va">dataset_with_bad_values</span><span class="op">$</span><span class="va">NCBI_ID</span><span class="op">$</span><span class="va">invalid_values</span>
+<span class="co">#&gt;  [1] "a" "b" "c" "d" "e" "f" "g" "h" "i" "j"</span></code></pre></div>
 </div>
 </div>
-<div id="checking-colum-values-of-bugphyzz" class="section level1">
+<div id="report-of-syntaxvalidity-errors-in-datasets-imported-by-bugphyzz" class="section level1">
 <h1 class="hasAnchor">
-<a href="#checking-colum-values-of-bugphyzz" class="anchor"></a>Checking colum values of bugphyzz</h1>
+<a href="#report-of-syntaxvalidity-errors-in-datasets-imported-by-bugphyzz" class="anchor"></a>Report of syntax/validity errors in datasets imported by bugphyzz</h1>
+<div id="datasets-imported-with-the-physiologies-function" class="section level2">
+<h2 class="hasAnchor">
+<a href="#datasets-imported-with-the-physiologies-function" class="anchor"></a>Datasets imported with the <code>physiologies</code> function</h2>
 <p>Import bugphyzz data:</p>
-<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">bp</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/physiologies.html">physiologies</a></span><span class="op">(</span>keyword <span class="op">=</span> <span class="st">"all"</span><span class="op">)</span>
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">bp</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/physiologies.html">physiologies</a></span><span class="op">(</span><span class="op">)</span>
 <span class="co">#&gt; Dropped 15914 rows with missing Attribute_value from animal pathogen</span>
 <span class="co">#&gt; Finished antimicrobial resistance</span>
 <span class="co">#&gt; Dropped 3054 rows with missing Attribute_value from antimicrobial sensitivity</span>
@@ -374,657 +363,926 @@
 <span class="co">#&gt; Finished isolation site</span>
 <span class="co">#&gt; Finished disease association</span>
 <span class="co">#&gt; Finished hydrogen gas producing</span>
-<span class="co">#&gt; Finished length</span></code></pre></div>
+<span class="co">#&gt; Finished length</span>
+<span class="co"># bp &lt;- physiologies(keyword = c("aerophilicity", "plant pathogenicity"))</span></code></pre></div>
 <p>Generate list of errors:</p>
-<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">list_of_errors</span> <span class="op">&lt;-</span> <span class="fu">bugphyzz</span><span class="fu">:::</span><span class="fu"><a href="../reference/checkColumnValuesList.html">checkColumnValuesList</a></span><span class="op">(</span><span class="va">bp</span><span class="op">)</span>
 <span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Taxon_name` in dataset `animal pathogen` contains invalid values in 1 rows. The first invalid values are: ... </span>
-<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Confidence_interval` in dataset `animal pathogen` contains invalid values in 1421 rows. The first invalid values are: Unknown, Unknown, Unknown... </span>
-<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Evidence` in dataset `antimicrobial resistance` contains invalid values in 10321 rows. The first invalid values are: ASR, ASR, ASR... </span>
-<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Evidence` in dataset `antimicrobial sensitivity` contains invalid values in 832 rows. The first invalid values are: , , ... </span>
-<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Confidence_interval` in dataset `antimicrobial sensitivity` contains invalid values in 832 rows. The first invalid values are: EXP, EXP, EXP... </span>
-<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Confidence_interval` in dataset `biofilm forming` contains invalid values in 426 rows. The first invalid values are: Unknown, Unknown, Unknown... </span>
-<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `NCBI_ID` in dataset `butyrate producing` contains invalid values in 24 rows. The first invalid values are: Unidentified, Unidentified, Unidentified... </span>
-<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Evidence` in dataset `butyrate producing` contains invalid values in 24 rows. The first invalid values are: EXP, EXP, EXP... </span>
-<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Confidence_interval` in dataset `butyrate producing` contains invalid values in 24 rows. The first invalid values are: Unknown, Unknown, Unknown... </span>
-<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `NCBI_ID` in dataset `acetate producing` contains invalid values in 24 rows. The first invalid values are: Unidentified, Unidentified, Unidentified... </span>
-<span class="co">#&gt; &gt;&gt;&gt; Incorrect column class in acetate producing. The `Attribute_value` column` should be of class logical or numeric, not character </span>
-<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Evidence` in dataset `acetate producing` contains invalid values in 24 rows. The first invalid values are: EXP, EXP, EXP... </span>
-<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Confidence_interval` in dataset `acetate producing` contains invalid values in 24 rows. The first invalid values are: Unknown, Unknown, Unknown... </span>
-<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `NCBI_ID` in dataset `lactate producing` contains invalid values in 24 rows. The first invalid values are: Unidentified, Unidentified, Unidentified... </span>
-<span class="co">#&gt; &gt;&gt;&gt; Incorrect column class in lactate producing. The `Attribute_value` column` should be of class logical or numeric, not character </span>
-<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Evidence` in dataset `lactate producing` contains invalid values in 24 rows. The first invalid values are: EXP, EXP, EXP... </span>
-<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Confidence_interval` in dataset `lactate producing` contains invalid values in 24 rows. The first invalid values are: Unknown, Unknown, Unknown... </span>
-<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Accession_number` in dataset `arrangement` contains invalid values in 768 rows. The first invalid values are: , , ... </span>
-<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Attribute` in dataset `arrangement` contains invalid values in 8 rows. The first invalid values are: v-formations, v-formations, v-formations... </span>
-<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Evidence` in dataset `arrangement` contains invalid values in 1943 rows. The first invalid values are: EXP, EXP, EXP... </span>
-<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Confidence_interval` in dataset `arrangement` contains invalid values in 1175 rows. The first invalid values are: Unknown, Unknown, Unknown... </span>
-<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Accession_number` in dataset `shape` contains invalid values in 1850 rows. The first invalid values are: , , ... </span>
+<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Confidence_interval` in dataset `animal pathogen` contains invalid values in 1421 rows. The first invalid values are: Unknown; Unknown; Unknown... </span>
+<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Evidence` in dataset `antimicrobial resistance` contains invalid values in 10321 rows. The first invalid values are: ASR; ASR; ASR... </span>
+<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Evidence` in dataset `antimicrobial sensitivity` contains invalid values in 832 rows. The first invalid values are: ; ; ... </span>
+<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Confidence_interval` in dataset `antimicrobial sensitivity` contains invalid values in 832 rows. The first invalid values are: EXP; EXP; EXP... </span>
+<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Confidence_interval` in dataset `biofilm forming` contains invalid values in 426 rows. The first invalid values are: Unknown; Unknown; Unknown... </span>
+<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `NCBI_ID` in dataset `butyrate producing` contains invalid values in 24 rows. The first invalid values are: Unidentified; Unidentified; Unidentified... </span>
+<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Evidence` in dataset `butyrate producing` contains invalid values in 24 rows. The first invalid values are: EXP; EXP; EXP... </span>
+<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Confidence_interval` in dataset `butyrate producing` contains invalid values in 24 rows. The first invalid values are: Unknown; Unknown; Unknown... </span>
+<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `NCBI_ID` in dataset `acetate producing` contains invalid values in 24 rows. The first invalid values are: Unidentified; Unidentified; Unidentified... </span>
+<span class="co">#&gt; &gt;&gt;&gt; Invalid column class in acetate producing. The `Attribute_value` column` should be of class logical or numeric, not character </span>
+<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Evidence` in dataset `acetate producing` contains invalid values in 24 rows. The first invalid values are: EXP; EXP; EXP... </span>
+<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Confidence_interval` in dataset `acetate producing` contains invalid values in 24 rows. The first invalid values are: Unknown; Unknown; Unknown... </span>
+<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `NCBI_ID` in dataset `lactate producing` contains invalid values in 24 rows. The first invalid values are: Unidentified; Unidentified; Unidentified... </span>
+<span class="co">#&gt; &gt;&gt;&gt; Invalid column class in lactate producing. The `Attribute_value` column` should be of class logical or numeric, not character </span>
+<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Evidence` in dataset `lactate producing` contains invalid values in 24 rows. The first invalid values are: EXP; EXP; EXP... </span>
+<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Confidence_interval` in dataset `lactate producing` contains invalid values in 24 rows. The first invalid values are: Unknown; Unknown; Unknown... </span>
+<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Accession_number` in dataset `arrangement` contains invalid values in 768 rows. The first invalid values are: ; ; ... </span>
+<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Attribute` in dataset `arrangement` contains invalid values in 8 rows. The first invalid values are: v-formations; v-formations; v-formations... </span>
+<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Evidence` in dataset `arrangement` contains invalid values in 1943 rows. The first invalid values are: EXP; EXP; EXP... </span>
+<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Confidence_interval` in dataset `arrangement` contains invalid values in 1175 rows. The first invalid values are: Unknown; Unknown; Unknown... </span>
+<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Accession_number` in dataset `shape` contains invalid values in 1850 rows. The first invalid values are: ; ; ... </span>
 <span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Attribute` in dataset `shape` contains invalid values in 1 rows. The first invalid values are: square... </span>
-<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Evidence` in dataset `shape` contains invalid values in 3129 rows. The first invalid values are: EXP, EXP, EXP... </span>
-<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Confidence_interval` in dataset `COGEM pathogenicity rating` contains invalid values in 1043 rows. The first invalid values are: Unknown, Unknown, Unknown... </span>
-<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Evidence` in dataset `mutation rate per site per generation` contains invalid values in 26 rows. The first invalid values are: EXP, EXP, EXP... </span>
-<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Evidence` in dataset `mutation rates per site per year` contains invalid values in 81 rows. The first invalid values are: EXP, EXP, EXP... </span>
-<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Confidence_interval` in dataset `mutation rates per site per year` contains invalid values in 27 rows. The first invalid values are: , , ... </span>
+<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Evidence` in dataset `shape` contains invalid values in 3129 rows. The first invalid values are: EXP; EXP; EXP... </span>
+<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Confidence_interval` in dataset `COGEM pathogenicity rating` contains invalid values in 1043 rows. The first invalid values are: Unknown; Unknown; Unknown... </span>
+<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Evidence` in dataset `mutation rate per site per generation` contains invalid values in 26 rows. The first invalid values are: EXP; EXP; EXP... </span>
+<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Evidence` in dataset `mutation rates per site per year` contains invalid values in 81 rows. The first invalid values are: EXP; EXP; EXP... </span>
+<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Confidence_interval` in dataset `mutation rates per site per year` contains invalid values in 27 rows. The first invalid values are: ; ; ... </span>
 <span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Taxon_name` in dataset `extreme environment` contains invalid values in 1 rows. The first invalid values are: ... </span>
-<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Attribute` in dataset `extreme environment` contains invalid values in 1876 rows. The first invalid values are: Extreme environment, Extreme environment, Extreme environment... </span>
-<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Confidence_interval` in dataset `extreme environment` contains invalid values in 1876 rows. The first invalid values are: Always, Always, Always... </span>
-<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Accession_number` in dataset `gram stain` contains invalid values in 3692 rows. The first invalid values are: , , ... </span>
-<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Evidence` in dataset `gram stain` contains invalid values in 4970 rows. The first invalid values are: EXP, , EXP... </span>
-<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Confidence_interval` in dataset `gram stain` contains invalid values in 1278 rows. The first invalid values are: , , ... </span>
-<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Attribute` in dataset `growth medium` contains invalid values in 14 rows. The first invalid values are: mrs broth, mrs broth, mrs broth... </span>
-<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Evidence` in dataset `growth medium` contains invalid values in 304 rows. The first invalid values are: EXP, EXP, EXP... </span>
-<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Confidence_interval` in dataset `growth medium` contains invalid values in 304 rows. The first invalid values are: Always, Always, Always... </span>
-<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Accession_number` in dataset `growth temperature` contains invalid values in 2148 rows. The first invalid values are: , , ... </span>
-<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Attribute` in dataset `growth temperature` contains invalid values in 3218 rows. The first invalid values are: growth temperature, growth temperature, growth temperature... </span>
-<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Evidence` in dataset `growth temperature` contains invalid values in 3218 rows. The first invalid values are: EXP, EXP, EXP... </span>
-<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Confidence_interval` in dataset `growth temperature` contains invalid values in 3218 rows. The first invalid values are: Unknown, Unknown, Unknown... </span>
-<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Accession_number` in dataset `habitat` contains invalid values in 2363 rows. The first invalid values are: , , ... </span>
-<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Evidence` in dataset `habitat` contains invalid values in 3801 rows. The first invalid values are: EXP, EXP, EXP... </span>
-<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Confidence_interval` in dataset `habitat` contains invalid values in 3801 rows. The first invalid values are: Unknown, Unknown, Unknown... </span>
-<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Attribute` in dataset `optimal ph` contains invalid values in 886 rows. The first invalid values are: optimal ph, optimal ph, optimal ph... </span>
-<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Evidence` in dataset `optimal ph` contains invalid values in 886 rows. The first invalid values are: EXP, EXP, EXP... </span>
-<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Confidence_interval` in dataset `optimal ph` contains invalid values in 886 rows. The first invalid values are: Unknown, Unknown, Unknown... </span>
-<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Accession_number` in dataset `aerophilicity` contains invalid values in 1253 rows. The first invalid values are: , , ... </span>
-<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Evidence` in dataset `aerophilicity` contains invalid values in 2557 rows. The first invalid values are: EXP, EXP, EXP... </span>
-<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Attribute` in dataset `plant pathogenicity` contains invalid values in 1493 rows. The first invalid values are: plant pathogenity, plant pathogenity, plant pathogenity... </span>
-<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Confidence_interval` in dataset `plant pathogenicity` contains invalid values in 1493 rows. The first invalid values are: Unknown, Unknown, Unknown... </span>
-<span class="co">#&gt; &gt;&gt;&gt; Incorrect column class in width. The `Attribute_value` column` should be of class logical or numeric, not character </span>
-<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Evidence` in dataset `width` contains invalid values in 865 rows. The first invalid values are: EXP, EXP, EXP... </span>
-<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Confidence_interval` in dataset `width` contains invalid values in 12 rows. The first invalid values are: , , ... </span>
-<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Evidence` in dataset `spore shape` contains invalid values in 153 rows. The first invalid values are: EXP, EXP, EXP... </span>
-<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Attribute` in dataset `isolation site` contains invalid values in 1107 rows. The first invalid values are: blade of grass from raritan river nj, usa, hot swamp from kunashir island, russia, 1940s by lilleengen... </span>
-<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Evidence` in dataset `isolation site` contains invalid values in 1176 rows. The first invalid values are: EXP, EXP, EXP... </span>
-<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Attribute` in dataset `disease association` contains invalid values in 184 rows. The first invalid values are: anaplasmosis, anemia, anthrax... </span>
-<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `NCBI_ID` in dataset `hydrogen gas producing` contains invalid values in 24 rows. The first invalid values are: Unidentified, Unidentified, Unidentified... </span>
-<span class="co">#&gt; &gt;&gt;&gt; Incorrect column class in hydrogen gas producing. The `Attribute_value` column` should be of class logical or numeric, not character </span>
-<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Evidence` in dataset `hydrogen gas producing` contains invalid values in 24 rows. The first invalid values are: EXP, EXP, EXP... </span>
-<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Confidence_interval` in dataset `hydrogen gas producing` contains invalid values in 24 rows. The first invalid values are: Unknown, Unknown, Unknown... </span>
-<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Taxon_name` in dataset `length` contains invalid values in 1296 rows. The first invalid values are: , , ... </span>
-<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Attribute` in dataset `length` contains invalid values in 1296 rows. The first invalid values are: , , ... </span>
-<span class="co">#&gt; &gt;&gt;&gt; Incorrect column class in length. The `Attribute_value` column` should be of class logical or numeric, not character </span>
-<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Attribute_source` in dataset `length` contains invalid values in 1296 rows. The first invalid values are: , , ... </span>
-<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Evidence` in dataset `length` contains invalid values in 2161 rows. The first invalid values are: EXP, EXP, EXP... </span>
-<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Confidence_interval` in dataset `length` contains invalid values in 1492 rows. The first invalid values are: , , ...</span></code></pre></div>
+<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Attribute` in dataset `extreme environment` contains invalid values in 1876 rows. The first invalid values are: Extreme environment; Extreme environment; Extreme environment... </span>
+<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Confidence_interval` in dataset `extreme environment` contains invalid values in 1876 rows. The first invalid values are: Always; Always; Always... </span>
+<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Accession_number` in dataset `gram stain` contains invalid values in 3692 rows. The first invalid values are: ; ; ... </span>
+<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Evidence` in dataset `gram stain` contains invalid values in 4970 rows. The first invalid values are: EXP; ; EXP... </span>
+<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Confidence_interval` in dataset `gram stain` contains invalid values in 1278 rows. The first invalid values are: ; ; ... </span>
+<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Attribute` in dataset `growth medium` contains invalid values in 14 rows. The first invalid values are: mrs broth; mrs broth; mrs broth... </span>
+<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Evidence` in dataset `growth medium` contains invalid values in 304 rows. The first invalid values are: EXP; EXP; EXP... </span>
+<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Confidence_interval` in dataset `growth medium` contains invalid values in 304 rows. The first invalid values are: Always; Always; Always... </span>
+<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Accession_number` in dataset `growth temperature` contains invalid values in 2148 rows. The first invalid values are: ; ; ... </span>
+<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Attribute` in dataset `growth temperature` contains invalid values in 3218 rows. The first invalid values are: growth temperature; growth temperature; growth temperature... </span>
+<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Evidence` in dataset `growth temperature` contains invalid values in 3218 rows. The first invalid values are: EXP; EXP; EXP... </span>
+<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Confidence_interval` in dataset `growth temperature` contains invalid values in 3218 rows. The first invalid values are: Unknown; Unknown; Unknown... </span>
+<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Accession_number` in dataset `habitat` contains invalid values in 2363 rows. The first invalid values are: ; ; ... </span>
+<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Evidence` in dataset `habitat` contains invalid values in 3801 rows. The first invalid values are: EXP; EXP; EXP... </span>
+<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Confidence_interval` in dataset `habitat` contains invalid values in 3801 rows. The first invalid values are: Unknown; Unknown; Unknown... </span>
+<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Attribute` in dataset `optimal ph` contains invalid values in 886 rows. The first invalid values are: optimal ph; optimal ph; optimal ph... </span>
+<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Evidence` in dataset `optimal ph` contains invalid values in 886 rows. The first invalid values are: EXP; EXP; EXP... </span>
+<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Confidence_interval` in dataset `optimal ph` contains invalid values in 886 rows. The first invalid values are: Unknown; Unknown; Unknown... </span>
+<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Accession_number` in dataset `aerophilicity` contains invalid values in 1253 rows. The first invalid values are: ; ; ... </span>
+<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Evidence` in dataset `aerophilicity` contains invalid values in 2557 rows. The first invalid values are: EXP; EXP; EXP... </span>
+<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Attribute` in dataset `plant pathogenicity` contains invalid values in 1493 rows. The first invalid values are: plant pathogenity; plant pathogenity; plant pathogenity... </span>
+<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Confidence_interval` in dataset `plant pathogenicity` contains invalid values in 1493 rows. The first invalid values are: Unknown; Unknown; Unknown... </span>
+<span class="co">#&gt; &gt;&gt;&gt; Invalid column class in width. The `Attribute_value` column` should be of class logical or numeric, not character </span>
+<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Evidence` in dataset `width` contains invalid values in 865 rows. The first invalid values are: EXP; EXP; EXP... </span>
+<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Confidence_interval` in dataset `width` contains invalid values in 12 rows. The first invalid values are: ; ; ... </span>
+<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Evidence` in dataset `spore shape` contains invalid values in 153 rows. The first invalid values are: EXP; EXP; EXP... </span>
+<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Attribute` in dataset `isolation site` contains invalid values in 1107 rows. The first invalid values are: blade of grass from raritan river nj, usa; hot swamp from kunashir island, russia; 1940s by lilleengen... </span>
+<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Evidence` in dataset `isolation site` contains invalid values in 1176 rows. The first invalid values are: EXP; EXP; EXP... </span>
+<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Attribute` in dataset `disease association` contains invalid values in 184 rows. The first invalid values are: anaplasmosis; anemia; anthrax... </span>
+<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `NCBI_ID` in dataset `hydrogen gas producing` contains invalid values in 24 rows. The first invalid values are: Unidentified; Unidentified; Unidentified... </span>
+<span class="co">#&gt; &gt;&gt;&gt; Invalid column class in hydrogen gas producing. The `Attribute_value` column` should be of class logical or numeric, not character </span>
+<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Evidence` in dataset `hydrogen gas producing` contains invalid values in 24 rows. The first invalid values are: EXP; EXP; EXP... </span>
+<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Confidence_interval` in dataset `hydrogen gas producing` contains invalid values in 24 rows. The first invalid values are: Unknown; Unknown; Unknown... </span>
+<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Taxon_name` in dataset `length` contains invalid values in 1296 rows. The first invalid values are: ; ; ... </span>
+<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Attribute` in dataset `length` contains invalid values in 1296 rows. The first invalid values are: ; ; ... </span>
+<span class="co">#&gt; &gt;&gt;&gt; Invalid column class in length. The `Attribute_value` column` should be of class logical or numeric, not character </span>
+<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Attribute_source` in dataset `length` contains invalid values in 1296 rows. The first invalid values are: ; ; ... </span>
+<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Evidence` in dataset `length` contains invalid values in 2161 rows. The first invalid values are: EXP; EXP; EXP... </span>
+<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Confidence_interval` in dataset `length` contains invalid values in 1492 rows. The first invalid values are: ; ; ...</span></code></pre></div>
 <p>Turn list of errors into a table with links:</p>
-<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">my_fun</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">{</span>
-  
-  <span class="va">output</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>
-  message <span class="op">=</span> <span class="va">x</span><span class="op">$</span><span class="va">message</span>,
-  number_of_rows <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">x</span><span class="op">$</span><span class="va">invalid_values</span><span class="op">)</span>,
-  invalid_values <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">x</span><span class="op">$</span><span class="va">invalid_values</span><span class="op">)</span>, collapse <span class="op">=</span> <span class="st">", "</span><span class="op">)</span>
-  <span class="op">)</span>
-  <span class="kw"><a href="https://rdrr.io/r/base/function.html">return</a></span><span class="op">(</span><span class="va">output</span><span class="op">)</span>
-<span class="op">}</span>
-
-<span class="va">error_table</span> <span class="op">=</span> <span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/modify.html">modify_depth</a></span><span class="op">(</span><span class="va">list_of_errors</span>, <span class="fl">2</span>, <span class="op">~</span> <span class="fu">my_fun</span><span class="op">(</span><span class="va">.x</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-  <span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/modify.html">modify_depth</a></span><span class="op">(</span><span class="fl">1</span>, <span class="op">~</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/bind.html">bind_rows</a></span><span class="op">(</span><span class="va">.x</span>, .id <span class="op">=</span> <span class="st">"Column"</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/bind.html">bind_rows</a></span><span class="op">(</span>.id <span class="op">=</span> <span class="st">"Dataset"</span><span class="op">)</span>
-
-<span class="va">fname</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html">system.file</a></span><span class="op">(</span><span class="st">"extdata/links.tsv"</span>, package <span class="op">=</span> <span class="st">"bugphyzz"</span><span class="op">)</span>
-<span class="va">data_links</span> <span class="op">&lt;-</span> <span class="fu">readr</span><span class="fu">::</span><span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_tsv</a></span><span class="op">(</span><span class="va">fname</span>, col_types <span class="op">=</span> <span class="st">"ccc"</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">physiology</span>, <span class="va">link</span><span class="op">)</span>
-
-<span class="va">error_table</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join</a></span><span class="op">(</span><span class="va">error_table</span>, <span class="va">data_links</span>, by <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Dataset"</span> <span class="op">=</span> <span class="st">"physiology"</span><span class="op">)</span><span class="op">)</span>
-
-<span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span><span class="op">(</span><span class="va">error_table</span>, format <span class="op">=</span> <span class="st">"simple"</span>, escape <span class="op">=</span> <span class="cn">TRUE</span> <span class="op">)</span></code></pre></div>
 <table class="table">
+<colgroup>
+<col width="1%">
+<col width="8%">
+<col width="4%">
+<col width="4%">
+<col width="4%">
+<col width="36%">
+<col width="4%">
+<col width="35%">
+</colgroup>
 <thead><tr class="header">
-<th align="left">Dataset</th>
-<th align="left">Column</th>
-<th align="left">message</th>
-<th align="right">number_of_rows</th>
+<th align="right">n_error</th>
+<th align="left">dataset</th>
+<th align="left">column</th>
+<th align="left">type_of_error</th>
+<th align="right">number_invalid_values</th>
 <th align="left">invalid_values</th>
+<th align="left">dataset_dimensions</th>
 <th align="left">link</th>
 </tr></thead>
 <tbody>
 <tr class="odd">
+<td align="right">1</td>
 <td align="left">animal pathogen</td>
 <td align="left">Taxon_name</td>
-<td align="left">&gt;&gt;&gt; Invalid values. The column <code>Taxon_name</code> in dataset <code>animal pathogen</code> contains invalid values in 1 rows. The first invalid values are: …</td>
+<td align="left">invalid_column_values</td>
 <td align="right">1</td>
 <td align="left"></td>
+<td align="left">1421 x 9</td>
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vT9s4PFd7NHr-1GMNyPexZ1KuNyj2u7ErC1Vq3-wAfroNNCG-Tu-y8gn3qKQ4C-URg1SIjOm9bGE4wQ/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vT9s4PFd7NHr-1GMNyPexZ1KuNyj2u7ErC1Vq3-wAfroNNCG-Tu-y8gn3qKQ4C-URg1SIjOm9bGE4wQ/pub?output=csv</a></td>
 </tr>
 <tr class="even">
+<td align="right">2</td>
 <td align="left">animal pathogen</td>
 <td align="left">Confidence_interval</td>
-<td align="left">&gt;&gt;&gt; Invalid values. The column <code>Confidence_interval</code> in dataset <code>animal pathogen</code> contains invalid values in 1421 rows. The first invalid values are: Unknown, Unknown, Unknown…</td>
+<td align="left">invalid_column_values</td>
 <td align="right">1421</td>
-<td align="left">Unknown, Unknown, Unknown, Unknown, Unknown, Unknown</td>
+<td align="left">Unknown; Unknown; Unknown; Unknown; Unknown; Unknown</td>
+<td align="left">1421 x 9</td>
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vT9s4PFd7NHr-1GMNyPexZ1KuNyj2u7ErC1Vq3-wAfroNNCG-Tu-y8gn3qKQ4C-URg1SIjOm9bGE4wQ/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vT9s4PFd7NHr-1GMNyPexZ1KuNyj2u7ErC1Vq3-wAfroNNCG-Tu-y8gn3qKQ4C-URg1SIjOm9bGE4wQ/pub?output=csv</a></td>
 </tr>
 <tr class="odd">
+<td align="right">3</td>
 <td align="left">antimicrobial resistance</td>
 <td align="left">Evidence</td>
-<td align="left">&gt;&gt;&gt; Invalid values. The column <code>Evidence</code> in dataset <code>antimicrobial resistance</code> contains invalid values in 10321 rows. The first invalid values are: ASR, ASR, ASR…</td>
+<td align="left">invalid_column_values</td>
 <td align="right">10321</td>
-<td align="left">ASR, ASR, ASR, ASR, ASR, ASR</td>
+<td align="left">ASR; ASR; ASR; ASR; ASR; ASR</td>
+<td align="left">10321 x 9</td>
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vRWI3s8H0Izcs-PEo4W7Q0QAegNHq7IdSKCHSL0nZlrptTZ4dIusG0m1AMEUYv1_4GN3QX9rADAja_0/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vRWI3s8H0Izcs-PEo4W7Q0QAegNHq7IdSKCHSL0nZlrptTZ4dIusG0m1AMEUYv1_4GN3QX9rADAja_0/pub?output=csv</a></td>
 </tr>
 <tr class="even">
+<td align="right">4</td>
 <td align="left">antimicrobial sensitivity</td>
 <td align="left">Evidence</td>
-<td align="left">&gt;&gt;&gt; Invalid values. The column <code>Evidence</code> in dataset <code>antimicrobial sensitivity</code> contains invalid values in 832 rows. The first invalid values are: , , …</td>
+<td align="left">invalid_column_values</td>
 <td align="right">832</td>
-<td align="left">, , , , ,</td>
+<td align="left">; ; ; ; ;</td>
+<td align="left">832 x 9</td>
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vR0FdQpAD-xhkyIXgZMtC9oCmlbx77Cj1ncCyojm9oO410NBwJRhBNFl4hnd4HMlj2okxEKLvA8EPr2/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vR0FdQpAD-xhkyIXgZMtC9oCmlbx77Cj1ncCyojm9oO410NBwJRhBNFl4hnd4HMlj2okxEKLvA8EPr2/pub?output=csv</a></td>
 </tr>
 <tr class="odd">
+<td align="right">5</td>
 <td align="left">antimicrobial sensitivity</td>
 <td align="left">Confidence_interval</td>
-<td align="left">&gt;&gt;&gt; Invalid values. The column <code>Confidence_interval</code> in dataset <code>antimicrobial sensitivity</code> contains invalid values in 832 rows. The first invalid values are: EXP, EXP, EXP…</td>
+<td align="left">invalid_column_values</td>
 <td align="right">832</td>
-<td align="left">EXP, EXP, EXP, EXP, EXP, EXP</td>
+<td align="left">EXP; EXP; EXP; EXP; EXP; EXP</td>
+<td align="left">832 x 9</td>
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vR0FdQpAD-xhkyIXgZMtC9oCmlbx77Cj1ncCyojm9oO410NBwJRhBNFl4hnd4HMlj2okxEKLvA8EPr2/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vR0FdQpAD-xhkyIXgZMtC9oCmlbx77Cj1ncCyojm9oO410NBwJRhBNFl4hnd4HMlj2okxEKLvA8EPr2/pub?output=csv</a></td>
 </tr>
 <tr class="even">
+<td align="right">6</td>
 <td align="left">biofilm forming</td>
 <td align="left">Confidence_interval</td>
-<td align="left">&gt;&gt;&gt; Invalid values. The column <code>Confidence_interval</code> in dataset <code>biofilm forming</code> contains invalid values in 426 rows. The first invalid values are: Unknown, Unknown, Unknown…</td>
+<td align="left">invalid_column_values</td>
 <td align="right">426</td>
-<td align="left">Unknown, Unknown, Unknown, Unknown, Unknown, Unknown</td>
+<td align="left">Unknown; Unknown; Unknown; Unknown; Unknown; Unknown</td>
+<td align="left">426 x 10</td>
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vRduthxAWAhSLSoOgFNAmI8DX8ORerG1U6OmI8y6-5coe31pONYfISNsUE-e-E_eiyxtQzin6Xq9b0m/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vRduthxAWAhSLSoOgFNAmI8DX8ORerG1U6OmI8y6-5coe31pONYfISNsUE-e-E_eiyxtQzin6Xq9b0m/pub?output=csv</a></td>
 </tr>
 <tr class="odd">
+<td align="right">7</td>
 <td align="left">butyrate producing</td>
 <td align="left">NCBI_ID</td>
-<td align="left">&gt;&gt;&gt; Invalid values. The column <code>NCBI_ID</code> in dataset <code>butyrate producing</code> contains invalid values in 24 rows. The first invalid values are: Unidentified, Unidentified, Unidentified…</td>
+<td align="left">invalid_column_values</td>
 <td align="right">24</td>
-<td align="left">Unidentified, Unidentified, Unidentified, Unidentified, Unidentified, Unidentified</td>
+<td align="left">Unidentified; Unidentified; Unidentified; Unidentified; Unidentified; Unidentified</td>
+<td align="left">24 x 10</td>
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQPnLOpbFbfLvOb8fvC6A-WfzVNMDYRWOUsT4hIseDNgI7nwZGjVwg3KBkWeFtOBBLK0j-DRiZ-jtqG/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQPnLOpbFbfLvOb8fvC6A-WfzVNMDYRWOUsT4hIseDNgI7nwZGjVwg3KBkWeFtOBBLK0j-DRiZ-jtqG/pub?output=csv</a></td>
 </tr>
 <tr class="even">
+<td align="right">8</td>
 <td align="left">butyrate producing</td>
 <td align="left">Evidence</td>
-<td align="left">&gt;&gt;&gt; Invalid values. The column <code>Evidence</code> in dataset <code>butyrate producing</code> contains invalid values in 24 rows. The first invalid values are: EXP, EXP, EXP…</td>
+<td align="left">invalid_column_values</td>
 <td align="right">24</td>
-<td align="left">EXP, EXP, EXP, EXP, EXP, EXP</td>
+<td align="left">EXP; EXP; EXP; EXP; EXP; EXP</td>
+<td align="left">24 x 10</td>
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQPnLOpbFbfLvOb8fvC6A-WfzVNMDYRWOUsT4hIseDNgI7nwZGjVwg3KBkWeFtOBBLK0j-DRiZ-jtqG/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQPnLOpbFbfLvOb8fvC6A-WfzVNMDYRWOUsT4hIseDNgI7nwZGjVwg3KBkWeFtOBBLK0j-DRiZ-jtqG/pub?output=csv</a></td>
 </tr>
 <tr class="odd">
+<td align="right">9</td>
 <td align="left">butyrate producing</td>
 <td align="left">Confidence_interval</td>
-<td align="left">&gt;&gt;&gt; Invalid values. The column <code>Confidence_interval</code> in dataset <code>butyrate producing</code> contains invalid values in 24 rows. The first invalid values are: Unknown, Unknown, Unknown…</td>
+<td align="left">invalid_column_values</td>
 <td align="right">24</td>
-<td align="left">Unknown, Unknown, Unknown, Unknown, Unknown, Unknown</td>
+<td align="left">Unknown; Unknown; Unknown; Unknown; Unknown; Unknown</td>
+<td align="left">24 x 10</td>
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQPnLOpbFbfLvOb8fvC6A-WfzVNMDYRWOUsT4hIseDNgI7nwZGjVwg3KBkWeFtOBBLK0j-DRiZ-jtqG/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQPnLOpbFbfLvOb8fvC6A-WfzVNMDYRWOUsT4hIseDNgI7nwZGjVwg3KBkWeFtOBBLK0j-DRiZ-jtqG/pub?output=csv</a></td>
 </tr>
 <tr class="even">
+<td align="right">10</td>
 <td align="left">acetate producing</td>
 <td align="left">NCBI_ID</td>
-<td align="left">&gt;&gt;&gt; Invalid values. The column <code>NCBI_ID</code> in dataset <code>acetate producing</code> contains invalid values in 24 rows. The first invalid values are: Unidentified, Unidentified, Unidentified…</td>
+<td align="left">invalid_column_values</td>
 <td align="right">24</td>
-<td align="left">Unidentified, Unidentified, Unidentified, Unidentified, Unidentified, Unidentified</td>
+<td align="left">Unidentified; Unidentified; Unidentified; Unidentified; Unidentified; Unidentified</td>
+<td align="left">24 x 10</td>
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQb6gDQdhCMWHLQdkzMM4bgTPPosYCZvjzJu4NyOYaSBGOCaOPoQh0OiUr4btnJ8EAWn7NiF-T9JaCE/pub?gid=0&amp;single=true&amp;output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQb6gDQdhCMWHLQdkzMM4bgTPPosYCZvjzJu4NyOYaSBGOCaOPoQh0OiUr4btnJ8EAWn7NiF-T9JaCE/pub?gid=0&amp;single=true&amp;output=csv</a></td>
 </tr>
 <tr class="odd">
+<td align="right">11</td>
 <td align="left">acetate producing</td>
 <td align="left">Attribute_value</td>
-<td align="left">&gt;&gt;&gt; Incorrect column class in acetate producing. The <code>Attribute_value</code> column` should be of class logical or numeric, not character</td>
-<td align="right">0</td>
-<td align="left"></td>
+<td align="left">invalid_column_class</td>
+<td align="right">NA</td>
+<td align="left">NA</td>
+<td align="left">24 x 10</td>
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQb6gDQdhCMWHLQdkzMM4bgTPPosYCZvjzJu4NyOYaSBGOCaOPoQh0OiUr4btnJ8EAWn7NiF-T9JaCE/pub?gid=0&amp;single=true&amp;output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQb6gDQdhCMWHLQdkzMM4bgTPPosYCZvjzJu4NyOYaSBGOCaOPoQh0OiUr4btnJ8EAWn7NiF-T9JaCE/pub?gid=0&amp;single=true&amp;output=csv</a></td>
 </tr>
 <tr class="even">
+<td align="right">12</td>
 <td align="left">acetate producing</td>
 <td align="left">Evidence</td>
-<td align="left">&gt;&gt;&gt; Invalid values. The column <code>Evidence</code> in dataset <code>acetate producing</code> contains invalid values in 24 rows. The first invalid values are: EXP, EXP, EXP…</td>
+<td align="left">invalid_column_values</td>
 <td align="right">24</td>
-<td align="left">EXP, EXP, EXP, EXP, EXP, EXP</td>
+<td align="left">EXP; EXP; EXP; EXP; EXP; EXP</td>
+<td align="left">24 x 10</td>
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQb6gDQdhCMWHLQdkzMM4bgTPPosYCZvjzJu4NyOYaSBGOCaOPoQh0OiUr4btnJ8EAWn7NiF-T9JaCE/pub?gid=0&amp;single=true&amp;output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQb6gDQdhCMWHLQdkzMM4bgTPPosYCZvjzJu4NyOYaSBGOCaOPoQh0OiUr4btnJ8EAWn7NiF-T9JaCE/pub?gid=0&amp;single=true&amp;output=csv</a></td>
 </tr>
 <tr class="odd">
+<td align="right">13</td>
 <td align="left">acetate producing</td>
 <td align="left">Confidence_interval</td>
-<td align="left">&gt;&gt;&gt; Invalid values. The column <code>Confidence_interval</code> in dataset <code>acetate producing</code> contains invalid values in 24 rows. The first invalid values are: Unknown, Unknown, Unknown…</td>
+<td align="left">invalid_column_values</td>
 <td align="right">24</td>
-<td align="left">Unknown, Unknown, Unknown, Unknown, Unknown, Unknown</td>
+<td align="left">Unknown; Unknown; Unknown; Unknown; Unknown; Unknown</td>
+<td align="left">24 x 10</td>
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQb6gDQdhCMWHLQdkzMM4bgTPPosYCZvjzJu4NyOYaSBGOCaOPoQh0OiUr4btnJ8EAWn7NiF-T9JaCE/pub?gid=0&amp;single=true&amp;output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQb6gDQdhCMWHLQdkzMM4bgTPPosYCZvjzJu4NyOYaSBGOCaOPoQh0OiUr4btnJ8EAWn7NiF-T9JaCE/pub?gid=0&amp;single=true&amp;output=csv</a></td>
 </tr>
 <tr class="even">
+<td align="right">14</td>
 <td align="left">lactate producing</td>
 <td align="left">NCBI_ID</td>
-<td align="left">&gt;&gt;&gt; Invalid values. The column <code>NCBI_ID</code> in dataset <code>lactate producing</code> contains invalid values in 24 rows. The first invalid values are: Unidentified, Unidentified, Unidentified…</td>
+<td align="left">invalid_column_values</td>
 <td align="right">24</td>
-<td align="left">Unidentified, Unidentified, Unidentified, Unidentified, Unidentified, Unidentified</td>
+<td align="left">Unidentified; Unidentified; Unidentified; Unidentified; Unidentified; Unidentified</td>
+<td align="left">24 x 10</td>
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vSDYef_4xX2-RVfxhz7XrHIglvHjB5a9bagpApN_zHNhnswhFXN7CRsaQr3pKW6bAyrh8b26tndxCFi/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vSDYef_4xX2-RVfxhz7XrHIglvHjB5a9bagpApN_zHNhnswhFXN7CRsaQr3pKW6bAyrh8b26tndxCFi/pub?output=csv</a></td>
 </tr>
 <tr class="odd">
+<td align="right">15</td>
 <td align="left">lactate producing</td>
 <td align="left">Attribute_value</td>
-<td align="left">&gt;&gt;&gt; Incorrect column class in lactate producing. The <code>Attribute_value</code> column` should be of class logical or numeric, not character</td>
-<td align="right">0</td>
-<td align="left"></td>
+<td align="left">invalid_column_class</td>
+<td align="right">NA</td>
+<td align="left">NA</td>
+<td align="left">24 x 10</td>
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vSDYef_4xX2-RVfxhz7XrHIglvHjB5a9bagpApN_zHNhnswhFXN7CRsaQr3pKW6bAyrh8b26tndxCFi/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vSDYef_4xX2-RVfxhz7XrHIglvHjB5a9bagpApN_zHNhnswhFXN7CRsaQr3pKW6bAyrh8b26tndxCFi/pub?output=csv</a></td>
 </tr>
 <tr class="even">
+<td align="right">16</td>
 <td align="left">lactate producing</td>
 <td align="left">Evidence</td>
-<td align="left">&gt;&gt;&gt; Invalid values. The column <code>Evidence</code> in dataset <code>lactate producing</code> contains invalid values in 24 rows. The first invalid values are: EXP, EXP, EXP…</td>
+<td align="left">invalid_column_values</td>
 <td align="right">24</td>
-<td align="left">EXP, EXP, EXP, EXP, EXP, EXP</td>
+<td align="left">EXP; EXP; EXP; EXP; EXP; EXP</td>
+<td align="left">24 x 10</td>
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vSDYef_4xX2-RVfxhz7XrHIglvHjB5a9bagpApN_zHNhnswhFXN7CRsaQr3pKW6bAyrh8b26tndxCFi/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vSDYef_4xX2-RVfxhz7XrHIglvHjB5a9bagpApN_zHNhnswhFXN7CRsaQr3pKW6bAyrh8b26tndxCFi/pub?output=csv</a></td>
 </tr>
 <tr class="odd">
+<td align="right">17</td>
 <td align="left">lactate producing</td>
 <td align="left">Confidence_interval</td>
-<td align="left">&gt;&gt;&gt; Invalid values. The column <code>Confidence_interval</code> in dataset <code>lactate producing</code> contains invalid values in 24 rows. The first invalid values are: Unknown, Unknown, Unknown…</td>
+<td align="left">invalid_column_values</td>
 <td align="right">24</td>
-<td align="left">Unknown, Unknown, Unknown, Unknown, Unknown, Unknown</td>
+<td align="left">Unknown; Unknown; Unknown; Unknown; Unknown; Unknown</td>
+<td align="left">24 x 10</td>
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vSDYef_4xX2-RVfxhz7XrHIglvHjB5a9bagpApN_zHNhnswhFXN7CRsaQr3pKW6bAyrh8b26tndxCFi/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vSDYef_4xX2-RVfxhz7XrHIglvHjB5a9bagpApN_zHNhnswhFXN7CRsaQr3pKW6bAyrh8b26tndxCFi/pub?output=csv</a></td>
 </tr>
 <tr class="even">
+<td align="right">18</td>
 <td align="left">arrangement</td>
 <td align="left">Accession_number</td>
-<td align="left">&gt;&gt;&gt; Invalid values. The column <code>Accession_number</code> in dataset <code>arrangement</code> contains invalid values in 768 rows. The first invalid values are: , , …</td>
+<td align="left">invalid_column_values</td>
 <td align="right">768</td>
-<td align="left">, , , , ,</td>
+<td align="left">; ; ; ; ;</td>
+<td align="left">1943 x 9</td>
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vSgNXC-VPLmG8dUN8VAun_pbT0Y4-qJo6u9ozHGO8j7Weq6ymPaPw9kJUPl-RpHSYvtUgACo-SVHyk5/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vSgNXC-VPLmG8dUN8VAun_pbT0Y4-qJo6u9ozHGO8j7Weq6ymPaPw9kJUPl-RpHSYvtUgACo-SVHyk5/pub?output=csv</a></td>
 </tr>
 <tr class="odd">
+<td align="right">19</td>
 <td align="left">arrangement</td>
 <td align="left">Attribute</td>
-<td align="left">&gt;&gt;&gt; Invalid values. The column <code>Attribute</code> in dataset <code>arrangement</code> contains invalid values in 8 rows. The first invalid values are: v-formations, v-formations, v-formations…</td>
+<td align="left">invalid_column_values</td>
 <td align="right">8</td>
-<td align="left">v-formations, v-formations, v-formations, v-formations, v-formations, v-formations</td>
+<td align="left">v-formations; v-formations; v-formations; v-formations; v-formations; v-formations</td>
+<td align="left">1943 x 9</td>
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vSgNXC-VPLmG8dUN8VAun_pbT0Y4-qJo6u9ozHGO8j7Weq6ymPaPw9kJUPl-RpHSYvtUgACo-SVHyk5/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vSgNXC-VPLmG8dUN8VAun_pbT0Y4-qJo6u9ozHGO8j7Weq6ymPaPw9kJUPl-RpHSYvtUgACo-SVHyk5/pub?output=csv</a></td>
 </tr>
 <tr class="even">
+<td align="right">20</td>
 <td align="left">arrangement</td>
 <td align="left">Evidence</td>
-<td align="left">&gt;&gt;&gt; Invalid values. The column <code>Evidence</code> in dataset <code>arrangement</code> contains invalid values in 1943 rows. The first invalid values are: EXP, EXP, EXP…</td>
+<td align="left">invalid_column_values</td>
 <td align="right">1943</td>
-<td align="left">EXP, EXP, EXP, EXP, EXP, EXP</td>
+<td align="left">EXP; EXP; EXP; EXP; EXP; EXP</td>
+<td align="left">1943 x 9</td>
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vSgNXC-VPLmG8dUN8VAun_pbT0Y4-qJo6u9ozHGO8j7Weq6ymPaPw9kJUPl-RpHSYvtUgACo-SVHyk5/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vSgNXC-VPLmG8dUN8VAun_pbT0Y4-qJo6u9ozHGO8j7Weq6ymPaPw9kJUPl-RpHSYvtUgACo-SVHyk5/pub?output=csv</a></td>
 </tr>
 <tr class="odd">
+<td align="right">21</td>
 <td align="left">arrangement</td>
 <td align="left">Confidence_interval</td>
-<td align="left">&gt;&gt;&gt; Invalid values. The column <code>Confidence_interval</code> in dataset <code>arrangement</code> contains invalid values in 1175 rows. The first invalid values are: Unknown, Unknown, Unknown…</td>
+<td align="left">invalid_column_values</td>
 <td align="right">1175</td>
-<td align="left">Unknown, Unknown, Unknown, Unknown, Unknown, Unknown</td>
+<td align="left">Unknown; Unknown; Unknown; Unknown; Unknown; Unknown</td>
+<td align="left">1943 x 9</td>
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vSgNXC-VPLmG8dUN8VAun_pbT0Y4-qJo6u9ozHGO8j7Weq6ymPaPw9kJUPl-RpHSYvtUgACo-SVHyk5/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vSgNXC-VPLmG8dUN8VAun_pbT0Y4-qJo6u9ozHGO8j7Weq6ymPaPw9kJUPl-RpHSYvtUgACo-SVHyk5/pub?output=csv</a></td>
 </tr>
 <tr class="even">
+<td align="right">22</td>
 <td align="left">shape</td>
 <td align="left">Accession_number</td>
-<td align="left">&gt;&gt;&gt; Invalid values. The column <code>Accession_number</code> in dataset <code>shape</code> contains invalid values in 1850 rows. The first invalid values are: , , …</td>
+<td align="left">invalid_column_values</td>
 <td align="right">1850</td>
-<td align="left">, , , , ,</td>
+<td align="left">; ; ; ; ;</td>
+<td align="left">3129 x 10</td>
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vSSBfC2jfuqioMyj891v-hYM-uL61-amoDNl0bufw5RwVOmjp5m2uNOKTeJsAsZVHFdujgjEAencl5E/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vSSBfC2jfuqioMyj891v-hYM-uL61-amoDNl0bufw5RwVOmjp5m2uNOKTeJsAsZVHFdujgjEAencl5E/pub?output=csv</a></td>
 </tr>
 <tr class="odd">
+<td align="right">23</td>
 <td align="left">shape</td>
 <td align="left">Attribute</td>
-<td align="left">&gt;&gt;&gt; Invalid values. The column <code>Attribute</code> in dataset <code>shape</code> contains invalid values in 1 rows. The first invalid values are: square…</td>
+<td align="left">invalid_column_values</td>
 <td align="right">1</td>
 <td align="left">square</td>
+<td align="left">3129 x 10</td>
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vSSBfC2jfuqioMyj891v-hYM-uL61-amoDNl0bufw5RwVOmjp5m2uNOKTeJsAsZVHFdujgjEAencl5E/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vSSBfC2jfuqioMyj891v-hYM-uL61-amoDNl0bufw5RwVOmjp5m2uNOKTeJsAsZVHFdujgjEAencl5E/pub?output=csv</a></td>
 </tr>
 <tr class="even">
+<td align="right">24</td>
 <td align="left">shape</td>
 <td align="left">Evidence</td>
-<td align="left">&gt;&gt;&gt; Invalid values. The column <code>Evidence</code> in dataset <code>shape</code> contains invalid values in 3129 rows. The first invalid values are: EXP, EXP, EXP…</td>
+<td align="left">invalid_column_values</td>
 <td align="right">3129</td>
-<td align="left">EXP, EXP, EXP, EXP, EXP, EXP</td>
+<td align="left">EXP; EXP; EXP; EXP; EXP; EXP</td>
+<td align="left">3129 x 10</td>
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vSSBfC2jfuqioMyj891v-hYM-uL61-amoDNl0bufw5RwVOmjp5m2uNOKTeJsAsZVHFdujgjEAencl5E/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vSSBfC2jfuqioMyj891v-hYM-uL61-amoDNl0bufw5RwVOmjp5m2uNOKTeJsAsZVHFdujgjEAencl5E/pub?output=csv</a></td>
 </tr>
 <tr class="odd">
+<td align="right">25</td>
 <td align="left">COGEM pathogenicity rating</td>
 <td align="left">Confidence_interval</td>
-<td align="left">&gt;&gt;&gt; Invalid values. The column <code>Confidence_interval</code> in dataset <code>COGEM pathogenicity rating</code> contains invalid values in 1043 rows. The first invalid values are: Unknown, Unknown, Unknown…</td>
+<td align="left">invalid_column_values</td>
 <td align="right">1043</td>
-<td align="left">Unknown, Unknown, Unknown, Unknown, Unknown, Unknown</td>
+<td align="left">Unknown; Unknown; Unknown; Unknown; Unknown; Unknown</td>
+<td align="left">1043 x 9</td>
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQYZjtf0RcacNAe54pLOnzor2q0ZeK4cF19f-gjji7cHfrtOf3VuDPA-jSAKRNDNZoWQanyw2QCugRZ/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQYZjtf0RcacNAe54pLOnzor2q0ZeK4cF19f-gjji7cHfrtOf3VuDPA-jSAKRNDNZoWQanyw2QCugRZ/pub?output=csv</a></td>
 </tr>
 <tr class="even">
+<td align="right">26</td>
 <td align="left">mutation rate per site per generation</td>
 <td align="left">Evidence</td>
-<td align="left">&gt;&gt;&gt; Invalid values. The column <code>Evidence</code> in dataset <code>mutation rate per site per generation</code> contains invalid values in 26 rows. The first invalid values are: EXP, EXP, EXP…</td>
+<td align="left">invalid_column_values</td>
 <td align="right">26</td>
-<td align="left">EXP, EXP, EXP, EXP, EXP, EXP</td>
+<td align="left">EXP; EXP; EXP; EXP; EXP; EXP</td>
+<td align="left">26 x 10</td>
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQxiU_sfIyCEcwua8vuCjbSCeZkUBsL1pnNxEK-985NAsCgy0sNbaSKuFMaU5ytPCQ86h9x2NEJsX-t/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQxiU_sfIyCEcwua8vuCjbSCeZkUBsL1pnNxEK-985NAsCgy0sNbaSKuFMaU5ytPCQ86h9x2NEJsX-t/pub?output=csv</a></td>
 </tr>
 <tr class="odd">
+<td align="right">27</td>
 <td align="left">mutation rates per site per year</td>
 <td align="left">Evidence</td>
-<td align="left">&gt;&gt;&gt; Invalid values. The column <code>Evidence</code> in dataset <code>mutation rates per site per year</code> contains invalid values in 81 rows. The first invalid values are: EXP, EXP, EXP…</td>
+<td align="left">invalid_column_values</td>
 <td align="right">81</td>
-<td align="left">EXP, EXP, EXP, EXP, EXP, EXP</td>
+<td align="left">EXP; EXP; EXP; EXP; EXP; EXP</td>
+<td align="left">81 x 10</td>
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQGJBifwNIYz6znmGAFgGtzaSNPhxU8qagDgl4BWLHKDcjs_gm11pEaLV7X01qdyeacmwYxalTrx0um/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQGJBifwNIYz6znmGAFgGtzaSNPhxU8qagDgl4BWLHKDcjs_gm11pEaLV7X01qdyeacmwYxalTrx0um/pub?output=csv</a></td>
 </tr>
 <tr class="even">
+<td align="right">28</td>
 <td align="left">mutation rates per site per year</td>
 <td align="left">Confidence_interval</td>
-<td align="left">&gt;&gt;&gt; Invalid values. The column <code>Confidence_interval</code> in dataset <code>mutation rates per site per year</code> contains invalid values in 27 rows. The first invalid values are: , , …</td>
+<td align="left">invalid_column_values</td>
 <td align="right">27</td>
-<td align="left">, , , , ,</td>
+<td align="left">; ; ; ; ;</td>
+<td align="left">81 x 10</td>
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQGJBifwNIYz6znmGAFgGtzaSNPhxU8qagDgl4BWLHKDcjs_gm11pEaLV7X01qdyeacmwYxalTrx0um/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQGJBifwNIYz6znmGAFgGtzaSNPhxU8qagDgl4BWLHKDcjs_gm11pEaLV7X01qdyeacmwYxalTrx0um/pub?output=csv</a></td>
 </tr>
 <tr class="odd">
+<td align="right">29</td>
 <td align="left">extreme environment</td>
 <td align="left">Taxon_name</td>
-<td align="left">&gt;&gt;&gt; Invalid values. The column <code>Taxon_name</code> in dataset <code>extreme environment</code> contains invalid values in 1 rows. The first invalid values are: …</td>
+<td align="left">invalid_column_values</td>
 <td align="right">1</td>
 <td align="left"></td>
+<td align="left">1876 x 9</td>
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vSh82md-R7XuM6PMs4UY6DYCY99wgwMcY6PD-m-VoxbJJl_Ce9JWhKtTEdFLEMmzrUxDyrQtfLBCbKj/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vSh82md-R7XuM6PMs4UY6DYCY99wgwMcY6PD-m-VoxbJJl_Ce9JWhKtTEdFLEMmzrUxDyrQtfLBCbKj/pub?output=csv</a></td>
 </tr>
 <tr class="even">
+<td align="right">30</td>
 <td align="left">extreme environment</td>
 <td align="left">Attribute</td>
-<td align="left">&gt;&gt;&gt; Invalid values. The column <code>Attribute</code> in dataset <code>extreme environment</code> contains invalid values in 1876 rows. The first invalid values are: Extreme environment, Extreme environment, Extreme environment…</td>
+<td align="left">invalid_column_values</td>
 <td align="right">1876</td>
-<td align="left">Extreme environment, Extreme environment, Extreme environment, Extreme environment, Extreme environment, Extreme environment</td>
+<td align="left">Extreme environment; Extreme environment; Extreme environment; Extreme environment; Extreme environment; Extreme environment</td>
+<td align="left">1876 x 9</td>
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vSh82md-R7XuM6PMs4UY6DYCY99wgwMcY6PD-m-VoxbJJl_Ce9JWhKtTEdFLEMmzrUxDyrQtfLBCbKj/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vSh82md-R7XuM6PMs4UY6DYCY99wgwMcY6PD-m-VoxbJJl_Ce9JWhKtTEdFLEMmzrUxDyrQtfLBCbKj/pub?output=csv</a></td>
 </tr>
 <tr class="odd">
+<td align="right">31</td>
 <td align="left">extreme environment</td>
 <td align="left">Confidence_interval</td>
-<td align="left">&gt;&gt;&gt; Invalid values. The column <code>Confidence_interval</code> in dataset <code>extreme environment</code> contains invalid values in 1876 rows. The first invalid values are: Always, Always, Always…</td>
+<td align="left">invalid_column_values</td>
 <td align="right">1876</td>
-<td align="left">Always, Always, Always, Always, Always, Always</td>
+<td align="left">Always; Always; Always; Always; Always; Always</td>
+<td align="left">1876 x 9</td>
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vSh82md-R7XuM6PMs4UY6DYCY99wgwMcY6PD-m-VoxbJJl_Ce9JWhKtTEdFLEMmzrUxDyrQtfLBCbKj/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vSh82md-R7XuM6PMs4UY6DYCY99wgwMcY6PD-m-VoxbJJl_Ce9JWhKtTEdFLEMmzrUxDyrQtfLBCbKj/pub?output=csv</a></td>
 </tr>
 <tr class="even">
+<td align="right">32</td>
 <td align="left">gram stain</td>
 <td align="left">Accession_number</td>
-<td align="left">&gt;&gt;&gt; Invalid values. The column <code>Accession_number</code> in dataset <code>gram stain</code> contains invalid values in 3692 rows. The first invalid values are: , , …</td>
+<td align="left">invalid_column_values</td>
 <td align="right">3692</td>
-<td align="left">, , , , ,</td>
+<td align="left">; ; ; ; ;</td>
+<td align="left">4970 x 9</td>
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vRxQOO7O7oJDJrFbY3s1Y_rbouUSR3rM_a3kGlXgcVMys5pFLqmd00VjJh1adJBmh3xA3aM8r3Am2oC/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vRxQOO7O7oJDJrFbY3s1Y_rbouUSR3rM_a3kGlXgcVMys5pFLqmd00VjJh1adJBmh3xA3aM8r3Am2oC/pub?output=csv</a></td>
 </tr>
 <tr class="odd">
+<td align="right">33</td>
 <td align="left">gram stain</td>
 <td align="left">Evidence</td>
-<td align="left">&gt;&gt;&gt; Invalid values. The column <code>Evidence</code> in dataset <code>gram stain</code> contains invalid values in 4970 rows. The first invalid values are: EXP, , EXP…</td>
+<td align="left">invalid_column_values</td>
 <td align="right">4970</td>
-<td align="left">EXP, , EXP, EXP, ,</td>
+<td align="left">EXP; ; EXP; EXP; ;</td>
+<td align="left">4970 x 9</td>
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vRxQOO7O7oJDJrFbY3s1Y_rbouUSR3rM_a3kGlXgcVMys5pFLqmd00VjJh1adJBmh3xA3aM8r3Am2oC/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vRxQOO7O7oJDJrFbY3s1Y_rbouUSR3rM_a3kGlXgcVMys5pFLqmd00VjJh1adJBmh3xA3aM8r3Am2oC/pub?output=csv</a></td>
 </tr>
 <tr class="even">
+<td align="right">34</td>
 <td align="left">gram stain</td>
 <td align="left">Confidence_interval</td>
-<td align="left">&gt;&gt;&gt; Invalid values. The column <code>Confidence_interval</code> in dataset <code>gram stain</code> contains invalid values in 1278 rows. The first invalid values are: , , …</td>
+<td align="left">invalid_column_values</td>
 <td align="right">1278</td>
-<td align="left">, , , , ,</td>
+<td align="left">; ; ; ; ;</td>
+<td align="left">4970 x 9</td>
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vRxQOO7O7oJDJrFbY3s1Y_rbouUSR3rM_a3kGlXgcVMys5pFLqmd00VjJh1adJBmh3xA3aM8r3Am2oC/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vRxQOO7O7oJDJrFbY3s1Y_rbouUSR3rM_a3kGlXgcVMys5pFLqmd00VjJh1adJBmh3xA3aM8r3Am2oC/pub?output=csv</a></td>
 </tr>
 <tr class="odd">
+<td align="right">35</td>
 <td align="left">growth medium</td>
 <td align="left">Attribute</td>
-<td align="left">&gt;&gt;&gt; Invalid values. The column <code>Attribute</code> in dataset <code>growth medium</code> contains invalid values in 14 rows. The first invalid values are: mrs broth, mrs broth, mrs broth…</td>
+<td align="left">invalid_column_values</td>
 <td align="right">14</td>
-<td align="left">mrs broth, mrs broth, mrs broth, mrs broth, ZoBell marine agar, ZoBell marine agar</td>
+<td align="left">mrs broth; mrs broth; mrs broth; mrs broth; ZoBell marine agar; ZoBell marine agar</td>
+<td align="left">304 x 10</td>
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vTLNLWfdNxo7NGNuJ4Pq6nji-7jQhO1glTHh1cQVS3j147WxbwhbWqhyI3FJR0I578o1hzeGbHwMOmY/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vTLNLWfdNxo7NGNuJ4Pq6nji-7jQhO1glTHh1cQVS3j147WxbwhbWqhyI3FJR0I578o1hzeGbHwMOmY/pub?output=csv</a></td>
 </tr>
 <tr class="even">
+<td align="right">36</td>
 <td align="left">growth medium</td>
 <td align="left">Evidence</td>
-<td align="left">&gt;&gt;&gt; Invalid values. The column <code>Evidence</code> in dataset <code>growth medium</code> contains invalid values in 304 rows. The first invalid values are: EXP, EXP, EXP…</td>
+<td align="left">invalid_column_values</td>
 <td align="right">304</td>
-<td align="left">EXP, EXP, EXP, EXP, EXP, EXP</td>
+<td align="left">EXP; EXP; EXP; EXP; EXP; EXP</td>
+<td align="left">304 x 10</td>
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vTLNLWfdNxo7NGNuJ4Pq6nji-7jQhO1glTHh1cQVS3j147WxbwhbWqhyI3FJR0I578o1hzeGbHwMOmY/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vTLNLWfdNxo7NGNuJ4Pq6nji-7jQhO1glTHh1cQVS3j147WxbwhbWqhyI3FJR0I578o1hzeGbHwMOmY/pub?output=csv</a></td>
 </tr>
 <tr class="odd">
+<td align="right">37</td>
 <td align="left">growth medium</td>
 <td align="left">Confidence_interval</td>
-<td align="left">&gt;&gt;&gt; Invalid values. The column <code>Confidence_interval</code> in dataset <code>growth medium</code> contains invalid values in 304 rows. The first invalid values are: Always, Always, Always…</td>
+<td align="left">invalid_column_values</td>
 <td align="right">304</td>
-<td align="left">Always, Always, Always, Always, Always, Always</td>
+<td align="left">Always; Always; Always; Always; Always; Always</td>
+<td align="left">304 x 10</td>
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vTLNLWfdNxo7NGNuJ4Pq6nji-7jQhO1glTHh1cQVS3j147WxbwhbWqhyI3FJR0I578o1hzeGbHwMOmY/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vTLNLWfdNxo7NGNuJ4Pq6nji-7jQhO1glTHh1cQVS3j147WxbwhbWqhyI3FJR0I578o1hzeGbHwMOmY/pub?output=csv</a></td>
 </tr>
 <tr class="even">
+<td align="right">38</td>
 <td align="left">growth temperature</td>
 <td align="left">Accession_number</td>
-<td align="left">&gt;&gt;&gt; Invalid values. The column <code>Accession_number</code> in dataset <code>growth temperature</code> contains invalid values in 2148 rows. The first invalid values are: , , …</td>
+<td align="left">invalid_column_values</td>
 <td align="right">2148</td>
-<td align="left">, , , , ,</td>
+<td align="left">; ; ; ; ;</td>
+<td align="left">3218 x 9</td>
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vTWXUnR0_jkpZEE06C0GAypTGjOa2RnOPiLSmPiwAnaf2qS33hd-6GKG95CYDgKeSk6t4BFVjIAB_sh/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vTWXUnR0_jkpZEE06C0GAypTGjOa2RnOPiLSmPiwAnaf2qS33hd-6GKG95CYDgKeSk6t4BFVjIAB_sh/pub?output=csv</a></td>
 </tr>
 <tr class="odd">
+<td align="right">39</td>
 <td align="left">growth temperature</td>
 <td align="left">Attribute</td>
-<td align="left">&gt;&gt;&gt; Invalid values. The column <code>Attribute</code> in dataset <code>growth temperature</code> contains invalid values in 3218 rows. The first invalid values are: growth temperature, growth temperature, growth temperature…</td>
+<td align="left">invalid_column_values</td>
 <td align="right">3218</td>
-<td align="left">growth temperature, growth temperature, growth temperature, growth temperature, growth temperature, growth temperature</td>
+<td align="left">growth temperature; growth temperature; growth temperature; growth temperature; growth temperature; growth temperature</td>
+<td align="left">3218 x 9</td>
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vTWXUnR0_jkpZEE06C0GAypTGjOa2RnOPiLSmPiwAnaf2qS33hd-6GKG95CYDgKeSk6t4BFVjIAB_sh/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vTWXUnR0_jkpZEE06C0GAypTGjOa2RnOPiLSmPiwAnaf2qS33hd-6GKG95CYDgKeSk6t4BFVjIAB_sh/pub?output=csv</a></td>
 </tr>
 <tr class="even">
+<td align="right">40</td>
 <td align="left">growth temperature</td>
 <td align="left">Evidence</td>
-<td align="left">&gt;&gt;&gt; Invalid values. The column <code>Evidence</code> in dataset <code>growth temperature</code> contains invalid values in 3218 rows. The first invalid values are: EXP, EXP, EXP…</td>
+<td align="left">invalid_column_values</td>
 <td align="right">3218</td>
-<td align="left">EXP, EXP, EXP, EXP, EXP, EXP</td>
+<td align="left">EXP; EXP; EXP; EXP; EXP; EXP</td>
+<td align="left">3218 x 9</td>
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vTWXUnR0_jkpZEE06C0GAypTGjOa2RnOPiLSmPiwAnaf2qS33hd-6GKG95CYDgKeSk6t4BFVjIAB_sh/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vTWXUnR0_jkpZEE06C0GAypTGjOa2RnOPiLSmPiwAnaf2qS33hd-6GKG95CYDgKeSk6t4BFVjIAB_sh/pub?output=csv</a></td>
 </tr>
 <tr class="odd">
+<td align="right">41</td>
 <td align="left">growth temperature</td>
 <td align="left">Confidence_interval</td>
-<td align="left">&gt;&gt;&gt; Invalid values. The column <code>Confidence_interval</code> in dataset <code>growth temperature</code> contains invalid values in 3218 rows. The first invalid values are: Unknown, Unknown, Unknown…</td>
+<td align="left">invalid_column_values</td>
 <td align="right">3218</td>
-<td align="left">Unknown, Unknown, Unknown, Unknown, Unknown, Unknown</td>
+<td align="left">Unknown; Unknown; Unknown; Unknown; Unknown; Unknown</td>
+<td align="left">3218 x 9</td>
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vTWXUnR0_jkpZEE06C0GAypTGjOa2RnOPiLSmPiwAnaf2qS33hd-6GKG95CYDgKeSk6t4BFVjIAB_sh/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vTWXUnR0_jkpZEE06C0GAypTGjOa2RnOPiLSmPiwAnaf2qS33hd-6GKG95CYDgKeSk6t4BFVjIAB_sh/pub?output=csv</a></td>
 </tr>
 <tr class="even">
+<td align="right">42</td>
 <td align="left">habitat</td>
 <td align="left">Accession_number</td>
-<td align="left">&gt;&gt;&gt; Invalid values. The column <code>Accession_number</code> in dataset <code>habitat</code> contains invalid values in 2363 rows. The first invalid values are: , , …</td>
+<td align="left">invalid_column_values</td>
 <td align="right">2363</td>
-<td align="left">, , , , ,</td>
+<td align="left">; ; ; ; ;</td>
+<td align="left">3801 x 9</td>
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQrR6R5nhANAU-CweaEp_X9P13eXiyq2A16_hOOREDYZuOqFS_4jAnI4JjihFmy3jAWtUW2V-4kZYPN/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQrR6R5nhANAU-CweaEp_X9P13eXiyq2A16_hOOREDYZuOqFS_4jAnI4JjihFmy3jAWtUW2V-4kZYPN/pub?output=csv</a></td>
 </tr>
 <tr class="odd">
+<td align="right">43</td>
 <td align="left">habitat</td>
 <td align="left">Evidence</td>
-<td align="left">&gt;&gt;&gt; Invalid values. The column <code>Evidence</code> in dataset <code>habitat</code> contains invalid values in 3801 rows. The first invalid values are: EXP, EXP, EXP…</td>
+<td align="left">invalid_column_values</td>
 <td align="right">3801</td>
-<td align="left">EXP, EXP, EXP, EXP, EXP, EXP</td>
+<td align="left">EXP; EXP; EXP; EXP; EXP; EXP</td>
+<td align="left">3801 x 9</td>
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQrR6R5nhANAU-CweaEp_X9P13eXiyq2A16_hOOREDYZuOqFS_4jAnI4JjihFmy3jAWtUW2V-4kZYPN/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQrR6R5nhANAU-CweaEp_X9P13eXiyq2A16_hOOREDYZuOqFS_4jAnI4JjihFmy3jAWtUW2V-4kZYPN/pub?output=csv</a></td>
 </tr>
 <tr class="even">
+<td align="right">44</td>
 <td align="left">habitat</td>
 <td align="left">Confidence_interval</td>
-<td align="left">&gt;&gt;&gt; Invalid values. The column <code>Confidence_interval</code> in dataset <code>habitat</code> contains invalid values in 3801 rows. The first invalid values are: Unknown, Unknown, Unknown…</td>
+<td align="left">invalid_column_values</td>
 <td align="right">3801</td>
-<td align="left">Unknown, Unknown, Unknown, Unknown, Unknown, Unknown</td>
+<td align="left">Unknown; Unknown; Unknown; Unknown; Unknown; Unknown</td>
+<td align="left">3801 x 9</td>
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQrR6R5nhANAU-CweaEp_X9P13eXiyq2A16_hOOREDYZuOqFS_4jAnI4JjihFmy3jAWtUW2V-4kZYPN/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQrR6R5nhANAU-CweaEp_X9P13eXiyq2A16_hOOREDYZuOqFS_4jAnI4JjihFmy3jAWtUW2V-4kZYPN/pub?output=csv</a></td>
 </tr>
 <tr class="odd">
+<td align="right">45</td>
 <td align="left">optimal ph</td>
 <td align="left">Attribute</td>
-<td align="left">&gt;&gt;&gt; Invalid values. The column <code>Attribute</code> in dataset <code>optimal ph</code> contains invalid values in 886 rows. The first invalid values are: optimal ph, optimal ph, optimal ph…</td>
+<td align="left">invalid_column_values</td>
 <td align="right">886</td>
-<td align="left">optimal ph, optimal ph, optimal ph, optimal ph, optimal ph, optimal ph</td>
+<td align="left">optimal ph; optimal ph; optimal ph; optimal ph; optimal ph; optimal ph</td>
+<td align="left">886 x 9</td>
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQTIHjOUyJc7O6Y_w3QIj6wiZD2AA369oWByaS77XTP6VX2IhNgBULN4cccs4ZMD-dsLx9ggTBKOnlt/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQTIHjOUyJc7O6Y_w3QIj6wiZD2AA369oWByaS77XTP6VX2IhNgBULN4cccs4ZMD-dsLx9ggTBKOnlt/pub?output=csv</a></td>
 </tr>
 <tr class="even">
+<td align="right">46</td>
 <td align="left">optimal ph</td>
 <td align="left">Evidence</td>
-<td align="left">&gt;&gt;&gt; Invalid values. The column <code>Evidence</code> in dataset <code>optimal ph</code> contains invalid values in 886 rows. The first invalid values are: EXP, EXP, EXP…</td>
+<td align="left">invalid_column_values</td>
 <td align="right">886</td>
-<td align="left">EXP, EXP, EXP, EXP, EXP, EXP</td>
+<td align="left">EXP; EXP; EXP; EXP; EXP; EXP</td>
+<td align="left">886 x 9</td>
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQTIHjOUyJc7O6Y_w3QIj6wiZD2AA369oWByaS77XTP6VX2IhNgBULN4cccs4ZMD-dsLx9ggTBKOnlt/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQTIHjOUyJc7O6Y_w3QIj6wiZD2AA369oWByaS77XTP6VX2IhNgBULN4cccs4ZMD-dsLx9ggTBKOnlt/pub?output=csv</a></td>
 </tr>
 <tr class="odd">
+<td align="right">47</td>
 <td align="left">optimal ph</td>
 <td align="left">Confidence_interval</td>
-<td align="left">&gt;&gt;&gt; Invalid values. The column <code>Confidence_interval</code> in dataset <code>optimal ph</code> contains invalid values in 886 rows. The first invalid values are: Unknown, Unknown, Unknown…</td>
+<td align="left">invalid_column_values</td>
 <td align="right">886</td>
-<td align="left">Unknown, Unknown, Unknown, Unknown, Unknown, Unknown</td>
+<td align="left">Unknown; Unknown; Unknown; Unknown; Unknown; Unknown</td>
+<td align="left">886 x 9</td>
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQTIHjOUyJc7O6Y_w3QIj6wiZD2AA369oWByaS77XTP6VX2IhNgBULN4cccs4ZMD-dsLx9ggTBKOnlt/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQTIHjOUyJc7O6Y_w3QIj6wiZD2AA369oWByaS77XTP6VX2IhNgBULN4cccs4ZMD-dsLx9ggTBKOnlt/pub?output=csv</a></td>
 </tr>
 <tr class="even">
+<td align="right">48</td>
 <td align="left">aerophilicity</td>
 <td align="left">Accession_number</td>
-<td align="left">&gt;&gt;&gt; Invalid values. The column <code>Accession_number</code> in dataset <code>aerophilicity</code> contains invalid values in 1253 rows. The first invalid values are: , , …</td>
+<td align="left">invalid_column_values</td>
 <td align="right">1253</td>
-<td align="left">, , , , ,</td>
+<td align="left">; ; ; ; ;</td>
+<td align="left">2557 x 10</td>
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQDC8VfkkOfN6MKGxrzMEoJjfgYIfpsJO-SxVr3pkUUChBNkMQ3YKaxSvDSSjjrPRf51nU3wbk-WWJp/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQDC8VfkkOfN6MKGxrzMEoJjfgYIfpsJO-SxVr3pkUUChBNkMQ3YKaxSvDSSjjrPRf51nU3wbk-WWJp/pub?output=csv</a></td>
 </tr>
 <tr class="odd">
+<td align="right">49</td>
 <td align="left">aerophilicity</td>
 <td align="left">Evidence</td>
-<td align="left">&gt;&gt;&gt; Invalid values. The column <code>Evidence</code> in dataset <code>aerophilicity</code> contains invalid values in 2557 rows. The first invalid values are: EXP, EXP, EXP…</td>
+<td align="left">invalid_column_values</td>
 <td align="right">2557</td>
-<td align="left">EXP, EXP, EXP, EXP, EXP, EXP</td>
+<td align="left">EXP; EXP; EXP; EXP; EXP; EXP</td>
+<td align="left">2557 x 10</td>
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQDC8VfkkOfN6MKGxrzMEoJjfgYIfpsJO-SxVr3pkUUChBNkMQ3YKaxSvDSSjjrPRf51nU3wbk-WWJp/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQDC8VfkkOfN6MKGxrzMEoJjfgYIfpsJO-SxVr3pkUUChBNkMQ3YKaxSvDSSjjrPRf51nU3wbk-WWJp/pub?output=csv</a></td>
 </tr>
 <tr class="even">
+<td align="right">50</td>
 <td align="left">plant pathogenicity</td>
 <td align="left">Attribute</td>
-<td align="left">&gt;&gt;&gt; Invalid values. The column <code>Attribute</code> in dataset <code>plant pathogenicity</code> contains invalid values in 1493 rows. The first invalid values are: plant pathogenity, plant pathogenity, plant pathogenity…</td>
+<td align="left">invalid_column_values</td>
 <td align="right">1493</td>
-<td align="left">plant pathogenity, plant pathogenity, plant pathogenity, plant pathogenity, plant pathogenity, plant pathogenity</td>
+<td align="left">plant pathogenity; plant pathogenity; plant pathogenity; plant pathogenity; plant pathogenity; plant pathogenity</td>
+<td align="left">1493 x 9</td>
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vSLH__Hb4wPELYjnSsBR_FwJ4FHLUmx3KDO_pQG3CD9JqNyuugWbiBF9TBhXw9S5mSck2cbeY2ai77C/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vSLH__Hb4wPELYjnSsBR_FwJ4FHLUmx3KDO_pQG3CD9JqNyuugWbiBF9TBhXw9S5mSck2cbeY2ai77C/pub?output=csv</a></td>
 </tr>
 <tr class="odd">
+<td align="right">51</td>
 <td align="left">plant pathogenicity</td>
 <td align="left">Confidence_interval</td>
-<td align="left">&gt;&gt;&gt; Invalid values. The column <code>Confidence_interval</code> in dataset <code>plant pathogenicity</code> contains invalid values in 1493 rows. The first invalid values are: Unknown, Unknown, Unknown…</td>
+<td align="left">invalid_column_values</td>
 <td align="right">1493</td>
-<td align="left">Unknown, Unknown, Unknown, Unknown, Unknown, Unknown</td>
+<td align="left">Unknown; Unknown; Unknown; Unknown; Unknown; Unknown</td>
+<td align="left">1493 x 9</td>
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vSLH__Hb4wPELYjnSsBR_FwJ4FHLUmx3KDO_pQG3CD9JqNyuugWbiBF9TBhXw9S5mSck2cbeY2ai77C/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vSLH__Hb4wPELYjnSsBR_FwJ4FHLUmx3KDO_pQG3CD9JqNyuugWbiBF9TBhXw9S5mSck2cbeY2ai77C/pub?output=csv</a></td>
 </tr>
 <tr class="even">
+<td align="right">52</td>
 <td align="left">width</td>
 <td align="left">Attribute_value</td>
-<td align="left">&gt;&gt;&gt; Incorrect column class in width. The <code>Attribute_value</code> column` should be of class logical or numeric, not character</td>
-<td align="right">0</td>
-<td align="left"></td>
+<td align="left">invalid_column_class</td>
+<td align="right">NA</td>
+<td align="left">NA</td>
+<td align="left">865 x 9</td>
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vR45vzAobXMOH1SCECpkBkIvxTsG5d8jAweSHaUst-gFKQcS0tTYUjivmLVByOLbFZgF59miCyF11TC/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vR45vzAobXMOH1SCECpkBkIvxTsG5d8jAweSHaUst-gFKQcS0tTYUjivmLVByOLbFZgF59miCyF11TC/pub?output=csv</a></td>
 </tr>
 <tr class="odd">
+<td align="right">53</td>
 <td align="left">width</td>
 <td align="left">Evidence</td>
-<td align="left">&gt;&gt;&gt; Invalid values. The column <code>Evidence</code> in dataset <code>width</code> contains invalid values in 865 rows. The first invalid values are: EXP, EXP, EXP…</td>
+<td align="left">invalid_column_values</td>
 <td align="right">865</td>
-<td align="left">EXP, EXP, EXP, EXP, EXP, EXP</td>
+<td align="left">EXP; EXP; EXP; EXP; EXP; EXP</td>
+<td align="left">865 x 9</td>
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vR45vzAobXMOH1SCECpkBkIvxTsG5d8jAweSHaUst-gFKQcS0tTYUjivmLVByOLbFZgF59miCyF11TC/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vR45vzAobXMOH1SCECpkBkIvxTsG5d8jAweSHaUst-gFKQcS0tTYUjivmLVByOLbFZgF59miCyF11TC/pub?output=csv</a></td>
 </tr>
 <tr class="even">
+<td align="right">54</td>
 <td align="left">width</td>
 <td align="left">Confidence_interval</td>
-<td align="left">&gt;&gt;&gt; Invalid values. The column <code>Confidence_interval</code> in dataset <code>width</code> contains invalid values in 12 rows. The first invalid values are: , , …</td>
+<td align="left">invalid_column_values</td>
 <td align="right">12</td>
-<td align="left">, , , , ,</td>
+<td align="left">; ; ; ; ;</td>
+<td align="left">865 x 9</td>
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vR45vzAobXMOH1SCECpkBkIvxTsG5d8jAweSHaUst-gFKQcS0tTYUjivmLVByOLbFZgF59miCyF11TC/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vR45vzAobXMOH1SCECpkBkIvxTsG5d8jAweSHaUst-gFKQcS0tTYUjivmLVByOLbFZgF59miCyF11TC/pub?output=csv</a></td>
 </tr>
 <tr class="odd">
+<td align="right">55</td>
 <td align="left">spore shape</td>
 <td align="left">Evidence</td>
-<td align="left">&gt;&gt;&gt; Invalid values. The column <code>Evidence</code> in dataset <code>spore shape</code> contains invalid values in 153 rows. The first invalid values are: EXP, EXP, EXP…</td>
+<td align="left">invalid_column_values</td>
 <td align="right">153</td>
-<td align="left">EXP, EXP, EXP, EXP, EXP, EXP</td>
+<td align="left">EXP; EXP; EXP; EXP; EXP; EXP</td>
+<td align="left">153 x 9</td>
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQSMzIaqrE8gCV20sDu_8VBmu1WkpQ_vngaWzLCK2qe5E8IJL7-sOF8qEY0sHeUEavvLHpKVp-vmUxh/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQSMzIaqrE8gCV20sDu_8VBmu1WkpQ_vngaWzLCK2qe5E8IJL7-sOF8qEY0sHeUEavvLHpKVp-vmUxh/pub?output=csv</a></td>
 </tr>
 <tr class="even">
+<td align="right">56</td>
 <td align="left">isolation site</td>
 <td align="left">Attribute</td>
-<td align="left">&gt;&gt;&gt; Invalid values. The column <code>Attribute</code> in dataset <code>isolation site</code> contains invalid values in 1107 rows. The first invalid values are: blade of grass from raritan river nj, usa, hot swamp from kunashir island, russia, 1940s by lilleengen…</td>
+<td align="left">invalid_column_values</td>
 <td align="right">1107</td>
-<td align="left">blade of grass from raritan river nj, usa, hot swamp from kunashir island, russia, 1940s by lilleengen, 1940s by lilleengen, 1940s by lilleengen, 1940s by lilleengen</td>
+<td align="left">blade of grass from raritan river nj, usa; hot swamp from kunashir island, russia; 1940s by lilleengen; 1940s by lilleengen; 1940s by lilleengen; 1940s by lilleengen</td>
+<td align="left">1176 x 9</td>
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vR5qKaSI_iXovASXA2U8figFKFBRNOuuFcnr-wSedtGuxAu2m8IjHp1uD23NGTWK9NmnKcO0m7FfkIx/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vR5qKaSI_iXovASXA2U8figFKFBRNOuuFcnr-wSedtGuxAu2m8IjHp1uD23NGTWK9NmnKcO0m7FfkIx/pub?output=csv</a></td>
 </tr>
 <tr class="odd">
+<td align="right">57</td>
 <td align="left">isolation site</td>
 <td align="left">Evidence</td>
-<td align="left">&gt;&gt;&gt; Invalid values. The column <code>Evidence</code> in dataset <code>isolation site</code> contains invalid values in 1176 rows. The first invalid values are: EXP, EXP, EXP…</td>
+<td align="left">invalid_column_values</td>
 <td align="right">1176</td>
-<td align="left">EXP, EXP, EXP, EXP, EXP, EXP</td>
+<td align="left">EXP; EXP; EXP; EXP; EXP; EXP</td>
+<td align="left">1176 x 9</td>
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vR5qKaSI_iXovASXA2U8figFKFBRNOuuFcnr-wSedtGuxAu2m8IjHp1uD23NGTWK9NmnKcO0m7FfkIx/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vR5qKaSI_iXovASXA2U8figFKFBRNOuuFcnr-wSedtGuxAu2m8IjHp1uD23NGTWK9NmnKcO0m7FfkIx/pub?output=csv</a></td>
 </tr>
 <tr class="even">
+<td align="right">58</td>
 <td align="left">disease association</td>
 <td align="left">Attribute</td>
-<td align="left">&gt;&gt;&gt; Invalid values. The column <code>Attribute</code> in dataset <code>disease association</code> contains invalid values in 184 rows. The first invalid values are: anaplasmosis, anemia, anthrax…</td>
+<td align="left">invalid_column_values</td>
 <td align="right">184</td>
-<td align="left">anaplasmosis, anemia, anthrax, anthrax, anthrax, anthrax</td>
+<td align="left">anaplasmosis; anemia; anthrax; anthrax; anthrax; anthrax</td>
+<td align="left">445 x 9</td>
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vTboJM7necIfjgRgyYJ4LJWkCv_1y7O00yvyiSGzFdSfJDkeLqWrQ8FpcsYKFSOrQw75wCRst6KA0_a/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vTboJM7necIfjgRgyYJ4LJWkCv_1y7O00yvyiSGzFdSfJDkeLqWrQ8FpcsYKFSOrQw75wCRst6KA0_a/pub?output=csv</a></td>
 </tr>
 <tr class="odd">
+<td align="right">59</td>
 <td align="left">hydrogen gas producing</td>
 <td align="left">NCBI_ID</td>
-<td align="left">&gt;&gt;&gt; Invalid values. The column <code>NCBI_ID</code> in dataset <code>hydrogen gas producing</code> contains invalid values in 24 rows. The first invalid values are: Unidentified, Unidentified, Unidentified…</td>
+<td align="left">invalid_column_values</td>
 <td align="right">24</td>
-<td align="left">Unidentified, Unidentified, Unidentified, Unidentified, Unidentified, Unidentified</td>
+<td align="left">Unidentified; Unidentified; Unidentified; Unidentified; Unidentified; Unidentified</td>
+<td align="left">24 x 11</td>
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vSpucXiYrMe_iYvnZDuNSNkRVnEWRQhykCCXoIvtmTiKAVUdkVnRYvl17nbwGqZDg2xVDwaUXccGYsF/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vSpucXiYrMe_iYvnZDuNSNkRVnEWRQhykCCXoIvtmTiKAVUdkVnRYvl17nbwGqZDg2xVDwaUXccGYsF/pub?output=csv</a></td>
 </tr>
 <tr class="even">
+<td align="right">60</td>
 <td align="left">hydrogen gas producing</td>
 <td align="left">Attribute_value</td>
-<td align="left">&gt;&gt;&gt; Incorrect column class in hydrogen gas producing. The <code>Attribute_value</code> column` should be of class logical or numeric, not character</td>
-<td align="right">0</td>
-<td align="left"></td>
+<td align="left">invalid_column_class</td>
+<td align="right">NA</td>
+<td align="left">NA</td>
+<td align="left">24 x 11</td>
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vSpucXiYrMe_iYvnZDuNSNkRVnEWRQhykCCXoIvtmTiKAVUdkVnRYvl17nbwGqZDg2xVDwaUXccGYsF/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vSpucXiYrMe_iYvnZDuNSNkRVnEWRQhykCCXoIvtmTiKAVUdkVnRYvl17nbwGqZDg2xVDwaUXccGYsF/pub?output=csv</a></td>
 </tr>
 <tr class="odd">
+<td align="right">61</td>
 <td align="left">hydrogen gas producing</td>
 <td align="left">Evidence</td>
-<td align="left">&gt;&gt;&gt; Invalid values. The column <code>Evidence</code> in dataset <code>hydrogen gas producing</code> contains invalid values in 24 rows. The first invalid values are: EXP, EXP, EXP…</td>
+<td align="left">invalid_column_values</td>
 <td align="right">24</td>
-<td align="left">EXP, EXP, EXP, EXP, EXP, EXP</td>
+<td align="left">EXP; EXP; EXP; EXP; EXP; EXP</td>
+<td align="left">24 x 11</td>
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vSpucXiYrMe_iYvnZDuNSNkRVnEWRQhykCCXoIvtmTiKAVUdkVnRYvl17nbwGqZDg2xVDwaUXccGYsF/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vSpucXiYrMe_iYvnZDuNSNkRVnEWRQhykCCXoIvtmTiKAVUdkVnRYvl17nbwGqZDg2xVDwaUXccGYsF/pub?output=csv</a></td>
 </tr>
 <tr class="even">
+<td align="right">62</td>
 <td align="left">hydrogen gas producing</td>
 <td align="left">Confidence_interval</td>
-<td align="left">&gt;&gt;&gt; Invalid values. The column <code>Confidence_interval</code> in dataset <code>hydrogen gas producing</code> contains invalid values in 24 rows. The first invalid values are: Unknown, Unknown, Unknown…</td>
+<td align="left">invalid_column_values</td>
 <td align="right">24</td>
-<td align="left">Unknown, Unknown, Unknown, Unknown, Unknown, Unknown</td>
+<td align="left">Unknown; Unknown; Unknown; Unknown; Unknown; Unknown</td>
+<td align="left">24 x 11</td>
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vSpucXiYrMe_iYvnZDuNSNkRVnEWRQhykCCXoIvtmTiKAVUdkVnRYvl17nbwGqZDg2xVDwaUXccGYsF/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vSpucXiYrMe_iYvnZDuNSNkRVnEWRQhykCCXoIvtmTiKAVUdkVnRYvl17nbwGqZDg2xVDwaUXccGYsF/pub?output=csv</a></td>
 </tr>
 <tr class="odd">
+<td align="right">63</td>
 <td align="left">length</td>
 <td align="left">Taxon_name</td>
-<td align="left">&gt;&gt;&gt; Invalid values. The column <code>Taxon_name</code> in dataset <code>length</code> contains invalid values in 1296 rows. The first invalid values are: , , …</td>
+<td align="left">invalid_column_values</td>
 <td align="right">1296</td>
-<td align="left">, , , , ,</td>
+<td align="left">; ; ; ; ;</td>
+<td align="left">2161 x 9</td>
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQkcQ7CJ0LjgE0928maxcVEiqq7QHl6vuosL7qdWaCMVuqHCDwsPJA7yNSeXm9FIip-mDRaU6pMk4Ww/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQkcQ7CJ0LjgE0928maxcVEiqq7QHl6vuosL7qdWaCMVuqHCDwsPJA7yNSeXm9FIip-mDRaU6pMk4Ww/pub?output=csv</a></td>
 </tr>
 <tr class="even">
+<td align="right">64</td>
 <td align="left">length</td>
 <td align="left">Attribute</td>
-<td align="left">&gt;&gt;&gt; Invalid values. The column <code>Attribute</code> in dataset <code>length</code> contains invalid values in 1296 rows. The first invalid values are: , , …</td>
+<td align="left">invalid_column_values</td>
 <td align="right">1296</td>
-<td align="left">, , , , ,</td>
+<td align="left">; ; ; ; ;</td>
+<td align="left">2161 x 9</td>
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQkcQ7CJ0LjgE0928maxcVEiqq7QHl6vuosL7qdWaCMVuqHCDwsPJA7yNSeXm9FIip-mDRaU6pMk4Ww/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQkcQ7CJ0LjgE0928maxcVEiqq7QHl6vuosL7qdWaCMVuqHCDwsPJA7yNSeXm9FIip-mDRaU6pMk4Ww/pub?output=csv</a></td>
 </tr>
 <tr class="odd">
+<td align="right">65</td>
 <td align="left">length</td>
 <td align="left">Attribute_value</td>
-<td align="left">&gt;&gt;&gt; Incorrect column class in length. The <code>Attribute_value</code> column` should be of class logical or numeric, not character</td>
-<td align="right">0</td>
-<td align="left"></td>
+<td align="left">invalid_column_class</td>
+<td align="right">NA</td>
+<td align="left">NA</td>
+<td align="left">2161 x 9</td>
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQkcQ7CJ0LjgE0928maxcVEiqq7QHl6vuosL7qdWaCMVuqHCDwsPJA7yNSeXm9FIip-mDRaU6pMk4Ww/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQkcQ7CJ0LjgE0928maxcVEiqq7QHl6vuosL7qdWaCMVuqHCDwsPJA7yNSeXm9FIip-mDRaU6pMk4Ww/pub?output=csv</a></td>
 </tr>
 <tr class="even">
+<td align="right">66</td>
 <td align="left">length</td>
 <td align="left">Attribute_source</td>
-<td align="left">&gt;&gt;&gt; Invalid values. The column <code>Attribute_source</code> in dataset <code>length</code> contains invalid values in 1296 rows. The first invalid values are: , , …</td>
+<td align="left">invalid_column_values</td>
 <td align="right">1296</td>
-<td align="left">, , , , ,</td>
+<td align="left">; ; ; ; ;</td>
+<td align="left">2161 x 9</td>
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQkcQ7CJ0LjgE0928maxcVEiqq7QHl6vuosL7qdWaCMVuqHCDwsPJA7yNSeXm9FIip-mDRaU6pMk4Ww/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQkcQ7CJ0LjgE0928maxcVEiqq7QHl6vuosL7qdWaCMVuqHCDwsPJA7yNSeXm9FIip-mDRaU6pMk4Ww/pub?output=csv</a></td>
 </tr>
 <tr class="odd">
+<td align="right">67</td>
 <td align="left">length</td>
 <td align="left">Evidence</td>
-<td align="left">&gt;&gt;&gt; Invalid values. The column <code>Evidence</code> in dataset <code>length</code> contains invalid values in 2161 rows. The first invalid values are: EXP, EXP, EXP…</td>
+<td align="left">invalid_column_values</td>
 <td align="right">2161</td>
-<td align="left">EXP, EXP, EXP, EXP, EXP, EXP</td>
+<td align="left">EXP; EXP; EXP; EXP; EXP; EXP</td>
+<td align="left">2161 x 9</td>
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQkcQ7CJ0LjgE0928maxcVEiqq7QHl6vuosL7qdWaCMVuqHCDwsPJA7yNSeXm9FIip-mDRaU6pMk4Ww/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQkcQ7CJ0LjgE0928maxcVEiqq7QHl6vuosL7qdWaCMVuqHCDwsPJA7yNSeXm9FIip-mDRaU6pMk4Ww/pub?output=csv</a></td>
 </tr>
 <tr class="even">
+<td align="right">68</td>
 <td align="left">length</td>
 <td align="left">Confidence_interval</td>
-<td align="left">&gt;&gt;&gt; Invalid values. The column <code>Confidence_interval</code> in dataset <code>length</code> contains invalid values in 1492 rows. The first invalid values are: , , …</td>
+<td align="left">invalid_column_values</td>
 <td align="right">1492</td>
-<td align="left">, , , , ,</td>
+<td align="left">; ; ; ; ;</td>
+<td align="left">2161 x 9</td>
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQkcQ7CJ0LjgE0928maxcVEiqq7QHl6vuosL7qdWaCMVuqHCDwsPJA7yNSeXm9FIip-mDRaU6pMk4Ww/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQkcQ7CJ0LjgE0928maxcVEiqq7QHl6vuosL7qdWaCMVuqHCDwsPJA7yNSeXm9FIip-mDRaU6pMk4Ww/pub?output=csv</a></td>
 </tr>
 </tbody>
 </table>
+</div>
+<div id="dataset-imported-with-the-fattyacidcomposition-function" class="section level2">
+<h2 class="hasAnchor">
+<a href="#dataset-imported-with-the-fattyacidcomposition-function" class="anchor"></a>Dataset imported with the <code>fattyAcidComposition</code> function</h2>
+<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">fac</span> <span class="op">&lt;-</span><span class="fu"><a href="../reference/fattyAcidComposition.html">fattyAcidComposition</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">fac_errors</span> <span class="op">&lt;-</span>  <span class="fu">bugphyzz</span><span class="fu">:::</span><span class="fu"><a href="../reference/checkColumnValuesDF.html">checkColumnValuesDF</a></span><span class="op">(</span><span class="va">fac</span><span class="op">)</span>
+<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Evidence` contains invalid values in 138496 rows. The first invalid values are: EXP; EXP; EXP... </span>
+<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Confidence_interval` contains invalid values in 138496 rows. The first invalid values are: Unknown; Unknown; Unknown... </span>
+<span class="co">#&gt; &gt;&gt;&gt; Uncatalogued column. The column new_attribute cannot be checked because it's not included in the template file. Please add it to the [template file](https://github.com/waldronlab/bugphyzz/blob/main/inst/extdata/template.tsv) </span>
+<span class="co">#&gt; &gt;&gt;&gt; Uncatalogued column. The column new_attribute_value cannot be checked because it's not included in the template file. Please add it to the [template file](https://github.com/waldronlab/bugphyzz/blob/main/inst/extdata/template.tsv)</span></code></pre></div>
+<table class="table">
+<colgroup>
+<col width="2%">
+<col width="6%">
+<col width="7%">
+<col width="7%">
+<col width="18%">
+<col width="6%">
+<col width="49%">
+</colgroup>
+<thead><tr class="header">
+<th align="right">n_error</th>
+<th align="left">dataset</th>
+<th align="left">type_of_error</th>
+<th align="right">number_invalid_values</th>
+<th align="left">invalid_values</th>
+<th align="left">dataset_dimensions</th>
+<th align="left">link</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="right">1</td>
+<td align="left">Evidence</td>
+<td align="left">invalid_column_values</td>
+<td align="right">138496</td>
+<td align="left">EXP; EXP; EXP; EXP; EXP; EXP</td>
+<td align="left">138496 x 10</td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQJh0AzSYWeYO1zOs4GSZIOde3zV_O71HGixPoN_F8gEY2KhxkZoj1XeSj0HcpCSz2Xu2dxBVyrm0GH/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQJh0AzSYWeYO1zOs4GSZIOde3zV_O71HGixPoN_F8gEY2KhxkZoj1XeSj0HcpCSz2Xu2dxBVyrm0GH/pub?output=csv</a></td>
+</tr>
+<tr class="even">
+<td align="right">2</td>
+<td align="left">Confidence_interval</td>
+<td align="left">invalid_column_values</td>
+<td align="right">138496</td>
+<td align="left">Unknown; Unknown; Unknown; Unknown; Unknown; Unknown</td>
+<td align="left">138496 x 10</td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQJh0AzSYWeYO1zOs4GSZIOde3zV_O71HGixPoN_F8gEY2KhxkZoj1XeSj0HcpCSz2Xu2dxBVyrm0GH/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQJh0AzSYWeYO1zOs4GSZIOde3zV_O71HGixPoN_F8gEY2KhxkZoj1XeSj0HcpCSz2Xu2dxBVyrm0GH/pub?output=csv</a></td>
+</tr>
+<tr class="odd">
+<td align="right">3</td>
+<td align="left">new_attribute</td>
+<td align="left">uncatalogued_column</td>
+<td align="right">NA</td>
+<td align="left">NA</td>
+<td align="left">138496 x 10</td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQJh0AzSYWeYO1zOs4GSZIOde3zV_O71HGixPoN_F8gEY2KhxkZoj1XeSj0HcpCSz2Xu2dxBVyrm0GH/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQJh0AzSYWeYO1zOs4GSZIOde3zV_O71HGixPoN_F8gEY2KhxkZoj1XeSj0HcpCSz2Xu2dxBVyrm0GH/pub?output=csv</a></td>
+</tr>
+<tr class="even">
+<td align="right">4</td>
+<td align="left">new_attribute_value</td>
+<td align="left">uncatalogued_column</td>
+<td align="right">NA</td>
+<td align="left">NA</td>
+<td align="left">138496 x 10</td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQJh0AzSYWeYO1zOs4GSZIOde3zV_O71HGixPoN_F8gEY2KhxkZoj1XeSj0HcpCSz2Xu2dxBVyrm0GH/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQJh0AzSYWeYO1zOs4GSZIOde3zV_O71HGixPoN_F8gEY2KhxkZoj1XeSj0HcpCSz2Xu2dxBVyrm0GH/pub?output=csv</a></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="check-required-columns-1" class="section level1">
+<h1 class="hasAnchor">
+<a href="#check-required-columns-1" class="anchor"></a>Check required columns</h1>
+<div id="check-required-columns-in-the-physiologies-datasets-" class="section level2">
+<h2 class="hasAnchor">
+<a href="#check-required-columns-in-the-physiologies-datasets-" class="anchor"></a>Check required columns in the “physiologies” datasets.</h2>
+<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">errors</span> <span class="op">&lt;-</span> <span class="fu">bugphyzz</span><span class="fu">:::</span><span class="fu"><a href="../reference/checkRequiredColumnsList.html">checkRequiredColumnsList</a></span><span class="op">(</span><span class="va">bp</span><span class="op">)</span>
+<span class="co">#&gt; &gt;&gt;&gt; All columns in the `animal pathogen` dataset are present and in the right order.</span>
+<span class="co">#&gt; &gt;&gt;&gt; All columns in the `antimicrobial resistance` dataset are present and in the right order.</span>
+<span class="co">#&gt; &gt;&gt;&gt; All columns in the `antimicrobial sensitivity` dataset are present and in the right order.</span>
+<span class="co">#&gt; &gt;&gt;&gt; All columns in the `biofilm forming` dataset are present and in the right order.</span>
+<span class="co">#&gt; &gt;&gt;&gt; All columns in the `butyrate producing` dataset are present and in the right order.</span>
+<span class="co">#&gt; &gt;&gt;&gt; All columns in the `acetate producing` dataset are present and in the right order.</span>
+<span class="co">#&gt; &gt;&gt;&gt; All columns in the `lactate producing` dataset are present and in the right order.</span>
+<span class="co">#&gt; &gt;&gt;&gt; All columns in the `arrangement` dataset are present and in the right order.</span>
+<span class="co">#&gt; &gt;&gt;&gt; All columns in the `shape` dataset are present and in the right order.</span>
+<span class="co">#&gt; &gt;&gt;&gt; All columns in the `COGEM pathogenicity rating` dataset are present and in the right order.</span>
+<span class="co">#&gt; &gt;&gt;&gt; All columns in the `mutation rate per site per generation` dataset are present and in the right order.</span>
+<span class="co">#&gt; &gt;&gt;&gt; All columns in the `mutation rates per site per year` dataset are present and in the right order.</span>
+<span class="co">#&gt; &gt;&gt;&gt; All columns in the `extreme environment` dataset are present and in the right order.</span>
+<span class="co">#&gt; &gt;&gt;&gt; All columns in the `gram stain` dataset are present and in the right order.</span>
+<span class="co">#&gt; &gt;&gt;&gt; All columns in the `growth medium` dataset are present and in the right order.</span>
+<span class="co">#&gt; &gt;&gt;&gt; All columns in the `growth temperature` dataset are present and in the right order.</span>
+<span class="co">#&gt; &gt;&gt;&gt; All columns in the `habitat` dataset are present and in the right order.</span>
+<span class="co">#&gt; &gt;&gt;&gt; All columns in the `optimal ph` dataset are present and in the right order.</span>
+<span class="co">#&gt; &gt;&gt;&gt; All columns in the `aerophilicity` dataset are present and in the right order.</span>
+<span class="co">#&gt; &gt;&gt;&gt; All columns in the `plant pathogenicity` dataset are present and in the right order.</span>
+<span class="co">#&gt; &gt;&gt;&gt; All columns in the `width` dataset are present and in the right order.</span>
+<span class="co">#&gt; &gt;&gt;&gt; All columns in the `spore shape` dataset are present and in the right order.</span>
+<span class="co">#&gt; &gt;&gt;&gt; All columns in the `isolation site` dataset are present and in the right order.</span>
+<span class="co">#&gt; &gt;&gt;&gt; All columns in the `disease association` dataset are present and in the right order.</span>
+<span class="co">#&gt; &gt;&gt;&gt; All columns in the `hydrogen gas producing` dataset are present and in the right order.</span>
+<span class="co">#&gt; &gt;&gt;&gt; All columns in the `length` dataset are present and in the right order.</span>
+
+<span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">errors</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span>
+    <span class="va">no_errors_message</span> <span class="op">=</span> <span class="st">"All required columns are present and in the right column across the list of bugphyzz datasets imported with the `physiologies` function."</span>
+    <span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html">as.data.frame</a></span><span class="op">(</span><span class="va">no_errors_message</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+      <span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span><span class="op">(</span><span class="op">)</span>
+<span class="op">}</span></code></pre></div>
+<table class="table">
+<colgroup><col width="100%"></colgroup>
+<thead><tr class="header">
+<th align="left">no_errors_message</th>
+</tr></thead>
+<tbody><tr class="odd">
+<td align="left">All required columns are present and in the right column across the list of bugphyzz datasets imported with the <code>physiologies</code> function.</td>
+</tr></tbody>
+</table>
+</div>
+<div id="check-required-columns-in-the-fatty-acid-composition-dataset" class="section level2">
+<h2 class="hasAnchor">
+<a href="#check-required-columns-in-the-fatty-acid-composition-dataset" class="anchor"></a>check required columns in the fatty acid composition dataset:</h2>
+<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">fac_required_columns_errors</span> <span class="op">&lt;-</span> <span class="fu">bugphyzz</span><span class="fu">:::</span><span class="fu"><a href="../reference/checkRequiredColumns.html">checkRequiredColumns</a></span><span class="op">(</span><span class="va">fac</span><span class="op">)</span>
+<span class="co">#&gt; &gt;&gt;&gt; Required columns missing. The following required columns are missing: Attribute_value. Please check the required columns with `bugphyzz:::requiredColumns()`</span>
+
+<span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html">as.data.frame</a></span><span class="op">(</span><span class="va">fac_required_columns_errors</span><span class="op">$</span><span class="va">message</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+  <span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<table class="table">
+<colgroup><col width="100%"></colgroup>
+<thead><tr class="header">
+<th align="left">fac_required_columns_errors$message</th>
+</tr></thead>
+<tbody><tr class="odd">
+<td align="left">&gt;&gt;&gt; Required columns missing. The following required columns are missing: Attribute_value. Please check the required columns with <code>bugphyzz:::requiredColumns()</code>
+</td>
+</tr></tbody>
+</table>
+</div>
 </div>
   </div>
 

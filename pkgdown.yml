@@ -2,8 +2,8 @@ pandoc: 2.11.4
 pkgdown: 1.6.1
 pkgdown_sha: ~
 articles:
-  articles/summary_statistics: summary_statistics.html
   checks: checks.html
+  summary_statistics: summary_statistics.html
   write_physiology_sets: write_physiology_sets.html
-last_built: 2021-06-24T07:52Z
+last_built: 2021-06-27T22:36Z
 
