@@ -14,7 +14,7 @@
 #' Any other argument useful to identify the source of the error and how to fix it.
 #'
 #' @return
-#' Object of class "error", "condition", and a custom error class name (subclass).
+#' Error condition. Object of class "error", "condition", and a custom error class name (subclass).
 #'
 .stop_custom <- function(subclass, message, call = NULL, ...) {
   err <- structure(class = c(subclass, "error", "condition"),
@@ -37,7 +37,7 @@
 #' Any other argument useful to identify the source of the error and how to fix it.
 #'
 #' @return
-#' Object of class "required_columns_missing", "error", "condition".
+#' Error condition. Object of class "required_columns_missing", "error", "condition".
 #'
 .stop_required_columns_missing <- function(cols, dataset_name, ...){
 
@@ -45,9 +45,9 @@
 
   if (!is.null(dataset_name)) {
     msg <- paste0(">>> Required columns missing. The following required columns are missing from the `", dataset_name, "` dataset: ", cols, ".",
-                  " Please check the required columns with `requiredColumns()`.")
+                  " Please check the required columns with `bugphyzz:::requiredColumns()`.")
   } else {
-    msg <- paste0(">>> Required columns missing. The following required columns are missing: ", cols, ".", " Please check the required columns with `requiredColumns()`")
+    msg <- paste0(">>> Required columns missing. The following required columns are missing: ", cols, ".", " Please check the required columns with `bugphyzz:::requiredColumns()`")
   }
 
   .stop_custom(subclass = "required_columns_missing", message = msg,  ...)
@@ -68,7 +68,7 @@
 #' Any other argument useful to identify the source of the error and how to fix it.
 #'
 #' @return
-#' Object of class: "required_columns_misplaced", "error", "condition".
+#' Error condition. Object of class: "required_columns_misplaced", "error", "condition".
 #'
 .stop_required_columns_misplaced <- function(cols, dataset_name = NULL, ...) {
 
@@ -76,10 +76,10 @@
 
   if (!is.null(dataset_name)) {
     msg <- paste0(">>> Misplaced required columns. The following required columns in the `", dataset_name, "` dataset are not in the right place: ", cols, ".",
-                  " Please check the correct order with `requiredColumns()`.")
+                  " Please check the correct order with `bugphyz:::requiredColumns()`.")
   } else {
     msg <- paste0(">>> Misplaced required columns. The following required columns are not in the right place: ", cols, ".",
-                  " Please check the correct order with `requiredColumns()`.")
+                  " Please check the correct order with `bugphyzz:::requiredColumns()`.")
   }
 
   .stop_custom(subclass = "required_columns_misplaced", message = msg, ...)
@@ -103,7 +103,7 @@
 #' @importFrom utils head
 #'
 #' @return
-#' Object of class "invalid_column_names", "error", "condition".
+#' Error condition. Object of class "invalid_column_names", "error", "condition".
 #'
 .stop_invalid_column_values <- function(col, n_rows, dataset_name = NULL, values = NULL, ...) {
 
@@ -114,8 +114,8 @@
   }
 
   if (!is.null(values)) {
-    values <-  paste0(utils::head(as.character(values), n = 3), collapse = ", ")
-    # paste0(as.character(utils::head(values, n = 3)), collapse = ", ")
+    values <-  paste0(utils::head(as.character(values), n = 3), collapse = "; ")
+    # paste0(as.character(utils::head(values, n = 3)), collapse = "; ")
     msg <- paste0(msg, " The first invalid values are: ", values, "...")
   }
 
@@ -136,16 +136,43 @@
 #' Any other argument useful to identify the source of the error and how to fix it.
 #'
 #' @return
-#' Object of class: "invalid_column_class", "error", "condition".
+#' Error condition. Object of class: "invalid_column_class", "error", "condition".
 #'
 .stop_invalid_column_class <- function(col_class, dataset_name = NULL, ...) {
 
-  if(!is.null(dataset_name)){
-    msg <- paste0(">>> Incorrect column class in ", dataset_name, ". The `Attribute_value` column` should be of class logical or numeric, not ", col_class)
+  # Currently, this stop function is only for the "Attribute_value" column
+
+  if (!is.null(dataset_name)){
+    msg <- paste0(">>> Invalid column class in ", dataset_name, ". The `Attribute_value` column` should be of class logical or numeric, not ", col_class)
   } else {
-    msg <- paste0(">>> Incorrect column class. The `Attribute_value` column` should be of class logical or numeric, not ", col_class, "." )
+    msg <- paste0(">>> Invalid column class. The `Attribute_value` column` should be of class logical or numeric, not ", col_class, "." )
   }
 
   .stop_custom(subclass = "invalid_column_class", message = msg, ...)
+
+}
+
+
+#' Stop condition for a column not catalogued in the template file
+#'
+#' @param col
+#' Character vector of length 1; column name.
+#' @param dataset_name
+#' Character vector of length 1; dataset name.
+#' @param ...
+#' Any other argument useful to identify the source of the error and how to fix it.
+#'
+#' @return
+#' Error condition. Object of class: "invalid_column_class", "error", "condition".
+#'
+.stop_uncatalogued_column <- function(col, dataset_name = NULL, ...) {
+
+  if (!is.null(dataset_name)) {
+    msg <- paste0(">>> Uncatalogued column. The column ", col, " of the dataset ", dataset_name, " cannot be checked because it's not included in the template file. Please add it to the [template file](https://github.com/waldronlab/bugphyzz/blob/main/inst/extdata/template.tsv)")
+  } else {
+    msg <- paste0(">>> Uncatalogued column. The column ", col, " cannot be checked because it's not included in the template file. Please add it to the [template file](https://github.com/waldronlab/bugphyzz/blob/main/inst/extdata/template.tsv)")
+  }
+
+  .stop_custom(subclass = "uncatalogued_column", message = msg, ...)
 
 }

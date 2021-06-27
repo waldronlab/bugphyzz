@@ -14,7 +14,7 @@
 \item{...}{Any other argument useful to identify the source of the error and how to fix it.}
 }
 \value{
-Object of class: "invalid_column_class", "error", "condition".
+Error condition. Object of class: "invalid_column_class", "error", "condition".
 }
 \description{
 \code{.stop_invalid_column_class} generates an error condition if a column (Attribute_value)

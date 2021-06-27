@@ -14,7 +14,7 @@
 \item{...}{Any other argument useful to identify the source of the error and how to fix it.}
 }
 \value{
-Object of class: "required_columns_misplaced", "error", "condition".
+Error condition. Object of class: "required_columns_misplaced", "error", "condition".
 }
 \description{
 \code{.stop_required_columns_misplaced} generates an error condition if one or more of the

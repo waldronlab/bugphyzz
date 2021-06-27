@@ -16,7 +16,7 @@
 \item{...}{Any other argument useful to identify the source of the error and how to fix it.}
 }
 \value{
-Object of class "error", "condition", and a custom error class name (subclass).
+Error condition. Object of class "error", "condition", and a custom error class name (subclass).
 }
 \description{
 \code{.stop_custom} is a helper function for generating custom stop conditions. This piece of

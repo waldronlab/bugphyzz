@@ -127,11 +127,11 @@ checkRequiredColumns <- function(dataset, dataset_name = NULL) {
   if (!all(columns_lgl)) {
 
     missing_cols <- requiredColumns()[!columns_lgl]
-    output <- tryCatch(.stop_required_columns_missing(cols = missing_cols, dataset_name = dataset_name),
+    output1 <- tryCatch(.stop_required_columns_missing(cols = missing_cols, dataset_name = dataset_name),
                        required_columns_missing = function(cnd) {
                          cat(crayon::red(conditionMessage(cnd), "\n"))
                          cnd})
-    return(invisible(output))
+    return(invisible(output1))
   }
 
   # Check if the required columns are in the correct order
@@ -150,11 +150,11 @@ checkRequiredColumns <- function(dataset, dataset_name = NULL) {
     data_frame <- data.frame(required_column, expected_position, actual_position, misplaced)
     data_frame_output <- paste0(utils::capture.output(data_frame), collapse = "\n")
 
-    output <- tryCatch(.stop_required_columns_misplaced(cols = misplaced_columns, dataset_name = dataset_name, data_frame_output = data_frame_output, data_frame = data_frame),
+    output2 <- tryCatch(.stop_required_columns_misplaced(cols = misplaced_columns, dataset_name = dataset_name, data_frame_output = data_frame_output, data_frame = data_frame),
                        required_columns_misplaced = function(cnd) {
                          cat(crayon::red(conditionMessage(cnd), "\n", "The misplaed columns are:", "\n", cnd$data_frame_output, "\n"))
                          cnd})
-    return(invisible(output))
+    return(invisible(output2))
   }
 
   if (!is.null(dataset_name)) {
@@ -240,7 +240,7 @@ checkRequiredColumns <- function(dataset, dataset_name = NULL) {
 #'
 checkRequiredColumnsList <- function(list) {
 
-  if (class(list) != "list")
+  if (!("list" %in% class(list)))
     stop("Not a list. Please provide a list of data frames imported with bugphyzz functions.")
 
   output <- vector("list", length(list))
@@ -327,6 +327,15 @@ checkColumnValues <- function(column_name, dataset, dataset_name = NULL, quiet_s
 
   template <- .template(dataset)
   type_of_test <- template[["test"]][ template[["column_name"]] == column_name ]
+
+  if (!(column_name %in% template[["column_name"]])) {
+    output_error <- tryCatch(.stop_uncatalogued_column(col = column_name, dataset_name = dataset_name),
+                             uncatalogued_column = function(cnd) {
+                               cat(crayon::red(conditionMessage(cnd), "\n"))
+                               cnd
+                             })
+    return(invisible(output_error))
+  }
 
   if (type_of_test == "string") {
 
