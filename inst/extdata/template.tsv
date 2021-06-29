@@ -1,0 +1,13 @@
+column_name	column_class	valid_values	test	allow_na
+NCBI_ID	integer	^[0-9]+$	string	TRUE
+Genome_ID	character|numeric	.+	string	TRUE
+Accession_number	character|numeric	.+	string	TRUE
+Taxon_name	character	.+	string	TRUE
+Attribute	character	.attributes	function	TRUE
+Attribute_value	logical|numeric	^logical|numeric|integer$	class	TRUE
+Attribute_source	character	.+	string	TRUE
+Evidence	character	^asr|exp$	string	TRUE
+Confidence_interval	character	^unknown|exp|usually|always|sometimes$	string	TRUE
+Note	character	.+	string	TRUE
+Strain	character	.+	string	TRUE
+Unit	character	.+	string	TRUE
