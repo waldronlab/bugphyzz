@@ -67,7 +67,7 @@ head(taxonomies)
 purrr::map_int(taxonomies, ~n_distinct(.x, na.rm = TRUE)) %>% 
   as_tibble(rownames = "taxonomy_rank") %>% 
   filter(taxonomy_rank != "NCBI_ID") %>% 
-  mutate(taxonomy_rank = forcats::fct_inorder(taxonomy_rank)) %>% 
+  mutate(taxonomy_rank = factor(taxonomy_rank, levels = taxonomy_rank)) %>% 
   ggplot(aes(taxonomy_rank, value)) +
   geom_col() +
   geom_label(aes(label = value)) +
