@@ -1,10 +1,10 @@
 ---
-title: "Summary Statistics of Microbes and Their Attributes in BugPhyzz"
+title: "BugPhyzz Stats"
 output:
   rmarkdown::html_vignette:
     toc: yes
 vignette: >
-  %\VignetteIndexEntry{Summary Statistics}
+  %\VignetteIndexEntry{BugPhyzz Stats}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -12,8 +12,11 @@ vignette: >
 ```{r, include = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
-  comment = "#>"
+  comment = "#>",
+  message = FALSE,
+  warning = FALSE
 )
+
 ```
 
 ```{r setup}
@@ -24,33 +27,51 @@ library(ggplot2)
 library(plotly)
 ```
 
-# All Taxa
+Load all of the bugphyzz datasets:
 
-```{r}
-physiologies <- physiologies(keyword = "all")
+```{r load all datasets}
+physiologies <- physiologies(keyword = "all") %>% 
+  lapply(as_tibble)
+
+fac <- fattyAcidComposition()
 ```
 
-How many taxa in bugphyz with taxids?
+Number of taxa in the `NCBI_ID` column across all of the datasets in bugphyzz:
 
-```{r}
-# How many taxa with NCBI Taxonomy IDs
-bugphyzz_ncbi_ids <- lapply(physiologies, function(x) x$NCBI_ID) %>% 
-  unlist() %>% 
+```{r unique taxids in physiologies and fac}
+physiologies_ncbi_ids <- lapply(physiologies, function(x) as.integer(x$NCBI_ID)) %>% 
+  purrr::reduce(.x = ., .f = c) %>% 
+  unique() %>% 
+  .[!is.na(.)]
+
+fac_ncbi_ids <- fac$NCBI_ID %>% 
   as.integer() %>% 
-  suppressWarnings() %>% 
-  .[!is.na(.)] %>% 
-  unique() 
-length(bugphyzz_ncbi_ids)
+  unique() %>% 
+  .[!is.na(.)]
+
+ncbi_ids <- c(physiologies_ncbi_ids, fac_ncbi_ids) %>% 
+  unique()
+
+length(ncbi_ids)
+
 ```
 
 ```{r}
-taxonomies <- ncbiRank(bugphyzz_ncbi_ids)
+taxonomies <- ncbiRank(ncbi_ids)
 
-```
-
-```{r}
 head(taxonomies)
 
+```
+
+```{r, fig.width=6, fig.height=3.5}
+purrr::map_int(taxonomies, ~n_distinct(.x, na.rm = TRUE)) %>% 
+  as_tibble(rownames = "taxonomy_rank") %>% 
+  filter(taxonomy_rank != "NCBI_ID") %>% 
+  mutate(taxonomy_rank = forcats::fct_inorder(taxonomy_rank)) %>% 
+  ggplot(aes(taxonomy_rank, value)) +
+  geom_col() +
+  geom_label(aes(label = value)) +
+  theme_bw()
 ```
 
 ```{r, include=FALSE}
@@ -139,7 +160,9 @@ summary_table %>%
 ```
 
 
-# Aerophilicity
+# Categorical Attributes
+
+## Aerophilicity
 ```{r}
 aer <- physiologies[["aerophilicity"]] %>% 
   as_tibble()
@@ -231,7 +254,10 @@ aer %>%
   count(Attribute_source) %>% 
   knitr::kable()
 ```
-# Growth temperature
+
+# Continuous attributes
+
+## Growth temperature
 
 ```{r}
 gt <-  physiologies[["growth temperature"]] %>% 
@@ -318,3 +344,15 @@ gt %>%
   knitr::kable()
 ```
 
+
+
+```{r}
+n_attributes <- purrr::map_int(physiologies, function(x) length(unique(x$Attribute))) %>% 
+  as_tibble(rownames = "rownames") %>% 
+  magrittr::set_colnames(c("dataset", "n_attributes")) %>% 
+  arrange(-n_attributes)
+```
+
+# Custom Links
+
+## Fatty acid composition
