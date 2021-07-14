@@ -1,7 +1,7 @@
 #' Fetch physiological data
 #'
 #' @param keyword a character vector of physiologies desired (see \code{\link{curationLinks}}). For the available
-#' physiologies, run bugphyzz::physiologies_list()
+#' physiologies, run bugphyzz::physiologiesList()
 #'
 #' @return a large list of tidy data.frames
 #' @importFrom utils read.table
@@ -16,9 +16,9 @@
 #' head(y[[1]])
 physiologies <- function(keyword = "all") {
 
-  if (all(keyword != "all") & !all(keyword %in% physiologies_list())) {
+  if (all(keyword != "all") & !all(keyword %in% physiologiesList())) {
     stop("I don't recognize one or more of the provided physiologies ",
-         "Check valid physiologies with physiologies_list()")
+         "Check valid physiologies with physiologiesList()")
   }
   links <- curationLinks(keyword = keyword)[, c("physiology", "link")]
   database <- vector("list", nrow(links))
@@ -50,7 +50,7 @@ physiologies <- function(keyword = "all") {
 #' Show links to curation spreadsheets
 #'
 #' @param keyword a character vector of physiologies desired. For the available
-#' physiologies, run bugphyzz::physiologies_list(). Use "all" for all available physiologies.
+#' physiologies, run bugphyzz::physiologiesList(). Use "all" for all available physiologies.
 #'
 #' @return a data.frame with physiology names and URLs
 #' @export
@@ -66,4 +66,17 @@ curationLinks <- function(keyword = "all"){
   ifelse(keyword[1] == "all", links, links <-
            links[links$physiology %in% keyword,])
   return(links)
+}
+#' List of available physiologies
+#'
+#' \code{physiologiesList} prints the names of the available datasets provided by
+#' the \code{\link{physiologies}} function.
+#'
+#' @return A character vector with the names of the physiologies datasets.
+#' @export
+#'
+#' @examples
+#' x <- physiologiesList()
+physiologiesList <- function(){
+  curationLinks()[["physiology"]]
 }
