@@ -225,7 +225,7 @@
 <span class="co">#&gt; 5            Attribute                            .attributes function</span>
 <span class="co">#&gt; 6      Attribute_value              ^logical|numeric|integer$    class</span>
 <span class="co">#&gt; 7     Attribute_source                                     .+   string</span>
-<span class="co">#&gt; 8             Evidence                              ^asr|exp$   string</span>
+<span class="co">#&gt; 8             Evidence                              ^ASR|EXP$   string</span>
 <span class="co">#&gt; 9  Confidence_interval ^unknown|exp|usually|always|sometimes$   string</span>
 <span class="co">#&gt; 10                Note                                     .+   string</span>
 <span class="co">#&gt; 11              Strain                                     .+   string</span>
@@ -369,56 +369,41 @@
 <div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">list_of_errors</span> <span class="op">&lt;-</span> <span class="fu">bugphyzz</span><span class="fu">:::</span><span class="fu"><a href="../reference/checkColumnValuesList.html">checkColumnValuesList</a></span><span class="op">(</span><span class="va">bp</span><span class="op">)</span>
 <span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Taxon_name` in dataset `animal pathogen` contains invalid values in 1 rows. The first invalid values are: ... </span>
-<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Evidence` in dataset `antimicrobial resistance` contains invalid values in 10321 rows. The first invalid values are: ASR; ASR; ASR... </span>
-<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Evidence` in dataset `antimicrobial sensitivity` contains invalid values in 16 rows. The first invalid values are: EXP; EXP; EXP... </span>
 <span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Confidence_interval` in dataset `antimicrobial sensitivity` contains invalid values in 832 rows. The first invalid values are: EXP; EXP; EXP... </span>
-<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Evidence` in dataset `butyrate producing` contains invalid values in 24 rows. The first invalid values are: EXP; EXP; EXP... </span>
 <span class="co">#&gt; &gt;&gt;&gt; Invalid column class in acetate producing. The `Attribute_value` column` should be of class logical or numeric, not character </span>
-<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Evidence` in dataset `acetate producing` contains invalid values in 24 rows. The first invalid values are: EXP; EXP; EXP... </span>
 <span class="co">#&gt; &gt;&gt;&gt; Invalid column class in lactate producing. The `Attribute_value` column` should be of class logical or numeric, not character </span>
-<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Evidence` in dataset `lactate producing` contains invalid values in 24 rows. The first invalid values are: EXP; EXP; EXP... </span>
 <span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Accession_number` in dataset `arrangement` contains invalid values in 1 rows. The first invalid values are: ... </span>
-<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Evidence` in dataset `arrangement` contains invalid values in 1943 rows. The first invalid values are: EXP; EXP; EXP... </span>
+<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Attribute` in dataset `arrangement` contains invalid values in 8 rows. The first invalid values are: v-formations; v-formations; v-formations... </span>
+<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Evidence` in dataset `arrangement` contains invalid values in 1175 rows. The first invalid values are: ; ; ... </span>
 <span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Attribute` in dataset `shape` contains invalid values in 1 rows. The first invalid values are: square... </span>
-<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Evidence` in dataset `shape` contains invalid values in 3129 rows. The first invalid values are: EXP; EXP; EXP... </span>
-<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Evidence` in dataset `mutation rate per site per generation` contains invalid values in 26 rows. The first invalid values are: EXP; EXP; EXP... </span>
-<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Evidence` in dataset `mutation rates per site per year` contains invalid values in 81 rows. The first invalid values are: EXP; EXP; EXP... </span>
+<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Evidence` in dataset `shape` contains invalid values in 1279 rows. The first invalid values are: ; ; ... </span>
 <span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Attribute` in dataset `extreme environment` contains invalid values in 1876 rows. The first invalid values are: Extreme environment; Extreme environment; Extreme environment... </span>
 <span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Confidence_interval` in dataset `extreme environment` contains invalid values in 1876 rows. The first invalid values are: Always; Always; Always... </span>
-<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Evidence` in dataset `gram stain` contains invalid values in 1356 rows. The first invalid values are: EXP; EXP; EXP... </span>
 <span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Attribute` in dataset `growth medium` contains invalid values in 14 rows. The first invalid values are: mrs broth; mrs broth; mrs broth... </span>
-<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Evidence` in dataset `growth medium` contains invalid values in 304 rows. The first invalid values are: EXP; EXP; EXP... </span>
 <span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Confidence_interval` in dataset `growth medium` contains invalid values in 304 rows. The first invalid values are: Always; Always; Always... </span>
 <span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Attribute` in dataset `growth temperature` contains invalid values in 3218 rows. The first invalid values are: growth temperature; growth temperature; growth temperature... </span>
-<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Evidence` in dataset `growth temperature` contains invalid values in 3218 rows. The first invalid values are: EXP; EXP; EXP... </span>
-<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Evidence` in dataset `habitat` contains invalid values in 3801 rows. The first invalid values are: EXP; EXP; EXP... </span>
 <span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Confidence_interval` in dataset `habitat` contains invalid values in 9 rows. The first invalid values are: Sometimes; Sometimes; Sometimes... </span>
 <span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Attribute` in dataset `optimal ph` contains invalid values in 886 rows. The first invalid values are: optimal ph; optimal ph; optimal ph... </span>
-<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Evidence` in dataset `optimal ph` contains invalid values in 886 rows. The first invalid values are: EXP; EXP; EXP... </span>
-<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Evidence` in dataset `aerophilicity` contains invalid values in 2557 rows. The first invalid values are: EXP; EXP; EXP... </span>
+<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Evidence` in dataset `aerophilicity` contains invalid values in 1304 rows. The first invalid values are: ; ; ... </span>
 <span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Attribute` in dataset `plant pathogenicity` contains invalid values in 1493 rows. The first invalid values are: plant pathogenity; plant pathogenity; plant pathogenity... </span>
 <span class="co">#&gt; &gt;&gt;&gt; Invalid column class in width. The `Attribute_value` column` should be of class logical or numeric, not character </span>
-<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Evidence` in dataset `width` contains invalid values in 865 rows. The first invalid values are: EXP; EXP; EXP... </span>
-<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Evidence` in dataset `spore shape` contains invalid values in 153 rows. The first invalid values are: EXP; EXP; EXP... </span>
+<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Evidence` in dataset `width` contains invalid values in 1 rows. The first invalid values are: ... </span>
 <span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Attribute` in dataset `isolation site` contains invalid values in 1107 rows. The first invalid values are: blade of grass from raritan river nj, usa; hot swamp from kunashir island, russia; 1940s by lilleengen... </span>
-<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Evidence` in dataset `isolation site` contains invalid values in 1176 rows. The first invalid values are: EXP; EXP; EXP... </span>
 <span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Attribute` in dataset `disease association` contains invalid values in 184 rows. The first invalid values are: anaplasmosis; anemia; anthrax... </span>
 <span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `NCBI_ID` in dataset `hydrogen gas producing` contains invalid values in 24 rows. The first invalid values are: Unidentified; Unidentified; Unidentified... </span>
 <span class="co">#&gt; &gt;&gt;&gt; Invalid column class in hydrogen gas producing. The `Attribute_value` column` should be of class logical or numeric, not character </span>
-<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Evidence` in dataset `hydrogen gas producing` contains invalid values in 24 rows. The first invalid values are: EXP; EXP; EXP... </span>
-<span class="co">#&gt; &gt;&gt;&gt; Invalid column class in length. The `Attribute_value` column` should be of class logical or numeric, not character </span>
-<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Evidence` in dataset `length` contains invalid values in 865 rows. The first invalid values are: EXP; EXP; EXP...</span></code></pre></div>
+<span class="co">#&gt; &gt;&gt;&gt; Invalid column class in length. The `Attribute_value` column` should be of class logical or numeric, not character</span></code></pre></div>
 <p>Turn list of errors into a table with links:</p>
 <table class="table">
 <colgroup>
 <col width="1%">
-<col width="8%">
+<col width="5%">
 <col width="4%">
 <col width="4%">
+<col width="4%">
+<col width="37%">
 <col width="4%">
 <col width="36%">
-<col width="4%">
-<col width="35%">
 </colgroup>
 <thead><tr class="header">
 <th align="right">n_error</th>
@@ -443,26 +428,6 @@
 </tr>
 <tr class="even">
 <td align="right">2</td>
-<td align="left">antimicrobial resistance</td>
-<td align="left">Evidence</td>
-<td align="left">invalid_column_values</td>
-<td align="right">10321</td>
-<td align="left">ASR; ASR; ASR; ASR; ASR; ASR</td>
-<td align="left">10321 x 9</td>
-<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vRWI3s8H0Izcs-PEo4W7Q0QAegNHq7IdSKCHSL0nZlrptTZ4dIusG0m1AMEUYv1_4GN3QX9rADAja_0/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vRWI3s8H0Izcs-PEo4W7Q0QAegNHq7IdSKCHSL0nZlrptTZ4dIusG0m1AMEUYv1_4GN3QX9rADAja_0/pub?output=csv</a></td>
-</tr>
-<tr class="odd">
-<td align="right">3</td>
-<td align="left">antimicrobial sensitivity</td>
-<td align="left">Evidence</td>
-<td align="left">invalid_column_values</td>
-<td align="right">16</td>
-<td align="left">EXP; EXP; EXP; EXP; EXP; EXP</td>
-<td align="left">832 x 9</td>
-<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vR0FdQpAD-xhkyIXgZMtC9oCmlbx77Cj1ncCyojm9oO410NBwJRhBNFl4hnd4HMlj2okxEKLvA8EPr2/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vR0FdQpAD-xhkyIXgZMtC9oCmlbx77Cj1ncCyojm9oO410NBwJRhBNFl4hnd4HMlj2okxEKLvA8EPr2/pub?output=csv</a></td>
-</tr>
-<tr class="even">
-<td align="right">4</td>
 <td align="left">antimicrobial sensitivity</td>
 <td align="left">Confidence_interval</td>
 <td align="left">invalid_column_values</td>
@@ -472,57 +437,27 @@
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vR0FdQpAD-xhkyIXgZMtC9oCmlbx77Cj1ncCyojm9oO410NBwJRhBNFl4hnd4HMlj2okxEKLvA8EPr2/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vR0FdQpAD-xhkyIXgZMtC9oCmlbx77Cj1ncCyojm9oO410NBwJRhBNFl4hnd4HMlj2okxEKLvA8EPr2/pub?output=csv</a></td>
 </tr>
 <tr class="odd">
+<td align="right">3</td>
+<td align="left">acetate producing</td>
+<td align="left">Attribute_value</td>
+<td align="left">invalid_column_class</td>
+<td align="right">NA</td>
+<td align="left">NA</td>
+<td align="left">24 x 10</td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQb6gDQdhCMWHLQdkzMM4bgTPPosYCZvjzJu4NyOYaSBGOCaOPoQh0OiUr4btnJ8EAWn7NiF-T9JaCE/pub?gid=0&amp;single=true&amp;output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQb6gDQdhCMWHLQdkzMM4bgTPPosYCZvjzJu4NyOYaSBGOCaOPoQh0OiUr4btnJ8EAWn7NiF-T9JaCE/pub?gid=0&amp;single=true&amp;output=csv</a></td>
+</tr>
+<tr class="even">
+<td align="right">4</td>
+<td align="left">lactate producing</td>
+<td align="left">Attribute_value</td>
+<td align="left">invalid_column_class</td>
+<td align="right">NA</td>
+<td align="left">NA</td>
+<td align="left">24 x 10</td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vSDYef_4xX2-RVfxhz7XrHIglvHjB5a9bagpApN_zHNhnswhFXN7CRsaQr3pKW6bAyrh8b26tndxCFi/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vSDYef_4xX2-RVfxhz7XrHIglvHjB5a9bagpApN_zHNhnswhFXN7CRsaQr3pKW6bAyrh8b26tndxCFi/pub?output=csv</a></td>
+</tr>
+<tr class="odd">
 <td align="right">5</td>
-<td align="left">butyrate producing</td>
-<td align="left">Evidence</td>
-<td align="left">invalid_column_values</td>
-<td align="right">24</td>
-<td align="left">EXP; EXP; EXP; EXP; EXP; EXP</td>
-<td align="left">24 x 10</td>
-<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQPnLOpbFbfLvOb8fvC6A-WfzVNMDYRWOUsT4hIseDNgI7nwZGjVwg3KBkWeFtOBBLK0j-DRiZ-jtqG/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQPnLOpbFbfLvOb8fvC6A-WfzVNMDYRWOUsT4hIseDNgI7nwZGjVwg3KBkWeFtOBBLK0j-DRiZ-jtqG/pub?output=csv</a></td>
-</tr>
-<tr class="even">
-<td align="right">6</td>
-<td align="left">acetate producing</td>
-<td align="left">Attribute_value</td>
-<td align="left">invalid_column_class</td>
-<td align="right">NA</td>
-<td align="left">NA</td>
-<td align="left">24 x 10</td>
-<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQb6gDQdhCMWHLQdkzMM4bgTPPosYCZvjzJu4NyOYaSBGOCaOPoQh0OiUr4btnJ8EAWn7NiF-T9JaCE/pub?gid=0&amp;single=true&amp;output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQb6gDQdhCMWHLQdkzMM4bgTPPosYCZvjzJu4NyOYaSBGOCaOPoQh0OiUr4btnJ8EAWn7NiF-T9JaCE/pub?gid=0&amp;single=true&amp;output=csv</a></td>
-</tr>
-<tr class="odd">
-<td align="right">7</td>
-<td align="left">acetate producing</td>
-<td align="left">Evidence</td>
-<td align="left">invalid_column_values</td>
-<td align="right">24</td>
-<td align="left">EXP; EXP; EXP; EXP; EXP; EXP</td>
-<td align="left">24 x 10</td>
-<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQb6gDQdhCMWHLQdkzMM4bgTPPosYCZvjzJu4NyOYaSBGOCaOPoQh0OiUr4btnJ8EAWn7NiF-T9JaCE/pub?gid=0&amp;single=true&amp;output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQb6gDQdhCMWHLQdkzMM4bgTPPosYCZvjzJu4NyOYaSBGOCaOPoQh0OiUr4btnJ8EAWn7NiF-T9JaCE/pub?gid=0&amp;single=true&amp;output=csv</a></td>
-</tr>
-<tr class="even">
-<td align="right">8</td>
-<td align="left">lactate producing</td>
-<td align="left">Attribute_value</td>
-<td align="left">invalid_column_class</td>
-<td align="right">NA</td>
-<td align="left">NA</td>
-<td align="left">24 x 10</td>
-<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vSDYef_4xX2-RVfxhz7XrHIglvHjB5a9bagpApN_zHNhnswhFXN7CRsaQr3pKW6bAyrh8b26tndxCFi/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vSDYef_4xX2-RVfxhz7XrHIglvHjB5a9bagpApN_zHNhnswhFXN7CRsaQr3pKW6bAyrh8b26tndxCFi/pub?output=csv</a></td>
-</tr>
-<tr class="odd">
-<td align="right">9</td>
-<td align="left">lactate producing</td>
-<td align="left">Evidence</td>
-<td align="left">invalid_column_values</td>
-<td align="right">24</td>
-<td align="left">EXP; EXP; EXP; EXP; EXP; EXP</td>
-<td align="left">24 x 10</td>
-<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vSDYef_4xX2-RVfxhz7XrHIglvHjB5a9bagpApN_zHNhnswhFXN7CRsaQr3pKW6bAyrh8b26tndxCFi/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vSDYef_4xX2-RVfxhz7XrHIglvHjB5a9bagpApN_zHNhnswhFXN7CRsaQr3pKW6bAyrh8b26tndxCFi/pub?output=csv</a></td>
-</tr>
-<tr class="even">
-<td align="right">10</td>
 <td align="left">arrangement</td>
 <td align="left">Accession_number</td>
 <td align="left">invalid_column_values</td>
@@ -531,18 +466,28 @@
 <td align="left">1943 x 9</td>
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vSgNXC-VPLmG8dUN8VAun_pbT0Y4-qJo6u9ozHGO8j7Weq6ymPaPw9kJUPl-RpHSYvtUgACo-SVHyk5/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vSgNXC-VPLmG8dUN8VAun_pbT0Y4-qJo6u9ozHGO8j7Weq6ymPaPw9kJUPl-RpHSYvtUgACo-SVHyk5/pub?output=csv</a></td>
 </tr>
+<tr class="even">
+<td align="right">6</td>
+<td align="left">arrangement</td>
+<td align="left">Attribute</td>
+<td align="left">invalid_column_values</td>
+<td align="right">8</td>
+<td align="left">v-formations; v-formations; v-formations; v-formations; v-formations; v-formations</td>
+<td align="left">1943 x 9</td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vSgNXC-VPLmG8dUN8VAun_pbT0Y4-qJo6u9ozHGO8j7Weq6ymPaPw9kJUPl-RpHSYvtUgACo-SVHyk5/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vSgNXC-VPLmG8dUN8VAun_pbT0Y4-qJo6u9ozHGO8j7Weq6ymPaPw9kJUPl-RpHSYvtUgACo-SVHyk5/pub?output=csv</a></td>
+</tr>
 <tr class="odd">
-<td align="right">11</td>
+<td align="right">7</td>
 <td align="left">arrangement</td>
 <td align="left">Evidence</td>
 <td align="left">invalid_column_values</td>
-<td align="right">1943</td>
-<td align="left">EXP; EXP; EXP; EXP; EXP; EXP</td>
+<td align="right">1175</td>
+<td align="left">; ; ; ; ;</td>
 <td align="left">1943 x 9</td>
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vSgNXC-VPLmG8dUN8VAun_pbT0Y4-qJo6u9ozHGO8j7Weq6ymPaPw9kJUPl-RpHSYvtUgACo-SVHyk5/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vSgNXC-VPLmG8dUN8VAun_pbT0Y4-qJo6u9ozHGO8j7Weq6ymPaPw9kJUPl-RpHSYvtUgACo-SVHyk5/pub?output=csv</a></td>
 </tr>
 <tr class="even">
-<td align="right">12</td>
+<td align="right">8</td>
 <td align="left">shape</td>
 <td align="left">Attribute</td>
 <td align="left">invalid_column_values</td>
@@ -552,37 +497,17 @@
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vSSBfC2jfuqioMyj891v-hYM-uL61-amoDNl0bufw5RwVOmjp5m2uNOKTeJsAsZVHFdujgjEAencl5E/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vSSBfC2jfuqioMyj891v-hYM-uL61-amoDNl0bufw5RwVOmjp5m2uNOKTeJsAsZVHFdujgjEAencl5E/pub?output=csv</a></td>
 </tr>
 <tr class="odd">
-<td align="right">13</td>
+<td align="right">9</td>
 <td align="left">shape</td>
 <td align="left">Evidence</td>
 <td align="left">invalid_column_values</td>
-<td align="right">3129</td>
-<td align="left">EXP; EXP; EXP; EXP; EXP; EXP</td>
+<td align="right">1279</td>
+<td align="left">; ; ; ; ;</td>
 <td align="left">3129 x 10</td>
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vSSBfC2jfuqioMyj891v-hYM-uL61-amoDNl0bufw5RwVOmjp5m2uNOKTeJsAsZVHFdujgjEAencl5E/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vSSBfC2jfuqioMyj891v-hYM-uL61-amoDNl0bufw5RwVOmjp5m2uNOKTeJsAsZVHFdujgjEAencl5E/pub?output=csv</a></td>
 </tr>
 <tr class="even">
-<td align="right">14</td>
-<td align="left">mutation rate per site per generation</td>
-<td align="left">Evidence</td>
-<td align="left">invalid_column_values</td>
-<td align="right">26</td>
-<td align="left">EXP; EXP; EXP; EXP; EXP; EXP</td>
-<td align="left">26 x 10</td>
-<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQxiU_sfIyCEcwua8vuCjbSCeZkUBsL1pnNxEK-985NAsCgy0sNbaSKuFMaU5ytPCQ86h9x2NEJsX-t/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQxiU_sfIyCEcwua8vuCjbSCeZkUBsL1pnNxEK-985NAsCgy0sNbaSKuFMaU5ytPCQ86h9x2NEJsX-t/pub?output=csv</a></td>
-</tr>
-<tr class="odd">
-<td align="right">15</td>
-<td align="left">mutation rates per site per year</td>
-<td align="left">Evidence</td>
-<td align="left">invalid_column_values</td>
-<td align="right">81</td>
-<td align="left">EXP; EXP; EXP; EXP; EXP; EXP</td>
-<td align="left">81 x 10</td>
-<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQGJBifwNIYz6znmGAFgGtzaSNPhxU8qagDgl4BWLHKDcjs_gm11pEaLV7X01qdyeacmwYxalTrx0um/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQGJBifwNIYz6znmGAFgGtzaSNPhxU8qagDgl4BWLHKDcjs_gm11pEaLV7X01qdyeacmwYxalTrx0um/pub?output=csv</a></td>
-</tr>
-<tr class="even">
-<td align="right">16</td>
+<td align="right">10</td>
 <td align="left">extreme environment</td>
 <td align="left">Attribute</td>
 <td align="left">invalid_column_values</td>
@@ -592,7 +517,7 @@
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vSh82md-R7XuM6PMs4UY6DYCY99wgwMcY6PD-m-VoxbJJl_Ce9JWhKtTEdFLEMmzrUxDyrQtfLBCbKj/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vSh82md-R7XuM6PMs4UY6DYCY99wgwMcY6PD-m-VoxbJJl_Ce9JWhKtTEdFLEMmzrUxDyrQtfLBCbKj/pub?output=csv</a></td>
 </tr>
 <tr class="odd">
-<td align="right">17</td>
+<td align="right">11</td>
 <td align="left">extreme environment</td>
 <td align="left">Confidence_interval</td>
 <td align="left">invalid_column_values</td>
@@ -602,17 +527,7 @@
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vSh82md-R7XuM6PMs4UY6DYCY99wgwMcY6PD-m-VoxbJJl_Ce9JWhKtTEdFLEMmzrUxDyrQtfLBCbKj/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vSh82md-R7XuM6PMs4UY6DYCY99wgwMcY6PD-m-VoxbJJl_Ce9JWhKtTEdFLEMmzrUxDyrQtfLBCbKj/pub?output=csv</a></td>
 </tr>
 <tr class="even">
-<td align="right">18</td>
-<td align="left">gram stain</td>
-<td align="left">Evidence</td>
-<td align="left">invalid_column_values</td>
-<td align="right">1356</td>
-<td align="left">EXP; EXP; EXP; EXP; EXP; EXP</td>
-<td align="left">4970 x 9</td>
-<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vRxQOO7O7oJDJrFbY3s1Y_rbouUSR3rM_a3kGlXgcVMys5pFLqmd00VjJh1adJBmh3xA3aM8r3Am2oC/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vRxQOO7O7oJDJrFbY3s1Y_rbouUSR3rM_a3kGlXgcVMys5pFLqmd00VjJh1adJBmh3xA3aM8r3Am2oC/pub?output=csv</a></td>
-</tr>
-<tr class="odd">
-<td align="right">19</td>
+<td align="right">12</td>
 <td align="left">growth medium</td>
 <td align="left">Attribute</td>
 <td align="left">invalid_column_values</td>
@@ -621,18 +536,8 @@
 <td align="left">304 x 10</td>
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vTLNLWfdNxo7NGNuJ4Pq6nji-7jQhO1glTHh1cQVS3j147WxbwhbWqhyI3FJR0I578o1hzeGbHwMOmY/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vTLNLWfdNxo7NGNuJ4Pq6nji-7jQhO1glTHh1cQVS3j147WxbwhbWqhyI3FJR0I578o1hzeGbHwMOmY/pub?output=csv</a></td>
 </tr>
-<tr class="even">
-<td align="right">20</td>
-<td align="left">growth medium</td>
-<td align="left">Evidence</td>
-<td align="left">invalid_column_values</td>
-<td align="right">304</td>
-<td align="left">EXP; EXP; EXP; EXP; EXP; EXP</td>
-<td align="left">304 x 10</td>
-<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vTLNLWfdNxo7NGNuJ4Pq6nji-7jQhO1glTHh1cQVS3j147WxbwhbWqhyI3FJR0I578o1hzeGbHwMOmY/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vTLNLWfdNxo7NGNuJ4Pq6nji-7jQhO1glTHh1cQVS3j147WxbwhbWqhyI3FJR0I578o1hzeGbHwMOmY/pub?output=csv</a></td>
-</tr>
 <tr class="odd">
-<td align="right">21</td>
+<td align="right">13</td>
 <td align="left">growth medium</td>
 <td align="left">Confidence_interval</td>
 <td align="left">invalid_column_values</td>
@@ -642,7 +547,7 @@
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vTLNLWfdNxo7NGNuJ4Pq6nji-7jQhO1glTHh1cQVS3j147WxbwhbWqhyI3FJR0I578o1hzeGbHwMOmY/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vTLNLWfdNxo7NGNuJ4Pq6nji-7jQhO1glTHh1cQVS3j147WxbwhbWqhyI3FJR0I578o1hzeGbHwMOmY/pub?output=csv</a></td>
 </tr>
 <tr class="even">
-<td align="right">22</td>
+<td align="right">14</td>
 <td align="left">growth temperature</td>
 <td align="left">Attribute</td>
 <td align="left">invalid_column_values</td>
@@ -652,27 +557,7 @@
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vTWXUnR0_jkpZEE06C0GAypTGjOa2RnOPiLSmPiwAnaf2qS33hd-6GKG95CYDgKeSk6t4BFVjIAB_sh/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vTWXUnR0_jkpZEE06C0GAypTGjOa2RnOPiLSmPiwAnaf2qS33hd-6GKG95CYDgKeSk6t4BFVjIAB_sh/pub?output=csv</a></td>
 </tr>
 <tr class="odd">
-<td align="right">23</td>
-<td align="left">growth temperature</td>
-<td align="left">Evidence</td>
-<td align="left">invalid_column_values</td>
-<td align="right">3218</td>
-<td align="left">EXP; EXP; EXP; EXP; EXP; EXP</td>
-<td align="left">3218 x 9</td>
-<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vTWXUnR0_jkpZEE06C0GAypTGjOa2RnOPiLSmPiwAnaf2qS33hd-6GKG95CYDgKeSk6t4BFVjIAB_sh/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vTWXUnR0_jkpZEE06C0GAypTGjOa2RnOPiLSmPiwAnaf2qS33hd-6GKG95CYDgKeSk6t4BFVjIAB_sh/pub?output=csv</a></td>
-</tr>
-<tr class="even">
-<td align="right">24</td>
-<td align="left">habitat</td>
-<td align="left">Evidence</td>
-<td align="left">invalid_column_values</td>
-<td align="right">3801</td>
-<td align="left">EXP; EXP; EXP; EXP; EXP; EXP</td>
-<td align="left">3801 x 9</td>
-<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQrR6R5nhANAU-CweaEp_X9P13eXiyq2A16_hOOREDYZuOqFS_4jAnI4JjihFmy3jAWtUW2V-4kZYPN/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQrR6R5nhANAU-CweaEp_X9P13eXiyq2A16_hOOREDYZuOqFS_4jAnI4JjihFmy3jAWtUW2V-4kZYPN/pub?output=csv</a></td>
-</tr>
-<tr class="odd">
-<td align="right">25</td>
+<td align="right">15</td>
 <td align="left">habitat</td>
 <td align="left">Confidence_interval</td>
 <td align="left">invalid_column_values</td>
@@ -682,7 +567,7 @@
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQrR6R5nhANAU-CweaEp_X9P13eXiyq2A16_hOOREDYZuOqFS_4jAnI4JjihFmy3jAWtUW2V-4kZYPN/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQrR6R5nhANAU-CweaEp_X9P13eXiyq2A16_hOOREDYZuOqFS_4jAnI4JjihFmy3jAWtUW2V-4kZYPN/pub?output=csv</a></td>
 </tr>
 <tr class="even">
-<td align="right">26</td>
+<td align="right">16</td>
 <td align="left">optimal ph</td>
 <td align="left">Attribute</td>
 <td align="left">invalid_column_values</td>
@@ -692,27 +577,17 @@
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQTIHjOUyJc7O6Y_w3QIj6wiZD2AA369oWByaS77XTP6VX2IhNgBULN4cccs4ZMD-dsLx9ggTBKOnlt/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQTIHjOUyJc7O6Y_w3QIj6wiZD2AA369oWByaS77XTP6VX2IhNgBULN4cccs4ZMD-dsLx9ggTBKOnlt/pub?output=csv</a></td>
 </tr>
 <tr class="odd">
-<td align="right">27</td>
-<td align="left">optimal ph</td>
-<td align="left">Evidence</td>
-<td align="left">invalid_column_values</td>
-<td align="right">886</td>
-<td align="left">EXP; EXP; EXP; EXP; EXP; EXP</td>
-<td align="left">886 x 9</td>
-<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQTIHjOUyJc7O6Y_w3QIj6wiZD2AA369oWByaS77XTP6VX2IhNgBULN4cccs4ZMD-dsLx9ggTBKOnlt/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQTIHjOUyJc7O6Y_w3QIj6wiZD2AA369oWByaS77XTP6VX2IhNgBULN4cccs4ZMD-dsLx9ggTBKOnlt/pub?output=csv</a></td>
-</tr>
-<tr class="even">
-<td align="right">28</td>
+<td align="right">17</td>
 <td align="left">aerophilicity</td>
 <td align="left">Evidence</td>
 <td align="left">invalid_column_values</td>
-<td align="right">2557</td>
-<td align="left">EXP; EXP; EXP; EXP; EXP; EXP</td>
+<td align="right">1304</td>
+<td align="left">; ; ; ; ;</td>
 <td align="left">2557 x 10</td>
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQDC8VfkkOfN6MKGxrzMEoJjfgYIfpsJO-SxVr3pkUUChBNkMQ3YKaxSvDSSjjrPRf51nU3wbk-WWJp/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQDC8VfkkOfN6MKGxrzMEoJjfgYIfpsJO-SxVr3pkUUChBNkMQ3YKaxSvDSSjjrPRf51nU3wbk-WWJp/pub?output=csv</a></td>
 </tr>
-<tr class="odd">
-<td align="right">29</td>
+<tr class="even">
+<td align="right">18</td>
 <td align="left">plant pathogenicity</td>
 <td align="left">Attribute</td>
 <td align="left">invalid_column_values</td>
@@ -721,8 +596,8 @@
 <td align="left">1493 x 9</td>
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vSLH__Hb4wPELYjnSsBR_FwJ4FHLUmx3KDO_pQG3CD9JqNyuugWbiBF9TBhXw9S5mSck2cbeY2ai77C/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vSLH__Hb4wPELYjnSsBR_FwJ4FHLUmx3KDO_pQG3CD9JqNyuugWbiBF9TBhXw9S5mSck2cbeY2ai77C/pub?output=csv</a></td>
 </tr>
-<tr class="even">
-<td align="right">30</td>
+<tr class="odd">
+<td align="right">19</td>
 <td align="left">width</td>
 <td align="left">Attribute_value</td>
 <td align="left">invalid_column_class</td>
@@ -731,28 +606,18 @@
 <td align="left">865 x 9</td>
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vR45vzAobXMOH1SCECpkBkIvxTsG5d8jAweSHaUst-gFKQcS0tTYUjivmLVByOLbFZgF59miCyF11TC/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vR45vzAobXMOH1SCECpkBkIvxTsG5d8jAweSHaUst-gFKQcS0tTYUjivmLVByOLbFZgF59miCyF11TC/pub?output=csv</a></td>
 </tr>
-<tr class="odd">
-<td align="right">31</td>
+<tr class="even">
+<td align="right">20</td>
 <td align="left">width</td>
 <td align="left">Evidence</td>
 <td align="left">invalid_column_values</td>
-<td align="right">865</td>
-<td align="left">EXP; EXP; EXP; EXP; EXP; EXP</td>
+<td align="right">1</td>
+<td align="left"></td>
 <td align="left">865 x 9</td>
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vR45vzAobXMOH1SCECpkBkIvxTsG5d8jAweSHaUst-gFKQcS0tTYUjivmLVByOLbFZgF59miCyF11TC/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vR45vzAobXMOH1SCECpkBkIvxTsG5d8jAweSHaUst-gFKQcS0tTYUjivmLVByOLbFZgF59miCyF11TC/pub?output=csv</a></td>
 </tr>
-<tr class="even">
-<td align="right">32</td>
-<td align="left">spore shape</td>
-<td align="left">Evidence</td>
-<td align="left">invalid_column_values</td>
-<td align="right">153</td>
-<td align="left">EXP; EXP; EXP; EXP; EXP; EXP</td>
-<td align="left">153 x 9</td>
-<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQSMzIaqrE8gCV20sDu_8VBmu1WkpQ_vngaWzLCK2qe5E8IJL7-sOF8qEY0sHeUEavvLHpKVp-vmUxh/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQSMzIaqrE8gCV20sDu_8VBmu1WkpQ_vngaWzLCK2qe5E8IJL7-sOF8qEY0sHeUEavvLHpKVp-vmUxh/pub?output=csv</a></td>
-</tr>
 <tr class="odd">
-<td align="right">33</td>
+<td align="right">21</td>
 <td align="left">isolation site</td>
 <td align="left">Attribute</td>
 <td align="left">invalid_column_values</td>
@@ -762,17 +627,7 @@
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vR5qKaSI_iXovASXA2U8figFKFBRNOuuFcnr-wSedtGuxAu2m8IjHp1uD23NGTWK9NmnKcO0m7FfkIx/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vR5qKaSI_iXovASXA2U8figFKFBRNOuuFcnr-wSedtGuxAu2m8IjHp1uD23NGTWK9NmnKcO0m7FfkIx/pub?output=csv</a></td>
 </tr>
 <tr class="even">
-<td align="right">34</td>
-<td align="left">isolation site</td>
-<td align="left">Evidence</td>
-<td align="left">invalid_column_values</td>
-<td align="right">1176</td>
-<td align="left">EXP; EXP; EXP; EXP; EXP; EXP</td>
-<td align="left">1176 x 9</td>
-<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vR5qKaSI_iXovASXA2U8figFKFBRNOuuFcnr-wSedtGuxAu2m8IjHp1uD23NGTWK9NmnKcO0m7FfkIx/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vR5qKaSI_iXovASXA2U8figFKFBRNOuuFcnr-wSedtGuxAu2m8IjHp1uD23NGTWK9NmnKcO0m7FfkIx/pub?output=csv</a></td>
-</tr>
-<tr class="odd">
-<td align="right">35</td>
+<td align="right">22</td>
 <td align="left">disease association</td>
 <td align="left">Attribute</td>
 <td align="left">invalid_column_values</td>
@@ -781,8 +636,8 @@
 <td align="left">445 x 9</td>
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vTboJM7necIfjgRgyYJ4LJWkCv_1y7O00yvyiSGzFdSfJDkeLqWrQ8FpcsYKFSOrQw75wCRst6KA0_a/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vTboJM7necIfjgRgyYJ4LJWkCv_1y7O00yvyiSGzFdSfJDkeLqWrQ8FpcsYKFSOrQw75wCRst6KA0_a/pub?output=csv</a></td>
 </tr>
-<tr class="even">
-<td align="right">36</td>
+<tr class="odd">
+<td align="right">23</td>
 <td align="left">hydrogen gas producing</td>
 <td align="left">NCBI_ID</td>
 <td align="left">invalid_column_values</td>
@@ -791,43 +646,23 @@
 <td align="left">24 x 11</td>
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vSpucXiYrMe_iYvnZDuNSNkRVnEWRQhykCCXoIvtmTiKAVUdkVnRYvl17nbwGqZDg2xVDwaUXccGYsF/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vSpucXiYrMe_iYvnZDuNSNkRVnEWRQhykCCXoIvtmTiKAVUdkVnRYvl17nbwGqZDg2xVDwaUXccGYsF/pub?output=csv</a></td>
 </tr>
-<tr class="odd">
-<td align="right">37</td>
-<td align="left">hydrogen gas producing</td>
-<td align="left">Attribute_value</td>
-<td align="left">invalid_column_class</td>
-<td align="right">NA</td>
-<td align="left">NA</td>
-<td align="left">24 x 11</td>
-<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vSpucXiYrMe_iYvnZDuNSNkRVnEWRQhykCCXoIvtmTiKAVUdkVnRYvl17nbwGqZDg2xVDwaUXccGYsF/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vSpucXiYrMe_iYvnZDuNSNkRVnEWRQhykCCXoIvtmTiKAVUdkVnRYvl17nbwGqZDg2xVDwaUXccGYsF/pub?output=csv</a></td>
-</tr>
 <tr class="even">
-<td align="right">38</td>
-<td align="left">hydrogen gas producing</td>
-<td align="left">Evidence</td>
-<td align="left">invalid_column_values</td>
 <td align="right">24</td>
-<td align="left">EXP; EXP; EXP; EXP; EXP; EXP</td>
+<td align="left">hydrogen gas producing</td>
+<td align="left">Attribute_value</td>
+<td align="left">invalid_column_class</td>
+<td align="right">NA</td>
+<td align="left">NA</td>
 <td align="left">24 x 11</td>
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vSpucXiYrMe_iYvnZDuNSNkRVnEWRQhykCCXoIvtmTiKAVUdkVnRYvl17nbwGqZDg2xVDwaUXccGYsF/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vSpucXiYrMe_iYvnZDuNSNkRVnEWRQhykCCXoIvtmTiKAVUdkVnRYvl17nbwGqZDg2xVDwaUXccGYsF/pub?output=csv</a></td>
 </tr>
 <tr class="odd">
-<td align="right">39</td>
+<td align="right">25</td>
 <td align="left">length</td>
 <td align="left">Attribute_value</td>
 <td align="left">invalid_column_class</td>
 <td align="right">NA</td>
 <td align="left">NA</td>
-<td align="left">865 x 9</td>
-<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQkcQ7CJ0LjgE0928maxcVEiqq7QHl6vuosL7qdWaCMVuqHCDwsPJA7yNSeXm9FIip-mDRaU6pMk4Ww/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQkcQ7CJ0LjgE0928maxcVEiqq7QHl6vuosL7qdWaCMVuqHCDwsPJA7yNSeXm9FIip-mDRaU6pMk4Ww/pub?output=csv</a></td>
-</tr>
-<tr class="even">
-<td align="right">40</td>
-<td align="left">length</td>
-<td align="left">Evidence</td>
-<td align="left">invalid_column_values</td>
-<td align="right">865</td>
-<td align="left">EXP; EXP; EXP; EXP; EXP; EXP</td>
 <td align="left">865 x 9</td>
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQkcQ7CJ0LjgE0928maxcVEiqq7QHl6vuosL7qdWaCMVuqHCDwsPJA7yNSeXm9FIip-mDRaU6pMk4Ww/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQkcQ7CJ0LjgE0928maxcVEiqq7QHl6vuosL7qdWaCMVuqHCDwsPJA7yNSeXm9FIip-mDRaU6pMk4Ww/pub?output=csv</a></td>
 </tr>
@@ -841,7 +676,6 @@
 <code class="sourceCode R"><span class="va">fac</span> <span class="op">&lt;-</span><span class="fu"><a href="../reference/fattyAcidComposition.html">fattyAcidComposition</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">fac_errors</span> <span class="op">&lt;-</span>  <span class="fu">bugphyzz</span><span class="fu">:::</span><span class="fu"><a href="../reference/checkColumnValuesDF.html">checkColumnValuesDF</a></span><span class="op">(</span><span class="va">fac</span><span class="op">)</span>
-<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Evidence` contains invalid values in 138496 rows. The first invalid values are: EXP; EXP; EXP... </span>
 <span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Confidence_interval` contains invalid values in 138496 rows. The first invalid values are: Unknown; Unknown; Unknown... </span>
 <span class="co">#&gt; &gt;&gt;&gt; Uncatalogued column. The column new_attribute cannot be checked because it's not included in the template file. Please add it to the [template file](https://github.com/waldronlab/bugphyzz/blob/main/inst/extdata/template.tsv) </span>
 <span class="co">#&gt; &gt;&gt;&gt; Uncatalogued column. The column new_attribute_value cannot be checked because it's not included in the template file. Please add it to the [template file](https://github.com/waldronlab/bugphyzz/blob/main/inst/extdata/template.tsv)</span></code></pre></div>
@@ -867,15 +701,6 @@
 <tbody>
 <tr class="odd">
 <td align="right">1</td>
-<td align="left">Evidence</td>
-<td align="left">invalid_column_values</td>
-<td align="right">138496</td>
-<td align="left">EXP; EXP; EXP; EXP; EXP; EXP</td>
-<td align="left">138496 x 10</td>
-<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQJh0AzSYWeYO1zOs4GSZIOde3zV_O71HGixPoN_F8gEY2KhxkZoj1XeSj0HcpCSz2Xu2dxBVyrm0GH/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQJh0AzSYWeYO1zOs4GSZIOde3zV_O71HGixPoN_F8gEY2KhxkZoj1XeSj0HcpCSz2Xu2dxBVyrm0GH/pub?output=csv</a></td>
-</tr>
-<tr class="even">
-<td align="right">2</td>
 <td align="left">Confidence_interval</td>
 <td align="left">invalid_column_values</td>
 <td align="right">138496</td>
@@ -883,8 +708,8 @@
 <td align="left">138496 x 10</td>
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQJh0AzSYWeYO1zOs4GSZIOde3zV_O71HGixPoN_F8gEY2KhxkZoj1XeSj0HcpCSz2Xu2dxBVyrm0GH/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQJh0AzSYWeYO1zOs4GSZIOde3zV_O71HGixPoN_F8gEY2KhxkZoj1XeSj0HcpCSz2Xu2dxBVyrm0GH/pub?output=csv</a></td>
 </tr>
-<tr class="odd">
-<td align="right">3</td>
+<tr class="even">
+<td align="right">2</td>
 <td align="left">new_attribute</td>
 <td align="left">uncatalogued_column</td>
 <td align="right">NA</td>
@@ -892,8 +717,8 @@
 <td align="left">138496 x 10</td>
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQJh0AzSYWeYO1zOs4GSZIOde3zV_O71HGixPoN_F8gEY2KhxkZoj1XeSj0HcpCSz2Xu2dxBVyrm0GH/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQJh0AzSYWeYO1zOs4GSZIOde3zV_O71HGixPoN_F8gEY2KhxkZoj1XeSj0HcpCSz2Xu2dxBVyrm0GH/pub?output=csv</a></td>
 </tr>
-<tr class="even">
-<td align="right">4</td>
+<tr class="odd">
+<td align="right">3</td>
 <td align="left">new_attribute_value</td>
 <td align="left">uncatalogued_column</td>
 <td align="right">NA</td>
