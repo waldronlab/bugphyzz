@@ -1,61 +1,90 @@
 ---
-title: "Summary Statistics of Microbes and Their Attributes in BugPhyzz"
+title: "BugPhyzz Stats"
+output:
+  rmarkdown::html_vignette:
+    toc: yes
+vignette: >
+  %\VignetteIndexEntry{BugPhyzz Stats}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
 ---
 
 ```{r, include = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
-  comment = "#>"
+  comment = "#>",
+  message = FALSE,
+  warning = FALSE
 )
+
 ```
 
 ```{r setup}
 library(bugphyzz)
+library(magrittr)
 library(dplyr)
 library(ggplot2)
 library(plotly)
 ```
 
-# All Taxa
+Load all of the bugphyzz datasets:
 
-```{r}
-physiologies <- physiologies(keyword = "all")
+```{r load all datasets}
+physiologies <- physiologies(keyword = "all") %>% 
+  lapply(as_tibble)
+
+fac <- fattyAcidComposition()
 ```
 
-## How many taxa in bugphyz with taxids?
+Number of taxa in the `NCBI_ID` column across all of the datasets in bugphyzz:
 
-```{r}
-# How many taxa with NCBI Taxonomy IDs
-bugphyzz_ncbi_ids <- lapply(physiologies, function(x) x$NCBI_ID) |> 
-  unlist() |> 
-  as.integer() |> 
-  suppressWarnings() |> 
-  {\(x) x[!is.na(x)]}() |> 
-  unique() 
-length(bugphyzz_ncbi_ids)
+```{r unique taxids in physiologies and fac}
+physiologies_ncbi_ids <- lapply(physiologies, function(x) as.integer(x$NCBI_ID)) %>% 
+  purrr::reduce(.x = ., .f = c) %>% 
+  unique() %>% 
+  .[!is.na(.)]
+
+fac_ncbi_ids <- fac$NCBI_ID %>% 
+  as.integer() %>% 
+  unique() %>% 
+  .[!is.na(.)]
+
+ncbi_ids <- c(physiologies_ncbi_ids, fac_ncbi_ids) %>% 
+  unique()
+
+length(ncbi_ids)
+
 ```
 
 ```{r}
-taxonomies <- ncbiRank(bugphyzz_ncbi_ids)
+taxonomies <- ncbiRank(ncbi_ids)
 
-```
-
-```{r}
 head(taxonomies)
 
 ```
 
+```{r, fig.width=6, fig.height=3.5}
+purrr::map_int(taxonomies, ~n_distinct(.x, na.rm = TRUE)) %>% 
+  as_tibble(rownames = "taxonomy_rank") %>% 
+  filter(taxonomy_rank != "NCBI_ID") %>% 
+  mutate(taxonomy_rank = factor(taxonomy_rank, levels = taxonomy_rank)) %>% 
+  ggplot(aes(taxonomy_rank, value)) +
+  geom_col() +
+  geom_label(aes(label = value)) +
+  theme_bw()
+```
+
 ```{r, include=FALSE}
 delete_na <- function(x){ 
-  output <- gsub("(( - NA)+ - NA$)", "", x) |> 
-    {\(x) gsub("(( - NA)+ - )", " - ", x)}() |> 
+  output <- gsub("(( - NA)+ - NA$)", "", x) %>% 
+    {\(x) gsub("(( - NA)+ - )", " - ", x)}() %>% 
     {\(x) gsub("( - NA$)", "", x)}()
 }
 
 sunburstDF <- function(x, taxa_ranks) {
   
-  x <- x |> 
-    dplyr::mutate(ROOT = "ROOT") |> 
+  x <- x %>% 
+    dplyr::mutate(ROOT = "ROOT") %>% 
     relocate(ROOT)
     
   all_cols <- c("ROOT", taxa_ranks)
@@ -66,28 +95,28 @@ sunburstDF <- function(x, taxa_ranks) {
     counter <- i + 1 
     select_cols <- all_cols[1:counter]
     select_cols2 <- rlang::enquo(select_cols)
-    output[[i]] <- x |> 
-      dplyr::select(!!select_cols2) |> 
-      dplyr::group_by_at(.vars = select_cols) |> 
-      dplyr::summarise(values = n()) |>
-      dplyr::ungroup() |> 
-      tidyr::unite(col = ids, !!select_cols2, sep = " - ") |> 
+    output[[i]] <- x %>% 
+      dplyr::select(!!select_cols2) %>% 
+      dplyr::group_by_at(.vars = select_cols) %>% 
+      dplyr::summarise(values = n()) %>%
+      dplyr::ungroup() %>% 
+      tidyr::unite(col = ids, !!select_cols2, sep = " - ") %>% 
       dplyr::mutate(ids = delete_na(ids))
   }
   
-  output <- dplyr::bind_rows(output) |> 
-    dplyr::group_by(ids) |> 
-    dplyr::slice_max(order_by = values, with_ties = FALSE) |> 
-    dplyr::ungroup() |> 
+  output <- dplyr::bind_rows(output) %>% 
+    dplyr::group_by(ids) %>% 
+    dplyr::slice_max(order_by = values, with_ties = FALSE) %>% 
+    dplyr::ungroup() %>% 
     dplyr::mutate(labels = sub("^.+ - ", "", ids),
            parents = sub("^(.+) - .*$", "\\1", ids ),
            parents = sub("ROOT - ", "", parents),
            parents = sub("ROOT", "", parents),
-           parents = sub("^.+ - ", "", parents)) |> 
-    dplyr::group_by(labels, parents) |> 
-    dplyr::slice_max(order_by = values, with_ties = FALSE) |> 
-    dplyr::ungroup() |> 
-    dplyr::select(-ids) |> 
+           parents = sub("^.+ - ", "", parents)) %>% 
+    dplyr::group_by(labels, parents) %>% 
+    dplyr::slice_max(order_by = values, with_ties = FALSE) %>% 
+    dplyr::ungroup() %>% 
+    dplyr::select(-ids) %>% 
     as.data.frame()
   
   return(output)
@@ -98,15 +127,15 @@ sunburstDF <- function(x, taxa_ranks) {
 
 
 ```{r, fig.dim = c(8,8)}
-taxonomies_genera <- taxonomies |> 
-  select(-NCBI_ID, -species) |> 
+taxonomies_genera <- taxonomies %>% 
+  select(-NCBI_ID, -species) %>% 
   distinct()
 
 taxa <- c("superkingdom", "kingdom", "phylum")
 
 df <- sunburstDF(taxonomies_genera, taxa)
 plotly::plot_ly(df, type = "sunburst",  values = ~values, labels = ~labels, parents = ~parents,
-        branchvalues = "total") |> 
+        branchvalues = "total") %>% 
   layout(title = "Number of Genera in BugPhyzz")
 
 ```
@@ -117,19 +146,213 @@ summary_table <- sapply(physiologies, function(x) {
   c(NCBI_ID = sum(!is.na(x$NCBI_ID)), Taxon_name = sum(!is.na(x$Taxon_name)), 
     Attribute = sum(!is.na(x$Attribute)), Attribute_value_true = sum(as.character(x$Attribute_value) == "TRUE", na.rm = TRUE),
     Attribute_value_false = sum(as.character(x$Attribute_value) == "FALSE", na.rm = TRUE))
-}) |> 
-  t() |> 
-  as.data.frame() |> 
-  mutate(Type = ifelse(Attribute_value_true > 0, "Categorical", "Continuous")) |> 
+}) %>% 
+  t() %>% 
+  as.data.frame() %>% 
+  mutate(Type = ifelse(Attribute_value_true > 0, "Categorical", "Continuous")) %>% 
   arrange( Type, -NCBI_ID, -Taxon_name, -Attribute,-Attribute_value_true)
   
 ```
 
 ```{r}
-summary_table |> 
+summary_table %>% 
+  knitr::kable()
+```
+
+
+# Categorical Attributes
+
+## Aerophilicity
+```{r}
+aer <- physiologies[["aerophilicity"]] %>% 
+  as_tibble()
+```
+
+
+```{r, fig.width=5}
+grepl("^[0-9]+$", aer$NCBI_ID) %>% 
+  as_tibble() %>%
+  magrittr::set_colnames("Taxa") %>% 
+  mutate(Taxa = ifelse(Taxa == TRUE, "Taxa with NCBI ID", "Taxa without NCBI ID")) %>% 
+  count(Taxa) %>% 
+  ggplot(aes(Taxa, n)) +
+  geom_col(fill = "gray50", color = "black") +
+  geom_label(aes(label = n)) +
+  labs(title = "Number of taxa in the aerophilicity dataset", 
+       x = "Taxa", y = "Number of Taxa") +
+  theme_bw() 
+```
+
+```{r}
+aer_ncbi_ranks <- ncbiRank(aer$NCBI_ID[!is.na(aer$NCBI_ID)])
+aer_with_ranks <- full_join(aer_ncbi_ranks, aer, by = "NCBI_ID")
+```
+
+```{r, fig.width=6, fig.height=5}
+aer_with_ranks %>% 
+  filter(Attribute_value == TRUE, !is.na(genus)) %>% 
+  select(Attribute) %>% 
+  count(Attribute) %>% 
+  arrange(-n) %>% 
+  ggplot(aes(reorder(Attribute, -n), n)) + 
+  geom_col(fill = "gray50", color = "black") +
+  geom_label(aes(label = n)) +
+  labs(title = "Number of genera per attribute in the aerophilicity dataset",
+       x = "Attributes", y = "Number of genera") +
+  theme_bw() +
+  theme(
+    axis.text.x = element_text(angle = 45, hjust = 1)
+  )
+```
+
+```{r, fig.width=6, fig.height=5}
+aer_with_ranks %>% 
+  filter(Attribute_value == TRUE, is.na(NCBI_ID)) %>% 
+  select(Attribute) %>% 
+  count(Attribute) %>% 
+  arrange(-n) %>% 
+  ggplot(aes(reorder(Attribute, -n), n)) + 
+  geom_col(fill = "gray50", color = "black") +
+  geom_label(aes(label = n)) +
+  labs(title = "Number of taxa without NCBI ID per attribute in the aerophilicity dataset",
+       x = "Attributes", y = "Number of genera") +
+  theme_bw() +
+  theme(
+    axis.text.x = element_text(angle = 45, hjust = 1)
+  )
+```
+
+```{r, fig.width=12,fig.height=8,warning=FALSE}
+aer_with_ranks %>% 
+  filter(!is.na(genus), is.na(species), Attribute_value == TRUE) %>% 
+  mutate(Attribute = as.factor(Attribute), phylum = as.factor(phylum)) %>% 
+  count(Attribute, phylum, .drop = FALSE) %>% 
+  ggplot(aes(phylum, n)) +
+  geom_col(aes(fill = Attribute), position = position_dodge2(width = 0.9, preserve = "single")) +
+  facet_wrap(~phylum, scales = "free") +
+  scale_fill_brewer(type = "qual", palette = "Set2") +
+  labs(title = "Number of genera per phylum per attribute in bugphyzz dataset",
+       x = "Phylum", y = "Number of Genera") +
+  theme_bw()
+  # theme(legend.position = "bottom",
+  #       axis.text = element_text(size = 25),
+  #       axis.title = element_text(size = 30),
+  #       strip.text = element_text(size = 25),
+  #       legend.text = element_text(size = 25),
+  #       legend.title = element_blank(),
+  #       title = element_text(size = 35))
+```
+
+```{r}
+aer %>% 
+  count(Evidence) %>% 
+  knitr::kable()
+```
+
+```{r}
+aer %>% 
+  count(Attribute_source) %>% 
+  knitr::kable()
+```
+
+# Continuous attributes
+
+## Growth temperature
+
+```{r}
+gt <-  physiologies[["growth temperature"]] %>% 
+  as_tibble()
+```
+
+```{r, fig.width=5}
+grepl("^[0-9]+$", gt$NCBI_ID) %>% 
+  as_tibble() %>%
+  magrittr::set_colnames("Taxa") %>% 
+  mutate(Taxa = ifelse(Taxa == TRUE, "Taxa with NCBI ID", "Taxa without NCBI ID")) %>% 
+  count(Taxa) %>% 
+  ggplot(aes(Taxa, n)) +
+  geom_col(fill = "gray50", color = "black") +
+  geom_label(aes(label = n)) +
+  labs(title = "Number of taxa in the growth temperature dataset", 
+       x = "Taxa", y = "Number of Taxa") +
+  theme_bw() 
+```
+
+
+```{r}
+gt_ncbi_ranks <- ncbiRank(gt$NCBI_ID[!is.na(gt$NCBI_ID)])
+gt_with_ranks <- full_join(gt_ncbi_ranks, gt, by = "NCBI_ID")
+```
+
+
+```{r, fig.width=6}
+gt %>% 
+  ggplot(aes(Attribute_value)) +
+  geom_histogram(bins = 30, color = "black", fill = "gray60") +
+  labs(x = "Growth temperature", y = "Frequency") +
+  theme_bw()
+```
+
+
+```{r}
+summary(gt$Attribute_value)
+```
+
+
+```{r}
+gt %>% 
+  arrange(Attribute_value) %>%
+  select(Taxon_name, Attribute_value, Attribute_source) %>% 
+  head(n = 10) %>% 
+  knitr::kable()
+```
+
+
+```{r}
+gt %>% 
+  arrange(Attribute_value) %>%
+  select(Taxon_name, Attribute_value, Attribute_source) %>% 
+  tail(n = 10) %>% 
+  knitr::kable()
+```
+
++ *Burkholderia gladioli*.
+Microbe directory source: https://microbe.directory/species/Burkholderia+gladioli.
+Original source: https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3401698/.
+
+
+```{r, fig.height=5, fig.width=10}
+gt_with_ranks %>% 
+  ggplot(aes(phylum, Attribute_value)) +
+  geom_boxplot() +
+  labs(title = "Growth temperature per phylum", y = "Growth temperature (°C)", 
+       x = "Phylum") +
+  theme_bw() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+```
+
+
+```{r}
+gt %>% 
+  count(Evidence) %>% 
+  knitr::kable()
+  
+```
+```{r}
+gt %>% 
+  count(Attribute_source) %>% 
   knitr::kable()
 ```
 
 
 
+```{r}
+n_attributes <- purrr::map_int(physiologies, function(x) length(unique(x$Attribute))) %>% 
+  as_tibble(rownames = "rownames") %>% 
+  magrittr::set_colnames(c("dataset", "n_attributes")) %>% 
+  arrange(-n_attributes)
+```
 
+# Custom Links
+
+## Fatty acid composition

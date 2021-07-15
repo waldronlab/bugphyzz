@@ -181,3 +181,5 @@
 "length"	"numeric"	PATO:0000122	"A 1-D extent quality which is equal to the distance between two points"
 "fatty acid composition"	NA	NA	NA
 "human urine"	"logical"	MCO:0000662	"No definition provided"
+"v-formation"	"logical"	""	""
+"extreme environment"	""	""	""

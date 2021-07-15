@@ -8,7 +8,7 @@ physiologies(keyword = "all")
 }
 \arguments{
 \item{keyword}{a character vector of physiologies desired (see \code{\link{curationLinks}}). For the available
-physiologies, run bugphyzz::physiologies_list()}
+physiologies, run bugphyzz::physiologiesList()}
 }
 \value{
 a large list of tidy data.frames

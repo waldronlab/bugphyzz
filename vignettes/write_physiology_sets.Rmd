@@ -19,7 +19,7 @@ library(bugphyzz)
 ```
 
 ```{r}
-bergeys <- bergeys_abstracts()
+bergeys <- bergeysAbstracts()
 head(bergeys)
 ```
 
