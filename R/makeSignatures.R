@@ -9,14 +9,14 @@
 #'
 #' @examples
 #' aero <- physiologies("aerophilicity")
-#' x <- make_signatures(aero[[1]], taxids = "Taxon_name")
+#' x <- makeSignatures(aero[[1]], taxids = "Taxon_name")
 #' lapply(x, head)
-#' x <- make_signatures(aero[[1]], taxids = "NCBI_ID")
+#' x <- makeSignatures(aero[[1]], taxids = "NCBI_ID")
 #' lapply(x, head)
 
-make_signatures <- function(df, taxids = "Taxon_name", rank = "all"){
+makeSignatures <- function(df, taxids = "Taxon_name", rank = "all"){
   attribute_names <- unique(df[["Attribute"]])
-  dat <- lapply(attribute_names, fetch_bugs, dat = df, taxids = taxids)
+  dat <- lapply(attribute_names, fetchBugs, dat = df, taxids = taxids)
   names(dat) <- attribute_names
   return(dat)
 }
@@ -33,9 +33,9 @@ make_signatures <- function(df, taxids = "Taxon_name", rank = "all"){
 #' @examples
 #' physiology_list <- bugphyzz::physiologies(keyword = "aerophilicity")
 #' df <- physiology_list[[1]]
-#' x <- fetch_bugs(attribute_name = "aerobic", dat = df, taxids = "Taxon_name")
+#' x <- fetchBugs(attribute_name = "aerobic", dat = df, taxids = "Taxon_name")
 #' head(x)
-fetch_bugs <- function(attribute_name, dat, taxids = "Taxon_name"){
+fetchBugs <- function(attribute_name, dat, taxids = "Taxon_name"){
   bugs <- c(dat[dat[["Attribute"]] == attribute_name,])
   bugs <- unique(bugs[[taxids]])
   return(bugs[!is.na(bugs)])
