@@ -3,6 +3,7 @@
 #' @param data a tibble object, converted from the output by the \link{physiologies} function
 #' @param phys a string vector of the physiology name
 #' @return a ggplot
+#' @keywords internal
 #'
 #' @examples
 #' physiologies <- physiologies()
@@ -22,6 +23,7 @@ display_freq <- function(data, phys)
 #' @param data a tibble object, converted from the output by the \link{physiologies} function
 #' @param phys a string vector of the physiology name
 #' @return a ggplot
+#' @keywords internal
 #'
 #' @examples
 #' physiologies <- physiologies()

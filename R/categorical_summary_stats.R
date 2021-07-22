@@ -5,6 +5,7 @@
 #' @param data a tibble object, converted from the output by the \link{physiologies} function
 #' @param phys a string vector of the physiology name
 #' @return a ggplot
+#' @keywords internal
 #'
 #' @examples
 #' physiologies <- physiologies()
@@ -33,6 +34,7 @@ ncbi_stats <- function(data, phys)
 #' @param data a tibble object, converted from the output by the \link{physiologies} function
 #' @param phys a string vector of the physiology name
 #' @return a ggplot
+#' @keywords internal
 #'
 #' @examples
 #' physiologies <- physiologies()
@@ -65,6 +67,7 @@ num_genera_per_attribute <- function(data, phys)
 #' @param data a tibble object, converted from the output by the \link{physiologies} function
 #' @param phys a string vector of the physiology name
 #' @return a ggplot
+#' @keywords internal
 #'
 #' @examples
 #' physiologies <- physiologies()
@@ -98,6 +101,7 @@ num_taxa_without_ncbi_per_attribute <- function(data, phys)
 #' @param data a tibble object, converted from the output by the \link{physiologies} function
 #' @param phys a string vector of the physiology name
 #' @return a ggplot
+#' @keywords internal
 #'
 #' @examples
 #' physiologies <- physiologies()
