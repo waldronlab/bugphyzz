@@ -3,7 +3,7 @@
 #' @param keyword a character vector of physiologies desired (see \code{\link{curationLinks}}). For the available
 #' physiologies, run bugphyzz::physiologies_list()
 #'
-#' @return a large list of tidy data.frames
+#' @return a large list of data.frames
 #' @importFrom utils read.table
 #' @importFrom utils read.csv
 #' @export
