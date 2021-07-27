@@ -159,7 +159,7 @@ Default is FALSE.</p></td>
 <span class='co'># Example 1</span>
 <span class='va'>rank_names</span> <span class='op'>&lt;-</span> <span class='fu'>ncbiRank</span><span class='op'>(</span><span class='va'>taxonomy_ids</span><span class='op'>)</span>
 <span class='va'>rank_names</span>
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 4 x 9</span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 4 × 9</span>
 #&gt;   NCBI_ID superkingdom kingdom phylum   class    order   family  genus  species 
 #&gt;     <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>        <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>  <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>   
 #&gt; <span style='color: #BCBCBC;'>1</span>    <span style='text-decoration: underline;'>1</span>578 Bacteria     <span style='color: #BB0000;'>NA</span>      Firmicu… Bacilli  Lactob… Lactob… Lacto… <span style='color: #BB0000;'>NA</span>      
@@ -169,7 +169,7 @@ Default is FALSE.</p></td>
 <span class='co'># Example 2</span>
 <span class='va'>rank_ids</span> <span class='op'>&lt;-</span> <span class='fu'>ncbiRank</span><span class='op'>(</span><span class='va'>taxonomy_ids</span>, taxid <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
 <span class='va'>rank_ids</span>
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 4 x 9</span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 4 × 9</span>
 #&gt;   NCBI_ID superkingdom kingdom phylum class order  family genus species
 #&gt;     <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>        <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>  <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>  <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>  <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>  
 #&gt; <span style='color: #BCBCBC;'>1</span>    <span style='text-decoration: underline;'>1</span>578 2            <span style='color: #BB0000;'>NA</span>      1239   91061 186826 33958  1578  <span style='color: #BB0000;'>NA</span>     

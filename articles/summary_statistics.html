@@ -118,12 +118,12 @@
   <span class="fu"><a href="https://rdrr.io/r/base/unique.html">unique</a></span><span class="op">(</span><span class="op">)</span>
 
 <span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">ncbi_ids</span><span class="op">)</span>
-<span class="co">#&gt; [1] 4195</span></code></pre></div>
+<span class="co">#&gt; [1] 5472</span></code></pre></div>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">taxonomies</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/ncbiRank.html">ncbiRank</a></span><span class="op">(</span><span class="va">ncbi_ids</span><span class="op">)</span>
 
 <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">taxonomies</span><span class="op">)</span>
-<span class="co">#&gt; # A tibble: 6 x 9</span>
+<span class="co">#&gt; # A tibble: 6 × 9</span>
 <span class="co">#&gt;   NCBI_ID superkingdom kingdom phylum   class   order  family    genus species  </span>
 <span class="co">#&gt;     &lt;int&gt; &lt;chr&gt;        &lt;chr&gt;   &lt;chr&gt;    &lt;chr&gt;   &lt;chr&gt;  &lt;chr&gt;     &lt;chr&gt; &lt;chr&gt;    </span>
 <span class="co">#&gt; 1  244596 Bacteria     &lt;NA&gt;    Proteob… Alphap… Hypho… Phylloba… Hoef… Hoeflea …</span>
@@ -153,8 +153,8 @@
 <span class="fu">plotly</span><span class="fu">::</span><span class="fu"><a href="https://docs.ropensci.org/plotly/reference/plot_ly.html">plot_ly</a></span><span class="op">(</span><span class="va">df</span>, type <span class="op">=</span> <span class="st">"sunburst"</span>,  values <span class="op">=</span> <span class="op">~</span><span class="va">values</span>, labels <span class="op">=</span> <span class="op">~</span><span class="va">labels</span>, parents <span class="op">=</span> <span class="op">~</span><span class="va">parents</span>,
         branchvalues <span class="op">=</span> <span class="st">"total"</span><span class="op">)</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="https://docs.ropensci.org/plotly/reference/layout.html">layout</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Number of Genera in BugPhyzz"</span><span class="op">)</span></code></pre></div>
-<div id="htmlwidget-8f15ab25899ab1e899c0" style="width:768px;height:768px;" class="plotly html-widget"></div>
-<script type="application/json" data-for="htmlwidget-8f15ab25899ab1e899c0">{"x":{"visdat":{"2ae1ccb7b16":["function () ","plotlyVisDat"]},"cur_data":"2ae1ccb7b16","attrs":{"2ae1ccb7b16":{"values":{},"labels":{},"parents":{},"branchvalues":"total","alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"sunburst"}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"title":"Number of Genera in BugPhyzz","hovermode":"closest","showlegend":false},"source":"A","config":{"showSendToCloud":false},"data":[{"values":[29,276,1,7,130,1,4,10,1716,155,2,2,1,1,1,1,1,1,5,10,6,21,13,2,1,26,60,5,8,1,2,3,66,95,1,377,11,11,1,8,2,2,1,4,1,1,4,13,649,1,1,14,4,10,11,2,2,9,16,17],"labels":["Acidobacteria","Actinobacteria","Apicomplexa","Aquificae","Archaea","Armatimonadetes","Ascomycota","Bacillariophyta","Bacteria","Bacteroidetes","Balneolaeota","Basidiomycota","Caldiserica","Calditrichaeota","candidate division NC10","Candidatus Korarchaeota","Candidatus Melainabacteria","Candidatus Saccharibacteria","Candidatus Thermoplasmatota","Chlamydiae","Chlorobi","Chloroflexi","Chlorophyta","Chrysiogenetes","Coprothermobacterota","Crenarchaeota","Cyanobacteria","Deferribacteres","Deinococcus-Thermus","Dictyoglomi","Elusimicrobia","Euglenozoa","Eukaryota","Euryarchaeota","Fibrobacteres","Firmicutes","Fungi","Fusobacteria","Gemmatimonadetes","Haptista","Ignavibacteriae","Lentisphaerae","Microsporidia","Mucoromycota","Nanoarchaeota","Nitrospinae","Nitrospirae","Planctomycetes","Proteobacteria","Rhodophyta","Rhodothermaeota","Spirochaetes","Streptophyta","Synergistetes","Tenericutes","Thaumarchaeota","Thermodesulfobacteria","Thermotogae","Verrucomicrobia","Viridiplantae"],"parents":["Bacteria","Bacteria","Eukaryota","Bacteria","","Bacteria","Fungi","Eukaryota","","Bacteria","Bacteria","Fungi","Bacteria","Bacteria","Bacteria","Archaea","Bacteria","Bacteria","Archaea","Bacteria","Bacteria","Bacteria","Viridiplantae","Bacteria","Bacteria","Archaea","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Eukaryota","","Archaea","Bacteria","Bacteria","Eukaryota","Bacteria","Bacteria","Eukaryota","Bacteria","Bacteria","Fungi","Fungi","Archaea","Bacteria","Bacteria","Bacteria","Bacteria","Eukaryota","Bacteria","Bacteria","Viridiplantae","Bacteria","Bacteria","Archaea","Bacteria","Bacteria","Bacteria","Eukaryota"],"branchvalues":"total","type":"sunburst","marker":{"color":"rgba(31,119,180,1)","line":{"color":"rgba(255,255,255,1)"}},"frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script><div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<div id="htmlwidget-60bea3869684942a40c4" style="width:768px;height:768px;" class="plotly html-widget"></div>
+<script type="application/json" data-for="htmlwidget-60bea3869684942a40c4">{"x":{"visdat":{"3664d6365d2":["function () ","plotlyVisDat"]},"cur_data":"3664d6365d2","attrs":{"3664d6365d2":{"values":{},"labels":{},"parents":{},"branchvalues":"total","alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"sunburst"}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"title":"Number of Genera in BugPhyzz","hovermode":"closest","showlegend":false},"source":"A","config":{"showSendToCloud":false},"data":[{"values":[29,278,1,8,137,1,4,10,1747,159,2,2,1,1,1,1,1,1,6,10,6,22,13,2,1,28,63,5,8,1,2,3,66,98,1,386,11,11,1,8,2,2,1,4,1,1,4,14,658,1,1,14,4,10,11,3,2,9,17,17],"labels":["Acidobacteria","Actinobacteria","Apicomplexa","Aquificae","Archaea","Armatimonadetes","Ascomycota","Bacillariophyta","Bacteria","Bacteroidetes","Balneolaeota","Basidiomycota","Caldiserica","Calditrichaeota","candidate division NC10","Candidatus Korarchaeota","Candidatus Melainabacteria","Candidatus Saccharibacteria","Candidatus Thermoplasmatota","Chlamydiae","Chlorobi","Chloroflexi","Chlorophyta","Chrysiogenetes","Coprothermobacterota","Crenarchaeota","Cyanobacteria","Deferribacteres","Deinococcus-Thermus","Dictyoglomi","Elusimicrobia","Euglenozoa","Eukaryota","Euryarchaeota","Fibrobacteres","Firmicutes","Fungi","Fusobacteria","Gemmatimonadetes","Haptista","Ignavibacteriae","Lentisphaerae","Microsporidia","Mucoromycota","Nanoarchaeota","Nitrospinae","Nitrospirae","Planctomycetes","Proteobacteria","Rhodophyta","Rhodothermaeota","Spirochaetes","Streptophyta","Synergistetes","Tenericutes","Thaumarchaeota","Thermodesulfobacteria","Thermotogae","Verrucomicrobia","Viridiplantae"],"parents":["Bacteria","Bacteria","Eukaryota","Bacteria","","Bacteria","Fungi","Eukaryota","","Bacteria","Bacteria","Fungi","Bacteria","Bacteria","Bacteria","Archaea","Bacteria","Bacteria","Archaea","Bacteria","Bacteria","Bacteria","Viridiplantae","Bacteria","Bacteria","Archaea","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Eukaryota","","Archaea","Bacteria","Bacteria","Eukaryota","Bacteria","Bacteria","Eukaryota","Bacteria","Bacteria","Fungi","Fungi","Archaea","Bacteria","Bacteria","Bacteria","Bacteria","Eukaryota","Bacteria","Bacteria","Viridiplantae","Bacteria","Bacteria","Archaea","Bacteria","Bacteria","Bacteria","Eukaryota"],"branchvalues":"total","type":"sunburst","marker":{"color":"rgba(31,119,180,1)","line":{"color":"rgba(255,255,255,1)"}},"frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script><div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">summary_table</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html">sapply</a></span><span class="op">(</span><span class="va">physiologies</span>, <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">{</span>
   <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span>NCBI_ID <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">x</span><span class="op">$</span><span class="va">NCBI_ID</span><span class="op">)</span><span class="op">)</span>, Taxon_name <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">x</span><span class="op">$</span><span class="va">Taxon_name</span><span class="op">)</span><span class="op">)</span>, 
     Attribute <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">x</span><span class="op">$</span><span class="va">Attribute</span><span class="op">)</span><span class="op">)</span>, Attribute_value_true <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/character.html">as.character</a></span><span class="op">(</span><span class="va">x</span><span class="op">$</span><span class="va">Attribute_value</span><span class="op">)</span> <span class="op">==</span> <span class="st">"TRUE"</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,
@@ -198,6 +198,15 @@
 <td align="left">Categorical</td>
 </tr>
 <tr class="odd">
+<td align="left">aerophilicity</td>
+<td align="right">2489</td>
+<td align="right">2557</td>
+<td align="right">2557</td>
+<td align="right">2557</td>
+<td align="right">0</td>
+<td align="left">Categorical</td>
+</tr>
+<tr class="even">
 <td align="left">habitat</td>
 <td align="right">2363</td>
 <td align="right">3801</td>
@@ -206,7 +215,7 @@
 <td align="right">0</td>
 <td align="left">Categorical</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">extreme environment</td>
 <td align="right">1875</td>
 <td align="right">1875</td>
@@ -215,12 +224,21 @@
 <td align="right">1313</td>
 <td align="left">Categorical</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">shape</td>
 <td align="right">1850</td>
 <td align="right">3129</td>
 <td align="right">3129</td>
 <td align="right">3129</td>
+<td align="right">0</td>
+<td align="left">Categorical</td>
+</tr>
+<tr class="odd">
+<td align="left">arrangement</td>
+<td align="right">1768</td>
+<td align="right">1823</td>
+<td align="right">1823</td>
+<td align="right">1823</td>
 <td align="right">0</td>
 <td align="left">Categorical</td>
 </tr>
@@ -243,30 +261,12 @@
 <td align="left">Categorical</td>
 </tr>
 <tr class="even">
-<td align="left">aerophilicity</td>
-<td align="right">1019</td>
-<td align="right">2557</td>
-<td align="right">2557</td>
-<td align="right">2557</td>
-<td align="right">0</td>
-<td align="left">Categorical</td>
-</tr>
-<tr class="odd">
 <td align="left">antimicrobial sensitivity</td>
 <td align="right">832</td>
 <td align="right">832</td>
 <td align="right">832</td>
 <td align="right">487</td>
 <td align="right">345</td>
-<td align="left">Categorical</td>
-</tr>
-<tr class="even">
-<td align="left">arrangement</td>
-<td align="right">768</td>
-<td align="right">1943</td>
-<td align="right">1943</td>
-<td align="right">1943</td>
-<td align="right">0</td>
 <td align="left">Categorical</td>
 </tr>
 <tr class="odd">
@@ -360,6 +360,15 @@
 <td align="left">Continuous</td>
 </tr>
 <tr class="odd">
+<td align="left">mutation rate per site per generation</td>
+<td align="right">26</td>
+<td align="right">26</td>
+<td align="right">26</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="left">Continuous</td>
+</tr>
+<tr class="even">
 <td align="left">hydrogen gas producing</td>
 <td align="right">24</td>
 <td align="right">24</td>
@@ -368,20 +377,11 @@
 <td align="right">0</td>
 <td align="left">Continuous</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">mutation rates per site per year</td>
 <td align="right">0</td>
 <td align="right">81</td>
 <td align="right">81</td>
-<td align="right">0</td>
-<td align="right">0</td>
-<td align="left">Continuous</td>
-</tr>
-<tr class="odd">
-<td align="left">mutation rate per site per generation</td>
-<td align="right">0</td>
-<td align="right">26</td>
-<td align="right">26</td>
 <td align="right">0</td>
 <td align="right">0</td>
 <td align="left">Continuous</td>
@@ -537,6 +537,442 @@
 </tr>
 </tbody>
 </table>
+<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">hab</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/physiologies.html">physiologies</a></span><span class="op">(</span><span class="st">"habitat"</span><span class="op">)</span><span class="op">[[</span><span class="st">"habitat"</span><span class="op">]</span><span class="op">]</span> <span class="op">%&gt;%</span>
+          <span class="fu"><a href="https://tibble.tidyverse.org/reference/as_tibble.html">as_tibble</a></span><span class="op">(</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/grep.html">grepl</a></span><span class="op">(</span><span class="st">"^[0-9]+$"</span>, <span class="va">hab</span><span class="op">$</span><span class="va">NCBI_ID</span><span class="op">)</span> <span class="op">%&gt;%</span>
+        <span class="fu"><a href="https://tibble.tidyverse.org/reference/as_tibble.html">as_tibble</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
+            <span class="fu">magrittr</span><span class="fu">::</span><span class="fu"><a href="https://magrittr.tidyverse.org/reference/aliases.html">set_colnames</a></span><span class="op">(</span><span class="st">"Taxa"</span><span class="op">)</span> <span class="op">%&gt;%</span>
+            <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>Taxa <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html">ifelse</a></span><span class="op">(</span><span class="va">Taxa</span> <span class="op">==</span> <span class="cn">TRUE</span>, <span class="st">"Taxa with NCBI ID"</span>, <span class="st">"Taxa without NCBI ID"</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
+            <span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html">count</a></span><span class="op">(</span><span class="va">Taxa</span><span class="op">)</span> <span class="op">%&gt;%</span>
+           <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">Taxa</span>, <span class="va">n</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+            <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_col</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"gray50"</span>, color <span class="op">=</span> <span class="st">"black"</span><span class="op">)</span> <span class="op">+</span>
+            <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_text.html">geom_label</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>label <span class="op">=</span> <span class="va">n</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+            <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Number of taxa in the habitat dataset"</span>,
+                    x <span class="op">=</span> <span class="st">"Taxa"</span>, y <span class="op">=</span> <span class="st">"Number of Taxa"</span><span class="op">)</span></code></pre></div>
+<p><img src="summary_statistics_files/figure-html/unnamed-chunk-16-1.png" width="700"></p>
+<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
+<code class="sourceCode R">          <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_bw</a></span><span class="op">(</span><span class="op">)</span>
+<span class="co">#&gt; List of 93</span>
+<span class="co">#&gt;  $ line                      :List of 6</span>
+<span class="co">#&gt;   ..$ colour       : chr "black"</span>
+<span class="co">#&gt;   ..$ size         : num 0.5</span>
+<span class="co">#&gt;   ..$ linetype     : num 1</span>
+<span class="co">#&gt;   ..$ lineend      : chr "butt"</span>
+<span class="co">#&gt;   ..$ arrow        : logi FALSE</span>
+<span class="co">#&gt;   ..$ inherit.blank: logi TRUE</span>
+<span class="co">#&gt;   ..- attr(*, "class")= chr [1:2] "element_line" "element"</span>
+<span class="co">#&gt;  $ rect                      :List of 5</span>
+<span class="co">#&gt;   ..$ fill         : chr "white"</span>
+<span class="co">#&gt;   ..$ colour       : chr "black"</span>
+<span class="co">#&gt;   ..$ size         : num 0.5</span>
+<span class="co">#&gt;   ..$ linetype     : num 1</span>
+<span class="co">#&gt;   ..$ inherit.blank: logi TRUE</span>
+<span class="co">#&gt;   ..- attr(*, "class")= chr [1:2] "element_rect" "element"</span>
+<span class="co">#&gt;  $ text                      :List of 11</span>
+<span class="co">#&gt;   ..$ family       : chr ""</span>
+<span class="co">#&gt;   ..$ face         : chr "plain"</span>
+<span class="co">#&gt;   ..$ colour       : chr "black"</span>
+<span class="co">#&gt;   ..$ size         : num 11</span>
+<span class="co">#&gt;   ..$ hjust        : num 0.5</span>
+<span class="co">#&gt;   ..$ vjust        : num 0.5</span>
+<span class="co">#&gt;   ..$ angle        : num 0</span>
+<span class="co">#&gt;   ..$ lineheight   : num 0.9</span>
+<span class="co">#&gt;   ..$ margin       : 'margin' num [1:4] 0points 0points 0points 0points</span>
+<span class="co">#&gt;   .. ..- attr(*, "unit")= int 8</span>
+<span class="co">#&gt;   ..$ debug        : logi FALSE</span>
+<span class="co">#&gt;   ..$ inherit.blank: logi TRUE</span>
+<span class="co">#&gt;   ..- attr(*, "class")= chr [1:2] "element_text" "element"</span>
+<span class="co">#&gt;  $ title                     : NULL</span>
+<span class="co">#&gt;  $ aspect.ratio              : NULL</span>
+<span class="co">#&gt;  $ axis.title                : NULL</span>
+<span class="co">#&gt;  $ axis.title.x              :List of 11</span>
+<span class="co">#&gt;   ..$ family       : NULL</span>
+<span class="co">#&gt;   ..$ face         : NULL</span>
+<span class="co">#&gt;   ..$ colour       : NULL</span>
+<span class="co">#&gt;   ..$ size         : NULL</span>
+<span class="co">#&gt;   ..$ hjust        : NULL</span>
+<span class="co">#&gt;   ..$ vjust        : num 1</span>
+<span class="co">#&gt;   ..$ angle        : NULL</span>
+<span class="co">#&gt;   ..$ lineheight   : NULL</span>
+<span class="co">#&gt;   ..$ margin       : 'margin' num [1:4] 2.75points 0points 0points 0points</span>
+<span class="co">#&gt;   .. ..- attr(*, "unit")= int 8</span>
+<span class="co">#&gt;   ..$ debug        : NULL</span>
+<span class="co">#&gt;   ..$ inherit.blank: logi TRUE</span>
+<span class="co">#&gt;   ..- attr(*, "class")= chr [1:2] "element_text" "element"</span>
+<span class="co">#&gt;  $ axis.title.x.top          :List of 11</span>
+<span class="co">#&gt;   ..$ family       : NULL</span>
+<span class="co">#&gt;   ..$ face         : NULL</span>
+<span class="co">#&gt;   ..$ colour       : NULL</span>
+<span class="co">#&gt;   ..$ size         : NULL</span>
+<span class="co">#&gt;   ..$ hjust        : NULL</span>
+<span class="co">#&gt;   ..$ vjust        : num 0</span>
+<span class="co">#&gt;   ..$ angle        : NULL</span>
+<span class="co">#&gt;   ..$ lineheight   : NULL</span>
+<span class="co">#&gt;   ..$ margin       : 'margin' num [1:4] 0points 0points 2.75points 0points</span>
+<span class="co">#&gt;   .. ..- attr(*, "unit")= int 8</span>
+<span class="co">#&gt;   ..$ debug        : NULL</span>
+<span class="co">#&gt;   ..$ inherit.blank: logi TRUE</span>
+<span class="co">#&gt;   ..- attr(*, "class")= chr [1:2] "element_text" "element"</span>
+<span class="co">#&gt;  $ axis.title.x.bottom       : NULL</span>
+<span class="co">#&gt;  $ axis.title.y              :List of 11</span>
+<span class="co">#&gt;   ..$ family       : NULL</span>
+<span class="co">#&gt;   ..$ face         : NULL</span>
+<span class="co">#&gt;   ..$ colour       : NULL</span>
+<span class="co">#&gt;   ..$ size         : NULL</span>
+<span class="co">#&gt;   ..$ hjust        : NULL</span>
+<span class="co">#&gt;   ..$ vjust        : num 1</span>
+<span class="co">#&gt;   ..$ angle        : num 90</span>
+<span class="co">#&gt;   ..$ lineheight   : NULL</span>
+<span class="co">#&gt;   ..$ margin       : 'margin' num [1:4] 0points 2.75points 0points 0points</span>
+<span class="co">#&gt;   .. ..- attr(*, "unit")= int 8</span>
+<span class="co">#&gt;   ..$ debug        : NULL</span>
+<span class="co">#&gt;   ..$ inherit.blank: logi TRUE</span>
+<span class="co">#&gt;   ..- attr(*, "class")= chr [1:2] "element_text" "element"</span>
+<span class="co">#&gt;  $ axis.title.y.left         : NULL</span>
+<span class="co">#&gt;  $ axis.title.y.right        :List of 11</span>
+<span class="co">#&gt;   ..$ family       : NULL</span>
+<span class="co">#&gt;   ..$ face         : NULL</span>
+<span class="co">#&gt;   ..$ colour       : NULL</span>
+<span class="co">#&gt;   ..$ size         : NULL</span>
+<span class="co">#&gt;   ..$ hjust        : NULL</span>
+<span class="co">#&gt;   ..$ vjust        : num 0</span>
+<span class="co">#&gt;   ..$ angle        : num -90</span>
+<span class="co">#&gt;   ..$ lineheight   : NULL</span>
+<span class="co">#&gt;   ..$ margin       : 'margin' num [1:4] 0points 0points 0points 2.75points</span>
+<span class="co">#&gt;   .. ..- attr(*, "unit")= int 8</span>
+<span class="co">#&gt;   ..$ debug        : NULL</span>
+<span class="co">#&gt;   ..$ inherit.blank: logi TRUE</span>
+<span class="co">#&gt;   ..- attr(*, "class")= chr [1:2] "element_text" "element"</span>
+<span class="co">#&gt;  $ axis.text                 :List of 11</span>
+<span class="co">#&gt;   ..$ family       : NULL</span>
+<span class="co">#&gt;   ..$ face         : NULL</span>
+<span class="co">#&gt;   ..$ colour       : chr "grey30"</span>
+<span class="co">#&gt;   ..$ size         : 'rel' num 0.8</span>
+<span class="co">#&gt;   ..$ hjust        : NULL</span>
+<span class="co">#&gt;   ..$ vjust        : NULL</span>
+<span class="co">#&gt;   ..$ angle        : NULL</span>
+<span class="co">#&gt;   ..$ lineheight   : NULL</span>
+<span class="co">#&gt;   ..$ margin       : NULL</span>
+<span class="co">#&gt;   ..$ debug        : NULL</span>
+<span class="co">#&gt;   ..$ inherit.blank: logi TRUE</span>
+<span class="co">#&gt;   ..- attr(*, "class")= chr [1:2] "element_text" "element"</span>
+<span class="co">#&gt;  $ axis.text.x               :List of 11</span>
+<span class="co">#&gt;   ..$ family       : NULL</span>
+<span class="co">#&gt;   ..$ face         : NULL</span>
+<span class="co">#&gt;   ..$ colour       : NULL</span>
+<span class="co">#&gt;   ..$ size         : NULL</span>
+<span class="co">#&gt;   ..$ hjust        : NULL</span>
+<span class="co">#&gt;   ..$ vjust        : num 1</span>
+<span class="co">#&gt;   ..$ angle        : NULL</span>
+<span class="co">#&gt;   ..$ lineheight   : NULL</span>
+<span class="co">#&gt;   ..$ margin       : 'margin' num [1:4] 2.2points 0points 0points 0points</span>
+<span class="co">#&gt;   .. ..- attr(*, "unit")= int 8</span>
+<span class="co">#&gt;   ..$ debug        : NULL</span>
+<span class="co">#&gt;   ..$ inherit.blank: logi TRUE</span>
+<span class="co">#&gt;   ..- attr(*, "class")= chr [1:2] "element_text" "element"</span>
+<span class="co">#&gt;  $ axis.text.x.top           :List of 11</span>
+<span class="co">#&gt;   ..$ family       : NULL</span>
+<span class="co">#&gt;   ..$ face         : NULL</span>
+<span class="co">#&gt;   ..$ colour       : NULL</span>
+<span class="co">#&gt;   ..$ size         : NULL</span>
+<span class="co">#&gt;   ..$ hjust        : NULL</span>
+<span class="co">#&gt;   ..$ vjust        : num 0</span>
+<span class="co">#&gt;   ..$ angle        : NULL</span>
+<span class="co">#&gt;   ..$ lineheight   : NULL</span>
+<span class="co">#&gt;   ..$ margin       : 'margin' num [1:4] 0points 0points 2.2points 0points</span>
+<span class="co">#&gt;   .. ..- attr(*, "unit")= int 8</span>
+<span class="co">#&gt;   ..$ debug        : NULL</span>
+<span class="co">#&gt;   ..$ inherit.blank: logi TRUE</span>
+<span class="co">#&gt;   ..- attr(*, "class")= chr [1:2] "element_text" "element"</span>
+<span class="co">#&gt;  $ axis.text.x.bottom        : NULL</span>
+<span class="co">#&gt;  $ axis.text.y               :List of 11</span>
+<span class="co">#&gt;   ..$ family       : NULL</span>
+<span class="co">#&gt;   ..$ face         : NULL</span>
+<span class="co">#&gt;   ..$ colour       : NULL</span>
+<span class="co">#&gt;   ..$ size         : NULL</span>
+<span class="co">#&gt;   ..$ hjust        : num 1</span>
+<span class="co">#&gt;   ..$ vjust        : NULL</span>
+<span class="co">#&gt;   ..$ angle        : NULL</span>
+<span class="co">#&gt;   ..$ lineheight   : NULL</span>
+<span class="co">#&gt;   ..$ margin       : 'margin' num [1:4] 0points 2.2points 0points 0points</span>
+<span class="co">#&gt;   .. ..- attr(*, "unit")= int 8</span>
+<span class="co">#&gt;   ..$ debug        : NULL</span>
+<span class="co">#&gt;   ..$ inherit.blank: logi TRUE</span>
+<span class="co">#&gt;   ..- attr(*, "class")= chr [1:2] "element_text" "element"</span>
+<span class="co">#&gt;  $ axis.text.y.left          : NULL</span>
+<span class="co">#&gt;  $ axis.text.y.right         :List of 11</span>
+<span class="co">#&gt;   ..$ family       : NULL</span>
+<span class="co">#&gt;   ..$ face         : NULL</span>
+<span class="co">#&gt;   ..$ colour       : NULL</span>
+<span class="co">#&gt;   ..$ size         : NULL</span>
+<span class="co">#&gt;   ..$ hjust        : num 0</span>
+<span class="co">#&gt;   ..$ vjust        : NULL</span>
+<span class="co">#&gt;   ..$ angle        : NULL</span>
+<span class="co">#&gt;   ..$ lineheight   : NULL</span>
+<span class="co">#&gt;   ..$ margin       : 'margin' num [1:4] 0points 0points 0points 2.2points</span>
+<span class="co">#&gt;   .. ..- attr(*, "unit")= int 8</span>
+<span class="co">#&gt;   ..$ debug        : NULL</span>
+<span class="co">#&gt;   ..$ inherit.blank: logi TRUE</span>
+<span class="co">#&gt;   ..- attr(*, "class")= chr [1:2] "element_text" "element"</span>
+<span class="co">#&gt;  $ axis.ticks                :List of 6</span>
+<span class="co">#&gt;   ..$ colour       : chr "grey20"</span>
+<span class="co">#&gt;   ..$ size         : NULL</span>
+<span class="co">#&gt;   ..$ linetype     : NULL</span>
+<span class="co">#&gt;   ..$ lineend      : NULL</span>
+<span class="co">#&gt;   ..$ arrow        : logi FALSE</span>
+<span class="co">#&gt;   ..$ inherit.blank: logi TRUE</span>
+<span class="co">#&gt;   ..- attr(*, "class")= chr [1:2] "element_line" "element"</span>
+<span class="co">#&gt;  $ axis.ticks.x              : NULL</span>
+<span class="co">#&gt;  $ axis.ticks.x.top          : NULL</span>
+<span class="co">#&gt;  $ axis.ticks.x.bottom       : NULL</span>
+<span class="co">#&gt;  $ axis.ticks.y              : NULL</span>
+<span class="co">#&gt;  $ axis.ticks.y.left         : NULL</span>
+<span class="co">#&gt;  $ axis.ticks.y.right        : NULL</span>
+<span class="co">#&gt;  $ axis.ticks.length         : 'simpleUnit' num 2.75points</span>
+<span class="co">#&gt;   ..- attr(*, "unit")= int 8</span>
+<span class="co">#&gt;  $ axis.ticks.length.x       : NULL</span>
+<span class="co">#&gt;  $ axis.ticks.length.x.top   : NULL</span>
+<span class="co">#&gt;  $ axis.ticks.length.x.bottom: NULL</span>
+<span class="co">#&gt;  $ axis.ticks.length.y       : NULL</span>
+<span class="co">#&gt;  $ axis.ticks.length.y.left  : NULL</span>
+<span class="co">#&gt;  $ axis.ticks.length.y.right : NULL</span>
+<span class="co">#&gt;  $ axis.line                 : list()</span>
+<span class="co">#&gt;   ..- attr(*, "class")= chr [1:2] "element_blank" "element"</span>
+<span class="co">#&gt;  $ axis.line.x               : NULL</span>
+<span class="co">#&gt;  $ axis.line.x.top           : NULL</span>
+<span class="co">#&gt;  $ axis.line.x.bottom        : NULL</span>
+<span class="co">#&gt;  $ axis.line.y               : NULL</span>
+<span class="co">#&gt;  $ axis.line.y.left          : NULL</span>
+<span class="co">#&gt;  $ axis.line.y.right         : NULL</span>
+<span class="co">#&gt;  $ legend.background         :List of 5</span>
+<span class="co">#&gt;   ..$ fill         : NULL</span>
+<span class="co">#&gt;   ..$ colour       : logi NA</span>
+<span class="co">#&gt;   ..$ size         : NULL</span>
+<span class="co">#&gt;   ..$ linetype     : NULL</span>
+<span class="co">#&gt;   ..$ inherit.blank: logi TRUE</span>
+<span class="co">#&gt;   ..- attr(*, "class")= chr [1:2] "element_rect" "element"</span>
+<span class="co">#&gt;  $ legend.margin             : 'margin' num [1:4] 5.5points 5.5points 5.5points 5.5points</span>
+<span class="co">#&gt;   ..- attr(*, "unit")= int 8</span>
+<span class="co">#&gt;  $ legend.spacing            : 'simpleUnit' num 11points</span>
+<span class="co">#&gt;   ..- attr(*, "unit")= int 8</span>
+<span class="co">#&gt;  $ legend.spacing.x          : NULL</span>
+<span class="co">#&gt;  $ legend.spacing.y          : NULL</span>
+<span class="co">#&gt;  $ legend.key                :List of 5</span>
+<span class="co">#&gt;   ..$ fill         : chr "white"</span>
+<span class="co">#&gt;   ..$ colour       : logi NA</span>
+<span class="co">#&gt;   ..$ size         : NULL</span>
+<span class="co">#&gt;   ..$ linetype     : NULL</span>
+<span class="co">#&gt;   ..$ inherit.blank: logi TRUE</span>
+<span class="co">#&gt;   ..- attr(*, "class")= chr [1:2] "element_rect" "element"</span>
+<span class="co">#&gt;  $ legend.key.size           : 'simpleUnit' num 1.2lines</span>
+<span class="co">#&gt;   ..- attr(*, "unit")= int 3</span>
+<span class="co">#&gt;  $ legend.key.height         : NULL</span>
+<span class="co">#&gt;  $ legend.key.width          : NULL</span>
+<span class="co">#&gt;  $ legend.text               :List of 11</span>
+<span class="co">#&gt;   ..$ family       : NULL</span>
+<span class="co">#&gt;   ..$ face         : NULL</span>
+<span class="co">#&gt;   ..$ colour       : NULL</span>
+<span class="co">#&gt;   ..$ size         : 'rel' num 0.8</span>
+<span class="co">#&gt;   ..$ hjust        : NULL</span>
+<span class="co">#&gt;   ..$ vjust        : NULL</span>
+<span class="co">#&gt;   ..$ angle        : NULL</span>
+<span class="co">#&gt;   ..$ lineheight   : NULL</span>
+<span class="co">#&gt;   ..$ margin       : NULL</span>
+<span class="co">#&gt;   ..$ debug        : NULL</span>
+<span class="co">#&gt;   ..$ inherit.blank: logi TRUE</span>
+<span class="co">#&gt;   ..- attr(*, "class")= chr [1:2] "element_text" "element"</span>
+<span class="co">#&gt;  $ legend.text.align         : NULL</span>
+<span class="co">#&gt;  $ legend.title              :List of 11</span>
+<span class="co">#&gt;   ..$ family       : NULL</span>
+<span class="co">#&gt;   ..$ face         : NULL</span>
+<span class="co">#&gt;   ..$ colour       : NULL</span>
+<span class="co">#&gt;   ..$ size         : NULL</span>
+<span class="co">#&gt;   ..$ hjust        : num 0</span>
+<span class="co">#&gt;   ..$ vjust        : NULL</span>
+<span class="co">#&gt;   ..$ angle        : NULL</span>
+<span class="co">#&gt;   ..$ lineheight   : NULL</span>
+<span class="co">#&gt;   ..$ margin       : NULL</span>
+<span class="co">#&gt;   ..$ debug        : NULL</span>
+<span class="co">#&gt;   ..$ inherit.blank: logi TRUE</span>
+<span class="co">#&gt;   ..- attr(*, "class")= chr [1:2] "element_text" "element"</span>
+<span class="co">#&gt;  $ legend.title.align        : NULL</span>
+<span class="co">#&gt;  $ legend.position           : chr "right"</span>
+<span class="co">#&gt;  $ legend.direction          : NULL</span>
+<span class="co">#&gt;  $ legend.justification      : chr "center"</span>
+<span class="co">#&gt;  $ legend.box                : NULL</span>
+<span class="co">#&gt;  $ legend.box.just           : NULL</span>
+<span class="co">#&gt;  $ legend.box.margin         : 'margin' num [1:4] 0cm 0cm 0cm 0cm</span>
+<span class="co">#&gt;   ..- attr(*, "unit")= int 1</span>
+<span class="co">#&gt;  $ legend.box.background     : list()</span>
+<span class="co">#&gt;   ..- attr(*, "class")= chr [1:2] "element_blank" "element"</span>
+<span class="co">#&gt;  $ legend.box.spacing        : 'simpleUnit' num 11points</span>
+<span class="co">#&gt;   ..- attr(*, "unit")= int 8</span>
+<span class="co">#&gt;  $ panel.background          :List of 5</span>
+<span class="co">#&gt;   ..$ fill         : chr "white"</span>
+<span class="co">#&gt;   ..$ colour       : logi NA</span>
+<span class="co">#&gt;   ..$ size         : NULL</span>
+<span class="co">#&gt;   ..$ linetype     : NULL</span>
+<span class="co">#&gt;   ..$ inherit.blank: logi TRUE</span>
+<span class="co">#&gt;   ..- attr(*, "class")= chr [1:2] "element_rect" "element"</span>
+<span class="co">#&gt;  $ panel.border              :List of 5</span>
+<span class="co">#&gt;   ..$ fill         : logi NA</span>
+<span class="co">#&gt;   ..$ colour       : chr "grey20"</span>
+<span class="co">#&gt;   ..$ size         : NULL</span>
+<span class="co">#&gt;   ..$ linetype     : NULL</span>
+<span class="co">#&gt;   ..$ inherit.blank: logi TRUE</span>
+<span class="co">#&gt;   ..- attr(*, "class")= chr [1:2] "element_rect" "element"</span>
+<span class="co">#&gt;  $ panel.spacing             : 'simpleUnit' num 5.5points</span>
+<span class="co">#&gt;   ..- attr(*, "unit")= int 8</span>
+<span class="co">#&gt;  $ panel.spacing.x           : NULL</span>
+<span class="co">#&gt;  $ panel.spacing.y           : NULL</span>
+<span class="co">#&gt;  $ panel.grid                :List of 6</span>
+<span class="co">#&gt;   ..$ colour       : chr "grey92"</span>
+<span class="co">#&gt;   ..$ size         : NULL</span>
+<span class="co">#&gt;   ..$ linetype     : NULL</span>
+<span class="co">#&gt;   ..$ lineend      : NULL</span>
+<span class="co">#&gt;   ..$ arrow        : logi FALSE</span>
+<span class="co">#&gt;   ..$ inherit.blank: logi TRUE</span>
+<span class="co">#&gt;   ..- attr(*, "class")= chr [1:2] "element_line" "element"</span>
+<span class="co">#&gt;  $ panel.grid.major          : NULL</span>
+<span class="co">#&gt;  $ panel.grid.minor          :List of 6</span>
+<span class="co">#&gt;   ..$ colour       : NULL</span>
+<span class="co">#&gt;   ..$ size         : 'rel' num 0.5</span>
+<span class="co">#&gt;   ..$ linetype     : NULL</span>
+<span class="co">#&gt;   ..$ lineend      : NULL</span>
+<span class="co">#&gt;   ..$ arrow        : logi FALSE</span>
+<span class="co">#&gt;   ..$ inherit.blank: logi TRUE</span>
+<span class="co">#&gt;   ..- attr(*, "class")= chr [1:2] "element_line" "element"</span>
+<span class="co">#&gt;  $ panel.grid.major.x        : NULL</span>
+<span class="co">#&gt;  $ panel.grid.major.y        : NULL</span>
+<span class="co">#&gt;  $ panel.grid.minor.x        : NULL</span>
+<span class="co">#&gt;  $ panel.grid.minor.y        : NULL</span>
+<span class="co">#&gt;  $ panel.ontop               : logi FALSE</span>
+<span class="co">#&gt;  $ plot.background           :List of 5</span>
+<span class="co">#&gt;   ..$ fill         : NULL</span>
+<span class="co">#&gt;   ..$ colour       : chr "white"</span>
+<span class="co">#&gt;   ..$ size         : NULL</span>
+<span class="co">#&gt;   ..$ linetype     : NULL</span>
+<span class="co">#&gt;   ..$ inherit.blank: logi TRUE</span>
+<span class="co">#&gt;   ..- attr(*, "class")= chr [1:2] "element_rect" "element"</span>
+<span class="co">#&gt;  $ plot.title                :List of 11</span>
+<span class="co">#&gt;   ..$ family       : NULL</span>
+<span class="co">#&gt;   ..$ face         : NULL</span>
+<span class="co">#&gt;   ..$ colour       : NULL</span>
+<span class="co">#&gt;   ..$ size         : 'rel' num 1.2</span>
+<span class="co">#&gt;   ..$ hjust        : num 0</span>
+<span class="co">#&gt;   ..$ vjust        : num 1</span>
+<span class="co">#&gt;   ..$ angle        : NULL</span>
+<span class="co">#&gt;   ..$ lineheight   : NULL</span>
+<span class="co">#&gt;   ..$ margin       : 'margin' num [1:4] 0points 0points 5.5points 0points</span>
+<span class="co">#&gt;   .. ..- attr(*, "unit")= int 8</span>
+<span class="co">#&gt;   ..$ debug        : NULL</span>
+<span class="co">#&gt;   ..$ inherit.blank: logi TRUE</span>
+<span class="co">#&gt;   ..- attr(*, "class")= chr [1:2] "element_text" "element"</span>
+<span class="co">#&gt;  $ plot.title.position       : chr "panel"</span>
+<span class="co">#&gt;  $ plot.subtitle             :List of 11</span>
+<span class="co">#&gt;   ..$ family       : NULL</span>
+<span class="co">#&gt;   ..$ face         : NULL</span>
+<span class="co">#&gt;   ..$ colour       : NULL</span>
+<span class="co">#&gt;   ..$ size         : NULL</span>
+<span class="co">#&gt;   ..$ hjust        : num 0</span>
+<span class="co">#&gt;   ..$ vjust        : num 1</span>
+<span class="co">#&gt;   ..$ angle        : NULL</span>
+<span class="co">#&gt;   ..$ lineheight   : NULL</span>
+<span class="co">#&gt;   ..$ margin       : 'margin' num [1:4] 0points 0points 5.5points 0points</span>
+<span class="co">#&gt;   .. ..- attr(*, "unit")= int 8</span>
+<span class="co">#&gt;   ..$ debug        : NULL</span>
+<span class="co">#&gt;   ..$ inherit.blank: logi TRUE</span>
+<span class="co">#&gt;   ..- attr(*, "class")= chr [1:2] "element_text" "element"</span>
+<span class="co">#&gt;  $ plot.caption              :List of 11</span>
+<span class="co">#&gt;   ..$ family       : NULL</span>
+<span class="co">#&gt;   ..$ face         : NULL</span>
+<span class="co">#&gt;   ..$ colour       : NULL</span>
+<span class="co">#&gt;   ..$ size         : 'rel' num 0.8</span>
+<span class="co">#&gt;   ..$ hjust        : num 1</span>
+<span class="co">#&gt;   ..$ vjust        : num 1</span>
+<span class="co">#&gt;   ..$ angle        : NULL</span>
+<span class="co">#&gt;   ..$ lineheight   : NULL</span>
+<span class="co">#&gt;   ..$ margin       : 'margin' num [1:4] 5.5points 0points 0points 0points</span>
+<span class="co">#&gt;   .. ..- attr(*, "unit")= int 8</span>
+<span class="co">#&gt;   ..$ debug        : NULL</span>
+<span class="co">#&gt;   ..$ inherit.blank: logi TRUE</span>
+<span class="co">#&gt;   ..- attr(*, "class")= chr [1:2] "element_text" "element"</span>
+<span class="co">#&gt;  $ plot.caption.position     : chr "panel"</span>
+<span class="co">#&gt;  $ plot.tag                  :List of 11</span>
+<span class="co">#&gt;   ..$ family       : NULL</span>
+<span class="co">#&gt;   ..$ face         : NULL</span>
+<span class="co">#&gt;   ..$ colour       : NULL</span>
+<span class="co">#&gt;   ..$ size         : 'rel' num 1.2</span>
+<span class="co">#&gt;   ..$ hjust        : num 0.5</span>
+<span class="co">#&gt;   ..$ vjust        : num 0.5</span>
+<span class="co">#&gt;   ..$ angle        : NULL</span>
+<span class="co">#&gt;   ..$ lineheight   : NULL</span>
+<span class="co">#&gt;   ..$ margin       : NULL</span>
+<span class="co">#&gt;   ..$ debug        : NULL</span>
+<span class="co">#&gt;   ..$ inherit.blank: logi TRUE</span>
+<span class="co">#&gt;   ..- attr(*, "class")= chr [1:2] "element_text" "element"</span>
+<span class="co">#&gt;  $ plot.tag.position         : chr "topleft"</span>
+<span class="co">#&gt;  $ plot.margin               : 'margin' num [1:4] 5.5points 5.5points 5.5points 5.5points</span>
+<span class="co">#&gt;   ..- attr(*, "unit")= int 8</span>
+<span class="co">#&gt;  $ strip.background          :List of 5</span>
+<span class="co">#&gt;   ..$ fill         : chr "grey85"</span>
+<span class="co">#&gt;   ..$ colour       : chr "grey20"</span>
+<span class="co">#&gt;   ..$ size         : NULL</span>
+<span class="co">#&gt;   ..$ linetype     : NULL</span>
+<span class="co">#&gt;   ..$ inherit.blank: logi TRUE</span>
+<span class="co">#&gt;   ..- attr(*, "class")= chr [1:2] "element_rect" "element"</span>
+<span class="co">#&gt;  $ strip.background.x        : NULL</span>
+<span class="co">#&gt;  $ strip.background.y        : NULL</span>
+<span class="co">#&gt;  $ strip.placement           : chr "inside"</span>
+<span class="co">#&gt;  $ strip.text                :List of 11</span>
+<span class="co">#&gt;   ..$ family       : NULL</span>
+<span class="co">#&gt;   ..$ face         : NULL</span>
+<span class="co">#&gt;   ..$ colour       : chr "grey10"</span>
+<span class="co">#&gt;   ..$ size         : 'rel' num 0.8</span>
+<span class="co">#&gt;   ..$ hjust        : NULL</span>
+<span class="co">#&gt;   ..$ vjust        : NULL</span>
+<span class="co">#&gt;   ..$ angle        : NULL</span>
+<span class="co">#&gt;   ..$ lineheight   : NULL</span>
+<span class="co">#&gt;   ..$ margin       : 'margin' num [1:4] 4.4points 4.4points 4.4points 4.4points</span>
+<span class="co">#&gt;   .. ..- attr(*, "unit")= int 8</span>
+<span class="co">#&gt;   ..$ debug        : NULL</span>
+<span class="co">#&gt;   ..$ inherit.blank: logi TRUE</span>
+<span class="co">#&gt;   ..- attr(*, "class")= chr [1:2] "element_text" "element"</span>
+<span class="co">#&gt;  $ strip.text.x              : NULL</span>
+<span class="co">#&gt;  $ strip.text.y              :List of 11</span>
+<span class="co">#&gt;   ..$ family       : NULL</span>
+<span class="co">#&gt;   ..$ face         : NULL</span>
+<span class="co">#&gt;   ..$ colour       : NULL</span>
+<span class="co">#&gt;   ..$ size         : NULL</span>
+<span class="co">#&gt;   ..$ hjust        : NULL</span>
+<span class="co">#&gt;   ..$ vjust        : NULL</span>
+<span class="co">#&gt;   ..$ angle        : num -90</span>
+<span class="co">#&gt;   ..$ lineheight   : NULL</span>
+<span class="co">#&gt;   ..$ margin       : NULL</span>
+<span class="co">#&gt;   ..$ debug        : NULL</span>
+<span class="co">#&gt;   ..$ inherit.blank: logi TRUE</span>
+<span class="co">#&gt;   ..- attr(*, "class")= chr [1:2] "element_text" "element"</span>
+<span class="co">#&gt;  $ strip.switch.pad.grid     : 'simpleUnit' num 2.75points</span>
+<span class="co">#&gt;   ..- attr(*, "unit")= int 8</span>
+<span class="co">#&gt;  $ strip.switch.pad.wrap     : 'simpleUnit' num 2.75points</span>
+<span class="co">#&gt;   ..- attr(*, "unit")= int 8</span>
+<span class="co">#&gt;  $ strip.text.y.left         :List of 11</span>
+<span class="co">#&gt;   ..$ family       : NULL</span>
+<span class="co">#&gt;   ..$ face         : NULL</span>
+<span class="co">#&gt;   ..$ colour       : NULL</span>
+<span class="co">#&gt;   ..$ size         : NULL</span>
+<span class="co">#&gt;   ..$ hjust        : NULL</span>
+<span class="co">#&gt;   ..$ vjust        : NULL</span>
+<span class="co">#&gt;   ..$ angle        : num 90</span>
+<span class="co">#&gt;   ..$ lineheight   : NULL</span>
+<span class="co">#&gt;   ..$ margin       : NULL</span>
+<span class="co">#&gt;   ..$ debug        : NULL</span>
+<span class="co">#&gt;   ..$ inherit.blank: logi TRUE</span>
+<span class="co">#&gt;   ..- attr(*, "class")= chr [1:2] "element_text" "element"</span>
+<span class="co">#&gt;  - attr(*, "class")= chr [1:2] "theme" "gg"</span>
+<span class="co">#&gt;  - attr(*, "complete")= logi TRUE</span>
+<span class="co">#&gt;  - attr(*, "validate")= logi TRUE</span></code></pre></div>
 </div>
 </div>
 <div id="continuous-attributes" class="section level1">
@@ -545,10 +981,10 @@
 <div id="growth-temperature" class="section level2">
 <h2 class="hasAnchor">
 <a href="#growth-temperature" class="anchor"></a>Growth temperature</h2>
-<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">gt</span> <span class="op">&lt;-</span>  <span class="va">physiologies</span><span class="op">[[</span><span class="st">"growth temperature"</span><span class="op">]</span><span class="op">]</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="https://tibble.tidyverse.org/reference/as_tibble.html">as_tibble</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
-<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/grep.html">grepl</a></span><span class="op">(</span><span class="st">"^[0-9]+$"</span>, <span class="va">gt</span><span class="op">$</span><span class="va">NCBI_ID</span><span class="op">)</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="https://tibble.tidyverse.org/reference/as_tibble.html">as_tibble</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu">magrittr</span><span class="fu">::</span><span class="fu"><a href="https://magrittr.tidyverse.org/reference/aliases.html">set_colnames</a></span><span class="op">(</span><span class="st">"Taxa"</span><span class="op">)</span> <span class="op">%&gt;%</span> 
@@ -560,22 +996,22 @@
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Number of taxa in the growth temperature dataset"</span>, 
        x <span class="op">=</span> <span class="st">"Taxa"</span>, y <span class="op">=</span> <span class="st">"Number of Taxa"</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_bw</a></span><span class="op">(</span><span class="op">)</span> </code></pre></div>
-<p><img src="summary_statistics_files/figure-html/unnamed-chunk-17-1.png" width="480"></p>
-<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
+<p><img src="summary_statistics_files/figure-html/unnamed-chunk-18-1.png" width="480"></p>
+<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">gt_ncbi_ranks</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/ncbiRank.html">ncbiRank</a></span><span class="op">(</span><span class="va">gt</span><span class="op">$</span><span class="va">NCBI_ID</span><span class="op">[</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">gt</span><span class="op">$</span><span class="va">NCBI_ID</span><span class="op">)</span><span class="op">]</span><span class="op">)</span>
 <span class="va">gt_with_ranks</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">full_join</a></span><span class="op">(</span><span class="va">gt_ncbi_ranks</span>, <span class="va">gt</span>, by <span class="op">=</span> <span class="st">"NCBI_ID"</span><span class="op">)</span></code></pre></div>
-<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">gt</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">Attribute_value</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_histogram</a></span><span class="op">(</span>bins <span class="op">=</span> <span class="fl">30</span>, color <span class="op">=</span> <span class="st">"black"</span>, fill <span class="op">=</span> <span class="st">"gray60"</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>x <span class="op">=</span> <span class="st">"Growth temperature"</span>, y <span class="op">=</span> <span class="st">"Frequency"</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_bw</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
-<p><img src="summary_statistics_files/figure-html/unnamed-chunk-19-1.png" width="576"></p>
-<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
+<p><img src="summary_statistics_files/figure-html/unnamed-chunk-20-1.png" width="576"></p>
+<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">gt</span><span class="op">$</span><span class="va">Attribute_value</span><span class="op">)</span>
 <span class="co">#&gt;    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. </span>
 <span class="co">#&gt;  -10.00   27.50   35.00   35.45   37.00  121.00</span></code></pre></div>
-<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">gt</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="va">Attribute_value</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">Taxon_name</span>, <span class="va">Attribute_value</span>, <span class="va">Attribute_source</span><span class="op">)</span> <span class="op">%&gt;%</span> 
@@ -640,7 +1076,7 @@
 </tr>
 </tbody>
 </table>
-<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">gt</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="va">Attribute_value</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">Taxon_name</span>, <span class="va">Attribute_value</span>, <span class="va">Attribute_source</span><span class="op">)</span> <span class="op">%&gt;%</span> 
@@ -709,7 +1145,7 @@
 <li>
 <em>Burkholderia gladioli</em>. Microbe directory source: <a href="https://microbe.directory/species/Burkholderia+gladioli" class="uri">https://microbe.directory/species/Burkholderia+gladioli</a>. Original source: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3401698/" class="uri">https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3401698/</a>.</li>
 </ul>
-<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">gt_with_ranks</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">phylum</span>, <span class="va">Attribute_value</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_boxplot.html">geom_boxplot</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
@@ -717,8 +1153,8 @@
        x <span class="op">=</span> <span class="st">"Phylum"</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_bw</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>axis.text.x <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>angle <span class="op">=</span> <span class="fl">45</span>, hjust <span class="op">=</span> <span class="fl">1</span><span class="op">)</span><span class="op">)</span></code></pre></div>
-<p><img src="summary_statistics_files/figure-html/unnamed-chunk-23-1.png" width="960"></p>
-<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
+<p><img src="summary_statistics_files/figure-html/unnamed-chunk-24-1.png" width="960"></p>
+<div class="sourceCode" id="cb28"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">gt</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html">count</a></span><span class="op">(</span><span class="va">Evidence</span><span class="op">)</span> <span class="op">%&gt;%</span> 
   <span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
@@ -732,7 +1168,7 @@
 <td align="right">3218</td>
 </tr></tbody>
 </table>
-<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">gt</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html">count</a></span><span class="op">(</span><span class="va">Attribute_source</span><span class="op">)</span> <span class="op">%&gt;%</span> 
   <span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
@@ -756,7 +1192,7 @@
 </tr>
 </tbody>
 </table>
-<div class="sourceCode" id="cb28"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb30"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">n_attributes</span> <span class="op">&lt;-</span> <span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html">map_int</a></span><span class="op">(</span><span class="va">physiologies</span>, <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/unique.html">unique</a></span><span class="op">(</span><span class="va">x</span><span class="op">$</span><span class="va">Attribute</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="https://tibble.tidyverse.org/reference/as_tibble.html">as_tibble</a></span><span class="op">(</span>rownames <span class="op">=</span> <span class="st">"rownames"</span><span class="op">)</span> <span class="op">%&gt;%</span> 
   <span class="fu">magrittr</span><span class="fu">::</span><span class="fu"><a href="https://magrittr.tidyverse.org/reference/aliases.html">set_colnames</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"dataset"</span>, <span class="st">"n_attributes"</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> 
