@@ -6,6 +6,7 @@
 ^\.github$
 ^_pkgdown\.yml$
 ^docs$
+^doc$
 ^pkgdown$
 ^data-raw$
 ^jupyter_notebooks$
