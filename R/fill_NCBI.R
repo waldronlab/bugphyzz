@@ -10,7 +10,7 @@
 #' aer_NCBI <- fill_NCBI(aer)
 fill_NCBI <- function(data)
 {
-  null_df <- data[is.na(dat$NCBI_ID),]
+  null_df <- data[is.na(data$NCBI_ID),]
   ids <- get_ids(null_df[["Taxon_name"]], db = 'ncbi')
   ncbi <- ids[["ncbi"]]
   null_df$NCBI_ID <- ncbi
