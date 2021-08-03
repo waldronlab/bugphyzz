@@ -33,6 +33,7 @@ Imports:
     tidyr,
     tidyselect,
     tibble,
-    crayon
+    crayon,
+    mgsub
 Depends: 
     R (>= 4.1.0)

@@ -1,0 +1,62 @@
+---
+title: "Complete BugPhyzz Stats"
+output:
+  rmarkdown::html_vignette:
+    toc: yes
+vignette: >
+  %\VignetteIndexEntry{BugPhyzz Stats}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  message = FALSE,
+  warning = FALSE
+)
+
+```
+
+```{r setup}
+library(bugphyzz)
+library(magrittr)
+library(dplyr)
+library(ggplot2)
+library(plotly)
+```
+
+Load all of the bugphyzz datasets:
+
+```{r load all datasets}
+physiologies <- physiologies(keyword = "all") %>% 
+  lapply(as_tibble)
+```
+
+#NCBI ID Stats
+```{r ncbi_stats function}
+ncbi_stats <- function(data, phys = deparse(substitute(data)))
+{
+  title <- paste("Number of taxa in the",phys, "dataset")
+  grepl("^[0-9]+$", data$NCBI_ID) %>%
+    as_tibble() %>%
+    magrittr::set_colnames("Taxa") %>%
+    mutate(Taxa = ifelse(Taxa == TRUE, "Taxa with NCBI ID", "Taxa without NCBI ID")) %>%
+    count(Taxa) %>%
+    ggplot(aes(Taxa, n)) +
+    geom_col(fill = "gray50", color = "black") +
+    geom_label(aes(label = n)) +
+    labs(title = title,
+         x = "Taxa", y = "Number of Taxa") +
+    theme_bw()
+}
+```
+```{r}
+ncbi_list <- lapply(physiologies, ncbi_stats)
+
+```
+```{r}
+lapply(ncbi_list, print)
+```
+

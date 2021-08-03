@@ -13,7 +13,7 @@
 #' as_tibble()
 #' ncbi_stats(aer, "aerophilicity")
 #'
-ncbi_stats <- function(data, phys)
+ncbi_stats <- function(data, phys = deparse(substitute(data)))
 {
   title <- paste("Number of taxa in the",phys, "dataset")
   grepl("^[0-9]+$", data$NCBI_ID) %>%
