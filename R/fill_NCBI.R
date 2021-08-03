@@ -10,15 +10,15 @@
 #' aer_NCBI <- fill_NCBI(aer)
 fill_NCBI <- function(data)
 {
-  null_df <- dat[is.na(dat$NCBI_ID),]
+  null_df <- data[is.na(dat$NCBI_ID),]
   ids <- get_ids(null_df[["Taxon_name"]], db = 'ncbi')
   ncbi <- ids[["ncbi"]]
   null_df$NCBI_ID <- ncbi
 
-  df <- merge(dat, null_df[,c("Taxon_name", "NCBI_ID")], by = "Taxon_name", all.x = T) %>%
+  df <- merge(data, null_df[,c("Taxon_name", "NCBI_ID")], by = "Taxon_name", all.x = T) %>%
     rename(NCBI_ID = NCBI_ID.x)
   df$NCBI_ID <- paste(df$NCBI_ID, df$NCBI_ID.y)
-  df$NCBI_ID <- mgsub(df$NCBI_ID, c("NA", " "), c("", ""))
+  df$NCBI_ID <- mgsub::mgsub(df$NCBI_ID, c("NA", " "), c("", ""))
   df$NCBI_ID.y <- NULL
   df <- unique(df)
   return(df)
