@@ -34,29 +34,73 @@ physiologies <- physiologies(keyword = "all") %>%
   lapply(as_tibble)
 ```
 
-#NCBI ID Stats
-```{r ncbi_stats function}
-ncbi_stats <- function(data, phys = deparse(substitute(data)))
-{
-  title <- paste("Number of taxa in the",phys, "dataset")
-  grepl("^[0-9]+$", data$NCBI_ID) %>%
-    as_tibble() %>%
-    magrittr::set_colnames("Taxa") %>%
-    mutate(Taxa = ifelse(Taxa == TRUE, "Taxa with NCBI ID", "Taxa without NCBI ID")) %>%
-    count(Taxa) %>%
-    ggplot(aes(Taxa, n)) +
-    geom_col(fill = "gray50", color = "black") +
-    geom_label(aes(label = n)) +
-    labs(title = title,
-         x = "Taxa", y = "Number of Taxa") +
-    theme_bw()
+Source summary statistics functions
+
+```{r}
+source(here::here("R/categorical_summary_stats.R"))
+source(here::here("R/continuous_summary_stats.R"))
+```
+```{r}
+printGGlist <- function(gglist){
+for(gg in gglist){
+
+    print(gg)
+
+}
 }
 ```
-```{r}
-ncbi_list <- lapply(physiologies, ncbi_stats)
 
+NCBI ID Stats
+
+```{r}
+ncbi_list <- mapply(function(.x, .y) ncbi_stats(.x, .y), physiologies, names(physiologies), SIMPLIFY = FALSE)
+```
+```{r warning = FALSE, echo=FALSE, out.width="45%"}
+printGGlist(ncbi_list)
+```
+
+Categorical attribute stats
+
+# Setup
+
+```{r list of categorical physiologies}
+categorical_list <- physiologies[c("antimicrobial resistance", "gram stain",
+                                   "habitat", "aerophilicity", "extreme environment",
+                                   "shape", "arrangement", "plant pathogenicity",
+                                   "animal pathogen", "isolation site",
+                                   "antimicrobial sensitivity", "disease association",
+                                   "biofilm forming", "growth medium", "spore shape")]
+```
+
+```{r fetch ranks for categorical physiologies}
+cat_rank <- lapply(categorical_list, fetch_ranks)
+```
+
+## Number of genera per attribute of a physiology
+
+```{r}
+gen_per_attr <- mapply(function(.x, .y) num_genera_per_attribute(.x, .y), cat_rank, names(cat_rank), SIMPLIFY = FALSE)
+```
+```{r warning = FALSE, echo=FALSE, out.width="45%"}
+printGGlist(gen_per_attr)
+```
+
+## Number of taxa without NCBI ID per attribute in physiology dataset
+
+```{r}
+taxa_without_attr <- mapply(function(.x, .y) num_taxa_without_ncbi_per_attribute(.x, .y), cat_rank, names(cat_rank), SIMPLIFY = FALSE)
+```
+```{r warning = FALSE, echo=FALSE, out.width="45%"}
+printGGlist(taxa_without_attr)
+```
+
+## Number of genera per phylum per attribute in physiology dataset
+
+```{r}
+gen_phy_attr <- mapply(function(.x, .y) attribute_catalog(.x, .y), cat_rank, names(cat_rank), SIMPLIFY = FALSE)
 ```
 ```{r}
-lapply(ncbi_list, print)
+printGGlist(gen_phy_attr)
 ```
+
 
