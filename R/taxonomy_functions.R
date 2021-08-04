@@ -31,11 +31,10 @@
 #' rank_ids <- ncbiRank(taxonomy_ids, taxid = TRUE)
 #' rank_ids
 #'
-ncbiRank <- function(x, taxid = FALSE) {
+ncbiRank <- function(x, taxid = FALSE, ranks = c("superkingdom", "kingdom", "phylum", "class", "order", "family", "genus", "species")) {
 
   ncbi_results <- suppressMessages(taxize::classification(x, db = "ncbi"))
 
-  ranks<- c("superkingdom", "kingdom", "phylum", "class", "order", "family", "genus", "species")
   output <- vector("list", length(ranks) + 1) # ranks + 1 because of NCBI_ID column
   names(output) <- c("NCBI_ID", ranks)
   output[[1]] <- as.integer(names(ncbi_results)) # Column of NCBI_IDs
