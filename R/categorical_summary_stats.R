@@ -26,12 +26,31 @@ ncbi_stats <- function(data, phys = deparse(substitute(data)))
     geom_label(aes(label = n)) +
     labs(title = title,
          x = "Taxa", y = "Number of Taxa") +
-    theme_bw()
+    theme_bw() +
+    theme(plot.title = element_text(size = 8))
+}
+#' Fetch ranks for bacteria
+#'
+#' @param data a tibble object, converted from the output by the \link{physiologies} function
+#' @return a tibble object
+#' @keywords internal
+#'
+#' @examples
+#' physiologies <- physiologies()
+#' aer <- physiologies[["aerophilicity"]] %>%
+#' as_tibble()
+#' fetch_ranks(aer, "aerophilicity")
+fetch_ranks <- function(data)
+{
+  ncbi_ranks <- ncbiRank(data$NCBI_ID[!is.na(data$NCBI_ID)])
+  with_ranks <- full_join(ncbi_ranks, data, by = "NCBI_ID")
+  return(with_ranks)
 }
 
 #' Display number of genera per attribute in physiology dataset
 #'
 #' @param data a tibble object, converted from the output by the \link{physiologies} function
+#' and has been converted by the \link{fetch_ranks} function
 #' @param phys a string vector of the physiology name
 #' @return a ggplot
 #' @keywords internal
@@ -40,13 +59,12 @@ ncbi_stats <- function(data, phys = deparse(substitute(data)))
 #' physiologies <- physiologies()
 #' aer <- physiologies[["aerophilicity"]] %>%
 #' as_tibble()
-#' num_genera_per_attribute(aer, "aerophilicity")
+#' aer_ranks <- fetch_ranks(aer)
+#' num_genera_per_attribute(aer_ranks, "aerophilicity")
 num_genera_per_attribute <- function(data, phys)
 {
   title <- paste("Number of genera per attribute in the", phys, "dataset")
-  ncbi_ranks <- ncbiRank(data$NCBI_ID[!is.na(data$NCBI_ID)])
-  with_ranks <- full_join(ncbi_ranks, data, by = "NCBI_ID")
-  with_ranks %>%
+  data %>%
     filter(Attribute_value == TRUE, !is.na(genus)) %>%
     select(Attribute) %>%
     count(Attribute) %>%
@@ -58,13 +76,14 @@ num_genera_per_attribute <- function(data, phys)
          x = "Attributes", y = "Number of genera") +
     theme_bw() +
     theme(
-      axis.text.x = element_text(angle = 45, hjust = 1)
+      axis.text.x = element_text(angle = 45, hjust = 1), plot.title = element_text(size = 8)
     )
 }
 
 #' Display number of taxa without NCBI ID per attribute in physiology dataset
 #'
 #' @param data a tibble object, converted from the output by the \link{physiologies} function
+#' and has been converted by the \link{fetch_ranks} function
 #' @param phys a string vector of the physiology name
 #' @return a ggplot
 #' @keywords internal
@@ -73,14 +92,13 @@ num_genera_per_attribute <- function(data, phys)
 #' physiologies <- physiologies()
 #' aer <- physiologies[["aerophilicity"]] %>%
 #' as_tibble()
-#' num_taxa_without_ncbi_per_attribute(aer, "aerophilicity")
+#' aer_ranks <- fetch_ranks(aer)
+#' num_taxa_without_ncbi_per_attribute(aer_ranks, "aerophilicity")
 num_taxa_without_ncbi_per_attribute <- function(data, phys)
 {
   title <- paste("Number of taxa without NCBI ID per attribute in the",
                  phys, "dataset")
-  ncbi_ranks <- ncbiRank(data$NCBI_ID[!is.na(data$NCBI_ID)])
-  with_ranks <- full_join(ncbi_ranks, data, by = "NCBI_ID")
-  with_ranks %>%
+  data %>%
     filter(Attribute_value == TRUE, is.na(NCBI_ID)) %>%
     select(Attribute) %>%
     count(Attribute) %>%
@@ -99,6 +117,7 @@ num_taxa_without_ncbi_per_attribute <- function(data, phys)
 #' Display number of genera per phylum per attribute in physiology dataset
 #'
 #' @param data a tibble object, converted from the output by the \link{physiologies} function
+#' and has been converted by the \link{fetch_ranks} function
 #' @param phys a string vector of the physiology name
 #' @return a ggplot
 #' @keywords internal
@@ -107,14 +126,13 @@ num_taxa_without_ncbi_per_attribute <- function(data, phys)
 #' physiologies <- physiologies()
 #' aer <- physiologies[["aerophilicity"]] %>%
 #' as_tibble()
-#' attribute_catalog(aer, "aerophilicity")
+#' aer_ranks <- fetch_ranks(aer)
+#' attribute_catalog(aer_ranks, "aerophilicity")
 attribute_catalog <- function(data, phys)
 {
   title <- paste("Number of genera per phylum per attribute in",
                  phys, "dataset")
-  ncbi_ranks <- ncbiRank(data$NCBI_ID[!is.na(data$NCBI_ID)])
-  with_ranks <- full_join(ncbi_ranks, data, by = "NCBI_ID")
-  with_ranks %>%
+  data %>%
     filter(!is.na(genus), is.na(species), Attribute_value == TRUE) %>%
     mutate(Attribute = as.factor(Attribute), phylum = as.factor(phylum)) %>%
     count(Attribute, phylum, .drop = FALSE) %>%
