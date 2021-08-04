@@ -98,6 +98,9 @@
       <a href="../articles/checks.html">Check Functions</a>
     </li>
     <li>
+      <a href="../articles/complete_summary_stats.html">Complete BugPhyzz Stats</a>
+    </li>
+    <li>
       <a href="../articles/summary_statistics.html">BugPhyzz Stats</a>
     </li>
     <li>
@@ -148,7 +151,7 @@ physiologies, run bugphyzz::physiologiesList()</p></td>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'>physiologies</span><span class='op'>(</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='message'>Dropped 15914 rows with missing Attribute_value from animal pathogen</span></div><div class='output co'>#&gt; <span class='message'>Finished antimicrobial resistance</span></div><div class='output co'>#&gt; <span class='message'>Dropped 3054 rows with missing Attribute_value from antimicrobial sensitivity</span></div><div class='output co'>#&gt; <span class='message'>Dropped 3583 rows with missing Attribute_value from biofilm forming</span></div><div class='output co'>#&gt; <span class='message'>Finished butyrate producing</span></div><div class='output co'>#&gt; <span class='message'>Finished acetate producing</span></div><div class='output co'>#&gt; <span class='message'>Finished lactate producing</span></div><div class='output co'>#&gt; <span class='message'>Finished arrangement</span></div><div class='output co'>#&gt; <span class='message'>Dropped 9304 rows with missing Attribute_value from shape</span></div><div class='output co'>#&gt; <span class='message'>Finished COGEM pathogenicity rating</span></div><div class='output co'>#&gt; <span class='message'>Finished mutation rate per site per generation</span></div><div class='output co'>#&gt; <span class='message'>Finished mutation rates per site per year</span></div><div class='output co'>#&gt; <span class='message'>Finished extreme environment</span></div><div class='output co'>#&gt; <span class='message'>Dropped 9312 rows with missing Attribute_value from gram stain</span></div><div class='output co'>#&gt; <span class='message'>Finished growth medium</span></div><div class='output co'>#&gt; <span class='message'>Finished growth temperature</span></div><div class='output co'>#&gt; <span class='message'>Finished habitat</span></div><div class='output co'>#&gt; <span class='message'>Finished optimal ph</span></div><div class='output co'>#&gt; <span class='message'>Finished aerophilicity</span></div><div class='output co'>#&gt; <span class='message'>Finished plant pathogenicity</span></div><div class='output co'>#&gt; <span class='message'>Finished width</span></div><div class='output co'>#&gt; <span class='message'>Finished spore shape</span></div><div class='output co'>#&gt; <span class='message'>Finished isolation site</span></div><div class='output co'>#&gt; <span class='message'>Finished disease association</span></div><div class='output co'>#&gt; <span class='message'>Finished hydrogen gas producing</span></div><div class='output co'>#&gt; <span class='message'>Finished length</span></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>[[</span><span class='fl'>1</span><span class='op'>]</span><span class='op'>]</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='message'>Dropped 15914 rows with missing Attribute_value from animal pathogen</span></div><div class='output co'>#&gt; <span class='message'>Finished antimicrobial resistance</span></div><div class='output co'>#&gt; <span class='message'>Dropped 3054 rows with missing Attribute_value from antimicrobial sensitivity</span></div><div class='output co'>#&gt; <span class='message'>Dropped 3583 rows with missing Attribute_value from biofilm forming</span></div><div class='output co'>#&gt; <span class='message'>Finished butyrate producing</span></div><div class='output co'>#&gt; <span class='message'>Finished acetate producing</span></div><div class='output co'>#&gt; <span class='message'>Finished lactate producing</span></div><div class='output co'>#&gt; <span class='message'>Finished arrangement</span></div><div class='output co'>#&gt; <span class='message'>Dropped 9304 rows with missing Attribute_value from shape</span></div><div class='output co'>#&gt; <span class='message'>Finished COGEM pathogenicity rating</span></div><div class='output co'>#&gt; <span class='message'>Finished mutation rate per site per generation</span></div><div class='output co'>#&gt; <span class='message'>Finished mutation rates per site per year</span></div><div class='output co'>#&gt; <span class='message'>Finished extreme environment</span></div><div class='output co'>#&gt; <span class='message'>Finished gram stain</span></div><div class='output co'>#&gt; <span class='message'>Finished growth medium</span></div><div class='output co'>#&gt; <span class='message'>Finished growth temperature</span></div><div class='output co'>#&gt; <span class='message'>Finished habitat</span></div><div class='output co'>#&gt; <span class='message'>Finished optimal ph</span></div><div class='output co'>#&gt; <span class='message'>Finished aerophilicity</span></div><div class='output co'>#&gt; <span class='message'>Finished plant pathogenicity</span></div><div class='output co'>#&gt; <span class='message'>Finished width</span></div><div class='output co'>#&gt; <span class='message'>Finished spore shape</span></div><div class='output co'>#&gt; <span class='message'>Finished isolation site</span></div><div class='output co'>#&gt; <span class='message'>Finished disease association</span></div><div class='output co'>#&gt; <span class='message'>Finished hydrogen gas producing</span></div><div class='output co'>#&gt; <span class='message'>Finished length</span></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>[[</span><span class='fl'>1</span><span class='op'>]</span><span class='op'>]</span><span class='op'>)</span>
 </div><div class='output co'>#&gt;   NCBI_ID Genome_ID Accession_number                         Taxon_name
 #&gt; 1  244596        NA               NA              Hoeflea phototrophica
 #&gt; 2   53633        NA               NA          Sulfobacillus acidophilus
@@ -171,14 +174,14 @@ physiologies, run bugphyzz::physiologiesList()</p></td>
 #&gt; 5                  NA
 #&gt; 6                  NA</div><div class='input'>
 <span class='va'>y</span> <span class='op'>&lt;-</span> <span class='fu'>physiologies</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"gram stain"</span>, <span class='st'>"aerophilicity"</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='message'>Dropped 9312 rows with missing Attribute_value from gram stain</span></div><div class='output co'>#&gt; <span class='message'>Finished aerophilicity</span></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span><span class='op'>(</span><span class='va'>y</span><span class='op'>[[</span><span class='fl'>1</span><span class='op'>]</span><span class='op'>]</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;   NCBI_ID Genome_ID
-#&gt; 1   46123        NA
-#&gt; 2   46125        NA
-#&gt; 3  442869        NA
-#&gt; 4  291967        NA
-#&gt; 5  291968        NA
-#&gt; 6      NA        NA
+</div><div class='output co'>#&gt; <span class='message'>Finished gram stain</span></div><div class='output co'>#&gt; <span class='message'>Finished aerophilicity</span></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span><span class='op'>(</span><span class='va'>y</span><span class='op'>[[</span><span class='fl'>1</span><span class='op'>]</span><span class='op'>]</span><span class='op'>)</span>
+</div><div class='output co'>#&gt;                       Taxon_name NCBI_ID Genome_ID
+#&gt; 1                    Abiotrophia   46123        NA
+#&gt; 2          Abiotrophia defectiva   46125        NA
+#&gt; 3            Acanthopleuribacter  442869        NA
+#&gt; 4                     Acaricomes  291967        NA
+#&gt; 5         Acaricomes phytoseiuli  291968        NA
+#&gt; 6 Acaryochloris marina MBIC11017  329726        NA
 #&gt;                                                                                               Accession_number
 #&gt; 1                                                                                                         &lt;NA&gt;
 #&gt; 2                                                                                                         &lt;NA&gt;
@@ -186,13 +189,13 @@ physiologies, run bugphyzz::physiologiesList()</p></td>
 #&gt; 4                                                                                                         &lt;NA&gt;
 #&gt; 5                                                                                                         &lt;NA&gt;
 #&gt; 6 NC_009925, NC_009926, NC_009927, NC_009928, NC_009929, NC_009930, NC_009931, NC_009932, NC_009933, NC_009934
-#&gt;                       Taxon_name           Attribute Attribute_value
-#&gt; 1                    Abiotrophia gram stain positive            TRUE
-#&gt; 2          Abiotrophia defectiva gram stain positive            TRUE
-#&gt; 3            Acanthopleuribacter gram stain negative            TRUE
-#&gt; 4                     Acaricomes gram stain positive            TRUE
-#&gt; 5         Acaricomes phytoseiuli gram stain positive            TRUE
-#&gt; 6 Acaryochloris marina MBIC11017 gram stain negative            TRUE
+#&gt;             Attribute Attribute_value
+#&gt; 1 gram stain positive            TRUE
+#&gt; 2 gram stain positive            TRUE
+#&gt; 3 gram stain negative            TRUE
+#&gt; 4 gram stain positive            TRUE
+#&gt; 5 gram stain positive            TRUE
+#&gt; 6 gram stain negative            TRUE
 #&gt;                                                                                                                                                                           Attribute_source
 #&gt; 1 Garrity, G.M., Winters, M. &amp; Searles, D.B. 2001a. Taxonomic Outline of the Procaryotic Genera. Bergey's Manual of Systematic Bacteriology, Second Edition. Release 1.0, Apr 2001: 1-39. 
 #&gt; 2                                                                                                                                                        https://github.com/dcdanko/MD1762

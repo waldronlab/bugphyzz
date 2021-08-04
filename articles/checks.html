@@ -57,6 +57,9 @@
       <a href="../articles/checks.html">Check Functions</a>
     </li>
     <li>
+      <a href="../articles/complete_summary_stats.html">Complete BugPhyzz Stats</a>
+    </li>
+    <li>
       <a href="../articles/summary_statistics.html">BugPhyzz Stats</a>
     </li>
     <li>
@@ -351,7 +354,7 @@
 <span class="co">#&gt; Finished mutation rate per site per generation</span>
 <span class="co">#&gt; Finished mutation rates per site per year</span>
 <span class="co">#&gt; Finished extreme environment</span>
-<span class="co">#&gt; Dropped 9312 rows with missing Attribute_value from gram stain</span>
+<span class="co">#&gt; Finished gram stain</span>
 <span class="co">#&gt; Finished growth medium</span>
 <span class="co">#&gt; Finished growth temperature</span>
 <span class="co">#&gt; Finished habitat</span>
@@ -381,29 +384,29 @@
 <span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Confidence_interval` in dataset `extreme environment` contains invalid values in 1876 rows. The first invalid values are: Always; Always; Always... </span>
 <span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Attribute` in dataset `growth medium` contains invalid values in 14 rows. The first invalid values are: mrs broth; mrs broth; mrs broth... </span>
 <span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Confidence_interval` in dataset `growth medium` contains invalid values in 304 rows. The first invalid values are: Always; Always; Always... </span>
-<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Attribute` in dataset `growth temperature` contains invalid values in 3218 rows. The first invalid values are: growth temperature; growth temperature; growth temperature... </span>
+<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Attribute` in dataset `growth temperature` contains invalid values in 2524 rows. The first invalid values are: growth temperature; growth temperature; growth temperature... </span>
 <span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Confidence_interval` in dataset `habitat` contains invalid values in 9 rows. The first invalid values are: Sometimes; Sometimes; Sometimes... </span>
 <span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Attribute` in dataset `optimal ph` contains invalid values in 886 rows. The first invalid values are: optimal ph; optimal ph; optimal ph... </span>
 <span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Evidence` in dataset `aerophilicity` contains invalid values in 1304 rows. The first invalid values are: ; ; ... </span>
 <span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Attribute` in dataset `plant pathogenicity` contains invalid values in 1493 rows. The first invalid values are: plant pathogenity; plant pathogenity; plant pathogenity... </span>
 <span class="co">#&gt; &gt;&gt;&gt; Invalid column class in width. The `Attribute_value` column` should be of class logical or numeric, not character </span>
 <span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Evidence` in dataset `width` contains invalid values in 1 rows. The first invalid values are: ... </span>
-<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Attribute` in dataset `isolation site` contains invalid values in 1107 rows. The first invalid values are: blade of grass from raritan river nj, usa; hot swamp from kunashir island, russia; 1940s by lilleengen... </span>
-<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Attribute` in dataset `disease association` contains invalid values in 184 rows. The first invalid values are: anaplasmosis; anemia; anthrax... </span>
-<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `NCBI_ID` in dataset `hydrogen gas producing` contains invalid values in 24 rows. The first invalid values are: Unidentified; Unidentified; Unidentified... </span>
+<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Attribute` in dataset `isolation site` contains invalid values in 1107 rows. The first invalid values are: ; ; ... </span>
+<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Attribute` in dataset `disease association` contains invalid values in 184 rows. The first invalid values are: tumors; hitra disease; anaplasmosis... </span>
+<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `NCBI_ID` in dataset `hydrogen gas producing` contains invalid values in 24 rows. The first invalid values are: ; ; ... </span>
 <span class="co">#&gt; &gt;&gt;&gt; Invalid column class in hydrogen gas producing. The `Attribute_value` column` should be of class logical or numeric, not character </span>
 <span class="co">#&gt; &gt;&gt;&gt; Invalid column class in length. The `Attribute_value` column` should be of class logical or numeric, not character</span></code></pre></div>
 <p>Turn list of errors into a table with links:</p>
 <table class="table">
 <colgroup>
 <col width="1%">
+<col width="6%">
+<col width="4%">
 <col width="5%">
+<col width="5%">
+<col width="31%">
 <col width="4%">
-<col width="4%">
-<col width="4%">
-<col width="37%">
-<col width="4%">
-<col width="36%">
+<col width="39%">
 </colgroup>
 <thead><tr class="header">
 <th align="right">n_error</th>
@@ -551,9 +554,9 @@
 <td align="left">growth temperature</td>
 <td align="left">Attribute</td>
 <td align="left">invalid_column_values</td>
-<td align="right">3218</td>
+<td align="right">2524</td>
 <td align="left">growth temperature; growth temperature; growth temperature; growth temperature; growth temperature; growth temperature</td>
-<td align="left">3218 x 9</td>
+<td align="left">2524 x 9</td>
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vTWXUnR0_jkpZEE06C0GAypTGjOa2RnOPiLSmPiwAnaf2qS33hd-6GKG95CYDgKeSk6t4BFVjIAB_sh/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vTWXUnR0_jkpZEE06C0GAypTGjOa2RnOPiLSmPiwAnaf2qS33hd-6GKG95CYDgKeSk6t4BFVjIAB_sh/pub?output=csv</a></td>
 </tr>
 <tr class="odd">
@@ -603,7 +606,7 @@
 <td align="left">invalid_column_class</td>
 <td align="right">NA</td>
 <td align="left">NA</td>
-<td align="left">865 x 9</td>
+<td align="left">863 x 9</td>
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vR45vzAobXMOH1SCECpkBkIvxTsG5d8jAweSHaUst-gFKQcS0tTYUjivmLVByOLbFZgF59miCyF11TC/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vR45vzAobXMOH1SCECpkBkIvxTsG5d8jAweSHaUst-gFKQcS0tTYUjivmLVByOLbFZgF59miCyF11TC/pub?output=csv</a></td>
 </tr>
 <tr class="even">
@@ -613,7 +616,7 @@
 <td align="left">invalid_column_values</td>
 <td align="right">1</td>
 <td align="left"></td>
-<td align="left">865 x 9</td>
+<td align="left">863 x 9</td>
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vR45vzAobXMOH1SCECpkBkIvxTsG5d8jAweSHaUst-gFKQcS0tTYUjivmLVByOLbFZgF59miCyF11TC/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vR45vzAobXMOH1SCECpkBkIvxTsG5d8jAweSHaUst-gFKQcS0tTYUjivmLVByOLbFZgF59miCyF11TC/pub?output=csv</a></td>
 </tr>
 <tr class="odd">
@@ -622,7 +625,7 @@
 <td align="left">Attribute</td>
 <td align="left">invalid_column_values</td>
 <td align="right">1107</td>
-<td align="left">blade of grass from raritan river nj, usa; hot swamp from kunashir island, russia; 1940s by lilleengen; 1940s by lilleengen; 1940s by lilleengen; 1940s by lilleengen</td>
+<td align="left">; ; ; ; ;</td>
 <td align="left">1176 x 9</td>
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vR5qKaSI_iXovASXA2U8figFKFBRNOuuFcnr-wSedtGuxAu2m8IjHp1uD23NGTWK9NmnKcO0m7FfkIx/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vR5qKaSI_iXovASXA2U8figFKFBRNOuuFcnr-wSedtGuxAu2m8IjHp1uD23NGTWK9NmnKcO0m7FfkIx/pub?output=csv</a></td>
 </tr>
@@ -632,7 +635,7 @@
 <td align="left">Attribute</td>
 <td align="left">invalid_column_values</td>
 <td align="right">184</td>
-<td align="left">anaplasmosis; anemia; anthrax; anthrax; anthrax; anthrax</td>
+<td align="left">tumors; hitra disease; anaplasmosis; bovine anaplasmosis; bovine anaplasmosis; anthrax</td>
 <td align="left">445 x 9</td>
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vTboJM7necIfjgRgyYJ4LJWkCv_1y7O00yvyiSGzFdSfJDkeLqWrQ8FpcsYKFSOrQw75wCRst6KA0_a/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vTboJM7necIfjgRgyYJ4LJWkCv_1y7O00yvyiSGzFdSfJDkeLqWrQ8FpcsYKFSOrQw75wCRst6KA0_a/pub?output=csv</a></td>
 </tr>
@@ -642,7 +645,7 @@
 <td align="left">NCBI_ID</td>
 <td align="left">invalid_column_values</td>
 <td align="right">24</td>
-<td align="left">Unidentified; Unidentified; Unidentified; Unidentified; Unidentified; Unidentified</td>
+<td align="left">; ; ; ; ;</td>
 <td align="left">24 x 11</td>
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vSpucXiYrMe_iYvnZDuNSNkRVnEWRQhykCCXoIvtmTiKAVUdkVnRYvl17nbwGqZDg2xVDwaUXccGYsF/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vSpucXiYrMe_iYvnZDuNSNkRVnEWRQhykCCXoIvtmTiKAVUdkVnRYvl17nbwGqZDg2xVDwaUXccGYsF/pub?output=csv</a></td>
 </tr>
@@ -663,7 +666,7 @@
 <td align="left">invalid_column_class</td>
 <td align="right">NA</td>
 <td align="left">NA</td>
-<td align="left">865 x 9</td>
+<td align="left">863 x 9</td>
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQkcQ7CJ0LjgE0928maxcVEiqq7QHl6vuosL7qdWaCMVuqHCDwsPJA7yNSeXm9FIip-mDRaU6pMk4Ww/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQkcQ7CJ0LjgE0928maxcVEiqq7QHl6vuosL7qdWaCMVuqHCDwsPJA7yNSeXm9FIip-mDRaU6pMk4Ww/pub?output=csv</a></td>
 </tr>
 </tbody>
@@ -749,36 +752,137 @@
 <span class="co">#&gt; &gt;&gt;&gt; All columns in the `shape` dataset are present and in the right order.</span>
 <span class="co">#&gt; &gt;&gt;&gt; All columns in the `COGEM pathogenicity rating` dataset are present and in the right order.</span>
 <span class="co">#&gt; &gt;&gt;&gt; All columns in the `mutation rate per site per generation` dataset are present and in the right order.</span>
-<span class="co">#&gt; &gt;&gt;&gt; All columns in the `mutation rates per site per year` dataset are present and in the right order.</span>
-<span class="co">#&gt; &gt;&gt;&gt; All columns in the `extreme environment` dataset are present and in the right order.</span>
-<span class="co">#&gt; &gt;&gt;&gt; All columns in the `gram stain` dataset are present and in the right order.</span>
+<span class="co">#&gt; &gt;&gt;&gt; Misplaced required columns. The following required columns in the `mutation rates per site per year` dataset are not in the right place: NCBI_ID, Genome_ID, Accession_number, Taxon_name. Please check the correct order with `bugphyz:::requiredColumns()`. </span>
+<span class="co">#&gt;  The misplaed columns are: </span>
+<span class="co">#&gt;        required_column expected_position actual_position misplaced</span>
+<span class="co">#&gt; 1             NCBI_ID                 1               2         *</span>
+<span class="co">#&gt; 2           Genome_ID                 2               3         *</span>
+<span class="co">#&gt; 3    Accession_number                 3               4         *</span>
+<span class="co">#&gt; 4          Taxon_name                 4               1         *</span>
+<span class="co">#&gt; 5           Attribute                 5               5          </span>
+<span class="co">#&gt; 6     Attribute_value                 6               6          </span>
+<span class="co">#&gt; 7    Attribute_source                 7               7          </span>
+<span class="co">#&gt; 8            Evidence                 8               8          </span>
+<span class="co">#&gt; 9 Confidence_interval                 9               9           </span>
+<span class="co">#&gt; &gt;&gt;&gt; Misplaced required columns. The following required columns in the `extreme environment` dataset are not in the right place: NCBI_ID, Genome_ID, Accession_number, Taxon_name. Please check the correct order with `bugphyz:::requiredColumns()`. </span>
+<span class="co">#&gt;  The misplaed columns are: </span>
+<span class="co">#&gt;        required_column expected_position actual_position misplaced</span>
+<span class="co">#&gt; 1             NCBI_ID                 1               2         *</span>
+<span class="co">#&gt; 2           Genome_ID                 2               3         *</span>
+<span class="co">#&gt; 3    Accession_number                 3               4         *</span>
+<span class="co">#&gt; 4          Taxon_name                 4               1         *</span>
+<span class="co">#&gt; 5           Attribute                 5               5          </span>
+<span class="co">#&gt; 6     Attribute_value                 6               6          </span>
+<span class="co">#&gt; 7    Attribute_source                 7               7          </span>
+<span class="co">#&gt; 8            Evidence                 8               8          </span>
+<span class="co">#&gt; 9 Confidence_interval                 9               9           </span>
+<span class="co">#&gt; &gt;&gt;&gt; Misplaced required columns. The following required columns in the `gram stain` dataset are not in the right place: NCBI_ID, Genome_ID, Accession_number, Taxon_name. Please check the correct order with `bugphyz:::requiredColumns()`. </span>
+<span class="co">#&gt;  The misplaed columns are: </span>
+<span class="co">#&gt;        required_column expected_position actual_position misplaced</span>
+<span class="co">#&gt; 1             NCBI_ID                 1               2         *</span>
+<span class="co">#&gt; 2           Genome_ID                 2               3         *</span>
+<span class="co">#&gt; 3    Accession_number                 3               4         *</span>
+<span class="co">#&gt; 4          Taxon_name                 4               1         *</span>
+<span class="co">#&gt; 5           Attribute                 5               5          </span>
+<span class="co">#&gt; 6     Attribute_value                 6               6          </span>
+<span class="co">#&gt; 7    Attribute_source                 7               7          </span>
+<span class="co">#&gt; 8            Evidence                 8               8          </span>
+<span class="co">#&gt; 9 Confidence_interval                 9               9</span>
 <span class="co">#&gt; &gt;&gt;&gt; All columns in the `growth medium` dataset are present and in the right order.</span>
-<span class="co">#&gt; &gt;&gt;&gt; All columns in the `growth temperature` dataset are present and in the right order.</span>
-<span class="co">#&gt; &gt;&gt;&gt; All columns in the `habitat` dataset are present and in the right order.</span>
+<span class="co">#&gt; &gt;&gt;&gt; Misplaced required columns. The following required columns in the `growth temperature` dataset are not in the right place: NCBI_ID, Genome_ID, Accession_number, Taxon_name. Please check the correct order with `bugphyz:::requiredColumns()`. </span>
+<span class="co">#&gt;  The misplaed columns are: </span>
+<span class="co">#&gt;        required_column expected_position actual_position misplaced</span>
+<span class="co">#&gt; 1             NCBI_ID                 1               2         *</span>
+<span class="co">#&gt; 2           Genome_ID                 2               3         *</span>
+<span class="co">#&gt; 3    Accession_number                 3               4         *</span>
+<span class="co">#&gt; 4          Taxon_name                 4               1         *</span>
+<span class="co">#&gt; 5           Attribute                 5               5          </span>
+<span class="co">#&gt; 6     Attribute_value                 6               6          </span>
+<span class="co">#&gt; 7    Attribute_source                 7               7          </span>
+<span class="co">#&gt; 8            Evidence                 8               8          </span>
+<span class="co">#&gt; 9 Confidence_interval                 9               9           </span>
+<span class="co">#&gt; &gt;&gt;&gt; Misplaced required columns. The following required columns in the `habitat` dataset are not in the right place: NCBI_ID, Genome_ID, Accession_number, Taxon_name. Please check the correct order with `bugphyz:::requiredColumns()`. </span>
+<span class="co">#&gt;  The misplaed columns are: </span>
+<span class="co">#&gt;        required_column expected_position actual_position misplaced</span>
+<span class="co">#&gt; 1             NCBI_ID                 1               2         *</span>
+<span class="co">#&gt; 2           Genome_ID                 2               3         *</span>
+<span class="co">#&gt; 3    Accession_number                 3               4         *</span>
+<span class="co">#&gt; 4          Taxon_name                 4               1         *</span>
+<span class="co">#&gt; 5           Attribute                 5               5          </span>
+<span class="co">#&gt; 6     Attribute_value                 6               6          </span>
+<span class="co">#&gt; 7    Attribute_source                 7               7          </span>
+<span class="co">#&gt; 8            Evidence                 8               8          </span>
+<span class="co">#&gt; 9 Confidence_interval                 9               9</span>
 <span class="co">#&gt; &gt;&gt;&gt; All columns in the `optimal ph` dataset are present and in the right order.</span>
 <span class="co">#&gt; &gt;&gt;&gt; All columns in the `aerophilicity` dataset are present and in the right order.</span>
 <span class="co">#&gt; &gt;&gt;&gt; All columns in the `plant pathogenicity` dataset are present and in the right order.</span>
-<span class="co">#&gt; &gt;&gt;&gt; All columns in the `width` dataset are present and in the right order.</span>
+<span class="co">#&gt; &gt;&gt;&gt; Misplaced required columns. The following required columns in the `width` dataset are not in the right place: NCBI_ID, Genome_ID, Accession_number, Taxon_name. Please check the correct order with `bugphyz:::requiredColumns()`. </span>
+<span class="co">#&gt;  The misplaed columns are: </span>
+<span class="co">#&gt;        required_column expected_position actual_position misplaced</span>
+<span class="co">#&gt; 1             NCBI_ID                 1               2         *</span>
+<span class="co">#&gt; 2           Genome_ID                 2               3         *</span>
+<span class="co">#&gt; 3    Accession_number                 3               4         *</span>
+<span class="co">#&gt; 4          Taxon_name                 4               1         *</span>
+<span class="co">#&gt; 5           Attribute                 5               5          </span>
+<span class="co">#&gt; 6     Attribute_value                 6               6          </span>
+<span class="co">#&gt; 7    Attribute_source                 7               7          </span>
+<span class="co">#&gt; 8            Evidence                 8               8          </span>
+<span class="co">#&gt; 9 Confidence_interval                 9               9</span>
 <span class="co">#&gt; &gt;&gt;&gt; All columns in the `spore shape` dataset are present and in the right order.</span>
-<span class="co">#&gt; &gt;&gt;&gt; All columns in the `isolation site` dataset are present and in the right order.</span>
-<span class="co">#&gt; &gt;&gt;&gt; All columns in the `disease association` dataset are present and in the right order.</span>
-<span class="co">#&gt; &gt;&gt;&gt; All columns in the `hydrogen gas producing` dataset are present and in the right order.</span>
-<span class="co">#&gt; &gt;&gt;&gt; All columns in the `length` dataset are present and in the right order.</span>
+<span class="co">#&gt; &gt;&gt;&gt; Misplaced required columns. The following required columns in the `isolation site` dataset are not in the right place: NCBI_ID, Genome_ID, Accession_number, Taxon_name. Please check the correct order with `bugphyz:::requiredColumns()`. </span>
+<span class="co">#&gt;  The misplaed columns are: </span>
+<span class="co">#&gt;        required_column expected_position actual_position misplaced</span>
+<span class="co">#&gt; 1             NCBI_ID                 1               2         *</span>
+<span class="co">#&gt; 2           Genome_ID                 2               3         *</span>
+<span class="co">#&gt; 3    Accession_number                 3               4         *</span>
+<span class="co">#&gt; 4          Taxon_name                 4               1         *</span>
+<span class="co">#&gt; 5           Attribute                 5               5          </span>
+<span class="co">#&gt; 6     Attribute_value                 6               6          </span>
+<span class="co">#&gt; 7    Attribute_source                 7               7          </span>
+<span class="co">#&gt; 8            Evidence                 8               8          </span>
+<span class="co">#&gt; 9 Confidence_interval                 9               9           </span>
+<span class="co">#&gt; &gt;&gt;&gt; Misplaced required columns. The following required columns in the `disease association` dataset are not in the right place: NCBI_ID, Genome_ID, Accession_number, Taxon_name. Please check the correct order with `bugphyz:::requiredColumns()`. </span>
+<span class="co">#&gt;  The misplaed columns are: </span>
+<span class="co">#&gt;        required_column expected_position actual_position misplaced</span>
+<span class="co">#&gt; 1             NCBI_ID                 1               2         *</span>
+<span class="co">#&gt; 2           Genome_ID                 2               3         *</span>
+<span class="co">#&gt; 3    Accession_number                 3               4         *</span>
+<span class="co">#&gt; 4          Taxon_name                 4               1         *</span>
+<span class="co">#&gt; 5           Attribute                 5               5          </span>
+<span class="co">#&gt; 6     Attribute_value                 6               6          </span>
+<span class="co">#&gt; 7    Attribute_source                 7               7          </span>
+<span class="co">#&gt; 8            Evidence                 8               8          </span>
+<span class="co">#&gt; 9 Confidence_interval                 9               9           </span>
+<span class="co">#&gt; &gt;&gt;&gt; Misplaced required columns. The following required columns in the `hydrogen gas producing` dataset are not in the right place: NCBI_ID, Genome_ID, Accession_number, Taxon_name. Please check the correct order with `bugphyz:::requiredColumns()`. </span>
+<span class="co">#&gt;  The misplaed columns are: </span>
+<span class="co">#&gt;        required_column expected_position actual_position misplaced</span>
+<span class="co">#&gt; 1             NCBI_ID                 1               2         *</span>
+<span class="co">#&gt; 2           Genome_ID                 2               3         *</span>
+<span class="co">#&gt; 3    Accession_number                 3               4         *</span>
+<span class="co">#&gt; 4          Taxon_name                 4               1         *</span>
+<span class="co">#&gt; 5           Attribute                 5               5          </span>
+<span class="co">#&gt; 6     Attribute_value                 6               6          </span>
+<span class="co">#&gt; 7    Attribute_source                 7               7          </span>
+<span class="co">#&gt; 8            Evidence                 8               8          </span>
+<span class="co">#&gt; 9 Confidence_interval                 9               9           </span>
+<span class="co">#&gt; &gt;&gt;&gt; Misplaced required columns. The following required columns in the `length` dataset are not in the right place: NCBI_ID, Genome_ID, Accession_number, Taxon_name. Please check the correct order with `bugphyz:::requiredColumns()`. </span>
+<span class="co">#&gt;  The misplaed columns are: </span>
+<span class="co">#&gt;        required_column expected_position actual_position misplaced</span>
+<span class="co">#&gt; 1             NCBI_ID                 1               2         *</span>
+<span class="co">#&gt; 2           Genome_ID                 2               3         *</span>
+<span class="co">#&gt; 3    Accession_number                 3               4         *</span>
+<span class="co">#&gt; 4          Taxon_name                 4               1         *</span>
+<span class="co">#&gt; 5           Attribute                 5               5          </span>
+<span class="co">#&gt; 6     Attribute_value                 6               6          </span>
+<span class="co">#&gt; 7    Attribute_source                 7               7          </span>
+<span class="co">#&gt; 8            Evidence                 8               8          </span>
+<span class="co">#&gt; 9 Confidence_interval                 9               9</span>
 
 <span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">errors</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span>
     <span class="va">no_errors_message</span> <span class="op">=</span> <span class="st">"All required columns are present and in the right column across the list of bugphyzz datasets imported with the `physiologies` function."</span>
     <span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html">as.data.frame</a></span><span class="op">(</span><span class="va">no_errors_message</span><span class="op">)</span> <span class="op">%&gt;%</span> 
       <span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span><span class="op">(</span><span class="op">)</span>
 <span class="op">}</span></code></pre></div>
-<table class="table">
-<colgroup><col width="100%"></colgroup>
-<thead><tr class="header">
-<th align="left">no_errors_message</th>
-</tr></thead>
-<tbody><tr class="odd">
-<td align="left">All required columns are present and in the right column across the list of bugphyzz datasets imported with the <code>physiologies</code> function.</td>
-</tr></tbody>
-</table>
 </div>
 <div id="check-required-columns-in-the-fatty-acid-composition-dataset" class="section level2">
 <h2 class="hasAnchor">

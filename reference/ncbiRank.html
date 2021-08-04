@@ -99,6 +99,9 @@ order, family, genus, and species level for given NCBI taxonomy IDs." />
       <a href="../articles/checks.html">Check Functions</a>
     </li>
     <li>
+      <a href="../articles/complete_summary_stats.html">Complete BugPhyzz Stats</a>
+    </li>
+    <li>
       <a href="../articles/summary_statistics.html">BugPhyzz Stats</a>
     </li>
     <li>
@@ -160,12 +163,12 @@ Default is FALSE.</p></td>
 <span class='va'>rank_names</span> <span class='op'>&lt;-</span> <span class='fu'>ncbiRank</span><span class='op'>(</span><span class='va'>taxonomy_ids</span><span class='op'>)</span>
 <span class='va'>rank_names</span>
 </div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 4 × 9</span>
-#&gt;   NCBI_ID superkingdom kingdom phylum   class    order   family  genus  species 
-#&gt;     <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>        <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>  <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>   
-#&gt; <span style='color: #BCBCBC;'>1</span>    <span style='text-decoration: underline;'>1</span>578 Bacteria     <span style='color: #BB0000;'>NA</span>      Firmicu… Bacilli  Lactob… Lactob… Lacto… <span style='color: #BB0000;'>NA</span>      
-#&gt; <span style='color: #BCBCBC;'>2</span>     745 Bacteria     <span style='color: #BB0000;'>NA</span>      Proteob… Gammapr… Pasteu… Pasteu… Paste… <span style='color: #BB0000;'>NA</span>      
-#&gt; <span style='color: #BCBCBC;'>3</span>     562 Bacteria     <span style='color: #BB0000;'>NA</span>      Proteob… Gammapr… Entero… Entero… Esche… Escheri…
-#&gt; <span style='color: #BCBCBC;'>4</span>       2 Bacteria     <span style='color: #BB0000;'>NA</span>      <span style='color: #BB0000;'>NA</span>       <span style='color: #BB0000;'>NA</span>       <span style='color: #BB0000;'>NA</span>      <span style='color: #BB0000;'>NA</span>      <span style='color: #BB0000;'>NA</span>     <span style='color: #BB0000;'>NA</span>      </div><div class='input'>
+#&gt;   NCBI_ID superkingdom kingdom phylum         class  order  family genus species
+#&gt;     <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>        <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>          <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>  <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>  <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>  <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>  
+#&gt; <span style='color: #BCBCBC;'>1</span>    <span style='text-decoration: underline;'>1</span>578 Bacteria     <span style='color: #BB0000;'>NA</span>      Firmicutes     Bacil… Lacto… Lacto… Lact… <span style='color: #BB0000;'>NA</span>     
+#&gt; <span style='color: #BCBCBC;'>2</span>     745 Bacteria     <span style='color: #BB0000;'>NA</span>      Proteobacteria Gamma… Paste… Paste… Past… <span style='color: #BB0000;'>NA</span>     
+#&gt; <span style='color: #BCBCBC;'>3</span>     562 Bacteria     <span style='color: #BB0000;'>NA</span>      Proteobacteria Gamma… Enter… Enter… Esch… Escher…
+#&gt; <span style='color: #BCBCBC;'>4</span>       2 Bacteria     <span style='color: #BB0000;'>NA</span>      <span style='color: #BB0000;'>NA</span>             <span style='color: #BB0000;'>NA</span>     <span style='color: #BB0000;'>NA</span>     <span style='color: #BB0000;'>NA</span>     <span style='color: #BB0000;'>NA</span>    <span style='color: #BB0000;'>NA</span>     </div><div class='input'>
 <span class='co'># Example 2</span>
 <span class='va'>rank_ids</span> <span class='op'>&lt;-</span> <span class='fu'>ncbiRank</span><span class='op'>(</span><span class='va'>taxonomy_ids</span>, taxid <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
 <span class='va'>rank_ids</span>
