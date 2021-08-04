@@ -39,6 +39,7 @@ Source summary statistics functions
 ```{r}
 source(here::here("R/categorical_summary_stats.R"))
 source(here::here("R/continuous_summary_stats.R"))
+source(here::here("R/taxonomy_functions.R"))
 ```
 ```{r}
 printGGlist <- function(gglist){

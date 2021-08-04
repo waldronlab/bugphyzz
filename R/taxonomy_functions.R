@@ -7,7 +7,7 @@
 #' A numeric vector or character vector of valid NCBI taxonomy IDs.
 #'
 #' @param taxid
-#' A logical vector of lenght 1. If TRUE, taxonomy IDs (taxids) are returned instead of rank names.
+#' A logical vector of length 1. If TRUE, taxonomy IDs (taxids) are returned instead of rank names.
 #' Default is FALSE.
 #'
 #' @return
