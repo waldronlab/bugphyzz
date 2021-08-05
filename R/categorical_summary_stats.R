@@ -42,7 +42,7 @@ ncbi_stats <- function(data, phys = deparse(substitute(data)))
 #' fetch_ranks(aer, "aerophilicity")
 fetch_ranks <- function(data)
 {
-  data <- data[!is.na(data$NCBI_ID),]
+  data <- data[!is.na(data$NCBI_ID),] %>% unique()
   ncbi_ranks <- ncbiRank(x = data$NCBI_ID, ranks = c("phylum", "genus", "species"))
   ncbi_ranks$Taxon_name <- data$Taxon_name
   with_ranks <- full_join(ncbi_ranks, data, by = c("Taxon_name", "NCBI_ID"))
