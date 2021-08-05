@@ -274,7 +274,11 @@
 </ul>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">err5</span> <span class="op">&lt;-</span> <span class="fu">bugphyzz</span><span class="fu">:::</span><span class="fu"><a href="../reference/checkColumnValuesDF.html">checkColumnValuesDF</a></span><span class="op">(</span>dataset <span class="op">=</span> <span class="va">list_of_df</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span>, dataset_name <span class="op">=</span> <span class="st">"dataset_with_invalid_column"</span><span class="op">)</span>
-<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `NCBI_ID` in dataset `dataset_with_invalid_column` contains invalid values in 10 rows. The first invalid values are: a; b; c... </span>
+<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `NCBI_ID` in dataset `dataset_with_invalid_column` contains invalid values in 10 rows. The first invalid values are: a; b; c...</span>
+<span class="co">#&gt; Warning in scan(file = file, what = what, sep = sep, quote = quote, dec = dec, :</span>
+<span class="co">#&gt; EOF within quoted string</span>
+<span class="co">#&gt; Warning in scan(file = file, what = what, sep = sep, quote = quote, dec = dec, :</span>
+<span class="co">#&gt; number of items read is not a multiple of the number of columns</span>
 <span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Attribute` in dataset `dataset_with_invalid_column` contains invalid values in 10 rows. The first invalid values are: 1; 2; 3... </span>
 <span class="co">#&gt; &gt;&gt;&gt; Invalid column class in dataset_with_invalid_column. The `Attribute_value` column` should be of class logical or numeric, not character </span>
 <span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Evidence` in dataset `dataset_with_invalid_column` contains invalid values in 10 rows. The first invalid values are: 1; 2; 3... </span>
@@ -304,7 +308,11 @@
 </ul>
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">err6</span> <span class="op">&lt;-</span> <span class="fu">bugphyzz</span><span class="fu">:::</span><span class="fu"><a href="../reference/checkColumnValuesList.html">checkColumnValuesList</a></span><span class="op">(</span>list <span class="op">=</span> <span class="va">list_of_df</span><span class="op">)</span>
-<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `NCBI_ID` in dataset `dataset_with_bad_values` contains invalid values in 10 rows. The first invalid values are: a; b; c... </span>
+<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `NCBI_ID` in dataset `dataset_with_bad_values` contains invalid values in 10 rows. The first invalid values are: a; b; c...</span>
+<span class="co">#&gt; Warning in scan(file = file, what = what, sep = sep, quote = quote, dec = dec, :</span>
+<span class="co">#&gt; EOF within quoted string</span>
+<span class="co">#&gt; Warning in scan(file = file, what = what, sep = sep, quote = quote, dec = dec, :</span>
+<span class="co">#&gt; number of items read is not a multiple of the number of columns</span>
 <span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Attribute` in dataset `dataset_with_bad_values` contains invalid values in 10 rows. The first invalid values are: 1; 2; 3... </span>
 <span class="co">#&gt; &gt;&gt;&gt; Invalid column class in dataset_with_bad_values. The `Attribute_value` column` should be of class logical or numeric, not character </span>
 <span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Evidence` in dataset `dataset_with_bad_values` contains invalid values in 10 rows. The first invalid values are: 1; 2; 3... </span>
@@ -371,30 +379,152 @@
 <p>Generate list of errors:</p>
 <div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">list_of_errors</span> <span class="op">&lt;-</span> <span class="fu">bugphyzz</span><span class="fu">:::</span><span class="fu"><a href="../reference/checkColumnValuesList.html">checkColumnValuesList</a></span><span class="op">(</span><span class="va">bp</span><span class="op">)</span>
-<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Taxon_name` in dataset `animal pathogen` contains invalid values in 1 rows. The first invalid values are: ... </span>
-<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Confidence_interval` in dataset `antimicrobial sensitivity` contains invalid values in 832 rows. The first invalid values are: EXP; EXP; EXP... </span>
-<span class="co">#&gt; &gt;&gt;&gt; Invalid column class in acetate producing. The `Attribute_value` column` should be of class logical or numeric, not character </span>
+<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Taxon_name` in dataset `animal pathogen` contains invalid values in 1 rows. The first invalid values are: ...</span>
+<span class="co">#&gt; Warning in scan(file = file, what = what, sep = sep, quote = quote, dec = dec, :</span>
+<span class="co">#&gt; EOF within quoted string</span>
+<span class="co">#&gt; Warning in scan(file = file, what = what, sep = sep, quote = quote, dec = dec, :</span>
+<span class="co">#&gt; number of items read is not a multiple of the number of columns</span>
+<span class="co">#&gt; Warning in scan(file = file, what = what, sep = sep, quote = quote, dec = dec, :</span>
+<span class="co">#&gt; EOF within quoted string</span>
+<span class="co">#&gt; Warning in scan(file = file, what = what, sep = sep, quote = quote, dec = dec, :</span>
+<span class="co">#&gt; number of items read is not a multiple of the number of columns</span>
+<span class="co">#&gt; Warning in scan(file = file, what = what, sep = sep, quote = quote, dec = dec, :</span>
+<span class="co">#&gt; EOF within quoted string</span>
+<span class="co">#&gt; Warning in scan(file = file, what = what, sep = sep, quote = quote, dec = dec, :</span>
+<span class="co">#&gt; number of items read is not a multiple of the number of columns</span>
+<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Confidence_interval` in dataset `antimicrobial sensitivity` contains invalid values in 832 rows. The first invalid values are: EXP; EXP; EXP...</span>
+<span class="co">#&gt; Warning in scan(file = file, what = what, sep = sep, quote = quote, dec = dec, :</span>
+<span class="co">#&gt; EOF within quoted string</span>
+
+<span class="co">#&gt; Warning in scan(file = file, what = what, sep = sep, quote = quote, dec = dec, :</span>
+<span class="co">#&gt; number of items read is not a multiple of the number of columns</span>
+<span class="co">#&gt; Warning in scan(file = file, what = what, sep = sep, quote = quote, dec = dec, :</span>
+<span class="co">#&gt; EOF within quoted string</span>
+<span class="co">#&gt; Warning in scan(file = file, what = what, sep = sep, quote = quote, dec = dec, :</span>
+<span class="co">#&gt; number of items read is not a multiple of the number of columns</span>
+<span class="co">#&gt; Warning in scan(file = file, what = what, sep = sep, quote = quote, dec = dec, :</span>
+<span class="co">#&gt; EOF within quoted string</span>
+<span class="co">#&gt; Warning in scan(file = file, what = what, sep = sep, quote = quote, dec = dec, :</span>
+<span class="co">#&gt; number of items read is not a multiple of the number of columns</span>
+<span class="co">#&gt; &gt;&gt;&gt; Invalid column class in acetate producing. The `Attribute_value` column` should be of class logical or numeric, not character</span>
+<span class="co">#&gt; Warning in scan(file = file, what = what, sep = sep, quote = quote, dec = dec, :</span>
+<span class="co">#&gt; EOF within quoted string</span>
+
+<span class="co">#&gt; Warning in scan(file = file, what = what, sep = sep, quote = quote, dec = dec, :</span>
+<span class="co">#&gt; number of items read is not a multiple of the number of columns</span>
 <span class="co">#&gt; &gt;&gt;&gt; Invalid column class in lactate producing. The `Attribute_value` column` should be of class logical or numeric, not character </span>
-<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Accession_number` in dataset `arrangement` contains invalid values in 1 rows. The first invalid values are: ... </span>
+<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Accession_number` in dataset `arrangement` contains invalid values in 1 rows. The first invalid values are: ...</span>
+<span class="co">#&gt; Warning in scan(file = file, what = what, sep = sep, quote = quote, dec = dec, :</span>
+<span class="co">#&gt; EOF within quoted string</span>
+
+<span class="co">#&gt; Warning in scan(file = file, what = what, sep = sep, quote = quote, dec = dec, :</span>
+<span class="co">#&gt; number of items read is not a multiple of the number of columns</span>
 <span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Attribute` in dataset `arrangement` contains invalid values in 8 rows. The first invalid values are: v-formations; v-formations; v-formations... </span>
-<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Evidence` in dataset `arrangement` contains invalid values in 1071 rows. The first invalid values are: ; ; ... </span>
+<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Evidence` in dataset `arrangement` contains invalid values in 1071 rows. The first invalid values are: ; ; ...</span>
+<span class="co">#&gt; Warning in scan(file = file, what = what, sep = sep, quote = quote, dec = dec, :</span>
+<span class="co">#&gt; EOF within quoted string</span>
+
+<span class="co">#&gt; Warning in scan(file = file, what = what, sep = sep, quote = quote, dec = dec, :</span>
+<span class="co">#&gt; number of items read is not a multiple of the number of columns</span>
 <span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Attribute` in dataset `shape` contains invalid values in 1 rows. The first invalid values are: square... </span>
-<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Evidence` in dataset `shape` contains invalid values in 1279 rows. The first invalid values are: ; ; ... </span>
+<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Evidence` in dataset `shape` contains invalid values in 1279 rows. The first invalid values are: ; ; ...</span>
+<span class="co">#&gt; Warning in scan(file = file, what = what, sep = sep, quote = quote, dec = dec, :</span>
+<span class="co">#&gt; EOF within quoted string</span>
+
+<span class="co">#&gt; Warning in scan(file = file, what = what, sep = sep, quote = quote, dec = dec, :</span>
+<span class="co">#&gt; number of items read is not a multiple of the number of columns</span>
+<span class="co">#&gt; Warning in scan(file = file, what = what, sep = sep, quote = quote, dec = dec, :</span>
+<span class="co">#&gt; EOF within quoted string</span>
+<span class="co">#&gt; Warning in scan(file = file, what = what, sep = sep, quote = quote, dec = dec, :</span>
+<span class="co">#&gt; number of items read is not a multiple of the number of columns</span>
+<span class="co">#&gt; Warning in scan(file = file, what = what, sep = sep, quote = quote, dec = dec, :</span>
+<span class="co">#&gt; EOF within quoted string</span>
+<span class="co">#&gt; Warning in scan(file = file, what = what, sep = sep, quote = quote, dec = dec, :</span>
+<span class="co">#&gt; number of items read is not a multiple of the number of columns</span>
+<span class="co">#&gt; Warning in scan(file = file, what = what, sep = sep, quote = quote, dec = dec, :</span>
+<span class="co">#&gt; EOF within quoted string</span>
+<span class="co">#&gt; Warning in scan(file = file, what = what, sep = sep, quote = quote, dec = dec, :</span>
+<span class="co">#&gt; number of items read is not a multiple of the number of columns</span>
 <span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Attribute` in dataset `extreme environment` contains invalid values in 1876 rows. The first invalid values are: Extreme environment; Extreme environment; Extreme environment... </span>
-<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Confidence_interval` in dataset `extreme environment` contains invalid values in 1876 rows. The first invalid values are: Always; Always; Always... </span>
+<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Confidence_interval` in dataset `extreme environment` contains invalid values in 1876 rows. The first invalid values are: Always; Always; Always...</span>
+<span class="co">#&gt; Warning in scan(file = file, what = what, sep = sep, quote = quote, dec = dec, :</span>
+<span class="co">#&gt; EOF within quoted string</span>
+
+<span class="co">#&gt; Warning in scan(file = file, what = what, sep = sep, quote = quote, dec = dec, :</span>
+<span class="co">#&gt; number of items read is not a multiple of the number of columns</span>
+<span class="co">#&gt; Warning in scan(file = file, what = what, sep = sep, quote = quote, dec = dec, :</span>
+<span class="co">#&gt; EOF within quoted string</span>
+<span class="co">#&gt; Warning in scan(file = file, what = what, sep = sep, quote = quote, dec = dec, :</span>
+<span class="co">#&gt; number of items read is not a multiple of the number of columns</span>
 <span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Attribute` in dataset `growth medium` contains invalid values in 14 rows. The first invalid values are: mrs broth; mrs broth; mrs broth... </span>
-<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Confidence_interval` in dataset `growth medium` contains invalid values in 304 rows. The first invalid values are: Always; Always; Always... </span>
-<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Attribute` in dataset `growth temperature` contains invalid values in 2524 rows. The first invalid values are: growth temperature; growth temperature; growth temperature... </span>
-<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Confidence_interval` in dataset `habitat` contains invalid values in 9 rows. The first invalid values are: Sometimes; Sometimes; Sometimes... </span>
-<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Attribute` in dataset `optimal ph` contains invalid values in 886 rows. The first invalid values are: optimal ph; optimal ph; optimal ph... </span>
-<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Evidence` in dataset `aerophilicity` contains invalid values in 1304 rows. The first invalid values are: ; ; ... </span>
-<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Attribute` in dataset `plant pathogenicity` contains invalid values in 1493 rows. The first invalid values are: plant pathogenity; plant pathogenity; plant pathogenity... </span>
+<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Confidence_interval` in dataset `growth medium` contains invalid values in 304 rows. The first invalid values are: Always; Always; Always...</span>
+<span class="co">#&gt; Warning in scan(file = file, what = what, sep = sep, quote = quote, dec = dec, :</span>
+<span class="co">#&gt; EOF within quoted string</span>
+
+<span class="co">#&gt; Warning in scan(file = file, what = what, sep = sep, quote = quote, dec = dec, :</span>
+<span class="co">#&gt; number of items read is not a multiple of the number of columns</span>
+<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Attribute` in dataset `growth temperature` contains invalid values in 2524 rows. The first invalid values are: growth temperature; growth temperature; growth temperature...</span>
+<span class="co">#&gt; Warning in scan(file = file, what = what, sep = sep, quote = quote, dec = dec, :</span>
+<span class="co">#&gt; EOF within quoted string</span>
+
+<span class="co">#&gt; Warning in scan(file = file, what = what, sep = sep, quote = quote, dec = dec, :</span>
+<span class="co">#&gt; number of items read is not a multiple of the number of columns</span>
+<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Attribute` in dataset `habitat` contains invalid values in 136 rows. The first invalid values are: human urine; human urine; human urine... </span>
+<span class="co">#&gt; &gt;&gt;&gt; Uncatalogued column. The column EXP of the dataset habitat cannot be checked because it's not included in the template file. Please add it to the [template file](https://github.com/waldronlab/bugphyzz/blob/main/inst/extdata/template.tsv) </span>
+<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Confidence_interval` in dataset `habitat` contains invalid values in 9 rows. The first invalid values are: Sometimes; Sometimes; Sometimes...</span>
+<span class="co">#&gt; Warning in scan(file = file, what = what, sep = sep, quote = quote, dec = dec, :</span>
+<span class="co">#&gt; EOF within quoted string</span>
+
+<span class="co">#&gt; Warning in scan(file = file, what = what, sep = sep, quote = quote, dec = dec, :</span>
+<span class="co">#&gt; number of items read is not a multiple of the number of columns</span>
+<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Attribute` in dataset `optimal ph` contains invalid values in 886 rows. The first invalid values are: optimal ph; optimal ph; optimal ph...</span>
+<span class="co">#&gt; Warning in scan(file = file, what = what, sep = sep, quote = quote, dec = dec, :</span>
+<span class="co">#&gt; EOF within quoted string</span>
+
+<span class="co">#&gt; Warning in scan(file = file, what = what, sep = sep, quote = quote, dec = dec, :</span>
+<span class="co">#&gt; number of items read is not a multiple of the number of columns</span>
+<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Evidence` in dataset `aerophilicity` contains invalid values in 1304 rows. The first invalid values are: ; ; ...</span>
+<span class="co">#&gt; Warning in scan(file = file, what = what, sep = sep, quote = quote, dec = dec, :</span>
+<span class="co">#&gt; EOF within quoted string</span>
+
+<span class="co">#&gt; Warning in scan(file = file, what = what, sep = sep, quote = quote, dec = dec, :</span>
+<span class="co">#&gt; number of items read is not a multiple of the number of columns</span>
+<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Attribute` in dataset `plant pathogenicity` contains invalid values in 1493 rows. The first invalid values are: plant pathogenity; plant pathogenity; plant pathogenity...</span>
+<span class="co">#&gt; Warning in scan(file = file, what = what, sep = sep, quote = quote, dec = dec, :</span>
+<span class="co">#&gt; EOF within quoted string</span>
+
+<span class="co">#&gt; Warning in scan(file = file, what = what, sep = sep, quote = quote, dec = dec, :</span>
+<span class="co">#&gt; number of items read is not a multiple of the number of columns</span>
 <span class="co">#&gt; &gt;&gt;&gt; Invalid column class in width. The `Attribute_value` column` should be of class logical or numeric, not character </span>
-<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Evidence` in dataset `width` contains invalid values in 1 rows. The first invalid values are: ... </span>
-<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Attribute` in dataset `isolation site` contains invalid values in 1107 rows. The first invalid values are: ; ; ... </span>
+<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Evidence` in dataset `width` contains invalid values in 1 rows. The first invalid values are: ...</span>
+<span class="co">#&gt; Warning in scan(file = file, what = what, sep = sep, quote = quote, dec = dec, :</span>
+<span class="co">#&gt; EOF within quoted string</span>
+
+<span class="co">#&gt; Warning in scan(file = file, what = what, sep = sep, quote = quote, dec = dec, :</span>
+<span class="co">#&gt; number of items read is not a multiple of the number of columns</span>
+<span class="co">#&gt; Warning in scan(file = file, what = what, sep = sep, quote = quote, dec = dec, :</span>
+<span class="co">#&gt; EOF within quoted string</span>
+<span class="co">#&gt; Warning in scan(file = file, what = what, sep = sep, quote = quote, dec = dec, :</span>
+<span class="co">#&gt; number of items read is not a multiple of the number of columns</span>
+<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Attribute` in dataset `isolation site` contains invalid values in 1107 rows. The first invalid values are: ; ; ...</span>
+<span class="co">#&gt; Warning in scan(file = file, what = what, sep = sep, quote = quote, dec = dec, :</span>
+<span class="co">#&gt; EOF within quoted string</span>
+
+<span class="co">#&gt; Warning in scan(file = file, what = what, sep = sep, quote = quote, dec = dec, :</span>
+<span class="co">#&gt; number of items read is not a multiple of the number of columns</span>
 <span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Attribute` in dataset `disease association` contains invalid values in 184 rows. The first invalid values are: tumors; hitra disease; anaplasmosis... </span>
-<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `NCBI_ID` in dataset `hydrogen gas producing` contains invalid values in 24 rows. The first invalid values are: ; ; ... </span>
-<span class="co">#&gt; &gt;&gt;&gt; Invalid column class in hydrogen gas producing. The `Attribute_value` column` should be of class logical or numeric, not character </span>
+<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `NCBI_ID` in dataset `hydrogen gas producing` contains invalid values in 24 rows. The first invalid values are: ; ; ...</span>
+<span class="co">#&gt; Warning in scan(file = file, what = what, sep = sep, quote = quote, dec = dec, :</span>
+<span class="co">#&gt; EOF within quoted string</span>
+
+<span class="co">#&gt; Warning in scan(file = file, what = what, sep = sep, quote = quote, dec = dec, :</span>
+<span class="co">#&gt; number of items read is not a multiple of the number of columns</span>
+<span class="co">#&gt; &gt;&gt;&gt; Invalid column class in hydrogen gas producing. The `Attribute_value` column` should be of class logical or numeric, not character</span>
+<span class="co">#&gt; Warning in scan(file = file, what = what, sep = sep, quote = quote, dec = dec, :</span>
+<span class="co">#&gt; EOF within quoted string</span>
+
+<span class="co">#&gt; Warning in scan(file = file, what = what, sep = sep, quote = quote, dec = dec, :</span>
+<span class="co">#&gt; number of items read is not a multiple of the number of columns</span>
 <span class="co">#&gt; &gt;&gt;&gt; Invalid column class in length. The `Attribute_value` column` should be of class logical or numeric, not character</span></code></pre></div>
 <p>Turn list of errors into a table with links:</p>
 <table class="table">
@@ -562,15 +692,35 @@
 <tr class="odd">
 <td align="right">15</td>
 <td align="left">habitat</td>
-<td align="left">Confidence_interval</td>
+<td align="left">Attribute</td>
 <td align="left">invalid_column_values</td>
-<td align="right">9</td>
-<td align="left">Sometimes; Sometimes; Sometimes; Sometimes; Sometimes; Sometimes</td>
-<td align="left">3801 x 9</td>
+<td align="right">136</td>
+<td align="left">human urine; human urine; human urine; human urine; human urine; human urine</td>
+<td align="left">5231 x 9</td>
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQrR6R5nhANAU-CweaEp_X9P13eXiyq2A16_hOOREDYZuOqFS_4jAnI4JjihFmy3jAWtUW2V-4kZYPN/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQrR6R5nhANAU-CweaEp_X9P13eXiyq2A16_hOOREDYZuOqFS_4jAnI4JjihFmy3jAWtUW2V-4kZYPN/pub?output=csv</a></td>
 </tr>
 <tr class="even">
 <td align="right">16</td>
+<td align="left">habitat</td>
+<td align="left">EXP</td>
+<td align="left">uncatalogued_column</td>
+<td align="right">NA</td>
+<td align="left">NA</td>
+<td align="left">5231 x 9</td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQrR6R5nhANAU-CweaEp_X9P13eXiyq2A16_hOOREDYZuOqFS_4jAnI4JjihFmy3jAWtUW2V-4kZYPN/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQrR6R5nhANAU-CweaEp_X9P13eXiyq2A16_hOOREDYZuOqFS_4jAnI4JjihFmy3jAWtUW2V-4kZYPN/pub?output=csv</a></td>
+</tr>
+<tr class="odd">
+<td align="right">17</td>
+<td align="left">habitat</td>
+<td align="left">Confidence_interval</td>
+<td align="left">invalid_column_values</td>
+<td align="right">9</td>
+<td align="left">Sometimes; Sometimes; Sometimes; Sometimes; Sometimes; Sometimes</td>
+<td align="left">5231 x 9</td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQrR6R5nhANAU-CweaEp_X9P13eXiyq2A16_hOOREDYZuOqFS_4jAnI4JjihFmy3jAWtUW2V-4kZYPN/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQrR6R5nhANAU-CweaEp_X9P13eXiyq2A16_hOOREDYZuOqFS_4jAnI4JjihFmy3jAWtUW2V-4kZYPN/pub?output=csv</a></td>
+</tr>
+<tr class="even">
+<td align="right">18</td>
 <td align="left">optimal ph</td>
 <td align="left">Attribute</td>
 <td align="left">invalid_column_values</td>
@@ -580,7 +730,7 @@
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQTIHjOUyJc7O6Y_w3QIj6wiZD2AA369oWByaS77XTP6VX2IhNgBULN4cccs4ZMD-dsLx9ggTBKOnlt/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQTIHjOUyJc7O6Y_w3QIj6wiZD2AA369oWByaS77XTP6VX2IhNgBULN4cccs4ZMD-dsLx9ggTBKOnlt/pub?output=csv</a></td>
 </tr>
 <tr class="odd">
-<td align="right">17</td>
+<td align="right">19</td>
 <td align="left">aerophilicity</td>
 <td align="left">Evidence</td>
 <td align="left">invalid_column_values</td>
@@ -590,7 +740,7 @@
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQDC8VfkkOfN6MKGxrzMEoJjfgYIfpsJO-SxVr3pkUUChBNkMQ3YKaxSvDSSjjrPRf51nU3wbk-WWJp/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQDC8VfkkOfN6MKGxrzMEoJjfgYIfpsJO-SxVr3pkUUChBNkMQ3YKaxSvDSSjjrPRf51nU3wbk-WWJp/pub?output=csv</a></td>
 </tr>
 <tr class="even">
-<td align="right">18</td>
+<td align="right">20</td>
 <td align="left">plant pathogenicity</td>
 <td align="left">Attribute</td>
 <td align="left">invalid_column_values</td>
@@ -600,7 +750,7 @@
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vSLH__Hb4wPELYjnSsBR_FwJ4FHLUmx3KDO_pQG3CD9JqNyuugWbiBF9TBhXw9S5mSck2cbeY2ai77C/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vSLH__Hb4wPELYjnSsBR_FwJ4FHLUmx3KDO_pQG3CD9JqNyuugWbiBF9TBhXw9S5mSck2cbeY2ai77C/pub?output=csv</a></td>
 </tr>
 <tr class="odd">
-<td align="right">19</td>
+<td align="right">21</td>
 <td align="left">width</td>
 <td align="left">Attribute_value</td>
 <td align="left">invalid_column_class</td>
@@ -610,7 +760,7 @@
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vR45vzAobXMOH1SCECpkBkIvxTsG5d8jAweSHaUst-gFKQcS0tTYUjivmLVByOLbFZgF59miCyF11TC/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vR45vzAobXMOH1SCECpkBkIvxTsG5d8jAweSHaUst-gFKQcS0tTYUjivmLVByOLbFZgF59miCyF11TC/pub?output=csv</a></td>
 </tr>
 <tr class="even">
-<td align="right">20</td>
+<td align="right">22</td>
 <td align="left">width</td>
 <td align="left">Evidence</td>
 <td align="left">invalid_column_values</td>
@@ -620,7 +770,7 @@
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vR45vzAobXMOH1SCECpkBkIvxTsG5d8jAweSHaUst-gFKQcS0tTYUjivmLVByOLbFZgF59miCyF11TC/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vR45vzAobXMOH1SCECpkBkIvxTsG5d8jAweSHaUst-gFKQcS0tTYUjivmLVByOLbFZgF59miCyF11TC/pub?output=csv</a></td>
 </tr>
 <tr class="odd">
-<td align="right">21</td>
+<td align="right">23</td>
 <td align="left">isolation site</td>
 <td align="left">Attribute</td>
 <td align="left">invalid_column_values</td>
@@ -630,7 +780,7 @@
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vR5qKaSI_iXovASXA2U8figFKFBRNOuuFcnr-wSedtGuxAu2m8IjHp1uD23NGTWK9NmnKcO0m7FfkIx/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vR5qKaSI_iXovASXA2U8figFKFBRNOuuFcnr-wSedtGuxAu2m8IjHp1uD23NGTWK9NmnKcO0m7FfkIx/pub?output=csv</a></td>
 </tr>
 <tr class="even">
-<td align="right">22</td>
+<td align="right">24</td>
 <td align="left">disease association</td>
 <td align="left">Attribute</td>
 <td align="left">invalid_column_values</td>
@@ -640,7 +790,7 @@
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vTboJM7necIfjgRgyYJ4LJWkCv_1y7O00yvyiSGzFdSfJDkeLqWrQ8FpcsYKFSOrQw75wCRst6KA0_a/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vTboJM7necIfjgRgyYJ4LJWkCv_1y7O00yvyiSGzFdSfJDkeLqWrQ8FpcsYKFSOrQw75wCRst6KA0_a/pub?output=csv</a></td>
 </tr>
 <tr class="odd">
-<td align="right">23</td>
+<td align="right">25</td>
 <td align="left">hydrogen gas producing</td>
 <td align="left">NCBI_ID</td>
 <td align="left">invalid_column_values</td>
@@ -650,7 +800,7 @@
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vSpucXiYrMe_iYvnZDuNSNkRVnEWRQhykCCXoIvtmTiKAVUdkVnRYvl17nbwGqZDg2xVDwaUXccGYsF/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vSpucXiYrMe_iYvnZDuNSNkRVnEWRQhykCCXoIvtmTiKAVUdkVnRYvl17nbwGqZDg2xVDwaUXccGYsF/pub?output=csv</a></td>
 </tr>
 <tr class="even">
-<td align="right">24</td>
+<td align="right">26</td>
 <td align="left">hydrogen gas producing</td>
 <td align="left">Attribute_value</td>
 <td align="left">invalid_column_class</td>
@@ -660,7 +810,7 @@
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vSpucXiYrMe_iYvnZDuNSNkRVnEWRQhykCCXoIvtmTiKAVUdkVnRYvl17nbwGqZDg2xVDwaUXccGYsF/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vSpucXiYrMe_iYvnZDuNSNkRVnEWRQhykCCXoIvtmTiKAVUdkVnRYvl17nbwGqZDg2xVDwaUXccGYsF/pub?output=csv</a></td>
 </tr>
 <tr class="odd">
-<td align="right">25</td>
+<td align="right">27</td>
 <td align="left">length</td>
 <td align="left">Attribute_value</td>
 <td align="left">invalid_column_class</td>
@@ -679,6 +829,10 @@
 <code class="sourceCode R"><span class="va">fac</span> <span class="op">&lt;-</span><span class="fu"><a href="../reference/fattyAcidComposition.html">fattyAcidComposition</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">fac_errors</span> <span class="op">&lt;-</span>  <span class="fu">bugphyzz</span><span class="fu">:::</span><span class="fu"><a href="../reference/checkColumnValuesDF.html">checkColumnValuesDF</a></span><span class="op">(</span><span class="va">fac</span><span class="op">)</span>
+<span class="co">#&gt; Warning in scan(file = file, what = what, sep = sep, quote = quote, dec = dec, :</span>
+<span class="co">#&gt; EOF within quoted string</span>
+<span class="co">#&gt; Warning in scan(file = file, what = what, sep = sep, quote = quote, dec = dec, :</span>
+<span class="co">#&gt; number of items read is not a multiple of the number of columns</span>
 <span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Confidence_interval` contains invalid values in 138496 rows. The first invalid values are: Unknown; Unknown; Unknown... </span>
 <span class="co">#&gt; &gt;&gt;&gt; Uncatalogued column. The column new_attribute cannot be checked because it's not included in the template file. Please add it to the [template file](https://github.com/waldronlab/bugphyzz/blob/main/inst/extdata/template.tsv) </span>
 <span class="co">#&gt; &gt;&gt;&gt; Uncatalogued column. The column new_attribute_value cannot be checked because it's not included in the template file. Please add it to the [template file](https://github.com/waldronlab/bugphyzz/blob/main/inst/extdata/template.tsv)</span></code></pre></div>
@@ -801,18 +955,7 @@
 <span class="co">#&gt; 7    Attribute_source                 7               7          </span>
 <span class="co">#&gt; 8            Evidence                 8               8          </span>
 <span class="co">#&gt; 9 Confidence_interval                 9               9           </span>
-<span class="co">#&gt; &gt;&gt;&gt; Misplaced required columns. The following required columns in the `habitat` dataset are not in the right place: NCBI_ID, Genome_ID, Accession_number, Taxon_name. Please check the correct order with `bugphyz:::requiredColumns()`. </span>
-<span class="co">#&gt;  The misplaed columns are: </span>
-<span class="co">#&gt;        required_column expected_position actual_position misplaced</span>
-<span class="co">#&gt; 1             NCBI_ID                 1               2         *</span>
-<span class="co">#&gt; 2           Genome_ID                 2               3         *</span>
-<span class="co">#&gt; 3    Accession_number                 3               4         *</span>
-<span class="co">#&gt; 4          Taxon_name                 4               1         *</span>
-<span class="co">#&gt; 5           Attribute                 5               5          </span>
-<span class="co">#&gt; 6     Attribute_value                 6               6          </span>
-<span class="co">#&gt; 7    Attribute_source                 7               7          </span>
-<span class="co">#&gt; 8            Evidence                 8               8          </span>
-<span class="co">#&gt; 9 Confidence_interval                 9               9</span>
+<span class="co">#&gt; &gt;&gt;&gt; Required columns missing. The following required columns are missing from the `habitat` dataset: Evidence. Please check the required columns with `bugphyzz:::requiredColumns()`.</span>
 <span class="co">#&gt; &gt;&gt;&gt; All columns in the `optimal ph` dataset are present and in the right order.</span>
 <span class="co">#&gt; &gt;&gt;&gt; All columns in the `aerophilicity` dataset are present and in the right order.</span>
 <span class="co">#&gt; &gt;&gt;&gt; All columns in the `plant pathogenicity` dataset are present and in the right order.</span>
