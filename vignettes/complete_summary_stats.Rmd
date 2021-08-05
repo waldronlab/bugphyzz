@@ -95,13 +95,5 @@ taxa_without_attr <- mapply(function(.x, .y) num_taxa_without_ncbi_per_attribute
 printGGlist(taxa_without_attr)
 ```
 
-## Number of genera per phylum per attribute in physiology dataset
-
-```{r}
-gen_phy_attr <- mapply(function(.x, .y) attribute_catalog(.x, .y), cat_rank, names(cat_rank), SIMPLIFY = FALSE)
-```
-```{r}
-printGGlist(gen_phy_attr)
-```
 
 
