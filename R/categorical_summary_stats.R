@@ -29,9 +29,10 @@ ncbi_stats <- function(data, phys = deparse(substitute(data)))
     theme_bw() +
     theme(plot.title = element_text(size = 8))
 }
-#' Fetch ranks for bacteria
+#' Merge ranks vector with physiology dataset
 #'
 #' @param data a tibble object, converted from the output by the \link{physiologies} function
+#' @param ranks a tibble object of NCBI ranks
 #' @return a tibble object
 #' @keywords internal
 #'
@@ -39,15 +40,25 @@ ncbi_stats <- function(data, phys = deparse(substitute(data)))
 #' physiologies <- physiologies()
 #' aer <- physiologies[["aerophilicity"]] %>%
 #' as_tibble()
-#' fetch_ranks(aer, "aerophilicity")
-fetch_ranks <- function(data)
+#'
+#' ncbi_vec <- lapply(physiologies, function(x) x%>% select(NCBI_ID)) %>%
+#' unlist() %>%
+#' as.numeric() %>%
+#' unique()
+#' ncbi_vec <- ncbi_vec[!is.na(ncbi_vec)]
+#' ranks <- bugphyzz:::ncbiRank(ncbi_vec, ranks = c("phylum", "genus", "species"))
+#'
+#' merge_ranks(aer, ranks)
+merge_ranks <- function(data, ranks)
 {
-  data <- data[!is.na(data$NCBI_ID),] %>% unique()
-  ncbi_ranks <- ncbiRank(x = data$NCBI_ID, ranks = c("phylum", "genus", "species"))
-  ncbi_ranks$Taxon_name <- data$Taxon_name
-  with_ranks <- full_join(ncbi_ranks, data, by = c("Taxon_name", "NCBI_ID"))
-  with_ranks <- with_ranks[,-c(6:7,10:12)] %>% unique()
-  return(with_ranks)
+  data$NCBI_ID <- as.numeric(data$NCBI_ID)
+  data <- full_join(data, ranks, by = ("NCBI_ID"))
+  data <- data[,c("phylum", "genus", "species", "Taxon_name",
+                  "NCBI_ID", "Attribute", "Attribute_value")] %>%
+    unique()
+  data <- data[!is.na(data$Taxon_name),]
+  data <- data[!duplicated(data[,c('Taxon_name')]),]
+  return(data)
 }
 
 #' Display number of genera per attribute in physiology dataset
