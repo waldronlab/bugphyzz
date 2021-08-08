@@ -14,7 +14,7 @@ display_freq <- function(data, phys)
 {
   data %>%
     ggplot(aes(Attribute_value)) +
-    geom_histogram(bins = 30, color = "black", fill = "gray60") +
+    geom_histogram(bins = 30, color = "black", fill = "gray60", stat = "count") +
     labs(x = phys, y = "Frequency") +
     theme_bw()
 }
@@ -30,13 +30,11 @@ display_freq <- function(data, phys)
 #' gt <- physiologies[["growth temperature"]] %>%
 #' as_tibble()
 #' boxplot_per_phylum(gt, "growth temperature")
-boxplot_per_phylum <- function(data, phys, unit)
+boxplot_per_phylum <- function(data, phys, unit = "unit")
 {
   title <- paste(phys, "per phylum")
   y <- paste(phys, "(", unit, ")")
-  ncbi_ranks <- ncbiRank(data$NCBI_ID[!is.na(data$NCBI_ID)])
-  with_ranks <- full_join(ncbi_ranks, data, by = "NCBI_ID")
-  with_ranks %>%
+  data %>%
     ggplot(aes(phylum, Attribute_value)) +
     geom_boxplot() +
     labs(title = title, y = y,
