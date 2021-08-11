@@ -34,30 +34,18 @@ physiologies <- physiologies(keyword = "all") %>%
   lapply(as_tibble)
 ```
 
-Print function
-
-```{r}
-printGGlist <- function(gglist){
-for(gg in gglist){
-
-    print(gg)
-
-}
-}
-```
-
-NCBI ID Stats
+# NCBI ID Stats
 
 ```{r}
 ncbi_list <- mapply(function(.x, .y) bugphyzz:::ncbi_stats(.x, .y), physiologies, names(physiologies), SIMPLIFY = FALSE)
 ```
 ```{r warning = FALSE, echo=FALSE, out.width="45%"}
-printGGlist(ncbi_list)
+bugphyzz:::printGGlist(ncbi_list)
 ```
 
-Categorical attribute stats
+# Categorical attribute stats
 
-# Setup
+## Setup
 
 ```{r fetch ranks for all unique NCBI ID}
 ncbi_vec <- lapply(physiologies, function(x) x%>% select(NCBI_ID)) %>% 
@@ -87,7 +75,7 @@ categorical_list <- phys_ranks[c("antimicrobial resistance", "gram stain",
 gen_per_attr <- mapply(function(.x, .y) bugphyzz:::num_genera_per_attribute(.x, .y), categorical_list, names(categorical_list), SIMPLIFY = FALSE)
 ```
 ```{r warning = FALSE, echo=FALSE, out.width="45%"}
-printGGlist(gen_per_attr)
+bugphyzz:::printGGlist(gen_per_attr)
 ```
 
 ## Number of taxa without NCBI ID per attribute in physiology dataset
@@ -96,7 +84,7 @@ printGGlist(gen_per_attr)
 taxa_without_attr <- mapply(function(.x, .y) bugphyzz:::num_taxa_without_ncbi_per_attribute(.x, .y), categorical_list, names(categorical_list), SIMPLIFY = FALSE)
 ```
 ```{r warning = FALSE, echo=FALSE, out.width="45%"}
-printGGlist(taxa_without_attr)
+bugphyzz:::printGGlist(taxa_without_attr)
 ```
 
 ## Display number of genera per phylum per attribute in physiology dataset
@@ -105,13 +93,13 @@ printGGlist(taxa_without_attr)
 attr_catalog <- mapply(function(.x, .y) bugphyzz:::attribute_catalog(.x, .y), categorical_list, names(categorical_list), SIMPLIFY = FALSE)
 ```
 ```{r warning = FALSE, echo=FALSE, out.width="45%"}
-#printGGlist(attr_catalog)
+#bugphyzz:::printGGlist(attr_catalog)
 #can't get attribute_catalog() to work for certain datasets that have no NA in species column
 ```
 
-Continuous attribute stats
+# Continuous attribute stats
 
-# Setup
+## Setup
 ```{r}
 continuous_list <- phys_ranks[c("growth temperature","COGEM pathogenicity rating", 
                                 "optimal ph", "width", "length", 
@@ -126,7 +114,7 @@ continuous_list <- phys_ranks[c("growth temperature","COGEM pathogenicity rating
 freq <- mapply(function(.x, .y) bugphyzz:::display_freq(.x, .y), continuous_list, names(continuous_list), SIMPLIFY = FALSE)
 ```
 ```{r warning = FALSE, echo=FALSE, out.width="45%"}
-printGGlist(freq)
+bugphyzz:::printGGlist(freq)
 ```
 
 ## Display boxplot per phylum
@@ -135,5 +123,5 @@ printGGlist(freq)
 boxplots <- mapply(function(.x, .y) bugphyzz:::boxplot_per_phylum(.x, .y), continuous_list, names(continuous_list), SIMPLIFY = FALSE)
 ```
 ```{r warning = FALSE, echo=FALSE, out.width="45%"}
-printGGlist(boxplots)
+bugphyzz:::printGGlist(boxplots)
 ```
