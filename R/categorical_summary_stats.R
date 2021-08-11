@@ -1,4 +1,21 @@
-#pacman::p_load("dplyr", "ggplot2", "bugphyzz")
+#' Print function for ggplot list
+#'
+#' @param gglist a list of ggplot
+#' @return printed ggplots
+#' @keywords internal
+#'
+#' @examples
+#' physiologies <- physiologies(keyword = "all") %>%
+#' lapply(as_tibble)
+#' ncbi_list <- mapply(function(.x, .y) bugphyzz:::ncbi_stats(.x, .y), physiologies, names(physiologies), SIMPLIFY = FALSE)
+#' printGGlist(ncbi_list)
+printGGlist <- function(gglist){
+  for(gg in gglist){
+
+    print(gg)
+
+  }
+}
 
 #' Display number of taxa with/without NCBI ID in physiology dataset
 #'
