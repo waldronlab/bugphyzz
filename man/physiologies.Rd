@@ -11,7 +11,7 @@ physiologies(keyword = "all")
 physiologies, run bugphyzz::physiologiesList()}
 }
 \value{
-a large list of tidy data.frames
+a large list of data.frames
 }
 \description{
 Fetch physiological data

@@ -4,12 +4,17 @@
 \alias{ncbiRank}
 \title{Get Taxonomy Ranks from NCBI Taxonomy IDs}
 \usage{
-ncbiRank(x, taxid = FALSE)
+ncbiRank(
+  x,
+  taxid = FALSE,
+  ranks = c("superkingdom", "kingdom", "phylum", "class", "order", "family", "genus",
+    "species")
+)
 }
 \arguments{
 \item{x}{A numeric vector or character vector of valid NCBI taxonomy IDs.}
 
-\item{taxid}{A logical vector of lenght 1. If TRUE, taxonomy IDs (taxids) are returned instead of rank names.
+\item{taxid}{A logical vector of length 1. If TRUE, taxonomy IDs (taxids) are returned instead of rank names.
 Default is FALSE.}
 }
 \value{
