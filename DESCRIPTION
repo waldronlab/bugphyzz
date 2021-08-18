@@ -35,6 +35,7 @@ Imports:
     tibble,
     crayon,
     mgsub,
-    here
+    here,
+    EnrichmentBrowser
 Depends: 
     R (>= 4.1.0)
