@@ -4,7 +4,8 @@ pkgdown_sha: ~
 articles:
   checks: checks.html
   complete_summary_stats: complete_summary_stats.html
+  completeness_annotations: completeness_annotations.html
   summary_statistics: summary_statistics.html
   write_physiology_sets: write_physiology_sets.html
-last_built: 2021-08-11T17:30Z
+last_built: 2021-08-22T09:53Z
 
