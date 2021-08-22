@@ -1,10 +1,10 @@
 ---
-title: "completeness of annotations based on NCBI_IDs"
+title: "Completeness of annotations based on NCBI IDs"
 output:
   rmarkdown::html_vignette:
       toc: yes
 vignette: >
-  %\VignetteIndexEntry{completeness of annotations based on NCBI_IDs}
+  %\VignetteIndexEntry{Completeness of annotations based on NCBI IDs}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -13,6 +13,28 @@ vignette: >
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)
 ```
+
+This document describes the completeness of taxonomy rank annotations in all
+BugPhyzz datasets, i.e the percentage of taxonomy ranks available in BugPhyzz.
+
+Sections:
+
++ **"All taxonomies".** Describes the code to get the ranks (and full taxonomy
+classification) of all unique NCBI IDs in BugPhyzz, and
+how they were merged with the bugphyzz datasets.
+
++ **"Completeness of datasets across bugphyzz".** Describes the overall
+completeness of each BugPhyzz dataset in a single plot.
+
++ **`attributeSummaryByRank` function.** Describes a function to create a
+summary table of completeness per attribute.
+
++ More detailed completeness information for each attribute is described in the
+form of tables in the **"Categorical datasets in physiologies"**, 
+**"Numeric attributes in physiologies”**, **"Other datasets"**, and
+**"Fatty acid composition"**, as the result of applying the `attributeSummaryByRank`
+function.
+
 
 ```{r, message=FALSE}
 library(bugphyzz)
@@ -102,20 +124,26 @@ data %>%
   geom_bar(aes(fill = rank), position = "fill") +
   scale_y_continuous(label = scales::percent) +
   labs(x = "Dataset", y = "NCBI_ID",
-       title = "Completness of NCBI IDs Across Bugphyzz",
-       subtitle = "phsiologies + fattyAcidComposition") +
+       title = "Completness of Taxa Annotations in Bugphyzz",
+       subtitle = "physiologies + fattyAcidComposition") +
   coord_flip() +
   theme_minimal() +
   theme(legend.position = "bottom",
         plot.margin=unit(c(1,2,1,1),"cm"))
 ```
 
-
+**Figure. Completeness of taxa annotations in BugPhyzz datasets.** Taxonomy rank
+annotations were based on the NCBI taxonomy, i.e. NCBI IDs. The color legend
+represents the ranks of the NCBI IDs (not considering inherited ranks);
+"NA" refers to NCBI IDs missing or not available,
+and "no rank" refers to NCBI IDs that don't have a formal taxonomy rank in the
+NCBI database (more info at https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7408187/).
 
 
 # `attributeSummaryByRank` function
 
-+ This function (`attributeSummaryByRank`) takes a dataset from bugphyzz
++ This function (`attributeSummaryByRank`) takes a dataset from bugphyzz (with
+merged taxonomy)
 and creates a table summarizing the number of NCBI IDs per rank per attribute.
 In other words, this function gives information about how many genera, species,
 and strains exist per attribute.
@@ -128,8 +156,8 @@ of NCBI IDs in the dataset (it sums 100 per row).
 
 + NA's in the column names of the output indicate taxa without NCBI ID.
 
-+ A `no_rank` in the column names indicate organisms not properly classified
-in the NCBI taxonomy database, like some strains, pathovar, etc.
++ A `no_rank` in the column names indicate organisms not formally classified
+in the NCBI taxonomy database.
 
 ```{r}
 attributeSummaryByRank <- function(x, y, categorical = TRUE) {
@@ -388,6 +416,8 @@ other_datasets_summary_tables$`hydrogen gas producing`
 other_datasets_summary_tables$length
 ```
 # Fatty acid composition
+
++ Dataset imported with the `fattyAcidComposition` function.
 
 ```{r}
 fac <- list(fac)
