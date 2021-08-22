@@ -1,0 +1,372 @@
+---
+title: "completeness of annotations based on NCBI_IDs"
+output:
+  rmarkdown::html_vignette:
+      toc: yes
+vignette: >
+  %\VignetteIndexEntry{completeness of annotations based on NCBI_IDs}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)
+```
+
+```{r, message=FALSE}
+library(bugphyzz)
+library(magrittr)
+library(dplyr)
+library(purrr)
+```
+
+# All taxonomies
+
++ The `ncbi_taxonomy_rank_table` table (code below) contains the taxonomy rank
+for each unique NCBI ID in bugphyzz (including the datasets accessed 
+through both the `physiologies` and the `fattyAcidComposition` functions).
+
++ The taxonomy ranks were retrieved with `taxize::classification`, and all the
+ranks were merged into a table.
+
++ The table also contains the full NCBI taxonomy classification for each ID.
+
+```{r}
+reshape_taxon_table <- function(x, type) {
+    if (tail(x$rank, 1) == "no rank") {
+        x$rank[length(x$rank)] <- "no_rank"
+    }
+    x <- x[!x$rank %in% c("no rank", "clade"), ]
+    tibble::as_tibble(t(x[type]), .name_repair = "minimal") %>%
+        magrittr::set_colnames(gsub(" ", "_", x$rank))
+}
+
+physiologies <- physiologies()
+fac <- fattyAcidComposition()
+
+ncbi_ids_physiologies <- unlist(lapply(physiologies, function(x) as.integer(x$NCBI_ID)))
+ncbi_ids_fac <- as.integer(fac$NCBI_ID)
+ncbi_ids <- unique(c(ncbi_ids_physiologies, ncbi_ids_fac))
+ncbi_ids <- ncbi_ids[!is.na(ncbi_ids)]
+
+# get taxonomy
+taxonomies <- suppressMessages(taxize::classification(ncbi_ids, db = "ncbi"))
+
+# convert taxonomy to table
+taxonomy_table <- lapply(taxonomies, function(x) reshape_taxon_table(x, type = "name")) %>%
+    dplyr::bind_rows(.id = "NCBI_ID")
+
+# get ranks
+rank_table <- taxonomies %>% 
+    vapply(function(x) tail(x$rank, 1), character(1)) %>% 
+    tibble::as_tibble(rownames = "NCBI_ID") %>% 
+    set_colnames(c("NCBI_ID", "rank"))
+
+# merge both
+ncbi_taxonomy_rank_table <- dplyr::left_join(rank_table, taxonomy_table, by = "NCBI_ID")
+ncbi_taxonomy_rank_table$NCBI_ID <- as.numeric(ncbi_taxonomy_rank_table$NCBI_ID)
+```
+
++ Based on the NCBI Ids, there are 1488 genera, 2,765 species, and 1,301 strains
+across all bugphyzz datasets. There are other taxonomy ranks, such as isolates
+and subspecies, with very few NCBI Ids.
+
+```{r}
+ncbi_taxonomy_rank_table %>% 
+    count(rank) %>% 
+    arrange(-n) %>% 
+    knitr::kable()
+```
+
+# `attributeSummaryByRank` function
+
++ This function (`attributeSummaryByRank`) takes a dataset from bugphyzz
+and creates a table summarizing the number of NCBI IDs per rank per attribute.
+In other words, this function gives information about how many genera, species,
+and strains exist per attribute.
+**It does not take inherited ranks into account.**
+
++ The output is a matrix-like table in which the row names are the attributes,
+the column names are the ranks, and the values are the number of NCBI IDs with
+the percentage in parentheses. The percentage is relative to the total number
+of NCBI IDs in the dataset (it sums 100 per row).
+
++ NA's in the column names of the output indicate taxa without NCBI ID.
+
++ A `no_rank` in the column names indicate organisms not properly classified
+in the NCBI taxonomy database, like some strains, pathovar, etc.
+
+```{r}
+attributeSummaryByRank <- function(x, y, categorical = TRUE) {
+    
+    if (isTRUE(categorical)) {
+        df <- x[[y]] %>%
+            dplyr::filter(Attribute_value == TRUE) 
+    } else if (isFALSE(categorical)) {
+        df <- x[[y]]
+    }
+    
+    df %>%
+        dplyr::select(Attribute, rank, NCBI_ID) %>%
+        dplyr::mutate(
+            rank = forcats::fct_relevel(rank, "genus", "strain", "species"),
+            Attribute = stringr::str_squish(Attribute)
+        ) %>% 
+        dplyr::count(Attribute, rank) %>% 
+        dplyr::group_by(Attribute) %>% 
+        dplyr::mutate(
+            percent = round(n / sum(n) * 100, 2),
+           `n (%)` = paste0(n, " (", percent, ")")
+        ) %>% 
+        dplyr::ungroup() %>%
+        dplyr::select(Attribute, rank, `n (%)`) %>% 
+        dplyr::arrange(Attribute, rank) %>% 
+        tidyr::pivot_wider(names_from = "rank", values_from = `n (%)`) %>% 
+        # tibble::column_to_rownames(var = "Attribute") %>% 
+        as.data.frame() %>% 
+        knitr::kable(row.names = TRUE)
+}
+```
+
+
+# Categorical datasets in "physiologies"
+
++ Categorical datasets will be considered as those which have TRUE/FALSE values
+in the "Attribute_value" column, i.e. logical.
+
+
+```{r}
+categorical_phys <- physiologies %>%
+    keep(~is.logical(.x$Attribute_value)) %>% 
+    map( ~ left_join( .x, ncbi_taxonomy_rank_table, by = "NCBI_ID"))
+
+categorical_phys_names <- names(categorical_phys)
+
+categorical_phys_names
+```
+
++ Apply `attributeSummaryByRank` to all categorical datasets:
+
+```{r}
+summary_tables <- map(categorical_phys_names, ~ attributeSummaryByRank(categorical_phys, .x)) %>% 
+    set_names(categorical_phys_names)
+```
+
+
+## Animal pathogen
+
+
+```{r}
+summary_tables$`animal pathogen`
+```
+
+## Antimicrobial resistance
+
+```{r}
+summary_tables$`antimicrobial resistance`
+```
+
+## Antimicrobial sensitivity
+
+```{r}
+summary_tables$`antimicrobial sensitivity`
+```
+
+## Biofilm forming
+
+```{r}
+summary_tables$`biofilm forming`
+```
+
+## Arrangement
+
+```{r}
+summary_tables$arrangement
+```
+
+## Shape
+
+```{r}
+summary_tables$shape
+```
+
+## Extreme environment
+
+```{r}
+summary_tables$`extreme environment`
+```
+
+## Gram stain 
+
+```{r}
+summary_tables$`gram stain`
+```
+
+## Growth medium
+
+```{r}
+summary_tables$`growth medium`
+```
+
+## Habitat
+
+```{r}
+summary_tables$habitat
+```
+
+## Aerophilicity
+
+```{r}
+summary_tables$aerophilicity
+```
+
+## Plant pathogenicity
+
+```{r}
+summary_tables$`plant pathogenicity`
+```
+
+
+## Spore shape
+
+```{r}
+summary_tables$`spore shape`
+```
+
+## Isolation site
+
+```{r}
+summary_tables$`isolation site`
+```
+## Disease association
+
+```{r}
+summary_tables$`disease association`
+```
+
+# Numeric attributes in "physiologies"
+
++ Numeric attributes will be considered as those with numeric values in
+the "Attribute_value" column, i.e. type/class numeric.
+
+```{r}
+numeric_phys <- physiologies %>% 
+    keep(~is.numeric(.x$Attribute_value)) %>% 
+    map(~left_join(.x, ncbi_taxonomy_rank_table, by = "NCBI_ID"))
+
+numeric_phys_names <- names(numeric_phys)
+
+numeric_phys_names
+```
+
+```{r}
+numeric_summary_tables = map(numeric_phys_names, ~ attributeSummaryByRank(numeric_phys, .x, categorical = FALSE)) %>% 
+    set_names(numeric_phys_names)
+```
+
+## Butyrate producing
+
+```{r}
+numeric_summary_tables$`butyrate producing`
+```
+
+## COGEM pathogenicity rating
+
+```{r}
+numeric_summary_tables$`COGEM pathogenicity rating`
+```
+## Mutation rate per site per generation
+
+```{r}
+numeric_summary_tables$`mutation rate per site per generation`
+```
+
+## Mutation rates per site per year
+
+```{r}
+numeric_summary_tables$`mutation rates per site per year`
+```
+
+## Growth temperature
+
+```{r}
+numeric_summary_tables$`growth temperature`
+```
+
+## Optimal pH in "physiologies"
+
+```{r}
+numeric_summary_tables$`optimal ph`
+```
+
+# Other datasets
+
++ Some datasets contain values different to logical or numeric in the
+"Attribute_value" column.
+
+```{r}
+other_datasets <- physiologies %>% 
+    discard(~ is.logical(.x$Attribute_value) || is.numeric(.x$Attribute_value))
+
+for (i in seq_along(other_datasets)) {
+    other_datasets[[i]]$NCBI_ID <- as.double(other_datasets[[i]]$NCBI_ID)
+}
+
+other_datasets <- map(other_datasets, ~ left_join(.x, ncbi_taxonomy_rank_table, by = "NCBI_ID"))
+
+other_datasets_names <- names(other_datasets)
+
+other_datasets_names
+```
+
+```{r}
+other_datasets_summary_tables <- map(other_datasets_names, ~ attributeSummaryByRank(other_datasets, .x, categorical = FALSE)) %>% 
+    set_names(other_datasets_names)
+```
+
+
+## Acetate producing
+
+```{r}
+other_datasets_summary_tables$`acetate producing`
+```
+## Lactate producing
+
+```{r}
+other_datasets_summary_tables$`lactate producing`
+```
+
+## Width
+
+```{r}
+other_datasets_summary_tables$width
+```
+## Hydrogen gas producing
+
+```{r}
+other_datasets_summary_tables$`hydrogen gas producing`
+```
+
+## Length
+
+```{r}
+other_datasets_summary_tables$length
+```
+# Fatty acid composition
+
+```{r}
+fac <- list(fac)
+fac[[1]] <- left_join(fac[[1]], ncbi_taxonomy_rank_table, by = "NCBI_ID")
+names(fac) <- "fatty acid composition"
+```
+
+
+```{r}
+fac_summary_table <- attributeSummaryByRank(fac, "fatty acid composition", categorical = FALSE)
+```
+
+```{r}
+fac_summary_table
+```
+
