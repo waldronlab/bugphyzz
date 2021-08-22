@@ -46,8 +46,8 @@ reshape_taxon_table <- function(x, type) {
 physiologies <- physiologies()
 fac <- fattyAcidComposition()
 
-ncbi_ids_physiologies <- unlist(lapply(physiologies, function(x) as.integer(x$NCBI_ID)))
-ncbi_ids_fac <- as.integer(fac$NCBI_ID)
+ncbi_ids_physiologies <- unlist(lapply(physiologies, function(x) as.numeric(x$NCBI_ID)))
+ncbi_ids_fac <- as.numeric(fac$NCBI_ID)
 ncbi_ids <- unique(c(ncbi_ids_physiologies, ncbi_ids_fac))
 ncbi_ids <- ncbi_ids[!is.na(ncbi_ids)]
 
@@ -95,7 +95,7 @@ data <- bind_rows(dfs, .id = "dataset")
 ```
 
 
-```{r, fig.width=7, fig.height=10}
+```{r, fig.width=9, fig.height=10}
 data %>% 
   mutate(rank = forcats::fct_relevel(rank, "genus", "strain", "species")) %>% 
   ggplot(aes(dataset)) +
