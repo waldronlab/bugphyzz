@@ -95,18 +95,19 @@ data <- bind_rows(dfs, .id = "dataset")
 ```
 
 
-```{r, fig.width=7, fig.height=9}
+```{r, fig.width=7, fig.height=10}
 data %>% 
   mutate(rank = forcats::fct_relevel(rank, "genus", "strain", "species")) %>% 
   ggplot(aes(dataset)) +
   geom_bar(aes(fill = rank), position = "fill") +
   scale_y_continuous(label = scales::percent) +
-  labs(x = "Datase´", y = "NCBI_ID",
+  labs(x = "Dataset", y = "NCBI_ID",
        title = "Completness of NCBI IDs Across Bugphyzz",
        subtitle = "phsiologies + fattyAcidComposition") +
   coord_flip() +
   theme_minimal() +
-  theme(legend.position = "bottom")
+  theme(legend.position = "bottom",
+        plot.margin=unit(c(1,2,1,1),"cm"))
 ```
 
 
