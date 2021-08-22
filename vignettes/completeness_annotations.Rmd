@@ -19,6 +19,7 @@ library(bugphyzz)
 library(magrittr)
 library(dplyr)
 library(purrr)
+library(ggplot2)
 ```
 
 # All taxonomies
@@ -78,6 +79,38 @@ ncbi_taxonomy_rank_table %>%
     arrange(-n) %>% 
     knitr::kable()
 ```
+
+# Completeness of datasets across bugphyzz
+
+```{r}
+dfs <- physiologies %>% 
+  map(~ {.x$NCBI_ID <- as.numeric(.x$NCBI_ID); .x}) %>% 
+  map(~ left_join(.x, ncbi_taxonomy_rank_table, by = "NCBI_ID")) %>% 
+  map(~.x[,c("NCBI_ID", "rank")])
+
+dfs[["fatty acid composition"]] <- left_join(fac, ncbi_taxonomy_rank_table, by = "NCBI_ID" ) %>% 
+  select(NCBI_ID, rank)
+
+data <- bind_rows(dfs, .id = "dataset")
+```
+
+
+```{r, fig.width=7, fig.height=9}
+data %>% 
+  mutate(rank = forcats::fct_relevel(rank, "genus", "strain", "species")) %>% 
+  ggplot(aes(dataset)) +
+  geom_bar(aes(fill = rank), position = "fill") +
+  scale_y_continuous(label = scales::percent) +
+  labs(x = "Datase´", y = "NCBI_ID",
+       title = "Completness of NCBI IDs Across Bugphyzz",
+       subtitle = "phsiologies + fattyAcidComposition") +
+  coord_flip() +
+  theme_minimal() +
+  theme(legend.position = "bottom")
+```
+
+
+
 
 # `attributeSummaryByRank` function
 
@@ -369,4 +402,6 @@ fac_summary_table <- attributeSummaryByRank(fac, "fatty acid composition", categ
 ```{r}
 fac_summary_table
 ```
+
+
 
