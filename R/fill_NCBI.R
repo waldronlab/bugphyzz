@@ -5,7 +5,7 @@
 #' @return a dataframe
 #' @keywords internal
 #'
-#' @example
+#' @examples
 #' aer <- physiologies("aerophilicity")
 #' aer_NCBI <- fill_NCBI(aer)
 fill_NCBI <- function(data)
