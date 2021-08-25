@@ -185,3 +185,4 @@
 "extreme environment"	"logical"	NA	NA
 "gut"	"logical"	"OHMI_0000020"	"A human being's gut microbiota contains tens of trillions of microorganisms, including at least 1000 different species of known bacteria with more than 3 million genes (150 times more than human genes). Microbiota can, in total, weigh up to 2 kg. One third of our gut microbiota is common to most people, while two thirds are specific to each one of us. In other words, the microbiota in your intestine is like an individual identity card. URL: http://www.gutmicrobiotaforhealth.com/en/about-gut-microbiota-info/"
 "rumen"	"logical"	"NCIT:C98778"	"Largest forestomach of ruminants where bacterial fermentation occurs"
+"Health associated"	"logical"	NA	NA
