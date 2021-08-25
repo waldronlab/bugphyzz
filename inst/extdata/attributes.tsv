@@ -179,7 +179,7 @@
 "hydrogen gas producing"	"numeric"	NA	NA
 "width"	"numeric"	PATO:0000921	"A 1-D extent quality which is equal to the distance from one side of an object to another side which is opposite."
 "length"	"numeric"	PATO:0000122	"A 1-D extent quality which is equal to the distance between two points"
-"fatty acid composition"	"logical""	NA	NA
+"fatty acid composition"	"logical" NA	NA
 "human urine"	"logical"	MCO:0000662	"No definition provided"
 "v-formation"	"logical"	NA	NA
 "extreme environment"	"logical"	NA	NA
