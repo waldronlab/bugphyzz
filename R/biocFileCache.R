@@ -21,7 +21,7 @@
 #'
 #' Two versions of the taxonomy table are saved in a list object (.RData),
 #' one version with taxonomy names and another with NCBI IDs. See the
-#' \code{\link{.taxonomyTable}} function to know how to access each of them.
+#' \code{\link{taxonomyTable}} function to know how to access each of them.
 #'
 #' @return A taxonomy table (*.RData object) saved in the cache, and a message
 #' indicating that the taxonomy table has been saved to the cache.
@@ -76,7 +76,7 @@
 
   ranks <- taxonomies %>%
     purrr::map_chr(~tail(.x$rank, 1))
-  ranks_table <- tibble::tibble(NCBI_ID = names(ranks), ranks = ranks)
+  ranks_table <- tibble::tibble(NCBI_ID = names(ranks), rank = ranks)
 
   taxonomy_table_names <- taxonomies %>%
     purrr::map(~ reshape_taxon_table(.x, type = "name")) %>%
@@ -111,17 +111,16 @@
 
 }
 
-
 #' Taxonomy table
 #'
-#' \code{.taxonomyTable} imports a taxonomy table of all of the NCBI IDs
+#' \code{taxonomyTable} imports a taxonomy table of all of the NCBI IDs
 #' across BugPhyzz.
 #'
 #' When the function is used for the first time, a taxonomy table is created
-#' with \code{\link{.createTaxonomyTable}} before being imported. If NCBI IDs
+#' with \code{bugpyzz:::.createTaxonomyTable} before being imported. If NCBI IDs
 #' have been added or removed from the BugPhyzz database, the taxonomy table
 #' can be updated by setting the `update` parameter to TRUE. This will create
-#' a new taxonomy table with \code{\link{.createTaxonomyTable}}.
+#' a new taxonomy table with \code{bugpyzz:::.createTaxonomyTable}.
 #'
 #' Columns:
 #'
@@ -146,6 +145,8 @@
 #'
 #' @return A tibble.
 #'
+#' @export
+#'
 #' @examples
 #'
 #' \dontrun{
@@ -154,14 +155,20 @@
 #' taxonomy_table
 #' }
 #'
-.taxonomyTable <- function(type = "name", update = FALSE) {
+taxonomyTable <- function(type = "name", update = FALSE) {
 
   cache <- .getCache()
 
   rid <- BiocFileCache::bfcquery(cache, query = "taxonomy_tables", field = "rname") %>%
     dplyr::pull(rid)
 
-  if (!length(rid) || isTRUE(update)) {
+  if (!length(rid)) {
+    cat("There is no taxonomyTable saved in cache. Creating one. This might take a few minutes.", sep = "\n")
+    .createTaxonomyTable()
+    rid <- BiocFileCache::bfcquery(cache, query = "taxonomy_tables", field = "rname") %>%
+      dplyr::pull(rid)
+  } else if (isTRUE(update)) {
+    cat("Update parameter was set to TRUE. Creating a new taxonomyTable. This might take a few minutes.", sep = "\n")
     .createTaxonomyTable()
     rid <- BiocFileCache::bfcquery(cache, query = "taxonomy_tables", field = "rname") %>%
       dplyr::pull(rid)

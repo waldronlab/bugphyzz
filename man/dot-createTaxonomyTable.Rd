@@ -20,7 +20,7 @@ cache can be accessed with the \code{\link{.getCache}} function.
 \details{
 Two versions of the taxonomy table are saved in a list object (.RData),
 one version with taxonomy names and another with NCBI IDs. See the
-\code{\link{.taxonomyTable}} function to know how to access each of them.
+\code{\link{taxonomyTable}} function to know how to access each of them.
 }
 \examples{
 
