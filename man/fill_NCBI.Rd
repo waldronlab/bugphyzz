@@ -15,4 +15,8 @@ a dataframe
 \description{
 Fill in NCBI IDs where the cells have NA
 }
+\examples{
+aer <- physiologies("aerophilicity")
+aer_NCBI <- fill_NCBI(aer)
+}
 \keyword{internal}

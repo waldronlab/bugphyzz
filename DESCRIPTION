@@ -37,6 +37,7 @@ Imports:
     crayon,
     mgsub,
     here,
-    EnrichmentBrowser
+    EnrichmentBrowser,
+    BiocFileCache
 Depends: 
     R (>= 4.1.0)
