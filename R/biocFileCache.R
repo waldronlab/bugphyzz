@@ -37,7 +37,9 @@
 .createTaxonomyTable <- function() {
 
   # define function to modify the output of taxize::classification
-  # into a tibble
+  # into a tibble.
+  # A similar result can be achieved with cbind. Consider using cbind
+  # instead of reshape_taxon_table
   reshape_taxon_table <- function(x, type) {
     if (tail(x[["rank"]], 1) == "no rank") {
       x$rank[length(x[["rank"]])] <- "no_rank"
@@ -65,12 +67,12 @@
       rev() # very large IDs might cause errors, is better to order by integer size
 
     # There could be some warnings about NAs because of invalid NCB IDs
-    taxonomies <- suppressMessages(taxize::classification(ncbi_ids, db = "ncbi"))
+    taxonomies <- suppressMessages(taxize::classification(ncbi_ids, db = "ncbi", batch_size = 1000))
 
   })
 
   # This step is necessary because invalid IDs might cause that outputs
-  # are misplaced with respect to the vector names
+  # become misplaced with respect to the vector names
   new_names <- map_chr(taxonomies, ~tail(.x[["id"]], 1))
   names(taxonomies) <- new_names
 
@@ -79,12 +81,12 @@
   ranks_table <- tibble::tibble(NCBI_ID = names(ranks), rank = ranks)
 
   taxonomy_table_names <- taxonomies %>%
-    purrr::map(~ reshape_taxon_table(.x, type = "name")) %>%
+    purrr::map(~ reshape_taxon_table(.x, type = "name")) %>% # function defined above
     dplyr::bind_rows(.id = "NCBI_ID") %>%
     dplyr::distinct() # remove duplicates
 
   taxonomy_table_ids <- taxonomies %>%
-    purrr::map(~ reshape_taxon_table(.x, type = "id")) %>%
+    purrr::map(~ reshape_taxon_table(.x, type = "id")) %>% # function defined above
     dplyr::bind_rows(.id = "NCBI_ID") %>%
     dplyr::distinct() # remove duplicates
 
