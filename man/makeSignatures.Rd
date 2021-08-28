@@ -4,20 +4,33 @@
 \alias{makeSignatures}
 \title{Makes taxid signatures for physiologies}
 \usage{
-makeSignatures(df, taxids = "Taxon_name", rank = "all")
+makeSignatures(
+  df,
+  taxids = "Taxon_name",
+  taxa_rank = "genus",
+  min = NULL,
+  max = NULL
+)
 }
 \arguments{
 \item{df}{A \code{data.frame} output by the \link{physiologies} function}
 
 \item{taxids}{identification of the bugs (Taxon name, NCBI ID, etc.)}
 
-\item{rank}{Nothing yet}
+\item{taxa_rank}{Nothing yet}
+
+\item{min}{An integer. Minimum value. Only applies for attributes with
+continuous values.}
+
+\item{max}{An integer. Maximum value. Only applies for attributes with
+continoues values.}
 }
 \value{
 a large list of character vectors
 }
 \description{
-Makes taxid signatures for physiologies
+\code{makeSignatures}  reates a list of microbe signatures from a bugphyzz
+dataset.
 }
 \examples{
 aero <- physiologies("aerophilicity")
