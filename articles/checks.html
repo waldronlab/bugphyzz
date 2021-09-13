@@ -123,8 +123,7 @@
 <p>The <code>checkRequiredColumns</code> function checks: 1) that all columns are present in a single data frame, and 2) that all columns are in the correct order in that data frame. If any of those conditions is not met, the function will print an error message on screen indicating which columns are missing or misplaced. If no errors are found, the function returns a message indicting that all of the required columns are present and in the right order. Furthermore, the <code>checkRequiredColumns</code> function invisibly returns an error condition object, which can be checked later.</p>
 <p>Examples with toy data:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R">
-<span class="va">list_of_datasets</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>
+<code class="sourceCode R"><span class="va">list_of_datasets</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>
   <span class="co"># a dataset with missing required columns (only two are present)</span>
   dataset_with_missing_required_columns <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>
     NCBI_ID <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">10</span>,
@@ -268,7 +267,6 @@
 <code class="sourceCode R"><span class="co"># Print invalid values</span>
 <span class="va">err4</span><span class="op">$</span><span class="va">invalid_values</span>
 <span class="co">#&gt;  [1] "a" "b" "c" "d" "e" "f" "g" "h" "i" "j"</span>
-
 <span class="co"># Print row with invalid values</span>
 <span class="va">err4</span><span class="op">$</span><span class="va">invalid_positions</span>
 <span class="co">#&gt;  [1]  1  2  3  4  5  6  7  8  9 10</span></code></pre></div>
@@ -277,11 +275,7 @@
 </ul>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">err5</span> <span class="op">&lt;-</span> <span class="fu">bugphyzz</span><span class="fu">:::</span><span class="fu"><a href="../reference/checkColumnValuesDF.html">checkColumnValuesDF</a></span><span class="op">(</span>dataset <span class="op">=</span> <span class="va">list_of_df</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span>, dataset_name <span class="op">=</span> <span class="st">"dataset_with_invalid_column"</span><span class="op">)</span>
-<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `NCBI_ID` in dataset `dataset_with_invalid_column` contains invalid values in 10 rows. The first invalid values are: a; b; c...</span>
-<span class="co">#&gt; Warning in scan(file = file, what = what, sep = sep, quote = quote, dec = dec, :</span>
-<span class="co">#&gt; EOF within quoted string</span>
-<span class="co">#&gt; Warning in scan(file = file, what = what, sep = sep, quote = quote, dec = dec, :</span>
-<span class="co">#&gt; number of items read is not a multiple of the number of columns</span>
+<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `NCBI_ID` in dataset `dataset_with_invalid_column` contains invalid values in 10 rows. The first invalid values are: a; b; c... </span>
 <span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Attribute` in dataset `dataset_with_invalid_column` contains invalid values in 10 rows. The first invalid values are: 1; 2; 3... </span>
 <span class="co">#&gt; &gt;&gt;&gt; Invalid column class in dataset_with_invalid_column. The `Attribute_value` column` should be of class logical or numeric, not character </span>
 <span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Evidence` in dataset `dataset_with_invalid_column` contains invalid values in 10 rows. The first invalid values are: 1; 2; 3... </span>
@@ -311,11 +305,7 @@
 </ul>
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">err6</span> <span class="op">&lt;-</span> <span class="fu">bugphyzz</span><span class="fu">:::</span><span class="fu"><a href="../reference/checkColumnValuesList.html">checkColumnValuesList</a></span><span class="op">(</span>list <span class="op">=</span> <span class="va">list_of_df</span><span class="op">)</span>
-<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `NCBI_ID` in dataset `dataset_with_bad_values` contains invalid values in 10 rows. The first invalid values are: a; b; c...</span>
-<span class="co">#&gt; Warning in scan(file = file, what = what, sep = sep, quote = quote, dec = dec, :</span>
-<span class="co">#&gt; EOF within quoted string</span>
-<span class="co">#&gt; Warning in scan(file = file, what = what, sep = sep, quote = quote, dec = dec, :</span>
-<span class="co">#&gt; number of items read is not a multiple of the number of columns</span>
+<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `NCBI_ID` in dataset `dataset_with_bad_values` contains invalid values in 10 rows. The first invalid values are: a; b; c... </span>
 <span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Attribute` in dataset `dataset_with_bad_values` contains invalid values in 10 rows. The first invalid values are: 1; 2; 3... </span>
 <span class="co">#&gt; &gt;&gt;&gt; Invalid column class in dataset_with_bad_values. The `Attribute_value` column` should be of class logical or numeric, not character </span>
 <span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Evidence` in dataset `dataset_with_bad_values` contains invalid values in 10 rows. The first invalid values are: 1; 2; 3... </span>
@@ -352,11 +342,11 @@
 <p>Import bugphyzz data:</p>
 <div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">bp</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/physiologies.html">physiologies</a></span><span class="op">(</span><span class="op">)</span>
-<span class="co">#&gt; Dropped 15914 rows with missing Attribute_value from animal pathogen</span>
+<span class="co">#&gt; Finished animal pathogen</span>
 <span class="co">#&gt; Finished antimicrobial resistance</span>
 <span class="co">#&gt; Dropped 3054 rows with missing Attribute_value from antimicrobial sensitivity</span>
-<span class="co">#&gt; Dropped 3583 rows with missing Attribute_value from biofilm forming</span>
-<span class="co">#&gt; Finished butyrate producing</span>
+<span class="co">#&gt; Finished biofilm forming</span>
+<span class="co">#&gt; Dropped 4 rows with missing Attribute_value from butyrate producing</span>
 <span class="co">#&gt; Finished acetate producing</span>
 <span class="co">#&gt; Finished lactate producing</span>
 <span class="co">#&gt; Finished arrangement</span>
@@ -378,169 +368,72 @@
 <span class="co">#&gt; Finished disease association</span>
 <span class="co">#&gt; Finished hydrogen gas producing</span>
 <span class="co">#&gt; Finished length</span>
+<span class="co">#&gt; Finished health associated</span>
 <span class="co"># bp &lt;- physiologies(keyword = c("aerophilicity", "plant pathogenicity"))</span></code></pre></div>
 <p>Generate list of errors:</p>
 <div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">list_of_errors</span> <span class="op">&lt;-</span> <span class="fu">bugphyzz</span><span class="fu">:::</span><span class="fu"><a href="../reference/checkColumnValuesList.html">checkColumnValuesList</a></span><span class="op">(</span><span class="va">bp</span><span class="op">)</span>
-<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Taxon_name` in dataset `animal pathogen` contains invalid values in 1 rows. The first invalid values are: ...</span>
-<span class="co">#&gt; Warning in scan(file = file, what = what, sep = sep, quote = quote, dec = dec, :</span>
-<span class="co">#&gt; EOF within quoted string</span>
-<span class="co">#&gt; Warning in scan(file = file, what = what, sep = sep, quote = quote, dec = dec, :</span>
-<span class="co">#&gt; number of items read is not a multiple of the number of columns</span>
-<span class="co">#&gt; Warning in scan(file = file, what = what, sep = sep, quote = quote, dec = dec, :</span>
-<span class="co">#&gt; EOF within quoted string</span>
-<span class="co">#&gt; Warning in scan(file = file, what = what, sep = sep, quote = quote, dec = dec, :</span>
-<span class="co">#&gt; number of items read is not a multiple of the number of columns</span>
-<span class="co">#&gt; Warning in scan(file = file, what = what, sep = sep, quote = quote, dec = dec, :</span>
-<span class="co">#&gt; EOF within quoted string</span>
-<span class="co">#&gt; Warning in scan(file = file, what = what, sep = sep, quote = quote, dec = dec, :</span>
-<span class="co">#&gt; number of items read is not a multiple of the number of columns</span>
-<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Confidence_interval` in dataset `antimicrobial sensitivity` contains invalid values in 832 rows. The first invalid values are: EXP; EXP; EXP...</span>
-<span class="co">#&gt; Warning in scan(file = file, what = what, sep = sep, quote = quote, dec = dec, :</span>
-<span class="co">#&gt; EOF within quoted string</span>
-
-<span class="co">#&gt; Warning in scan(file = file, what = what, sep = sep, quote = quote, dec = dec, :</span>
-<span class="co">#&gt; number of items read is not a multiple of the number of columns</span>
-<span class="co">#&gt; Warning in scan(file = file, what = what, sep = sep, quote = quote, dec = dec, :</span>
-<span class="co">#&gt; EOF within quoted string</span>
-<span class="co">#&gt; Warning in scan(file = file, what = what, sep = sep, quote = quote, dec = dec, :</span>
-<span class="co">#&gt; number of items read is not a multiple of the number of columns</span>
-<span class="co">#&gt; Warning in scan(file = file, what = what, sep = sep, quote = quote, dec = dec, :</span>
-<span class="co">#&gt; EOF within quoted string</span>
-<span class="co">#&gt; Warning in scan(file = file, what = what, sep = sep, quote = quote, dec = dec, :</span>
-<span class="co">#&gt; number of items read is not a multiple of the number of columns</span>
-<span class="co">#&gt; &gt;&gt;&gt; Invalid column class in acetate producing. The `Attribute_value` column` should be of class logical or numeric, not character</span>
-<span class="co">#&gt; Warning in scan(file = file, what = what, sep = sep, quote = quote, dec = dec, :</span>
-<span class="co">#&gt; EOF within quoted string</span>
-
-<span class="co">#&gt; Warning in scan(file = file, what = what, sep = sep, quote = quote, dec = dec, :</span>
-<span class="co">#&gt; number of items read is not a multiple of the number of columns</span>
+<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Taxon_name` in dataset `animal pathogen` contains invalid values in 1 rows. The first invalid values are: ... </span>
+<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Confidence_interval` in dataset `animal pathogen` contains invalid values in 1421 rows. The first invalid values are: Unknown; Unknown; Unknown... </span>
+<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Confidence_interval` in dataset `antimicrobial resistance` contains invalid values in 10321 rows. The first invalid values are: Always; Always; Always... </span>
+<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Confidence_interval` in dataset `antimicrobial sensitivity` contains invalid values in 832 rows. The first invalid values are: Usually; Usually; Usually... </span>
+<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Confidence_interval` in dataset `biofilm forming` contains invalid values in 426 rows. The first invalid values are: Unknown; Unknown; Unknown... </span>
+<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Confidence_interval` in dataset `butyrate producing` contains invalid values in 24 rows. The first invalid values are: Usually; Usually; Usually... </span>
+<span class="co">#&gt; &gt;&gt;&gt; Invalid column class in acetate producing. The `Attribute_value` column` should be of class logical or numeric, not character </span>
+<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Confidence_interval` in dataset `acetate producing` contains invalid values in 24 rows. The first invalid values are: Unknown; Unknown; Unknown... </span>
 <span class="co">#&gt; &gt;&gt;&gt; Invalid column class in lactate producing. The `Attribute_value` column` should be of class logical or numeric, not character </span>
-<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Accession_number` in dataset `arrangement` contains invalid values in 1 rows. The first invalid values are: ...</span>
-<span class="co">#&gt; Warning in scan(file = file, what = what, sep = sep, quote = quote, dec = dec, :</span>
-<span class="co">#&gt; EOF within quoted string</span>
-
-<span class="co">#&gt; Warning in scan(file = file, what = what, sep = sep, quote = quote, dec = dec, :</span>
-<span class="co">#&gt; number of items read is not a multiple of the number of columns</span>
-<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Attribute` in dataset `arrangement` contains invalid values in 8 rows. The first invalid values are: v-formations; v-formations; v-formations... </span>
-<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Evidence` in dataset `arrangement` contains invalid values in 1071 rows. The first invalid values are: ; ; ...</span>
-<span class="co">#&gt; Warning in scan(file = file, what = what, sep = sep, quote = quote, dec = dec, :</span>
-<span class="co">#&gt; EOF within quoted string</span>
-
-<span class="co">#&gt; Warning in scan(file = file, what = what, sep = sep, quote = quote, dec = dec, :</span>
-<span class="co">#&gt; number of items read is not a multiple of the number of columns</span>
+<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Confidence_interval` in dataset `lactate producing` contains invalid values in 24 rows. The first invalid values are: Ususally; Ususally; Ususally... </span>
+<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Accession_number` in dataset `arrangement` contains invalid values in 1 rows. The first invalid values are: ... </span>
+<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Evidence` in dataset `arrangement` contains invalid values in 1071 rows. The first invalid values are: ; ; ... </span>
+<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Confidence_interval` in dataset `arrangement` contains invalid values in 1071 rows. The first invalid values are: Unknown; Unknown; Unknown... </span>
 <span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Attribute` in dataset `shape` contains invalid values in 1 rows. The first invalid values are: square... </span>
-<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Evidence` in dataset `shape` contains invalid values in 1279 rows. The first invalid values are: ; ; ...</span>
-<span class="co">#&gt; Warning in scan(file = file, what = what, sep = sep, quote = quote, dec = dec, :</span>
-<span class="co">#&gt; EOF within quoted string</span>
-
-<span class="co">#&gt; Warning in scan(file = file, what = what, sep = sep, quote = quote, dec = dec, :</span>
-<span class="co">#&gt; number of items read is not a multiple of the number of columns</span>
-<span class="co">#&gt; Warning in scan(file = file, what = what, sep = sep, quote = quote, dec = dec, :</span>
-<span class="co">#&gt; EOF within quoted string</span>
-<span class="co">#&gt; Warning in scan(file = file, what = what, sep = sep, quote = quote, dec = dec, :</span>
-<span class="co">#&gt; number of items read is not a multiple of the number of columns</span>
-<span class="co">#&gt; Warning in scan(file = file, what = what, sep = sep, quote = quote, dec = dec, :</span>
-<span class="co">#&gt; EOF within quoted string</span>
-<span class="co">#&gt; Warning in scan(file = file, what = what, sep = sep, quote = quote, dec = dec, :</span>
-<span class="co">#&gt; number of items read is not a multiple of the number of columns</span>
-<span class="co">#&gt; Warning in scan(file = file, what = what, sep = sep, quote = quote, dec = dec, :</span>
-<span class="co">#&gt; EOF within quoted string</span>
-<span class="co">#&gt; Warning in scan(file = file, what = what, sep = sep, quote = quote, dec = dec, :</span>
-<span class="co">#&gt; number of items read is not a multiple of the number of columns</span>
+<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Evidence` in dataset `shape` contains invalid values in 1279 rows. The first invalid values are: ; ; ... </span>
+<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Confidence_interval` in dataset `COGEM pathogenicity rating` contains invalid values in 1043 rows. The first invalid values are: Usually; Usually; Usually... </span>
+<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Confidence_interval` in dataset `mutation rate per site per generation` contains invalid values in 26 rows. The first invalid values are: Sometimes; Sometimes; Sometimes... </span>
+<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Confidence_interval` in dataset `mutation rates per site per year` contains invalid values in 81 rows. The first invalid values are: Sometimes; Sometimes; Sometimes... </span>
 <span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Attribute` in dataset `extreme environment` contains invalid values in 1876 rows. The first invalid values are: Extreme environment; Extreme environment; Extreme environment... </span>
-<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Confidence_interval` in dataset `extreme environment` contains invalid values in 1876 rows. The first invalid values are: Always; Always; Always...</span>
-<span class="co">#&gt; Warning in scan(file = file, what = what, sep = sep, quote = quote, dec = dec, :</span>
-<span class="co">#&gt; EOF within quoted string</span>
-
-<span class="co">#&gt; Warning in scan(file = file, what = what, sep = sep, quote = quote, dec = dec, :</span>
-<span class="co">#&gt; number of items read is not a multiple of the number of columns</span>
-<span class="co">#&gt; Warning in scan(file = file, what = what, sep = sep, quote = quote, dec = dec, :</span>
-<span class="co">#&gt; EOF within quoted string</span>
-<span class="co">#&gt; Warning in scan(file = file, what = what, sep = sep, quote = quote, dec = dec, :</span>
-<span class="co">#&gt; number of items read is not a multiple of the number of columns</span>
+<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Confidence_interval` in dataset `extreme environment` contains invalid values in 1876 rows. The first invalid values are: Always; Always; Always... </span>
+<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Evidence` in dataset `gram stain` contains invalid values in 3614 rows. The first invalid values are: Unknown; Unknown; Unknown... </span>
+<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Confidence_interval` in dataset `gram stain` contains invalid values in 1278 rows. The first invalid values are: Unknown; Unknown; Unknown... </span>
 <span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Attribute` in dataset `growth medium` contains invalid values in 14 rows. The first invalid values are: mrs broth; mrs broth; mrs broth... </span>
-<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Confidence_interval` in dataset `growth medium` contains invalid values in 304 rows. The first invalid values are: Always; Always; Always...</span>
-<span class="co">#&gt; Warning in scan(file = file, what = what, sep = sep, quote = quote, dec = dec, :</span>
-<span class="co">#&gt; EOF within quoted string</span>
-
-<span class="co">#&gt; Warning in scan(file = file, what = what, sep = sep, quote = quote, dec = dec, :</span>
-<span class="co">#&gt; number of items read is not a multiple of the number of columns</span>
-<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Attribute` in dataset `growth temperature` contains invalid values in 2524 rows. The first invalid values are: growth temperature; growth temperature; growth temperature...</span>
-<span class="co">#&gt; Warning in scan(file = file, what = what, sep = sep, quote = quote, dec = dec, :</span>
-<span class="co">#&gt; EOF within quoted string</span>
-
-<span class="co">#&gt; Warning in scan(file = file, what = what, sep = sep, quote = quote, dec = dec, :</span>
-<span class="co">#&gt; number of items read is not a multiple of the number of columns</span>
-<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Attribute` in dataset `habitat` contains invalid values in 136 rows. The first invalid values are: human urine; human urine; human urine... </span>
+<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Confidence_interval` in dataset `growth medium` contains invalid values in 304 rows. The first invalid values are: Always; Always; Always... </span>
+<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Attribute` in dataset `growth temperature` contains invalid values in 2524 rows. The first invalid values are: growth temperature; growth temperature; growth temperature... </span>
+<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Confidence_interval` in dataset `growth temperature` contains invalid values in 2524 rows. The first invalid values are: Unknown; Unknown; Unknown... </span>
+<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Genome_ID` in dataset `habitat` contains invalid values in 14429 rows. The first invalid values are: ; ; ... </span>
+<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Accession_number` in dataset `habitat` contains invalid values in 12999 rows. The first invalid values are: ; ; ... </span>
+<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Attribute` in dataset `habitat` contains invalid values in 58 rows. The first invalid values are: oral; oral; oral... </span>
 <span class="co">#&gt; &gt;&gt;&gt; Uncatalogued column. The column EXP of the dataset habitat cannot be checked because it's not included in the template file. Please add it to the [template file](https://github.com/waldronlab/bugphyzz/blob/main/inst/extdata/template.tsv) </span>
-<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Confidence_interval` in dataset `habitat` contains invalid values in 9 rows. The first invalid values are: Sometimes; Sometimes; Sometimes...</span>
-<span class="co">#&gt; Warning in scan(file = file, what = what, sep = sep, quote = quote, dec = dec, :</span>
-<span class="co">#&gt; EOF within quoted string</span>
-
-<span class="co">#&gt; Warning in scan(file = file, what = what, sep = sep, quote = quote, dec = dec, :</span>
-<span class="co">#&gt; number of items read is not a multiple of the number of columns</span>
-<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Attribute` in dataset `optimal ph` contains invalid values in 886 rows. The first invalid values are: optimal ph; optimal ph; optimal ph...</span>
-<span class="co">#&gt; Warning in scan(file = file, what = what, sep = sep, quote = quote, dec = dec, :</span>
-<span class="co">#&gt; EOF within quoted string</span>
-
-<span class="co">#&gt; Warning in scan(file = file, what = what, sep = sep, quote = quote, dec = dec, :</span>
-<span class="co">#&gt; number of items read is not a multiple of the number of columns</span>
-<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Evidence` in dataset `aerophilicity` contains invalid values in 1304 rows. The first invalid values are: ; ; ...</span>
-<span class="co">#&gt; Warning in scan(file = file, what = what, sep = sep, quote = quote, dec = dec, :</span>
-<span class="co">#&gt; EOF within quoted string</span>
-
-<span class="co">#&gt; Warning in scan(file = file, what = what, sep = sep, quote = quote, dec = dec, :</span>
-<span class="co">#&gt; number of items read is not a multiple of the number of columns</span>
-<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Attribute` in dataset `plant pathogenicity` contains invalid values in 1493 rows. The first invalid values are: plant pathogenity; plant pathogenity; plant pathogenity...</span>
-<span class="co">#&gt; Warning in scan(file = file, what = what, sep = sep, quote = quote, dec = dec, :</span>
-<span class="co">#&gt; EOF within quoted string</span>
-
-<span class="co">#&gt; Warning in scan(file = file, what = what, sep = sep, quote = quote, dec = dec, :</span>
-<span class="co">#&gt; number of items read is not a multiple of the number of columns</span>
+<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Confidence_interval` in dataset `habitat` contains invalid values in 18230 rows. The first invalid values are: Unknown; Unknown; Unknown... </span>
+<span class="co">#&gt; &gt;&gt;&gt; Uncatalogued column. The column Other.ID of the dataset habitat cannot be checked because it's not included in the template file. Please add it to the [template file](https://github.com/waldronlab/bugphyzz/blob/main/inst/extdata/template.tsv) </span>
+<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Attribute` in dataset `optimal ph` contains invalid values in 886 rows. The first invalid values are: optimal ph; optimal ph; optimal ph... </span>
+<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Confidence_interval` in dataset `optimal ph` contains invalid values in 886 rows. The first invalid values are: Usually; Usually; Usually... </span>
+<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Evidence` in dataset `aerophilicity` contains invalid values in 1304 rows. The first invalid values are: ; ; ... </span>
+<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Attribute` in dataset `plant pathogenicity` contains invalid values in 1493 rows. The first invalid values are: plant pathogenity; plant pathogenity; plant pathogenity... </span>
+<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Confidence_interval` in dataset `plant pathogenicity` contains invalid values in 1493 rows. The first invalid values are: Usually; Usually; Usually... </span>
 <span class="co">#&gt; &gt;&gt;&gt; Invalid column class in width. The `Attribute_value` column` should be of class logical or numeric, not character </span>
 <span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Evidence` in dataset `width` contains invalid values in 1 rows. The first invalid values are: ... </span>
-<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Accession_number` in dataset `spore shape` contains invalid values in 153 rows. The first invalid values are: ; ; ...</span>
-<span class="co">#&gt; Warning in scan(file = file, what = what, sep = sep, quote = quote, dec = dec, :</span>
-<span class="co">#&gt; EOF within quoted string</span>
-
-<span class="co">#&gt; Warning in scan(file = file, what = what, sep = sep, quote = quote, dec = dec, :</span>
-<span class="co">#&gt; number of items read is not a multiple of the number of columns</span>
-<span class="co">#&gt; Warning in scan(file = file, what = what, sep = sep, quote = quote, dec = dec, :</span>
-<span class="co">#&gt; EOF within quoted string</span>
-<span class="co">#&gt; Warning in scan(file = file, what = what, sep = sep, quote = quote, dec = dec, :</span>
-<span class="co">#&gt; number of items read is not a multiple of the number of columns</span>
-<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Attribute` in dataset `isolation site` contains invalid values in 1107 rows. The first invalid values are: ; ; ...</span>
-<span class="co">#&gt; Warning in scan(file = file, what = what, sep = sep, quote = quote, dec = dec, :</span>
-<span class="co">#&gt; EOF within quoted string</span>
-
-<span class="co">#&gt; Warning in scan(file = file, what = what, sep = sep, quote = quote, dec = dec, :</span>
-<span class="co">#&gt; number of items read is not a multiple of the number of columns</span>
+<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Accession_number` in dataset `spore shape` contains invalid values in 153 rows. The first invalid values are: ; ; ... </span>
+<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Confidence_interval` in dataset `spore shape` contains invalid values in 1430 rows. The first invalid values are: Usually; Usually; Usually... </span>
+<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Attribute` in dataset `isolation site` contains invalid values in 1107 rows. The first invalid values are: ; ; ... </span>
 <span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Attribute` in dataset `disease association` contains invalid values in 184 rows. The first invalid values are: tumors; hitra disease; anaplasmosis... </span>
-<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `NCBI_ID` in dataset `hydrogen gas producing` contains invalid values in 24 rows. The first invalid values are: ; ; ...</span>
-<span class="co">#&gt; Warning in scan(file = file, what = what, sep = sep, quote = quote, dec = dec, :</span>
-<span class="co">#&gt; EOF within quoted string</span>
-
-<span class="co">#&gt; Warning in scan(file = file, what = what, sep = sep, quote = quote, dec = dec, :</span>
-<span class="co">#&gt; number of items read is not a multiple of the number of columns</span>
-<span class="co">#&gt; &gt;&gt;&gt; Invalid column class in hydrogen gas producing. The `Attribute_value` column` should be of class logical or numeric, not character</span>
-<span class="co">#&gt; Warning in scan(file = file, what = what, sep = sep, quote = quote, dec = dec, :</span>
-<span class="co">#&gt; EOF within quoted string</span>
-
-<span class="co">#&gt; Warning in scan(file = file, what = what, sep = sep, quote = quote, dec = dec, :</span>
-<span class="co">#&gt; number of items read is not a multiple of the number of columns</span>
-<span class="co">#&gt; &gt;&gt;&gt; Invalid column class in length. The `Attribute_value` column` should be of class logical or numeric, not character</span></code></pre></div>
+<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Confidence_interval` in dataset `disease association` contains invalid values in 445 rows. The first invalid values are: Usually; Usually; Usually... </span>
+<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `NCBI_ID` in dataset `hydrogen gas producing` contains invalid values in 24 rows. The first invalid values are: ; ; ... </span>
+<span class="co">#&gt; &gt;&gt;&gt; Invalid column class in hydrogen gas producing. The `Attribute_value` column` should be of class logical or numeric, not character </span>
+<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Confidence_interval` in dataset `hydrogen gas producing` contains invalid values in 24 rows. The first invalid values are: Usually; Usually; Usually... </span>
+<span class="co">#&gt; &gt;&gt;&gt; Invalid column class in length. The `Attribute_value` column` should be of class logical or numeric, not character </span>
+<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Confidence_interval` in dataset `length` contains invalid values in 196 rows. The first invalid values are: Unknown; Unknown; Unknown... </span>
+<span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Confidence_interval` in dataset `health associated` contains invalid values in 30 rows. The first invalid values are: Usually; Usually; Usually...</span></code></pre></div>
 <p>Turn list of errors into a table with links:</p>
 <table class="table">
 <colgroup>
 <col width="1%">
-<col width="6%">
+<col width="9%">
 <col width="4%">
 <col width="5%">
 <col width="5%">
-<col width="31%">
+<col width="30%">
 <col width="4%">
-<col width="39%">
+<col width="38%">
 </colgroup>
 <thead><tr class="header">
 <th align="right">n_error</th>
@@ -565,16 +458,56 @@
 </tr>
 <tr class="even">
 <td align="right">2</td>
+<td align="left">animal pathogen</td>
+<td align="left">Confidence_interval</td>
+<td align="left">invalid_column_values</td>
+<td align="right">1421</td>
+<td align="left">Unknown; Unknown; Unknown; Unknown; Unknown; Unknown</td>
+<td align="left">1421 x 9</td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vT9s4PFd7NHr-1GMNyPexZ1KuNyj2u7ErC1Vq3-wAfroNNCG-Tu-y8gn3qKQ4C-URg1SIjOm9bGE4wQ/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vT9s4PFd7NHr-1GMNyPexZ1KuNyj2u7ErC1Vq3-wAfroNNCG-Tu-y8gn3qKQ4C-URg1SIjOm9bGE4wQ/pub?output=csv</a></td>
+</tr>
+<tr class="odd">
+<td align="right">3</td>
+<td align="left">antimicrobial resistance</td>
+<td align="left">Confidence_interval</td>
+<td align="left">invalid_column_values</td>
+<td align="right">10321</td>
+<td align="left">Always; Always; Always; Always; Always; Always</td>
+<td align="left">10321 x 9</td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vRWI3s8H0Izcs-PEo4W7Q0QAegNHq7IdSKCHSL0nZlrptTZ4dIusG0m1AMEUYv1_4GN3QX9rADAja_0/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vRWI3s8H0Izcs-PEo4W7Q0QAegNHq7IdSKCHSL0nZlrptTZ4dIusG0m1AMEUYv1_4GN3QX9rADAja_0/pub?output=csv</a></td>
+</tr>
+<tr class="even">
+<td align="right">4</td>
 <td align="left">antimicrobial sensitivity</td>
 <td align="left">Confidence_interval</td>
 <td align="left">invalid_column_values</td>
 <td align="right">832</td>
-<td align="left">EXP; EXP; EXP; EXP; EXP; EXP</td>
+<td align="left">Usually; Usually; Usually; Usually; Usually; Usually</td>
 <td align="left">832 x 9</td>
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vR0FdQpAD-xhkyIXgZMtC9oCmlbx77Cj1ncCyojm9oO410NBwJRhBNFl4hnd4HMlj2okxEKLvA8EPr2/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vR0FdQpAD-xhkyIXgZMtC9oCmlbx77Cj1ncCyojm9oO410NBwJRhBNFl4hnd4HMlj2okxEKLvA8EPr2/pub?output=csv</a></td>
 </tr>
 <tr class="odd">
-<td align="right">3</td>
+<td align="right">5</td>
+<td align="left">biofilm forming</td>
+<td align="left">Confidence_interval</td>
+<td align="left">invalid_column_values</td>
+<td align="right">426</td>
+<td align="left">Unknown; Unknown; Unknown; Unknown; Unknown; Unknown</td>
+<td align="left">426 x 10</td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vRduthxAWAhSLSoOgFNAmI8DX8ORerG1U6OmI8y6-5coe31pONYfISNsUE-e-E_eiyxtQzin6Xq9b0m/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vRduthxAWAhSLSoOgFNAmI8DX8ORerG1U6OmI8y6-5coe31pONYfISNsUE-e-E_eiyxtQzin6Xq9b0m/pub?output=csv</a></td>
+</tr>
+<tr class="even">
+<td align="right">6</td>
+<td align="left">butyrate producing</td>
+<td align="left">Confidence_interval</td>
+<td align="left">invalid_column_values</td>
+<td align="right">24</td>
+<td align="left">Usually; Usually; Usually; Usually; Usually; Usually</td>
+<td align="left">24 x 10</td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQPnLOpbFbfLvOb8fvC6A-WfzVNMDYRWOUsT4hIseDNgI7nwZGjVwg3KBkWeFtOBBLK0j-DRiZ-jtqG/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQPnLOpbFbfLvOb8fvC6A-WfzVNMDYRWOUsT4hIseDNgI7nwZGjVwg3KBkWeFtOBBLK0j-DRiZ-jtqG/pub?output=csv</a></td>
+</tr>
+<tr class="odd">
+<td align="right">7</td>
 <td align="left">acetate producing</td>
 <td align="left">Attribute_value</td>
 <td align="left">invalid_column_class</td>
@@ -584,7 +517,17 @@
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQb6gDQdhCMWHLQdkzMM4bgTPPosYCZvjzJu4NyOYaSBGOCaOPoQh0OiUr4btnJ8EAWn7NiF-T9JaCE/pub?gid=0&amp;single=true&amp;output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQb6gDQdhCMWHLQdkzMM4bgTPPosYCZvjzJu4NyOYaSBGOCaOPoQh0OiUr4btnJ8EAWn7NiF-T9JaCE/pub?gid=0&amp;single=true&amp;output=csv</a></td>
 </tr>
 <tr class="even">
-<td align="right">4</td>
+<td align="right">8</td>
+<td align="left">acetate producing</td>
+<td align="left">Confidence_interval</td>
+<td align="left">invalid_column_values</td>
+<td align="right">24</td>
+<td align="left">Unknown; Unknown; Unknown; Unknown; Unknown; Unknown</td>
+<td align="left">24 x 10</td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQb6gDQdhCMWHLQdkzMM4bgTPPosYCZvjzJu4NyOYaSBGOCaOPoQh0OiUr4btnJ8EAWn7NiF-T9JaCE/pub?gid=0&amp;single=true&amp;output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQb6gDQdhCMWHLQdkzMM4bgTPPosYCZvjzJu4NyOYaSBGOCaOPoQh0OiUr4btnJ8EAWn7NiF-T9JaCE/pub?gid=0&amp;single=true&amp;output=csv</a></td>
+</tr>
+<tr class="odd">
+<td align="right">9</td>
 <td align="left">lactate producing</td>
 <td align="left">Attribute_value</td>
 <td align="left">invalid_column_class</td>
@@ -593,8 +536,18 @@
 <td align="left">24 x 10</td>
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vSDYef_4xX2-RVfxhz7XrHIglvHjB5a9bagpApN_zHNhnswhFXN7CRsaQr3pKW6bAyrh8b26tndxCFi/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vSDYef_4xX2-RVfxhz7XrHIglvHjB5a9bagpApN_zHNhnswhFXN7CRsaQr3pKW6bAyrh8b26tndxCFi/pub?output=csv</a></td>
 </tr>
+<tr class="even">
+<td align="right">10</td>
+<td align="left">lactate producing</td>
+<td align="left">Confidence_interval</td>
+<td align="left">invalid_column_values</td>
+<td align="right">24</td>
+<td align="left">Ususally; Ususally; Ususally; Ususally; Ususally; Ususally</td>
+<td align="left">24 x 10</td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vSDYef_4xX2-RVfxhz7XrHIglvHjB5a9bagpApN_zHNhnswhFXN7CRsaQr3pKW6bAyrh8b26tndxCFi/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vSDYef_4xX2-RVfxhz7XrHIglvHjB5a9bagpApN_zHNhnswhFXN7CRsaQr3pKW6bAyrh8b26tndxCFi/pub?output=csv</a></td>
+</tr>
 <tr class="odd">
-<td align="right">5</td>
+<td align="right">11</td>
 <td align="left">arrangement</td>
 <td align="left">Accession_number</td>
 <td align="left">invalid_column_values</td>
@@ -604,17 +557,7 @@
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vSgNXC-VPLmG8dUN8VAun_pbT0Y4-qJo6u9ozHGO8j7Weq6ymPaPw9kJUPl-RpHSYvtUgACo-SVHyk5/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vSgNXC-VPLmG8dUN8VAun_pbT0Y4-qJo6u9ozHGO8j7Weq6ymPaPw9kJUPl-RpHSYvtUgACo-SVHyk5/pub?output=csv</a></td>
 </tr>
 <tr class="even">
-<td align="right">6</td>
-<td align="left">arrangement</td>
-<td align="left">Attribute</td>
-<td align="left">invalid_column_values</td>
-<td align="right">8</td>
-<td align="left">v-formations; v-formations; v-formations; v-formations; v-formations; v-formations</td>
-<td align="left">1823 x 9</td>
-<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vSgNXC-VPLmG8dUN8VAun_pbT0Y4-qJo6u9ozHGO8j7Weq6ymPaPw9kJUPl-RpHSYvtUgACo-SVHyk5/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vSgNXC-VPLmG8dUN8VAun_pbT0Y4-qJo6u9ozHGO8j7Weq6ymPaPw9kJUPl-RpHSYvtUgACo-SVHyk5/pub?output=csv</a></td>
-</tr>
-<tr class="odd">
-<td align="right">7</td>
+<td align="right">12</td>
 <td align="left">arrangement</td>
 <td align="left">Evidence</td>
 <td align="left">invalid_column_values</td>
@@ -623,8 +566,18 @@
 <td align="left">1823 x 9</td>
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vSgNXC-VPLmG8dUN8VAun_pbT0Y4-qJo6u9ozHGO8j7Weq6ymPaPw9kJUPl-RpHSYvtUgACo-SVHyk5/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vSgNXC-VPLmG8dUN8VAun_pbT0Y4-qJo6u9ozHGO8j7Weq6ymPaPw9kJUPl-RpHSYvtUgACo-SVHyk5/pub?output=csv</a></td>
 </tr>
+<tr class="odd">
+<td align="right">13</td>
+<td align="left">arrangement</td>
+<td align="left">Confidence_interval</td>
+<td align="left">invalid_column_values</td>
+<td align="right">1071</td>
+<td align="left">Unknown; Unknown; Unknown; Unknown; Unknown; Unknown</td>
+<td align="left">1823 x 9</td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vSgNXC-VPLmG8dUN8VAun_pbT0Y4-qJo6u9ozHGO8j7Weq6ymPaPw9kJUPl-RpHSYvtUgACo-SVHyk5/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vSgNXC-VPLmG8dUN8VAun_pbT0Y4-qJo6u9ozHGO8j7Weq6ymPaPw9kJUPl-RpHSYvtUgACo-SVHyk5/pub?output=csv</a></td>
+</tr>
 <tr class="even">
-<td align="right">8</td>
+<td align="right">14</td>
 <td align="left">shape</td>
 <td align="left">Attribute</td>
 <td align="left">invalid_column_values</td>
@@ -634,7 +587,7 @@
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vSSBfC2jfuqioMyj891v-hYM-uL61-amoDNl0bufw5RwVOmjp5m2uNOKTeJsAsZVHFdujgjEAencl5E/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vSSBfC2jfuqioMyj891v-hYM-uL61-amoDNl0bufw5RwVOmjp5m2uNOKTeJsAsZVHFdujgjEAencl5E/pub?output=csv</a></td>
 </tr>
 <tr class="odd">
-<td align="right">9</td>
+<td align="right">15</td>
 <td align="left">shape</td>
 <td align="left">Evidence</td>
 <td align="left">invalid_column_values</td>
@@ -644,7 +597,37 @@
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vSSBfC2jfuqioMyj891v-hYM-uL61-amoDNl0bufw5RwVOmjp5m2uNOKTeJsAsZVHFdujgjEAencl5E/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vSSBfC2jfuqioMyj891v-hYM-uL61-amoDNl0bufw5RwVOmjp5m2uNOKTeJsAsZVHFdujgjEAencl5E/pub?output=csv</a></td>
 </tr>
 <tr class="even">
-<td align="right">10</td>
+<td align="right">16</td>
+<td align="left">COGEM pathogenicity rating</td>
+<td align="left">Confidence_interval</td>
+<td align="left">invalid_column_values</td>
+<td align="right">1043</td>
+<td align="left">Usually; Usually; Usually; Usually; Usually; Usually</td>
+<td align="left">1043 x 9</td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQYZjtf0RcacNAe54pLOnzor2q0ZeK4cF19f-gjji7cHfrtOf3VuDPA-jSAKRNDNZoWQanyw2QCugRZ/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQYZjtf0RcacNAe54pLOnzor2q0ZeK4cF19f-gjji7cHfrtOf3VuDPA-jSAKRNDNZoWQanyw2QCugRZ/pub?output=csv</a></td>
+</tr>
+<tr class="odd">
+<td align="right">17</td>
+<td align="left">mutation rate per site per generation</td>
+<td align="left">Confidence_interval</td>
+<td align="left">invalid_column_values</td>
+<td align="right">26</td>
+<td align="left">Sometimes; Sometimes; Sometimes; Sometimes; Sometimes; Sometimes</td>
+<td align="left">26 x 10</td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQxiU_sfIyCEcwua8vuCjbSCeZkUBsL1pnNxEK-985NAsCgy0sNbaSKuFMaU5ytPCQ86h9x2NEJsX-t/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQxiU_sfIyCEcwua8vuCjbSCeZkUBsL1pnNxEK-985NAsCgy0sNbaSKuFMaU5ytPCQ86h9x2NEJsX-t/pub?output=csv</a></td>
+</tr>
+<tr class="even">
+<td align="right">18</td>
+<td align="left">mutation rates per site per year</td>
+<td align="left">Confidence_interval</td>
+<td align="left">invalid_column_values</td>
+<td align="right">81</td>
+<td align="left">Sometimes; Sometimes; Sometimes; Sometimes; Sometimes; Sometimes</td>
+<td align="left">81 x 10</td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQGJBifwNIYz6znmGAFgGtzaSNPhxU8qagDgl4BWLHKDcjs_gm11pEaLV7X01qdyeacmwYxalTrx0um/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQGJBifwNIYz6znmGAFgGtzaSNPhxU8qagDgl4BWLHKDcjs_gm11pEaLV7X01qdyeacmwYxalTrx0um/pub?output=csv</a></td>
+</tr>
+<tr class="odd">
+<td align="right">19</td>
 <td align="left">extreme environment</td>
 <td align="left">Attribute</td>
 <td align="left">invalid_column_values</td>
@@ -653,8 +636,8 @@
 <td align="left">1876 x 9</td>
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vSh82md-R7XuM6PMs4UY6DYCY99wgwMcY6PD-m-VoxbJJl_Ce9JWhKtTEdFLEMmzrUxDyrQtfLBCbKj/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vSh82md-R7XuM6PMs4UY6DYCY99wgwMcY6PD-m-VoxbJJl_Ce9JWhKtTEdFLEMmzrUxDyrQtfLBCbKj/pub?output=csv</a></td>
 </tr>
-<tr class="odd">
-<td align="right">11</td>
+<tr class="even">
+<td align="right">20</td>
 <td align="left">extreme environment</td>
 <td align="left">Confidence_interval</td>
 <td align="left">invalid_column_values</td>
@@ -663,8 +646,28 @@
 <td align="left">1876 x 9</td>
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vSh82md-R7XuM6PMs4UY6DYCY99wgwMcY6PD-m-VoxbJJl_Ce9JWhKtTEdFLEMmzrUxDyrQtfLBCbKj/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vSh82md-R7XuM6PMs4UY6DYCY99wgwMcY6PD-m-VoxbJJl_Ce9JWhKtTEdFLEMmzrUxDyrQtfLBCbKj/pub?output=csv</a></td>
 </tr>
+<tr class="odd">
+<td align="right">21</td>
+<td align="left">gram stain</td>
+<td align="left">Evidence</td>
+<td align="left">invalid_column_values</td>
+<td align="right">3614</td>
+<td align="left">Unknown; Unknown; Unknown; Unknown; Unknown; Unknown</td>
+<td align="left">4967 x 9</td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vRxQOO7O7oJDJrFbY3s1Y_rbouUSR3rM_a3kGlXgcVMys5pFLqmd00VjJh1adJBmh3xA3aM8r3Am2oC/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vRxQOO7O7oJDJrFbY3s1Y_rbouUSR3rM_a3kGlXgcVMys5pFLqmd00VjJh1adJBmh3xA3aM8r3Am2oC/pub?output=csv</a></td>
+</tr>
 <tr class="even">
-<td align="right">12</td>
+<td align="right">22</td>
+<td align="left">gram stain</td>
+<td align="left">Confidence_interval</td>
+<td align="left">invalid_column_values</td>
+<td align="right">1278</td>
+<td align="left">Unknown; Unknown; Unknown; Unknown; Unknown; Unknown</td>
+<td align="left">4967 x 9</td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vRxQOO7O7oJDJrFbY3s1Y_rbouUSR3rM_a3kGlXgcVMys5pFLqmd00VjJh1adJBmh3xA3aM8r3Am2oC/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vRxQOO7O7oJDJrFbY3s1Y_rbouUSR3rM_a3kGlXgcVMys5pFLqmd00VjJh1adJBmh3xA3aM8r3Am2oC/pub?output=csv</a></td>
+</tr>
+<tr class="odd">
+<td align="right">23</td>
 <td align="left">growth medium</td>
 <td align="left">Attribute</td>
 <td align="left">invalid_column_values</td>
@@ -673,8 +676,8 @@
 <td align="left">304 x 10</td>
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vTLNLWfdNxo7NGNuJ4Pq6nji-7jQhO1glTHh1cQVS3j147WxbwhbWqhyI3FJR0I578o1hzeGbHwMOmY/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vTLNLWfdNxo7NGNuJ4Pq6nji-7jQhO1glTHh1cQVS3j147WxbwhbWqhyI3FJR0I578o1hzeGbHwMOmY/pub?output=csv</a></td>
 </tr>
-<tr class="odd">
-<td align="right">13</td>
+<tr class="even">
+<td align="right">24</td>
 <td align="left">growth medium</td>
 <td align="left">Confidence_interval</td>
 <td align="left">invalid_column_values</td>
@@ -683,8 +686,8 @@
 <td align="left">304 x 10</td>
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vTLNLWfdNxo7NGNuJ4Pq6nji-7jQhO1glTHh1cQVS3j147WxbwhbWqhyI3FJR0I578o1hzeGbHwMOmY/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vTLNLWfdNxo7NGNuJ4Pq6nji-7jQhO1glTHh1cQVS3j147WxbwhbWqhyI3FJR0I578o1hzeGbHwMOmY/pub?output=csv</a></td>
 </tr>
-<tr class="even">
-<td align="right">14</td>
+<tr class="odd">
+<td align="right">25</td>
 <td align="left">growth temperature</td>
 <td align="left">Attribute</td>
 <td align="left">invalid_column_values</td>
@@ -693,38 +696,78 @@
 <td align="left">2524 x 9</td>
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vTWXUnR0_jkpZEE06C0GAypTGjOa2RnOPiLSmPiwAnaf2qS33hd-6GKG95CYDgKeSk6t4BFVjIAB_sh/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vTWXUnR0_jkpZEE06C0GAypTGjOa2RnOPiLSmPiwAnaf2qS33hd-6GKG95CYDgKeSk6t4BFVjIAB_sh/pub?output=csv</a></td>
 </tr>
-<tr class="odd">
-<td align="right">15</td>
-<td align="left">habitat</td>
-<td align="left">Attribute</td>
+<tr class="even">
+<td align="right">26</td>
+<td align="left">growth temperature</td>
+<td align="left">Confidence_interval</td>
 <td align="left">invalid_column_values</td>
-<td align="right">136</td>
-<td align="left">human urine; human urine; human urine; human urine; human urine; human urine</td>
-<td align="left">5231 x 9</td>
+<td align="right">2524</td>
+<td align="left">Unknown; Unknown; Unknown; Unknown; Unknown; Unknown</td>
+<td align="left">2524 x 9</td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vTWXUnR0_jkpZEE06C0GAypTGjOa2RnOPiLSmPiwAnaf2qS33hd-6GKG95CYDgKeSk6t4BFVjIAB_sh/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vTWXUnR0_jkpZEE06C0GAypTGjOa2RnOPiLSmPiwAnaf2qS33hd-6GKG95CYDgKeSk6t4BFVjIAB_sh/pub?output=csv</a></td>
+</tr>
+<tr class="odd">
+<td align="right">27</td>
+<td align="left">habitat</td>
+<td align="left">Genome_ID</td>
+<td align="left">invalid_column_values</td>
+<td align="right">14429</td>
+<td align="left">; ; ; ; ;</td>
+<td align="left">18230 x 10</td>
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQrR6R5nhANAU-CweaEp_X9P13eXiyq2A16_hOOREDYZuOqFS_4jAnI4JjihFmy3jAWtUW2V-4kZYPN/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQrR6R5nhANAU-CweaEp_X9P13eXiyq2A16_hOOREDYZuOqFS_4jAnI4JjihFmy3jAWtUW2V-4kZYPN/pub?output=csv</a></td>
 </tr>
 <tr class="even">
-<td align="right">16</td>
+<td align="right">28</td>
+<td align="left">habitat</td>
+<td align="left">Accession_number</td>
+<td align="left">invalid_column_values</td>
+<td align="right">12999</td>
+<td align="left">; ; ; ; ;</td>
+<td align="left">18230 x 10</td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQrR6R5nhANAU-CweaEp_X9P13eXiyq2A16_hOOREDYZuOqFS_4jAnI4JjihFmy3jAWtUW2V-4kZYPN/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQrR6R5nhANAU-CweaEp_X9P13eXiyq2A16_hOOREDYZuOqFS_4jAnI4JjihFmy3jAWtUW2V-4kZYPN/pub?output=csv</a></td>
+</tr>
+<tr class="odd">
+<td align="right">29</td>
+<td align="left">habitat</td>
+<td align="left">Attribute</td>
+<td align="left">invalid_column_values</td>
+<td align="right">58</td>
+<td align="left">oral; oral; oral; oral; oral; oral</td>
+<td align="left">18230 x 10</td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQrR6R5nhANAU-CweaEp_X9P13eXiyq2A16_hOOREDYZuOqFS_4jAnI4JjihFmy3jAWtUW2V-4kZYPN/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQrR6R5nhANAU-CweaEp_X9P13eXiyq2A16_hOOREDYZuOqFS_4jAnI4JjihFmy3jAWtUW2V-4kZYPN/pub?output=csv</a></td>
+</tr>
+<tr class="even">
+<td align="right">30</td>
 <td align="left">habitat</td>
 <td align="left">EXP</td>
 <td align="left">uncatalogued_column</td>
 <td align="right">NA</td>
 <td align="left">NA</td>
-<td align="left">5231 x 9</td>
+<td align="left">18230 x 10</td>
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQrR6R5nhANAU-CweaEp_X9P13eXiyq2A16_hOOREDYZuOqFS_4jAnI4JjihFmy3jAWtUW2V-4kZYPN/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQrR6R5nhANAU-CweaEp_X9P13eXiyq2A16_hOOREDYZuOqFS_4jAnI4JjihFmy3jAWtUW2V-4kZYPN/pub?output=csv</a></td>
 </tr>
 <tr class="odd">
-<td align="right">17</td>
+<td align="right">31</td>
 <td align="left">habitat</td>
 <td align="left">Confidence_interval</td>
 <td align="left">invalid_column_values</td>
-<td align="right">9</td>
-<td align="left">Sometimes; Sometimes; Sometimes; Sometimes; Sometimes; Sometimes</td>
-<td align="left">5231 x 9</td>
+<td align="right">18230</td>
+<td align="left">Unknown; Unknown; Unknown; Unknown; Unknown; Unknown</td>
+<td align="left">18230 x 10</td>
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQrR6R5nhANAU-CweaEp_X9P13eXiyq2A16_hOOREDYZuOqFS_4jAnI4JjihFmy3jAWtUW2V-4kZYPN/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQrR6R5nhANAU-CweaEp_X9P13eXiyq2A16_hOOREDYZuOqFS_4jAnI4JjihFmy3jAWtUW2V-4kZYPN/pub?output=csv</a></td>
 </tr>
 <tr class="even">
-<td align="right">18</td>
+<td align="right">32</td>
+<td align="left">habitat</td>
+<td align="left">Other.ID</td>
+<td align="left">uncatalogued_column</td>
+<td align="right">NA</td>
+<td align="left">NA</td>
+<td align="left">18230 x 10</td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQrR6R5nhANAU-CweaEp_X9P13eXiyq2A16_hOOREDYZuOqFS_4jAnI4JjihFmy3jAWtUW2V-4kZYPN/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQrR6R5nhANAU-CweaEp_X9P13eXiyq2A16_hOOREDYZuOqFS_4jAnI4JjihFmy3jAWtUW2V-4kZYPN/pub?output=csv</a></td>
+</tr>
+<tr class="odd">
+<td align="right">33</td>
 <td align="left">optimal ph</td>
 <td align="left">Attribute</td>
 <td align="left">invalid_column_values</td>
@@ -733,8 +776,18 @@
 <td align="left">886 x 9</td>
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQTIHjOUyJc7O6Y_w3QIj6wiZD2AA369oWByaS77XTP6VX2IhNgBULN4cccs4ZMD-dsLx9ggTBKOnlt/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQTIHjOUyJc7O6Y_w3QIj6wiZD2AA369oWByaS77XTP6VX2IhNgBULN4cccs4ZMD-dsLx9ggTBKOnlt/pub?output=csv</a></td>
 </tr>
+<tr class="even">
+<td align="right">34</td>
+<td align="left">optimal ph</td>
+<td align="left">Confidence_interval</td>
+<td align="left">invalid_column_values</td>
+<td align="right">886</td>
+<td align="left">Usually; Usually; Usually; Usually; Usually; Usually</td>
+<td align="left">886 x 9</td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQTIHjOUyJc7O6Y_w3QIj6wiZD2AA369oWByaS77XTP6VX2IhNgBULN4cccs4ZMD-dsLx9ggTBKOnlt/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQTIHjOUyJc7O6Y_w3QIj6wiZD2AA369oWByaS77XTP6VX2IhNgBULN4cccs4ZMD-dsLx9ggTBKOnlt/pub?output=csv</a></td>
+</tr>
 <tr class="odd">
-<td align="right">19</td>
+<td align="right">35</td>
 <td align="left">aerophilicity</td>
 <td align="left">Evidence</td>
 <td align="left">invalid_column_values</td>
@@ -744,7 +797,7 @@
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQDC8VfkkOfN6MKGxrzMEoJjfgYIfpsJO-SxVr3pkUUChBNkMQ3YKaxSvDSSjjrPRf51nU3wbk-WWJp/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQDC8VfkkOfN6MKGxrzMEoJjfgYIfpsJO-SxVr3pkUUChBNkMQ3YKaxSvDSSjjrPRf51nU3wbk-WWJp/pub?output=csv</a></td>
 </tr>
 <tr class="even">
-<td align="right">20</td>
+<td align="right">36</td>
 <td align="left">plant pathogenicity</td>
 <td align="left">Attribute</td>
 <td align="left">invalid_column_values</td>
@@ -754,7 +807,17 @@
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vSLH__Hb4wPELYjnSsBR_FwJ4FHLUmx3KDO_pQG3CD9JqNyuugWbiBF9TBhXw9S5mSck2cbeY2ai77C/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vSLH__Hb4wPELYjnSsBR_FwJ4FHLUmx3KDO_pQG3CD9JqNyuugWbiBF9TBhXw9S5mSck2cbeY2ai77C/pub?output=csv</a></td>
 </tr>
 <tr class="odd">
-<td align="right">21</td>
+<td align="right">37</td>
+<td align="left">plant pathogenicity</td>
+<td align="left">Confidence_interval</td>
+<td align="left">invalid_column_values</td>
+<td align="right">1493</td>
+<td align="left">Usually; Usually; Usually; Usually; Usually; Usually</td>
+<td align="left">1493 x 9</td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vSLH__Hb4wPELYjnSsBR_FwJ4FHLUmx3KDO_pQG3CD9JqNyuugWbiBF9TBhXw9S5mSck2cbeY2ai77C/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vSLH__Hb4wPELYjnSsBR_FwJ4FHLUmx3KDO_pQG3CD9JqNyuugWbiBF9TBhXw9S5mSck2cbeY2ai77C/pub?output=csv</a></td>
+</tr>
+<tr class="even">
+<td align="right">38</td>
 <td align="left">width</td>
 <td align="left">Attribute_value</td>
 <td align="left">invalid_column_class</td>
@@ -763,8 +826,8 @@
 <td align="left">863 x 9</td>
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vR45vzAobXMOH1SCECpkBkIvxTsG5d8jAweSHaUst-gFKQcS0tTYUjivmLVByOLbFZgF59miCyF11TC/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vR45vzAobXMOH1SCECpkBkIvxTsG5d8jAweSHaUst-gFKQcS0tTYUjivmLVByOLbFZgF59miCyF11TC/pub?output=csv</a></td>
 </tr>
-<tr class="even">
-<td align="right">22</td>
+<tr class="odd">
+<td align="right">39</td>
 <td align="left">width</td>
 <td align="left">Evidence</td>
 <td align="left">invalid_column_values</td>
@@ -773,8 +836,8 @@
 <td align="left">863 x 9</td>
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vR45vzAobXMOH1SCECpkBkIvxTsG5d8jAweSHaUst-gFKQcS0tTYUjivmLVByOLbFZgF59miCyF11TC/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vR45vzAobXMOH1SCECpkBkIvxTsG5d8jAweSHaUst-gFKQcS0tTYUjivmLVByOLbFZgF59miCyF11TC/pub?output=csv</a></td>
 </tr>
-<tr class="odd">
-<td align="right">23</td>
+<tr class="even">
+<td align="right">40</td>
 <td align="left">spore shape</td>
 <td align="left">Accession_number</td>
 <td align="left">invalid_column_values</td>
@@ -783,8 +846,18 @@
 <td align="left">1583 x 9</td>
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQSMzIaqrE8gCV20sDu_8VBmu1WkpQ_vngaWzLCK2qe5E8IJL7-sOF8qEY0sHeUEavvLHpKVp-vmUxh/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQSMzIaqrE8gCV20sDu_8VBmu1WkpQ_vngaWzLCK2qe5E8IJL7-sOF8qEY0sHeUEavvLHpKVp-vmUxh/pub?output=csv</a></td>
 </tr>
+<tr class="odd">
+<td align="right">41</td>
+<td align="left">spore shape</td>
+<td align="left">Confidence_interval</td>
+<td align="left">invalid_column_values</td>
+<td align="right">1430</td>
+<td align="left">Usually; Usually; Usually; Usually; Usually; Usually</td>
+<td align="left">1583 x 9</td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQSMzIaqrE8gCV20sDu_8VBmu1WkpQ_vngaWzLCK2qe5E8IJL7-sOF8qEY0sHeUEavvLHpKVp-vmUxh/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQSMzIaqrE8gCV20sDu_8VBmu1WkpQ_vngaWzLCK2qe5E8IJL7-sOF8qEY0sHeUEavvLHpKVp-vmUxh/pub?output=csv</a></td>
+</tr>
 <tr class="even">
-<td align="right">24</td>
+<td align="right">42</td>
 <td align="left">isolation site</td>
 <td align="left">Attribute</td>
 <td align="left">invalid_column_values</td>
@@ -794,7 +867,7 @@
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vR5qKaSI_iXovASXA2U8figFKFBRNOuuFcnr-wSedtGuxAu2m8IjHp1uD23NGTWK9NmnKcO0m7FfkIx/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vR5qKaSI_iXovASXA2U8figFKFBRNOuuFcnr-wSedtGuxAu2m8IjHp1uD23NGTWK9NmnKcO0m7FfkIx/pub?output=csv</a></td>
 </tr>
 <tr class="odd">
-<td align="right">25</td>
+<td align="right">43</td>
 <td align="left">disease association</td>
 <td align="left">Attribute</td>
 <td align="left">invalid_column_values</td>
@@ -804,7 +877,17 @@
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vTboJM7necIfjgRgyYJ4LJWkCv_1y7O00yvyiSGzFdSfJDkeLqWrQ8FpcsYKFSOrQw75wCRst6KA0_a/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vTboJM7necIfjgRgyYJ4LJWkCv_1y7O00yvyiSGzFdSfJDkeLqWrQ8FpcsYKFSOrQw75wCRst6KA0_a/pub?output=csv</a></td>
 </tr>
 <tr class="even">
-<td align="right">26</td>
+<td align="right">44</td>
+<td align="left">disease association</td>
+<td align="left">Confidence_interval</td>
+<td align="left">invalid_column_values</td>
+<td align="right">445</td>
+<td align="left">Usually; Usually; Usually; Usually; Usually; Usually</td>
+<td align="left">445 x 9</td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vTboJM7necIfjgRgyYJ4LJWkCv_1y7O00yvyiSGzFdSfJDkeLqWrQ8FpcsYKFSOrQw75wCRst6KA0_a/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vTboJM7necIfjgRgyYJ4LJWkCv_1y7O00yvyiSGzFdSfJDkeLqWrQ8FpcsYKFSOrQw75wCRst6KA0_a/pub?output=csv</a></td>
+</tr>
+<tr class="odd">
+<td align="right">45</td>
 <td align="left">hydrogen gas producing</td>
 <td align="left">NCBI_ID</td>
 <td align="left">invalid_column_values</td>
@@ -813,8 +896,8 @@
 <td align="left">24 x 11</td>
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vSpucXiYrMe_iYvnZDuNSNkRVnEWRQhykCCXoIvtmTiKAVUdkVnRYvl17nbwGqZDg2xVDwaUXccGYsF/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vSpucXiYrMe_iYvnZDuNSNkRVnEWRQhykCCXoIvtmTiKAVUdkVnRYvl17nbwGqZDg2xVDwaUXccGYsF/pub?output=csv</a></td>
 </tr>
-<tr class="odd">
-<td align="right">27</td>
+<tr class="even">
+<td align="right">46</td>
 <td align="left">hydrogen gas producing</td>
 <td align="left">Attribute_value</td>
 <td align="left">invalid_column_class</td>
@@ -823,8 +906,18 @@
 <td align="left">24 x 11</td>
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vSpucXiYrMe_iYvnZDuNSNkRVnEWRQhykCCXoIvtmTiKAVUdkVnRYvl17nbwGqZDg2xVDwaUXccGYsF/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vSpucXiYrMe_iYvnZDuNSNkRVnEWRQhykCCXoIvtmTiKAVUdkVnRYvl17nbwGqZDg2xVDwaUXccGYsF/pub?output=csv</a></td>
 </tr>
+<tr class="odd">
+<td align="right">47</td>
+<td align="left">hydrogen gas producing</td>
+<td align="left">Confidence_interval</td>
+<td align="left">invalid_column_values</td>
+<td align="right">24</td>
+<td align="left">Usually; Usually; Usually; Usually; Usually; Usually</td>
+<td align="left">24 x 11</td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vSpucXiYrMe_iYvnZDuNSNkRVnEWRQhykCCXoIvtmTiKAVUdkVnRYvl17nbwGqZDg2xVDwaUXccGYsF/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vSpucXiYrMe_iYvnZDuNSNkRVnEWRQhykCCXoIvtmTiKAVUdkVnRYvl17nbwGqZDg2xVDwaUXccGYsF/pub?output=csv</a></td>
+</tr>
 <tr class="even">
-<td align="right">28</td>
+<td align="right">48</td>
 <td align="left">length</td>
 <td align="left">Attribute_value</td>
 <td align="left">invalid_column_class</td>
@@ -832,6 +925,26 @@
 <td align="left">NA</td>
 <td align="left">863 x 9</td>
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQkcQ7CJ0LjgE0928maxcVEiqq7QHl6vuosL7qdWaCMVuqHCDwsPJA7yNSeXm9FIip-mDRaU6pMk4Ww/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQkcQ7CJ0LjgE0928maxcVEiqq7QHl6vuosL7qdWaCMVuqHCDwsPJA7yNSeXm9FIip-mDRaU6pMk4Ww/pub?output=csv</a></td>
+</tr>
+<tr class="odd">
+<td align="right">49</td>
+<td align="left">length</td>
+<td align="left">Confidence_interval</td>
+<td align="left">invalid_column_values</td>
+<td align="right">196</td>
+<td align="left">Unknown; Unknown; Unknown; Unknown; Unknown; Unknown</td>
+<td align="left">863 x 9</td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQkcQ7CJ0LjgE0928maxcVEiqq7QHl6vuosL7qdWaCMVuqHCDwsPJA7yNSeXm9FIip-mDRaU6pMk4Ww/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQkcQ7CJ0LjgE0928maxcVEiqq7QHl6vuosL7qdWaCMVuqHCDwsPJA7yNSeXm9FIip-mDRaU6pMk4Ww/pub?output=csv</a></td>
+</tr>
+<tr class="even">
+<td align="right">50</td>
+<td align="left">health associated</td>
+<td align="left">Confidence_interval</td>
+<td align="left">invalid_column_values</td>
+<td align="right">30</td>
+<td align="left">Usually; Usually; Usually; Usually; Usually; Usually</td>
+<td align="left">30 x 9</td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQm5WlnrHECspbrKkrXpo7nAYD4YEllr2GYoc1rcxuchbXk26H2y_Foyx9kXefVFRU239982aCCb0Xv/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQm5WlnrHECspbrKkrXpo7nAYD4YEllr2GYoc1rcxuchbXk26H2y_Foyx9kXefVFRU239982aCCb0Xv/pub?output=csv</a></td>
 </tr>
 </tbody>
 </table>
@@ -843,10 +956,6 @@
 <code class="sourceCode R"><span class="va">fac</span> <span class="op">&lt;-</span><span class="fu"><a href="../reference/fattyAcidComposition.html">fattyAcidComposition</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">fac_errors</span> <span class="op">&lt;-</span>  <span class="fu">bugphyzz</span><span class="fu">:::</span><span class="fu"><a href="../reference/checkColumnValuesDF.html">checkColumnValuesDF</a></span><span class="op">(</span><span class="va">fac</span><span class="op">)</span>
-<span class="co">#&gt; Warning in scan(file = file, what = what, sep = sep, quote = quote, dec = dec, :</span>
-<span class="co">#&gt; EOF within quoted string</span>
-<span class="co">#&gt; Warning in scan(file = file, what = what, sep = sep, quote = quote, dec = dec, :</span>
-<span class="co">#&gt; number of items read is not a multiple of the number of columns</span>
 <span class="co">#&gt; &gt;&gt;&gt; Invalid values. The column `Confidence_interval` contains invalid values in 138496 rows. The first invalid values are: Unknown; Unknown; Unknown... </span>
 <span class="co">#&gt; &gt;&gt;&gt; Uncatalogued column. The column new_attribute cannot be checked because it's not included in the template file. Please add it to the [template file](https://github.com/waldronlab/bugphyzz/blob/main/inst/extdata/template.tsv) </span>
 <span class="co">#&gt; &gt;&gt;&gt; Uncatalogued column. The column new_attribute_value cannot be checked because it's not included in the template file. Please add it to the [template file](https://github.com/waldronlab/bugphyzz/blob/main/inst/extdata/template.tsv)</span></code></pre></div>
@@ -1034,7 +1143,7 @@
 <span class="co">#&gt; 7    Attribute_source                 7               7          </span>
 <span class="co">#&gt; 8            Evidence                 8               8          </span>
 <span class="co">#&gt; 9 Confidence_interval                 9               9</span>
-
+<span class="co">#&gt; &gt;&gt;&gt; All columns in the `health associated` dataset are present and in the right order.</span>
 <span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">errors</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span>
     <span class="va">no_errors_message</span> <span class="op">=</span> <span class="st">"All required columns are present and in the right column across the list of bugphyzz datasets imported with the `physiologies` function."</span>
     <span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html">as.data.frame</a></span><span class="op">(</span><span class="va">no_errors_message</span><span class="op">)</span> <span class="op">%&gt;%</span> 
@@ -1047,7 +1156,6 @@
 <div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">fac_required_columns_errors</span> <span class="op">&lt;-</span> <span class="fu">bugphyzz</span><span class="fu">:::</span><span class="fu"><a href="../reference/checkRequiredColumns.html">checkRequiredColumns</a></span><span class="op">(</span><span class="va">fac</span><span class="op">)</span>
 <span class="co">#&gt; &gt;&gt;&gt; Required columns missing. The following required columns are missing: Attribute_value. Please check the required columns with `bugphyzz:::requiredColumns()`</span>
-
 <span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html">as.data.frame</a></span><span class="op">(</span><span class="va">fac_required_columns_errors</span><span class="op">$</span><span class="va">message</span><span class="op">)</span> <span class="op">%&gt;%</span> 
   <span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <table class="table">
