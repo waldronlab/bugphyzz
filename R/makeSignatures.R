@@ -1,3 +1,4 @@
+utils::globalVariables(c("NCBI_ID", "Attribute", "rank", "."))
 #' Make signatures
 #'
 #' \code{makeSignatures} creates a list of microbe signatures from a bugphyzz
