@@ -1,0 +1,123 @@
+---
+title: "Make Signatures"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Make Signatures}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+The bugphyzz package provides the `makeSignatures` function, which allows to
+create lists of microbe signatures per attribute from a dataset imported with
+the `physiologies` or `fattyAcidComposition` functions. These lists of
+signatures can be used for enrichment analysis using other R packages,
+such as `EnrichmentBrowser`.
+
+```{r setup}
+library(bugphyzz)
+library(dplyr)
+```
+
+# Import bugphyzz datasets
+
+The first step to crate a list of signatures is to import a bugphyzz dataset.
+This dataset can have attributes with categorical (e.g. aerophilicity) or 
+continuous values (e.g. growth temperature).
+
+A dataset with attributes with categorical values:
+
+```{r}
+aer <- physiologies("aerophilicity")[[1]]
+glimpse(aer)
+```
+
+An dataset with an attribute with continuous values:
+
+```{r}
+gt <- physiologies("growth temperature")[[1]]
+glimpse(gt)
+```
+
+# Make signatures
+
+The `makeSignatures` function allows to create signatures at different
+taxonomic ranks and with different taxids.
+
+Signatures with NCBI taxids at the genus level:
+
+```{r}
+aer_sig <- makeSignatures(aer, taxids = "NCBI_ID", tax_rank = "genus")
+lapply(aer_sig, head)
+```
+
+Signatures with taxon names at the strain level:
+
+```{r}
+aer_sig <- makeSignatures(aer, taxids = "Taxon_name", tax_rank = "strain")
+lapply(aer_sig, head)
+```
+
+## Inherirted signatures
+
+The taxa annotated in bugphyzz belongs to different taxonomic ranks and from
+different sources. This could lead to some taxa annotated in a dataset at a
+rather low taxonomic level, e.g strain, but not at a higher taxonomic level, 
+e.g. species. The implementation of inherited signatures allows that a given
+taxa inherits an attribute annotation from a lower rank taxa if they belong
+to the same lineage. This could lead to an increase of represented taxa per
+attribute.
+
+For example, let's create a signature of thermophilic bacteria, i.e. with
+a growth temperature above 80 °C.
+
+The first step is to filter the taxa with a growth temperature above 80 °C:
+
+```{r, fig.width=5, fig.height=5}
+gt_thermophilic <- gt %>% 
+  filter(Attribute_value > 80)
+
+hist(gt_thermophilic$Attribute_value, 
+     xlab = "Growth temperature (°C)", main = NULL)
+```
+
+
+Now we can use the `makeSigature` function to create a microbe signature at
+the species level using the taxa names:
+
+```{r}
+gt_therm_sig <- makeSignatures(gt_thermophilic, taxids = "Taxon_name",
+                               tax_rank = "species")
+gt_therm_sig
+```
+
+In the output above there are only 15 species. However, if we set the
+`inherit` argument to `TRUE`, we can increase the number of thermophilic 
+species represented in our microbe signature:
+
+```{r}
+gt_therm_sig_inherited <- makeSignatures(gt_thermophilic, taxids = "Taxon_name",
+                                         tax_rank = "species", inherited = TRUE)
+gt_therm_sig_inherited
+```
+
+The number of species represented in our signature reached 35.
+
+We recommend caution in the use and interpretation of the inherited signatures
+option. For example, the output in the code below indicates that there
+are one or more thermophilic taxa representing the Archaea and Bacteria 
+superkingdoms in the 'growth temperature' dataset, 
+not that all Arcahea and Bacteria taxa are thermophilic.
+
+```{r}
+makeSignatures(gt_thermophilic, taxids = "Taxon_name", 
+               tax_rank = "superkingdom", inherited = TRUE,
+               min_sig_size = 1)
+```
+
