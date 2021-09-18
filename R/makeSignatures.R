@@ -1,43 +1,93 @@
-#' Makes taxid signatures for physiologies
+utils::globalVariables(c("NCBI_ID", "Attribute", "rank", "."))
+#' Make signatures
 #'
-#' @param df A `data.frame` output by the \link{physiologies} function
-#' @param taxids identification of the bugs (Taxon name, NCBI ID, etc.)
-#' @param rank Nothing yet
+#' \code{makeSignatures} creates a list of microbe signatures from a bugphyzz
+#' dataset, i.e. imported with either the \code{\link{physiologies}} or the
+#' \code{\link{fattyAcidComposition}} functions.
 #'
-#' @return a large list of character vectors
+#' @section Inherited signatures:
+#' \code{\link{makeSignatures}} allows the creation of inherited signatures
+#' when the `inherited` argument is set to `TRUE`. This means that a taxon of
+#' a given taxonomic rank (e.g. species) can inherit an attribute annotation
+#' from a taxon of a lower rank (e.g. strain) if they belong to the same
+#' lineage. For example, if the Pyrococcus abyssi species is not annotated in
+#' a given bugphyzz dataset, but the Pyrococcus furiosus DSM 3638 strain is,
+#' then the `inherited = TRUE` argument allows to create a signature at the
+#' species level including the Pyrococcus abyssi species.
+#'
+#' @param df A bugphyzz dataset.
+#' @param taxids A character string indicating the type of taxid. Valid
+#' options: NCBI_ID, Taxon_name, Genome_ID, Accession_number.
+#' @param tax_rank A character string indicating the taxonomic rank of the
+#' microbes in the signatures. Valid options: superkingdom, kingdom, phylum,
+#' class, order, family, species, strain.
+#' @param min_sig_size The minimum number of microbes in a signature.
+#' @param inherited If `TRUE` inherited signatures are created. Default
+#' is `FALSE`.
+#'
+#' @return
+#' A named list of microbe signatures.
+#'
 #' @export
 #'
 #' @examples
-#' aero <- physiologies("aerophilicity")
-#' x <- makeSignatures(aero[[1]], taxids = "Taxon_name")
-#' lapply(x, head)
-#' x <- makeSignatures(aero[[1]], taxids = "NCBI_ID")
-#' lapply(x, head)
+#'
+#' library(bugphyzz)
+#' library(dplyr)
+#'
+#' ## Make signatures of thermophilic microbes
+#'
+#' gt <- physiologies("growth temperature")[[1]]
+#' gt_therm <- gt %>%
+#'     filter(Attribute_value > 80)
+#'
+#' gt_sig <- makeSignatures(gt_therm, taxids = "NCBI_ID", tax_rank = "species")
+#' gt_sig
+#'
+#' ## Make inherited signatures
+#'
+#' gt_sig_inherired <- makeSignatures(gt_therm, taxids = "NCBI_ID",
+#'                                    tax_rank = "species", inherited = TRUE)
+#' gt_sig_inherired
+#'
+makeSignatures <- function(df, taxids, tax_rank, min_sig_size = 5, inherited = FALSE) {
 
-makeSignatures <- function(df, taxids = "Taxon_name", rank = "all"){
-  attribute_names <- unique(df[["Attribute"]])
-  dat <- lapply(attribute_names, fetchBugs, dat = df, taxids = taxids)
-  names(dat) <- attribute_names
-  return(dat)
+  valid_ranks <- c("superkingdom", "kingdom", "phylum", "class", "order",
+                   "family", "genus", "species", "strain")
+
+  valid_taxids <- c("NCBI_ID", "Taxon_name", "Genome_ID", "Accession_number")
+
+  if (!tax_rank %in% valid_ranks)
+    stop("Invalid taxonomy rank. Select one of: ", paste0(valid_ranks, collapse = ", "), ".", call. = FALSE)
+
+  if (!taxids %in% valid_taxids)
+    stop("Invalid taxid. Select one of: ", paste0(valid_taxids, collapse = ", "), ".", call. = FALSE)
+
+  annotated_df <- df %>%
+    plyr::mutate(NCBI_ID = as.character(as.integer(NCBI_ID))) %>%
+    suppressWarnings() %>%
+    dplyr::left_join(taxonomyAnnotations, by = "NCBI_ID") %>%
+    dplyr::filter(Attribute != FALSE, !is.na(Attribute))
+
+  if (isTRUE(inherited)) {
+    if (taxids == "Taxon_name") {
+      taxids <- tax_rank
+    } else if (taxids == "NCBI_ID") {
+      taxids <- paste0(tax_rank, "_id")
+    } else {
+      stop("Argument taxids can only take 'NCBI_ID' or 'Taxon_name' for inherited signatures.", call. = FALSE)
+    }
+  } else if (isFALSE(inherited)) {
+    annotated_df <- annotated_df %>%
+      dplyr::filter(rank == tax_rank)
+  }
+
+  annotated_df %>%
+    dplyr::select(tidyselect::all_of(c(taxids, "Attribute"))) %>%
+    dplyr::distinct() %>%
+    tidyr::drop_na() %>%
+    split(f = as.factor(.[["Attribute"]])) %>%
+    purrr::map(~ unique(.x[[taxids]])) %>%
+    purrr::discard(~ length(.x) < min_sig_size)
+
 }
-
-#' Fetch bugs based on taxid and corresponding attribute
-#'
-#' @param attribute_name name of attribute (aerobic, anaerobic, etc.))
-#' @param dat a physiology data.frame
-#' @param taxids identification of the bugs that will have the attribute value
-#'
-#' @return a character vector of taxids
-#' @export
-#'
-#' @examples
-#' physiology_list <- bugphyzz::physiologies(keyword = "aerophilicity")
-#' df <- physiology_list[[1]]
-#' x <- fetchBugs(attribute_name = "aerobic", dat = df, taxids = "Taxon_name")
-#' head(x)
-fetchBugs <- function(attribute_name, dat, taxids = "Taxon_name"){
-  bugs <- c(dat[dat[["Attribute"]] == attribute_name,])
-  bugs <- unique(bugs[[taxids]])
-  return(bugs[!is.na(bugs)])
-}
-

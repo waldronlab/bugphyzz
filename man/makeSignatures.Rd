@@ -2,27 +2,63 @@
 % Please edit documentation in R/makeSignatures.R
 \name{makeSignatures}
 \alias{makeSignatures}
-\title{Makes taxid signatures for physiologies}
+\title{Make signatures}
 \usage{
-makeSignatures(df, taxids = "Taxon_name", rank = "all")
+makeSignatures(df, taxids, tax_rank, min_sig_size = 5, inherited = FALSE)
 }
 \arguments{
-\item{df}{A \code{data.frame} output by the \link{physiologies} function}
+\item{df}{A bugphyzz dataset.}
 
-\item{taxids}{identification of the bugs (Taxon name, NCBI ID, etc.)}
+\item{taxids}{A character string indicating the type of taxid. Valid
+options: NCBI_ID, Taxon_name, Genome_ID, Accession_number.}
 
-\item{rank}{Nothing yet}
+\item{tax_rank}{A character string indicating the taxonomic rank of the
+microbes in the signatures. Valid options: superkingdom, kingdom, phylum,
+class, order, family, species, strain.}
+
+\item{min_sig_size}{The minimum number of microbes in a signature.}
+
+\item{inherited}{If \code{TRUE} inherited signatures are created. Default
+is \code{FALSE}.}
 }
 \value{
-a large list of character vectors
+A named list of microbe signatures.
 }
 \description{
-Makes taxid signatures for physiologies
+\code{makeSignatures} creates a list of microbe signatures from a bugphyzz
+dataset, i.e. imported with either the \code{\link{physiologies}} or the
+\code{\link{fattyAcidComposition}} functions.
 }
+\section{Inherited signatures}{
+
+\code{\link{makeSignatures}} allows the creation of inherited signatures
+when the \code{inherited} argument is set to \code{TRUE}. This means that a taxon of
+a given taxonomic rank (e.g. species) can inherit an attribute annotation
+from a taxon of a lower rank (e.g. strain) if they belong to the same
+lineage. For example, if the Pyrococcus abyssi species is not annotated in
+a given bugphyzz dataset, but the Pyrococcus furiosus DSM 3638 strain is,
+then the \code{inherited = TRUE} argument allows to create a signature at the
+species level including the Pyrococcus abyssi species.
+}
+
 \examples{
-aero <- physiologies("aerophilicity")
-x <- makeSignatures(aero[[1]], taxids = "Taxon_name")
-lapply(x, head)
-x <- makeSignatures(aero[[1]], taxids = "NCBI_ID")
-lapply(x, head)
+
+library(bugphyzz)
+library(dplyr)
+
+## Make signatures of thermophilic microbes
+
+gt <- physiologies("growth temperature")[[1]]
+gt_therm <- gt \%>\%
+    filter(Attribute_value > 80)
+
+gt_sig <- makeSignatures(gt_therm, taxids = "NCBI_ID", tax_rank = "species")
+gt_sig
+
+## Make inherited signatures
+
+gt_sig_inherired <- makeSignatures(gt_therm, taxids = "NCBI_ID",
+                                   tax_rank = "species", inherited = TRUE)
+gt_sig_inherired
+
 }
