@@ -42,7 +42,8 @@ taxonomyAnnotations <- taxonomy_table %>%
   dplyr::rename(NCBI_ID = query) %>%
   dplyr::left_join(ranks_table, by = "NCBI_ID") %>%
   dplyr::relocate("NCBI_ID", "rank") %>%
-  dplyr::distinct()
+  dplyr::distinct() %>%
+  magrittr::set_colnames(paste0("bugphyzz_", colnames(.)))
 
 ## Save data -------------------------------------------------------------
 

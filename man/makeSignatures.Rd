@@ -4,7 +4,13 @@
 \alias{makeSignatures}
 \title{Make signatures}
 \usage{
-makeSignatures(df, taxids, tax_rank, min_sig_size = 5, inherited = FALSE)
+makeSignatures(
+  df,
+  taxids,
+  sig_type = "regular",
+  tax_rank = NULL,
+  min_sig_size = 1
+)
 }
 \arguments{
 \item{df}{A bugphyzz dataset.}
@@ -18,27 +24,36 @@ class, order, family, species, strain.}
 
 \item{min_sig_size}{The minimum number of microbes in a signature.}
 
-\item{inherited}{If \code{TRUE} inherited signatures are created. Default
-is \code{FALSE}.}
+\item{type}{A character string. Valid options: regular, normal, inherited.}
 }
 \value{
 A named list of microbe signatures.
 }
 \description{
 \code{makeSignatures} creates a list of microbe signatures from a bugphyzz
-dataset, i.e. imported with either the \code{\link{physiologies}} or the
-\code{\link{fattyAcidComposition}} functions.
+dataset, i.e., a dataset imported either with the \code{\link{physiologies}}
+or the \code{\link{fattyAcidComposition}} functions.
 }
-\section{Inherited signatures}{
+\section{Types of signatures}{
 
-\code{\link{makeSignatures}} allows the creation of inherited signatures
-when the \code{inherited} argument is set to \code{TRUE}. This means that a taxon of
-a given taxonomic rank (e.g. species) can inherit an attribute annotation
-from a taxon of a lower rank (e.g. strain) if they belong to the same
-lineage. For example, if the Pyrococcus abyssi species is not annotated in
-a given bugphyzz dataset, but the Pyrococcus furiosus DSM 3638 strain is,
-then the \code{inherited = TRUE} argument allows to create a signature at the
-species level including the Pyrococcus abyssi species.
+
+\code{\link{makeSignatures}} allows the creation of three types of
+signatures (regular, ranked, or inherited) with the \code{type} argument.
+\itemize{
+\item The \code{regular} option (default) creates a list of signatures per attribute
+considering all of the taxids and attributes in the dataset, regardless of
+taxonomic rank.
+\item The \code{ranked} option filters the taxids by taxonomic rank before creating
+the lists of signatures. Currently, only "species", "genus", and "strain"
+rank levels are supported.
+\item The \code{inherited} option allows the creation of signatures in which the
+members of the list inherit an attribute annotation from a taxon of a lower
+level, as long as they belong to the same lineage. For example, if the
+\emph{Pyrococcus abyssi} species is not annotated in a given bugphyzz dataset,
+but the \emph{Pyrococcus furiosus} DSM 3638 strain is, then the
+\code{type = "inherited"} argument allows to create a signature at the species
+level including the \emph{Pyrococcus abyssi} species.
+}
 }
 
 \examples{
@@ -46,19 +61,24 @@ species level including the Pyrococcus abyssi species.
 library(bugphyzz)
 library(dplyr)
 
-## Make signatures of thermophilic microbes
+## Example 1- Crete a list of signatures from the aerophilicity dataset
+aer <- physiologies("aerophilicity")[[1]]
+aer_sig <- makeSignatures(aer, taxids = "NCBI_ID", min_sig_size = 5)
 
+## Exampl 2 - Create signatures of thermophilic bacteria
 gt <- physiologies("growth temperature")[[1]]
-gt_therm <- gt \%>\%
-    filter(Attribute_value > 80)
+tm <- gt |> filter(Attribute_value > 80)
 
-gt_sig <- makeSignatures(gt_therm, taxids = "NCBI_ID", tax_rank = "species")
-gt_sig
+## Species level signatures with ranked option
+tm_sig_ranked <- makeSignatures(tm, taxids = "Taxon_name",
+                                tax_rank = "species", sig_type = "ranked")
 
-## Make inherited signatures
+## Species level signtures with inherited option
+tm_sig_inherited <- makeSignatures(tm, taxids = "Taxon_name",
+                                   tax_rank = "species",
+                                   sig_type = "inherited")
 
-gt_sig_inherired <- makeSignatures(gt_therm, taxids = "NCBI_ID",
-                                   tax_rank = "species", inherited = TRUE)
-gt_sig_inherired
+## Compare lengths
+length(tm_sig_inherited[[1]]) > length(tm_sig_ranked[[1]])
 
 }
