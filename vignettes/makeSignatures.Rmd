@@ -1,0 +1,160 @@
+---
+title: "Make Signatures"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Make Signatures}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+The `bugphyzz` package provides functionality to help in the creation of
+microbial signatures that can be used as inputs for other R packages,
+such as `EnrichmentBrowser`.
+
+```{r setup, message=TRUE}
+library(bugphyzz)
+library(dplyr)
+```
+
+The first step for the creation of microbial signatures is to import a dataset
+with the `physiologies` or the `fattyAcidCompositon` functions.
+
+```{r}
+aer <- physiologies("aerophilicity")[[1]] %>% 
+  as_tibble()
+```
+
+A list of signatures can be easily created with the `makeSignatures` function:
+
+```{r}
+## Signatures with NCBI IDs
+aer_sig <- makeSignatures(aer, taxids = "NCBI_ID", min_sig_size = 5)
+lapply(aer_sig, head)
+```
+
+Above, the `taxids = "NCBI_ID` option was used to create signatures with
+NCBI taxonomy IDs. Other available options are `Accession_number`, 
+`Genome_ID`, and `Taxon_name`.
+
+Signatures with accession number:
+
+```{r}
+## Signatures with accession numbers
+aer_sig_acc <- makeSignatures(aer, taxids = "Accession_number", min_sig_size = 5)
+lapply(aer_sig_acc, head)
+```
+
+Signatures with taxon names
+
+```{r}
+## Signatures with taxa names
+aer_sig_taxnames <- makeSignatures(aer, taxids = "Taxon_name", min_sig_size = 5)
+lapply(aer_sig_taxnames, head)
+```
+
+If there are no taxa with some type of ID, no signatures would be created:
+
+```{r}
+## This dataset does not contain Genome ID annotaions
+makeSignatures(aer, taxids = "Genome_ID", min_sig_size = 5)
+```
+
+## Ranked signatures
+
+The signatures above contained taxa of mixed rank levels, e.g., genus and
+strain. Signatures at a specific taxonomy rank can be created with the
+`tax_rank = <rank>` and `sig_type = "ranked"` options:
+
+Signatures at the genus level:
+
+```{r}
+## Signatures at the genus level
+aer_sig_genus <- makeSignatures(aer, taxids = "Taxon_name", tax_rank = "genus", sig_type = "ranked", min_sig_size = 5)
+lapply(aer_sig_genus, head)
+```
+
+Signatures at the strain level:
+
+```{r}
+## Signatures at the strain level
+aer_sig_strain <- makeSignatures(aer, taxids = "Taxon_name", tax_rank = "strain", sig_type = "ranked", min_sig_size = 5)
+lapply(aer_sig_strain, head)
+```
+
+Currently, ranked signtures are limited at the "genus", "species", and 
+"strain" levels:
+
+```{r}
+tryCatch(makeSignatures(aer, taxids = "Taxon_name", tax_rank = "class", sig_type = "ranked", min_sig_size = 5),
+         error = function(cnd) conditionMessage(cnd))
+```
+
+## Inherited signatures
+
+Since annotations in the datasets in bugphyzz can come from diverse sources,
+some taxa might be annotated at a given taxonomic rank, e.g., species, but not
+at a higher level, e.g., genus. Some users might be interested in creating
+signatures at those higher levels. In this case, the `sig_type = "inherited"`
+option can be used to create an "inherited" signature.
+
+As an example, let's create a signature at the genus level of extreme
+thermophilic microbes growing at 80°C or above.
+
+First, let's import the "growth temperature" datasets and filter those
+microbes growing at 80°C or above:
+
+```{r, fig.width=5, fig.height=5}
+gt <- physiologies("growth temperature")[[1]]
+tm <- gt %>% 
+  filter(Attribute_value > 80)
+hist(tm$Attribute_value, main = NULL, xlab = "Growth temperature (°C)")
+```
+
+If we attempt to create a signature at the genus level of these extreme
+thermophiles, we would not get an output because the dataset does not contain
+annotations at the genus level:
+
+```{r}
+tm_sig_genus <- makeSignatures(tm, taxids = "Taxon_name", sig_type = "ranked", tax_rank = "genus")
+tm_sig_genus
+```
+
+However, the dataset does contain annotations at the species and strain levels:
+
+```{r}
+## signature at the species level
+makeSignatures(tm, taxids = "Taxon_name", sig_type = "ranked", tax_rank = "species")[[1]] %>% 
+  head()
+```
+
+```{r}
+## signature at the strain level
+makeSignatures(tm, taxids = "Taxon_name", sig_type = "ranked", tax_rank = "strain")[[1]] %>% 
+  head()
+```
+
+So, we can create a signature of genera that inherit their annotations from
+these lower taxonomic ranks (species and strain) with the 
+`sig_type = "inherited"` option:
+
+```{r}
+tm_sig_genus <- makeSignatures(tm, taxids = "Taxon_name", sig_type = "inherited", tax_rank = "genus")
+head(tm_sig_genus[[1]])
+```
+
+We recommend caution when using and interpreting the inherited signatures.
+For example, the output of the code below indicates that the growth temperature
+dataset contains one or more taxa that belong to the superkingdoms Archaea and
+Bacteria, not that all taxa in Archaea and Bacteria are thermophiles:
+
+```{r}
+makeSignatures(tm, taxids = "Taxon_name", sig_type = "inherited", tax_rank = "superkingdom")
+```
+
