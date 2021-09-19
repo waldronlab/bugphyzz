@@ -41,8 +41,8 @@
 
 <meta property="og:title" content="Make signatures — makeSignatures" />
 <meta property="og:description" content="makeSignatures creates a list of microbe signatures from a bugphyzz
-dataset, i.e. imported with either the physiologies or the
-fattyAcidComposition functions." />
+dataset, i.e., a dataset imported either with the physiologies
+or the fattyAcidComposition functions." />
 
 
 
@@ -87,9 +87,6 @@ fattyAcidComposition functions." />
   </a>
 </li>
 <li>
-  <a href="../articles/bugphyzz.html">Get started</a>
-</li>
-<li>
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
@@ -107,6 +104,9 @@ fattyAcidComposition functions." />
     </li>
     <li>
       <a href="../articles/completeness_annotations.html">Completeness of annotations based on NCBI IDs</a>
+    </li>
+    <li>
+      <a href="../articles/makeSignatures.html">Make Signatures</a>
     </li>
     <li>
       <a href="../articles/summary_statistics.html">BugPhyzz Stats</a>
@@ -139,11 +139,17 @@ fattyAcidComposition functions." />
 
     <div class="ref-description">
     <p><code>makeSignatures</code> creates a list of microbe signatures from a bugphyzz
-dataset, i.e. imported with either the <code><a href='physiologies.html'>physiologies</a></code> or the
-<code><a href='fattyAcidComposition.html'>fattyAcidComposition</a></code> functions.</p>
+dataset, i.e., a dataset imported either with the <code><a href='physiologies.html'>physiologies</a></code>
+or the <code><a href='fattyAcidComposition.html'>fattyAcidComposition</a></code> functions.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>makeSignatures</span><span class='op'>(</span><span class='va'>df</span>, <span class='va'>taxids</span>, <span class='va'>tax_rank</span>, min_sig_size <span class='op'>=</span> <span class='fl'>5</span>, inherited <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>makeSignatures</span><span class='op'>(</span>
+  <span class='va'>df</span>,
+  <span class='va'>taxids</span>,
+  sig_type <span class='op'>=</span> <span class='st'>"regular"</span>,
+  tax_rank <span class='op'>=</span> <span class='cn'>NULL</span>,
+  min_sig_size <span class='op'>=</span> <span class='fl'>1</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -168,27 +174,36 @@ class, order, family, species, strain.</p></td>
       <td><p>The minimum number of microbes in a signature.</p></td>
     </tr>
     <tr>
-      <th>inherited</th>
-      <td><p>If <code>TRUE</code> inherited signatures are created. Default
-is <code>FALSE</code>.</p></td>
+      <th>type</th>
+      <td><p>A character string. Valid options: regular, normal, inherited.</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>A named list of microbe signatures.</p>
-    <h2 class="hasAnchor" id="inherited-signatures"><a class="anchor" href="#inherited-signatures"></a>Inherited signatures</h2>
+    <h2 class="hasAnchor" id="types-of-signatures"><a class="anchor" href="#types-of-signatures"></a>Types of signatures</h2>
 
     
 
-<p><code>makeSignatures</code> allows the creation of inherited signatures
-when the <code>inherited</code> argument is set to <code>TRUE</code>. This means that a taxon of
-a given taxonomic rank (e.g. species) can inherit an attribute annotation
-from a taxon of a lower rank (e.g. strain) if they belong to the same
-lineage. For example, if the Pyrococcus abyssi species is not annotated in
-a given bugphyzz dataset, but the Pyrococcus furiosus DSM 3638 strain is,
-then the <code>inherited = TRUE</code> argument allows to create a signature at the
-species level including the Pyrococcus abyssi species.</p>
+
+<p><code>makeSignatures</code> allows the creation of three types of
+signatures (regular, ranked, or inherited) with the <code>type</code> argument.</p><ul>
+<li><p>The <code>regular</code> option (default) creates a list of signatures per attribute
+considering all of the taxids and attributes in the dataset, regardless of
+taxonomic rank.</p></li>
+<li><p>The <code>ranked</code> option filters the taxids by taxonomic rank before creating
+the lists of signatures. Currently, only "species", "genus", and "strain"
+rank levels are supported.</p></li>
+<li><p>The <code>inherited</code> option allows the creation of signatures in which the
+members of the list inherit an attribute annotation from a taxon of a lower
+level, as long as they belong to the same lineage. For example, if the
+<em>Pyrococcus abyssi</em> species is not annotated in a given bugphyzz dataset,
+but the <em>Pyrococcus furiosus</em> DSM 3638 strain is, then the
+<code>type = "inherited"</code> argument allows to create a signature at the species
+level including the <em>Pyrococcus abyssi</em> species.</p></li>
+</ul>
+
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
@@ -200,31 +215,26 @@ species level including the Pyrococcus abyssi species.</p>
 #&gt; <span class='message'>    filter, lag</span></div><div class='output co'>#&gt; <span class='message'>The following objects are masked from ‘package:base’:</span>
 #&gt; <span class='message'></span>
 #&gt; <span class='message'>    intersect, setdiff, setequal, union</span></div><div class='input'>
-<span class='co'>## Make signatures of thermophilic microbes</span>
+<span class='co'>## Example 1- Crete a list of signatures from the aerophilicity dataset</span>
+<span class='va'>aer</span> <span class='op'>&lt;-</span> <span class='fu'><a href='physiologies.html'>physiologies</a></span><span class='op'>(</span><span class='st'>"aerophilicity"</span><span class='op'>)</span><span class='op'>[[</span><span class='fl'>1</span><span class='op'>]</span><span class='op'>]</span>
+</div><div class='output co'>#&gt; <span class='message'>Finished aerophilicity</span></div><div class='input'><span class='va'>aer_sig</span> <span class='op'>&lt;-</span> <span class='fu'>makeSignatures</span><span class='op'>(</span><span class='va'>aer</span>, taxids <span class='op'>=</span> <span class='st'>"NCBI_ID"</span>, min_sig_size <span class='op'>=</span> <span class='fl'>5</span><span class='op'>)</span>
 
+<span class='co'>## Exampl 2 - Create signatures of thermophilic bacteria</span>
 <span class='va'>gt</span> <span class='op'>&lt;-</span> <span class='fu'><a href='physiologies.html'>physiologies</a></span><span class='op'>(</span><span class='st'>"growth temperature"</span><span class='op'>)</span><span class='op'>[[</span><span class='fl'>1</span><span class='op'>]</span><span class='op'>]</span>
-</div><div class='output co'>#&gt; <span class='message'>Finished growth temperature</span></div><div class='input'><span class='va'>gt_therm</span> <span class='op'>&lt;-</span> <span class='va'>gt</span> <span class='op'>%&gt;%</span>
-    <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>Attribute_value</span> <span class='op'>&gt;</span> <span class='fl'>80</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='message'>Finished growth temperature</span></div><div class='input'><span class='va'>tm</span> <span class='op'>&lt;-</span> <span class='va'>gt</span> |&gt; <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>Attribute_value</span> <span class='op'>&gt;</span> <span class='fl'>80</span><span class='op'>)</span>
 
-<span class='va'>gt_sig</span> <span class='op'>&lt;-</span> <span class='fu'>makeSignatures</span><span class='op'>(</span><span class='va'>gt_therm</span>, taxids <span class='op'>=</span> <span class='st'>"NCBI_ID"</span>, tax_rank <span class='op'>=</span> <span class='st'>"species"</span><span class='op'>)</span>
-<span class='va'>gt_sig</span>
-</div><div class='output co'>#&gt; $`growth temperature`
-#&gt;  [1] "644281"  "2714"    "33934"   "63363"   "28095"   "498846"  "67760"  
-#&gt;  [8] "2320"    "2180"    "29292"   "1008460" "1295609" "2269"    "1200300"
-#&gt; [15] "37636"  
-#&gt; </div><div class='input'>
-<span class='co'>## Make inherited signatures</span>
+<span class='co'>## Species level signatures with ranked option</span>
+<span class='va'>tm_sig_ranked</span> <span class='op'>&lt;-</span> <span class='fu'>makeSignatures</span><span class='op'>(</span><span class='va'>tm</span>, taxids <span class='op'>=</span> <span class='st'>"Taxon_name"</span>,
+                                tax_rank <span class='op'>=</span> <span class='st'>"species"</span>, sig_type <span class='op'>=</span> <span class='st'>"ranked"</span><span class='op'>)</span>
 
-<span class='va'>gt_sig_inherired</span> <span class='op'>&lt;-</span> <span class='fu'>makeSignatures</span><span class='op'>(</span><span class='va'>gt_therm</span>, taxids <span class='op'>=</span> <span class='st'>"NCBI_ID"</span>,
-                                   tax_rank <span class='op'>=</span> <span class='st'>"species"</span>, inherited <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
-<span class='va'>gt_sig_inherired</span>
-</div><div class='output co'>#&gt; $`growth temperature`
-#&gt;  [1] "56636"   "63363"   "2234"    "76887"   "94694"   "54261"   "54248"  
-#&gt;  [8] "334771"  "67760"   "2190"    "644281"  "2320"    "13773"   "181486" 
-#&gt; [15] "2277"    "29292"   "2261"    "53953"   "84599"   "2280"    "2287"   
-#&gt; [22] "187878"  "311400"  "2269"    "70771"   "164451"  "2714"    "33934"  
-#&gt; [29] "28095"   "498846"  "2180"    "1008460" "1295609" "1200300" "37636"  
-#&gt; </div><div class='input'>
+<span class='co'>## Species level signtures with inherited option</span>
+<span class='va'>tm_sig_inherited</span> <span class='op'>&lt;-</span> <span class='fu'>makeSignatures</span><span class='op'>(</span><span class='va'>tm</span>, taxids <span class='op'>=</span> <span class='st'>"Taxon_name"</span>,
+                                   tax_rank <span class='op'>=</span> <span class='st'>"species"</span>,
+                                   sig_type <span class='op'>=</span> <span class='st'>"inherited"</span><span class='op'>)</span>
+
+<span class='co'>## Compare lengths</span>
+<span class='fu'><a href='https://rdrr.io/r/base/length.html'>length</a></span><span class='op'>(</span><span class='va'>tm_sig_inherited</span><span class='op'>[[</span><span class='fl'>1</span><span class='op'>]</span><span class='op'>]</span><span class='op'>)</span> <span class='op'>&gt;</span> <span class='fu'><a href='https://rdrr.io/r/base/length.html'>length</a></span><span class='op'>(</span><span class='va'>tm_sig_ranked</span><span class='op'>[[</span><span class='fl'>1</span><span class='op'>]</span><span class='op'>]</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] TRUE</div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
