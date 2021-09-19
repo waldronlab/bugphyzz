@@ -108,7 +108,8 @@ makeSignatures <- function(df, taxids, sig_type = "regular", tax_rank = NULL, mi
       stop("Taxonomic rank not specified. You need to specify one with the `tax_rank` argument to create 'ranked' or 'inherired' signatures.", call. = FALSE)
 
     if (!is.null(tax_rank) && !tax_rank %in% c("genus", "species", "strain"))
-      stop("Invalid taxonomy rank. Select one of: ", paste0(valid_ranks, collapse = ", "), ".", call. = FALSE)
+      stop("Invalid taxonomy rank with 'sig_type = \"ranked\"' option.",
+           " Select one of: genus, species, or strain", call. = FALSE)
 
     annotated_df <- annotated_df %>%
       dplyr::filter(bugphyzz_rank == tax_rank)
