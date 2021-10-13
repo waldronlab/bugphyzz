@@ -49,7 +49,8 @@ ranks <- taxonomies %>%
 
 ranks_parents <- full_join(ranks, parents, by = "NCBI_ID") %>%
   mutate(NCBI_ID = as.integer(NCBI_ID)) %>%
-  relocate("Parent_rank", .after = "Parent_id")
+  relocate("Parent_rank", .after = "Parent_id") %>%
+  rename(Parent_NCBI_ID = Parent_id)
 
 
 # full taxonomy annotations -----------------------------------------------
