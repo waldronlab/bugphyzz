@@ -25,6 +25,7 @@ fattyAcidComposition <- function(){
     pivot_longer(cols = `Br-C10:1`:`Oxo-C19:1`,
                    names_to = "new_attribute",
                    values_to = "new_attribute_value")
+  fac_long <- merge(x = fac_long, y = ranks_parents, by = "NCBI_ID", all.x = TRUE)
 
   return(fac_long)
 }

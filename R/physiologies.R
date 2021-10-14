@@ -17,21 +17,30 @@
 physiologies <- function(keyword = "all") {
 
   if (all(keyword != "all") & !all(keyword %in% physiologiesList())) {
-    stop("I don't recognize one or more of the provided physiologies ",
-         "Check valid physiologies with physiologiesList()")
+    stop("Invalid keyword '", keyword, "'. Valid keywords: \n\n",
+         paste0(physiologiesList(), collapse = ", "), call. = FALSE)
   }
+
   links <- curationLinks(keyword = keyword)[, c("physiology", "link")]
+
   database <- vector("list", nrow(links))
+
   for (i in seq_along(database)) {
+
     names(database)[i] <- links[i, "physiology"]
     database[[i]] <- utils::read.csv(links[i, "link"])
+
     nmissing <- sum(is.na(database[[i]]$Attribute_value))
-    if(nmissing > 0){
+
+    if (nmissing > 0) {
       message("Dropped ", nmissing, " rows with missing Attribute_value from ", names(database)[[i]])
     }else{
       message("Finished ", names(database)[[i]])
     }
+
     database[[i]] <- database[[i]][!is.na(database[[i]]$Attribute_value), ]
+    database[[i]][["NCBI_ID"]] <- suppressWarnings(as.integer(database[[i]][["NCBI_ID"]]))
+    database[[i]] <- merge(x = database[[i]], y = ranks_parents, by = "NCBI_ID", all.x = TRUE)
   }
   return(database)
 }
