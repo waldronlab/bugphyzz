@@ -16,7 +16,7 @@ makeSignatures(
 \item{df}{A bugphyzz dataset.}
 
 \item{taxids}{A character string indicating the type of taxid. Valid
-options: NCBI_ID, Taxon_name, Genome_ID, Accession_number.}
+options: NCBI_ID, Taxon_name, Genome_ID, Accession_ID.}
 
 \item{tax_rank}{A character string indicating the taxonomic rank of the
 microbes in the signatures. Valid options: superkingdom, kingdom, phylum,

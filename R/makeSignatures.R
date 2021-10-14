@@ -28,7 +28,7 @@ utils::globalVariables(c("NCBI_ID", "Attribute", "rank", "."))
 #'
 #' @param df A bugphyzz dataset.
 #' @param taxids A character string indicating the type of taxid. Valid
-#' options: NCBI_ID, Taxon_name, Genome_ID, Accession_number.
+#' options: NCBI_ID, Taxon_name, Genome_ID, Accession_ID.
 #' @param tax_rank A character string indicating the taxonomic rank of the
 #' microbes in the signatures. Valid options: superkingdom, kingdom, phylum,
 #' class, order, family, species, strain.
@@ -70,7 +70,7 @@ makeSignatures <- function(df, taxids, sig_type = "regular", tax_rank = NULL, mi
   valid_ranks <- c("superkingdom", "kingdom", "phylum", "class", "order",
                    "family", "genus", "species", "strain")
 
-  valid_taxids <- c("NCBI_ID", "Taxon_name", "Genome_ID", "Accession_number")
+  valid_taxids <- c("NCBI_ID", "Taxon_name", "Genome_ID", "Accession_ID")
 
   valid_sig_types <- c("regular", "ranked", "inherited")
 

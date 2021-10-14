@@ -40,14 +40,14 @@ lapply(aer_sig, head)
 ```
 
 Above, the `taxids = "NCBI_ID` option was used to create signatures with
-NCBI taxonomy IDs. Other available options are `Accession_number`, 
+NCBI taxonomy IDs. Other available options are `Accession_ID`, 
 `Genome_ID`, and `Taxon_name`.
 
 Signatures with accession number:
 
 ```{r}
 ## Signatures with accession numbers
-aer_sig_acc <- makeSignatures(aer, taxids = "Accession_number", min_sig_size = 5)
+aer_sig_acc <- makeSignatures(aer, taxids = "Accession_ID", min_sig_size = 5)
 lapply(aer_sig_acc, head)
 ```
 

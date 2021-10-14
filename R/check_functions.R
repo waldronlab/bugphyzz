@@ -20,7 +20,7 @@ requiredColumns <- function() {
   c(
     "NCBI_ID",
     "Genome_ID",
-    "Accession_number",
+    "Accession_ID",
     "Taxon_name",
     "Attribute",
     "Attribute_value",
@@ -79,7 +79,7 @@ requiredColumns <- function() {
 #'   NCBI_ID = 1:10,
 #'   Taxon_name = letters[1:10],
 #'   Genome_ID = 1:10,
-#'   Accession_number = 1:10,
+#'   Accession_ID = 1:10,
 #'   Attribute = 1:10,
 #'   Attribute_value = 1:10,
 #'   Attribute_source = 1:10,
@@ -96,7 +96,7 @@ requiredColumns <- function() {
 #' dataset_with_required_columns_ok = data.frame(
 #'   NCBI_ID = 1:10,
 #'   Genome_ID = 1:10,
-#'   Accession_number = 1:10,
+#'   Accession_ID = 1:10,
 #'   Taxon_name = letters[1:10],
 #'   Attribute = 1:10,
 #'   Attribute_value = 1:10,
@@ -205,7 +205,7 @@ checkRequiredColumns <- function(dataset, dataset_name = NULL) {
 #'    NCBI_ID = 1:10,
 #'    Taxon_name = letters[1:10],
 #'    Genome_ID = 1:10,
-#'    Accession_number = 1:10,
+#'    Accession_ID = 1:10,
 #'    Attribute = 1:10,
 #'    Attribute_value = 1:10,
 #'    Attribute_source = 1:10,
@@ -217,7 +217,7 @@ checkRequiredColumns <- function(dataset, dataset_name = NULL) {
 #'  dataset_with_required_columns_ok = data.frame(
 #'    NCBI_ID = 1:10,
 #'    Genome_ID = 1:10,
-#'    Accession_number = 1:10,
+#'    Accession_ID = 1:10,
 #'    Taxon_name = letters[1:10],
 #'    Attribute = 1:10,
 #'    Attribute_value = 1:10,
@@ -295,7 +295,7 @@ checkRequiredColumnsList <- function(list) {
 #' dataset_with_bad_values <- data.frame(
 #'   NCBI_ID = letters[1:10],
 #'   Genome_ID = 1:10,
-#'   Accession_number = 1:10,
+#'   Accession_ID = 1:10,
 #'   Taxon_name = letters[1:10],
 #'   Attribute = 1:10,
 #'   Attribute_value = letters[1:10],
@@ -457,7 +457,7 @@ checkColumnValues <- function(column_name, dataset, dataset_name = NULL, quiet_s
 #' dataset_with_bad_values <- data.frame(
 #'   NCBI_ID = letters[1:10],
 #'   Genome_ID = 1:10,
-#'   Accession_number = 1:10,
+#'   Accession_ID = 1:10,
 #'   Taxon_name = letters[1:10],
 #'   Attribute = 1:10,
 #'   Attribute_value = letters[1:10],
@@ -520,7 +520,7 @@ checkColumnValuesDF <- function(dataset, dataset_name = NULL) {
 #' list_of_df <- list(dataset_with_bad_values = data.frame(
 #'     NCBI_ID = letters[1:10],
 #'     Genome_ID = 1:10,
-#'     Accession_number = 1:10,
+#'     Accession_ID = 1:10,
 #'     Taxon_name = letters[1:10],
 #'     Attribute = 1:10,
 #'     Attribute_value = letters[1:10],

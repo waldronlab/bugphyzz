@@ -27,7 +27,7 @@ bugphyzz datasets.
 list_of_df <- list(dataset_with_bad_values = data.frame(
     NCBI_ID = letters[1:10],
     Genome_ID = 1:10,
-    Accession_number = 1:10,
+    Accession_ID = 1:10,
     Taxon_name = letters[1:10],
     Attribute = 1:10,
     Attribute_value = letters[1:10],

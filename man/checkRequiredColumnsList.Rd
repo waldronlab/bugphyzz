@@ -37,7 +37,7 @@ list_of_datasets <- list(
    NCBI_ID = 1:10,
    Taxon_name = letters[1:10],
    Genome_ID = 1:10,
-   Accession_number = 1:10,
+   Accession_ID = 1:10,
    Attribute = 1:10,
    Attribute_value = 1:10,
    Attribute_source = 1:10,
@@ -49,7 +49,7 @@ list_of_datasets <- list(
  dataset_with_required_columns_ok = data.frame(
    NCBI_ID = 1:10,
    Genome_ID = 1:10,
-   Accession_number = 1:10,
+   Accession_ID = 1:10,
    Taxon_name = letters[1:10],
    Attribute = 1:10,
    Attribute_value = 1:10,
