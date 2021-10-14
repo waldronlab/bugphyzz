@@ -158,64 +158,64 @@ physiologies, run bugphyzz::physiologiesList()</p></td>
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'>physiologies</span><span class='op'>(</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; <span class='message'>Finished animal pathogen</span></div><div class='output co'>#&gt; <span class='message'>Finished antimicrobial resistance</span></div><div class='output co'>#&gt; <span class='message'>Dropped 3054 rows with missing Attribute_value from antimicrobial sensitivity</span></div><div class='output co'>#&gt; <span class='message'>Finished biofilm forming</span></div><div class='output co'>#&gt; <span class='message'>Dropped 4 rows with missing Attribute_value from butyrate producing</span></div><div class='output co'>#&gt; <span class='message'>Finished acetate producing</span></div><div class='output co'>#&gt; <span class='message'>Finished lactate producing</span></div><div class='output co'>#&gt; <span class='message'>Finished arrangement</span></div><div class='output co'>#&gt; <span class='message'>Dropped 9304 rows with missing Attribute_value from shape</span></div><div class='output co'>#&gt; <span class='message'>Finished COGEM pathogenicity rating</span></div><div class='output co'>#&gt; <span class='message'>Finished mutation rate per site per generation</span></div><div class='output co'>#&gt; <span class='message'>Finished mutation rates per site per year</span></div><div class='output co'>#&gt; <span class='message'>Finished extreme environment</span></div><div class='output co'>#&gt; <span class='message'>Finished gram stain</span></div><div class='output co'>#&gt; <span class='message'>Finished growth medium</span></div><div class='output co'>#&gt; <span class='message'>Finished growth temperature</span></div><div class='output co'>#&gt; <span class='message'>Finished habitat</span></div><div class='output co'>#&gt; <span class='message'>Finished optimal ph</span></div><div class='output co'>#&gt; <span class='message'>Finished aerophilicity</span></div><div class='output co'>#&gt; <span class='message'>Finished plant pathogenicity</span></div><div class='output co'>#&gt; <span class='message'>Finished width</span></div><div class='output co'>#&gt; <span class='message'>Dropped 1 rows with missing Attribute_value from spore shape</span></div><div class='output co'>#&gt; <span class='message'>Finished isolation site</span></div><div class='output co'>#&gt; <span class='message'>Finished disease association</span></div><div class='output co'>#&gt; <span class='message'>Finished hydrogen gas producing</span></div><div class='output co'>#&gt; <span class='message'>Finished length</span></div><div class='output co'>#&gt; <span class='message'>Finished health associated</span></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>[[</span><span class='fl'>1</span><span class='op'>]</span><span class='op'>]</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;   NCBI_ID Genome_ID Accession_number                         Taxon_name
-#&gt; 1  244596        NA               NA              Hoeflea phototrophica
-#&gt; 2   53633        NA               NA          Sulfobacillus acidophilus
-#&gt; 3   53635        NA               NA        Acidimicrobium ferrooxidans
-#&gt; 4   50339        NA               NA             Thermoplasma volcanium
-#&gt; 5   28034        NA               NA Sulfobacillus thermosulfidooxidans
-#&gt; 6  405212        NA               NA    Alicyclobacillus acidocaldarius
-#&gt;         Attribute Attribute_value      Attribute_source Evidence
-#&gt; 1 animal pathogen           FALSE The Microbe Directory       NA
-#&gt; 2 animal pathogen           FALSE The Microbe Directory       NA
-#&gt; 3 animal pathogen           FALSE The Microbe Directory       NA
-#&gt; 4 animal pathogen           FALSE The Microbe Directory       NA
-#&gt; 5 animal pathogen           FALSE The Microbe Directory       NA
-#&gt; 6 animal pathogen           FALSE The Microbe Directory       NA
-#&gt;   Confidence_interval
-#&gt; 1             Unknown
-#&gt; 2             Unknown
-#&gt; 3             Unknown
-#&gt; 4             Unknown
-#&gt; 5             Unknown
-#&gt; 6             Unknown</div><div class='input'>
+</div><div class='output co'>#&gt;   NCBI_ID Genome_ID Accession_ID                Taxon_name       Attribute
+#&gt; 1      11        NA           NA         Cellvibrio gilvus animal pathogen
+#&gt; 2      14        NA           NA Dictyoglomus thermophilum animal pathogen
+#&gt; 3      19        NA           NA   Pelobacter carbinolicus animal pathogen
+#&gt; 4      24        NA           NA   Shewanella putrefaciens animal pathogen
+#&gt; 5      34        NA           NA        Myxococcus xanthus animal pathogen
+#&gt; 6      41        NA           NA    Stigmatella aurantiaca animal pathogen
+#&gt;   Attribute_value      Attribute_source Evidence Confidence_interval    Rank
+#&gt; 1           FALSE The Microbe Directory       NA             Unknown species
+#&gt; 2           FALSE The Microbe Directory       NA             Unknown species
+#&gt; 3           FALSE The Microbe Directory       NA             Unknown species
+#&gt; 4            TRUE The Microbe Directory       NA             Unknown species
+#&gt; 5           FALSE The Microbe Directory       NA             Unknown species
+#&gt; 6           FALSE The Microbe Directory       NA             Unknown species
+#&gt;      Parent_name Parent_NCBI_ID Parent_rank
+#&gt; 1   Cellulomonas           1707       genus
+#&gt; 2   Dictyoglomus             13       genus
+#&gt; 3 Syntrophotalea        2812025       genus
+#&gt; 4     Shewanella             22       genus
+#&gt; 5     Myxococcus             32       genus
+#&gt; 6    Stigmatella             40       genus</div><div class='input'>
 <span class='va'>y</span> <span class='op'>&lt;-</span> <span class='fu'>physiologies</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"gram stain"</span>, <span class='st'>"aerophilicity"</span><span class='op'>)</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; <span class='message'>Finished gram stain</span></div><div class='output co'>#&gt; <span class='message'>Finished aerophilicity</span></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span><span class='op'>(</span><span class='va'>y</span><span class='op'>[[</span><span class='fl'>1</span><span class='op'>]</span><span class='op'>]</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;                       Taxon_name NCBI_ID Genome_ID
-#&gt; 1                    Abiotrophia   46123   Unknown
-#&gt; 2          Abiotrophia defectiva   46125   Unknown
-#&gt; 3            Acanthopleuribacter  442869   Unknown
-#&gt; 4                     Acaricomes  291967   Unknown
-#&gt; 5         Acaricomes phytoseiuli  291968   Unknown
-#&gt; 6 Acaryochloris marina MBIC11017  329726   Unknown
-#&gt;                                                                                               Accession_number
-#&gt; 1                                                                                                      Unknown
-#&gt; 2                                                                                                      Unknown
-#&gt; 3                                                                                                      Unknown
-#&gt; 4                                                                                                      Unknown
-#&gt; 5                                                                                                      Unknown
-#&gt; 6 NC_009925, NC_009926, NC_009927, NC_009928, NC_009929, NC_009930, NC_009931, NC_009932, NC_009933, NC_009934
-#&gt;             Attribute Attribute_value
-#&gt; 1 gram stain positive            TRUE
-#&gt; 2 gram stain positive            TRUE
-#&gt; 3 gram stain negative            TRUE
-#&gt; 4 gram stain positive            TRUE
-#&gt; 5 gram stain positive            TRUE
-#&gt; 6 gram stain negative            TRUE
+</div><div class='output co'>#&gt;   NCBI_ID                Taxon_name Genome_ID Accession_ID           Attribute
+#&gt; 1       6              Azorhizobium   Unknown      Unknown gram stain negative
+#&gt; 2       9       Buchnera aphidicola   Unknown      Unknown gram stain negative
+#&gt; 3      10                Cellvibrio   Unknown      Unknown gram stain negative
+#&gt; 4      11         Cellvibrio gilvus   Unknown      Unknown gram stain positive
+#&gt; 5      13              Dictyoglomus   Unknown      Unknown gram stain negative
+#&gt; 6      14 Dictyoglomus thermophilum   Unknown      Unknown gram stain positive
+#&gt;   Attribute_value
+#&gt; 1            TRUE
+#&gt; 2            TRUE
+#&gt; 3            TRUE
+#&gt; 4            TRUE
+#&gt; 5            TRUE
+#&gt; 6            TRUE
 #&gt;                                                                                                                                                                           Attribute_source
 #&gt; 1 Garrity, G.M., Winters, M. &amp; Searles, D.B. 2001a. Taxonomic Outline of the Procaryotic Genera. Bergey's Manual of Systematic Bacteriology, Second Edition. Release 1.0, Apr 2001: 1-39. 
-#&gt; 2                                                                                                                                                        https://github.com/dcdanko/MD1762
+#&gt; 2                                                                                                                                                        https://github.com/dcdanko/MD2288
 #&gt; 3 Garrity, G.M., Winters, M. &amp; Searles, D.B. 2001a. Taxonomic Outline of the Procaryotic Genera. Bergey's Manual of Systematic Bacteriology, Second Edition. Release 1.0, Apr 2001: 1-39. 
-#&gt; 4 Garrity, G.M., Winters, M. &amp; Searles, D.B. 2001a. Taxonomic Outline of the Procaryotic Genera. Bergey's Manual of Systematic Bacteriology, Second Edition. Release 1.0, Apr 2001: 1-39. 
-#&gt; 5                                                                                                                                                         https://github.com/dcdanko/MD109
-#&gt; 6                                                                                                                                                                                   bacMap
-#&gt;   Evidence Confidence_interval
-#&gt; 1      EXP              always
-#&gt; 2  Unknown              always
-#&gt; 3      EXP              always
-#&gt; 4      EXP              always
-#&gt; 5  Unknown              always
-#&gt; 6  Unknown             Unknown</div></pre>
+#&gt; 4                                                                                                                                                         https://github.com/dcdanko/MD249
+#&gt; 5 Garrity, G.M., Winters, M. &amp; Searles, D.B. 2001a. Taxonomic Outline of the Procaryotic Genera. Bergey's Manual of Systematic Bacteriology, Second Edition. Release 1.0, Apr 2001: 1-39. 
+#&gt; 6                                                                                                                                                         https://github.com/dcdanko/MD923
+#&gt;   Evidence Confidence_interval    Rank       Parent_name Parent_NCBI_ID
+#&gt; 1      EXP              always   genus Xanthobacteraceae         335928
+#&gt; 2  Unknown              always species          Buchnera          32199
+#&gt; 3      EXP              always   genus  Cellvibrionaceae        1706371
+#&gt; 4  Unknown              always species      Cellulomonas           1707
+#&gt; 5      EXP              always   genus   Dictyoglomaceae         203488
+#&gt; 6  Unknown              always species      Dictyoglomus             13
+#&gt;   Parent_rank
+#&gt; 1      family
+#&gt; 2       genus
+#&gt; 3      family
+#&gt; 4       genus
+#&gt; 5      family
+#&gt; 6       genus</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

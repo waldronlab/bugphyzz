@@ -136,48 +136,51 @@
 <span class="co">#&gt; </span>
 <span class="co">#&gt; $`obligately anaerobic`</span>
 <span class="co">#&gt; [1] "146" "832" "836" "848" "864" "866"</span></code></pre></div>
-<p>Above, the <code>taxids = "NCBI_ID</code> option was used to create signatures with NCBI taxonomy IDs. Other available options are <code>Accession_number</code>, <code>Genome_ID</code>, and <code>Taxon_name</code>.</p>
+<p>Above, the <code>taxids = "NCBI_ID</code> option was used to create signatures with NCBI taxonomy IDs. Other available options are <code>Accession_ID</code>, <code>Genome_ID</code>, and <code>Taxon_name</code>.</p>
 <p>Signatures with accession number:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co">## Signatures with accession numbers</span>
-<span class="va">aer_sig_acc</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/makeSignatures.html">makeSignatures</a></span><span class="op">(</span><span class="va">aer</span>, taxids <span class="op">=</span> <span class="st">"Accession_number"</span>, min_sig_size <span class="op">=</span> <span class="fl">5</span><span class="op">)</span>
+<span class="va">aer_sig_acc</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/makeSignatures.html">makeSignatures</a></span><span class="op">(</span><span class="va">aer</span>, taxids <span class="op">=</span> <span class="st">"Accession_ID"</span>, min_sig_size <span class="op">=</span> <span class="fl">5</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/base/lapply.html">lapply</a></span><span class="op">(</span><span class="va">aer_sig_acc</span>, <span class="va">head</span><span class="op">)</span>
 <span class="co">#&gt; $aerobic</span>
-<span class="co">#&gt; [1] "NC_009925, NC_009926, NC_009927, NC_009928, NC_009929, NC_009930, NC_009931, NC_009932, NC_009933, NC_009934"</span>
-<span class="co">#&gt; [2] "NC_013209, NC_013210, NC_013211, NC_013212, NC_013213, NC_013214, NC_013215"                                 </span>
-<span class="co">#&gt; [3] "NC_014640, NC_014641, NC_014642"                                                                             </span>
-<span class="co">#&gt; [4] "NC_009467, NC_009468, NC_009469, NC_009470, NC_009471, NC_009472, NC_009473, NC_009474, NC_009484"           </span>
-<span class="co">#&gt; [5] "NC_015178, NC_015179, NC_015180, NC_015181, NC_015182, NC_015186, NC_015187, NC_015188, NC_015189"           </span>
-<span class="co">#&gt; [6] "NC_011206"                                                                                                   </span>
+<span class="co">#&gt; [1] "NC_000914, NC_012586, NC_012587"                                 </span>
+<span class="co">#&gt; [2] "NC_010399, NC_010407, NC_010408"                                 </span>
+<span class="co">#&gt; [3] "NC_011047"                                                       </span>
+<span class="co">#&gt; [4] "NC_010544"                                                       </span>
+<span class="co">#&gt; [5] "NC_005966"                                                       </span>
+<span class="co">#&gt; [6] "NC_010628, NC_010629, NC_010630, NC_010631, NC_010632, NC_010633"</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; $anaerobic</span>
-<span class="co">#&gt; [1] "NC_014378" "NC_013740" "NC_014374" "NC_013124" "NC_013926" "NC_015278"</span>
+<span class="co">#&gt; [1] "NC_002937, NC_005863" "NC_011769"            "NC_007759"           </span>
+<span class="co">#&gt; [4] "NC_013410, CP002158"  "NC_006624"            "NC_000961"           </span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; $`facultatively anaerobic`</span>
-<span class="co">#&gt; [1] "NC_010163" "NC_015518" "NC_011761" "NC_011992" "NC_010278" "NC_009053"</span>
+<span class="co">#&gt; [1] "NC_007595, NC_007604"                                                       </span>
+<span class="co">#&gt; [2] "NC_000911, NC_005229, NC_005230, NC_005231, NC_005232, AP012205"            </span>
+<span class="co">#&gt; [3] "NC_010474, NC_010475, NC_010476, NC_010477, NC_010478, NC_010479, NC_010480"</span>
+<span class="co">#&gt; [4] "NC_009481"                                                                  </span>
+<span class="co">#&gt; [5] "NC_011134, NC_012470"                                                       </span>
+<span class="co">#&gt; [6] "NC_011721, NC_011723, NC_011726, NC_011727"                                 </span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; $microaerophilic</span>
-<span class="co">#&gt; [1] "NC_014166"                                                                                                                                                                                                                                       </span>
-<span class="co">#&gt; [2] "NC_008702"                                                                                                                                                                                                                                       </span>
-<span class="co">#&gt; [3] "NC_014171, NC_014172"                                                                                                                                                                                                                            </span>
-<span class="co">#&gt; [4] "NC_015903, NC_015904, NC_015905, NC_015906, NC_015907, NC_015908, NC_015909, NC_015910, NC_015911, NC_015915, NC_015916, NC_015917, NC_015918, NC_015919, NC_015920, NC_015921, NC_015922"                                                       </span>
+<span class="co">#&gt; [1] "NC_012439, NC_012440"                                                                                                                                                                                                                            </span>
+<span class="co">#&gt; [2] "NC_002163"                                                                                                                                                                                                                                       </span>
+<span class="co">#&gt; [3] "NC_003912"                                                                                                                                                                                                                                       </span>
+<span class="co">#&gt; [4] "NC_012438"                                                                                                                                                                                                                                       </span>
 <span class="co">#&gt; [5] "NC_000948, NC_000949, NC_000950, NC_000951, NC_000952, NC_000953, NC_000954, NC_000955, NC_000956, NC_000957, NC_001318, NC_001849, NC_001850, NC_001851, NC_001852, NC_001853, NC_001854, NC_001855, NC_001856, NC_001857, NC_001903, NC_001904"</span>
-<span class="co">#&gt; [6] "NC_011720, NC_011722, NC_011724, NC_011728, NC_011731, NC_011735, NC_011736, NC_011778, NC_011779, NC_011780, NC_011781, NC_011782, NC_011783, NC_011784, NC_011785"                                                                             </span>
+<span class="co">#&gt; [6] "NC_005090"                                                                                                                                                                                                                                       </span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; $`obligately aerobic`</span>
-<span class="co">#&gt; [1] "NC_014750, NC_014759"                      </span>
-<span class="co">#&gt; [2] "NC_015579, NC_015580, NC_015582, NC_015583"</span>
-<span class="co">#&gt; [3] "NC_013523, NC_013524"                      </span>
+<span class="co">#&gt; [1] "NC_013523, NC_013524"                      </span>
+<span class="co">#&gt; [2] "NC_014158, NC_014159"                      </span>
+<span class="co">#&gt; [3] "NC_014750, NC_014759"                      </span>
 <span class="co">#&gt; [4] "NC_014221"                                 </span>
-<span class="co">#&gt; [5] "NC_014158, NC_014159"                      </span>
+<span class="co">#&gt; [5] "NC_015579, NC_015580, NC_015582, NC_015583"</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; $`obligately anaerobic`</span>
-<span class="co">#&gt; [1] "NC_014497"                                                       </span>
-<span class="co">#&gt; [2] "NC_015686, NC_015687, NC_015688"                                 </span>
-<span class="co">#&gt; [3] "NC_015417, NC_015418, NC_015419, NC_015425, NC_015426, NC_015427"</span>
-<span class="co">#&gt; [4] "NC_013315"                                                       </span>
-<span class="co">#&gt; [5] "NC_015565"                                                       </span>
-<span class="co">#&gt; [6] "NC_015573"</span></code></pre></div>
+<span class="co">#&gt; [1] "NC_014408, NC_014409"            "NC_010715, NC_010718, NC_010724"</span>
+<span class="co">#&gt; [3] "NC_015680"                       "NC_014844"                      </span>
+<span class="co">#&gt; [5] "NC_013315"                       "NC_015958"</span></code></pre></div>
 <p>Signatures with taxon names</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co">## Signatures with taxa names</span>
@@ -250,41 +253,38 @@
 <span class="va">aer_sig_strain</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/makeSignatures.html">makeSignatures</a></span><span class="op">(</span><span class="va">aer</span>, taxids <span class="op">=</span> <span class="st">"Taxon_name"</span>, tax_rank <span class="op">=</span> <span class="st">"strain"</span>, sig_type <span class="op">=</span> <span class="st">"ranked"</span>, min_sig_size <span class="op">=</span> <span class="fl">5</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/base/lapply.html">lapply</a></span><span class="op">(</span><span class="va">aer_sig_strain</span>, <span class="va">head</span><span class="op">)</span>
 <span class="co">#&gt; $aerobic</span>
-<span class="co">#&gt; [1] "Acaryochloris marina MBIC11017"           </span>
-<span class="co">#&gt; [2] "Achromobacter xylosoxidans A8"            </span>
-<span class="co">#&gt; [3] "Acidiphilium cryptum JF-5"                </span>
-<span class="co">#&gt; [4] "Acidiphilium multivorum AIU301"           </span>
-<span class="co">#&gt; [5] "Acidithiobacillus ferrooxidans ATCC 53993"</span>
-<span class="co">#&gt; [6] "Acidobacterium capsulatum ATCC 51196"     </span>
+<span class="co">#&gt; [1] "Sinorhizobium fredii NGR234"        "Acinetobacter sp. ADP1"            </span>
+<span class="co">#&gt; [3] "Nostoc punctiforme PCC 73102"       "Thiomonas intermedia K12"          </span>
+<span class="co">#&gt; [5] "Pseudomonas putida GB-1"            "Mycobacterium tuberculosis CDC1551"</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; $anaerobic</span>
-<span class="co">#&gt; [1] "Acetohalobium arabaticum DSM 5501"    </span>
-<span class="co">#&gt; [2] "Acidaminococcus fermentans DSM 20731" </span>
-<span class="co">#&gt; [3] "Acidilobus saccharovorans 345-15"     </span>
-<span class="co">#&gt; [4] "Acidimicrobium ferrooxidans DSM 10331"</span>
-<span class="co">#&gt; [5] "Aciduliprofundum boonei T469"         </span>
-<span class="co">#&gt; [6] "Aerococcus urinae ACS-120-V-Col10a"   </span>
+<span class="co">#&gt; [1] "Desulfovibrio vulgaris str. Hildenborough"       </span>
+<span class="co">#&gt; [2] "Desulfovibrio vulgaris str. 'Miyazaki F'"        </span>
+<span class="co">#&gt; [3] "Syntrophus aciditrophicus SB"                    </span>
+<span class="co">#&gt; [4] "Fibrobacter succinogenes subsp. succinogenes S85"</span>
+<span class="co">#&gt; [5] "Thermococcus kodakarensis KOD1"                  </span>
+<span class="co">#&gt; [6] "Pyrococcus horikoshii OT3"                       </span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; $`facultatively anaerobic`</span>
-<span class="co">#&gt; [1] "Acholeplasma laidlawii PG-8A"                       </span>
-<span class="co">#&gt; [2] "Acidianus hospitalis W1"                            </span>
-<span class="co">#&gt; [3] "Acidithiobacillus ferrooxidans ATCC 23270"          </span>
-<span class="co">#&gt; [4] "Acidovorax ebreus TPSY"                             </span>
-<span class="co">#&gt; [5] "Actinobacillus pleuropneumoniae serovar 3 str. JL03"</span>
-<span class="co">#&gt; [6] "Actinobacillus pleuropneumoniae serovar 5b str. L20"</span>
+<span class="co">#&gt; [1] "Synechococcus elongatus PCC 7942" "Cyanothece sp. PCC 8801"         </span>
+<span class="co">#&gt; [3] "Cyanothece sp. ATCC 51142"        "Halobacterium sp. NRC-1"         </span>
+<span class="co">#&gt; [5] "Cyanothece sp. PCC 7424"          "Haemophilus influenzae Rd KW20"  </span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; $microaerophilic</span>
-<span class="co">#&gt; [1] "Arcobacter nitrofigilis DSM 7299" "Bacillus thuringiensis BMB171"   </span>
-<span class="co">#&gt; [3] "Borrelia bissettii DN127"         "Borrelia burgdorferi B31"        </span>
-<span class="co">#&gt; [5] "Borrelia burgdorferi ZS7"         "Caldivirga maquilingensis IC-167"</span>
+<span class="co">#&gt; [1] "Persephonella marina EX-H1"                   </span>
+<span class="co">#&gt; [2] "Campylobacter jejuni subsp. jejuni NCTC 11168"</span>
+<span class="co">#&gt; [3] "Campylobacter jejuni RM1221"                  </span>
+<span class="co">#&gt; [4] "Sulfurihydrogenibium azorense Az-Fu1"         </span>
+<span class="co">#&gt; [5] "Borrelia burgdorferi B31"                     </span>
+<span class="co">#&gt; [6] "Wolinella succinogenes DSM 1740"              </span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; $`obligately anaerobic`</span>
-<span class="co">#&gt; [1] "Candidatus Zinderia insecticola CARI"     </span>
-<span class="co">#&gt; [2] "Clostridium acetobutylicum DSM 1731"      </span>
-<span class="co">#&gt; [3] "Clostridium botulinum BKT015925"          </span>
-<span class="co">#&gt; [4] "Clostridium difficile CD196"              </span>
-<span class="co">#&gt; [5] "Desulfotomaculum carboxydivorans CO-1-SRB"</span>
-<span class="co">#&gt; [6] "Desulfotomaculum kuznetsovii DSM 6115"</span></code></pre></div>
+<span class="co">#&gt; [1] "Methanothermobacter marburgensis str. Marburg"</span>
+<span class="co">#&gt; [2] "Natranaerobius thermophilus JW/NM-WN-LF"      </span>
+<span class="co">#&gt; [3] "Pyrococcus yayanosii CH1"                     </span>
+<span class="co">#&gt; [4] "Desulfovibrio aespoeensis Aspo-2"             </span>
+<span class="co">#&gt; [5] "Clostridium difficile CD196"                  </span>
+<span class="co">#&gt; [6] "Thermoanaerobacter wiegelii Rt8.B1"</span></code></pre></div>
 <p>Currently, ranked signtures are limited at the “genus”, “species”, and “strain” levels:</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/conditions.html">tryCatch</a></span><span class="op">(</span><span class="fu"><a href="../reference/makeSignatures.html">makeSignatures</a></span><span class="op">(</span><span class="va">aer</span>, taxids <span class="op">=</span> <span class="st">"Taxon_name"</span>, tax_rank <span class="op">=</span> <span class="st">"class"</span>, sig_type <span class="op">=</span> <span class="st">"ranked"</span>, min_sig_size <span class="op">=</span> <span class="fl">5</span><span class="op">)</span>,
@@ -315,22 +315,22 @@
 <code class="sourceCode R"><span class="co">## signature at the species level</span>
 <span class="fu"><a href="../reference/makeSignatures.html">makeSignatures</a></span><span class="op">(</span><span class="va">tm</span>, taxids <span class="op">=</span> <span class="st">"Taxon_name"</span>, sig_type <span class="op">=</span> <span class="st">"ranked"</span>, tax_rank <span class="op">=</span> <span class="st">"species"</span><span class="op">)</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="op">)</span>
-<span class="co">#&gt; [1] "Methanocaldococcus sp. FS406-22"    "Aquifex pyrophilus Ko15a; DSM 6858"</span>
-<span class="co">#&gt; [3] "Anoxybacillus flavithermus"         "Aquifex aeolicus"                  </span>
-<span class="co">#&gt; [5] "Burkholderia gladioli"              "Candidatus Korarchaeum cryptofilum"</span></code></pre></div>
+<span class="co">#&gt; [1] "Methanothermus fervidus"            "Thermofilum pendens"               </span>
+<span class="co">#&gt; [3] "Methanopyrus kandleri"              "Aquifex pyrophilus Ko15a; DSM 6858"</span>
+<span class="co">#&gt; [5] "Burkholderia gladioli"              "Pyrococcus abyssi"</span></code></pre></div>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co">## signature at the strain level</span>
 <span class="fu"><a href="../reference/makeSignatures.html">makeSignatures</a></span><span class="op">(</span><span class="va">tm</span>, taxids <span class="op">=</span> <span class="st">"Taxon_name"</span>, sig_type <span class="op">=</span> <span class="st">"ranked"</span>, tax_rank <span class="op">=</span> <span class="st">"strain"</span><span class="op">)</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="op">)</span>
-<span class="co">#&gt; [1] "Aeropyrum pernix K1"                 "Aquifex aeolicus VF5"               </span>
-<span class="co">#&gt; [3] "Archaeoglobus fulgidus DSM 4304"     "Caldivirga maquilingensis IC-167"   </span>
-<span class="co">#&gt; [5] "Desulfurococcus kamchatkensis 1221n" "Ferroglobus placidus DSM 10642"</span></code></pre></div>
+<span class="co">#&gt; [1] "Thermococcus kodakarensis KOD1"  "Pyrococcus horikoshii OT3"      </span>
+<span class="co">#&gt; [3] "Pyrobaculum aerophilum str. IM2" "Pyrococcus furiosus DSM 3638"   </span>
+<span class="co">#&gt; [5] "Methanopyrus kandleri AV19"      "Aquifex aeolicus VF5"</span></code></pre></div>
 <p>So, we can create a signature of genera that inherit their annotations from these lower taxonomic ranks (species and strain) with the <code>sig_type = "inherited"</code> option:</p>
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">tm_sig_genus</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/makeSignatures.html">makeSignatures</a></span><span class="op">(</span><span class="va">tm</span>, taxids <span class="op">=</span> <span class="st">"Taxon_name"</span>, sig_type <span class="op">=</span> <span class="st">"inherited"</span>, tax_rank <span class="op">=</span> <span class="st">"genus"</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">tm_sig_genus</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span><span class="op">)</span>
-<span class="co">#&gt; [1] "Aeropyrum"       "Aquifex"         "Archaeoglobus"   "Caldivirga"     </span>
-<span class="co">#&gt; [5] "Desulfurococcus" "Ferroglobus"</span></code></pre></div>
+<span class="co">#&gt; [1] "Methanothermus" "Thermofilum"    "Methanopyrus"   "Aquifex"       </span>
+<span class="co">#&gt; [5] "Burkholderia"   "Pyrococcus"</span></code></pre></div>
 <p>We recommend caution when using and interpreting the inherited signatures. For example, the output of the code below indicates that the growth temperature dataset contains one or more taxa that belong to the superkingdoms Archaea and Bacteria, not that all taxa in Archaea and Bacteria are thermophiles:</p>
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/makeSignatures.html">makeSignatures</a></span><span class="op">(</span><span class="va">tm</span>, taxids <span class="op">=</span> <span class="st">"Taxon_name"</span>, sig_type <span class="op">=</span> <span class="st">"inherited"</span>, tax_rank <span class="op">=</span> <span class="st">"superkingdom"</span><span class="op">)</span>

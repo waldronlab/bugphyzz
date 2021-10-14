@@ -84,9 +84,9 @@
 
       
 
-      </header><script src="summary_statistics_files/header-attrs-2.11/header-attrs.js"></script><script src="summary_statistics_files/htmlwidgets-1.5.4/htmlwidgets.js"></script><script src="summary_statistics_files/plotly-binding-4.9.4.1/plotly.js"></script><script src="summary_statistics_files/typedarray-0.1/typedarray.min.js"></script><script src="summary_statistics_files/jquery-3.5.1/jquery.min.js"></script><link href="summary_statistics_files/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet">
-<script src="summary_statistics_files/crosstalk-1.1.1/js/crosstalk.min.js"></script><link href="summary_statistics_files/plotly-htmlwidgets-css-1.57.1/plotly-htmlwidgets.css" rel="stylesheet">
-<script src="summary_statistics_files/plotly-main-1.57.1/plotly-latest.min.js"></script><div class="row">
+      </header><script src="summary_statistics_files/header-attrs-2.11/header-attrs.js"></script><script src="summary_statistics_files/htmlwidgets-1.5.4/htmlwidgets.js"></script><script src="summary_statistics_files/plotly-binding-4.10.0/plotly.js"></script><script src="summary_statistics_files/typedarray-0.1/typedarray.min.js"></script><script src="summary_statistics_files/jquery-3.5.1/jquery.min.js"></script><link href="summary_statistics_files/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet">
+<script src="summary_statistics_files/crosstalk-1.1.1/js/crosstalk.min.js"></script><link href="summary_statistics_files/plotly-htmlwidgets-css-2.5.1/plotly-htmlwidgets.css" rel="stylesheet">
+<script src="summary_statistics_files/plotly-main-2.5.1/plotly-latest.min.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>BugPhyzz Stats</h1>
@@ -133,14 +133,14 @@
 
 <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">taxonomies</span><span class="op">)</span>
 <span class="co">#&gt; # A tibble: 6 × 9</span>
-<span class="co">#&gt;   NCBI_ID superkingdom kingdom phylum   class   order  family    genus species  </span>
-<span class="co">#&gt;     &lt;int&gt; &lt;chr&gt;        &lt;chr&gt;   &lt;chr&gt;    &lt;chr&gt;   &lt;chr&gt;  &lt;chr&gt;     &lt;chr&gt; &lt;chr&gt;    </span>
-<span class="co">#&gt; 1  244596 Bacteria     &lt;NA&gt;    Proteob… Alphap… Hypho… Phylloba… Hoef… Hoeflea …</span>
-<span class="co">#&gt; 2   53633 Bacteria     &lt;NA&gt;    Firmicu… Clostr… Eubac… Clostrid… Sulf… Sulfobac…</span>
-<span class="co">#&gt; 3   53635 Bacteria     &lt;NA&gt;    Actinob… Acidim… Acidi… Acidimic… Acid… Acidimic…</span>
-<span class="co">#&gt; 4   50339 Archaea      &lt;NA&gt;    Candida… Thermo… Therm… Thermopl… Ther… Thermopl…</span>
-<span class="co">#&gt; 5   28034 Bacteria     &lt;NA&gt;    Firmicu… Clostr… Eubac… Clostrid… Sulf… Sulfobac…</span>
-<span class="co">#&gt; 6  405212 Bacteria     &lt;NA&gt;    Firmicu… Bacilli Bacil… Alicyclo… Alic… Alicyclo…</span></code></pre></div>
+<span class="co">#&gt;   NCBI_ID superkingdom kingdom phylum         class  order  family genus species</span>
+<span class="co">#&gt;     &lt;int&gt; &lt;chr&gt;        &lt;chr&gt;   &lt;chr&gt;          &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;  </span>
+<span class="co">#&gt; 1      11 Bacteria     &lt;NA&gt;    Actinobacteria Actin… Micro… Cellu… Cell… Cellul…</span>
+<span class="co">#&gt; 2      14 Bacteria     &lt;NA&gt;    Dictyoglomi    Dicty… Dicty… Dicty… Dict… Dictyo…</span>
+<span class="co">#&gt; 3      19 Bacteria     &lt;NA&gt;    Proteobacteria Delta… Desul… Syntr… Synt… Syntro…</span>
+<span class="co">#&gt; 4      24 Bacteria     &lt;NA&gt;    Proteobacteria Gamma… Alter… Shewa… Shew… Shewan…</span>
+<span class="co">#&gt; 5      34 Bacteria     &lt;NA&gt;    Proteobacteria Delta… Myxoc… Myxoc… Myxo… Myxoco…</span>
+<span class="co">#&gt; 6      41 Bacteria     &lt;NA&gt;    Proteobacteria Delta… Myxoc… Archa… Stig… Stigma…</span></code></pre></div>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html">map_int</a></span><span class="op">(</span><span class="va">taxonomies</span>, <span class="op">~</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/n_distinct.html">n_distinct</a></span><span class="op">(</span><span class="va">.x</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="https://tibble.tidyverse.org/reference/as_tibble.html">as_tibble</a></span><span class="op">(</span>rownames <span class="op">=</span> <span class="st">"taxonomy_rank"</span><span class="op">)</span> <span class="op">%&gt;%</span> 
@@ -162,8 +162,8 @@
 <span class="fu">plotly</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/plotly/man/plot_ly.html">plot_ly</a></span><span class="op">(</span><span class="va">df</span>, type <span class="op">=</span> <span class="st">"sunburst"</span>,  values <span class="op">=</span> <span class="op">~</span><span class="va">values</span>, labels <span class="op">=</span> <span class="op">~</span><span class="va">labels</span>, parents <span class="op">=</span> <span class="op">~</span><span class="va">parents</span>,
         branchvalues <span class="op">=</span> <span class="st">"total"</span><span class="op">)</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="https://rdrr.io/pkg/plotly/man/layout.html">layout</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Number of Genera in BugPhyzz"</span><span class="op">)</span></code></pre></div>
-<div id="htmlwidget-c4c53ca5e9894e5c1c9a" style="width:768px;height:768px;" class="plotly html-widget"></div>
-<script type="application/json" data-for="htmlwidget-c4c53ca5e9894e5c1c9a">{"x":{"visdat":{"588b4b4115fe":["function () ","plotlyVisDat"]},"cur_data":"588b4b4115fe","attrs":{"588b4b4115fe":{"values":{},"labels":{},"parents":{},"branchvalues":"total","alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"sunburst"}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"title":"Number of Genera in BugPhyzz","hovermode":"closest","showlegend":false},"source":"A","config":{"showSendToCloud":false},"data":[{"values":[29,278,1,8,137,1,4,10,1755,161,2,2,1,1,1,1,1,1,6,10,6,22,13,2,1,28,64,5,8,1,2,3,66,98,1,388,11,11,1,8,2,2,1,4,1,1,4,14,661,1,1,14,4,10,11,3,2,9,17,17],"labels":["Acidobacteria","Actinobacteria","Apicomplexa","Aquificae","Archaea","Armatimonadetes","Ascomycota","Bacillariophyta","Bacteria","Bacteroidetes","Balneolaeota","Basidiomycota","Caldiserica","Calditrichaeota","candidate division NC10","Candidatus Korarchaeota","Candidatus Melainabacteria","Candidatus Saccharibacteria","Candidatus Thermoplasmatota","Chlamydiae","Chlorobi","Chloroflexi","Chlorophyta","Chrysiogenetes","Coprothermobacterota","Crenarchaeota","Cyanobacteria","Deferribacteres","Deinococcus-Thermus","Dictyoglomi","Elusimicrobia","Euglenozoa","Eukaryota","Euryarchaeota","Fibrobacteres","Firmicutes","Fungi","Fusobacteria","Gemmatimonadetes","Haptista","Ignavibacteriae","Lentisphaerae","Microsporidia","Mucoromycota","Nanoarchaeota","Nitrospinae","Nitrospirae","Planctomycetes","Proteobacteria","Rhodophyta","Rhodothermaeota","Spirochaetes","Streptophyta","Synergistetes","Tenericutes","Thaumarchaeota","Thermodesulfobacteria","Thermotogae","Verrucomicrobia","Viridiplantae"],"parents":["Bacteria","Bacteria","Eukaryota","Bacteria","","Bacteria","Fungi","Eukaryota","","Bacteria","Bacteria","Fungi","Bacteria","Bacteria","Bacteria","Archaea","Bacteria","Bacteria","Archaea","Bacteria","Bacteria","Bacteria","Viridiplantae","Bacteria","Bacteria","Archaea","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Eukaryota","","Archaea","Bacteria","Bacteria","Eukaryota","Bacteria","Bacteria","Eukaryota","Bacteria","Bacteria","Fungi","Fungi","Archaea","Bacteria","Bacteria","Bacteria","Bacteria","Eukaryota","Bacteria","Bacteria","Viridiplantae","Bacteria","Bacteria","Archaea","Bacteria","Bacteria","Bacteria","Eukaryota"],"branchvalues":"total","type":"sunburst","marker":{"color":"rgba(31,119,180,1)","line":{"color":"rgba(255,255,255,1)"}},"frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script><div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<div id="htmlwidget-e936d7b1a884fc8bd9eb" style="width:768px;height:768px;" class="plotly html-widget"></div>
+<script type="application/json" data-for="htmlwidget-e936d7b1a884fc8bd9eb">{"x":{"visdat":{"7e06f7f425a":["function () ","plotlyVisDat"]},"cur_data":"7e06f7f425a","attrs":{"7e06f7f425a":{"values":{},"labels":{},"parents":{},"branchvalues":"total","alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"sunburst"}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"title":"Number of Genera in BugPhyzz","hovermode":"closest","showlegend":false},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"data":[{"values":[29,278,1,8,137,1,4,10,1757,161,2,2,1,1,1,1,1,1,6,10,6,22,13,2,1,28,65,5,8,1,2,3,66,98,1,388,11,11,1,8,2,2,1,4,1,1,4,14,662,1,1,14,4,10,11,3,2,9,17,17],"labels":["Acidobacteria","Actinobacteria","Apicomplexa","Aquificae","Archaea","Armatimonadetes","Ascomycota","Bacillariophyta","Bacteria","Bacteroidetes","Balneolaeota","Basidiomycota","Caldiserica","Calditrichaeota","candidate division NC10","Candidatus Korarchaeota","Candidatus Melainabacteria","Candidatus Saccharibacteria","Candidatus Thermoplasmatota","Chlamydiae","Chlorobi","Chloroflexi","Chlorophyta","Chrysiogenetes","Coprothermobacterota","Crenarchaeota","Cyanobacteria","Deferribacteres","Deinococcus-Thermus","Dictyoglomi","Elusimicrobia","Euglenozoa","Eukaryota","Euryarchaeota","Fibrobacteres","Firmicutes","Fungi","Fusobacteria","Gemmatimonadetes","Haptista","Ignavibacteriae","Lentisphaerae","Microsporidia","Mucoromycota","Nanoarchaeota","Nitrospinae","Nitrospirae","Planctomycetes","Proteobacteria","Rhodophyta","Rhodothermaeota","Spirochaetes","Streptophyta","Synergistetes","Tenericutes","Thaumarchaeota","Thermodesulfobacteria","Thermotogae","Verrucomicrobia","Viridiplantae"],"parents":["Bacteria","Bacteria","Eukaryota","Bacteria","","Bacteria","Fungi","Eukaryota","","Bacteria","Bacteria","Fungi","Bacteria","Bacteria","Bacteria","Archaea","Bacteria","Bacteria","Archaea","Bacteria","Bacteria","Bacteria","Viridiplantae","Bacteria","Bacteria","Archaea","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Eukaryota","","Archaea","Bacteria","Bacteria","Eukaryota","Bacteria","Bacteria","Eukaryota","Bacteria","Bacteria","Fungi","Fungi","Archaea","Bacteria","Bacteria","Bacteria","Bacteria","Eukaryota","Bacteria","Bacteria","Viridiplantae","Bacteria","Bacteria","Archaea","Bacteria","Bacteria","Bacteria","Eukaryota"],"branchvalues":"total","type":"sunburst","marker":{"color":"rgba(31,119,180,1)","line":{"color":"rgba(255,255,255,1)"}},"frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script><div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">summary_table</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html">sapply</a></span><span class="op">(</span><span class="va">physiologies</span>, <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">{</span>
   <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span>NCBI_ID <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">x</span><span class="op">$</span><span class="va">NCBI_ID</span><span class="op">)</span><span class="op">)</span>, Taxon_name <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">x</span><span class="op">$</span><span class="va">Taxon_name</span><span class="op">)</span><span class="op">)</span>, 
     Attribute <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">x</span><span class="op">$</span><span class="va">Attribute</span><span class="op">)</span><span class="op">)</span>, Attribute_value_true <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/character.html">as.character</a></span><span class="op">(</span><span class="va">x</span><span class="op">$</span><span class="va">Attribute_value</span><span class="op">)</span> <span class="op">==</span> <span class="st">"TRUE"</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,
@@ -199,7 +199,7 @@
 </tr>
 <tr class="even">
 <td align="left">gram stain</td>
-<td align="right">4901</td>
+<td align="right">4895</td>
 <td align="right">4967</td>
 <td align="right">4967</td>
 <td align="right">4967</td>
@@ -208,7 +208,7 @@
 </tr>
 <tr class="odd">
 <td align="left">habitat</td>
-<td align="right">3714</td>
+<td align="right">3708</td>
 <td align="right">18230</td>
 <td align="right">18230</td>
 <td align="right">18230</td>
@@ -334,7 +334,7 @@
 </tr>
 <tr class="odd">
 <td align="left">growth temperature</td>
-<td align="right">2511</td>
+<td align="right">2507</td>
 <td align="right">2524</td>
 <td align="right">2524</td>
 <td align="right">0</td>
@@ -396,15 +396,6 @@
 <td align="left">Continuous</td>
 </tr>
 <tr class="even">
-<td align="left">hydrogen gas producing</td>
-<td align="right">24</td>
-<td align="right">24</td>
-<td align="right">24</td>
-<td align="right">0</td>
-<td align="right">0</td>
-<td align="left">Continuous</td>
-</tr>
-<tr class="odd">
 <td align="left">butyrate producing</td>
 <td align="right">0</td>
 <td align="right">24</td>
@@ -413,7 +404,7 @@
 <td align="right">0</td>
 <td align="left">Continuous</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">acetate producing</td>
 <td align="right">0</td>
 <td align="right">24</td>
@@ -422,8 +413,17 @@
 <td align="right">0</td>
 <td align="left">Continuous</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">lactate producing</td>
+<td align="right">0</td>
+<td align="right">24</td>
+<td align="right">24</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="left">Continuous</td>
+</tr>
+<tr class="odd">
+<td align="left">hydrogen gas producing</td>
 <td align="right">0</td>
 <td align="right">24</td>
 <td align="right">24</td>
@@ -1048,19 +1048,19 @@
 <td align="left">The Microbe Directory</td>
 </tr>
 <tr class="even">
-<td align="left">Moritella 5710</td>
-<td align="right">-5</td>
-<td align="left"><a href="https://github.com/bovee/fattyacids" class="uri">https://github.com/bovee/fattyacids</a></td>
-</tr>
-<tr class="odd">
 <td align="left">Psychroflexus gondwanensis</td>
 <td align="right">-5</td>
 <td align="left">The Microbe Directory</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Psychroflexus torquis</td>
 <td align="right">-5</td>
 <td align="left">The Microbe Directory</td>
+</tr>
+<tr class="even">
+<td align="left">Moritella 5710</td>
+<td align="right">-5</td>
+<td align="left"><a href="https://github.com/bovee/fattyacids" class="uri">https://github.com/bovee/fattyacids</a></td>
 </tr>
 <tr class="odd">
 <td align="left">Allochromatium vinosum D</td>
@@ -1068,27 +1068,27 @@
 <td align="left"><a href="https://github.com/bovee/fattyacids" class="uri">https://github.com/bovee/fattyacids</a></td>
 </tr>
 <tr class="even">
-<td align="left">Allochromatium warmingii 6512</td>
-<td align="right">0</td>
-<td align="left"><a href="https://github.com/bovee/fattyacids" class="uri">https://github.com/bovee/fattyacids</a></td>
-</tr>
-<tr class="odd">
-<td align="left">Chromatium purpuratum 5500</td>
-<td align="right">0</td>
-<td align="left"><a href="https://github.com/bovee/fattyacids" class="uri">https://github.com/bovee/fattyacids</a></td>
-</tr>
-<tr class="even">
-<td align="left">Ectothiorhodospira abdelmalekii 9840</td>
-<td align="right">0</td>
-<td align="left"><a href="https://github.com/bovee/fattyacids" class="uri">https://github.com/bovee/fattyacids</a></td>
-</tr>
-<tr class="odd">
 <td align="left">Ectothiorhodospira halochloris 9850</td>
 <td align="right">0</td>
 <td align="left"><a href="https://github.com/bovee/fattyacids" class="uri">https://github.com/bovee/fattyacids</a></td>
 </tr>
+<tr class="odd">
+<td align="left">Ectothiorhodospira halophila SL1</td>
+<td align="right">0</td>
+<td align="left"><a href="https://github.com/bovee/fattyacids" class="uri">https://github.com/bovee/fattyacids</a></td>
+</tr>
 <tr class="even">
+<td align="left">Ectothiorhodospira halophila 9630</td>
+<td align="right">0</td>
+<td align="left"><a href="https://github.com/bovee/fattyacids" class="uri">https://github.com/bovee/fattyacids</a></td>
+</tr>
+<tr class="odd">
 <td align="left">Ectothiorhodospira halophila 9628</td>
+<td align="right">0</td>
+<td align="left"><a href="https://github.com/bovee/fattyacids" class="uri">https://github.com/bovee/fattyacids</a></td>
+</tr>
+<tr class="even">
+<td align="left">Ectothiorhodospira shaposhnikovii N1</td>
 <td align="right">0</td>
 <td align="left"><a href="https://github.com/bovee/fattyacids" class="uri">https://github.com/bovee/fattyacids</a></td>
 </tr>
@@ -1108,9 +1108,9 @@
 </tr></thead>
 <tbody>
 <tr class="odd">
-<td align="left">Methanopyrus kandleri AV19</td>
+<td align="left">Methanopyrus kandleri</td>
 <td align="right">98</td>
-<td align="left"><a href="http://bacmap.wishartlab.com/" class="uri">http://bacmap.wishartlab.com/</a></td>
+<td align="left">The Microbe Directory</td>
 </tr>
 <tr class="even">
 <td align="left">Pyrococcus horikoshii OT3</td>
@@ -1118,9 +1118,9 @@
 <td align="left"><a href="http://bacmap.wishartlab.com/" class="uri">http://bacmap.wishartlab.com/</a></td>
 </tr>
 <tr class="odd">
-<td align="left">Methanopyrus kandleri</td>
+<td align="left">Methanopyrus kandleri AV19</td>
 <td align="right">98</td>
-<td align="left">The Microbe Directory</td>
+<td align="left"><a href="http://bacmap.wishartlab.com/" class="uri">http://bacmap.wishartlab.com/</a></td>
 </tr>
 <tr class="even">
 <td align="left">Pyrococcus yayanosii</td>
@@ -1133,24 +1133,24 @@
 <td align="left"><a href="http://bacmap.wishartlab.com/" class="uri">http://bacmap.wishartlab.com/</a></td>
 </tr>
 <tr class="even">
-<td align="left">Pyrobaculum islandicum DSM 4184</td>
-<td align="right">100</td>
-<td align="left"><a href="http://bacmap.wishartlab.com/" class="uri">http://bacmap.wishartlab.com/</a></td>
-</tr>
-<tr class="odd">
 <td align="left">Pyrococcus furiosus DSM 3638</td>
 <td align="right">100</td>
 <td align="left"><a href="http://bacmap.wishartlab.com/" class="uri">http://bacmap.wishartlab.com/</a></td>
 </tr>
-<tr class="even">
-<td align="left">Pyrococcus abyssi GE5</td>
-<td align="right">103</td>
+<tr class="odd">
+<td align="left">Pyrobaculum islandicum DSM 4184</td>
+<td align="right">100</td>
 <td align="left"><a href="http://bacmap.wishartlab.com/" class="uri">http://bacmap.wishartlab.com/</a></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Pyrococcus abyssi</td>
 <td align="right">103</td>
 <td align="left">The Microbe Directory</td>
+</tr>
+<tr class="odd">
+<td align="left">Pyrococcus abyssi GE5</td>
+<td align="right">103</td>
+<td align="left"><a href="http://bacmap.wishartlab.com/" class="uri">http://bacmap.wishartlab.com/</a></td>
 </tr>
 <tr class="even">
 <td align="left">Burkholderia gladioli</td>
