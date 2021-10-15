@@ -11,7 +11,7 @@
 
 \item{df}{A data frame with information about the expected and actual
 positions of the required columns in a bugphyzz dataset. See
-\code{\link{.checkRequiredColumnsDF}}.}
+\code{\link{.checkRequiredColumns}}.}
 
 \item{...}{Any other argument useful to identify the source of the error
 and/or how to fix it.}
@@ -27,7 +27,7 @@ Object of class: "required_columns_misplaced", "error", "condition".
 or more of the required columns is not in the right order in a bugphyzz
 dataset. The order of the required columns can be printed with the
 \code{\link{.requiredColumns}} function. This function should be used within
-the \code{\link{.checkRequiredColumnsDF}} function.
+the \code{\link{.checkRequiredColumns}} function.
 }
 \seealso{
 \code{\link{.stop_custom}};

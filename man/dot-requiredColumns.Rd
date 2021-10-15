@@ -22,7 +22,7 @@ bugphyzz:::.requiredColumns()
 }
 \seealso{
 \code{\link{.requiredColumns}};
-\code{\link{.checkRequiredColumnsDF}};
-\code{\link{.checkRequiredColumnsDFList}}
+\code{\link{.checkRequiredColumns}};
+\code{\link{.checkRequiredColumnsList}}
 }
 \keyword{internal}

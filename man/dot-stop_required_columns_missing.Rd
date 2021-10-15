@@ -23,7 +23,7 @@ Object of class "required_columns_missing", "error", "condition".
 more of the required columns is missing from a bugphyzz dataset.
 The required columns can be printed with the \code{\link{.requiredColumns}}
 function. This function should be used within the
-\code{\link{.checkRequiredColumnsDF}} function.
+\code{\link{.checkRequiredColumns}} function.
 }
 \seealso{
 \code{\link{.stop_custom}};

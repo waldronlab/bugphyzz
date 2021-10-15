@@ -46,8 +46,9 @@ err <- tryCatch(bugphyzz:::.checkColumnValues(x), error = function(e) e)
 Other check functions: 
 \code{\link{.checkColumnValuesDF}()},
 \code{\link{.checkColumnValuesList}()},
-\code{\link{.checkRequiredColumnsDFList}()},
-\code{\link{.checkRequiredColumnsDF}()}
+\code{\link{.checkRequiredColumnsDF}()},
+\code{\link{.checkRequiredColumnsList}()},
+\code{\link{.checkRequiredColumns}()}
 }
 \concept{check functions}
 \keyword{internal}

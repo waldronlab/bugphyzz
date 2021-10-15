@@ -39,7 +39,8 @@ err <- bugphyzz:::.checkColumnValuesDF(x)
 Other check functions: 
 \code{\link{.checkColumnValuesList}()},
 \code{\link{.checkColumnValues}()},
-\code{\link{.checkRequiredColumnsDFList}()},
-\code{\link{.checkRequiredColumnsDF}()}
+\code{\link{.checkRequiredColumnsDF}()},
+\code{\link{.checkRequiredColumnsList}()},
+\code{\link{.checkRequiredColumns}()}
 }
 \concept{check functions}

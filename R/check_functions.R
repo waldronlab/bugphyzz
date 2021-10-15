@@ -1,9 +1,9 @@
 
 # Check functions ---------------------------------------------------------
 
-#' Check required columns in a single bugphyzz dataset
+#' Check required columns
 #'
-#' \code{.checkRequiredColumnsDF} checks if the required columns
+#' \code{.checkRequiredColumns} checks if the required columns
 #' (see \code{\link{.requiredColumns}}) are
 #' present and in the right order in a single bugphyzz dataset.
 #' If a required column is missing or is not in the right order,
@@ -26,8 +26,9 @@
 #' @family check functions
 #' @seealso
 #' \code{\link{.requiredColumns}};
-#' \code{\link{.checkRequiredColumnsDF}};
-#' \code{\link{.checkRequiredColumnsDFList}};
+#' \code{\link{.checkRequiredColumns}};
+#' \code{\link{.checkRequiredColumsDF}};
+#' \code{\link{.checkRequiredColumnsList}};
 #'
 #' @keywords internal
 #'
@@ -36,12 +37,12 @@
 #' \dontrun{
 #'
 #' x <- physiologies("aerophilicity")[[1]]
-#' err <- tryCatch(bugphyzz:::.checkRequiredColumnsDF(x), error = function(e) e)
+#' err <- tryCatch(bugphyzz:::.checkRequiredColumns(x), error = function(e) e)
 #' err
 #'
 #' }
 #'
-.checkRequiredColumnsDF <- function(dat, dat_name = NULL) {
+.checkRequiredColumns <- function(dat, dat_name = NULL) {
 
     if (!is.data.frame(dat))
         stop("Not a data.frame. Object of class '", class(dat), "'.",
@@ -90,13 +91,75 @@
 
 }
 
+#' Check required columns in a bugphyzz dataset
+#'
+#' \code{.checkRequiredColumnsDF} is a tryCatch wrapper of the
+#' \code{.checkRequiredColumns} function. \code{.checkRequiredColumnsDF}
+#' checks if the required columns (see \code{\link{.requiredColumns}}) are
+#' present and in the right order in a single bugphyzz dataset.
+#' If a required column is missing or is not in the right order,
+#' it prints a message indicating which columns must be added or reordered.
+#'
+#' @param dat A data frame from bugphyzz.
+#' @param dat_name A character string indicating the name of the dataset.
+#' Default is NULL.
+#'
+#' @return Invisibly returns an error condition
+#' ("required_columns_missing" or "required_columns_misplaced" subclass).
+#' It also returns an error message if any of the required columns is missing
+#' or is not in the right order.
+#' If no errors are found, a message indicating that the required
+#' columns are present and in the right order is printed.
+#'
+#' @keywords internal
+#'
+#' @family check functions
+#' @seealso
+#' \code{\link{.requiredColumns}};
+#' \code{\link{.checkRequiredColumns}};
+#' \code{\link{.checkRequiredColumsDF}};
+#' \code{\link{.checkRequiredColumnsList}};
+#'
+#' @examples
+#'
+#' \dontrun {
+#'
+#' x <- physiologies("aerophilicity")[[1]]
+#' err <- bugphyzz:::.checkRequiredColumnsDF(x[[1]])
+#'
+#' }
+#'
+.checkRequiredColumnsDF <- function(dat, dat_name = NULL) {
+
+    tryCatch(
+
+        required_columns_missing = function(e) {
+            message(crayon::red(conditionMessage(e), "\n"))
+            e
+        },
+        required_columns_misplaced = function(e) {
+            message(crayon::red(conditionMessage(e), "\n"))
+            e
+        },
+        error = function(e) {
+            message(crayon::bgBlue(
+                "Error in the", .y, "dataset. ", conditionMessage(e), "\n"
+            ))
+            e
+        },
+        .checkRequiredColumns(dat, dat_name)
+
+    )
+
+}
+
 #' Check required columns across a list of bugphyzz datasets
 #'
-#' \code{.checkRequiredColumnsDFList} applies the
-#' \code{\link{.checkRequiredColumnsDF}} function to a list of
+#' \code{.checkRequiredColumnsList} applies the
+#' \code{\link{.checkRequiredColumns}} function to a list of
 #' bugphyzz datasets. If a required column (see \code{\link{.requiredColumns}})
 #' is missing or is not in the right order in a dataset,
-#' \code{.checkRequiredColumnsDFList} prints a message indicating which columns
+#' \code{.checkRequiredColumnsList} prints a message indicating which columns
 #' are missing or must be reordered.
 #'
 #' @param list A list of bugphyzz datasets.
@@ -113,8 +176,8 @@
 #' @family check functions
 #' @seealso
 #' \code{\link{.requiredColumns}};
-#' \code{\link{.checkRequiredColumnsDF}};
-#' \code{\link{.checkRequiredColumnsDFList}};
+#' \code{\link{.checkRequiredColumns}};
+#' \code{\link{.checkRequiredColumnsList}};
 #'
 #' @keywords internal
 #'
@@ -123,39 +186,19 @@
 #' \dontrun{
 #'
 #' x <- physiologies()
-#' list_of_errors <- bugphyzz:::.checkRequiredColumnsDFList(x)
+#' list_of_errors <- bugphyzz:::.checkRequiredColumnsList(x)
 #' list_of_erros$length
 #'
 #' }
 #'
-.checkRequiredColumnsDFList <- function(list) {
+.checkRequiredColumnsList <- function(list) {
 
     if (class(list) != "list")
         stop("Not a list. Object of class '", class(list), "'.",
             " Provide a list of data frames imported with bugphyzz functions.",
             call. = FALSE)
 
-    purrr::map2(list, names(list), ~ {
-
-        tryCatch(
-            required_columns_missing = function(e) {
-                message(crayon::red(conditionMessage(e), "\n"))
-                e
-            },
-            required_columns_misplaced = function(e) {
-                message(crayon::red(conditionMessage(e), "\n"))
-                e
-            },
-            error = function(e) {
-                message(crayon::bgBlue(
-                    "Error in the", .y, "dataset. ", conditionMessage(e), "\n"
-                    ))
-                e
-            },
-            .checkRequiredColumnsDF(.x, .y)
-        )
-
-    }) %>%
+    purrr::map2(list, names(list), ~ .checkRequiredColumnsDF(.x, .y)) %>%
         purrr::discard(is.null) %>%
         invisible()
 
@@ -320,7 +363,7 @@
 
     col_names <- colnames(dat)
 
-    purrr::map(col_names, ~{
+    err <- purrr::map(col_names, ~{
 
         tryCatch(
             uncataloged_column = function(e) {
@@ -348,8 +391,27 @@
 
     }) %>%
         purrr::set_names(col_names) %>%
-        purrr::discard(is.null) %>%
-        invisible()
+        purrr::discard(is.null)
+
+    if (is.null(err)) {
+
+        if (!is.null(dat_name)) {
+
+            message(crayon::green(
+                "All values are valid in the ", dat_name, "dataset."
+            ))
+
+        } else if (is.null(dat_name)) {
+
+            message(crayon::green(
+                "All values are valid in the current dataset."
+            ))
+
+        }
+
+    }
+
+    return(invisible(err))
 
 }
 
@@ -446,7 +508,7 @@
 #' more of the required columns is missing from a bugphyzz dataset.
 #' The required columns can be printed with the \code{\link{.requiredColumns}}
 #' function. This function should be used within the
-#' \code{\link{.checkRequiredColumnsDF}} function.
+#' \code{\link{.checkRequiredColumns}} function.
 #'
 #' @param cols A character vector containing the names of missing columns.
 #' @param dat_name A character string indicating the name of the dataset.
@@ -495,13 +557,13 @@
 #' or more of the required columns is not in the right order in a bugphyzz
 #' dataset. The order of the required columns can be printed with the
 #' \code{\link{.requiredColumns}} function. This function should be used within
-#' the \code{\link{.checkRequiredColumnsDF}} function.
+#' the \code{\link{.checkRequiredColumns}} function.
 #'
 #' @param cols A character vector containing the names of the missing columns.
 #' @param dataset_name A character string indicating the name of the dataset.
 #' @param df A data frame with information about the expected and actual
 #' positions of the required columns in a bugphyzz dataset. See
-#' \code{\link{.checkRequiredColumnsDF}}.
+#' \code{\link{.checkRequiredColumns}}.
 #' @param ... Any other argument useful to identify the source of the error
 #' and/or how to fix it.
 #'
@@ -720,8 +782,8 @@
 #'
 #' @seealso
 #' \code{\link{.requiredColumns}};
-#' \code{\link{.checkRequiredColumnsDF}};
-#' \code{\link{.checkRequiredColumnsDFList}}
+#' \code{\link{.checkRequiredColumns}};
+#' \code{\link{.checkRequiredColumnsList}}
 #'
 #' @keywords internal
 #'
