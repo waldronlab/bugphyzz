@@ -40,9 +40,10 @@
 
 
 <meta property="og:title" content="Generate a template for a bugphyzz dataset — .template" />
-<meta property="og:description" content=".template is a helper function for the checkColumnValues function.
-.template generates a subset of
-the template.tsv file based on the columns present in a given bugphyzz dataset." />
+<meta property="og:description" content=".template is a helper function for the
+.checkColumnValues function. .template generates a
+subset of the extdata/template.tsv file based on the columns present in a
+given bugphyzz dataset." />
 
 
 
@@ -138,9 +139,10 @@ the template.tsv file based on the columns present in a given bugphyzz dataset."
     </div>
 
     <div class="ref-description">
-    <p><code>.template</code> is a helper function for the <code><a href='checkColumnValues.html'>checkColumnValues</a></code> function.
-<code>.template</code> generates a subset of
-the template.tsv file based on the columns present in a given bugphyzz dataset.</p>
+    <p><code>.template</code> is a helper function for the
+<code><a href='.checkColumnValues.html'>.checkColumnValues</a></code> function. <code>.template</code> generates a
+subset of the extdata/template.tsv file based on the columns present in a
+given bugphyzz dataset.</p>
     </div>
 
     <pre class="usage"><span class='fu'>.template</span><span class='op'>(</span><span class='va'>dataset</span><span class='op'>)</span></pre>
@@ -150,24 +152,27 @@ the template.tsv file based on the columns present in a given bugphyzz dataset.<
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>dataset</th>
-      <td><p>A data frame or tibble; a dataset from bugphyzz.</p></td>
+      <td><p>A data frame or tibble imported from bugphyzz.</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A dataset specific template. A tibble with only column names and valid values for a given bugphyzz dataset.</p>
+    <p>A dataset specific template.
+A data frame with only column names and valid values for a given bugphyzz
+dataset.</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>A bugphyzz dataset contains a number of mandatory columns (referred to as required columns; see
-<code><a href='requiredColumns.html'>requiredColumns</a></code>), but optionally, it can contain other columns. The purpose of
-<code>template</code> is to create a subset of the template.tsv file (which contains all columns
-of all datasets across bugphyzz) containing only the columns specific for a given bugphyzz dataset.</p>
+    <p>A bugphyzz dataset contains a number of mandatory columns (referred to as
+required columns; see <code><a href='.requiredColumns.html'>.requiredColumns</a></code>), but optionally, it can
+contain other columns. The purpose of <code>template</code> is to create a subset
+of the extdata/template.tsv file containing only the columns specific for a
+given bugphyzz dataset.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p><code>.template</code>;
 <code><a href='.attributes.html'>.attributes</a></code>;
-<code><a href='checkColumnValues.html'>checkColumnValues</a></code></p>
+<code><a href='.checkColumnValues.html'>.checkColumnValues</a></code></p>
 <p>Other helper functions: 
 <code><a href='.attributes.html'>.attributes</a>()</code></p></div>
 

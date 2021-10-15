@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Custom function for helping generate stop conditions in the bugphyzz package — .stop_custom • bugphyzz</title>
+<title>Function for helping to generate custom stop (error) conditions — .stop_custom • bugphyzz</title>
 
 
 <!-- jquery -->
@@ -39,10 +39,12 @@
 
 
 
-<meta property="og:title" content="Custom function for helping generate stop conditions in the bugphyzz package — .stop_custom" />
-<meta property="og:description" content=".stop_custom is a helper function for generating custom stop conditions. This piece of
-code was taken from Hadley Wickham's Advanced R book, 2nd edition
-(https://adv-r.hadley.nz/conditions.html#custom-conditions)." />
+<meta property="og:title" content="Function for helping to generate custom stop (error) conditions — .stop_custom" />
+<meta property="og:description" content=".stop_custom is a helper function for generating custom stop (error)
+conditions. This function was taken from
+Hadley Wickham's Advanced R book, 2nd edition
+(https://adv-r.hadley.nz/conditions.html#custom-conditions).
+This function should be used within custom stop functions." />
 
 
 
@@ -132,15 +134,17 @@ code was taken from Hadley Wickham's Advanced R book, 2nd edition
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Custom function for helping generate stop conditions in the bugphyzz package</h1>
+    <h1>Function for helping to generate custom stop (error) conditions</h1>
     
     <div class="hidden name"><code>dot-stop_custom.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p><code>.stop_custom</code> is a helper function for generating custom stop conditions. This piece of
-code was taken from Hadley Wickham's Advanced R book, 2nd edition
-(<a href='https://adv-r.hadley.nz/conditions.html#custom-conditions'>https://adv-r.hadley.nz/conditions.html#custom-conditions</a>).</p>
+    <p><code>.stop_custom</code> is a helper function for generating custom stop (error)
+conditions. This function was taken from
+Hadley Wickham's Advanced R book, 2nd edition
+(<a href='https://adv-r.hadley.nz/conditions.html#custom-conditions'>https://adv-r.hadley.nz/conditions.html#custom-conditions</a>).
+This function should be used within custom stop functions.</p>
     </div>
 
     <pre class="usage"><span class='fu'>.stop_custom</span><span class='op'>(</span><span class='va'>subclass</span>, <span class='va'>message</span>, call <span class='op'>=</span> <span class='cn'>NULL</span>, <span class='va'>...</span><span class='op'>)</span></pre>
@@ -150,25 +154,39 @@ code was taken from Hadley Wickham's Advanced R book, 2nd edition
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>subclass</th>
-      <td><p>Character vector of length 1; name of custom error condition.</p></td>
+      <td><p>A character string indicating the name of the custom error.</p></td>
     </tr>
     <tr>
       <th>message</th>
-      <td><p>Character vector of length 1; an informative message.</p></td>
+      <td><p>A character string with an informative message.</p></td>
     </tr>
     <tr>
       <th>call</th>
-      <td><p>Include or not the function call that generates the error; e.g. <code><a href='https://rdrr.io/r/base/sys.parent.html'>sys.call(-1)</a></code>.</p></td>
+      <td><p>Include or not the function call that generates the error;
+e.g., <code><a href='https://rdrr.io/r/base/sys.parent.html'>sys.call(-1)</a></code>.</p></td>
     </tr>
     <tr>
       <th>...</th>
-      <td><p>Any other argument useful to identify the source of the error and how to fix it.</p></td>
+      <td><p>Any other argument useful to identify the source of the error
+and/or how to fix it.</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>Error condition. Object of class "error", "condition", and a custom error class name (subclass).</p>
+    <p>Error condition. Object of class "error", "condition",
+and a custom error class name (subclass).</p>
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <div class='dont-index'><p><code>.stop_custom</code>;
+<code><a href='.stop_required_columns_missing.html'>.stop_required_columns_missing</a></code>;
+<code><a href='.stop_required_columns_misplaced.html'>.stop_required_columns_misplaced</a></code></p>
+<p>Other custom stop functions: 
+<code><a href='.stop_invalid_column_class.html'>.stop_invalid_column_class</a>()</code>,
+<code><a href='.stop_invalid_column_values.html'>.stop_invalid_column_values</a>()</code>,
+<code><a href='.stop_required_columns_misplaced.html'>.stop_required_columns_misplaced</a>()</code>,
+<code><a href='.stop_required_columns_missing.html'>.stop_required_columns_missing</a>()</code>,
+<code><a href='.stop_uncataloged_column.html'>.stop_uncataloged_column</a>()</code></p></div>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

@@ -40,7 +40,9 @@
 
 
 <meta property="og:title" content="Stop condition for invalid values in a column of a bugphyzz dataset — .stop_invalid_column_values" />
-<meta property="og:description" content=".stop_invalid_column_values generates an error condition if a column contains invalid values." />
+<meta property="og:description" content=".stop_invalid_column_values generates an error condition if a column
+contains invalid values. This function should be used within the
+.checkColumnValues function." />
 
 
 
@@ -136,45 +138,56 @@
     </div>
 
     <div class="ref-description">
-    <p><code>.stop_invalid_column_values</code> generates an error condition if a column contains invalid values.</p>
+    <p><code>.stop_invalid_column_values</code> generates an error condition if a column
+contains invalid values. This function should be used within the
+<code><a href='.checkColumnValues.html'>.checkColumnValues</a></code> function.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>.stop_invalid_column_values</span><span class='op'>(</span>
-  <span class='va'>col</span>,
-  <span class='va'>n_rows</span>,
-  dataset_name <span class='op'>=</span> <span class='cn'>NULL</span>,
-  values <span class='op'>=</span> <span class='cn'>NULL</span>,
-  <span class='va'>...</span>
-<span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>.stop_invalid_column_values</span><span class='op'>(</span><span class='va'>col</span>, <span class='va'>n_rows</span>, dat_name <span class='op'>=</span> <span class='cn'>NULL</span>, values <span class='op'>=</span> <span class='cn'>NULL</span>, <span class='va'>...</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>col</th>
-      <td><p>Character of length 1; a single column name.</p></td>
+      <td><p>Character string containing a single column name.</p></td>
     </tr>
     <tr>
       <th>n_rows</th>
       <td><p>Integer of length 1; number of rows with invalid values.</p></td>
     </tr>
     <tr>
-      <th>dataset_name</th>
-      <td><p>Character of length 1; dataset name.</p></td>
+      <th>dat_name</th>
+      <td><p>Character string indicating the dataset name.</p></td>
     </tr>
     <tr>
       <th>values</th>
-      <td><p>Optional. Invalid values in column. Only the first three will be printed.</p></td>
+      <td><p>Optional.
+Invalid values in column. Only the first three will be printed.</p></td>
     </tr>
     <tr>
       <th>...</th>
-      <td><p>Any other argument useful to identify the source of the error and how to fix it.</p></td>
+      <td><p>Any other argument useful to identify the source of the error
+and/or how to fix it.</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>Error condition. Object of class "invalid_column_names", "error", "condition".</p>
+    <p>Error condition.
+Object of class "invalid_column_names", "error", "condition".</p>
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <div class='dont-index'><p><code><a href='.stop_custom.html'>.stop_custom</a></code>;
+<code>.stop_invalid_column_values</code>;
+<code><a href='.stop_invalid_column_class.html'>.stop_invalid_column_class</a></code>;
+<code><a href='.stop_uncataloged_column.html'>.stop_uncataloged_column</a></code></p>
+<p>Other custom stop functions: 
+<code><a href='.stop_custom.html'>.stop_custom</a>()</code>,
+<code><a href='.stop_invalid_column_class.html'>.stop_invalid_column_class</a>()</code>,
+<code><a href='.stop_required_columns_misplaced.html'>.stop_required_columns_misplaced</a>()</code>,
+<code><a href='.stop_required_columns_missing.html'>.stop_required_columns_missing</a>()</code>,
+<code><a href='.stop_uncataloged_column.html'>.stop_uncataloged_column</a>()</code></p></div>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
