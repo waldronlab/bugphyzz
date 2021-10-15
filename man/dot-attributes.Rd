@@ -10,15 +10,17 @@
 A character vector with valid attribute names.
 }
 \description{
-\code{\link{.attributes}} is a helper function for the \code{\link{checkColumnValues}} function.
-\code{\link{.attributes}} print the valid attribute names as indicated in the attributes.tsv file.
+\code{\link{.attributes}} is a helper function for the
+\code{\link{.checkColumnValues}} function. \code{\link{.attributes}} print
+the valid attribute names as indicated in the attributes.tsv file.
 }
 \seealso{
 \code{\link{.template}};
 \code{\link{.attributes}};
-\code{\link{checkColumnValues}}
+\code{\link{.checkColumnValues}}
 
 Other helper functions: 
 \code{\link{.template}()}
 }
 \concept{helper functions}
+\keyword{internal}
