@@ -247,7 +247,8 @@
         if (!col %in% template[["column_name"]])
             .stop_uncataloged_column(col, dat_name)
 
-        type_of_test <- template[["test"]][template[["column_name"]] == col]
+        type_of_test <-
+            template[["value_test"]][template[["column_name"]] == col]
 
         if (type_of_test == "string") {
             col_values <- dat[[col]]
@@ -269,11 +270,9 @@
             col_values <- dat[[col]]
             fun  <-
                 template[["valid_values"]][template[["column_name"]] == col]
-            fun_output <-
-                paste0("^",
-                       paste0( "(", eval(call(fun)), ")", collapse = "|"),
-                       "$")
-            values_lgl <- grepl(fun_output, col_values) | is.na(col_values)
+            fun_regex <-
+                paste0("^(", paste0(eval(call(fun)), collapse = "|"), ")$")
+            values_lgl <- grepl(fun_regex, col_values) | is.na(col_values)
 
             if (!all(values_lgl)) {
                 invalid_values <- col_values[!values_lgl]

@@ -1,13 +1,13 @@
-column_name	column_class	valid_values	test	allow_na
-NCBI_ID	integer	^[0-9]+$	string	TRUE
-Genome_ID	character|numeric	.+	string	TRUE
-Accession_number	character|numeric	.+	string	TRUE
-Taxon_name	character	.+	string	TRUE
-Attribute	character	.attributes	function	TRUE
-Attribute_value	logical|numeric	^logical|numeric|integer$	class	TRUE
-Attribute_source	character	.+	string	TRUE
-Evidence	character	^ASR|EXP$	string	TRUE
-Confidence_interval	character	^unknown|exp|usually|always|sometimes$	string	TRUE
-Note	character	.+	string	TRUE
-Strain	character	.+	string	TRUE
-Unit	character	.+	string	TRUE
+column_name	column_class	valid_values	value_test	requiredness	required_column_order
+NCBI_ID	integer	^[0-9]+$	string	required	1
+Genome_ID	character|numeric	^.+$	string	required	2
+Accession_number	character|numeric	^.+$	string	required	3
+Taxon_name	character	^.+$	string	required	4
+Attribute	character	.attributes	function	required	5
+Attribute_value	NA	.attributes_class	function	required	6
+Attribute_source	character	^.+$	string	required	7
+Evidence	character	^ASR|EXP$	string	required	8
+Confidence_interval	character	^unknown|exp|usually|always|sometimes$	string	required	9
+Note	character	^.+$	string	optiional	NA
+Strain	character	^.+$	string	optiional	NA
+Unit	character	^.+$	string	optiional	NA
