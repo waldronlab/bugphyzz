@@ -6,19 +6,13 @@
 #' \code{.checkRequiredColumns} checks if the required columns
 #' (see \code{\link{.requiredColumns}}) are
 #' present and in the right order in a single bugphyzz dataset.
-#' If a required column is missing or is not in the right order,
-#' it prints a message indicating which columns must be added or reordered.
 #'
 #' @param dat A data frame from bugphyzz.
 #' @param dat_name A character string indicating the name of the dataset.
 #' Default is NULL.
 #'
-#' @return Invisibly returns an error condition
-#' ("required_columns_missing" or "required_columns_misplaced" subclass).
-#' It also returns an error message if any of the required columns is missing
-#' or is not in the right order.
-#' If no errors are found, a message indicating that the required
-#' columns are present and in the right order is printed.
+#' @return An error condition of subclass "required_columns_missing" or 
+#' "required_columns_misplaced". NULL and a message if no errors are found.
 #'
 #' @importFrom crayon red
 #' @importFrom crayon green
@@ -28,7 +22,7 @@
 #' \code{\link{.requiredColumns}};
 #' \code{\link{.checkRequiredColumns}};
 #' \code{\link{.checkRequiredColumsDF}};
-#' \code{\link{.checkRequiredColumnsList}};
+#' \code{\link{.checkRequiredColumnsList}}
 #'
 #' @keywords internal
 #'
@@ -43,7 +37,6 @@
 #' }
 #'
 .checkRequiredColumns <- function(dat, dat_name = NULL) {
-
     if (!is.data.frame(dat))
         stop("Not a data.frame. Object of class '", class(dat), "'.",
             " You must provide a data.frame or tibble imported from bugphyzz.",
@@ -52,10 +45,8 @@
     columns_lgl <- .requiredColumns() %in% colnames(dat)
 
     if (!all(columns_lgl)) {
-
         missing_cols <- .requiredColumns()[!columns_lgl]
         .stop_required_columns_missing(missing_cols, dat_name)
-
     }
 
     expected_position <- seq_along(.requiredColumns())
@@ -64,31 +55,22 @@
     positions_lgl <- expected_position == actual_position
 
     if (!all(positions_lgl)) {
-
         misplaced <- ifelse(expected_position != actual_position, "*", "")
         df <- data.frame(expected_position, actual_position, misplaced)
-
         misplaced_columns <- .requiredColumns()[!positions_lgl]
-
         .stop_required_columns_misplaced(misplaced_columns, dat_name, df)
-
     }
 
     if (!is.null(dat_name)) {
-
         message(crayon::green(
             ">>> All columns in the `", dat_name,
             "` dataset are present and in the right order.", sep = ""
         ))
-
     } else {
-
         message(crayon::green(
             ">>> All columns are present and in the right order."
         ))
-
     }
-
 }
 
 #' Check required columns in a bugphyzz dataset
@@ -118,11 +100,11 @@
 #' \code{\link{.requiredColumns}};
 #' \code{\link{.checkRequiredColumns}};
 #' \code{\link{.checkRequiredColumsDF}};
-#' \code{\link{.checkRequiredColumnsList}};
+#' \code{\link{.checkRequiredColumnsList}}
 #'
 #' @examples
 #'
-#' \dontrun {
+#' \dontrun{
 #'
 #' x <- physiologies("aerophilicity")[[1]]
 #' err <- bugphyzz:::.checkRequiredColumnsDF(x[[1]])
@@ -130,9 +112,7 @@
 #' }
 #'
 .checkRequiredColumnsDF <- function(dat, dat_name = NULL) {
-
     tryCatch(
-
         required_columns_missing = function(e) {
             message(crayon::red(conditionMessage(e), "\n"))
             e
@@ -148,15 +128,14 @@
             e
         },
         .checkRequiredColumns(dat, dat_name)
-
-    )
-
+    ) %>%
+        invisible()
 }
 
 #' Check required columns across a list of bugphyzz datasets
 #'
 #' \code{.checkRequiredColumnsList} applies the
-#' \code{\link{.checkRequiredColumns}} function to a list of
+#' \code{\link{.checkRequiredColumnsDF}} function to a list of
 #' bugphyzz datasets. If a required column (see \code{\link{.requiredColumns}})
 #' is missing or is not in the right order in a dataset,
 #' \code{.checkRequiredColumnsList} prints a message indicating which columns
@@ -177,7 +156,8 @@
 #' @seealso
 #' \code{\link{.requiredColumns}};
 #' \code{\link{.checkRequiredColumns}};
-#' \code{\link{.checkRequiredColumnsList}};
+#' \code{\link{.checkRequiredColumsDF}};
+#' \code{\link{.checkRequiredColumnsList}}
 #'
 #' @keywords internal
 #'
@@ -192,7 +172,6 @@
 #' }
 #'
 .checkRequiredColumnsList <- function(list) {
-
     if (class(list) != "list")
         stop("Not a list. Object of class '", class(list), "'.",
             " Provide a list of data frames imported with bugphyzz functions.",
@@ -201,7 +180,6 @@
     purrr::map2(list, names(list), ~ .checkRequiredColumnsDF(.x, .y)) %>%
         purrr::discard(is.null) %>%
         invisible()
-
 }
 
 #' Check column values
@@ -216,11 +194,10 @@
 #' @param quiet_success If FALSE, an error message is printed when no errors
 #' are found. Default is TRUE.
 #'
-#' @return invisibly returns an error condition
-#' (subclass "invalid_column_values" or "invalid_column_class"),
-#' and it also prints an error message if the column contains invalid values.
-#' If `quiet_success` is FALSE an no errors were found, it prints a message
-#' indicating that no errors were found.
+#' @return An error condition of subclass "invalid_column_values" or 
+#' "invalid_column_class". If `quiet_success` is FALSE and no errors were
+#' found, it returns NULL and prints a message indicating that no errors were
+#' found.
 #'
 #' @family check functions
 #' @seealso
@@ -241,7 +218,6 @@
 #'
 .checkColumnValues <-
     function(col, dat, dat_name = NULL, quiet_success = TRUE) {
-
         template <- .template(dat)
 
         if (!col %in% template[["column_name"]])
@@ -250,14 +226,12 @@
         type_of_test <- template[["test"]][template[["column_name"]] == col]
 
         if (type_of_test == "string") {
-
             col_values <- dat[[col]]
             string <-
                 template[["valid_values"]][template[["column_name"]] == col]
             values_lgl <- grepl(string, col_values) | is.na(col_values)
 
             if (!all(values_lgl)) {
-
                 invalid_values <- col_values[!values_lgl]
                 n_rows <- length(invalid_values)
                 invalid_pos <- seq_along(col_values)[!values_lgl]
@@ -266,11 +240,8 @@
                     col, n_rows, dat_name, invalid_values,
                     invalid_pos = invalid_pos
                 )
-
             }
-
         } else if (type_of_test == "function") {
-
             col_values <- dat[[col]]
             fun  <-
                 template[["valid_values"]][template[["column_name"]] == col]
@@ -281,7 +252,6 @@
             values_lgl <- grepl(fun_output, col_values) | is.na(col_values)
 
             if (!all(values_lgl)) {
-
                 invalid_values <- col_values[!values_lgl]
                 n_rows <- length(invalid_values)
                 invalid_pos <- seq_along(col_values)[!values_lgl]
@@ -290,11 +260,8 @@
                     col, n_rows, dat_name, invalid_values,
                     invalid_pos = invalid_pos
                 )
-
             }
-
         } else if (type_of_test == "class") {
-
             col_class <- class(dat[[col]])
             class_opts <-
                 template[["valid_values"]][ template[["column_name"]] == col]
@@ -302,35 +269,28 @@
 
             if (!class_lgl)
                 .stop_invalid_column_class(col_class, dat_name)
-
         }
 
         if (!quiet_success) {
-
             if (!is.null(dat_name)) {
-
                 message(crayon::green(
                     ">>> The column ", col, "of the ", dat_name,
                     "dataset contains valid values."
                 ))
-
             } else {
-
                 message(crayon::green(
                     ">>> The column ", col, "contains valid values."
                 ))
-
             }
-
         }
-
 }
 
 
 #' Check column values in a data frame
 #'
 #' \code{.checkColumnValuesDF} applies the \code{\link{.checkColumnValues}}
-#' function to all of the columns of a single dataset.
+#' function to all of the columns of a single dataset. It's a tryCatch
+#' wrapper of \code{\link{.checkColumnValues}}.
 #'
 #' @param dat A data frame.
 #' @param dat_name Character string indicating the name of the dataset.
@@ -339,6 +299,7 @@
 #' @return Invisibly returns a list of error
 #' conditions (subclass "invalid_column_values" or "invalid_column_class"),
 #' and it also prints an error message if a column contains invalid values.
+#' If no errors are found, it returns NULL and a message indicating it.
 #'
 #' @importFrom purrr map
 #' @importFrom purrr set_names
@@ -360,11 +321,9 @@
 #' }
 #'
 .checkColumnValuesDF <- function(dat, dat_name = NULL) {
-
     col_names <- colnames(dat)
 
     err <- purrr::map(col_names, ~{
-
         tryCatch(
             uncataloged_column = function(e) {
                 message(crayon::red(conditionMessage(e), "\n"))
@@ -385,34 +344,25 @@
                 ))
                 e
             },
-
             .checkColumnValues(.x, dat, dat_name, quiet_success = TRUE)
         )
-
     }) %>%
         purrr::set_names(col_names) %>%
         purrr::discard(is.null)
 
     if (is.null(err)) {
-
         if (!is.null(dat_name)) {
-
             message(crayon::green(
                 "All values are valid in the ", dat_name, "dataset."
             ))
-
         } else if (is.null(dat_name)) {
-
             message(crayon::green(
                 "All values are valid in the current dataset."
             ))
-
         }
-
     }
 
-    return(invisible(err))
-
+    invisible(err)
 }
 
 #' Check column values in a list of bugphyzz datasets
@@ -425,7 +375,8 @@
 #' @return Invisibly returns a list of error conditions (subclass
 #' "invalid_column_values" or "invalid_column_class"), and it also prints
 #' an error message if a column contains invalid values in any of the datasets
-#' in the list.
+#' in the list. If no errors are found, it returns NULL and prints a message
+#' indicating it (per datasest).
 #'
 #' @importFrom purrr map2
 #' @importFrom purrr set_names
@@ -450,14 +401,12 @@
 #' }
 #'
 .checkColumnValuesList <- function(dats) {
-
     dats_names <- names(dats)
 
     purrr::map2(dats, dats_names, ~ {.checkColumnValuesDF(.x, .y)}) %>%
         purrr::set_names(dats_names) %>%
         purrr::discard(is.null) %>%
         invisible()
-
 }
 
 # Stop functions ---------------------------------------------------
@@ -488,18 +437,16 @@
 #' \code{\link{.stop_custom}};
 #' \code{\link{.stop_required_columns_missing}};
 #' \code{\link{.stop_required_columns_misplaced}}
+#' \code{\link{.stop_invalid_column_values}};
+#' \code{\link{.stop_invalid_column_class}};
+#' \code{\link{.stop_uncataloged_column}};
 #'
 .stop_custom <- function(subclass, message, call = NULL, ...) {
-
     err <- structure(
-
         list(message = message, call = call, ...),
         class = c(subclass, "error", "condition")
-
     )
-
     stop(err)
-
 }
 
 #' Stop condition for missing required columns in a bugphyzz dataset
@@ -525,22 +472,19 @@
 #' @seealso
 #' \code{\link{.stop_custom}};
 #' \code{\link{.stop_required_columns_missing}};
-#' \code{\link{.stop_required_columns_misplaced}}
+#' \code{\link{.stop_required_columns_misplaced}};
+#' \code{\link{.checkRequiredColumns}}
 #'
 .stop_required_columns_missing <- function(cols, dat_name = NULL, ...) {
-
     cols <- paste0(cols, collapse = ", ")
 
     if (!is.null(dat_name)) {
-
         msg <- paste0(">>> Required columns missing.",
             " The following required columns are missing from the `",
             dat_name, "` dataset: ", cols, ".",
             " Required columns can be checked with ",
             " `bugphyzz:::.requiredColumns()`.")
-
     } else {
-
         msg <- paste0(">>> Required columns missing.",
             " The following required columns are missing: ", cols, ".",
             " Required columns can be checked with",
@@ -548,7 +492,6 @@
     }
 
     .stop_custom(subclass = "required_columns_missing", message = msg, ...)
-
 }
 
 #' Stop condition for misplaced required columns in a bugphyzz dataset
@@ -579,16 +522,13 @@
 #' @seealso
 #' \code{\link{.stop_custom}};
 #' \code{\link{.stop_required_columns_missing}};
-#' \code{\link{.stop_required_columns_misplaced}}
-#'
+#' \code{\link{.stop_required_columns_misplaced}};
+#' \code{\link{.checkRequiredColumns}}
 .stop_required_columns_misplaced <- function(cols, dat_name = NULL, df, ...) {
-
     df_print <- paste0(utils::capture.output(df), collapse = "\n")
-
     cols <- paste0(cols, collapse = ", ")
 
     if (!is.null(dat_name)) {
-
         msg <- paste0(">>> Misplaced required columns.",
             " The following required columns in the `", dat_name,
             " ` dataset are not in the right place: ", cols, ".",
@@ -596,19 +536,16 @@
             " with `bugphyzz:::.requiredColumns()`.",
             " More info: ", "\n\n", df_print)
     } else {
-
         msg <- paste0(">>> Misplaced required columns.",
             " The following required columns are not in the",
             " right place: ", cols, ".",
             " The right order of the required columns can be checked ",
             " with `bugphyzz:::.requiredColumns()`.",
             " More info: ", "\n\n", df_print)
-
     }
 
     .stop_custom(subclass = "required_columns_misplaced",
         message = msg, df = df, misplaced_cols = cols, ...)
-
 }
 
 #' Stop condition for invalid values in a column of a bugphyzz dataset
@@ -639,20 +576,17 @@
 #' \code{\link{.stop_custom}};
 #' \code{\link{.stop_invalid_column_values}};
 #' \code{\link{.stop_invalid_column_class}};
-#' \code{\link{.stop_uncataloged_column}}
+#' \code{\link{.stop_uncataloged_column}};
+#' \code{\link{.checkColumnValues}}
 #'
 .stop_invalid_column_values <-
     function(col, n_rows, dat_name = NULL, values = NULL, ...) {
-
         if (!is.null(dat_name)) {
-
             msg <- paste0(
                 ">>> Invalid values. The column `", col, "` in dataset `",
                 dat_name,"` contains invalid values in ", n_rows," rows."
             )
-
         } else {
-
             msg <- paste0(
                 ">>> Invalid values. The column `", col,
                 "` contains invalid values in ", n_rows," rows."
@@ -660,19 +594,15 @@
         }
 
         if (!is.null(values)) {
-
             values <- paste0(
                 utils::head(as.character(values), n = 3), collapse = "; "
             )
-
             msg <- paste0(msg, " The first invalid values are: ", values, "...")
         }
-
         .stop_custom(
             subclass = "invalid_column_values", message = msg, n_rows = n_rows,
             invalid_values = values, ...
         )
-
 }
 
 #' Stop condition for invalid column class (in Attribute_value column)
@@ -696,31 +626,27 @@
 #' \code{\link{.stop_custom}};
 #' \code{\link{.stop_invalid_column_values}};
 #' \code{\link{.stop_invalid_column_class}};
-#' \code{\link{.stop_uncataloged_column}}
+#' \code{\link{.stop_uncataloged_column}};
+#' \code{\link{.checkColumnValues}}
 #'
 .stop_invalid_column_class <- function(col_class, dat_name = NULL, ...) {
 
     # Currently, this stop function is only for the "Attribute_value" column
 
     if (!is.null(dat_name)) {
-
         msg <- paste0(
             ">>> Invalid column class in ", dat_name, ".",
             " The `Attribute_value` column` should be of class logical or",
             " numeric, not ", col_class, "."
         )
-
     } else {
-
         msg <- paste0(
             ">>> Invalid column class.",
             " The `Attribute_value` column` should be of class logical or",
             " numeric, not ", col_class, "."
         )
     }
-
     .stop_custom(subclass = "invalid_column_class", message = msg, ...)
-
 }
 
 #' Stop condition for an un-cataloged column
@@ -745,30 +671,24 @@
 #' \code{\link{.stop_custom}};
 #' \code{\link{.stop_invalid_column_values}};
 #' \code{\link{.stop_invalid_column_class}};
-#' \code{\link{.stop_uncataloged_column}}
+#' \code{\link{.stop_uncataloged_column}};
+#' \code{\link{.checkColumnValues}}
 #'
 .stop_uncataloged_column <- function(col, dat_name = NULL, ...) {
-
     if (!is.null(dat_name)) {
-
         msg <- paste0(
-            ">>> uncataloged column. The column ", col, " of the dataset ",
+            ">>> Uncataloged column. The column ", col, " of the dataset ",
             dat_name, " cannot be checked because it's not included in the",
             " template file. Please add it to extdata/template.tsv"
         )
-
     } else {
-
         msg <- paste0(
-            ">>> uncataloged column. The column ", col,
+            ">>> Uncataloged column. The column ", col,
             " cannot be checked because it's not included in the template",
             " file. Please add it to extdata/template.tsv."
         )
-
     }
-
     .stop_custom(subclass = "uncataloged_column", message = msg, ...)
-
 }
 
 # Helper functions --------------------------------------------------------
@@ -783,6 +703,7 @@
 #' @seealso
 #' \code{\link{.requiredColumns}};
 #' \code{\link{.checkRequiredColumns}};
+#' \code{\link{.checkRequiredColumnsDF}};
 #' \code{\link{.checkRequiredColumnsList}}
 #'
 #' @keywords internal
@@ -838,13 +759,11 @@
 #' @keywords internal
 #'
 .template <- function(dataset) {
-
     template_tsv <- system.file("extdata/template.tsv", package = "bugphyzz")
     template <- utils::read.table(
         file = template_tsv, sep = "\t", check.names = FALSE, header = TRUE
     )
     template[template[["column_name"]] %in% colnames(dataset), ]
-
 }
 
 #' Print valid attributes
@@ -866,11 +785,9 @@
 #' @keywords internal
 #'
 .attributes <- function() {
-
     fname <- system.file("extdata/attributes.tsv", package = "bugphyzz")
     df <- utils::read.table(
         fname, sep = "\t", header = TRUE, check.names = FALSE
     )
     unique(df[,"attribute"])
-
 }

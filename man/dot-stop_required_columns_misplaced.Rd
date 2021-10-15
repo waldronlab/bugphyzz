@@ -32,7 +32,8 @@ the \code{\link{.checkRequiredColumns}} function.
 \seealso{
 \code{\link{.stop_custom}};
 \code{\link{.stop_required_columns_missing}};
-\code{\link{.stop_required_columns_misplaced}}
+\code{\link{.stop_required_columns_misplaced}};
+\code{\link{.checkRequiredColumns}}
 
 Other custom stop functions: 
 \code{\link{.stop_custom}()},

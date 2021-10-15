@@ -30,7 +30,7 @@ it prints a message indicating which columns must be added or reordered.
 }
 \examples{
 
-\dontrun {
+\dontrun{
 
 x <- physiologies("aerophilicity")[[1]]
 err <- bugphyzz:::.checkRequiredColumnsDF(x[[1]])
@@ -42,7 +42,7 @@ err <- bugphyzz:::.checkRequiredColumnsDF(x[[1]])
 \code{\link{.requiredColumns}};
 \code{\link{.checkRequiredColumns}};
 \code{\link{.checkRequiredColumsDF}};
-\code{\link{.checkRequiredColumnsList}};
+\code{\link{.checkRequiredColumnsList}}
 
 Other check functions: 
 \code{\link{.checkColumnValuesDF}()},

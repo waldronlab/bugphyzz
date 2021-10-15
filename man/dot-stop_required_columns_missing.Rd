@@ -28,7 +28,8 @@ function. This function should be used within the
 \seealso{
 \code{\link{.stop_custom}};
 \code{\link{.stop_required_columns_missing}};
-\code{\link{.stop_required_columns_misplaced}}
+\code{\link{.stop_required_columns_misplaced}};
+\code{\link{.checkRequiredColumns}}
 
 Other custom stop functions: 
 \code{\link{.stop_custom}()},

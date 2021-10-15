@@ -13,19 +13,13 @@
 Default is NULL.}
 }
 \value{
-Invisibly returns an error condition
-("required_columns_missing" or "required_columns_misplaced" subclass).
-It also returns an error message if any of the required columns is missing
-or is not in the right order.
-If no errors are found, a message indicating that the required
-columns are present and in the right order is printed.
+An error condition of subclass "required_columns_missing" or
+"required_columns_misplaced". NULL and a message if no errors are found.
 }
 \description{
 \code{.checkRequiredColumns} checks if the required columns
 (see \code{\link{.requiredColumns}}) are
 present and in the right order in a single bugphyzz dataset.
-If a required column is missing or is not in the right order,
-it prints a message indicating which columns must be added or reordered.
 }
 \examples{
 
@@ -42,7 +36,7 @@ err
 \code{\link{.requiredColumns}};
 \code{\link{.checkRequiredColumns}};
 \code{\link{.checkRequiredColumsDF}};
-\code{\link{.checkRequiredColumnsList}};
+\code{\link{.checkRequiredColumnsList}}
 
 Other check functions: 
 \code{\link{.checkColumnValuesDF}()},

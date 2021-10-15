@@ -13,7 +13,8 @@
 Invisibly returns a list of error conditions (subclass
 "invalid_column_values" or "invalid_column_class"), and it also prints
 an error message if a column contains invalid values in any of the datasets
-in the list.
+in the list. If no errors are found, it returns NULL and prints a message
+indicating it (per datasest).
 }
 \description{
 \code{.checkColumnValuesList} applies the \code{.checkColumnValuesDF}

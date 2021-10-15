@@ -18,7 +18,7 @@ columns are present and in the right order is printed.
 }
 \description{
 \code{.checkRequiredColumnsList} applies the
-\code{\link{.checkRequiredColumns}} function to a list of
+\code{\link{.checkRequiredColumnsDF}} function to a list of
 bugphyzz datasets. If a required column (see \code{\link{.requiredColumns}})
 is missing or is not in the right order in a dataset,
 \code{.checkRequiredColumnsList} prints a message indicating which columns
@@ -38,7 +38,8 @@ list_of_erros$length
 \seealso{
 \code{\link{.requiredColumns}};
 \code{\link{.checkRequiredColumns}};
-\code{\link{.checkRequiredColumnsList}};
+\code{\link{.checkRequiredColumsDF}};
+\code{\link{.checkRequiredColumnsList}}
 
 Other check functions: 
 \code{\link{.checkColumnValuesDF}()},

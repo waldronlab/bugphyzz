@@ -18,11 +18,10 @@ Default is NULL.}
 are found. Default is TRUE.}
 }
 \value{
-invisibly returns an error condition
-(subclass "invalid_column_values" or "invalid_column_class"),
-and it also prints an error message if the column contains invalid values.
-If \code{quiet_success} is FALSE an no errors were found, it prints a message
-indicating that no errors were found.
+An error condition of subclass "invalid_column_values" or
+"invalid_column_class". If \code{quiet_success} is FALSE and no errors were
+found, it returns NULL and prints a message indicating that no errors were
+found.
 }
 \description{
 \code{.checkColumnValues} checks if a single column in a data frame contains
