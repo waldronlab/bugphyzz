@@ -26,7 +26,7 @@ Object of class "invalid_column_names", "error", "condition".
 \description{
 \code{.stop_invalid_column_values} generates an error condition if a column
 contains invalid values. This function should be used within the
-\code{\linl{.checkColumnValues}} function.
+\code{\link{.checkColumnValues}} function.
 }
 \seealso{
 \code{\link{.stop_custom}};

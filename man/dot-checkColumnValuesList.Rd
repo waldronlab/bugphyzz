@@ -38,8 +38,8 @@ list_of_errors
 Other check functions: 
 \code{\link{.checkColumnValuesDF}()},
 \code{\link{.checkColumnValues}()},
-\code{\link{.checkRequiredColumnsList}()},
-\code{\link{.checkRequiredColumns}()}
+\code{\link{.checkRequiredColumnsDFList}()},
+\code{\link{.checkRequiredColumnsDF}()}
 }
 \concept{check functions}
 \keyword{internal}

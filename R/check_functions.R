@@ -3,7 +3,7 @@
 
 #' Check required columns in a single bugphyzz dataset
 #'
-#' \code{.checkRequiredColumns} checks if the required columns
+#' \code{.checkRequiredColumnsDF} checks if the required columns
 #' (see \code{\link{.requiredColumns}}) are
 #' present and in the right order in a single bugphyzz dataset.
 #' If a required column is missing or is not in the right order,
@@ -26,8 +26,8 @@
 #' @family check functions
 #' @seealso
 #' \code{\link{.requiredColumns}};
-#' \code{\link{.checkRequiredColumns}};
-#' \code{\link{.checkRequiredColumnsList}};
+#' \code{\link{.checkRequiredColumnsDF}};
+#' \code{\link{.checkRequiredColumnsDFList}};
 #'
 #' @keywords internal
 #'
@@ -36,12 +36,12 @@
 #' \dontrun{
 #'
 #' x <- physiologies("aerophilicity")[[1]]
-#' err <- tryCatch(bugphyzz:::.checkRequiredColumns(x), error = function(e) e)
+#' err <- tryCatch(bugphyzz:::.checkRequiredColumnsDF(x), error = function(e) e)
 #' err
 #'
 #' }
 #'
-.checkRequiredColumns <- function(dat, dat_name = NULL) {
+.checkRequiredColumnsDF <- function(dat, dat_name = NULL) {
 
     if (!is.data.frame(dat))
         stop("Not a data.frame. Object of class '", class(dat), "'.",
@@ -92,11 +92,11 @@
 
 #' Check required columns across a list of bugphyzz datasets
 #'
-#' \code{.checkRequiredColumnsList} applies the
-#' \code{\link{.checkRequiredColumns}} function to a list of
+#' \code{.checkRequiredColumnsDFList} applies the
+#' \code{\link{.checkRequiredColumnsDF}} function to a list of
 #' bugphyzz datasets. If a required column (see \code{\link{.requiredColumns}})
 #' is missing or is not in the right order in a dataset,
-#' \code{.checkRequiredColumnsList} prints a message indicating which columns
+#' \code{.checkRequiredColumnsDFList} prints a message indicating which columns
 #' are missing or must be reordered.
 #'
 #' @param list A list of bugphyzz datasets.
@@ -113,8 +113,8 @@
 #' @family check functions
 #' @seealso
 #' \code{\link{.requiredColumns}};
-#' \code{\link{.checkRequiredColumns}};
-#' \code{\link{.checkRequiredColumnsList}};
+#' \code{\link{.checkRequiredColumnsDF}};
+#' \code{\link{.checkRequiredColumnsDFList}};
 #'
 #' @keywords internal
 #'
@@ -123,12 +123,12 @@
 #' \dontrun{
 #'
 #' x <- physiologies()
-#' list_of_errors <- bugphyzz:::.checkRequiredColumnsList(x)
+#' list_of_errors <- bugphyzz:::.checkRequiredColumnsDFList(x)
 #' list_of_erros$length
 #'
 #' }
 #'
-.checkRequiredColumnsList <- function(list) {
+.checkRequiredColumnsDFList <- function(list) {
 
     if (class(list) != "list")
         stop("Not a list. Object of class '", class(list), "'.",
@@ -152,7 +152,7 @@
                     ))
                 e
             },
-            .checkRequiredColumns(.x, .y)
+            .checkRequiredColumnsDF(.x, .y)
         )
 
     }) %>%
@@ -446,7 +446,7 @@
 #' more of the required columns is missing from a bugphyzz dataset.
 #' The required columns can be printed with the \code{\link{.requiredColumns}}
 #' function. This function should be used within the
-#' \code{\link{.checkRequiredColumns}} function.
+#' \code{\link{.checkRequiredColumnsDF}} function.
 #'
 #' @param cols A character vector containing the names of missing columns.
 #' @param dat_name A character string indicating the name of the dataset.
@@ -475,14 +475,14 @@
             " The following required columns are missing from the `",
             dat_name, "` dataset: ", cols, ".",
             " Required columns can be checked with ",
-            "`bugphyzz:::.requiredColumns()`.")
+            " `bugphyzz:::.requiredColumns()`.")
 
     } else {
 
         msg <- paste0(">>> Required columns missing.",
             " The following required columns are missing: ", cols, ".",
             " Required columns can be checked with",
-            "`bugphyzz:::.requiredColumns()`")
+            " `bugphyzz:::.requiredColumns()`")
     }
 
     .stop_custom(subclass = "required_columns_missing", message = msg, ...)
@@ -495,13 +495,13 @@
 #' or more of the required columns is not in the right order in a bugphyzz
 #' dataset. The order of the required columns can be printed with the
 #' \code{\link{.requiredColumns}} function. This function should be used within
-#' the \code{\link{.checkRequiredColumns}} function.
+#' the \code{\link{.checkRequiredColumnsDF}} function.
 #'
 #' @param cols A character vector containing the names of the missing columns.
 #' @param dataset_name A character string indicating the name of the dataset.
 #' @param df A data frame with information about the expected and actual
 #' positions of the required columns in a bugphyzz dataset. See
-#' \code{\link{.checkRequiredColumns}}.
+#' \code{\link{.checkRequiredColumnsDF}}.
 #' @param ... Any other argument useful to identify the source of the error
 #' and/or how to fix it.
 #'
@@ -553,7 +553,7 @@
 #'
 #' \code{.stop_invalid_column_values} generates an error condition if a column
 #' contains invalid values. This function should be used within the
-#' \code{\linl{.checkColumnValues}} function.
+#' \code{\link{.checkColumnValues}} function.
 #'
 #' @param col Character string containing a single column name.
 #' @param dat_name Character string indicating the dataset name.
@@ -606,7 +606,10 @@
             msg <- paste0(msg, " The first invalid values are: ", values, "...")
         }
 
-        .stop_custom(subclass = "invalid_column_values", message = msg, ...)
+        .stop_custom(
+            subclass = "invalid_column_values", message = msg, n_rows = n_rows,
+            invalid_values = values, ...
+        )
 
 }
 
@@ -649,7 +652,7 @@
 
         msg <- paste0(
             ">>> Invalid column class.",
-            "The `Attribute_value` column` should be of class logical or",
+            " The `Attribute_value` column` should be of class logical or",
             " numeric, not ", col_class, "."
         )
     }
@@ -717,8 +720,8 @@
 #'
 #' @seealso
 #' \code{\link{.requiredColumns}};
-#' \code{\link{.checkRequiredColumns}};
-#' \code{\link{.checkRequiredColumnsList}}
+#' \code{\link{.checkRequiredColumnsDF}};
+#' \code{\link{.checkRequiredColumnsDFList}}
 #'
 #' @keywords internal
 #'
