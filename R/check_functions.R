@@ -11,7 +11,7 @@
 #' @param dat_name A character string indicating the name of the dataset.
 #' Default is NULL.
 #'
-#' @return An error condition of subclass "required_columns_missing" or 
+#' @return An error condition of subclass "required_columns_missing" or
 #' "required_columns_misplaced". NULL and a message if no errors are found.
 #'
 #' @importFrom crayon red
@@ -37,11 +37,6 @@
 #' }
 #'
 .checkRequiredColumns <- function(dat, dat_name = NULL) {
-    if (!is.data.frame(dat))
-        stop("Not a data.frame. Object of class '", class(dat), "'.",
-            " You must provide a data.frame or tibble imported from bugphyzz.",
-            call. = FALSE)
-
     columns_lgl <- .requiredColumns() %in% colnames(dat)
 
     if (!all(columns_lgl)) {
@@ -61,16 +56,7 @@
         .stop_required_columns_misplaced(misplaced_columns, dat_name, df)
     }
 
-    if (!is.null(dat_name)) {
-        message(crayon::green(
-            ">>> All columns in the `", dat_name,
-            "` dataset are present and in the right order.", sep = ""
-        ))
-    } else {
-        message(crayon::green(
-            ">>> All columns are present and in the right order."
-        ))
-    }
+    return(invisible(NULL))
 }
 
 #' Check required columns in a bugphyzz dataset
@@ -112,7 +98,12 @@
 #' }
 #'
 .checkRequiredColumnsDF <- function(dat, dat_name = NULL) {
-    tryCatch(
+  if (!is.data.frame(dat))
+    stop("Not a data.frame. Object of class '", class(dat), "'.",
+      " You must provide a data.frame or tibble imported from bugphyzz.",
+      call. = FALSE)
+
+    err <- tryCatch(
         required_columns_missing = function(e) {
             message(crayon::red(conditionMessage(e), "\n"))
             e
@@ -128,8 +119,23 @@
             e
         },
         .checkRequiredColumns(dat, dat_name)
-    ) %>%
-        invisible()
+    )
+
+    if (!is.null(err))
+      return(invisible(err))
+
+    if (!is.null(dat_name)) {
+      message(crayon::green(
+        ">>> All columns in the `", dat_name,
+        "` dataset are present and in the right order.", sep = ""
+      ))
+    } else {
+      message(crayon::green(
+        ">>> All columns are present and in the right order."
+      ))
+    }
+
+    return(invisible(err))
 }
 
 #' Check required columns across a list of bugphyzz datasets
@@ -142,15 +148,19 @@
 #' are missing or must be reordered.
 #'
 #' @param list A list of bugphyzz datasets.
+#' @param table If TRUE, it returns a table instead of a list. Default is FALSE.
 #'
 #' @return Invisibly returns a list of error conditions
 #' ("required_columns_missing" or "required_columns_misplaced" subclasses),
 #' and it also prints an error message for each error found.
 #' If no errors are found, a message indicating that the required
-#' columns are present and in the right order is printed.
+#' columns are present and in the right order is printed. If argument
+#' `table=TRUE`, it returns a data frame instead of a list.
 #'
 #' @importFrom purrr map2
 #' @importFrom purrr discard
+#' @importFrom purrr map
+#' @importFrom magrittr set_colnames
 #'
 #' @family check functions
 #' @seealso
@@ -171,15 +181,29 @@
 #'
 #' }
 #'
-.checkRequiredColumnsList <- function(list) {
+.checkRequiredColumnsList <- function(list, table = FALSE) {
     if (class(list) != "list")
         stop("Not a list. Object of class '", class(list), "'.",
             " Provide a list of data frames imported with bugphyzz functions.",
             call. = FALSE)
 
-    purrr::map2(list, names(list), ~ .checkRequiredColumnsDF(.x, .y)) %>%
-        purrr::discard(is.null) %>%
-        invisible()
+    err <- purrr::map2(list, names(list), ~ .checkRequiredColumnsDF(.x, .y)) %>%
+        purrr::discard(is.null)
+
+    if (is.null(err))
+      return(invisible(err))
+
+    if (table) {
+        err_table <- err %>%
+            purrr::map(~ c(class(.x)[1], .x$cols)) %>%
+            do.call(rbind, .) %>%
+            tibble::as_tibble(rownames = "datset") %>%
+            magrittr::set_colnames(c("dataset", "error_type", "columns")) %>%
+            dplyr::mutate(error_type = sub("required_columns_", "", error_type))
+        return(err_table)
+    }
+
+    return(invisible(err))
 }
 
 #' Check column values
@@ -194,7 +218,7 @@
 #' @param quiet_success If FALSE, an error message is printed when no errors
 #' are found. Default is TRUE.
 #'
-#' @return An error condition of subclass "invalid_column_values" or 
+#' @return An error condition of subclass "invalid_column_values" or
 #' "invalid_column_class". If `quiet_success` is FALSE and no errors were
 #' found, it returns NULL and prints a message indicating that no errors were
 #' found.
@@ -491,7 +515,8 @@
             " `bugphyzz:::.requiredColumns()`")
     }
 
-    .stop_custom(subclass = "required_columns_missing", message = msg, ...)
+    .stop_custom(subclass = "required_columns_missing", message = msg,
+        cols = cols, ...)
 }
 
 #' Stop condition for misplaced required columns in a bugphyzz dataset
@@ -545,7 +570,7 @@
     }
 
     .stop_custom(subclass = "required_columns_misplaced",
-        message = msg, df = df, misplaced_cols = cols, ...)
+        message = msg, df = df, cols = cols, ...)
 }
 
 #' Stop condition for invalid values in a column of a bugphyzz dataset

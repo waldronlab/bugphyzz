@@ -4,17 +4,20 @@
 \alias{.checkRequiredColumnsList}
 \title{Check required columns across a list of bugphyzz datasets}
 \usage{
-.checkRequiredColumnsList(list)
+.checkRequiredColumnsList(list, table)
 }
 \arguments{
 \item{list}{A list of bugphyzz datasets.}
+
+\item{table}{If TRUE (default), it returns a table instead of a list.}
 }
 \value{
 Invisibly returns a list of error conditions
 ("required_columns_missing" or "required_columns_misplaced" subclasses),
 and it also prints an error message for each error found.
 If no errors are found, a message indicating that the required
-columns are present and in the right order is printed.
+columns are present and in the right order is printed. If argument
+\code{table=TRUE}, it returns a data frame instead of a list.
 }
 \description{
 \code{.checkRequiredColumnsList} applies the
