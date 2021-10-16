@@ -28,12 +28,6 @@ of the extdata/template.tsv file containing only the columns specific for a
 given bugphyzz dataset.
 }
 \seealso{
-\code{\link{.template}};
-\code{\link{.attributes}};
 \code{\link{.checkColumnValues}}
-
-Other helper functions: 
-\code{\link{.attributes}()}
 }
-\concept{helper functions}
 \keyword{internal}

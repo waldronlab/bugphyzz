@@ -34,14 +34,13 @@ This function should be used within custom stop functions.
 \code{\link{.stop_required_columns_misplaced}}
 \code{\link{.stop_invalid_column_values}};
 \code{\link{.stop_invalid_column_class}};
-\code{\link{.stop_uncataloged_column}};
+\code{\link{.stop_uncatalogued_column}};
 
 Other custom stop functions: 
-\code{\link{.stop_invalid_column_class}()},
 \code{\link{.stop_invalid_column_values}()},
 \code{\link{.stop_required_columns_misplaced}()},
 \code{\link{.stop_required_columns_missing}()},
-\code{\link{.stop_uncataloged_column}()}
+\code{\link{.stop_uncatalogued_column}()}
 }
 \concept{custom stop functions}
 \keyword{internal}

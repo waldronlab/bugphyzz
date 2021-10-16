@@ -19,8 +19,8 @@ Error condition.
 Object of class "required_columns_missing", "error", "condition".
 }
 \description{
-\code{.stop_required_columns_missing} generates an error condition if one or
-more of the required columns is missing from a bugphyzz dataset.
+\code{.stop_required_columns_missing} generates an error condition of
+class "required_columns_missing".
 The required columns can be printed with the \code{\link{.requiredColumns}}
 function. This function should be used within the
 \code{\link{.checkRequiredColumns}} function.
@@ -33,10 +33,9 @@ function. This function should be used within the
 
 Other custom stop functions: 
 \code{\link{.stop_custom}()},
-\code{\link{.stop_invalid_column_class}()},
 \code{\link{.stop_invalid_column_values}()},
 \code{\link{.stop_required_columns_misplaced}()},
-\code{\link{.stop_uncataloged_column}()}
+\code{\link{.stop_uncatalogued_column}()}
 }
 \concept{custom stop functions}
 \keyword{internal}

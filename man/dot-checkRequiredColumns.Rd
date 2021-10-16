@@ -34,7 +34,8 @@ err
 }
 \seealso{
 \code{\link{.requiredColumns}};
-\code{\link{.checkRequiredColumns}};
+\code{\link{.stop_required_columns_missing}};
+\code{\link{.stop_required_columns_misplaced}};
 \code{\link{.checkRequiredColumsDF}};
 \code{\link{.checkRequiredColumnsList}}
 

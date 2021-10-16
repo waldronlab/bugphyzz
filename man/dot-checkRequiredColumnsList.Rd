@@ -4,7 +4,7 @@
 \alias{.checkRequiredColumnsList}
 \title{Check required columns across a list of bugphyzz datasets}
 \usage{
-.checkRequiredColumnsList(list, table)
+.checkRequiredColumnsList(list, table = TRUE)
 }
 \arguments{
 \item{list}{A list of bugphyzz datasets.}
