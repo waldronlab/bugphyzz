@@ -11,7 +11,7 @@
 
 \item{df}{A data frame with information about the expected and actual
 positions of the required columns in a bugphyzz dataset. See
-\code{\link{.checkRequiredColumnsDF}}.}
+\code{\link{.checkRequiredColumns}}.}
 
 \item{...}{Any other argument useful to identify the source of the error
 and/or how to fix it.}
@@ -23,23 +23,23 @@ Error condition.
 Object of class: "required_columns_misplaced", "error", "condition".
 }
 \description{
-\code{.stop_required_columns_misplaced} generates an error condition if one
-or more of the required columns is not in the right order in a bugphyzz
-dataset. The order of the required columns can be printed with the
+\code{.stop_required_columns_misplaced} generates an error condition of
+class "required_columns_misplaced".
+The order of the required columns can be printed with the
 \code{\link{.requiredColumns}} function. This function should be used within
-the \code{\link{.checkRequiredColumnsDF}} function.
+the \code{\link{.checkRequiredColumns}} function.
 }
 \seealso{
 \code{\link{.stop_custom}};
 \code{\link{.stop_required_columns_missing}};
-\code{\link{.stop_required_columns_misplaced}}
+\code{\link{.stop_required_columns_misplaced}};
+\code{\link{.checkRequiredColumns}}
 
 Other custom stop functions: 
 \code{\link{.stop_custom}()},
-\code{\link{.stop_invalid_column_class}()},
 \code{\link{.stop_invalid_column_values}()},
 \code{\link{.stop_required_columns_missing}()},
-\code{\link{.stop_uncataloged_column}()}
+\code{\link{.stop_uncatalogued_column}()}
 }
 \concept{custom stop functions}
 \keyword{internal}

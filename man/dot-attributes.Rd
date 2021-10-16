@@ -15,12 +15,6 @@ A character vector with valid attribute names.
 the valid attribute names as indicated in the attributes.tsv file.
 }
 \seealso{
-\code{\link{.template}};
-\code{\link{.attributes}};
 \code{\link{.checkColumnValues}}
-
-Other helper functions: 
-\code{\link{.template}()}
 }
-\concept{helper functions}
 \keyword{internal}

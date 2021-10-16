@@ -16,10 +16,12 @@ Default is NULL.}
 Invisibly returns a list of error
 conditions (subclass "invalid_column_values" or "invalid_column_class"),
 and it also prints an error message if a column contains invalid values.
+If no errors are found, it returns NULL and a message indicating it.
 }
 \description{
 \code{.checkColumnValuesDF} applies the \code{\link{.checkColumnValues}}
-function to all of the columns of a single dataset.
+function to all of the columns of a single dataset. It's a tryCatch
+wrapper of \code{\link{.checkColumnValues}}.
 }
 \examples{
 
@@ -39,7 +41,8 @@ err <- bugphyzz:::.checkColumnValuesDF(x)
 Other check functions: 
 \code{\link{.checkColumnValuesList}()},
 \code{\link{.checkColumnValues}()},
-\code{\link{.checkRequiredColumnsDFList}()},
-\code{\link{.checkRequiredColumnsDF}()}
+\code{\link{.checkRequiredColumnsDF}()},
+\code{\link{.checkRequiredColumnsList}()},
+\code{\link{.checkRequiredColumns}()}
 }
 \concept{check functions}

@@ -24,22 +24,22 @@ Error condition.
 Object of class "invalid_column_names", "error", "condition".
 }
 \description{
-\code{.stop_invalid_column_values} generates an error condition if a column
-contains invalid values. This function should be used within the
+\code{.stop_invalid_column_values} generates an error condition of class
+"invalid_column_names". This function should be used within the
 \code{\link{.checkColumnValues}} function.
 }
 \seealso{
 \code{\link{.stop_custom}};
 \code{\link{.stop_invalid_column_values}};
 \code{\link{.stop_invalid_column_class}};
-\code{\link{.stop_uncataloged_column}}
+\code{\link{.stop_uncatalogued_column}};
+\code{\link{.checkColumnValues}}
 
 Other custom stop functions: 
 \code{\link{.stop_custom}()},
-\code{\link{.stop_invalid_column_class}()},
 \code{\link{.stop_required_columns_misplaced}()},
 \code{\link{.stop_required_columns_missing}()},
-\code{\link{.stop_uncataloged_column}()}
+\code{\link{.stop_uncatalogued_column}()}
 }
 \concept{custom stop functions}
 \keyword{internal}

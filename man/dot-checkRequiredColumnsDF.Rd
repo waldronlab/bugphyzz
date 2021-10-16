@@ -2,7 +2,7 @@
 % Please edit documentation in R/check_functions.R
 \name{.checkRequiredColumnsDF}
 \alias{.checkRequiredColumnsDF}
-\title{Check required columns in a single bugphyzz dataset}
+\title{Check required columns in a bugphyzz dataset}
 \usage{
 .checkRequiredColumnsDF(dat, dat_name = NULL)
 }
@@ -21,8 +21,9 @@ If no errors are found, a message indicating that the required
 columns are present and in the right order is printed.
 }
 \description{
-\code{.checkRequiredColumnsDF} checks if the required columns
-(see \code{\link{.requiredColumns}}) are
+\code{.checkRequiredColumnsDF} is a tryCatch wrapper of the
+\code{.checkRequiredColumns} function. \code{.checkRequiredColumnsDF}
+checks if the required columns (see \code{\link{.requiredColumns}}) are
 present and in the right order in a single bugphyzz dataset.
 If a required column is missing or is not in the right order,
 it prints a message indicating which columns must be added or reordered.
@@ -32,22 +33,23 @@ it prints a message indicating which columns must be added or reordered.
 \dontrun{
 
 x <- physiologies("aerophilicity")[[1]]
-err <- tryCatch(bugphyzz:::.checkRequiredColumnsDF(x), error = function(e) e)
-err
+err <- bugphyzz:::.checkRequiredColumnsDF(x[[1]])
 
 }
 
 }
 \seealso{
 \code{\link{.requiredColumns}};
-\code{\link{.checkRequiredColumnsDF}};
-\code{\link{.checkRequiredColumnsDFList}};
+\code{\link{.checkRequiredColumns}};
+\code{\link{.checkRequiredColumsDF}};
+\code{\link{.checkRequiredColumnsList}}
 
 Other check functions: 
 \code{\link{.checkColumnValuesDF}()},
 \code{\link{.checkColumnValuesList}()},
 \code{\link{.checkColumnValues}()},
-\code{\link{.checkRequiredColumnsDFList}()}
+\code{\link{.checkRequiredColumnsList}()},
+\code{\link{.checkRequiredColumns}()}
 }
 \concept{check functions}
 \keyword{internal}

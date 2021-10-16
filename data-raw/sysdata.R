@@ -12,23 +12,29 @@ phys[["fatty acid composition"]] <- fattyAcidComposition()
 
 # ranks and parents -------------------------------------------------------
 ncbi_ids <- phys %>%
-  purrr::map(~ as.integer(.x[["NCBI_ID"]])) %>% # as.integer helps to remove invalid NCBI IDs
-  purrr::flatten_int() %>%
-  unique() %>%
-  .[!is.na(.)] %>%
-  sort(decreasing = TRUE)
+    ## as.integer helps to remove invalid NCBI IDs
+    purrr::map(~ as.integer(.x[["NCBI_ID"]])) %>%
+    purrr::flatten_int() %>%
+    unique() %>%
+    .[!is.na(.)] %>%
+    sort(decreasing = TRUE)
 
 taxonomies <- taxizedb::classification(ncbi_ids, db = "ncbi")
 
 ## Check that names correspond to the right output
-name_value <- names(taxonomies) == map_chr(taxonomies, ~ tryCatch(tail(.x$id, 1), error = function(e) NA))
+name_value <- names(taxonomies) == map_chr(
+    taxonomies, ~ tryCatch(tail(.x$id, 1), error = function(e) NA)
+)
 invalid_taxonomy_ids <- name_value[is.na(name_value)]
 sum(name_value, na.rm = TRUE) / length(name_value) * 100
-## In the lines above, most names correspond to the rigth output
+## In the lines above, most names correspond to the right output
 
 taxonomies <- taxonomies[!is.na(taxonomies)]
 
-valid_ranks = c("superkingdom", "kingdom", "phylum", "class", "order", "family", "genus", "species", "strain")
+valid_ranks <- c(
+    "superkingdom", "kingdom", "phylum", "class", "order", "family", "genus",
+    "species", "strain"
+)
 
 ## Get parents
 parents <- taxonomies %>%
