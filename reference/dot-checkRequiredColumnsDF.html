@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Check required columns in a single bugphyzz dataset — .checkRequiredColumnsDF • bugphyzz</title>
+<title>Check required columns in a bugphyzz dataset — .checkRequiredColumnsDF • bugphyzz</title>
 
 
 <!-- jquery -->
@@ -39,9 +39,10 @@
 
 
 
-<meta property="og:title" content="Check required columns in a single bugphyzz dataset — .checkRequiredColumnsDF" />
-<meta property="og:description" content=".checkRequiredColumnsDF checks if the required columns
-(see .requiredColumns) are
+<meta property="og:title" content="Check required columns in a bugphyzz dataset — .checkRequiredColumnsDF" />
+<meta property="og:description" content=".checkRequiredColumnsDF is a tryCatch wrapper of the
+.checkRequiredColumns function. .checkRequiredColumnsDF
+checks if the required columns (see .requiredColumns) are
 present and in the right order in a single bugphyzz dataset.
 If a required column is missing or is not in the right order,
 it prints a message indicating which columns must be added or reordered." />
@@ -134,14 +135,15 @@ it prints a message indicating which columns must be added or reordered." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Check required columns in a single bugphyzz dataset</h1>
+    <h1>Check required columns in a bugphyzz dataset</h1>
     
     <div class="hidden name"><code>dot-checkRequiredColumnsDF.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p><code>.checkRequiredColumnsDF</code> checks if the required columns
-(see <code><a href='.requiredColumns.html'>.requiredColumns</a></code>) are
+    <p><code>.checkRequiredColumnsDF</code> is a tryCatch wrapper of the
+<code>.checkRequiredColumns</code> function. <code>.checkRequiredColumnsDF</code>
+checks if the required columns (see <code><a href='.requiredColumns.html'>.requiredColumns</a></code>) are
 present and in the right order in a single bugphyzz dataset.
 If a required column is missing or is not in the right order,
 it prints a message indicating which columns must be added or reordered.</p>
@@ -174,21 +176,22 @@ columns are present and in the right order is printed.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p><code><a href='.requiredColumns.html'>.requiredColumns</a></code>;
-<code>.checkRequiredColumnsDF</code>;
-<code><a href='.checkRequiredColumnsDFList.html'>.checkRequiredColumnsDFList</a></code>;</p>
+<code><a href='.checkRequiredColumns.html'>.checkRequiredColumns</a></code>;
+<code>.checkRequiredColumsDF</code>;
+<code><a href='.checkRequiredColumnsList.html'>.checkRequiredColumnsList</a></code></p>
 <p>Other check functions: 
 <code><a href='.checkColumnValuesDF.html'>.checkColumnValuesDF</a>()</code>,
 <code><a href='.checkColumnValuesList.html'>.checkColumnValuesList</a>()</code>,
 <code><a href='.checkColumnValues.html'>.checkColumnValues</a>()</code>,
-<code><a href='.checkRequiredColumnsDFList.html'>.checkRequiredColumnsDFList</a>()</code></p></div>
+<code><a href='.checkRequiredColumnsList.html'>.checkRequiredColumnsList</a>()</code>,
+<code><a href='.checkRequiredColumns.html'>.checkRequiredColumns</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
 <span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
 
 <span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'><a href='physiologies.html'>physiologies</a></span><span class='op'>(</span><span class='st'>"aerophilicity"</span><span class='op'>)</span><span class='op'>[[</span><span class='fl'>1</span><span class='op'>]</span><span class='op'>]</span>
-<span class='va'>err</span> <span class='op'>&lt;-</span> <span class='kw'><a href='https://rdrr.io/r/base/conditions.html'>tryCatch</a></span><span class='op'>(</span><span class='fu'>bugphyzz</span><span class='fu'>:::</span><span class='fu'>.checkRequiredColumnsDF</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>, error <span class='op'>=</span> <span class='kw'>function</span><span class='op'>(</span><span class='va'>e</span><span class='op'>)</span> <span class='va'>e</span><span class='op'>)</span>
-<span class='va'>err</span>
+<span class='va'>err</span> <span class='op'>&lt;-</span> <span class='fu'>bugphyzz</span><span class='fu'>:::</span><span class='fu'>.checkRequiredColumnsDF</span><span class='op'>(</span><span class='va'>x</span><span class='op'>[[</span><span class='fl'>1</span><span class='op'>]</span><span class='op'>]</span><span class='op'>)</span>
 
 <span class='op'>}</span>
 

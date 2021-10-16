@@ -41,7 +41,8 @@
 
 <meta property="og:title" content="Check column values in a data frame — .checkColumnValuesDF" />
 <meta property="og:description" content=".checkColumnValuesDF applies the .checkColumnValues
-function to all of the columns of a single dataset." />
+function to all of the columns of a single dataset. It's a tryCatch
+wrapper of .checkColumnValues." />
 
 
 
@@ -138,7 +139,8 @@ function to all of the columns of a single dataset." />
 
     <div class="ref-description">
     <p><code>.checkColumnValuesDF</code> applies the <code><a href='.checkColumnValues.html'>.checkColumnValues</a></code>
-function to all of the columns of a single dataset.</p>
+function to all of the columns of a single dataset. It's a tryCatch
+wrapper of <code><a href='.checkColumnValues.html'>.checkColumnValues</a></code>.</p>
     </div>
 
     <pre class="usage"><span class='fu'>.checkColumnValuesDF</span><span class='op'>(</span><span class='va'>dat</span>, dat_name <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span></pre>
@@ -161,7 +163,8 @@ Default is NULL.</p></td>
 
     <p>Invisibly returns a list of error
 conditions (subclass "invalid_column_values" or "invalid_column_class"),
-and it also prints an error message if a column contains invalid values.</p>
+and it also prints an error message if a column contains invalid values.
+If no errors are found, it returns NULL and a message indicating it.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p><code><a href='.checkColumnValues.html'>.checkColumnValues</a></code>;
@@ -170,8 +173,9 @@ and it also prints an error message if a column contains invalid values.</p>
 <p>Other check functions: 
 <code><a href='.checkColumnValuesList.html'>.checkColumnValuesList</a>()</code>,
 <code><a href='.checkColumnValues.html'>.checkColumnValues</a>()</code>,
-<code><a href='.checkRequiredColumnsDFList.html'>.checkRequiredColumnsDFList</a>()</code>,
-<code><a href='.checkRequiredColumnsDF.html'>.checkRequiredColumnsDF</a>()</code></p></div>
+<code><a href='.checkRequiredColumnsDF.html'>.checkRequiredColumnsDF</a>()</code>,
+<code><a href='.checkRequiredColumnsList.html'>.checkRequiredColumnsList</a>()</code>,
+<code><a href='.checkRequiredColumns.html'>.checkRequiredColumns</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>

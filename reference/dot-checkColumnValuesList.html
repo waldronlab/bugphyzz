@@ -141,7 +141,7 @@ function to a list of bugphyzz datasets." />
 function to a list of bugphyzz datasets.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>.checkColumnValuesList</span><span class='op'>(</span><span class='va'>dats</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>.checkColumnValuesList</span><span class='op'>(</span><span class='va'>list</span>, table <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -150,6 +150,10 @@ function to a list of bugphyzz datasets.</p>
       <th>list</th>
       <td><p>A list of bugphyzz datasets.</p></td>
     </tr>
+    <tr>
+      <th>table</th>
+      <td><p>If TRUE (default), it returns a table instead of a list.</p></td>
+    </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
@@ -157,7 +161,9 @@ function to a list of bugphyzz datasets.</p>
     <p>Invisibly returns a list of error conditions (subclass
 "invalid_column_values" or "invalid_column_class"), and it also prints
 an error message if a column contains invalid values in any of the datasets
-in the list.</p>
+in the list. If no errors are found, it returns NULL and prints a message
+indicating it (per datasest). If <code>table = TRUE</code>, it returns a tibble of
+errors.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p><code><a href='.checkColumnValues.html'>.checkColumnValues</a></code>;
@@ -166,8 +172,9 @@ in the list.</p>
 <p>Other check functions: 
 <code><a href='.checkColumnValuesDF.html'>.checkColumnValuesDF</a>()</code>,
 <code><a href='.checkColumnValues.html'>.checkColumnValues</a>()</code>,
-<code><a href='.checkRequiredColumnsDFList.html'>.checkRequiredColumnsDFList</a>()</code>,
-<code><a href='.checkRequiredColumnsDF.html'>.checkRequiredColumnsDF</a>()</code></p></div>
+<code><a href='.checkRequiredColumnsDF.html'>.checkRequiredColumnsDF</a>()</code>,
+<code><a href='.checkRequiredColumnsList.html'>.checkRequiredColumnsList</a>()</code>,
+<code><a href='.checkRequiredColumns.html'>.checkRequiredColumns</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>

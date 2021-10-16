@@ -168,11 +168,10 @@ are found. Default is TRUE.</p></td>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>invisibly returns an error condition
-(subclass "invalid_column_values" or "invalid_column_class"),
-and it also prints an error message if the column contains invalid values.
-If <code>quiet_success</code> is FALSE an no errors were found, it prints a message
-indicating that no errors were found.</p>
+    <p>An error condition of subclass "invalid_column_values" or
+"invalid_column_class". If <code>quiet_success</code> is FALSE and no errors were
+found, it returns NULL and prints a message indicating that no errors were
+found.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p><code>.checkColumnValues</code>;
@@ -181,8 +180,9 @@ indicating that no errors were found.</p>
 <p>Other check functions: 
 <code><a href='.checkColumnValuesDF.html'>.checkColumnValuesDF</a>()</code>,
 <code><a href='.checkColumnValuesList.html'>.checkColumnValuesList</a>()</code>,
-<code><a href='.checkRequiredColumnsDFList.html'>.checkRequiredColumnsDFList</a>()</code>,
-<code><a href='.checkRequiredColumnsDF.html'>.checkRequiredColumnsDF</a>()</code></p></div>
+<code><a href='.checkRequiredColumnsDF.html'>.checkRequiredColumnsDF</a>()</code>,
+<code><a href='.checkRequiredColumnsList.html'>.checkRequiredColumnsList</a>()</code>,
+<code><a href='.checkRequiredColumns.html'>.checkRequiredColumns</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>

@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Stop condition for a column not catalogued in the template file — .stop_uncatalogued_column • bugphyzz</title>
+<title>Stop condition for an uncatalogued column — .stop_uncatalogued_column • bugphyzz</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,11 @@
 
 
 
-<meta property="og:title" content="Stop condition for a column not catalogued in the template file — .stop_uncatalogued_column" />
-<meta property="og:description" content="Stop condition for a column not catalogued in the template file" />
+<meta property="og:title" content="Stop condition for an uncatalogued column — .stop_uncatalogued_column" />
+<meta property="og:description" content=".stop_uncatalogued_column returns an error condition of class
+&quot;uncatalogued_column&quot;.
+catalogued in the extdata/template.csv file. This function shold be used
+within the .checkColumnValues function." />
 
 
 
@@ -130,37 +133,54 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Stop condition for a column not catalogued in the template file</h1>
+    <h1>Stop condition for an uncatalogued column</h1>
     
     <div class="hidden name"><code>dot-stop_uncatalogued_column.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Stop condition for a column not catalogued in the template file</p>
+    <p><code>.stop_uncatalogued_column</code> returns an error condition of class
+"uncatalogued_column".
+catalogued in the extdata/template.csv file. This function shold be used
+within the <code><a href='.checkColumnValues.html'>.checkColumnValues</a></code> function.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>.stop_uncatalogued_column</span><span class='op'>(</span><span class='va'>col</span>, dataset_name <span class='op'>=</span> <span class='cn'>NULL</span>, <span class='va'>...</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>.stop_uncatalogued_column</span><span class='op'>(</span><span class='va'>col</span>, dat_name <span class='op'>=</span> <span class='cn'>NULL</span>, <span class='va'>...</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>col</th>
-      <td><p>Character vector of length 1; column name.</p></td>
+      <td><p>Character string indicating the column name.</p></td>
     </tr>
     <tr>
-      <th>dataset_name</th>
-      <td><p>Character vector of length 1; dataset name.</p></td>
+      <th>dat_name</th>
+      <td><p>Character string inticating the dataset name.</p></td>
     </tr>
     <tr>
       <th>...</th>
-      <td><p>Any other argument useful to identify the source of the error and how to fix it.</p></td>
+      <td><p>Any other argument useful to identify the source of the error
+and/or how to fix it.</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>Error condition. Object of class: "invalid_column_class", "error", "condition".</p>
+    <p>Error condition.
+Object of class: "uncatalogued_column", "error", "condition".</p>
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <div class='dont-index'><p><code><a href='.stop_custom.html'>.stop_custom</a></code>;
+<code><a href='.stop_invalid_column_values.html'>.stop_invalid_column_values</a></code>;
+<code>.stop_invalid_column_class</code>;
+<code>.stop_uncatalogued_column</code>;
+<code><a href='.checkColumnValues.html'>.checkColumnValues</a></code></p>
+<p>Other custom stop functions: 
+<code><a href='.stop_custom.html'>.stop_custom</a>()</code>,
+<code><a href='.stop_invalid_column_values.html'>.stop_invalid_column_values</a>()</code>,
+<code><a href='.stop_required_columns_misplaced.html'>.stop_required_columns_misplaced</a>()</code>,
+<code><a href='.stop_required_columns_missing.html'>.stop_required_columns_missing</a>()</code></p></div>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

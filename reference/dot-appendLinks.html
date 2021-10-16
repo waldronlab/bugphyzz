@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Required columns — .requiredColumns • bugphyzz</title>
+<title>Append links to error table — .appendLinks • bugphyzz</title>
 
 
 <!-- jquery -->
@@ -39,9 +39,11 @@
 
 
 
-<meta property="og:title" content="Required columns — .requiredColumns" />
-<meta property="og:description" content=".requiredColumns prints the names and order of the columns that must
-be present in all of the bugphyzz data sets." />
+<meta property="og:title" content="Append links to error table — .appendLinks" />
+<meta property="og:description" content="appendLinks appends the links of each dataset with errors when
+table = TRUE is set in the calls to
+.checkRequiredColumnsList and
+.checkColumnValuesList" />
 
 
 
@@ -131,33 +133,37 @@ be present in all of the bugphyzz data sets." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Required columns</h1>
+    <h1>Append links to error table</h1>
     
-    <div class="hidden name"><code>dot-requiredColumns.Rd</code></div>
+    <div class="hidden name"><code>dot-appendLinks.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p><code>.requiredColumns</code> prints the names and order of the columns that must
-be present in all of the bugphyzz data sets.</p>
+    <p><code>appendLinks</code> appends the links of each dataset with errors when
+<code>table = TRUE</code> is set in the calls to
+<code><a href='.checkRequiredColumnsList.html'>.checkRequiredColumnsList</a></code> and
+<code><a href='.checkColumnValuesList.html'>.checkColumnValuesList</a></code></p>
     </div>
 
-    <pre class="usage"><span class='fu'>.requiredColumns</span><span class='op'>(</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>.appendLinks</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span></pre>
 
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>x</th>
+      <td><p>A data frame or tibble.</p></td>
+    </tr>
+    </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A character vector with mandatory column names (required columns).</p>
+    <p>A tibble.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><code><a href='.checkRequiredColumns.html'>.checkRequiredColumns</a></code></p></div>
+    <div class='dont-index'><p><code><a href='.checkRequiredColumnsList.html'>.checkRequiredColumnsList</a></code>;
+<code><a href='.checkColumnValuesList.html'>.checkColumnValuesList</a></code></p></div>
 
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'>
-<span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
-<span class='fu'>bugphyzz</span><span class='fu'>:::</span><span class='fu'>.requiredColumns</span><span class='op'>(</span><span class='op'>)</span>
-<span class='op'>}</span>
-
-</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
