@@ -107,23 +107,7 @@
         " You must provide a data.frame or tibble imported from bugphyzz.",
         call. = FALSE)
 
-    err <- tryCatch(
-        required_columns_missing = function(e) {
-            message(crayon::red(conditionMessage(e), "\n"))
-            e
-        },
-        required_columns_misplaced = function(e) {
-            message(crayon::red(conditionMessage(e), "\n"))
-            e
-        },
-        error = function(e) {
-            message(crayon::bgBlue(
-                "Error in the", .y, "dataset. ", conditionMessage(e), "\n"
-            ))
-            e
-        },
-        .checkRequiredColumns(dat, dat_name)
-    )
+    err <- .errorHandler(.checkRequiredColumns, dat = dat, dat_name = dat_name)
 
     if (!length(err)) {
         if (!is.null(dat_name)) {
@@ -193,27 +177,29 @@
             " Provide a list of data frames imported with bugphyzz functions.",
             call. = FALSE)
 
-    err <- purrr::map2(list, names(list), ~ .checkRequiredColumnsDF(.x, .y)) %>%
+    err_list <- purrr::map2(
+        list, names(list), ~ .checkRequiredColumnsDF(.x, .y)
+        ) %>%
         purrr::discard(is.null)
 
-    if (!length(err))
+    if (!length(err_list))
       return(invisible(NULL))
 
     if (table) {
-        err_table <- err %>%
+        err_table <- err_list %>%
             purrr::map(~ c(class(.x)[1], .x$cols)) %>%
             do.call(rbind, .) %>%
             tibble::as_tibble(rownames = "dataset", .name_repair = "unique") %>%
             suppressMessages() %>% # suppress message from .name_repair
             magrittr::set_colnames(c("dataset", "error_type", "columns")) %>%
             dplyr::mutate(
-                error_type = sub("required_columns_", "", error_type)
+                error_type = sub("required_columns_", "", .data[["error_type"]])
             ) %>%
             .appendLinks()
         return(err_table)
     }
 
-    return(invisible(err))
+    return(invisible(err_list))
 }
 
 ## Checks for column values ------------------------------------------------
@@ -253,7 +239,7 @@
 #' }
 #'
 .checkColumnValues <-
-    function(col, dat, dat_name = NULL, quiet_success = TRUE) {
+    function(dat, col, dat_name = NULL, quiet_success = TRUE) {
 
         ## Check that the column is in template
         template <- .template(dat)
@@ -301,6 +287,21 @@
                 )
             }
         }
+
+        if (!quiet_success) {
+            if (!is.null(dat_name)) {
+                message(crayon::green(
+                    "The values in the ", col, "column in the", dat_name,
+                    "dataset are all valid."
+                )) %>%
+                return(invisible(NULL))
+            } else {
+                message(crayon::green(
+                    "The values in the ", col, "are all valid."
+                ))
+                return(invisible(NULL))
+            }
+        }
 }
 
 #' Check column values in a data frame
@@ -346,34 +347,15 @@
 
     col_names <- colnames(dat)
 
-    err <- purrr::map(col_names, ~{
-        tryCatch(
-            uncatalogued_column = function(e) {
-                message(crayon::red(conditionMessage(e), "\n"))
-                e
-            },
-            invalid_column_class = function(e) {
-                message(crayon::red(conditionMessage(e), "\n"))
-                e
-            },
-            invalid_column_values = function(e) {
-                message(crayon::red(conditionMessage(e), "\n"))
-                e
-            },
-            error = function(e) {
-                message(crayon::bgBlue(
-                    "Error in the", dat_name, "dataset. ",
-                    conditionMessage(e), "\n"
-                ))
-                e
-            },
-            .checkColumnValues(.x, dat, dat_name, quiet_success = TRUE)
+    err_list <- purrr::map(col_names, ~{
+        .errorHandler(
+          .checkColumnValues, dat = dat, col = .x, dat_name = dat_name
         )
     }) %>%
         purrr::set_names(col_names) %>%
         purrr::discard(is.null)
 
-    if (!length(err)) {
+    if (!length(err_list)) {
         if (!is.null(dat_name)) {
             message(crayon::green(
                 "All values are valid in the ", dat_name, "dataset."
@@ -387,7 +369,7 @@
         }
     }
 
-    return(invisible(err))
+    return(invisible(err_list))
 }
 
 #' Check column values in a list of bugphyzz datasets
@@ -436,21 +418,23 @@
 
     dats_names <- names(list)
 
-    err <- purrr::map2(list, dats_names, ~ {.checkColumnValuesDF(.x, .y)}) %>%
+    err_list <- purrr::map2(
+            list, dats_names, ~ {.checkColumnValuesDF(.x, .y)}
+        ) %>%
         purrr::set_names(dats_names) %>%
         purrr::discard(is.null)
 
-    if (!length(err))
+    if (!length(err_list))
         return(invisible(NULL))
 
     if (table) {
-        err_table <- err %>%
-            .err_list_to_table() %>%
+        err_table <- err_list %>%
+            .errListToTable() %>%
             .appendLinks()
         return(err_table)
     }
 
-    return(invisible(err))
+    return(invisible(err_list))
 }
 
 # Stop functions ---------------------------------------------------
@@ -806,7 +790,7 @@
 
 #' Error list to table
 #'
-#' \code{.err_list_to_table} converts a list of errors generated with the
+#' \code{.errListToTable} converts a list of errors generated with the
 #' \code{\link{.checkColumnValuesList}} function into a tibble.
 #'
 #' @param err List of errors.
@@ -831,7 +815,7 @@
 #' @seealso
 #' \code{\link{.checkColumnValuesList}}
 #'
-.err_list_to_table <- function(err) {
+.errListToTable <- function(err) {
     err %>%
         purrr::modify_depth(.depth = 2, ~{
             x <-
@@ -843,7 +827,7 @@
             col_names_x <- colnames(x)
             if ("invalid_values" %in% colnames(x)) {
                 x <- dplyr::mutate(
-                    x, dplyr::across(invalid_values, as.character)
+                    x, dplyr::across(.data[["invalid_values"]], as.character)
                 )
             }
             x
@@ -852,7 +836,11 @@
             dplyr::bind_rows(.x)
         }) %>%
         dplyr::bind_rows(.id = "dataset") %>%
-        dplyr::group_by(dplyr::across(c(-invalid_values, -invalid_pos))) %>%
+        dplyr::group_by(
+            dplyr::across(c(
+                -.data[["invalid_values"]], -.data[["invalid_pos"]]
+            ))
+        ) %>%
         dplyr::summarise(
             dplyr::across(tidyselect::starts_with("invalid_"), ~list(.x))
         ) %>%
@@ -860,6 +848,35 @@
             message = sub(">>> (\\w+ \\w+)\\..+$", "\\1", message)
         ) %>%
         dplyr::rename(error_type = message) %>%
-        dplyr::select(-dat_name)
+        dplyr::select(-.data[["dat_name"]])
 }
 
+.errorHandler <- function(FUN, ...) {
+  tryCatch(
+    ## errors in required columns
+    required_columns_missing = function(e) {
+      message(crayon::red(conditionMessage(e), "\n"))
+      e
+    },
+    required_columns_misplaced = function(e) {
+      message(crayon::red(conditionMessage(e), "\n"))
+      e
+    },
+    ## errors in column values
+    uncatalogued_column = function(e) {
+      message(crayon::red(conditionMessage(e), "\n"))
+      e
+    },
+    invalid_column_values = function(e) {
+      message(crayon::red(conditionMessage(e), "\n"))
+      e
+    },
+    error = function(e) {
+      message(crayon::bgBlue(
+        "Error in the", .y, "dataset. ", conditionMessage(e), "\n"
+      ))
+      e
+    },
+    FUN(...)
+  )
+}

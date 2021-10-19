@@ -4,12 +4,12 @@
 \alias{.checkColumnValues}
 \title{Check column values}
 \usage{
-.checkColumnValues(col, dat, dat_name = NULL, quiet_success = TRUE)
+.checkColumnValues(dat, col, dat_name = NULL, quiet_success = TRUE)
 }
 \arguments{
-\item{col}{A character string indicating the name of the column.}
-
 \item{dat}{A data frame imported through the bugphyzz functions.}
+
+\item{col}{A character string indicating the name of the column.}
 
 \item{dat_name}{A character string indicating the name of the dataset.
 Default is NULL.}
