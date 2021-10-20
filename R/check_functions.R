@@ -322,6 +322,8 @@
 #' @importFrom purrr set_names
 #' @importFrom purrr discard
 #'
+#' @keywords internal
+#'
 #' @family check functions
 #' @seealso
 #' \code{\link{.checkColumnValues}};

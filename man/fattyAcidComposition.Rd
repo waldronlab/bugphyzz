@@ -2,18 +2,18 @@
 % Please edit documentation in R/fattyAcidComposition.R
 \name{fattyAcidComposition}
 \alias{fattyAcidComposition}
-\title{Function for shaping fatty acid composition from Google Sheets using tidyR}
+\title{Import the fatty acid composition dataset}
 \usage{
 fattyAcidComposition()
 }
 \value{
-a tidy data frame of fattyAcidComposition from customlinks.tsv
+A tidy data frame of fattyAcidComposition from customlinks.tsv
 }
 \description{
-Function for shaping fatty acid composition from Google Sheets using tidyR
+\code{fattyAcidComposition} returns a data frame with data about the
+fatty acid composition of microbes.
 }
 \examples{
-library(bugphyzz)
 fattyAcidComposition()
 x <- fattyAcidComposition()
 dplyr::glimpse(x)

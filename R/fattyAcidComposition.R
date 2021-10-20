@@ -1,56 +1,55 @@
-utils::globalVariables(c("functionname", "Br-C10:1", "Oxo-C19:1"))
-#' Function for shaping fatty acid composition from Google Sheets using tidyR
+#' Import the fatty acid composition dataset
 #'
-#' @return a tidy data frame of fattyAcidComposition from customlinks.tsv
+#' \code{fattyAcidComposition} returns a data frame with data about the
+#' fatty acid composition of microbes.
 #'
-#' @importFrom  tidyr pivot_longer
+#' @return A tidy data frame of fattyAcidComposition from customlinks.tsv
+#'
+#' @importFrom dplyr filter
+#' @importFrom dplyr pull
+#' @importFrom utils read.csv 
+#' @importFrom tidyr pivot_longer
 #' @importFrom magrittr %>%
 #'
 #' @export
 #'
 #' @examples
-#' library(bugphyzz)
 #' fattyAcidComposition()
 #' x <- fattyAcidComposition()
 #' dplyr::glimpse(x)
 #'
-#load fatty acid composition sheet from customlinks.tsv
-#test to check whether custom link exists
 fattyAcidComposition <- function(){
-  link <- customLinks() %>%
-    dplyr::filter(functionname == "fattyAcidComposition") %>%
-    dplyr::pull(link)
-  fac_wide <- read.csv(link,check.names = FALSE)
-  fac_long <- fac_wide %>%
-    pivot_longer(cols = `Br-C10:1`:`Oxo-C19:1`,
-                   names_to = "new_attribute",
-                   values_to = "new_attribute_value")
-  fac_long <- merge(x = fac_long, y = ranks_parents, by = "NCBI_ID", all.x = TRUE)
-
-  return(fac_long)
+    link <- customLinks() %>%
+        dplyr::filter(.data[["functionname"]] == "fattyAcidComposition") %>%
+        dplyr::pull(.data[["link"]])
+    fac_wide <- utils::read.csv(link,check.names = FALSE)
+    fac_long <- fac_wide %>%
+        tidyr::pivot_longer(cols = .data[["Br-C10:1"]]:.data[["Oxo-C19:1"]],
+                                      names_to = "Attribute_new",
+                                      values_to = "Attribute_value")
+    merge(x = fac_long, y = ranks_parents, by = "NCBI_ID", all.x = TRUE)
 }
 
-#' Custom Links
+#' Custom links
 #'
-#' \code{customLinks} returns a data frame with links to custom data sets not included
-#' in the \code{physiologies} function.
+#' \code{customLinks} returns a data frame with links to custom data sets not
+#' not included in the \code{\link{physiologies}} function.
 #'
-#' @param keyword a character vector of custom links desired.
+#' @param keyword A character vector with the name of custom datasets.
 #' Use "all" for all available custom links.
 #'
-#' @return
-#' A data frame with custom links.
+#' @return A data frame with custom links.
 #'
+#' @importFrom utils read.table
 #' @export
 #'
 #' @examples
-#' library(bugphyzz)
 #' customLinks(keyword = "all")
 customLinks <- function(keyword = "all"){
-  fname <-
-    system.file("extdata/customlinks.tsv", package = "bugphyzz")
-  links <- read.table(fname, header = TRUE)
-  ifelse(keyword[1] == "all", links, links <-
-           links[links$physiology %in% keyword,])
-  return(links)
+    fname <-
+        system.file("extdata/customlinks.tsv", package = "bugphyzz")
+    links <- utils::read.table(fname, header = TRUE)
+    ifelse(keyword[1] == "all", links, links <-
+                      links[links$physiology %in% keyword,])
+    links
 }
