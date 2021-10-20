@@ -2,22 +2,21 @@
 % Please edit documentation in R/fattyAcidComposition.R
 \name{customLinks}
 \alias{customLinks}
-\title{Custom Links}
+\title{Custom links}
 \usage{
 customLinks(keyword = "all")
 }
 \arguments{
-\item{keyword}{a character vector of custom links desired.
+\item{keyword}{A character vector with the name of custom datasets.
 Use "all" for all available custom links.}
 }
 \value{
 A data frame with custom links.
 }
 \description{
-\code{customLinks} returns a data frame with links to custom data sets not included
-in the \code{physiologies} function.
+\code{customLinks} returns a data frame with links to custom data sets not
+not included in the \code{\link{physiologies}} function.
 }
 \examples{
-library(bugphyzz)
 customLinks(keyword = "all")
 }
