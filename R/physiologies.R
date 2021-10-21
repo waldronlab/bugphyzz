@@ -45,24 +45,13 @@ physiologies <- function(keyword = "all") {
   return(database)
 }
 
-# physiologies <- function(keyword = "all"){
-#   links <- curationLinks(keyword = keyword)
-#
-#   ifelse(keyword[1] == "all", links, links <- links[links$physiology %in% keyword,])
-#
-#   sheets <- as.list(links[[2]])
-#   dat <- lapply(sheets, read.csv)
-#   names(dat) <- links[[1]]
-#   dat
-# }
-
 #' Show links to curation spreadsheets
 #'
 #' @param keyword a character vector of physiologies desired. For the available
 #' physiologies, run bugphyzz::physiologiesList(). Use "all" for all available physiologies.
 #'
 #' @return a data.frame with physiology names and URLs
-#' @export
+#' @keywords internal
 #'
 #' @examples
 #' curationLinks()

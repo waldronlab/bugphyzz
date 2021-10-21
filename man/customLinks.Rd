@@ -20,3 +20,4 @@ not included in the \code{\link{physiologies}} function.
 \examples{
 customLinks(keyword = "all")
 }
+\keyword{internal}

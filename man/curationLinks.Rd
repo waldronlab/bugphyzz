@@ -21,3 +21,4 @@ curationLinks()
 curationLinks(keyword = "aerophilicity")
 curationLinks(keyword = c("aerophilicity", "gram stain"))
 }
+\keyword{internal}
