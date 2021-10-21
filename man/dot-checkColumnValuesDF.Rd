@@ -46,3 +46,4 @@ Other check functions:
 \code{\link{.checkRequiredColumns}()}
 }
 \concept{check functions}
+\keyword{internal}
