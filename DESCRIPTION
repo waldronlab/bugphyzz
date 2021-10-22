@@ -26,7 +26,6 @@ Imports:
     utils,
     magrittr,
     purrr,
-    readr,
     rlang,
     stringr,
     taxize,
@@ -36,8 +35,6 @@ Imports:
     tibble,
     crayon,
     mgsub,
-    here,
-    EnrichmentBrowser,
-    BiocFileCache
+    methods
 Depends: 
     R (>= 4.1.0)

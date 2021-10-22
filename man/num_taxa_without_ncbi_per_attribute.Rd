@@ -19,10 +19,12 @@ a ggplot
 Display number of taxa without NCBI ID per attribute in physiology dataset
 }
 \examples{
+\dontrun{
 physiologies <- physiologies()
 aer <- physiologies[["aerophilicity"]] \%>\%
 as_tibble()
 aer_ranks <- fetch_ranks(aer)
 num_taxa_without_ncbi_per_attribute(aer_ranks, "aerophilicity")
+}
 }
 \keyword{internal}

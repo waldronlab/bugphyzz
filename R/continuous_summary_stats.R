@@ -6,10 +6,13 @@
 #' @keywords internal
 #'
 #' @examples
+#' \dontrun{
+#' library(dplyr)
 #' physiologies <- physiologies()
 #' gt <- physiologies[["growth temperature"]] %>%
 #' as_tibble()
 #' display_freq(gt, "growth temperature")
+#'}
 display_freq <- function(data, phys)
 {
   data %>%
@@ -26,10 +29,13 @@ display_freq <- function(data, phys)
 #' @keywords internal
 #'
 #' @examples
+#' \dontrun{
+#' library(dplyr)
 #' physiologies <- physiologies()
 #' gt <- physiologies[["growth temperature"]] %>%
 #' as_tibble()
 #' boxplot_per_phylum(gt, "growth temperature")
+#'}
 boxplot_per_phylum <- function(data, phys, unit = "unit")
 {
   title <- paste(phys, "per phylum")

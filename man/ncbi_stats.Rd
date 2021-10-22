@@ -18,10 +18,11 @@ a ggplot
 Display number of taxa with/without NCBI ID in physiology dataset
 }
 \examples{
+\dontrun{
 physiologies <- physiologies()
 aer <- physiologies[["aerophilicity"]] \%>\%
 as_tibble()
 ncbi_stats(aer, "aerophilicity")
-
+}
 }
 \keyword{internal}

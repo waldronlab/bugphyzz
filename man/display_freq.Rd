@@ -18,9 +18,12 @@ a ggplot
 Display frequency
 }
 \examples{
+\dontrun{
+library(dplyr)
 physiologies <- physiologies()
 gt <- physiologies[["growth temperature"]] \%>\%
 as_tibble()
 display_freq(gt, "growth temperature")
+}
 }
 \keyword{internal}

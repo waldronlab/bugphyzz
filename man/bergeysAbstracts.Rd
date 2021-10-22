@@ -2,8 +2,7 @@
 % Please edit documentation in R/bergeysAbstracts.R
 \name{bergeysAbstracts}
 \alias{bergeysAbstracts}
-\title{Fetch Bergeys abstracts
-This function fetches Kelly Eckenrode's and Jonathan Ye's scraping of the Bergey's abstracts and returns a tidy data.frame}
+\title{Fetch Bergeys abstracts}
 \usage{
 bergeysAbstracts()
 }
@@ -11,10 +10,11 @@ bergeysAbstracts()
 A tidy data.frame
 }
 \description{
-Fetch Bergeys abstracts
-This function fetches Kelly Eckenrode's and Jonathan Ye's scraping of the Bergey's abstracts and returns a tidy data.frame
+This function fetches Kelly Eckenrode's and Jonathan Ye's scraping of the
+Bergey's abstracts and returns a tidy data.frame
 }
 \examples{
-x <- bergeysAbstracts()
+x <- bugphyzz:::bergeysAbstracts()
 dim(x)
 }
+\keyword{internal}

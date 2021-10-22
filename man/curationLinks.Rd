@@ -17,7 +17,8 @@ a data.frame with physiology names and URLs
 Show links to curation spreadsheets
 }
 \examples{
-curationLinks()
-curationLinks(keyword = "aerophilicity")
-curationLinks(keyword = c("aerophilicity", "gram stain"))
+bugphyzz:::curationLinks()
+bugphyzz:::curationLinks(keyword = "aerophilicity")
+bugphyzz:::curationLinks(keyword = c("aerophilicity", "gram stain"))
 }
+\keyword{internal}

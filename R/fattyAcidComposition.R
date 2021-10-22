@@ -7,7 +7,7 @@
 #'
 #' @importFrom dplyr filter
 #' @importFrom dplyr pull
-#' @importFrom utils read.csv 
+#' @importFrom utils read.csv
 #' @importFrom tidyr pivot_longer
 #' @importFrom magrittr %>%
 #'
@@ -41,10 +41,10 @@ fattyAcidComposition <- function(){
 #' @return A data frame with custom links.
 #'
 #' @importFrom utils read.table
-#' @export
+#' @keywords internal
 #'
 #' @examples
-#' customLinks(keyword = "all")
+#' bugphyzz:::customLinks(keyword = "all")
 customLinks <- function(keyword = "all"){
     fname <-
         system.file("extdata/customlinks.tsv", package = "bugphyzz")

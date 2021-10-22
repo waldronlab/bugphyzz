@@ -18,9 +18,12 @@ a ggplot
 Display boxplot per phylum
 }
 \examples{
+\dontrun{
+library(dplyr)
 physiologies <- physiologies()
 gt <- physiologies[["growth temperature"]] \%>\%
 as_tibble()
 boxplot_per_phylum(gt, "growth temperature")
+}
 }
 \keyword{internal}
