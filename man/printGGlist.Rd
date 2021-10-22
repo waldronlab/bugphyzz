@@ -16,9 +16,11 @@ printed ggplots
 Print function for ggplot list
 }
 \examples{
+\dontrun{
 physiologies <- physiologies(keyword = "all") \%>\%
 lapply(as_tibble)
 ncbi_list <- mapply(function(.x, .y) bugphyzz:::ncbi_stats(.x, .y), physiologies, names(physiologies), SIMPLIFY = FALSE)
 printGGlist(ncbi_list)
+}
 }
 \keyword{internal}

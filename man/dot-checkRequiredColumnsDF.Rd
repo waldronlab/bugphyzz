@@ -41,7 +41,7 @@ err <- bugphyzz:::.checkRequiredColumnsDF(x[[1]])
 \seealso{
 \code{\link{.requiredColumns}};
 \code{\link{.checkRequiredColumns}};
-\code{\link{.checkRequiredColumsDF}};
+\code{\link{.checkRequiredColumnsDF}};
 \code{\link{.checkRequiredColumnsList}}
 
 Other check functions: 

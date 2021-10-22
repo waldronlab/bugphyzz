@@ -6,8 +6,10 @@
 #' @keywords internal
 #'
 #' @examples
+#' \dontrun{
 #' aer <- physiologies("aerophilicity")
 #' aer_NCBI <- fill_NCBI(aer)
+#' }
 fill_NCBI <- function(data)
 {
   null_df <- data[is.na(data$NCBI_ID),]

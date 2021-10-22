@@ -18,6 +18,6 @@ A data frame with custom links.
 not included in the \code{\link{physiologies}} function.
 }
 \examples{
-customLinks(keyword = "all")
+bugphyzz:::customLinks(keyword = "all")
 }
 \keyword{internal}

@@ -18,13 +18,13 @@ makeSignatures(
 \item{taxids}{A character string indicating the type of taxid. Valid
 options: NCBI_ID, Taxon_name, Genome_ID, Accession_ID.}
 
+\item{sig_type}{A character string. Valid options: regular, normal, inherited.}
+
 \item{tax_rank}{A character string indicating the taxonomic rank of the
 microbes in the signatures. Valid options: superkingdom, kingdom, phylum,
 class, order, family, species, strain.}
 
 \item{min_sig_size}{The minimum number of microbes in a signature.}
-
-\item{type}{A character string. Valid options: regular, normal, inherited.}
 }
 \value{
 A named list of microbe signatures.

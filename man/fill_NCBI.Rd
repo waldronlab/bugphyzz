@@ -16,7 +16,9 @@ a dataframe
 Fill in NCBI IDs where the cells have NA
 }
 \examples{
+\dontrun{
 aer <- physiologies("aerophilicity")
 aer_NCBI <- fill_NCBI(aer)
+}
 }
 \keyword{internal}

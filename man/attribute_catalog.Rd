@@ -19,10 +19,12 @@ a ggplot
 Display number of genera per phylum per attribute in physiology dataset
 }
 \examples{
+\dontrun{
 physiologies <- physiologies()
 aer <- physiologies[["aerophilicity"]] \%>\%
 as_tibble()
 aer_ranks <- fetch_ranks(aer)
 attribute_catalog(aer_ranks, "aerophilicity")
+}
 }
 \keyword{internal}

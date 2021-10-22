@@ -5,10 +5,12 @@
 #' @keywords internal
 #'
 #' @examples
+#' \dontrun{
 #' physiologies <- physiologies(keyword = "all") %>%
 #' lapply(as_tibble)
 #' ncbi_list <- mapply(function(.x, .y) bugphyzz:::ncbi_stats(.x, .y), physiologies, names(physiologies), SIMPLIFY = FALSE)
 #' printGGlist(ncbi_list)
+#' }
 printGGlist <- function(gglist){
   for(gg in gglist){
 
@@ -25,11 +27,12 @@ printGGlist <- function(gglist){
 #' @keywords internal
 #'
 #' @examples
+#' \dontrun{
 #' physiologies <- physiologies()
 #' aer <- physiologies[["aerophilicity"]] %>%
 #' as_tibble()
 #' ncbi_stats(aer, "aerophilicity")
-#'
+#'}
 ncbi_stats <- function(data, phys = deparse(substitute(data)))
 {
   title <- paste("Number of taxa in the",phys, "dataset")
@@ -55,6 +58,7 @@ ncbi_stats <- function(data, phys = deparse(substitute(data)))
 #'
 #' @examples
 #' physiologies <- physiologies()
+#' \dontrun{
 #' aer <- physiologies[["aerophilicity"]] %>%
 #' as_tibble()
 #'
@@ -66,6 +70,7 @@ ncbi_stats <- function(data, phys = deparse(substitute(data)))
 #' ranks <- bugphyzz:::ncbiRank(ncbi_vec, ranks = c("phylum", "genus", "species"))
 #'
 #' merge_ranks(aer, ranks)
+#'}
 merge_ranks <- function(data, ranks)
 {
   data$NCBI_ID <- as.numeric(data$NCBI_ID)
@@ -87,11 +92,13 @@ merge_ranks <- function(data, ranks)
 #' @keywords internal
 #'
 #' @examples
+#' \dontrun{
 #' physiologies <- physiologies()
 #' aer <- physiologies[["aerophilicity"]] %>%
 #' as_tibble()
 #' aer_ranks <- fetch_ranks(aer)
 #' num_genera_per_attribute(aer_ranks, "aerophilicity")
+#' }
 num_genera_per_attribute <- function(data, phys)
 {
   title <- paste("Number of genera per attribute in the", phys, "dataset")
@@ -120,11 +127,13 @@ num_genera_per_attribute <- function(data, phys)
 #' @keywords internal
 #'
 #' @examples
+#' \dontrun{
 #' physiologies <- physiologies()
 #' aer <- physiologies[["aerophilicity"]] %>%
 #' as_tibble()
 #' aer_ranks <- fetch_ranks(aer)
 #' num_taxa_without_ncbi_per_attribute(aer_ranks, "aerophilicity")
+#' }
 num_taxa_without_ncbi_per_attribute <- function(data, phys)
 {
   title <- paste("Number of taxa without NCBI ID per attribute in the",
@@ -154,11 +163,13 @@ num_taxa_without_ncbi_per_attribute <- function(data, phys)
 #' @keywords internal
 #'
 #' @examples
+#' \dontrun{
 #' physiologies <- physiologies()
 #' aer <- physiologies[["aerophilicity"]] %>%
 #' as_tibble()
 #' aer_ranks <- fetch_ranks(aer)
 #' attribute_catalog(aer_ranks, "aerophilicity")
+#'}
 attribute_catalog <- function(data, phys)
 {
   title <- paste("Number of genera per phylum per attribute in",

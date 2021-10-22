@@ -22,7 +22,7 @@
 #' \code{\link{.requiredColumns}};
 #' \code{\link{.stop_required_columns_missing}};
 #' \code{\link{.stop_required_columns_misplaced}};
-#' \code{\link{.checkRequiredColumsDF}};
+#' \code{\link{.checkRequiredColumnsDF}};
 #' \code{\link{.checkRequiredColumnsList}}
 #'
 #' @keywords internal
@@ -88,7 +88,7 @@
 #' @seealso
 #' \code{\link{.requiredColumns}};
 #' \code{\link{.checkRequiredColumns}};
-#' \code{\link{.checkRequiredColumsDF}};
+#' \code{\link{.checkRequiredColumnsDF}};
 #' \code{\link{.checkRequiredColumnsList}}
 #'
 #' @examples
@@ -118,7 +118,7 @@
         },
         error = function(e) {
             message(crayon::bgBlue(
-                "Error in the", .y, "dataset. ", conditionMessage(e), "\n"
+                "Error in the", dat_name, "dataset. ", conditionMessage(e), "\n"
             ))
             e
         },
@@ -171,7 +171,7 @@
 #' @seealso
 #' \code{\link{.requiredColumns}};
 #' \code{\link{.checkRequiredColumns}};
-#' \code{\link{.checkRequiredColumsDF}};
+#' \code{\link{.checkRequiredColumnsDF}};
 #' \code{\link{.checkRequiredColumnsList}}
 #'
 #' @keywords internal
@@ -484,7 +484,6 @@
 #' \code{\link{.stop_required_columns_missing}};
 #' \code{\link{.stop_required_columns_misplaced}}
 #' \code{\link{.stop_invalid_column_values}};
-#' \code{\link{.stop_invalid_column_class}};
 #' \code{\link{.stop_uncatalogued_column}};
 #'
 .stop_custom <- function(subclass, message, call = NULL, ...) {
@@ -845,7 +844,7 @@
             col_names_x <- colnames(x)
             if ("invalid_values" %in% colnames(x)) {
                 x <- dplyr::mutate(
-                    x, dplyr::across(invalid_values, as.character)
+                    x, dplyr::across(.data[["invalid_values"]], as.character)
                 )
             }
             x
@@ -854,7 +853,11 @@
             dplyr::bind_rows(.x)
         }) %>%
         dplyr::bind_rows(.id = "dataset") %>%
-        dplyr::group_by(dplyr::across(c(-invalid_values, -invalid_pos))) %>%
+        dplyr::group_by(
+            dplyr::across(
+                c(-.data[["invalid_values"]], -.data[["invalid_pos"]])
+            )
+        ) %>%
         dplyr::summarise(
             dplyr::across(tidyselect::starts_with("invalid_"), ~list(.x))
         ) %>%
@@ -862,6 +865,6 @@
             message = sub(">>> (\\w+ \\w+)\\..+$", "\\1", message)
         ) %>%
         dplyr::rename(error_type = message) %>%
-        dplyr::select(-dat_name)
+        dplyr::select(-.data[["dat_name"]])
 }
 

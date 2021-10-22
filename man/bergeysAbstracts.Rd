@@ -14,7 +14,7 @@ This function fetches Kelly Eckenrode's and Jonathan Ye's scraping of the
 Bergey's abstracts and returns a tidy data.frame
 }
 \examples{
-x <- bergeysAbstracts()
+x <- bugphyzz:::bergeysAbstracts()
 dim(x)
 }
 \keyword{internal}

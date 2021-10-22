@@ -44,7 +44,7 @@ fattyAcidComposition <- function(){
 #' @keywords internal
 #'
 #' @examples
-#' customLinks(keyword = "all")
+#' bugphyzz:::customLinks(keyword = "all")
 customLinks <- function(keyword = "all"){
     fname <-
         system.file("extdata/customlinks.tsv", package = "bugphyzz")

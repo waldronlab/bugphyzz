@@ -54,9 +54,9 @@ physiologies <- function(keyword = "all") {
 #' @keywords internal
 #'
 #' @examples
-#' curationLinks()
-#' curationLinks(keyword = "aerophilicity")
-#' curationLinks(keyword = c("aerophilicity", "gram stain"))
+#' bugphyzz:::curationLinks()
+#' bugphyzz:::curationLinks(keyword = "aerophilicity")
+#' bugphyzz:::curationLinks(keyword = c("aerophilicity", "gram stain"))
 curationLinks <- function(keyword = "all"){
   fname <-
     system.file(file.path("extdata", "links.tsv"), package = "bugphyzz")

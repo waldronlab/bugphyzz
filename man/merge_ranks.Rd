@@ -19,6 +19,7 @@ Merge ranks vector with physiology dataset
 }
 \examples{
 physiologies <- physiologies()
+\dontrun{
 aer <- physiologies[["aerophilicity"]] \%>\%
 as_tibble()
 
@@ -30,5 +31,6 @@ ncbi_vec <- ncbi_vec[!is.na(ncbi_vec)]
 ranks <- bugphyzz:::ncbiRank(ncbi_vec, ranks = c("phylum", "genus", "species"))
 
 merge_ranks(aer, ranks)
+}
 }
 \keyword{internal}

@@ -33,7 +33,7 @@ utils::globalVariables(c("NCBI_ID", "Attribute", "rank", "."))
 #' microbes in the signatures. Valid options: superkingdom, kingdom, phylum,
 #' class, order, family, species, strain.
 #' @param min_sig_size The minimum number of microbes in a signature.
-#' @param type A character string. Valid options: regular, normal, inherited.
+#' @param sig_type A character string. Valid options: regular, normal, inherited.
 #'
 #' @return
 #' A named list of microbe signatures.
