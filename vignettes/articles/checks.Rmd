@@ -1,12 +1,5 @@
 ---
-title: "Check Functions"
-output: 
-  rmarkdown::html_vignette:
-    toc: yes
-vignette: >
-  %\VignetteIndexEntry{Check Functions}
-  %\VignetteEngine{knitr::rmarkdown}
-  %\VignetteEncoding{UTF-8}
+title: "Curation Checks"
 ---
 
 ```{r, include = FALSE}
@@ -115,6 +108,5 @@ err2 %>%
     select(-invalid_values, -invalid_pos) %>% # to many values
     knitr::kable()
 ```
-
 
 

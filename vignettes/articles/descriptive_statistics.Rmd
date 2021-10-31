@@ -1,0 +1,363 @@
+---
+title: "Descriptive statistcs of taxa annotations"
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  message = FALSE,
+  warning = FALSE
+)
+```
+
+```{r setup}
+library(bugphyzz)
+library(dplyr)
+library(purrr)
+library(ggplot2)
+```
+
+```{r, message=FALSE}
+phys <- physiologies(keyword = "all")
+phys[["fatty acid composition"]] <- fattyAcidComposition()
+taxonomy_table <- bugphyzz:::taxonomyAnnotations
+## remove prefix
+colnames(taxonomy_table) <- sub("bugphyzz_", "", colnames(taxonomy_table)) 
+## Select only columns with rank names, not rank ids
+taxonomy_table <- select(taxonomy_table, -ends_with("_id", ignore.case = FALSE))
+taxonomy_table$NCBI_ID <- as.integer(taxonomy_table$NCBI_ID)
+```
+
+```{r}
+taxonomy_table %>% 
+    count(rank) %>% 
+    arrange(-n)
+```
+
+```{r}
+data <- phys %>% 
+  map(~ select(.x, all_of(c("NCBI_ID", "Rank")))) %>% 
+  bind_rows(.id = "dataset") %>% 
+  as_tibble()
+```
+
+```{r, fig.width=9, fig.height=10}
+data %>% 
+  mutate(Rank = forcats::fct_relevel(Rank, "genus", "strain", "species")) %>% 
+  ggplot(aes(dataset)) +
+  geom_bar(aes(fill = Rank), position = "fill") +
+  scale_y_continuous(label = scales::percent) +
+  labs(x = "Dataset", y = "NCBI_ID",
+       title = "Taxa Annotations with NCBI IDs in Bugphyzz",
+       subtitle = "physiologies + fattyAcidComposition") +
+  coord_flip() +
+  theme_minimal() +
+  theme(legend.position = "bottom", plot.margin = unit(c(1,2,1,1),"cm"))
+```
+```{r}
+attributeSummaryByRank <- function(x, y, categorical = TRUE) {
+    
+    if (isTRUE(categorical)) {
+        df <- x[[y]] %>%
+            dplyr::filter(Attribute_value == TRUE) 
+    } else if (isFALSE(categorical)) {
+        df <- x[[y]]
+    }
+    
+    df %>%
+        dplyr::select(Attribute, Rank, NCBI_ID) %>%
+        dplyr::mutate(
+            rank = forcats::fct_relevel(Rank, "genus", "strain", "species"),
+            Attribute = stringr::str_squish(Attribute)
+        ) %>% 
+        dplyr::count(Attribute, rank) %>% 
+        dplyr::group_by(Attribute) %>% 
+        dplyr::mutate(
+            percent = round(n / sum(n) * 100, 2),
+           `n (%)` = paste0(n, " (", percent, ")")
+        ) %>% 
+        dplyr::ungroup() %>%
+        dplyr::select(Attribute, rank, `n (%)`) %>% 
+        dplyr::arrange(Attribute, rank) %>% 
+        tidyr::pivot_wider(names_from = "rank", values_from = `n (%)`) %>% 
+        as.data.frame() %>% 
+        knitr::kable(row.names = TRUE)
+}
+```
+
+
+```{r}
+categorical_phys <- phys %>%
+    keep(~is.logical(.x$Attribute_value)) %>% 
+    map( ~ left_join( .x, taxonomy_table, by = "NCBI_ID"))
+
+categorical_phys_names <- names(categorical_phys)
+
+categorical_phys_names
+```
+
+```{r, warning=FALSE}
+summary_tables <-
+  map(categorical_phys_names, ~ attributeSummaryByRank(categorical_phys, .x)) %>% 
+    set_names(categorical_phys_names)
+```
+
+
+## Animal pathogen
+
+
+```{r}
+summary_tables$`animal pathogen`
+```
+
+## Antimicrobial resistance
+
+```{r}
+summary_tables$`antimicrobial resistance`
+```
+
+## Antimicrobial sensitivity
+
+```{r}
+summary_tables$`antimicrobial sensitivity`
+```
+
+## Biofilm forming
+
+```{r}
+summary_tables$`biofilm forming`
+```
+
+## Arrangement
+
+```{r}
+summary_tables$arrangement
+```
+
+## Shape
+
+```{r}
+summary_tables$shape
+```
+
+## Extreme environment
+
+```{r}
+summary_tables$`extreme environment`
+```
+
+## Gram stain 
+
+```{r}
+summary_tables$`gram stain`
+```
+
+## Growth medium
+
+```{r}
+summary_tables$`growth medium`
+```
+
+## Habitat
+
+```{r}
+summary_tables$habitat
+```
+
+## Aerophilicity
+
+```{r}
+summary_tables$aerophilicity
+```
+
+## Plant pathogenicity
+
+```{r}
+summary_tables$`plant pathogenicity`
+```
+
+
+## Spore shape
+
+```{r}
+summary_tables$`spore shape`
+```
+
+## Isolation site
+
+```{r}
+summary_tables$`isolation site`
+```
+## Disease association
+
+```{r}
+summary_tables$`disease association`
+```
+
+# Numeric attributes in "physiologies"
+
++ Numeric attributes will be considered as those with numeric values in
+the "Attribute_value" column, i.e. type/class numeric.
+
+```{r}
+numeric_phys <- phys %>% 
+    keep(~is.numeric(.x$Attribute_value)) %>% 
+    map(~left_join(.x, taxonomy_table, by = "NCBI_ID"))
+
+numeric_phys_names <- names(numeric_phys)
+
+numeric_phys_names
+```
+
+```{r}
+numeric_summary_tables = map(numeric_phys_names, ~ attributeSummaryByRank(numeric_phys, .x, categorical = FALSE)) %>% 
+    set_names(numeric_phys_names)
+```
+
+## Butyrate producing
+
+```{r}
+numeric_summary_tables$`butyrate producing`
+```
+
+## COGEM pathogenicity rating
+
+```{r}
+numeric_summary_tables$`COGEM pathogenicity rating`
+```
+## Mutation rate per site per generation
+
+```{r}
+numeric_summary_tables$`mutation rate per site per generation`
+```
+
+## Mutation rates per site per year
+
+```{r}
+numeric_summary_tables$`mutation rates per site per year`
+```
+
+## Growth temperature
+
+```{r}
+numeric_summary_tables$`growth temperature`
+```
+
+## Optimal pH in "physiologies"
+
+```{r}
+numeric_summary_tables$`optimal ph`
+```
+
+# Other datasets
+
++ Some datasets contain values different to logical or numeric in the
+"Attribute_value" column.
+
+```{r}
+other_datasets <- phys %>% 
+    discard(~ is.logical(.x$Attribute_value) || is.numeric(.x$Attribute_value))
+
+for (i in seq_along(other_datasets)) {
+    other_datasets[[i]]$NCBI_ID <- as.double(other_datasets[[i]]$NCBI_ID)
+}
+
+other_datasets <- map(other_datasets, ~ left_join(.x, taxonomy_table, by = "NCBI_ID"))
+
+other_datasets_names <- names(other_datasets)
+
+other_datasets_names
+```
+
+```{r}
+other_datasets_summary_tables <- map(other_datasets_names, ~ attributeSummaryByRank(other_datasets, .x, categorical = FALSE)) %>% 
+    set_names(other_datasets_names)
+```
+
+
+## Acetate producing
+
+```{r}
+other_datasets_summary_tables$`acetate producing`
+```
+## Lactate producing
+
+```{r}
+other_datasets_summary_tables$`lactate producing`
+```
+
+## Width
+
+```{r}
+other_datasets_summary_tables$width
+```
+## Hydrogen gas producing
+
+```{r}
+other_datasets_summary_tables$`hydrogen gas producing`
+```
+
+## Length
+
+```{r}
+other_datasets_summary_tables$length
+```
+# Fatty acid composition
+
++ Dataset imported with the `fattyAcidComposition` function.
+
+```{r}
+fac <- phys["fatty acid composition"]
+fac[[1]] <- left_join(fac[[1]], taxonomy_table, by = "NCBI_ID")
+names(fac) <- "fatty acid composition"
+```
+
+
+```{r}
+fac_summary_table <- attributeSummaryByRank(fac, "fatty acid composition", categorical = FALSE)
+```
+
+```{r}
+fac_summary_table
+```
+
+
+# Plots of continuous variables
+
+Useful functions
+```{r}
+display_freq <- function(data, phys) {
+    data %>%
+        ggplot2::ggplot(ggplot2::aes(Attribute_value)) +
+        ggplot2::geom_histogram() +
+        ggplot2::labs(x = phys, y = "Frequency") +
+        ggplot2::theme_bw()
+}
+
+boxplot_per_phylum <- function(data, phys, unit = "unit") {
+    title <- paste(phys, "per phylum")
+    y <- paste(phys, "(", unit, ")")
+    data %>%
+       ggplot2::ggplot(ggplot2::aes(phylum, Attribute_value)) +
+       ggplot2::geom_boxplot() +
+       ggplot2::labs(title = title, y = y, x = "Phylum") +
+       ggplot2::theme_bw() +
+       ggplot2::theme(
+         axis.text.x = ggplot2::element_text(angle = 45, hjust = 1)
+       )
+}
+
+```
+
+
+```{r, message=FALSE}
+display_freq(phys$`growth temperature`, "gt")
+```
+
+
+```{r}
+x = left_join(phys$`growth temperature`, taxonomy_table, by = "NCBI_ID")
+boxplot_per_phylum(x, "x")
+```
+
