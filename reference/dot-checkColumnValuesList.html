@@ -96,22 +96,16 @@ function to a list of bugphyzz datasets." />
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="../articles/checks.html">Check Functions</a>
+      <a href="../articles/articles/checks.html">Curation Checks</a>
     </li>
     <li>
-      <a href="../articles/complete_summary_stats.html">Complete BugPhyzz Stats</a>
+      <a href="../articles/articles/descriptive_statistics.html">Descriptive statistcs of taxa annotations</a>
     </li>
     <li>
-      <a href="../articles/completeness_annotations.html">Completeness of annotations based on NCBI IDs</a>
+      <a href="../articles/articles/write_physiology_sets.html">Write physiology sets</a>
     </li>
     <li>
       <a href="../articles/makeSignatures.html">Make Signatures</a>
-    </li>
-    <li>
-      <a href="../articles/summary_statistics.html">BugPhyzz Stats</a>
-    </li>
-    <li>
-      <a href="../articles/write_physiology_sets.html">write_physiology_sets</a>
     </li>
   </ul>
 </li>
@@ -159,7 +153,7 @@ function to a list of bugphyzz datasets.</p>
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>Invisibly returns a list of error conditions (subclass
-"invalid_column_values" or "invalid_column_class"), and it also prints
+"invalid_column_values"), and it also prints
 an error message if a column contains invalid values in any of the datasets
 in the list. If no errors are found, it returns NULL and prints a message
 indicating it (per datasest). If <code>table = TRUE</code>, it returns a tibble of
@@ -177,16 +171,16 @@ errors.</p>
 <code><a href='.checkRequiredColumns.html'>.checkRequiredColumns</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'>
-<span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
-
-<span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'><a href='physiologies.html'>physiologies</a></span><span class='op'>(</span><span class='op'>)</span>
-<span class='va'>list_of_errors</span> <span class='op'>&lt;-</span> <span class='fu'>bugphyz</span><span class='fu'>:::</span><span class='fu'>.checkColumnValuesList</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
-<span class='va'>list_of_errors</span>
-
-<span class='op'>}</span>
-
-</div></pre>
+    <pre class="examples"><span class='r-in'></span>
+<span class='r-in'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'><a href='physiologies.html'>physiologies</a></span><span class='op'>(</span><span class='op'>)</span></span>
+<span class='r-in'><span class='va'>list_of_errors</span> <span class='op'>&lt;-</span> <span class='fu'>bugphyz</span><span class='fu'>:::</span><span class='fu'>.checkColumnValuesList</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span></span>
+<span class='r-in'><span class='va'>list_of_errors</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='op'>}</span></span>
+<span class='r-in'></span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
