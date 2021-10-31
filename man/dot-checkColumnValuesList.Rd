@@ -13,7 +13,7 @@
 }
 \value{
 Invisibly returns a list of error conditions (subclass
-"invalid_column_values" or "invalid_column_class"), and it also prints
+"invalid_column_values"), and it also prints
 an error message if a column contains invalid values in any of the datasets
 in the list. If no errors are found, it returns NULL and prints a message
 indicating it (per datasest). If \code{table = TRUE}, it returns a tibble of

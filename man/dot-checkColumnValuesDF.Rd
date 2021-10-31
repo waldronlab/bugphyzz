@@ -14,7 +14,7 @@ Default is NULL.}
 }
 \value{
 Invisibly returns a list of error
-conditions (subclass "invalid_column_values" or "invalid_column_class"),
+conditions (subclass "invalid_column_values"),
 and it also prints an error message if a column contains invalid values.
 If no errors are found, it returns NULL and a message indicating it.
 }

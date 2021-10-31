@@ -216,8 +216,8 @@
 #' @param quiet_success If FALSE, an error message is printed when no errors
 #' are found. Default is TRUE.
 #'
-#' @return An error condition of subclass "invalid_column_values" or
-#' "invalid_column_class". If `quiet_success` is FALSE and no errors were
+#' @return An error condition of subclass "invalid_column_values".
+#' If `quiet_success` is FALSE and no errors were
 #' found, it returns NULL and prints a message indicating that no errors were
 #' found.
 #'
@@ -234,7 +234,10 @@
 #' \dontrun{
 #'
 #' x <- physiologies("aerophilicity")[[1]]
-#' err <- tryCatch(bugphyzz:::.checkColumnValues(x), error = function(e) e)
+#' err <- tryCatch(
+#'     error = function(e) e,
+#'     bugphyzz:::.checkColumnValues(x, "Taxon_name")
+#' )
 #'
 #' }
 #'
@@ -315,7 +318,7 @@
 #' Default is NULL.
 #'
 #' @return Invisibly returns a list of error
-#' conditions (subclass "invalid_column_values" or "invalid_column_class"),
+#' conditions (subclass "invalid_column_values"),
 #' and it also prints an error message if a column contains invalid values.
 #' If no errors are found, it returns NULL and a message indicating it.
 #'
@@ -383,7 +386,7 @@
 #' @param table If TRUE (default), it returns a table instead of a list.
 #'
 #' @return Invisibly returns a list of error conditions (subclass
-#' "invalid_column_values" or "invalid_column_class"), and it also prints
+#' "invalid_column_values"), and it also prints
 #' an error message if a column contains invalid values in any of the datasets
 #' in the list. If no errors are found, it returns NULL and prints a message
 #' indicating it (per datasest). If `table = TRUE`, it returns a tibble of
@@ -601,7 +604,6 @@
 #' @seealso
 #' \code{\link{.stop_custom}};
 #' \code{\link{.stop_invalid_column_values}};
-#' \code{\link{.stop_invalid_column_class}};
 #' \code{\link{.stop_uncatalogued_column}};
 #' \code{\link{.checkColumnValues}}
 #'
@@ -655,7 +657,6 @@
 #' @seealso
 #' \code{\link{.stop_custom}};
 #' \code{\link{.stop_invalid_column_values}};
-#' \code{\link{.stop_invalid_column_class}};
 #' \code{\link{.stop_uncatalogued_column}};
 #' \code{\link{.checkColumnValues}}
 #'
@@ -872,10 +873,9 @@
       message(crayon::red(conditionMessage(e), "\n"))
       e
     },
+    ## Other errors
     error = function(e) {
-      message(crayon::bgBlue(
-        "Error in the", dat_name, "dataset. ", conditionMessage(e), "\n"
-      ))
+      message(crayon::bgBlue(conditionMessage(e), "\n"))
       e
     },
     FUN(...)

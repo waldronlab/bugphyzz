@@ -27,7 +27,6 @@ within the \code{\link{.checkColumnValues}} function.
 \seealso{
 \code{\link{.stop_custom}};
 \code{\link{.stop_invalid_column_values}};
-\code{\link{.stop_invalid_column_class}};
 \code{\link{.stop_uncatalogued_column}};
 \code{\link{.checkColumnValues}}
 

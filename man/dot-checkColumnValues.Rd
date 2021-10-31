@@ -18,8 +18,8 @@ Default is NULL.}
 are found. Default is TRUE.}
 }
 \value{
-An error condition of subclass "invalid_column_values" or
-"invalid_column_class". If \code{quiet_success} is FALSE and no errors were
+An error condition of subclass "invalid_column_values".
+If \code{quiet_success} is FALSE and no errors were
 found, it returns NULL and prints a message indicating that no errors were
 found.
 }
@@ -32,7 +32,10 @@ valid values according to the extdata/template.tsv file.
 \dontrun{
 
 x <- physiologies("aerophilicity")[[1]]
-err <- tryCatch(bugphyzz:::.checkColumnValues(x), error = function(e) e)
+err <- tryCatch(
+    error = function(e) e,
+    bugphyzz:::.checkColumnValues(x, "Taxon_name")
+)
 
 }
 
