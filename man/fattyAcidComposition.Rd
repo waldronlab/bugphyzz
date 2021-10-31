@@ -16,6 +16,6 @@ fatty acid composition of microbes.
 \examples{
 fattyAcidComposition()
 x <- fattyAcidComposition()
-dplyr::glimpse(x)
+x
 
 }

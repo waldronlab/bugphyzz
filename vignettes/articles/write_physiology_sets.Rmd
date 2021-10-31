@@ -1,0 +1,19 @@
+---
+title: "Write physiology sets"
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(bugphyzz)
+```
+
+```{r}
+bergeys <- bugphyzz:::.bergeysAbstracts()
+head(bergeys)
+```

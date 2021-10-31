@@ -14,7 +14,8 @@ Suggests:
     ggplot2,
     knitr,
     plotly,
-    rmarkdown
+    rmarkdown,
+    testthat
 Config/testthat/edition: 3
 Encoding: UTF-8
 LazyData: true
@@ -29,12 +30,12 @@ Imports:
     rlang,
     stringr,
     taxize,
-    testthat (>= 3.0.0),
     tidyr,
     tidyselect,
     tibble,
     crayon,
     mgsub,
-    methods
+    methods,
+    tidytext
 Depends: 
     R (>= 4.1.0)

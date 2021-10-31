@@ -7,17 +7,18 @@
 fill_NCBI(data)
 }
 \arguments{
-\item{data}{a dataframe from the \link{physiologies} function}
+\item{data}{A dataframe from the \link{physiologies} function.}
 }
 \value{
-a dataframe
+A dataframe.
 }
 \description{
-Fill in NCBI IDs where the cells have NA
+\code{fill_NCBI} fills NA cells in the NCBI_ID column with taxids according
+to the Taxon_name column.
 }
 \examples{
 \dontrun{
-aer <- physiologies("aerophilicity")
+aer <- physiologies("aerophilicity")[[1]]
 aer_NCBI <- fill_NCBI(aer)
 }
 }
