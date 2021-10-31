@@ -16,6 +16,7 @@ library(bugphyzz)
 library(dplyr)
 library(purrr)
 library(ggplot2)
+
 ```
 
 ```{r, message=FALSE}
@@ -34,6 +35,8 @@ taxonomy_table %>%
     count(rank) %>% 
     arrange(-n)
 ```
+
+# Taxa annotated with NCBI IDs by rank
 
 ```{r}
 data <- phys %>% 
@@ -55,7 +58,11 @@ data %>%
   theme_minimal() +
   theme(legend.position = "bottom", plot.margin = unit(c(1,2,1,1),"cm"))
 ```
+
+# Functions 
+
 ```{r}
+## Create summary statistics per dataset
 attributeSummaryByRank <- function(x, y, categorical = TRUE) {
     
     if (isTRUE(categorical)) {
@@ -84,121 +91,139 @@ attributeSummaryByRank <- function(x, y, categorical = TRUE) {
         as.data.frame() %>% 
         knitr::kable(row.names = TRUE)
 }
+
+## Create histogram (for datasets with continuous values)
+display_freq <- function(data, phys) {
+    data %>%
+        ggplot2::ggplot(ggplot2::aes(Attribute_value)) +
+        ggplot2::geom_histogram() +
+        ggplot2::labs(x = phys, y = "Frequency", title = phys) +
+        ggplot2::theme_bw()
+}
+
+## Create boxplot per phylum (for datasets with continuous values)
+boxplot_per_phylum <- function(data, phys, unit = "unit") {
+    title <- paste(phys, "per phylum")
+    y <- paste(phys, "(", unit, ")")
+    data %>%
+       ggplot2::ggplot(ggplot2::aes(phylum, Attribute_value)) +
+       ggplot2::geom_boxplot() +
+       ggplot2::labs(title = title, y = y, x = "Phylum") +
+       ggplot2::theme_bw() +
+       ggplot2::theme(
+         axis.text.x = ggplot2::element_text(angle = 45, hjust = 1)
+       )
+}
+
 ```
 
+# Datasets with categorical attributes in "physiologies"
 
-```{r}
+```{r categorical attributes}
 categorical_phys <- phys %>%
     keep(~is.logical(.x$Attribute_value)) %>% 
     map( ~ left_join( .x, taxonomy_table, by = "NCBI_ID"))
-
 categorical_phys_names <- names(categorical_phys)
-
 categorical_phys_names
 ```
 
 ```{r, warning=FALSE}
-summary_tables <-
-  map(categorical_phys_names, ~ attributeSummaryByRank(categorical_phys, .x)) %>% 
+cat_summary_tables <- categorical_phys_names %>% 
+    map(~ attributeSummaryByRank(categorical_phys, .x)) %>% 
     set_names(categorical_phys_names)
 ```
 
-
 ## Animal pathogen
 
-
 ```{r}
-summary_tables$`animal pathogen`
+cat_summary_tables$`animal pathogen`
 ```
 
 ## Antimicrobial resistance
 
 ```{r}
-summary_tables$`antimicrobial resistance`
+cat_summary_tables$`antimicrobial resistance`
 ```
 
 ## Antimicrobial sensitivity
 
 ```{r}
-summary_tables$`antimicrobial sensitivity`
+cat_summary_tables$`antimicrobial sensitivity`
 ```
 
 ## Biofilm forming
 
 ```{r}
-summary_tables$`biofilm forming`
+cat_summary_tables$`biofilm forming`
 ```
 
 ## Arrangement
 
 ```{r}
-summary_tables$arrangement
+cat_summary_tables$arrangement
 ```
 
 ## Shape
 
 ```{r}
-summary_tables$shape
+cat_summary_tables$shape
 ```
 
 ## Extreme environment
 
 ```{r}
-summary_tables$`extreme environment`
+cat_summary_tables$`extreme environment`
 ```
 
 ## Gram stain 
 
 ```{r}
-summary_tables$`gram stain`
+cat_summary_tables$`gram stain`
 ```
 
 ## Growth medium
 
 ```{r}
-summary_tables$`growth medium`
+cat_summary_tables$`growth medium`
 ```
 
 ## Habitat
 
 ```{r}
-summary_tables$habitat
+cat_summary_tables$habitat
 ```
 
 ## Aerophilicity
 
 ```{r}
-summary_tables$aerophilicity
+cat_summary_tables$aerophilicity
 ```
 
 ## Plant pathogenicity
 
 ```{r}
-summary_tables$`plant pathogenicity`
+cat_summary_tables$`plant pathogenicity`
 ```
-
 
 ## Spore shape
 
 ```{r}
-summary_tables$`spore shape`
+cat_summary_tables$`spore shape`
 ```
 
 ## Isolation site
 
 ```{r}
-summary_tables$`isolation site`
+cat_summary_tables$`isolation site`
 ```
 ## Disease association
 
 ```{r}
-summary_tables$`disease association`
+cat_summary_tables$`disease association`
 ```
 
-# Numeric attributes in "physiologies"
 
-+ Numeric attributes will be considered as those with numeric values in
-the "Attribute_value" column, i.e. type/class numeric.
+# Datasests with numeric attributes in "physiologies"
 
 ```{r}
 numeric_phys <- phys %>% 
@@ -213,6 +238,17 @@ numeric_phys_names
 ```{r}
 numeric_summary_tables = map(numeric_phys_names, ~ attributeSummaryByRank(numeric_phys, .x, categorical = FALSE)) %>% 
     set_names(numeric_phys_names)
+
+histograms <- map2(
+  phys[numeric_phys_names], numeric_phys_names, ~ display_freq(.x, .y)
+)
+
+boxplots <- map2(
+  phys[numeric_phys_names], numeric_phys_names, ~ {
+    x <- left_join(.x, taxonomy_table, by = "NCBI_ID")
+    boxplot_per_phylum(x, .y)
+  }
+)
 ```
 
 ## Butyrate producing
@@ -221,15 +257,26 @@ numeric_summary_tables = map(numeric_phys_names, ~ attributeSummaryByRank(numeri
 numeric_summary_tables$`butyrate producing`
 ```
 
-## COGEM pathogenicity rating
+```{r}
+histograms$`butyrate producing`
+```
 
 ```{r}
-numeric_summary_tables$`COGEM pathogenicity rating`
+boxplots$`butyrate producing`
 ```
+
 ## Mutation rate per site per generation
 
 ```{r}
 numeric_summary_tables$`mutation rate per site per generation`
+```
+
+```{r}
+histograms$`mutation rate per site per generation`
+```
+
+```{r}
+boxplots$`mutation rate per site per generation`
 ```
 
 ## Mutation rates per site per year
@@ -238,16 +285,54 @@ numeric_summary_tables$`mutation rate per site per generation`
 numeric_summary_tables$`mutation rates per site per year`
 ```
 
+```{r}
+histograms$`mutation rates per site per year`
+```
+
+```{r}
+boxplots$`mutation rates per site per year`
+```
+
 ## Growth temperature
 
 ```{r}
 numeric_summary_tables$`growth temperature`
 ```
 
+```{r, message=FALSE}
+histograms$`growth temperature`
+```
+
+```{r}
+boxplots$`growth temperature`
+```
+
 ## Optimal pH in "physiologies"
 
 ```{r}
 numeric_summary_tables$`optimal ph`
+```
+
+```{r}
+histograms$`optimal ph`
+```
+
+```{r}
+boxplots$`optimal ph`
+```
+
+## COGEM pathogenicity rating
+
+```{r}
+numeric_summary_tables$`COGEM pathogenicity rating`
+```
+
+```{r}
+histograms$`COGEM pathogenicity rating`
+```
+
+```{r}
+boxplots$`COGEM pathogenicity rating`
 ```
 
 # Other datasets
@@ -264,9 +349,7 @@ for (i in seq_along(other_datasets)) {
 }
 
 other_datasets <- map(other_datasets, ~ left_join(.x, taxonomy_table, by = "NCBI_ID"))
-
 other_datasets_names <- names(other_datasets)
-
 other_datasets_names
 ```
 
@@ -275,12 +358,12 @@ other_datasets_summary_tables <- map(other_datasets_names, ~ attributeSummaryByR
     set_names(other_datasets_names)
 ```
 
-
 ## Acetate producing
 
 ```{r}
 other_datasets_summary_tables$`acetate producing`
 ```
+
 ## Lactate producing
 
 ```{r}
@@ -292,6 +375,7 @@ other_datasets_summary_tables$`lactate producing`
 ```{r}
 other_datasets_summary_tables$width
 ```
+
 ## Hydrogen gas producing
 
 ```{r}
@@ -303,6 +387,7 @@ other_datasets_summary_tables$`hydrogen gas producing`
 ```{r}
 other_datasets_summary_tables$length
 ```
+
 # Fatty acid composition
 
 + Dataset imported with the `fattyAcidComposition` function.
@@ -313,7 +398,6 @@ fac[[1]] <- left_join(fac[[1]], taxonomy_table, by = "NCBI_ID")
 names(fac) <- "fatty acid composition"
 ```
 
-
 ```{r}
 fac_summary_table <- attributeSummaryByRank(fac, "fatty acid composition", categorical = FALSE)
 ```
@@ -322,42 +406,11 @@ fac_summary_table <- attributeSummaryByRank(fac, "fatty acid composition", categ
 fac_summary_table
 ```
 
-
-# Plots of continuous variables
-
-Useful functions
 ```{r}
-display_freq <- function(data, phys) {
-    data %>%
-        ggplot2::ggplot(ggplot2::aes(Attribute_value)) +
-        ggplot2::geom_histogram() +
-        ggplot2::labs(x = phys, y = "Frequency") +
-        ggplot2::theme_bw()
-}
-
-boxplot_per_phylum <- function(data, phys, unit = "unit") {
-    title <- paste(phys, "per phylum")
-    y <- paste(phys, "(", unit, ")")
-    data %>%
-       ggplot2::ggplot(ggplot2::aes(phylum, Attribute_value)) +
-       ggplot2::geom_boxplot() +
-       ggplot2::labs(title = title, y = y, x = "Phylum") +
-       ggplot2::theme_bw() +
-       ggplot2::theme(
-         axis.text.x = ggplot2::element_text(angle = 45, hjust = 1)
-       )
-}
-
+histograms$`fatty acid composition`
 ```
 
-
-```{r, message=FALSE}
-display_freq(phys$`growth temperature`, "gt")
-```
-
-
 ```{r}
-x = left_join(phys$`growth temperature`, taxonomy_table, by = "NCBI_ID")
-boxplot_per_phylum(x, "x")
+boxplots$`fatty acid composition`
 ```
 
