@@ -10,13 +10,15 @@
 #' @importFrom utils read.csv
 #' @importFrom tidyr pivot_longer
 #' @importFrom magrittr %>%
+#' @importFrom rlang .data
+#' @importFrom dplyr left_join
 #'
 #' @export
 #'
 #' @examples
 #' fattyAcidComposition()
 #' x <- fattyAcidComposition()
-#' dplyr::glimpse(x)
+#' x
 #'
 fattyAcidComposition <- function(){
     link <- customLinks() %>%
@@ -27,7 +29,7 @@ fattyAcidComposition <- function(){
         tidyr::pivot_longer(cols = .data[["Br-C10:1"]]:.data[["Oxo-C19:1"]],
                                       names_to = "Attribute_new",
                                       values_to = "Attribute_value")
-    merge(x = fac_long, y = ranks_parents, by = "NCBI_ID", all.x = TRUE)
+    dplyr::left_join(fac_long, ranks_parents, by = "NCBI_ID")
 }
 
 #' Custom links
