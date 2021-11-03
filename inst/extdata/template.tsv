@@ -11,7 +11,7 @@ Confidence_interval	required	9	^(unknown|exp|usually|always|sometimes)$	string	c
 Note	optional	NA	^.+$	string	character
 Strain	optional	NA	^.+$	string	character
 Unit	optional	NA	^.+$	string	character
-Rank	optional	NA	^.+$	string	character
+Rank	optional	NA	^(superkingdom|kingdom|phylum|class|order|family|genus|species|strain)$	string	character
 Parent_NCBI_ID	optional	NA	^[0-9]+$	string	integer
 Parent_name	optional	NA	^.+$	string	character
-Parent_rank	optional	NA	^.+$	string	character
+Parent_rank	optional	NA	^(superkingdom|kingdom|phylum|class|order|family|genus|species|strain)$	string	character
