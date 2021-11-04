@@ -78,6 +78,12 @@ taxonomyAnnotations <- taxonomy_table %>%
   dplyr::distinct() %>%
   magrittr::set_colnames(paste0("bugphyzz_", colnames(.)))
 
+ranks_parents <- purrr::modify_if(
+  ranks_parents,
+  .p = grepl("NCBI_ID", colnames(ranks_parents)),
+  .f =  ~ as.integer(.x)
+)
+
 ## Save data -------------------------------------------------------------
 usethis::use_data(
   ranks_parents,
