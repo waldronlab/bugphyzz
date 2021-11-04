@@ -244,7 +244,7 @@
 .checkColumnValues <-
     function(dat, col, dat_name = NULL, quiet_success = TRUE) {
 
-        ## Check that the column is in template
+        ## Check that the column is in the template
         template <- .template(dat)
 
         if (!col %in% template[["column_name"]])
@@ -289,6 +289,19 @@
                     invalid_pos = invalid_pos
                 )
             }
+        }
+
+        ## Check column class
+        col_class <- class(dat[[col]])
+        col_regex <-
+          template[["column_class"]][template[["column_name"]] == col]
+        class_lgl <- grepl(col_regex, col_class)
+
+        if (isFALSE(class_lgl)) {
+          .stop_invalid_column_class(
+              col = col, dat_name = dat_name, invalid_class = col_class,
+              valid_class = col_regex
+          )
         }
 
         if (!quiet_success) {
@@ -678,6 +691,30 @@
       col = col, dat_name = dat_name, ...)
 }
 
+
+.stop_invalid_column_class <-
+    function(col, dat_name = NULL, invalid_class, valid_class, ...) {
+
+        if (!is.null(dat_name)) {
+            msg <- paste0(
+                ">>> Invalid class. The class of the column ", col, " of the ",
+                dat_name, " dataset is not valid (", invalid_class, ").",
+                " It should be of class ", valid_class, "."
+            )
+        } else {
+            msg <- paste0(
+                ">>> Invalid class. The class of the column ", col,
+                " is not valid (", invalid_class, "). It should be of class ",
+                valid_class, "."
+            )
+        }
+        .stop_custom(
+            subclass = "invalid_column_class", message = msg, col = col,
+            dat_name = dat_name, invalid_class = invalid_class,
+            valid_class = valid_class
+        )
+}
+
 # Helper functions --------------------------------------------------------
 
 #' Required columns
@@ -846,6 +883,7 @@
         dplyr::summarise(
             dplyr::across(tidyselect::starts_with("invalid_"), ~list(.x))
         ) %>%
+        dplyr::ungroup() %>%
         dplyr::mutate(
             message = sub(">>> (\\w+ \\w+)\\..+$", "\\1", message)
         ) %>%
@@ -853,6 +891,24 @@
         dplyr::select(-.data[["dat_name"]])
 }
 
+#' Error handler
+#'
+#' \code{.errorHandler} implements tryCatch to capture curation errors and their
+#' metadata.
+#'
+#' @param FUN A check function.
+#' @param ... Arguments passed to the check function indicated with the FUN
+#' argument.
+#'
+#' @return
+#' An object of class "error", "conditiion" and variable subclass, e.g.,
+#' "invalid_column_values!.
+#'
+#' @importFrom crayon red
+#' @importFrom crayon bgBlue
+#'
+#' @keywords internal
+#'
 .errorHandler <- function(FUN, ...) {
   tryCatch(
     ## errors in required columns
@@ -873,6 +929,13 @@
       message(crayon::red(conditionMessage(e), "\n"))
       e
     },
+
+    ## errors in column class
+    invalid_column_class = function(e) {
+      message(crayon::red(conditionMessage(e), "\n"))
+      e
+    },
+
     ## Other errors
     error = function(e) {
       message(crayon::bgBlue(conditionMessage(e), "\n"))
