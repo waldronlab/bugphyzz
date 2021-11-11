@@ -12,6 +12,7 @@ knitr::opts_chunk$set(
 ```{r setup, message=FALSE}
 library(bugphyzz)
 library(dplyr)
+library(purrr)
 ```
 
 Import all of the datasets through the functions provided by the bugphyzz
@@ -108,5 +109,60 @@ err2 %>%
     select(-invalid_values, -invalid_pos) %>% # to many values
     knitr::kable()
 ```
+
+# Check valid NCBI IDs
+
+This function is not included in the package because it would add taxizedb
+as a dependency
+
+```{r}
+check_valid_NCBI_IDs <- function(dat) {
+
+  ncbi_ids <- dat[["NCBI_ID"]]
+  taxonomies <- taxizedb::classification(ncbi_ids, db = "ncbi")
+  invalid_positions_lgl <- !is.na(ncbi_ids) & is.na(taxonomies)
+  names(invalid_positions_lgl) <- NULL
+  invalid_positions <- which(invalid_positions_lgl)
+
+  if (!length(invalid_positions)) {
+    message("All NCBI IDs are valid.")
+    return(NULL)
+  }
+
+  invalid_values <- ncbi_ids[invalid_positions]
+
+  list(invalid_positions = invalid_positions, invalid_values = invalid_values)
+
+  bugphyzz:::.stop_custom("invalid_ncbi_ids", message = "Invalid NCBI IDs.",
+    invalid_positions = invalid_positions, invalid_values = invalid_values)
+}
+```
+
+
+```{r}
+  err_list <- lapply(phys, function(x) {
+    tryCatch(
+      invalid_ncbi_ids = function(e) e,
+      check_valid_NCBI_IDs(x)
+    )
+  }) %>%
+    discard(is.null)
+```
+```{r}
+map(err_list, ~{
+  tibble::tibble(
+    error_type = class(.x)[1],
+    invalid_pos = .x$invalid_positions,
+    invalid_val = as.character(.x$invalid_values)
+  )
+}) %>% bind_rows(.id = "dataset") %>% 
+  group_by(across(c(-invalid_val, -invalid_pos))) %>% 
+  summarise(across(starts_with("invalid"), ~list(.x))) %>% 
+  knitr::kable()
+```
+
+
+
+
 
 

@@ -3,6 +3,8 @@ phys <- physiologies()
 phys[["fatty acid composition"]] <- fattyAcidComposition()
 
 
+# Functions ---------------------------------------------------------------
+
 ## A function for testing for validity of NCBI_IDs
 check_valid_NCBI_IDs <- function(dat) {
 
@@ -26,10 +28,7 @@ check_valid_NCBI_IDs <- function(dat) {
 }
 
 
-# test_that("all datasets pass curation tests", {
-#     expect_null(bugphyzz:::.checkColumnValuesList(phys))
-#     expect_null(bugphyzz:::.checkRequiredColumnsList(phys))
-# })
+# Tests -------------------------------------------------------------------
 
 test_that("the NCBI_ID column is not of type numeric.", {
     ## If the imported NCBI_ID column is of class numeric, this could mean
@@ -60,7 +59,7 @@ test_that("all NCBI_IDs are valid.", {
   expect_length(err_list, 0)
 })
 
-
-
-
-
+test_that("all datasets pass curation tests", {
+    expect_null(bugphyzz:::.checkColumnValuesList(phys))
+    expect_null(bugphyzz:::.checkRequiredColumnsList(phys))
+})
