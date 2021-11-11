@@ -39,8 +39,10 @@ physiologies <- function(keyword = "all") {
     }
 
     database[[i]] <- database[[i]][!is.na(database[[i]]$Attribute_value), ]
-    database[[i]][["NCBI_ID"]] <- suppressWarnings(as.integer(database[[i]][["NCBI_ID"]]))
-    database[[i]] <- merge(x = database[[i]], y = ranks_parents, by = "NCBI_ID", all.x = TRUE)
+
+    rp <- ranks_parents
+    class(rp[["NCBI_ID"]]) <- class(database[[i]][["NCBI_ID"]])
+    database[[i]] <- dplyr::left_join(database[[i]], rp, by = "NCBI_ID")
   }
   return(database)
 }
