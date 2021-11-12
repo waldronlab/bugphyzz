@@ -261,6 +261,19 @@
                 template[["valid_values"]][template[["column_name"]] == col]
             values_lgl <- grepl(string, col_values) | is.na(col_values)
 
+            if (col == "NCBI_ID") {
+              parent_ncbi <- dat[["Parent_NCBI_ID"]]
+              required_parent_ncbi <- !grepl(string, col_values)
+              missing_parent_ncbi <- !grepl(string, parent_ncbi)
+              required_missing_parent_ncbi <- mapply("&", required_parent_ncbi,
+                                                     missing_parent_ncbi)
+              missing_pos <- seq_along(col_values)[required_missing_parent_ncbi]
+
+              .stop_required_missing_row_value(
+                "Parent_NCBI_ID", missing_pos, dat_name
+              )
+            }
+
             if (!all(values_lgl)) {
                 invalid_values <- col_values[!values_lgl]
                 n_rows <- length(invalid_values)
@@ -713,6 +726,46 @@
             dat_name = dat_name, invalid_class = invalid_class,
             valid_class = valid_class
         )
+}
+
+
+#' Stop condition for missing and required row value in a bugphyzz dataset
+#'
+#' \code{.stop_required_missing_row_value} generates an error condition of
+#' class "required_missing_row_value". This function should be used within the
+#' \code{\link{.checkRequiredColumns}} function.
+#'
+#' @param column A character vector of the column name where data is missing.
+#' @param rows An integer vector containing the position of missing row data.
+#' @param dat_name A character string indicating the name of the dataset.
+#' @param ... Any other argument useful to identify the source of the error
+#' and/or how to fix it.
+#'
+#' @return
+#' Error condition.
+#' Object of class "required_missing_row_value", "error", "condition".
+#'
+#' @keywords internal
+#'
+#' @family custom stop functions
+#' @seealso
+#' \code{\link{.stop_custom}};
+#' \code{\link{.stop_required_columns_missing}};
+#' \code{\link{.stop_required_columns_misplaced}};
+#' \code{\link{.checkRequiredColumns}}
+#'
+.stop_required_missing_row_value <- function(column, rows, dat_name = NULL, ...) {
+  rows <- paste0(rows, collapse = ", ")
+  if (!is.null(dat_name)) {
+    msg <- paste0(">>> Required row values missing. ", column, " in the `",
+                  dat_name, "` dataset is missing and required in rows ",
+                  rows, ".")
+  } else {
+    msg <- paste0(">>> Required row values missing. The ", column,
+                  " is missing and required in rows ", rows, ".")
+  }
+  .stop_custom(subclass = "required_missing_row_value", message = msg,
+               column = column, rows = rows, dat_name = dat_name, ...)
 }
 
 # Helper functions --------------------------------------------------------
