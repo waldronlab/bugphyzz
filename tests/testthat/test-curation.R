@@ -31,9 +31,9 @@ check_valid_NCBI_IDs <- function(dat) {
 # Tests -------------------------------------------------------------------
 
 test_that("the NCBI_ID column is not of type numeric.", {
-    ## If the imported NCBI_ID column is of class numeric, this could mean
-    ## that some NCBI_ID values are too high and unlikely to be valid taxonomy
-    ## ids in the NCBI database.
+#     ## If the imported NCBI_ID column is of class numeric, this could mean
+#     ## that some NCBI_ID values are too high and unlikely to be valid taxonomy
+#     ## ids in the NCBI database.
     err_tbl <- .checkColumnValuesList(phys)
 
     filter_tbl <-

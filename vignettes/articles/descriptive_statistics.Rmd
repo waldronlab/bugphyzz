@@ -41,6 +41,7 @@ taxonomy_table %>%
 ```{r}
 data <- phys %>% 
   map(~ select(.x, all_of(c("NCBI_ID", "Rank")))) %>% 
+  map(~ modify_at(.x, "NCBI_ID", as.integer)) %>% 
   bind_rows(.id = "dataset") %>% 
   as_tibble()
 ```
