@@ -93,7 +93,8 @@
     
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">bugphyzz</span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span></code></pre></div>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://purrr.tidyverse.org">purrr</a></span><span class="op">)</span></code></pre></div>
 <p>Import all of the datasets through the functions provided by the bugphyzz package.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">phys</span> <span class="op">&lt;-</span> <span class="fu"><a href="../../reference/physiologies.html">physiologies</a></span><span class="op">(</span><span class="op">)</span>
@@ -119,7 +120,7 @@
 <span class="co">#&gt; Columns: 4</span>
 <span class="co">#&gt; $ dataset    &lt;chr&gt; "mutation rates per site per year", "extreme environment", …</span>
 <span class="co">#&gt; $ error_type &lt;chr&gt; "misplaced", "misplaced", "misplaced", "misplaced", "missin…</span>
-<span class="co">#&gt; $ columns    &lt;chr&gt; "Genome_ID, Accession_ID, Taxon_name", "Genome_ID, Accessio…</span>
+<span class="co">#&gt; $ columns    &lt;chr&gt; "NCBI_ID, Genome_ID, Accession_ID, Taxon_name", "NCBI_ID, G…</span>
 <span class="co">#&gt; $ link       &lt;chr&gt; "https://docs.google.com/spreadsheets/d/e/2PACX-1vQGJBifwNI…</span></code></pre></div>
 <p>Visualization of the errors:</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
@@ -142,25 +143,25 @@
 <tr class="odd">
 <td align="left">mutation rates per site per year</td>
 <td align="left">misplaced</td>
-<td align="left">Genome_ID, Accession_ID, Taxon_name</td>
+<td align="left">NCBI_ID, Genome_ID, Accession_ID, Taxon_name</td>
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQGJBifwNIYz6znmGAFgGtzaSNPhxU8qagDgl4BWLHKDcjs_gm11pEaLV7X01qdyeacmwYxalTrx0um/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQGJBifwNIYz6znmGAFgGtzaSNPhxU8qagDgl4BWLHKDcjs_gm11pEaLV7X01qdyeacmwYxalTrx0um/pub?output=csv</a></td>
 </tr>
 <tr class="even">
 <td align="left">extreme environment</td>
 <td align="left">misplaced</td>
-<td align="left">Genome_ID, Accession_ID, Taxon_name</td>
+<td align="left">NCBI_ID, Genome_ID, Accession_ID, Taxon_name</td>
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vSh82md-R7XuM6PMs4UY6DYCY99wgwMcY6PD-m-VoxbJJl_Ce9JWhKtTEdFLEMmzrUxDyrQtfLBCbKj/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vSh82md-R7XuM6PMs4UY6DYCY99wgwMcY6PD-m-VoxbJJl_Ce9JWhKtTEdFLEMmzrUxDyrQtfLBCbKj/pub?output=csv</a></td>
 </tr>
 <tr class="odd">
 <td align="left">gram stain</td>
 <td align="left">misplaced</td>
-<td align="left">Genome_ID, Accession_ID, Taxon_name</td>
+<td align="left">NCBI_ID, Genome_ID, Accession_ID, Taxon_name</td>
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vRxQOO7O7oJDJrFbY3s1Y_rbouUSR3rM_a3kGlXgcVMys5pFLqmd00VjJh1adJBmh3xA3aM8r3Am2oC/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vRxQOO7O7oJDJrFbY3s1Y_rbouUSR3rM_a3kGlXgcVMys5pFLqmd00VjJh1adJBmh3xA3aM8r3Am2oC/pub?output=csv</a></td>
 </tr>
 <tr class="even">
 <td align="left">growth temperature</td>
 <td align="left">misplaced</td>
-<td align="left">Genome_ID, Accession_ID, Taxon_name</td>
+<td align="left">NCBI_ID, Genome_ID, Accession_ID, Taxon_name</td>
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vTWXUnR0_jkpZEE06C0GAypTGjOa2RnOPiLSmPiwAnaf2qS33hd-6GKG95CYDgKeSk6t4BFVjIAB_sh/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vTWXUnR0_jkpZEE06C0GAypTGjOa2RnOPiLSmPiwAnaf2qS33hd-6GKG95CYDgKeSk6t4BFVjIAB_sh/pub?output=csv</a></td>
 </tr>
 <tr class="odd">
@@ -172,31 +173,31 @@
 <tr class="even">
 <td align="left">width</td>
 <td align="left">misplaced</td>
-<td align="left">Genome_ID, Accession_ID, Taxon_name</td>
+<td align="left">NCBI_ID, Genome_ID, Accession_ID, Taxon_name</td>
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vR45vzAobXMOH1SCECpkBkIvxTsG5d8jAweSHaUst-gFKQcS0tTYUjivmLVByOLbFZgF59miCyF11TC/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vR45vzAobXMOH1SCECpkBkIvxTsG5d8jAweSHaUst-gFKQcS0tTYUjivmLVByOLbFZgF59miCyF11TC/pub?output=csv</a></td>
 </tr>
 <tr class="odd">
 <td align="left">isolation site</td>
 <td align="left">misplaced</td>
-<td align="left">Genome_ID, Accession_ID, Taxon_name</td>
+<td align="left">NCBI_ID, Genome_ID, Accession_ID, Taxon_name</td>
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vR5qKaSI_iXovASXA2U8figFKFBRNOuuFcnr-wSedtGuxAu2m8IjHp1uD23NGTWK9NmnKcO0m7FfkIx/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vR5qKaSI_iXovASXA2U8figFKFBRNOuuFcnr-wSedtGuxAu2m8IjHp1uD23NGTWK9NmnKcO0m7FfkIx/pub?output=csv</a></td>
 </tr>
 <tr class="even">
 <td align="left">disease association</td>
 <td align="left">misplaced</td>
-<td align="left">Genome_ID, Accession_ID, Taxon_name</td>
+<td align="left">NCBI_ID, Genome_ID, Accession_ID, Taxon_name</td>
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vTboJM7necIfjgRgyYJ4LJWkCv_1y7O00yvyiSGzFdSfJDkeLqWrQ8FpcsYKFSOrQw75wCRst6KA0_a/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vTboJM7necIfjgRgyYJ4LJWkCv_1y7O00yvyiSGzFdSfJDkeLqWrQ8FpcsYKFSOrQw75wCRst6KA0_a/pub?output=csv</a></td>
 </tr>
 <tr class="odd">
 <td align="left">hydrogen gas producing</td>
 <td align="left">misplaced</td>
-<td align="left">Genome_ID, Accession_ID, Taxon_name</td>
+<td align="left">NCBI_ID, Genome_ID, Accession_ID, Taxon_name</td>
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vSpucXiYrMe_iYvnZDuNSNkRVnEWRQhykCCXoIvtmTiKAVUdkVnRYvl17nbwGqZDg2xVDwaUXccGYsF/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vSpucXiYrMe_iYvnZDuNSNkRVnEWRQhykCCXoIvtmTiKAVUdkVnRYvl17nbwGqZDg2xVDwaUXccGYsF/pub?output=csv</a></td>
 </tr>
 <tr class="even">
 <td align="left">length</td>
 <td align="left">misplaced</td>
-<td align="left">Genome_ID, Accession_ID, Taxon_name</td>
+<td align="left">NCBI_ID, Genome_ID, Accession_ID, Taxon_name</td>
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQkcQ7CJ0LjgE0928maxcVEiqq7QHl6vuosL7qdWaCMVuqHCDwsPJA7yNSeXm9FIip-mDRaU6pMk4Ww/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQkcQ7CJ0LjgE0928maxcVEiqq7QHl6vuosL7qdWaCMVuqHCDwsPJA7yNSeXm9FIip-mDRaU6pMk4Ww/pub?output=csv</a></td>
 </tr>
 <tr class="odd">
@@ -227,15 +228,16 @@ file.</p>
 7. ‘link’ which contains the link to the dataset indicated in the first column.</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">err2</span><span class="op">)</span>
-<span class="co">#&gt; Rows: 72</span>
-<span class="co">#&gt; Columns: 7</span>
-<span class="co">#&gt; Groups: dataset, error_type, col, n_rows [72]</span>
-<span class="co">#&gt; $ dataset        &lt;chr&gt; "acetate producing", "acetate producing", "aerophilicit…</span>
-<span class="co">#&gt; $ error_type     &lt;chr&gt; "Invalid values", "Invalid values", "Invalid values", "…</span>
-<span class="co">#&gt; $ col            &lt;chr&gt; "Attribute_value", "Confidence_interval", "Attribute", …</span>
-<span class="co">#&gt; $ n_rows         &lt;int&gt; 22, 24, 3, 1304, 18, 1421, 1, 1, 10321, 5, 832, 1, 1, 1…</span>
-<span class="co">#&gt; $ invalid_values &lt;list&gt; &lt;"−2.0", "−10.0", "−10.6", "−2.3", "−3.9", "−3.6", "11…</span>
-<span class="co">#&gt; $ invalid_pos    &lt;list&gt; &lt;1, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 1…</span>
+<span class="co">#&gt; Rows: 125</span>
+<span class="co">#&gt; Columns: 9</span>
+<span class="co">#&gt; $ dataset        &lt;chr&gt; "acetate producing", "acetate producing", "acetate prod…</span>
+<span class="co">#&gt; $ error_type     &lt;chr&gt; "Invalid class", "Invalid class", "Invalid class", "Inv…</span>
+<span class="co">#&gt; $ col            &lt;chr&gt; "Accession_ID", "Genome_ID", "NCBI_ID", "Attribute_valu…</span>
+<span class="co">#&gt; $ invalid_class  &lt;chr&gt; "logical", "logical", "logical", NA, NA, "logical", "lo…</span>
+<span class="co">#&gt; $ valid_class    &lt;chr&gt; "character|numeric|integer", "character|numeric|integer…</span>
+<span class="co">#&gt; $ n_rows         &lt;int&gt; NA, NA, NA, 22, 24, NA, NA, 3, 1304, 18, NA, NA, NA, 14…</span>
+<span class="co">#&gt; $ invalid_values &lt;list&gt; NA, NA, NA, &lt;"−2.0", "−10.0", "−10.6", "−2.3", "−3.9",…</span>
+<span class="co">#&gt; $ invalid_pos    &lt;list&gt; NA, NA, NA, &lt;1, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 1…</span>
 <span class="co">#&gt; $ link           &lt;chr&gt; "https://docs.google.com/spreadsheets/d/e/2PACX-1vQb6gD…</span></code></pre></div>
 <p>Invalid values and positions can be printed by subsetting the table:</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
@@ -265,59 +267,147 @@ file.</p>
     <span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <table class="table">
 <colgroup>
-<col width="15%">
-<col width="8%">
-<col width="8%">
+<col width="12%">
+<col width="6%">
+<col width="6%">
+<col width="4%">
+<col width="12%">
 <col width="2%">
-<col width="65%">
+<col width="54%">
 </colgroup>
 <thead><tr class="header">
 <th align="left">dataset</th>
 <th align="left">error_type</th>
 <th align="left">col</th>
+<th align="left">invalid_class</th>
+<th align="left">valid_class</th>
 <th align="right">n_rows</th>
 <th align="left">link</th>
 </tr></thead>
 <tbody>
 <tr class="odd">
 <td align="left">acetate producing</td>
-<td align="left">Invalid values</td>
-<td align="left">Attribute_value</td>
-<td align="right">22</td>
+<td align="left">Invalid class</td>
+<td align="left">Accession_ID</td>
+<td align="left">logical</td>
+<td align="left">character|numeric|integer</td>
+<td align="right">NA</td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQb6gDQdhCMWHLQdkzMM4bgTPPosYCZvjzJu4NyOYaSBGOCaOPoQh0OiUr4btnJ8EAWn7NiF-T9JaCE/pub?gid=0&amp;single=true&amp;output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQb6gDQdhCMWHLQdkzMM4bgTPPosYCZvjzJu4NyOYaSBGOCaOPoQh0OiUr4btnJ8EAWn7NiF-T9JaCE/pub?gid=0&amp;single=true&amp;output=csv</a></td>
+</tr>
+<tr class="even">
+<td align="left">acetate producing</td>
+<td align="left">Invalid class</td>
+<td align="left">Genome_ID</td>
+<td align="left">logical</td>
+<td align="left">character|numeric|integer</td>
+<td align="right">NA</td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQb6gDQdhCMWHLQdkzMM4bgTPPosYCZvjzJu4NyOYaSBGOCaOPoQh0OiUr4btnJ8EAWn7NiF-T9JaCE/pub?gid=0&amp;single=true&amp;output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQb6gDQdhCMWHLQdkzMM4bgTPPosYCZvjzJu4NyOYaSBGOCaOPoQh0OiUr4btnJ8EAWn7NiF-T9JaCE/pub?gid=0&amp;single=true&amp;output=csv</a></td>
+</tr>
+<tr class="odd">
+<td align="left">acetate producing</td>
+<td align="left">Invalid class</td>
+<td align="left">NCBI_ID</td>
+<td align="left">logical</td>
+<td align="left">integer</td>
+<td align="right">NA</td>
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQb6gDQdhCMWHLQdkzMM4bgTPPosYCZvjzJu4NyOYaSBGOCaOPoQh0OiUr4btnJ8EAWn7NiF-T9JaCE/pub?gid=0&amp;single=true&amp;output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQb6gDQdhCMWHLQdkzMM4bgTPPosYCZvjzJu4NyOYaSBGOCaOPoQh0OiUr4btnJ8EAWn7NiF-T9JaCE/pub?gid=0&amp;single=true&amp;output=csv</a></td>
 </tr>
 <tr class="even">
 <td align="left">acetate producing</td>
 <td align="left">Invalid values</td>
-<td align="left">Confidence_interval</td>
-<td align="right">24</td>
+<td align="left">Attribute_value</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="right">22</td>
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQb6gDQdhCMWHLQdkzMM4bgTPPosYCZvjzJu4NyOYaSBGOCaOPoQh0OiUr4btnJ8EAWn7NiF-T9JaCE/pub?gid=0&amp;single=true&amp;output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQb6gDQdhCMWHLQdkzMM4bgTPPosYCZvjzJu4NyOYaSBGOCaOPoQh0OiUr4btnJ8EAWn7NiF-T9JaCE/pub?gid=0&amp;single=true&amp;output=csv</a></td>
 </tr>
 <tr class="odd">
-<td align="left">aerophilicity</td>
+<td align="left">acetate producing</td>
 <td align="left">Invalid values</td>
-<td align="left">Attribute</td>
-<td align="right">3</td>
+<td align="left">Confidence_interval</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="right">24</td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQb6gDQdhCMWHLQdkzMM4bgTPPosYCZvjzJu4NyOYaSBGOCaOPoQh0OiUr4btnJ8EAWn7NiF-T9JaCE/pub?gid=0&amp;single=true&amp;output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQb6gDQdhCMWHLQdkzMM4bgTPPosYCZvjzJu4NyOYaSBGOCaOPoQh0OiUr4btnJ8EAWn7NiF-T9JaCE/pub?gid=0&amp;single=true&amp;output=csv</a></td>
+</tr>
+<tr class="even">
+<td align="left">aerophilicity</td>
+<td align="left">Invalid class</td>
+<td align="left">Genome_ID</td>
+<td align="left">logical</td>
+<td align="left">character|numeric|integer</td>
+<td align="right">NA</td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQDC8VfkkOfN6MKGxrzMEoJjfgYIfpsJO-SxVr3pkUUChBNkMQ3YKaxSvDSSjjrPRf51nU3wbk-WWJp/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQDC8VfkkOfN6MKGxrzMEoJjfgYIfpsJO-SxVr3pkUUChBNkMQ3YKaxSvDSSjjrPRf51nU3wbk-WWJp/pub?output=csv</a></td>
+</tr>
+<tr class="odd">
+<td align="left">aerophilicity</td>
+<td align="left">Invalid class</td>
+<td align="left">Note</td>
+<td align="left">logical</td>
+<td align="left">character</td>
+<td align="right">NA</td>
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQDC8VfkkOfN6MKGxrzMEoJjfgYIfpsJO-SxVr3pkUUChBNkMQ3YKaxSvDSSjjrPRf51nU3wbk-WWJp/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQDC8VfkkOfN6MKGxrzMEoJjfgYIfpsJO-SxVr3pkUUChBNkMQ3YKaxSvDSSjjrPRf51nU3wbk-WWJp/pub?output=csv</a></td>
 </tr>
 <tr class="even">
 <td align="left">aerophilicity</td>
 <td align="left">Invalid values</td>
-<td align="left">Evidence</td>
-<td align="right">1304</td>
+<td align="left">Attribute</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="right">3</td>
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQDC8VfkkOfN6MKGxrzMEoJjfgYIfpsJO-SxVr3pkUUChBNkMQ3YKaxSvDSSjjrPRf51nU3wbk-WWJp/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQDC8VfkkOfN6MKGxrzMEoJjfgYIfpsJO-SxVr3pkUUChBNkMQ3YKaxSvDSSjjrPRf51nU3wbk-WWJp/pub?output=csv</a></td>
 </tr>
 <tr class="odd">
 <td align="left">aerophilicity</td>
 <td align="left">Invalid values</td>
+<td align="left">Evidence</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="right">1304</td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQDC8VfkkOfN6MKGxrzMEoJjfgYIfpsJO-SxVr3pkUUChBNkMQ3YKaxSvDSSjjrPRf51nU3wbk-WWJp/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQDC8VfkkOfN6MKGxrzMEoJjfgYIfpsJO-SxVr3pkUUChBNkMQ3YKaxSvDSSjjrPRf51nU3wbk-WWJp/pub?output=csv</a></td>
+</tr>
+<tr class="even">
+<td align="left">aerophilicity</td>
+<td align="left">Invalid values</td>
 <td align="left">Rank</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
 <td align="right">18</td>
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQDC8VfkkOfN6MKGxrzMEoJjfgYIfpsJO-SxVr3pkUUChBNkMQ3YKaxSvDSSjjrPRf51nU3wbk-WWJp/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQDC8VfkkOfN6MKGxrzMEoJjfgYIfpsJO-SxVr3pkUUChBNkMQ3YKaxSvDSSjjrPRf51nU3wbk-WWJp/pub?output=csv</a></td>
+</tr>
+<tr class="odd">
+<td align="left">animal pathogen</td>
+<td align="left">Invalid class</td>
+<td align="left">Accession_ID</td>
+<td align="left">logical</td>
+<td align="left">character|numeric|integer</td>
+<td align="right">NA</td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vT9s4PFd7NHr-1GMNyPexZ1KuNyj2u7ErC1Vq3-wAfroNNCG-Tu-y8gn3qKQ4C-URg1SIjOm9bGE4wQ/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vT9s4PFd7NHr-1GMNyPexZ1KuNyj2u7ErC1Vq3-wAfroNNCG-Tu-y8gn3qKQ4C-URg1SIjOm9bGE4wQ/pub?output=csv</a></td>
+</tr>
+<tr class="even">
+<td align="left">animal pathogen</td>
+<td align="left">Invalid class</td>
+<td align="left">Evidence</td>
+<td align="left">logical</td>
+<td align="left">character</td>
+<td align="right">NA</td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vT9s4PFd7NHr-1GMNyPexZ1KuNyj2u7ErC1Vq3-wAfroNNCG-Tu-y8gn3qKQ4C-URg1SIjOm9bGE4wQ/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vT9s4PFd7NHr-1GMNyPexZ1KuNyj2u7ErC1Vq3-wAfroNNCG-Tu-y8gn3qKQ4C-URg1SIjOm9bGE4wQ/pub?output=csv</a></td>
+</tr>
+<tr class="odd">
+<td align="left">animal pathogen</td>
+<td align="left">Invalid class</td>
+<td align="left">Genome_ID</td>
+<td align="left">logical</td>
+<td align="left">character|numeric|integer</td>
+<td align="right">NA</td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vT9s4PFd7NHr-1GMNyPexZ1KuNyj2u7ErC1Vq3-wAfroNNCG-Tu-y8gn3qKQ4C-URg1SIjOm9bGE4wQ/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vT9s4PFd7NHr-1GMNyPexZ1KuNyj2u7ErC1Vq3-wAfroNNCG-Tu-y8gn3qKQ4C-URg1SIjOm9bGE4wQ/pub?output=csv</a></td>
 </tr>
 <tr class="even">
 <td align="left">animal pathogen</td>
 <td align="left">Invalid values</td>
 <td align="left">Confidence_interval</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
 <td align="right">1421</td>
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vT9s4PFd7NHr-1GMNyPexZ1KuNyj2u7ErC1Vq3-wAfroNNCG-Tu-y8gn3qKQ4C-URg1SIjOm9bGE4wQ/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vT9s4PFd7NHr-1GMNyPexZ1KuNyj2u7ErC1Vq3-wAfroNNCG-Tu-y8gn3qKQ4C-URg1SIjOm9bGE4wQ/pub?output=csv</a></td>
 </tr>
@@ -325,6 +415,8 @@ file.</p>
 <td align="left">animal pathogen</td>
 <td align="left">Invalid values</td>
 <td align="left">Rank</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
 <td align="right">1</td>
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vT9s4PFd7NHr-1GMNyPexZ1KuNyj2u7ErC1Vq3-wAfroNNCG-Tu-y8gn3qKQ4C-URg1SIjOm9bGE4wQ/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vT9s4PFd7NHr-1GMNyPexZ1KuNyj2u7ErC1Vq3-wAfroNNCG-Tu-y8gn3qKQ4C-URg1SIjOm9bGE4wQ/pub?output=csv</a></td>
 </tr>
@@ -332,76 +424,152 @@ file.</p>
 <td align="left">animal pathogen</td>
 <td align="left">Invalid values</td>
 <td align="left">Taxon_name</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
 <td align="right">1</td>
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vT9s4PFd7NHr-1GMNyPexZ1KuNyj2u7ErC1Vq3-wAfroNNCG-Tu-y8gn3qKQ4C-URg1SIjOm9bGE4wQ/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vT9s4PFd7NHr-1GMNyPexZ1KuNyj2u7ErC1Vq3-wAfroNNCG-Tu-y8gn3qKQ4C-URg1SIjOm9bGE4wQ/pub?output=csv</a></td>
 </tr>
 <tr class="odd">
 <td align="left">antimicrobial resistance</td>
-<td align="left">Invalid values</td>
-<td align="left">Confidence_interval</td>
-<td align="right">10321</td>
+<td align="left">Invalid class</td>
+<td align="left">Accession_ID</td>
+<td align="left">logical</td>
+<td align="left">character|numeric|integer</td>
+<td align="right">NA</td>
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vRWI3s8H0Izcs-PEo4W7Q0QAegNHq7IdSKCHSL0nZlrptTZ4dIusG0m1AMEUYv1_4GN3QX9rADAja_0/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vRWI3s8H0Izcs-PEo4W7Q0QAegNHq7IdSKCHSL0nZlrptTZ4dIusG0m1AMEUYv1_4GN3QX9rADAja_0/pub?output=csv</a></td>
 </tr>
 <tr class="even">
 <td align="left">antimicrobial resistance</td>
 <td align="left">Invalid values</td>
-<td align="left">Rank</td>
-<td align="right">5</td>
+<td align="left">Confidence_interval</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="right">10321</td>
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vRWI3s8H0Izcs-PEo4W7Q0QAegNHq7IdSKCHSL0nZlrptTZ4dIusG0m1AMEUYv1_4GN3QX9rADAja_0/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vRWI3s8H0Izcs-PEo4W7Q0QAegNHq7IdSKCHSL0nZlrptTZ4dIusG0m1AMEUYv1_4GN3QX9rADAja_0/pub?output=csv</a></td>
 </tr>
 <tr class="odd">
+<td align="left">antimicrobial resistance</td>
+<td align="left">Invalid values</td>
+<td align="left">Rank</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="right">5</td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vRWI3s8H0Izcs-PEo4W7Q0QAegNHq7IdSKCHSL0nZlrptTZ4dIusG0m1AMEUYv1_4GN3QX9rADAja_0/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vRWI3s8H0Izcs-PEo4W7Q0QAegNHq7IdSKCHSL0nZlrptTZ4dIusG0m1AMEUYv1_4GN3QX9rADAja_0/pub?output=csv</a></td>
+</tr>
+<tr class="even">
+<td align="left">antimicrobial sensitivity</td>
+<td align="left">Invalid class</td>
+<td align="left">Accession_ID</td>
+<td align="left">logical</td>
+<td align="left">character|numeric|integer</td>
+<td align="right">NA</td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vR0FdQpAD-xhkyIXgZMtC9oCmlbx77Cj1ncCyojm9oO410NBwJRhBNFl4hnd4HMlj2okxEKLvA8EPr2/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vR0FdQpAD-xhkyIXgZMtC9oCmlbx77Cj1ncCyojm9oO410NBwJRhBNFl4hnd4HMlj2okxEKLvA8EPr2/pub?output=csv</a></td>
+</tr>
+<tr class="odd">
+<td align="left">antimicrobial sensitivity</td>
+<td align="left">Invalid class</td>
+<td align="left">Genome_ID</td>
+<td align="left">logical</td>
+<td align="left">character|numeric|integer</td>
+<td align="right">NA</td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vR0FdQpAD-xhkyIXgZMtC9oCmlbx77Cj1ncCyojm9oO410NBwJRhBNFl4hnd4HMlj2okxEKLvA8EPr2/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vR0FdQpAD-xhkyIXgZMtC9oCmlbx77Cj1ncCyojm9oO410NBwJRhBNFl4hnd4HMlj2okxEKLvA8EPr2/pub?output=csv</a></td>
+</tr>
+<tr class="even">
 <td align="left">antimicrobial sensitivity</td>
 <td align="left">Invalid values</td>
 <td align="left">Confidence_interval</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
 <td align="right">832</td>
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vR0FdQpAD-xhkyIXgZMtC9oCmlbx77Cj1ncCyojm9oO410NBwJRhBNFl4hnd4HMlj2okxEKLvA8EPr2/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vR0FdQpAD-xhkyIXgZMtC9oCmlbx77Cj1ncCyojm9oO410NBwJRhBNFl4hnd4HMlj2okxEKLvA8EPr2/pub?output=csv</a></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">antimicrobial sensitivity</td>
 <td align="left">Invalid values</td>
 <td align="left">Rank</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
 <td align="right">1</td>
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vR0FdQpAD-xhkyIXgZMtC9oCmlbx77Cj1ncCyojm9oO410NBwJRhBNFl4hnd4HMlj2okxEKLvA8EPr2/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vR0FdQpAD-xhkyIXgZMtC9oCmlbx77Cj1ncCyojm9oO410NBwJRhBNFl4hnd4HMlj2okxEKLvA8EPr2/pub?output=csv</a></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">arrangement</td>
 <td align="left">Invalid values</td>
 <td align="left">Accession_ID</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
 <td align="right">1</td>
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vSgNXC-VPLmG8dUN8VAun_pbT0Y4-qJo6u9ozHGO8j7Weq6ymPaPw9kJUPl-RpHSYvtUgACo-SVHyk5/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vSgNXC-VPLmG8dUN8VAun_pbT0Y4-qJo6u9ozHGO8j7Weq6ymPaPw9kJUPl-RpHSYvtUgACo-SVHyk5/pub?output=csv</a></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">arrangement</td>
 <td align="left">Invalid values</td>
 <td align="left">Attribute</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
 <td align="right">12</td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vSgNXC-VPLmG8dUN8VAun_pbT0Y4-qJo6u9ozHGO8j7Weq6ymPaPw9kJUPl-RpHSYvtUgACo-SVHyk5/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vSgNXC-VPLmG8dUN8VAun_pbT0Y4-qJo6u9ozHGO8j7Weq6ymPaPw9kJUPl-RpHSYvtUgACo-SVHyk5/pub?output=csv</a></td>
+</tr>
+<tr class="even">
+<td align="left">arrangement</td>
+<td align="left">Invalid values</td>
+<td align="left">Confidence_interval</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="right">1071</td>
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vSgNXC-VPLmG8dUN8VAun_pbT0Y4-qJo6u9ozHGO8j7Weq6ymPaPw9kJUPl-RpHSYvtUgACo-SVHyk5/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vSgNXC-VPLmG8dUN8VAun_pbT0Y4-qJo6u9ozHGO8j7Weq6ymPaPw9kJUPl-RpHSYvtUgACo-SVHyk5/pub?output=csv</a></td>
 </tr>
 <tr class="odd">
 <td align="left">arrangement</td>
 <td align="left">Invalid values</td>
-<td align="left">Confidence_interval</td>
+<td align="left">Evidence</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
 <td align="right">1071</td>
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vSgNXC-VPLmG8dUN8VAun_pbT0Y4-qJo6u9ozHGO8j7Weq6ymPaPw9kJUPl-RpHSYvtUgACo-SVHyk5/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vSgNXC-VPLmG8dUN8VAun_pbT0Y4-qJo6u9ozHGO8j7Weq6ymPaPw9kJUPl-RpHSYvtUgACo-SVHyk5/pub?output=csv</a></td>
 </tr>
 <tr class="even">
 <td align="left">arrangement</td>
 <td align="left">Invalid values</td>
-<td align="left">Evidence</td>
-<td align="right">1071</td>
+<td align="left">Rank</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="right">21</td>
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vSgNXC-VPLmG8dUN8VAun_pbT0Y4-qJo6u9ozHGO8j7Weq6ymPaPw9kJUPl-RpHSYvtUgACo-SVHyk5/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vSgNXC-VPLmG8dUN8VAun_pbT0Y4-qJo6u9ozHGO8j7Weq6ymPaPw9kJUPl-RpHSYvtUgACo-SVHyk5/pub?output=csv</a></td>
 </tr>
 <tr class="odd">
-<td align="left">arrangement</td>
-<td align="left">Invalid values</td>
-<td align="left">Rank</td>
-<td align="right">21</td>
-<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vSgNXC-VPLmG8dUN8VAun_pbT0Y4-qJo6u9ozHGO8j7Weq6ymPaPw9kJUPl-RpHSYvtUgACo-SVHyk5/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vSgNXC-VPLmG8dUN8VAun_pbT0Y4-qJo6u9ozHGO8j7Weq6ymPaPw9kJUPl-RpHSYvtUgACo-SVHyk5/pub?output=csv</a></td>
+<td align="left">biofilm forming</td>
+<td align="left">Invalid class</td>
+<td align="left">Accession_ID</td>
+<td align="left">logical</td>
+<td align="left">character|numeric|integer</td>
+<td align="right">NA</td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vRduthxAWAhSLSoOgFNAmI8DX8ORerG1U6OmI8y6-5coe31pONYfISNsUE-e-E_eiyxtQzin6Xq9b0m/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vRduthxAWAhSLSoOgFNAmI8DX8ORerG1U6OmI8y6-5coe31pONYfISNsUE-e-E_eiyxtQzin6Xq9b0m/pub?output=csv</a></td>
+</tr>
+<tr class="even">
+<td align="left">biofilm forming</td>
+<td align="left">Invalid class</td>
+<td align="left">Genome_ID</td>
+<td align="left">logical</td>
+<td align="left">character|numeric|integer</td>
+<td align="right">NA</td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vRduthxAWAhSLSoOgFNAmI8DX8ORerG1U6OmI8y6-5coe31pONYfISNsUE-e-E_eiyxtQzin6Xq9b0m/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vRduthxAWAhSLSoOgFNAmI8DX8ORerG1U6OmI8y6-5coe31pONYfISNsUE-e-E_eiyxtQzin6Xq9b0m/pub?output=csv</a></td>
+</tr>
+<tr class="odd">
+<td align="left">biofilm forming</td>
+<td align="left">Invalid class</td>
+<td align="left">Note</td>
+<td align="left">logical</td>
+<td align="left">character</td>
+<td align="right">NA</td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vRduthxAWAhSLSoOgFNAmI8DX8ORerG1U6OmI8y6-5coe31pONYfISNsUE-e-E_eiyxtQzin6Xq9b0m/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vRduthxAWAhSLSoOgFNAmI8DX8ORerG1U6OmI8y6-5coe31pONYfISNsUE-e-E_eiyxtQzin6Xq9b0m/pub?output=csv</a></td>
 </tr>
 <tr class="even">
 <td align="left">biofilm forming</td>
 <td align="left">Invalid values</td>
 <td align="left">Confidence_interval</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
 <td align="right">426</td>
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vRduthxAWAhSLSoOgFNAmI8DX8ORerG1U6OmI8y6-5coe31pONYfISNsUE-e-E_eiyxtQzin6Xq9b0m/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vRduthxAWAhSLSoOgFNAmI8DX8ORerG1U6OmI8y6-5coe31pONYfISNsUE-e-E_eiyxtQzin6Xq9b0m/pub?output=csv</a></td>
 </tr>
@@ -409,27 +577,89 @@ file.</p>
 <td align="left">biofilm forming</td>
 <td align="left">Invalid values</td>
 <td align="left">Rank</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
 <td align="right">2</td>
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vRduthxAWAhSLSoOgFNAmI8DX8ORerG1U6OmI8y6-5coe31pONYfISNsUE-e-E_eiyxtQzin6Xq9b0m/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vRduthxAWAhSLSoOgFNAmI8DX8ORerG1U6OmI8y6-5coe31pONYfISNsUE-e-E_eiyxtQzin6Xq9b0m/pub?output=csv</a></td>
 </tr>
 <tr class="even">
 <td align="left">butyrate producing</td>
-<td align="left">Invalid values</td>
-<td align="left">Attribute_value</td>
-<td align="right">22</td>
+<td align="left">Invalid class</td>
+<td align="left">Accession_ID</td>
+<td align="left">logical</td>
+<td align="left">character|numeric|integer</td>
+<td align="right">NA</td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQPnLOpbFbfLvOb8fvC6A-WfzVNMDYRWOUsT4hIseDNgI7nwZGjVwg3KBkWeFtOBBLK0j-DRiZ-jtqG/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQPnLOpbFbfLvOb8fvC6A-WfzVNMDYRWOUsT4hIseDNgI7nwZGjVwg3KBkWeFtOBBLK0j-DRiZ-jtqG/pub?output=csv</a></td>
+</tr>
+<tr class="odd">
+<td align="left">butyrate producing</td>
+<td align="left">Invalid class</td>
+<td align="left">Genome_ID</td>
+<td align="left">logical</td>
+<td align="left">character|numeric|integer</td>
+<td align="right">NA</td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQPnLOpbFbfLvOb8fvC6A-WfzVNMDYRWOUsT4hIseDNgI7nwZGjVwg3KBkWeFtOBBLK0j-DRiZ-jtqG/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQPnLOpbFbfLvOb8fvC6A-WfzVNMDYRWOUsT4hIseDNgI7nwZGjVwg3KBkWeFtOBBLK0j-DRiZ-jtqG/pub?output=csv</a></td>
+</tr>
+<tr class="even">
+<td align="left">butyrate producing</td>
+<td align="left">Invalid class</td>
+<td align="left">NCBI_ID</td>
+<td align="left">logical</td>
+<td align="left">integer</td>
+<td align="right">NA</td>
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQPnLOpbFbfLvOb8fvC6A-WfzVNMDYRWOUsT4hIseDNgI7nwZGjVwg3KBkWeFtOBBLK0j-DRiZ-jtqG/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQPnLOpbFbfLvOb8fvC6A-WfzVNMDYRWOUsT4hIseDNgI7nwZGjVwg3KBkWeFtOBBLK0j-DRiZ-jtqG/pub?output=csv</a></td>
 </tr>
 <tr class="odd">
 <td align="left">butyrate producing</td>
 <td align="left">Invalid values</td>
+<td align="left">Attribute_value</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="right">22</td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQPnLOpbFbfLvOb8fvC6A-WfzVNMDYRWOUsT4hIseDNgI7nwZGjVwg3KBkWeFtOBBLK0j-DRiZ-jtqG/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQPnLOpbFbfLvOb8fvC6A-WfzVNMDYRWOUsT4hIseDNgI7nwZGjVwg3KBkWeFtOBBLK0j-DRiZ-jtqG/pub?output=csv</a></td>
+</tr>
+<tr class="even">
+<td align="left">butyrate producing</td>
+<td align="left">Invalid values</td>
 <td align="left">Confidence_interval</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
 <td align="right">24</td>
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQPnLOpbFbfLvOb8fvC6A-WfzVNMDYRWOUsT4hIseDNgI7nwZGjVwg3KBkWeFtOBBLK0j-DRiZ-jtqG/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQPnLOpbFbfLvOb8fvC6A-WfzVNMDYRWOUsT4hIseDNgI7nwZGjVwg3KBkWeFtOBBLK0j-DRiZ-jtqG/pub?output=csv</a></td>
+</tr>
+<tr class="odd">
+<td align="left">COGEM pathogenicity rating</td>
+<td align="left">Invalid class</td>
+<td align="left">Accession_ID</td>
+<td align="left">logical</td>
+<td align="left">character|numeric|integer</td>
+<td align="right">NA</td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQYZjtf0RcacNAe54pLOnzor2q0ZeK4cF19f-gjji7cHfrtOf3VuDPA-jSAKRNDNZoWQanyw2QCugRZ/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQYZjtf0RcacNAe54pLOnzor2q0ZeK4cF19f-gjji7cHfrtOf3VuDPA-jSAKRNDNZoWQanyw2QCugRZ/pub?output=csv</a></td>
+</tr>
+<tr class="even">
+<td align="left">COGEM pathogenicity rating</td>
+<td align="left">Invalid class</td>
+<td align="left">Evidence</td>
+<td align="left">logical</td>
+<td align="left">character</td>
+<td align="right">NA</td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQYZjtf0RcacNAe54pLOnzor2q0ZeK4cF19f-gjji7cHfrtOf3VuDPA-jSAKRNDNZoWQanyw2QCugRZ/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQYZjtf0RcacNAe54pLOnzor2q0ZeK4cF19f-gjji7cHfrtOf3VuDPA-jSAKRNDNZoWQanyw2QCugRZ/pub?output=csv</a></td>
+</tr>
+<tr class="odd">
+<td align="left">COGEM pathogenicity rating</td>
+<td align="left">Invalid class</td>
+<td align="left">Genome_ID</td>
+<td align="left">logical</td>
+<td align="left">character|numeric|integer</td>
+<td align="right">NA</td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQYZjtf0RcacNAe54pLOnzor2q0ZeK4cF19f-gjji7cHfrtOf3VuDPA-jSAKRNDNZoWQanyw2QCugRZ/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQYZjtf0RcacNAe54pLOnzor2q0ZeK4cF19f-gjji7cHfrtOf3VuDPA-jSAKRNDNZoWQanyw2QCugRZ/pub?output=csv</a></td>
 </tr>
 <tr class="even">
 <td align="left">COGEM pathogenicity rating</td>
 <td align="left">Invalid values</td>
 <td align="left">Confidence_interval</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
 <td align="right">1043</td>
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQYZjtf0RcacNAe54pLOnzor2q0ZeK4cF19f-gjji7cHfrtOf3VuDPA-jSAKRNDNZoWQanyw2QCugRZ/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQYZjtf0RcacNAe54pLOnzor2q0ZeK4cF19f-gjji7cHfrtOf3VuDPA-jSAKRNDNZoWQanyw2QCugRZ/pub?output=csv</a></td>
 </tr>
@@ -437,34 +667,80 @@ file.</p>
 <td align="left">COGEM pathogenicity rating</td>
 <td align="left">Invalid values</td>
 <td align="left">Rank</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
 <td align="right">2</td>
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQYZjtf0RcacNAe54pLOnzor2q0ZeK4cF19f-gjji7cHfrtOf3VuDPA-jSAKRNDNZoWQanyw2QCugRZ/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQYZjtf0RcacNAe54pLOnzor2q0ZeK4cF19f-gjji7cHfrtOf3VuDPA-jSAKRNDNZoWQanyw2QCugRZ/pub?output=csv</a></td>
 </tr>
 <tr class="even">
 <td align="left">disease association</td>
-<td align="left">Invalid values</td>
-<td align="left">Attribute</td>
-<td align="right">261</td>
+<td align="left">Invalid class</td>
+<td align="left">Genome_ID</td>
+<td align="left">logical</td>
+<td align="left">character|numeric|integer</td>
+<td align="right">NA</td>
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vTboJM7necIfjgRgyYJ4LJWkCv_1y7O00yvyiSGzFdSfJDkeLqWrQ8FpcsYKFSOrQw75wCRst6KA0_a/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vTboJM7necIfjgRgyYJ4LJWkCv_1y7O00yvyiSGzFdSfJDkeLqWrQ8FpcsYKFSOrQw75wCRst6KA0_a/pub?output=csv</a></td>
 </tr>
 <tr class="odd">
 <td align="left">disease association</td>
 <td align="left">Invalid values</td>
-<td align="left">Confidence_interval</td>
-<td align="right">445</td>
+<td align="left">Attribute</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="right">261</td>
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vTboJM7necIfjgRgyYJ4LJWkCv_1y7O00yvyiSGzFdSfJDkeLqWrQ8FpcsYKFSOrQw75wCRst6KA0_a/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vTboJM7necIfjgRgyYJ4LJWkCv_1y7O00yvyiSGzFdSfJDkeLqWrQ8FpcsYKFSOrQw75wCRst6KA0_a/pub?output=csv</a></td>
 </tr>
 <tr class="even">
 <td align="left">disease association</td>
 <td align="left">Invalid values</td>
+<td align="left">Confidence_interval</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="right">445</td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vTboJM7necIfjgRgyYJ4LJWkCv_1y7O00yvyiSGzFdSfJDkeLqWrQ8FpcsYKFSOrQw75wCRst6KA0_a/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vTboJM7necIfjgRgyYJ4LJWkCv_1y7O00yvyiSGzFdSfJDkeLqWrQ8FpcsYKFSOrQw75wCRst6KA0_a/pub?output=csv</a></td>
+</tr>
+<tr class="odd">
+<td align="left">disease association</td>
+<td align="left">Invalid values</td>
 <td align="left">Rank</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
 <td align="right">9</td>
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vTboJM7necIfjgRgyYJ4LJWkCv_1y7O00yvyiSGzFdSfJDkeLqWrQ8FpcsYKFSOrQw75wCRst6KA0_a/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vTboJM7necIfjgRgyYJ4LJWkCv_1y7O00yvyiSGzFdSfJDkeLqWrQ8FpcsYKFSOrQw75wCRst6KA0_a/pub?output=csv</a></td>
+</tr>
+<tr class="even">
+<td align="left">extreme environment</td>
+<td align="left">Invalid class</td>
+<td align="left">Accession_ID</td>
+<td align="left">logical</td>
+<td align="left">character|numeric|integer</td>
+<td align="right">NA</td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vSh82md-R7XuM6PMs4UY6DYCY99wgwMcY6PD-m-VoxbJJl_Ce9JWhKtTEdFLEMmzrUxDyrQtfLBCbKj/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vSh82md-R7XuM6PMs4UY6DYCY99wgwMcY6PD-m-VoxbJJl_Ce9JWhKtTEdFLEMmzrUxDyrQtfLBCbKj/pub?output=csv</a></td>
+</tr>
+<tr class="odd">
+<td align="left">extreme environment</td>
+<td align="left">Invalid class</td>
+<td align="left">Evidence</td>
+<td align="left">logical</td>
+<td align="left">character</td>
+<td align="right">NA</td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vSh82md-R7XuM6PMs4UY6DYCY99wgwMcY6PD-m-VoxbJJl_Ce9JWhKtTEdFLEMmzrUxDyrQtfLBCbKj/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vSh82md-R7XuM6PMs4UY6DYCY99wgwMcY6PD-m-VoxbJJl_Ce9JWhKtTEdFLEMmzrUxDyrQtfLBCbKj/pub?output=csv</a></td>
+</tr>
+<tr class="even">
+<td align="left">extreme environment</td>
+<td align="left">Invalid class</td>
+<td align="left">Genome_ID</td>
+<td align="left">logical</td>
+<td align="left">character|numeric|integer</td>
+<td align="right">NA</td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vSh82md-R7XuM6PMs4UY6DYCY99wgwMcY6PD-m-VoxbJJl_Ce9JWhKtTEdFLEMmzrUxDyrQtfLBCbKj/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vSh82md-R7XuM6PMs4UY6DYCY99wgwMcY6PD-m-VoxbJJl_Ce9JWhKtTEdFLEMmzrUxDyrQtfLBCbKj/pub?output=csv</a></td>
 </tr>
 <tr class="odd">
 <td align="left">extreme environment</td>
 <td align="left">Invalid values</td>
 <td align="left">Confidence_interval</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
 <td align="right">1876</td>
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vSh82md-R7XuM6PMs4UY6DYCY99wgwMcY6PD-m-VoxbJJl_Ce9JWhKtTEdFLEMmzrUxDyrQtfLBCbKj/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vSh82md-R7XuM6PMs4UY6DYCY99wgwMcY6PD-m-VoxbJJl_Ce9JWhKtTEdFLEMmzrUxDyrQtfLBCbKj/pub?output=csv</a></td>
 </tr>
@@ -472,13 +748,35 @@ file.</p>
 <td align="left">extreme environment</td>
 <td align="left">Invalid values</td>
 <td align="left">Rank</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
 <td align="right">4</td>
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vSh82md-R7XuM6PMs4UY6DYCY99wgwMcY6PD-m-VoxbJJl_Ce9JWhKtTEdFLEMmzrUxDyrQtfLBCbKj/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vSh82md-R7XuM6PMs4UY6DYCY99wgwMcY6PD-m-VoxbJJl_Ce9JWhKtTEdFLEMmzrUxDyrQtfLBCbKj/pub?output=csv</a></td>
 </tr>
 <tr class="odd">
 <td align="left">fatty acid composition</td>
+<td align="left">Invalid class</td>
+<td align="left">Accession_ID</td>
+<td align="left">logical</td>
+<td align="left">character|numeric|integer</td>
+<td align="right">NA</td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQJh0AzSYWeYO1zOs4GSZIOde3zV_O71HGixPoN_F8gEY2KhxkZoj1XeSj0HcpCSz2Xu2dxBVyrm0GH/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQJh0AzSYWeYO1zOs4GSZIOde3zV_O71HGixPoN_F8gEY2KhxkZoj1XeSj0HcpCSz2Xu2dxBVyrm0GH/pub?output=csv</a></td>
+</tr>
+<tr class="even">
+<td align="left">fatty acid composition</td>
+<td align="left">Invalid class</td>
+<td align="left">Genome_ID</td>
+<td align="left">logical</td>
+<td align="left">character|numeric|integer</td>
+<td align="right">NA</td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQJh0AzSYWeYO1zOs4GSZIOde3zV_O71HGixPoN_F8gEY2KhxkZoj1XeSj0HcpCSz2Xu2dxBVyrm0GH/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQJh0AzSYWeYO1zOs4GSZIOde3zV_O71HGixPoN_F8gEY2KhxkZoj1XeSj0HcpCSz2Xu2dxBVyrm0GH/pub?output=csv</a></td>
+</tr>
+<tr class="odd">
+<td align="left">fatty acid composition</td>
 <td align="left">Invalid values</td>
 <td align="left">Attribute_value</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
 <td align="right">8862</td>
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQJh0AzSYWeYO1zOs4GSZIOde3zV_O71HGixPoN_F8gEY2KhxkZoj1XeSj0HcpCSz2Xu2dxBVyrm0GH/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQJh0AzSYWeYO1zOs4GSZIOde3zV_O71HGixPoN_F8gEY2KhxkZoj1XeSj0HcpCSz2Xu2dxBVyrm0GH/pub?output=csv</a></td>
 </tr>
@@ -486,6 +784,8 @@ file.</p>
 <td align="left">fatty acid composition</td>
 <td align="left">Invalid values</td>
 <td align="left">Attribute</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
 <td align="right">138496</td>
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQJh0AzSYWeYO1zOs4GSZIOde3zV_O71HGixPoN_F8gEY2KhxkZoj1XeSj0HcpCSz2Xu2dxBVyrm0GH/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQJh0AzSYWeYO1zOs4GSZIOde3zV_O71HGixPoN_F8gEY2KhxkZoj1XeSj0HcpCSz2Xu2dxBVyrm0GH/pub?output=csv</a></td>
 </tr>
@@ -493,6 +793,8 @@ file.</p>
 <td align="left">fatty acid composition</td>
 <td align="left">Invalid values</td>
 <td align="left">Confidence_interval</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
 <td align="right">138496</td>
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQJh0AzSYWeYO1zOs4GSZIOde3zV_O71HGixPoN_F8gEY2KhxkZoj1XeSj0HcpCSz2Xu2dxBVyrm0GH/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQJh0AzSYWeYO1zOs4GSZIOde3zV_O71HGixPoN_F8gEY2KhxkZoj1XeSj0HcpCSz2Xu2dxBVyrm0GH/pub?output=csv</a></td>
 </tr>
@@ -500,6 +802,8 @@ file.</p>
 <td align="left">fatty acid composition</td>
 <td align="left">Invalid values</td>
 <td align="left">Rank</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
 <td align="right">640</td>
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQJh0AzSYWeYO1zOs4GSZIOde3zV_O71HGixPoN_F8gEY2KhxkZoj1XeSj0HcpCSz2Xu2dxBVyrm0GH/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQJh0AzSYWeYO1zOs4GSZIOde3zV_O71HGixPoN_F8gEY2KhxkZoj1XeSj0HcpCSz2Xu2dxBVyrm0GH/pub?output=csv</a></td>
 </tr>
@@ -507,62 +811,134 @@ file.</p>
 <td align="left">fatty acid composition</td>
 <td align="left">Uncatalogued column</td>
 <td align="left">Attribute_new</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
 <td align="right">NA</td>
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQJh0AzSYWeYO1zOs4GSZIOde3zV_O71HGixPoN_F8gEY2KhxkZoj1XeSj0HcpCSz2Xu2dxBVyrm0GH/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQJh0AzSYWeYO1zOs4GSZIOde3zV_O71HGixPoN_F8gEY2KhxkZoj1XeSj0HcpCSz2Xu2dxBVyrm0GH/pub?output=csv</a></td>
 </tr>
 <tr class="even">
 <td align="left">gram stain</td>
-<td align="left">Invalid values</td>
-<td align="left">Confidence_interval</td>
-<td align="right">1278</td>
+<td align="left">Invalid class</td>
+<td align="left">NCBI_ID</td>
+<td align="left">numeric</td>
+<td align="left">integer</td>
+<td align="right">NA</td>
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vRxQOO7O7oJDJrFbY3s1Y_rbouUSR3rM_a3kGlXgcVMys5pFLqmd00VjJh1adJBmh3xA3aM8r3Am2oC/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vRxQOO7O7oJDJrFbY3s1Y_rbouUSR3rM_a3kGlXgcVMys5pFLqmd00VjJh1adJBmh3xA3aM8r3Am2oC/pub?output=csv</a></td>
 </tr>
 <tr class="odd">
 <td align="left">gram stain</td>
 <td align="left">Invalid values</td>
-<td align="left">Evidence</td>
-<td align="right">3614</td>
+<td align="left">Confidence_interval</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="right">1278</td>
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vRxQOO7O7oJDJrFbY3s1Y_rbouUSR3rM_a3kGlXgcVMys5pFLqmd00VjJh1adJBmh3xA3aM8r3Am2oC/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vRxQOO7O7oJDJrFbY3s1Y_rbouUSR3rM_a3kGlXgcVMys5pFLqmd00VjJh1adJBmh3xA3aM8r3Am2oC/pub?output=csv</a></td>
 </tr>
 <tr class="even">
 <td align="left">gram stain</td>
 <td align="left">Invalid values</td>
+<td align="left">Evidence</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="right">3614</td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vRxQOO7O7oJDJrFbY3s1Y_rbouUSR3rM_a3kGlXgcVMys5pFLqmd00VjJh1adJBmh3xA3aM8r3Am2oC/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vRxQOO7O7oJDJrFbY3s1Y_rbouUSR3rM_a3kGlXgcVMys5pFLqmd00VjJh1adJBmh3xA3aM8r3Am2oC/pub?output=csv</a></td>
+</tr>
+<tr class="odd">
+<td align="left">gram stain</td>
+<td align="left">Invalid values</td>
 <td align="left">Rank</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
 <td align="right">24</td>
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vRxQOO7O7oJDJrFbY3s1Y_rbouUSR3rM_a3kGlXgcVMys5pFLqmd00VjJh1adJBmh3xA3aM8r3Am2oC/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vRxQOO7O7oJDJrFbY3s1Y_rbouUSR3rM_a3kGlXgcVMys5pFLqmd00VjJh1adJBmh3xA3aM8r3Am2oC/pub?output=csv</a></td>
+</tr>
+<tr class="even">
+<td align="left">growth medium</td>
+<td align="left">Invalid class</td>
+<td align="left">Accession_ID</td>
+<td align="left">logical</td>
+<td align="left">character|numeric|integer</td>
+<td align="right">NA</td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vTLNLWfdNxo7NGNuJ4Pq6nji-7jQhO1glTHh1cQVS3j147WxbwhbWqhyI3FJR0I578o1hzeGbHwMOmY/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vTLNLWfdNxo7NGNuJ4Pq6nji-7jQhO1glTHh1cQVS3j147WxbwhbWqhyI3FJR0I578o1hzeGbHwMOmY/pub?output=csv</a></td>
+</tr>
+<tr class="odd">
+<td align="left">growth medium</td>
+<td align="left">Invalid class</td>
+<td align="left">Genome_ID</td>
+<td align="left">logical</td>
+<td align="left">character|numeric|integer</td>
+<td align="right">NA</td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vTLNLWfdNxo7NGNuJ4Pq6nji-7jQhO1glTHh1cQVS3j147WxbwhbWqhyI3FJR0I578o1hzeGbHwMOmY/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vTLNLWfdNxo7NGNuJ4Pq6nji-7jQhO1glTHh1cQVS3j147WxbwhbWqhyI3FJR0I578o1hzeGbHwMOmY/pub?output=csv</a></td>
+</tr>
+<tr class="even">
+<td align="left">growth medium</td>
+<td align="left">Invalid class</td>
+<td align="left">Note</td>
+<td align="left">logical</td>
+<td align="left">character</td>
+<td align="right">NA</td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vTLNLWfdNxo7NGNuJ4Pq6nji-7jQhO1glTHh1cQVS3j147WxbwhbWqhyI3FJR0I578o1hzeGbHwMOmY/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vTLNLWfdNxo7NGNuJ4Pq6nji-7jQhO1glTHh1cQVS3j147WxbwhbWqhyI3FJR0I578o1hzeGbHwMOmY/pub?output=csv</a></td>
 </tr>
 <tr class="odd">
 <td align="left">growth medium</td>
 <td align="left">Invalid values</td>
 <td align="left">Confidence_interval</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
 <td align="right">304</td>
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vTLNLWfdNxo7NGNuJ4Pq6nji-7jQhO1glTHh1cQVS3j147WxbwhbWqhyI3FJR0I578o1hzeGbHwMOmY/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vTLNLWfdNxo7NGNuJ4Pq6nji-7jQhO1glTHh1cQVS3j147WxbwhbWqhyI3FJR0I578o1hzeGbHwMOmY/pub?output=csv</a></td>
 </tr>
 <tr class="even">
 <td align="left">growth temperature</td>
-<td align="left">Invalid values</td>
-<td align="left">Attribute_value</td>
-<td align="right">274</td>
+<td align="left">Invalid class</td>
+<td align="left">NCBI_ID</td>
+<td align="left">numeric</td>
+<td align="left">integer</td>
+<td align="right">NA</td>
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vTWXUnR0_jkpZEE06C0GAypTGjOa2RnOPiLSmPiwAnaf2qS33hd-6GKG95CYDgKeSk6t4BFVjIAB_sh/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vTWXUnR0_jkpZEE06C0GAypTGjOa2RnOPiLSmPiwAnaf2qS33hd-6GKG95CYDgKeSk6t4BFVjIAB_sh/pub?output=csv</a></td>
 </tr>
 <tr class="odd">
 <td align="left">growth temperature</td>
 <td align="left">Invalid values</td>
-<td align="left">Confidence_interval</td>
-<td align="right">2524</td>
+<td align="left">Attribute_value</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="right">274</td>
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vTWXUnR0_jkpZEE06C0GAypTGjOa2RnOPiLSmPiwAnaf2qS33hd-6GKG95CYDgKeSk6t4BFVjIAB_sh/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vTWXUnR0_jkpZEE06C0GAypTGjOa2RnOPiLSmPiwAnaf2qS33hd-6GKG95CYDgKeSk6t4BFVjIAB_sh/pub?output=csv</a></td>
 </tr>
 <tr class="even">
 <td align="left">growth temperature</td>
 <td align="left">Invalid values</td>
+<td align="left">Confidence_interval</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="right">2524</td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vTWXUnR0_jkpZEE06C0GAypTGjOa2RnOPiLSmPiwAnaf2qS33hd-6GKG95CYDgKeSk6t4BFVjIAB_sh/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vTWXUnR0_jkpZEE06C0GAypTGjOa2RnOPiLSmPiwAnaf2qS33hd-6GKG95CYDgKeSk6t4BFVjIAB_sh/pub?output=csv</a></td>
+</tr>
+<tr class="odd">
+<td align="left">growth temperature</td>
+<td align="left">Invalid values</td>
 <td align="left">Rank</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
 <td align="right">15</td>
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vTWXUnR0_jkpZEE06C0GAypTGjOa2RnOPiLSmPiwAnaf2qS33hd-6GKG95CYDgKeSk6t4BFVjIAB_sh/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vTWXUnR0_jkpZEE06C0GAypTGjOa2RnOPiLSmPiwAnaf2qS33hd-6GKG95CYDgKeSk6t4BFVjIAB_sh/pub?output=csv</a></td>
+</tr>
+<tr class="even">
+<td align="left">habitat</td>
+<td align="left">Invalid class</td>
+<td align="left">NCBI_ID</td>
+<td align="left">numeric</td>
+<td align="left">integer</td>
+<td align="right">NA</td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQrR6R5nhANAU-CweaEp_X9P13eXiyq2A16_hOOREDYZuOqFS_4jAnI4JjihFmy3jAWtUW2V-4kZYPN/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQrR6R5nhANAU-CweaEp_X9P13eXiyq2A16_hOOREDYZuOqFS_4jAnI4JjihFmy3jAWtUW2V-4kZYPN/pub?output=csv</a></td>
 </tr>
 <tr class="odd">
 <td align="left">habitat</td>
 <td align="left">Invalid values</td>
 <td align="left">Accession_ID</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
 <td align="right">12999</td>
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQrR6R5nhANAU-CweaEp_X9P13eXiyq2A16_hOOREDYZuOqFS_4jAnI4JjihFmy3jAWtUW2V-4kZYPN/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQrR6R5nhANAU-CweaEp_X9P13eXiyq2A16_hOOREDYZuOqFS_4jAnI4JjihFmy3jAWtUW2V-4kZYPN/pub?output=csv</a></td>
 </tr>
@@ -570,6 +946,8 @@ file.</p>
 <td align="left">habitat</td>
 <td align="left">Invalid values</td>
 <td align="left">Attribute</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
 <td align="right">14507</td>
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQrR6R5nhANAU-CweaEp_X9P13eXiyq2A16_hOOREDYZuOqFS_4jAnI4JjihFmy3jAWtUW2V-4kZYPN/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQrR6R5nhANAU-CweaEp_X9P13eXiyq2A16_hOOREDYZuOqFS_4jAnI4JjihFmy3jAWtUW2V-4kZYPN/pub?output=csv</a></td>
 </tr>
@@ -577,6 +955,8 @@ file.</p>
 <td align="left">habitat</td>
 <td align="left">Invalid values</td>
 <td align="left">Confidence_interval</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
 <td align="right">18230</td>
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQrR6R5nhANAU-CweaEp_X9P13eXiyq2A16_hOOREDYZuOqFS_4jAnI4JjihFmy3jAWtUW2V-4kZYPN/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQrR6R5nhANAU-CweaEp_X9P13eXiyq2A16_hOOREDYZuOqFS_4jAnI4JjihFmy3jAWtUW2V-4kZYPN/pub?output=csv</a></td>
 </tr>
@@ -584,6 +964,8 @@ file.</p>
 <td align="left">habitat</td>
 <td align="left">Invalid values</td>
 <td align="left">Genome_ID</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
 <td align="right">14429</td>
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQrR6R5nhANAU-CweaEp_X9P13eXiyq2A16_hOOREDYZuOqFS_4jAnI4JjihFmy3jAWtUW2V-4kZYPN/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQrR6R5nhANAU-CweaEp_X9P13eXiyq2A16_hOOREDYZuOqFS_4jAnI4JjihFmy3jAWtUW2V-4kZYPN/pub?output=csv</a></td>
 </tr>
@@ -591,6 +973,8 @@ file.</p>
 <td align="left">habitat</td>
 <td align="left">Invalid values</td>
 <td align="left">Rank</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
 <td align="right">23</td>
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQrR6R5nhANAU-CweaEp_X9P13eXiyq2A16_hOOREDYZuOqFS_4jAnI4JjihFmy3jAWtUW2V-4kZYPN/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQrR6R5nhANAU-CweaEp_X9P13eXiyq2A16_hOOREDYZuOqFS_4jAnI4JjihFmy3jAWtUW2V-4kZYPN/pub?output=csv</a></td>
 </tr>
@@ -598,6 +982,8 @@ file.</p>
 <td align="left">habitat</td>
 <td align="left">Uncatalogued column</td>
 <td align="left">EXP</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
 <td align="right">NA</td>
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQrR6R5nhANAU-CweaEp_X9P13eXiyq2A16_hOOREDYZuOqFS_4jAnI4JjihFmy3jAWtUW2V-4kZYPN/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQrR6R5nhANAU-CweaEp_X9P13eXiyq2A16_hOOREDYZuOqFS_4jAnI4JjihFmy3jAWtUW2V-4kZYPN/pub?output=csv</a></td>
 </tr>
@@ -605,13 +991,35 @@ file.</p>
 <td align="left">habitat</td>
 <td align="left">Uncatalogued column</td>
 <td align="left">Other.ID</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
 <td align="right">NA</td>
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQrR6R5nhANAU-CweaEp_X9P13eXiyq2A16_hOOREDYZuOqFS_4jAnI4JjihFmy3jAWtUW2V-4kZYPN/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQrR6R5nhANAU-CweaEp_X9P13eXiyq2A16_hOOREDYZuOqFS_4jAnI4JjihFmy3jAWtUW2V-4kZYPN/pub?output=csv</a></td>
 </tr>
 <tr class="even">
 <td align="left">health associated</td>
+<td align="left">Invalid class</td>
+<td align="left">Accession_ID</td>
+<td align="left">logical</td>
+<td align="left">character|numeric|integer</td>
+<td align="right">NA</td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQm5WlnrHECspbrKkrXpo7nAYD4YEllr2GYoc1rcxuchbXk26H2y_Foyx9kXefVFRU239982aCCb0Xv/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQm5WlnrHECspbrKkrXpo7nAYD4YEllr2GYoc1rcxuchbXk26H2y_Foyx9kXefVFRU239982aCCb0Xv/pub?output=csv</a></td>
+</tr>
+<tr class="odd">
+<td align="left">health associated</td>
+<td align="left">Invalid class</td>
+<td align="left">Genome_ID</td>
+<td align="left">logical</td>
+<td align="left">character|numeric|integer</td>
+<td align="right">NA</td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQm5WlnrHECspbrKkrXpo7nAYD4YEllr2GYoc1rcxuchbXk26H2y_Foyx9kXefVFRU239982aCCb0Xv/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQm5WlnrHECspbrKkrXpo7nAYD4YEllr2GYoc1rcxuchbXk26H2y_Foyx9kXefVFRU239982aCCb0Xv/pub?output=csv</a></td>
+</tr>
+<tr class="even">
+<td align="left">health associated</td>
 <td align="left">Invalid values</td>
 <td align="left">Confidence_interval</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
 <td align="right">30</td>
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQm5WlnrHECspbrKkrXpo7nAYD4YEllr2GYoc1rcxuchbXk26H2y_Foyx9kXefVFRU239982aCCb0Xv/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQm5WlnrHECspbrKkrXpo7nAYD4YEllr2GYoc1rcxuchbXk26H2y_Foyx9kXefVFRU239982aCCb0Xv/pub?output=csv</a></td>
 </tr>
@@ -619,6 +1027,8 @@ file.</p>
 <td align="left">hydrogen gas producing</td>
 <td align="left">Invalid values</td>
 <td align="left">Attribute_value</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
 <td align="right">23</td>
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vSpucXiYrMe_iYvnZDuNSNkRVnEWRQhykCCXoIvtmTiKAVUdkVnRYvl17nbwGqZDg2xVDwaUXccGYsF/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vSpucXiYrMe_iYvnZDuNSNkRVnEWRQhykCCXoIvtmTiKAVUdkVnRYvl17nbwGqZDg2xVDwaUXccGYsF/pub?output=csv</a></td>
 </tr>
@@ -626,13 +1036,35 @@ file.</p>
 <td align="left">hydrogen gas producing</td>
 <td align="left">Invalid values</td>
 <td align="left">Confidence_interval</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
 <td align="right">24</td>
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vSpucXiYrMe_iYvnZDuNSNkRVnEWRQhykCCXoIvtmTiKAVUdkVnRYvl17nbwGqZDg2xVDwaUXccGYsF/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vSpucXiYrMe_iYvnZDuNSNkRVnEWRQhykCCXoIvtmTiKAVUdkVnRYvl17nbwGqZDg2xVDwaUXccGYsF/pub?output=csv</a></td>
+</tr>
+<tr class="odd">
+<td align="left">hydrogen gas producing</td>
+<td align="left">Invalid values</td>
+<td align="left">NCBI_ID</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="right">24</td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vSpucXiYrMe_iYvnZDuNSNkRVnEWRQhykCCXoIvtmTiKAVUdkVnRYvl17nbwGqZDg2xVDwaUXccGYsF/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vSpucXiYrMe_iYvnZDuNSNkRVnEWRQhykCCXoIvtmTiKAVUdkVnRYvl17nbwGqZDg2xVDwaUXccGYsF/pub?output=csv</a></td>
+</tr>
+<tr class="even">
+<td align="left">isolation site</td>
+<td align="left">Invalid class</td>
+<td align="left">Genome_ID</td>
+<td align="left">logical</td>
+<td align="left">character|numeric|integer</td>
+<td align="right">NA</td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vR5qKaSI_iXovASXA2U8figFKFBRNOuuFcnr-wSedtGuxAu2m8IjHp1uD23NGTWK9NmnKcO0m7FfkIx/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vR5qKaSI_iXovASXA2U8figFKFBRNOuuFcnr-wSedtGuxAu2m8IjHp1uD23NGTWK9NmnKcO0m7FfkIx/pub?output=csv</a></td>
 </tr>
 <tr class="odd">
 <td align="left">isolation site</td>
 <td align="left">Invalid values</td>
 <td align="left">Attribute</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
 <td align="right">1147</td>
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vR5qKaSI_iXovASXA2U8figFKFBRNOuuFcnr-wSedtGuxAu2m8IjHp1uD23NGTWK9NmnKcO0m7FfkIx/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vR5qKaSI_iXovASXA2U8figFKFBRNOuuFcnr-wSedtGuxAu2m8IjHp1uD23NGTWK9NmnKcO0m7FfkIx/pub?output=csv</a></td>
 </tr>
@@ -640,97 +1072,233 @@ file.</p>
 <td align="left">isolation site</td>
 <td align="left">Invalid values</td>
 <td align="left">Rank</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
 <td align="right">11</td>
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vR5qKaSI_iXovASXA2U8figFKFBRNOuuFcnr-wSedtGuxAu2m8IjHp1uD23NGTWK9NmnKcO0m7FfkIx/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vR5qKaSI_iXovASXA2U8figFKFBRNOuuFcnr-wSedtGuxAu2m8IjHp1uD23NGTWK9NmnKcO0m7FfkIx/pub?output=csv</a></td>
 </tr>
 <tr class="odd">
 <td align="left">lactate producing</td>
-<td align="left">Invalid values</td>
-<td align="left">Attribute_value</td>
-<td align="right">23</td>
+<td align="left">Invalid class</td>
+<td align="left">Accession_ID</td>
+<td align="left">logical</td>
+<td align="left">character|numeric|integer</td>
+<td align="right">NA</td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vSDYef_4xX2-RVfxhz7XrHIglvHjB5a9bagpApN_zHNhnswhFXN7CRsaQr3pKW6bAyrh8b26tndxCFi/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vSDYef_4xX2-RVfxhz7XrHIglvHjB5a9bagpApN_zHNhnswhFXN7CRsaQr3pKW6bAyrh8b26tndxCFi/pub?output=csv</a></td>
+</tr>
+<tr class="even">
+<td align="left">lactate producing</td>
+<td align="left">Invalid class</td>
+<td align="left">Genome_ID</td>
+<td align="left">logical</td>
+<td align="left">character|numeric|integer</td>
+<td align="right">NA</td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vSDYef_4xX2-RVfxhz7XrHIglvHjB5a9bagpApN_zHNhnswhFXN7CRsaQr3pKW6bAyrh8b26tndxCFi/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vSDYef_4xX2-RVfxhz7XrHIglvHjB5a9bagpApN_zHNhnswhFXN7CRsaQr3pKW6bAyrh8b26tndxCFi/pub?output=csv</a></td>
+</tr>
+<tr class="odd">
+<td align="left">lactate producing</td>
+<td align="left">Invalid class</td>
+<td align="left">NCBI_ID</td>
+<td align="left">logical</td>
+<td align="left">integer</td>
+<td align="right">NA</td>
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vSDYef_4xX2-RVfxhz7XrHIglvHjB5a9bagpApN_zHNhnswhFXN7CRsaQr3pKW6bAyrh8b26tndxCFi/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vSDYef_4xX2-RVfxhz7XrHIglvHjB5a9bagpApN_zHNhnswhFXN7CRsaQr3pKW6bAyrh8b26tndxCFi/pub?output=csv</a></td>
 </tr>
 <tr class="even">
 <td align="left">lactate producing</td>
 <td align="left">Invalid values</td>
-<td align="left">Confidence_interval</td>
-<td align="right">24</td>
+<td align="left">Attribute_value</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="right">23</td>
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vSDYef_4xX2-RVfxhz7XrHIglvHjB5a9bagpApN_zHNhnswhFXN7CRsaQr3pKW6bAyrh8b26tndxCFi/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vSDYef_4xX2-RVfxhz7XrHIglvHjB5a9bagpApN_zHNhnswhFXN7CRsaQr3pKW6bAyrh8b26tndxCFi/pub?output=csv</a></td>
 </tr>
 <tr class="odd">
+<td align="left">lactate producing</td>
+<td align="left">Invalid values</td>
+<td align="left">Confidence_interval</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="right">24</td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vSDYef_4xX2-RVfxhz7XrHIglvHjB5a9bagpApN_zHNhnswhFXN7CRsaQr3pKW6bAyrh8b26tndxCFi/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vSDYef_4xX2-RVfxhz7XrHIglvHjB5a9bagpApN_zHNhnswhFXN7CRsaQr3pKW6bAyrh8b26tndxCFi/pub?output=csv</a></td>
+</tr>
+<tr class="even">
 <td align="left">length</td>
 <td align="left">Invalid values</td>
 <td align="left">Attribute_value</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
 <td align="right">840</td>
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQkcQ7CJ0LjgE0928maxcVEiqq7QHl6vuosL7qdWaCMVuqHCDwsPJA7yNSeXm9FIip-mDRaU6pMk4Ww/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQkcQ7CJ0LjgE0928maxcVEiqq7QHl6vuosL7qdWaCMVuqHCDwsPJA7yNSeXm9FIip-mDRaU6pMk4Ww/pub?output=csv</a></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">length</td>
 <td align="left">Invalid values</td>
 <td align="left">Confidence_interval</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
 <td align="right">196</td>
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQkcQ7CJ0LjgE0928maxcVEiqq7QHl6vuosL7qdWaCMVuqHCDwsPJA7yNSeXm9FIip-mDRaU6pMk4Ww/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQkcQ7CJ0LjgE0928maxcVEiqq7QHl6vuosL7qdWaCMVuqHCDwsPJA7yNSeXm9FIip-mDRaU6pMk4Ww/pub?output=csv</a></td>
 </tr>
+<tr class="even">
+<td align="left">mutation rate per site per generation</td>
+<td align="left">Invalid class</td>
+<td align="left">Accession_ID</td>
+<td align="left">logical</td>
+<td align="left">character|numeric|integer</td>
+<td align="right">NA</td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQxiU_sfIyCEcwua8vuCjbSCeZkUBsL1pnNxEK-985NAsCgy0sNbaSKuFMaU5ytPCQ86h9x2NEJsX-t/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQxiU_sfIyCEcwua8vuCjbSCeZkUBsL1pnNxEK-985NAsCgy0sNbaSKuFMaU5ytPCQ86h9x2NEJsX-t/pub?output=csv</a></td>
+</tr>
 <tr class="odd">
+<td align="left">mutation rate per site per generation</td>
+<td align="left">Invalid class</td>
+<td align="left">Genome_ID</td>
+<td align="left">logical</td>
+<td align="left">character|numeric|integer</td>
+<td align="right">NA</td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQxiU_sfIyCEcwua8vuCjbSCeZkUBsL1pnNxEK-985NAsCgy0sNbaSKuFMaU5ytPCQ86h9x2NEJsX-t/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQxiU_sfIyCEcwua8vuCjbSCeZkUBsL1pnNxEK-985NAsCgy0sNbaSKuFMaU5ytPCQ86h9x2NEJsX-t/pub?output=csv</a></td>
+</tr>
+<tr class="even">
 <td align="left">mutation rate per site per generation</td>
 <td align="left">Invalid values</td>
 <td align="left">Attribute_value</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
 <td align="right">25</td>
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQxiU_sfIyCEcwua8vuCjbSCeZkUBsL1pnNxEK-985NAsCgy0sNbaSKuFMaU5ytPCQ86h9x2NEJsX-t/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQxiU_sfIyCEcwua8vuCjbSCeZkUBsL1pnNxEK-985NAsCgy0sNbaSKuFMaU5ytPCQ86h9x2NEJsX-t/pub?output=csv</a></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">mutation rate per site per generation</td>
 <td align="left">Invalid values</td>
 <td align="left">Confidence_interval</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
 <td align="right">26</td>
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQxiU_sfIyCEcwua8vuCjbSCeZkUBsL1pnNxEK-985NAsCgy0sNbaSKuFMaU5ytPCQ86h9x2NEJsX-t/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQxiU_sfIyCEcwua8vuCjbSCeZkUBsL1pnNxEK-985NAsCgy0sNbaSKuFMaU5ytPCQ86h9x2NEJsX-t/pub?output=csv</a></td>
 </tr>
+<tr class="even">
+<td align="left">mutation rates per site per year</td>
+<td align="left">Invalid class</td>
+<td align="left">Accession_ID</td>
+<td align="left">logical</td>
+<td align="left">character|numeric|integer</td>
+<td align="right">NA</td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQGJBifwNIYz6znmGAFgGtzaSNPhxU8qagDgl4BWLHKDcjs_gm11pEaLV7X01qdyeacmwYxalTrx0um/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQGJBifwNIYz6znmGAFgGtzaSNPhxU8qagDgl4BWLHKDcjs_gm11pEaLV7X01qdyeacmwYxalTrx0um/pub?output=csv</a></td>
+</tr>
 <tr class="odd">
+<td align="left">mutation rates per site per year</td>
+<td align="left">Invalid class</td>
+<td align="left">Genome_ID</td>
+<td align="left">logical</td>
+<td align="left">character|numeric|integer</td>
+<td align="right">NA</td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQGJBifwNIYz6znmGAFgGtzaSNPhxU8qagDgl4BWLHKDcjs_gm11pEaLV7X01qdyeacmwYxalTrx0um/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQGJBifwNIYz6znmGAFgGtzaSNPhxU8qagDgl4BWLHKDcjs_gm11pEaLV7X01qdyeacmwYxalTrx0um/pub?output=csv</a></td>
+</tr>
+<tr class="even">
 <td align="left">mutation rates per site per year</td>
 <td align="left">Invalid values</td>
 <td align="left">Attribute_value</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
 <td align="right">66</td>
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQGJBifwNIYz6znmGAFgGtzaSNPhxU8qagDgl4BWLHKDcjs_gm11pEaLV7X01qdyeacmwYxalTrx0um/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQGJBifwNIYz6znmGAFgGtzaSNPhxU8qagDgl4BWLHKDcjs_gm11pEaLV7X01qdyeacmwYxalTrx0um/pub?output=csv</a></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">mutation rates per site per year</td>
 <td align="left">Invalid values</td>
 <td align="left">Confidence_interval</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
 <td align="right">81</td>
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQGJBifwNIYz6znmGAFgGtzaSNPhxU8qagDgl4BWLHKDcjs_gm11pEaLV7X01qdyeacmwYxalTrx0um/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQGJBifwNIYz6znmGAFgGtzaSNPhxU8qagDgl4BWLHKDcjs_gm11pEaLV7X01qdyeacmwYxalTrx0um/pub?output=csv</a></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">mutation rates per site per year</td>
 <td align="left">Invalid values</td>
 <td align="left">Rank</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
 <td align="right">1</td>
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQGJBifwNIYz6znmGAFgGtzaSNPhxU8qagDgl4BWLHKDcjs_gm11pEaLV7X01qdyeacmwYxalTrx0um/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQGJBifwNIYz6znmGAFgGtzaSNPhxU8qagDgl4BWLHKDcjs_gm11pEaLV7X01qdyeacmwYxalTrx0um/pub?output=csv</a></td>
 </tr>
+<tr class="odd">
+<td align="left">optimal ph</td>
+<td align="left">Invalid class</td>
+<td align="left">Accession_ID</td>
+<td align="left">logical</td>
+<td align="left">character|numeric|integer</td>
+<td align="right">NA</td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQTIHjOUyJc7O6Y_w3QIj6wiZD2AA369oWByaS77XTP6VX2IhNgBULN4cccs4ZMD-dsLx9ggTBKOnlt/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQTIHjOUyJc7O6Y_w3QIj6wiZD2AA369oWByaS77XTP6VX2IhNgBULN4cccs4ZMD-dsLx9ggTBKOnlt/pub?output=csv</a></td>
+</tr>
 <tr class="even">
 <td align="left">optimal ph</td>
-<td align="left">Invalid values</td>
-<td align="left">Attribute_value</td>
-<td align="right">576</td>
+<td align="left">Invalid class</td>
+<td align="left">Genome_ID</td>
+<td align="left">logical</td>
+<td align="left">character|numeric|integer</td>
+<td align="right">NA</td>
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQTIHjOUyJc7O6Y_w3QIj6wiZD2AA369oWByaS77XTP6VX2IhNgBULN4cccs4ZMD-dsLx9ggTBKOnlt/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQTIHjOUyJc7O6Y_w3QIj6wiZD2AA369oWByaS77XTP6VX2IhNgBULN4cccs4ZMD-dsLx9ggTBKOnlt/pub?output=csv</a></td>
 </tr>
 <tr class="odd">
 <td align="left">optimal ph</td>
 <td align="left">Invalid values</td>
-<td align="left">Confidence_interval</td>
-<td align="right">886</td>
+<td align="left">Attribute_value</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="right">576</td>
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQTIHjOUyJc7O6Y_w3QIj6wiZD2AA369oWByaS77XTP6VX2IhNgBULN4cccs4ZMD-dsLx9ggTBKOnlt/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQTIHjOUyJc7O6Y_w3QIj6wiZD2AA369oWByaS77XTP6VX2IhNgBULN4cccs4ZMD-dsLx9ggTBKOnlt/pub?output=csv</a></td>
 </tr>
 <tr class="even">
 <td align="left">optimal ph</td>
 <td align="left">Invalid values</td>
+<td align="left">Confidence_interval</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="right">886</td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQTIHjOUyJc7O6Y_w3QIj6wiZD2AA369oWByaS77XTP6VX2IhNgBULN4cccs4ZMD-dsLx9ggTBKOnlt/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQTIHjOUyJc7O6Y_w3QIj6wiZD2AA369oWByaS77XTP6VX2IhNgBULN4cccs4ZMD-dsLx9ggTBKOnlt/pub?output=csv</a></td>
+</tr>
+<tr class="odd">
+<td align="left">optimal ph</td>
+<td align="left">Invalid values</td>
 <td align="left">Rank</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
 <td align="right">3</td>
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQTIHjOUyJc7O6Y_w3QIj6wiZD2AA369oWByaS77XTP6VX2IhNgBULN4cccs4ZMD-dsLx9ggTBKOnlt/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQTIHjOUyJc7O6Y_w3QIj6wiZD2AA369oWByaS77XTP6VX2IhNgBULN4cccs4ZMD-dsLx9ggTBKOnlt/pub?output=csv</a></td>
+</tr>
+<tr class="even">
+<td align="left">plant pathogenicity</td>
+<td align="left">Invalid class</td>
+<td align="left">Accession_ID</td>
+<td align="left">logical</td>
+<td align="left">character|numeric|integer</td>
+<td align="right">NA</td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vSLH__Hb4wPELYjnSsBR_FwJ4FHLUmx3KDO_pQG3CD9JqNyuugWbiBF9TBhXw9S5mSck2cbeY2ai77C/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vSLH__Hb4wPELYjnSsBR_FwJ4FHLUmx3KDO_pQG3CD9JqNyuugWbiBF9TBhXw9S5mSck2cbeY2ai77C/pub?output=csv</a></td>
+</tr>
+<tr class="odd">
+<td align="left">plant pathogenicity</td>
+<td align="left">Invalid class</td>
+<td align="left">Evidence</td>
+<td align="left">logical</td>
+<td align="left">character</td>
+<td align="right">NA</td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vSLH__Hb4wPELYjnSsBR_FwJ4FHLUmx3KDO_pQG3CD9JqNyuugWbiBF9TBhXw9S5mSck2cbeY2ai77C/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vSLH__Hb4wPELYjnSsBR_FwJ4FHLUmx3KDO_pQG3CD9JqNyuugWbiBF9TBhXw9S5mSck2cbeY2ai77C/pub?output=csv</a></td>
+</tr>
+<tr class="even">
+<td align="left">plant pathogenicity</td>
+<td align="left">Invalid class</td>
+<td align="left">Genome_ID</td>
+<td align="left">logical</td>
+<td align="left">character|numeric|integer</td>
+<td align="right">NA</td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vSLH__Hb4wPELYjnSsBR_FwJ4FHLUmx3KDO_pQG3CD9JqNyuugWbiBF9TBhXw9S5mSck2cbeY2ai77C/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vSLH__Hb4wPELYjnSsBR_FwJ4FHLUmx3KDO_pQG3CD9JqNyuugWbiBF9TBhXw9S5mSck2cbeY2ai77C/pub?output=csv</a></td>
 </tr>
 <tr class="odd">
 <td align="left">plant pathogenicity</td>
 <td align="left">Invalid values</td>
 <td align="left">Confidence_interval</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
 <td align="right">1493</td>
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vSLH__Hb4wPELYjnSsBR_FwJ4FHLUmx3KDO_pQG3CD9JqNyuugWbiBF9TBhXw9S5mSck2cbeY2ai77C/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vSLH__Hb4wPELYjnSsBR_FwJ4FHLUmx3KDO_pQG3CD9JqNyuugWbiBF9TBhXw9S5mSck2cbeY2ai77C/pub?output=csv</a></td>
 </tr>
@@ -738,13 +1306,35 @@ file.</p>
 <td align="left">plant pathogenicity</td>
 <td align="left">Invalid values</td>
 <td align="left">Rank</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
 <td align="right">2</td>
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vSLH__Hb4wPELYjnSsBR_FwJ4FHLUmx3KDO_pQG3CD9JqNyuugWbiBF9TBhXw9S5mSck2cbeY2ai77C/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vSLH__Hb4wPELYjnSsBR_FwJ4FHLUmx3KDO_pQG3CD9JqNyuugWbiBF9TBhXw9S5mSck2cbeY2ai77C/pub?output=csv</a></td>
 </tr>
 <tr class="odd">
 <td align="left">shape</td>
+<td align="left">Invalid class</td>
+<td align="left">Genome_ID</td>
+<td align="left">logical</td>
+<td align="left">character|numeric|integer</td>
+<td align="right">NA</td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vSSBfC2jfuqioMyj891v-hYM-uL61-amoDNl0bufw5RwVOmjp5m2uNOKTeJsAsZVHFdujgjEAencl5E/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vSSBfC2jfuqioMyj891v-hYM-uL61-amoDNl0bufw5RwVOmjp5m2uNOKTeJsAsZVHFdujgjEAencl5E/pub?output=csv</a></td>
+</tr>
+<tr class="even">
+<td align="left">shape</td>
+<td align="left">Invalid class</td>
+<td align="left">Note</td>
+<td align="left">logical</td>
+<td align="left">character</td>
+<td align="right">NA</td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vSSBfC2jfuqioMyj891v-hYM-uL61-amoDNl0bufw5RwVOmjp5m2uNOKTeJsAsZVHFdujgjEAencl5E/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vSSBfC2jfuqioMyj891v-hYM-uL61-amoDNl0bufw5RwVOmjp5m2uNOKTeJsAsZVHFdujgjEAencl5E/pub?output=csv</a></td>
+</tr>
+<tr class="odd">
+<td align="left">shape</td>
 <td align="left">Invalid values</td>
 <td align="left">Attribute</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
 <td align="right">482</td>
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vSSBfC2jfuqioMyj891v-hYM-uL61-amoDNl0bufw5RwVOmjp5m2uNOKTeJsAsZVHFdujgjEAencl5E/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vSSBfC2jfuqioMyj891v-hYM-uL61-amoDNl0bufw5RwVOmjp5m2uNOKTeJsAsZVHFdujgjEAencl5E/pub?output=csv</a></td>
 </tr>
@@ -752,36 +1342,271 @@ file.</p>
 <td align="left">shape</td>
 <td align="left">Invalid values</td>
 <td align="left">Evidence</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
 <td align="right">1279</td>
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vSSBfC2jfuqioMyj891v-hYM-uL61-amoDNl0bufw5RwVOmjp5m2uNOKTeJsAsZVHFdujgjEAencl5E/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vSSBfC2jfuqioMyj891v-hYM-uL61-amoDNl0bufw5RwVOmjp5m2uNOKTeJsAsZVHFdujgjEAencl5E/pub?output=csv</a></td>
 </tr>
 <tr class="odd">
 <td align="left">spore shape</td>
-<td align="left">Invalid values</td>
-<td align="left">Accession_ID</td>
-<td align="right">153</td>
+<td align="left">Invalid class</td>
+<td align="left">Genome_ID</td>
+<td align="left">logical</td>
+<td align="left">character|numeric|integer</td>
+<td align="right">NA</td>
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQSMzIaqrE8gCV20sDu_8VBmu1WkpQ_vngaWzLCK2qe5E8IJL7-sOF8qEY0sHeUEavvLHpKVp-vmUxh/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQSMzIaqrE8gCV20sDu_8VBmu1WkpQ_vngaWzLCK2qe5E8IJL7-sOF8qEY0sHeUEavvLHpKVp-vmUxh/pub?output=csv</a></td>
 </tr>
 <tr class="even">
 <td align="left">spore shape</td>
 <td align="left">Invalid values</td>
-<td align="left">Confidence_interval</td>
-<td align="right">1430</td>
+<td align="left">Accession_ID</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="right">153</td>
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQSMzIaqrE8gCV20sDu_8VBmu1WkpQ_vngaWzLCK2qe5E8IJL7-sOF8qEY0sHeUEavvLHpKVp-vmUxh/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQSMzIaqrE8gCV20sDu_8VBmu1WkpQ_vngaWzLCK2qe5E8IJL7-sOF8qEY0sHeUEavvLHpKVp-vmUxh/pub?output=csv</a></td>
 </tr>
 <tr class="odd">
-<td align="left">width</td>
+<td align="left">spore shape</td>
 <td align="left">Invalid values</td>
-<td align="left">Attribute_value</td>
-<td align="right">833</td>
+<td align="left">Confidence_interval</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="right">1430</td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQSMzIaqrE8gCV20sDu_8VBmu1WkpQ_vngaWzLCK2qe5E8IJL7-sOF8qEY0sHeUEavvLHpKVp-vmUxh/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQSMzIaqrE8gCV20sDu_8VBmu1WkpQ_vngaWzLCK2qe5E8IJL7-sOF8qEY0sHeUEavvLHpKVp-vmUxh/pub?output=csv</a></td>
+</tr>
+<tr class="even">
+<td align="left">width</td>
+<td align="left">Invalid class</td>
+<td align="left">Accession_ID</td>
+<td align="left">logical</td>
+<td align="left">character|numeric|integer</td>
+<td align="right">NA</td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vR45vzAobXMOH1SCECpkBkIvxTsG5d8jAweSHaUst-gFKQcS0tTYUjivmLVByOLbFZgF59miCyF11TC/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vR45vzAobXMOH1SCECpkBkIvxTsG5d8jAweSHaUst-gFKQcS0tTYUjivmLVByOLbFZgF59miCyF11TC/pub?output=csv</a></td>
+</tr>
+<tr class="odd">
+<td align="left">width</td>
+<td align="left">Invalid class</td>
+<td align="left">Genome_ID</td>
+<td align="left">logical</td>
+<td align="left">character|numeric|integer</td>
+<td align="right">NA</td>
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vR45vzAobXMOH1SCECpkBkIvxTsG5d8jAweSHaUst-gFKQcS0tTYUjivmLVByOLbFZgF59miCyF11TC/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vR45vzAobXMOH1SCECpkBkIvxTsG5d8jAweSHaUst-gFKQcS0tTYUjivmLVByOLbFZgF59miCyF11TC/pub?output=csv</a></td>
 </tr>
 <tr class="even">
 <td align="left">width</td>
 <td align="left">Invalid values</td>
+<td align="left">Attribute_value</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="right">833</td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vR45vzAobXMOH1SCECpkBkIvxTsG5d8jAweSHaUst-gFKQcS0tTYUjivmLVByOLbFZgF59miCyF11TC/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vR45vzAobXMOH1SCECpkBkIvxTsG5d8jAweSHaUst-gFKQcS0tTYUjivmLVByOLbFZgF59miCyF11TC/pub?output=csv</a></td>
+</tr>
+<tr class="odd">
+<td align="left">width</td>
+<td align="left">Invalid values</td>
 <td align="left">Evidence</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
 <td align="right">1</td>
 <td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vR45vzAobXMOH1SCECpkBkIvxTsG5d8jAweSHaUst-gFKQcS0tTYUjivmLVByOLbFZgF59miCyF11TC/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vR45vzAobXMOH1SCECpkBkIvxTsG5d8jAweSHaUst-gFKQcS0tTYUjivmLVByOLbFZgF59miCyF11TC/pub?output=csv</a></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="check-valid-ncbi-ids" class="section level1">
+<h1 class="hasAnchor">
+<a href="#check-valid-ncbi-ids" class="anchor"></a>Check valid NCBI IDs</h1>
+<p>This function is not included in the package because it would add taxizedb as a dependency</p>
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">check_valid_NCBI_IDs</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">dat</span><span class="op">)</span> <span class="op">{</span>
+
+  <span class="va">ncbi_ids</span> <span class="op">&lt;-</span> <span class="va">dat</span><span class="op">[[</span><span class="st">"NCBI_ID"</span><span class="op">]</span><span class="op">]</span>
+  <span class="va">taxonomies</span> <span class="op">&lt;-</span> <span class="fu">taxizedb</span><span class="fu">::</span><span class="fu"><a href="https://ropensci.github.io/taxizedb/reference/classification.html">classification</a></span><span class="op">(</span><span class="va">ncbi_ids</span>, db <span class="op">=</span> <span class="st">"ncbi"</span><span class="op">)</span>
+  <span class="va">invalid_positions_lgl</span> <span class="op">&lt;-</span> <span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">ncbi_ids</span><span class="op">)</span> <span class="op">&amp;</span> <span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">taxonomies</span><span class="op">)</span>
+  <span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">invalid_positions_lgl</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="cn">NULL</span>
+  <span class="va">invalid_positions</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/which.html">which</a></span><span class="op">(</span><span class="va">invalid_positions_lgl</span><span class="op">)</span>
+
+  <span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">invalid_positions</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span>
+    <span class="fu"><a href="https://rdrr.io/r/base/message.html">message</a></span><span class="op">(</span><span class="st">"All NCBI IDs are valid."</span><span class="op">)</span>
+    <span class="kw"><a href="https://rdrr.io/r/base/function.html">return</a></span><span class="op">(</span><span class="cn">NULL</span><span class="op">)</span>
+  <span class="op">}</span>
+
+  <span class="va">invalid_values</span> <span class="op">&lt;-</span> <span class="va">ncbi_ids</span><span class="op">[</span><span class="va">invalid_positions</span><span class="op">]</span>
+
+  <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>invalid_positions <span class="op">=</span> <span class="va">invalid_positions</span>, invalid_values <span class="op">=</span> <span class="va">invalid_values</span><span class="op">)</span>
+
+  <span class="fu">bugphyzz</span><span class="fu">:::</span><span class="fu"><a href="../../reference/.stop_custom.html">.stop_custom</a></span><span class="op">(</span><span class="st">"invalid_ncbi_ids"</span>, message <span class="op">=</span> <span class="st">"Invalid NCBI IDs."</span>,
+    invalid_positions <span class="op">=</span> <span class="va">invalid_positions</span>, invalid_values <span class="op">=</span> <span class="va">invalid_values</span><span class="op">)</span>
+<span class="op">}</span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<code class="sourceCode R">  <span class="va">err_list</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html">lapply</a></span><span class="op">(</span><span class="va">phys</span>, <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">{</span>
+    <span class="kw"><a href="https://rdrr.io/r/base/conditions.html">tryCatch</a></span><span class="op">(</span>
+      invalid_ncbi_ids <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">e</span><span class="op">)</span> <span class="va">e</span>,
+      <span class="fu">check_valid_NCBI_IDs</span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
+    <span class="op">)</span>
+  <span class="op">}</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+    <span class="fu"><a href="https://purrr.tidyverse.org/reference/keep.html">discard</a></span><span class="op">(</span><span class="va">is.null</span><span class="op">)</span>
+<span class="co">#&gt; No results found. Consider checking the spelling or alternative classification</span>
+<span class="co">#&gt; All NCBI IDs are valid.</span>
+<span class="co">#&gt; No results found. Consider checking the spelling or alternative classification</span>
+<span class="co">#&gt; All NCBI IDs are valid.</span>
+<span class="co">#&gt; No results found. Consider checking the spelling or alternative classification</span>
+<span class="co">#&gt; All NCBI IDs are valid.</span>
+<span class="co">#&gt; All NCBI IDs are valid.</span>
+<span class="co">#&gt; All NCBI IDs are valid.</span>
+<span class="co">#&gt; All NCBI IDs are valid.</span>
+<span class="co">#&gt; All NCBI IDs are valid.</span></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html">map</a></span><span class="op">(</span><span class="va">err_list</span>, <span class="op">~</span><span class="op">{</span>
+  <span class="fu">tibble</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span>
+    error_type <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">.x</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span>,
+    invalid_pos <span class="op">=</span> <span class="va">.x</span><span class="op">$</span><span class="va">invalid_positions</span>,
+    invalid_val <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html">as.character</a></span><span class="op">(</span><span class="va">.x</span><span class="op">$</span><span class="va">invalid_values</span><span class="op">)</span>
+  <span class="op">)</span>
+<span class="op">}</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/bind.html">bind_rows</a></span><span class="op">(</span>.id <span class="op">=</span> <span class="st">"dataset"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/across.html">across</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="op">-</span><span class="va">invalid_val</span>, <span class="op">-</span><span class="va">invalid_pos</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/across.html">across</a></span><span class="op">(</span><span class="fu"><a href="https://tidyselect.r-lib.org/reference/starts_with.html">starts_with</a></span><span class="op">(</span><span class="st">"invalid"</span><span class="op">)</span>, <span class="op">~</span><span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="va">.x</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
+  <span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span><span class="op">(</span><span class="op">)</span>
+<span class="co">#&gt; `summarise()` has grouped output by 'dataset'. You can override using the `.groups` argument.</span></code></pre></div>
+<table class="table">
+<colgroup>
+<col width="0%">
+<col width="0%">
+<col width="46%">
+<col width="52%">
+</colgroup>
+<thead><tr class="header">
+<th align="left">dataset</th>
+<th align="left">error_type</th>
+<th align="left">invalid_pos</th>
+<th align="left">invalid_val</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="left">aerophilicity</td>
+<td align="left">invalid_ncbi_ids</td>
+<td align="left">2512</td>
+<td align="left">338187</td>
+</tr>
+<tr class="even">
+<td align="left">animal pathogen</td>
+<td align="left">invalid_ncbi_ids</td>
+<td align="left">177, 225, 302, 916</td>
+<td align="left">262776, 332056, 420233, 90270</td>
+</tr>
+<tr class="odd">
+<td align="left">antimicrobial resistance</td>
+<td align="left">invalid_ncbi_ids</td>
+<td align="left">706, 707, 708, 901, 902, 903, 1262, 1263, 1264, 2440, 2441, 2442, 5330, 5331, 5332, 5333, 5580, 5816, 6692, 8048, 8049, 8050, 8051, 8811, 9900, 9901, 9902, 9903, 10298, 10299, 10300, 10301</td>
+<td align="left">46170, 46170, 46170, 46170, 46170, 46170, 46170, 46170, 46170, 46170, 46170, 46170, 46170, 46170, 46170, 46170, 46170, 46170, 46170, 46170, 46170, 46170, 46170, 46170, 46170, 46170, 46170, 46170, 46170, 46170, 46170, 46170</td>
+</tr>
+<tr class="even">
+<td align="left">antimicrobial sensitivity</td>
+<td align="left">invalid_ncbi_ids</td>
+<td align="left">80, 458, 470, 774</td>
+<td align="left">420233, 90270 , 366648, 332056</td>
+</tr>
+<tr class="odd">
+<td align="left">arrangement</td>
+<td align="left">invalid_ncbi_ids</td>
+<td align="left">1159, 1771</td>
+<td align="left">40136 , 338187</td>
+</tr>
+<tr class="even">
+<td align="left">biofilm forming</td>
+<td align="left">invalid_ncbi_ids</td>
+<td align="left">101, 315</td>
+<td align="left">420233 , 1050843</td>
+</tr>
+<tr class="odd">
+<td align="left">COGEM pathogenicity rating</td>
+<td align="left">invalid_ncbi_ids</td>
+<td align="left">12, 836, 936</td>
+<td align="left">420233 , 1050843, 262776</td>
+</tr>
+<tr class="even">
+<td align="left">disease association</td>
+<td align="left">invalid_ncbi_ids</td>
+<td align="left">418</td>
+<td align="left">338187</td>
+</tr>
+<tr class="odd">
+<td align="left">extreme environment</td>
+<td align="left">invalid_ncbi_ids</td>
+<td align="left">1326, 1405, 1555, 1558, 1855, 1856</td>
+<td align="left">1050843, 262776 , 420233 , 332056 , 366648 , 90270</td>
+</tr>
+<tr class="even">
+<td align="left">fatty acid composition</td>
+<td align="left">invalid_ncbi_ids</td>
+<td align="left">1025, 1026, 1027, 1028, 1029, 1030, 1031, 1032, 1033, 1034, 1035, 1036, 1037, 1038, 1039, 1040, 1041, 1042, 1043, 1044, 1045, 1046, 1047, 1048, 1049, 1050, 1051, 1052, 1053, 1054, 1055, 1056, 1057, 1058, 1059, 1060, 1061, 1062, 1063, 1064, 1065, 1066, 1067, 1068, 1069, 1070, 1071, 1072, 1073, 1074, 1075, 1076, 1077, 1078, 1079, 1080, 1081, 1082, 1083, 1084, 1085, 1086, 1087, 1088, 1089, 1090, 1091, 1092, 1093, 1094, 1095, 1096, 1097, 1098, 1099, 1100, 1101, 1102, 1103, 1104, 1105, 1106, 1107, 1108, 1109, 1110, 1111, 1112, 1113, 1114, 1115, 1116, 1117, 1118, 1119, 1120, 1121, 1122, 1123, 1124, 1125, 1126, 1127, 1128, 1129, 1130, 1131, 1132, 1133, 1134, 1135, 1136, 1137, 1138, 1139, 1140, 1141, 1142, 1143, 1144, 1145, 1146, 1147, 1148, 1149, 1150, 1151, 1152, 13697, 13698, 13699, 13700, 13701, 13702, 13703, 13704, 13705, 13706, 13707, 13708, 13709, 13710, 13711, 13712, 13713, 13714, 13715, 13716, 13717, 13718, 13719, 13720, 13721, 13722, 13723, 13724, 13725, 13726, 13727, 13728, 13729, 13730, 13731, 13732, 13733, 13734, 13735, 13736, 13737, 13738, 13739, 13740, 13741, 13742, 13743, 13744, 13745, 13746, 13747, 13748, 13749, 13750, 13751, 13752, 13753, 13754, 13755, 13756, 13757, 13758, 13759, 13760, 13761, 13762, 13763, 13764, 13765, 13766, 13767, 13768, 13769, 13770, 13771, 13772, 13773, 13774, 13775, 13776, 13777, 13778, 13779, 13780, 13781, 13782, 13783, 13784, 13785, 13786, 13787, 13788, 13789, 13790, 13791, 13792, 13793, 13794, 13795, 13796, 13797, 13798, 13799, 13800, 13801, 13802, 13803, 13804, 13805, 13806, 13807, 13808, 13809, 13810, 13811, 13812, 13813, 13814, 13815, 13816, 13817, 13818, 13819, 13820, 13821, 13822, 13823, 13824, 27009, 27010, 27011, 27012, 27013, 27014, 27015, 27016, 27017, 27018, 27019, 27020, 27021, 27022, 27023, 27024, 27025, 27026, 27027, 27028, 27029, 27030, 27031, 27032, 27033, 27034, 27035, 27036, 27037, 27038, 27039, 27040, 27041, 27042, 27043, 27044, 27045, 27046, 27047, 27048, 27049, 27050, 27051, 27052, 27053, 27054, 27055, 27056, 27057, 27058, 27059, 27060, 27061, 27062, 27063, 27064, 27065, 27066, 27067, 27068, 27069, 27070, 27071, 27072, 27073, 27074, 27075, 27076, 27077, 27078, 27079, 27080, 27081, 27082, 27083, 27084, 27085, 27086, 27087, 27088, 27089, 27090, 27091, 27092, 27093, 27094, 27095, 27096, 27097, 27098, 27099, 27100, 27101, 27102, 27103, 27104, 27105, 27106, 27107, 27108, 27109, 27110, 27111, 27112, 27113, 27114, 27115, 27116, 27117, 27118, 27119, 27120, 27121, 27122, 27123, 27124, 27125, 27126, 27127, 27128, 27129, 27130, 27131, 27132, 27133, 27134, 27135, 27136, 27137, 27138, 27139, 27140, 27141, 27142, 27143, 27144, 27145, 27146, 27147, 27148, 27149, 27150, 27151, 27152, 27153, 27154, 27155, 27156, 27157, 27158, 27159, 27160, 27161, 27162, 27163, 27164, 27165, 27166, 27167, 27168, 27169, 27170, 27171, 27172, 27173, 27174, 27175, 27176, 27177, 27178, 27179, 27180, 27181, 27182, 27183, 27184, 27185, 27186, 27187, 27188, 27189, 27190, 27191, 27192, 27193, 27194, 27195, 27196, 27197, 27198, 27199, 27200, 27201, 27202, 27203, 27204, 27205, 27206, 27207, 27208, 27209, 27210, 27211, 27212, 27213, 27214, 27215, 27216, 27217, 27218, 27219, 27220, 27221, 27222, 27223, 27224, 27225, 27226, 27227, 27228, 27229, 27230, 27231, 27232, 27233, 27234, 27235, 27236, 27237, 27238, 27239, 27240, 27241, 27242, 27243, 27244, 27245, 27246, 27247, 27248, 27249, 27250, 27251, 27252, 27253, 27254, 27255, 27256, 27257, 27258, 27259, 27260, 27261, 27262, 27263, 27264, 27265, 27266, 27267, 27268, 27269, 27270, 27271, 27272, 27273, 27274, 27275, 27276, 27277, 27278, 27279, 27280, 27281, 27282, 27283, 27284, 27285, 27286, 27287, 27288, 27289, 27290, 27291, 27292, 27293, 27294, 27295, 27296, 27297, 27298, 27299, 27300, 27301, 27302, 27303, 27304, 27305, 27306, 27307, 27308, 27309, 27310, 27311, 27312, 27313, 27314, 27315, 27316, 27317, 27318, 27319, 27320, 27321, 27322, 27323, 27324, 27325, 27326, 27327, 27328, 27329, 27330, 27331, 27332, 27333, 27334, 27335, 27336, 27337, 27338, 27339, 27340, 27341, 27342, 27343, 27344, 27345, 27346, 27347, 27348, 27349, 27350, 27351, 27352, 27353, 27354, 27355, 27356, 27357, 27358, 27359, 27360, 27361, 27362, 27363, 27364, 27365, 27366, 27367, 27368, 27369, 27370, 27371, 27372, 27373, 27374, 27375, 27376, 27377, 27378, 27379, 27380, 27381, 27382, 27383, 27384, 27385, 27386, 27387, 27388, 27389, 27390, 27391, 27392, 27393, 27394, 27395, 27396, 27397, 27398, 27399, 27400, 27401, 27402, 27403, 27404, 27405, 27406, 27407, 27408, 27409, 27410, 27411, 27412, 27413, 27414, 27415, 27416, 27417, 27418, 27419, 27420, 27421, 27422, 27423, 27424, 27425, 27426, 27427, 27428, 27429, 27430, 27431, 27432, 27433, 27434, 27435, 27436, 27437, 27438, 27439, 27440, 27441, 27442, 27443, 27444, 27445, 27446, 27447, 27448, 27449, 27450, 27451, 27452, 27453, 27454, 27455, 27456, 27457, 27458, 27459, 27460, 27461, 27462, 27463, 27464, 27465, 27466, 27467, 27468, 27469, 27470, 27471, 27472, 27473, 27474, 27475, 27476, 27477, 27478, 27479, 27480, 27481, 27482, 27483, 27484, 27485, 27486, 27487, 27488, 27489, 27490, 27491, 27492, 27493, 27494, 27495, 27496, 27497, 27498, 27499, 27500, 27501, 27502, 27503, 27504, 27505, 27506, 27507, 27508, 27509, 27510, 27511, 27512, 27513, 27514, 27515, 27516, 27517, 27518, 27519, 27520, 30849, 30850, 30851, 30852, 30853, 30854, 30855, 30856, 30857, 30858, 30859, 30860, 30861, 30862, 30863, 30864, 30865, 30866, 30867, 30868, 30869, 30870, 30871, 30872, 30873, 30874, 30875, 30876, 30877, 30878, 30879, 30880, 30881, 30882, 30883, 30884, 30885, 30886, 30887, 30888, 30889, 30890, 30891, 30892, 30893, 30894, 30895, 30896, 30897, 30898, 30899, 30900, 30901, 30902, 30903, 30904, 30905, 30906, 30907, 30908, 30909, 30910, 30911, 30912, 30913, 30914, 30915, 30916, 30917, 30918, 30919, 30920, 30921, 30922, 30923, 30924, 30925, 30926, 30927, 30928, 30929, 30930, 30931, 30932, 30933, 30934, 30935, 30936, 30937, 30938, 30939, 30940, 30941, 30942, 30943, 30944, 30945, 30946, 30947, 30948, 30949, 30950, 30951, 30952, 30953, 30954, 30955, 30956, 30957, 30958, 30959, 30960, 30961, 30962, 30963, 30964, 30965, 30966, 30967, 30968, 30969, 30970, 30971, 30972, 30973, 30974, 30975, 30976, 31489, 31490, 31491, 31492, 31493, 31494, 31495, 31496, 31497, 31498, 31499, 31500, 31501, 31502, 31503, 31504, 31505, 31506, 31507, 31508, 31509, 31510, 31511, 31512, 31513, 31514, 31515, 31516, 31517, 31518, 31519, 31520, 31521, 31522, 31523, 31524, 31525, 31526, 31527, 31528, 31529, 31530, 31531, 31532, 31533, 31534, 31535, 31536, 31537, 31538, 31539, 31540, 31541, 31542, 31543, 31544, 31545, 31546, 31547, 31548, 31549, 31550, 31551, 31552, 31553, 31554, 31555, 31556, 31557, 31558, 31559, 31560, 31561, 31562, 31563, 31564, 31565, 31566, 31567, 31568, 31569, 31570, 31571, 31572, 31573, 31574, 31575, 31576, 31577, 31578, 31579, 31580, 31581, 31582, 31583, 31584, 31585, 31586, 31587, 31588, 31589, 31590, 31591, 31592, 31593, 31594, 31595, 31596, 31597, 31598, 31599, 31600, 31601, 31602, 31603, 31604, 31605, 31606, 31607, 31608, 31609, 31610, 31611, 31612, 31613, 31614, 31615, 31616, 32769, 32770, 32771, 32772, 32773, 32774, 32775, 32776, 32777, 32778, 32779, 32780, 32781, 32782, 32783, 32784, 32785, 32786, 32787, 32788, 32789, 32790, 32791, 32792, 32793, 32794, 32795, 32796, 32797, 32798, 32799, 32800, 32801, 32802, 32803, 32804, 32805, 32806, 32807, 32808, 32809, 32810, 32811, 32812, 32813, 32814, 32815, 32816, 32817, 32818, 32819, 32820, 32821, 32822, 32823, 32824, 32825, 32826, 32827, 32828, 32829, 32830, 32831, 32832, 32833, 32834, 32835, 32836, 32837, 32838, 32839, 32840, 32841, 32842, 32843, 32844, 32845, 32846, 32847, 32848, 32849, 32850, 32851, 32852, 32853, 32854, 32855, 32856, 32857, 32858, 32859, 32860, 32861, 32862, 32863, 32864, 32865, 32866, 32867, 32868, 32869, 32870, 32871, 32872, 32873, 32874, 32875, 32876, 32877, 32878, 32879, 32880, 32881, 32882, 32883, 32884, 32885, 32886, 32887, 32888, 32889, 32890, 32891, 32892, 32893, 32894, 32895, 32896, 32897, 32898, 32899, 32900, 32901, 32902, 32903, 32904, 32905, 32906, 32907, 32908, 32909, 32910, 32911, 32912, 32913, 32914, 32915, 32916, 32917, 32918, 32919, 32920, 32921, 32922, 32923, 32924, 32925, 32926, 32927, 32928, 32929, 32930, 32931, 32932, 32933, 32934, 32935, 32936, 32937, 32938, 32939, 32940, 32941, 32942, 32943, 32944, 32945, 32946, 32947, 32948, 32949, 32950, 32951, 32952, 32953, 32954, 32955, 32956, 32957, 32958, 32959, 32960, 32961, 32962, 32963, 32964, 32965, 32966, 32967, 32968, 32969, 32970, 32971, 32972, 32973, 32974, 32975, 32976, 32977, 32978, 32979, 32980, 32981, 32982, 32983, 32984, 32985, 32986, 32987, 32988, 32989, 32990, 32991, 32992, 32993, 32994, 32995, 32996, 32997, 32998, 32999, 33000, 33001, 33002, 33003, 33004, 33005, 33006, 33007, 33008, 33009, 33010, 33011, 33012, 33013, 33014, 33015, 33016, 33017, 33018, 33019, 33020, 33021, 33022, 33023, 33024, 33281, 33282, 33283, 33284, 33285, 33286, 33287, 33288, 33289, 33290, 33291, 33292, 33293, 33294, 33295, 33296, 33297, 33298, 33299, 33300, 33301, 33302, 33303, 33304, 33305, 33306, 33307, 33308, 33309, 33310, 33311, 33312, 33313, 33314, 33315, 33316, 33317, 33318, 33319, 33320, 33321, 33322, 33323, 33324, 33325, 33326, 33327, 33328, 33329, 33330, 33331, 33332, 33333, 33334, 33335, 33336, 33337, 33338, 33339, 33340, 33341, 33342, 33343, 33344, 33345, 33346, 33347, 33348, 33349, 33350, 33351, 33352, 33353, 33354, 33355, 33356, 33357, 33358, 33359, 33360, 33361, 33362, 33363, 33364, 33365, 33366, 33367, 33368, 33369, 33370, 33371, 33372, 33373, 33374, 33375, 33376, 33377, 33378, 33379, 33380, 33381, 33382, 33383, 33384, 33385, 33386, 33387, 33388, 33389, 33390, 33391, 33392, 33393, 33394, 33395, 33396, 33397, 33398, 33399, 33400, 33401, 33402, 33403, 33404, 33405, 33406, 33407, 33408, 36609, 36610, 36611, 36612, 36613, 36614, 36615, 36616, 36617, 36618, 36619, 36620, 36621, 36622, 36623, 36624, 36625, 36626, 36627, 36628, 36629, 36630, 36631, 36632, 36633, 36634, 36635, 36636, 36637, 36638, 36639, 36640, 36641, 36642, 36643, 36644, 36645, 36646, 36647, 36648, 36649, 36650, 36651, 36652, 36653, 36654, 36655, 36656, 36657, 36658, 36659, 36660, 36661, 36662, 36663, 36664, 36665, 36666, 36667, 36668, 36669, 36670, 36671, 36672, 36673, 36674, 36675, 36676, 36677, 36678, 36679, 36680, 36681, 36682, 36683, 36684, 36685, 36686, 36687, 36688, 36689, 36690, 36691, 36692, 36693, 36694, 36695, 36696, 36697, 36698, 36699, 36700, 36701, 36702, 36703, 36704, 36705, 36706, 36707, 36708, 36709, 36710, 36711, 36712, 36713, 36714, 36715, 36716, 36717, 36718, 36719, 36720, 36721, 36722, 36723, 36724, 36725, 36726, 36727, 36728, 36729, 36730, 36731, 36732, 36733, 36734, 36735, 36736, 41217, 41218, 41219, 41220, 41221, 41222, 41223, 41224, 41225, 41226, 41227, 41228, 41229, 41230, 41231, 41232, 41233, 41234, 41235, 41236, 41237, 41238, 41239, 41240, 41241, 41242, 41243, 41244, 41245, 41246, 41247, 41248, 41249, 41250, 41251, 41252, 41253, 41254, 41255, 41256, 41257, 41258, 41259, 41260, 41261, 41262, 41263, 41264, 41265, 41266, 41267, 41268, 41269, 41270, 41271, 41272, 41273, 41274, 41275, 41276, 41277, 41278, 41279, 41280, 41281, 41282, 41283, 41284, 41285, 41286, 41287, 41288, 41289, 41290, 41291, 41292, 41293, 41294, 41295, 41296, 41297, 41298, 41299, 41300, 41301, 41302, 41303, 41304, 41305, 41306, 41307, 41308, 41309, 41310, 41311, 41312, 41313, 41314, 41315, 41316, 41317, 41318, 41319, 41320, 41321, 41322, 41323, 41324, 41325, 41326, 41327, 41328, 41329, 41330, 41331, 41332, 41333, 41334, 41335, 41336, 41337, 41338, 41339, 41340, 41341, 41342, 41343, 41344, 41345, 41346, 41347, 41348, 41349, 41350, 41351, 41352, 41353, 41354, 41355, 41356, 41357, 41358, 41359, 41360, 41361, 41362, 41363, 41364, 41365, 41366, 41367, 41368, 41369, 41370, 41371, 41372, 41373, 41374, 41375, 41376, 41377, 41378, 41379, 41380, 41381, 41382, 41383, 41384, 41385, 41386, 41387, 41388, 41389, 41390, 41391, 41392, 41393, 41394, 41395, 41396, 41397, 41398, 41399, 41400, 41401, 41402, 41403, 41404, 41405, 41406, 41407, 41408, 41409, 41410, 41411, 41412, 41413, 41414, 41415, 41416, 41417, 41418, 41419, 41420, 41421, 41422, 41423, 41424, 41425, 41426, 41427, 41428, 41429, 41430, 41431, 41432, 41433, 41434, 41435, 41436, 41437, 41438, 41439, 41440, 41441, 41442, 41443, 41444, 41445, 41446, 41447, 41448, 41449, 41450, 41451, 41452, 41453, 41454, 41455, 41456, 41457, 41458, 41459, 41460, 41461, 41462, 41463, 41464, 41465, 41466, 41467, 41468, 41469, 41470, 41471, 41472, 41473, 41474, 41475, 41476, 41477, 41478, 41479, 41480, 41481, 41482, 41483, 41484, 41485, 41486, 41487, 41488, 41489, 41490, 41491, 41492, 41493, 41494, 41495, 41496, 41497, 41498, 41499, 41500, 41501, 41502, 41503, 41504, 41505, 41506, 41507, 41508, 41509, 41510, 41511, 41512, 41513, 41514, 41515, 41516, 41517, 41518, 41519, 41520, 41521, 41522, 41523, 41524, 41525, 41526, 41527, 41528, 41529, 41530, 41531, 41532, 41533, 41534, 41535, 41536, 41537, 41538, 41539, 41540, 41541, 41542, 41543, 41544, 41545, 41546, 41547, 41548, 41549, 41550, 41551, 41552, 41553, 41554, 41555, 41556, 41557, 41558, 41559, 41560, 41561, 41562, 41563, 41564, 41565, 41566, 41567, 41568, 41569, 41570, 41571, 41572, 41573, 41574, 41575, 41576, 41577, 41578, 41579, 41580, 41581, 41582, 41583, 41584, 41585, 41586, 41587, 41588, 41589, 41590, 41591, 41592, 41593, 41594, 41595, 41596, 41597, 41598, 41599, 41600, 59649, 59650, 59651, 59652, 59653, 59654, 59655, 59656, 59657, 59658, 59659, 59660, 59661, 59662, 59663, 59664, 59665, 59666, 59667, 59668, 59669, 59670, 59671, 59672, 59673, 59674, 59675, 59676, 59677, 59678, 59679, 59680, 59681, 59682, 59683, 59684, 59685, 59686, 59687, 59688, 59689, 59690, 59691, 59692, 59693, 59694, 59695, 59696, 59697, 59698, 59699, 59700, 59701, 59702, 59703, 59704, 59705, 59706, 59707, 59708, 59709, 59710, 59711, 59712, 59713, 59714, 59715, 59716, 59717, 59718, 59719, 59720, 59721, 59722, 59723, 59724, 59725, 59726, 59727, 59728, 59729, 59730, 59731, 59732, 59733, 59734, 59735, 59736, 59737, 59738, 59739, 59740, 59741, 59742, 59743, 59744, 59745, 59746, 59747, 59748, 59749, 59750, 59751, 59752, 59753, 59754, 59755, 59756, 59757, 59758, 59759, 59760, 59761, 59762, 59763, 59764, 59765, 59766, 59767, 59768, 59769, 59770, 59771, 59772, 59773, 59774, 59775, 59776, 59777, 59778, 59779, 59780, 59781, 59782, 59783, 59784, 59785, 59786, 59787, 59788, 59789, 59790, 59791, 59792, 59793, 59794, 59795, 59796, 59797, 59798, 59799, 59800, 59801, 59802, 59803, 59804, 59805, 59806, 59807, 59808, 59809, 59810, 59811, 59812, 59813, 59814, 59815, 59816, 59817, 59818, 59819, 59820, 59821, 59822, 59823, 59824, 59825, 59826, 59827, 59828, 59829, 59830, 59831, 59832, 59833, 59834, 59835, 59836, 59837, 59838, 59839, 59840, 59841, 59842, 59843, 59844, 59845, 59846, 59847, 59848, 59849, 59850, 59851, 59852, 59853, 59854, 59855, 59856, 59857, 59858, 59859, 59860, 59861, 59862, 59863, 59864, 59865, 59866, 59867, 59868, 59869, 59870, 59871, 59872, 59873, 59874, 59875, 59876, 59877, 59878, 59879, 59880, 59881, 59882, 59883, 59884, 59885, 59886, 59887, 59888, 59889, 59890, 59891, 59892, 59893, 59894, 59895, 59896, 59897, 59898, 59899, 59900, 59901, 59902, 59903, 59904, 83457, 83458, 83459, 83460, 83461, 83462, 83463, 83464, 83465, 83466, 83467, 83468, 83469, 83470, 83471, 83472, 83473, 83474, 83475, 83476, 83477, 83478, 83479, 83480, 83481, 83482, 83483, 83484, 83485, 83486, 83487, 83488, 83489, 83490, 83491, 83492, 83493, 83494, 83495, 83496, 83497, 83498, 83499, 83500, 83501, 83502, 83503, 83504, 83505, 83506, 83507, 83508, 83509, 83510, 83511, 83512, 83513, 83514, 83515, 83516, 83517, 83518, 83519, 83520, 83521, 83522, 83523, 83524, 83525, 83526, 83527, 83528, 83529, 83530, 83531, 83532, 83533, 83534, 83535, 83536, 83537, 83538, 83539, 83540, 83541, 83542, 83543, 83544, 83545, 83546, 83547, 83548, 83549, 83550, 83551, 83552, 83553, 83554, 83555, 83556, 83557, 83558, 83559, 83560, 83561, 83562, 83563, 83564, 83565, 83566, 83567, 83568, 83569, 83570, 83571, 83572, 83573, 83574, 83575, 83576, 83577, 83578, 83579, 83580, 83581, 83582, 83583, 83584, 109185, 109186, 109187, 109188, 109189, 109190, 109191, 109192, 109193, 109194, 109195, 109196, 109197, 109198, 109199, 109200, 109201, 109202, 109203, 109204, 109205, 109206, 109207, 109208, 109209, 109210, 109211, 109212, 109213, 109214, 109215, 109216, 109217, 109218, 109219, 109220, 109221, 109222, 109223, 109224, 109225, 109226, 109227, 109228, 109229, 109230, 109231, 109232, 109233, 109234, 109235, 109236, 109237, 109238, 109239, 109240, 109241, 109242, 109243, 109244, 109245, 109246, 109247, 109248, 109249, 109250, 109251, 109252, 109253, 109254, 109255, 109256, 109257, 109258, 109259, 109260, 109261, 109262, 109263, 109264, 109265, 109266, 109267, 109268, 109269, 109270, 109271, 109272, 109273, 109274, 109275, 109276, 109277, 109278, 109279, 109280, 109281, 109282, 109283, 109284, 109285, 109286, 109287, 109288, 109289, 109290, 109291, 109292, 109293, 109294, 109295, 109296, 109297, 109298, 109299, 109300, 109301, 109302, 109303, 109304, 109305, 109306, 109307, 109308, 109309, 109310, 109311, 109312, 109441, 109442, 109443, 109444, 109445, 109446, 109447, 109448, 109449, 109450, 109451, 109452, 109453, 109454, 109455, 109456, 109457, 109458, 109459, 109460, 109461, 109462, 109463, 109464, 109465, 109466, 109467, 109468, 109469, 109470, 109471, 109472, 109473, 109474, 109475, 109476, 109477, 109478, 109479, 109480, 109481, 109482, 109483, 109484, 109485, 109486, 109487, 109488, 109489, 109490, 109491, 109492, 109493, 109494, 109495, 109496, 109497, 109498, 109499, 109500, 109501, 109502, 109503, 109504, 109505, 109506, 109507, 109508, 109509, 109510, 109511, 109512, 109513, 109514, 109515, 109516, 109517, 109518, 109519, 109520, 109521, 109522, 109523, 109524, 109525, 109526, 109527, 109528, 109529, 109530, 109531, 109532, 109533, 109534, 109535, 109536, 109537, 109538, 109539, 109540, 109541, 109542, 109543, 109544, 109545, 109546, 109547, 109548, 109549, 109550, 109551, 109552, 109553, 109554, 109555, 109556, 109557, 109558, 109559, 109560, 109561, 109562, 109563, 109564, 109565, 109566, 109567, 109568, 125825, 125826, 125827, 125828, 125829, 125830, 125831, 125832, 125833, 125834, 125835, 125836, 125837, 125838, 125839, 125840, 125841, 125842, 125843, 125844, 125845, 125846, 125847, 125848, 125849, 125850, 125851, 125852, 125853, 125854, 125855, 125856, 125857, 125858, 125859, 125860, 125861, 125862, 125863, 125864, 125865, 125866, 125867, 125868, 125869, 125870, 125871, 125872, 125873, 125874, 125875, 125876, 125877, 125878, 125879, 125880, 125881, 125882, 125883, 125884, 125885, 125886, 125887, 125888, 125889, 125890, 125891, 125892, 125893, 125894, 125895, 125896, 125897, 125898, 125899, 125900, 125901, 125902, 125903, 125904, 125905, 125906, 125907, 125908, 125909, 125910, 125911, 125912, 125913, 125914, 125915, 125916, 125917, 125918, 125919, 125920, 125921, 125922, 125923, 125924, 125925, 125926, 125927, 125928, 125929, 125930, 125931, 125932, 125933, 125934, 125935, 125936, 125937, 125938, 125939, 125940, 125941, 125942, 125943, 125944, 125945, 125946, 125947, 125948, 125949, 125950, 125951, 125952</td>
+<td align="left">2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 330 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 1172 , 29398 , 29398 , 29398 , 29398 , 29398 , 29398 , 29398 , 29398 , 29398 , 29398 , 29398 , 29398 , 29398 , 29398 , 29398 , 29398 , 29398 , 29398 , 29398 , 29398 , 29398 , 29398 , 29398 , 29398 , 29398 , 29398 , 29398 , 29398 , 29398 , 29398 , 29398 , 29398 , 29398 , 29398 , 29398 , 29398 , 29398 , 29398 , 29398 , 29398 , 29398 , 29398 , 29398 , 29398 , 29398 , 29398 , 29398 , 29398 , 29398 , 29398 , 29398 , 29398 , 29398 , 29398 , 29398 , 29398 , 29398 , 29398 , 29398 , 29398 , 29398 , 29398 , 29398 , 29398 , 29398 , 29398 , 29398 , 29398 , 29398 , 29398 , 29398 , 29398 , 29398 , 29398 , 29398 , 29398 , 29398 , 29398 , 29398 , 29398 , 29398 , 29398 , 29398 , 29398 , 29398 , 29398 , 29398 , 29398 , 29398 , 29398 , 29398 , 29398 , 29398 , 29398 , 29398 , 29398 , 29398 , 29398 , 29398 , 29398 , 29398 , 29398 , 29398 , 29398 , 29398 , 29398 , 29398 , 29398 , 29398 , 29398 , 29398 , 29398 , 29398 , 29398 , 29398 , 29398 , 29398 , 29398 , 29398 , 29398 , 29398 , 29398 , 29398 , 29398 , 29398 , 29398 , 29398 , 29398 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 2832 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 35624 , 48937 , 48937 , 48937 , 48937 , 48937 , 48937 , 48937 , 48937 , 48937 , 48937 , 48937 , 48937 , 48937 , 48937 , 48937 , 48937 , 48937 , 48937 , 48937 , 48937 , 48937 , 48937 , 48937 , 48937 , 48937 , 48937 , 48937 , 48937 , 48937 , 48937 , 48937 , 48937 , 48937 , 48937 , 48937 , 48937 , 48937 , 48937 , 48937 , 48937 , 48937 , 48937 , 48937 , 48937 , 48937 , 48937 , 48937 , 48937 , 48937 , 48937 , 48937 , 48937 , 48937 , 48937 , 48937 , 48937 , 48937 , 48937 , 48937 , 48937 , 48937 , 48937 , 48937 , 48937 , 48937 , 48937 , 48937 , 48937 , 48937 , 48937 , 48937 , 48937 , 48937 , 48937 , 48937 , 48937 , 48937 , 48937 , 48937 , 48937 , 48937 , 48937 , 48937 , 48937 , 48937 , 48937 , 48937 , 48937 , 48937 , 48937 , 48937 , 48937 , 48937 , 48937 , 48937 , 48937 , 48937 , 48937 , 48937 , 48937 , 48937 , 48937 , 48937 , 48937 , 48937 , 48937 , 48937 , 48937 , 48937 , 48937 , 48937 , 48937 , 48937 , 48937 , 48937 , 48937 , 48937 , 48937 , 48937 , 48937 , 48937 , 48937 , 48937 , 48937 , 48937 , 48937 , 48937 , 48937 , 265526, 265526, 265526, 265526, 265526, 265526, 265526, 265526, 265526, 265526, 265526, 265526, 265526, 265526, 265526, 265526, 265526, 265526, 265526, 265526, 265526, 265526, 265526, 265526, 265526, 265526, 265526, 265526, 265526, 265526, 265526, 265526, 265526, 265526, 265526, 265526, 265526, 265526, 265526, 265526, 265526, 265526, 265526, 265526, 265526, 265526, 265526, 265526, 265526, 265526, 265526, 265526, 265526, 265526, 265526, 265526, 265526, 265526, 265526, 265526, 265526, 265526, 265526, 265526, 265526, 265526, 265526, 265526, 265526, 265526, 265526, 265526, 265526, 265526, 265526, 265526, 265526, 265526, 265526, 265526, 265526, 265526, 265526, 265526, 265526, 265526, 265526, 265526, 265526, 265526, 265526, 265526, 265526, 265526, 265526, 265526, 265526, 265526, 265526, 265526, 265526, 265526, 265526, 265526, 265526, 265526, 265526, 265526, 265526, 265526, 265526, 265526, 265526, 265526, 265526, 265526, 265526, 265526, 265526, 265526, 265526, 265526, 265526, 265526, 265526, 265526, 265526, 265526, 67004 , 67004 , 67004 , 67004 , 67004 , 67004 , 67004 , 67004 , 67004 , 67004 , 67004 , 67004 , 67004 , 67004 , 67004 , 67004 , 67004 , 67004 , 67004 , 67004 , 67004 , 67004 , 67004 , 67004 , 67004 , 67004 , 67004 , 67004 , 67004 , 67004 , 67004 , 67004 , 67004 , 67004 , 67004 , 67004 , 67004 , 67004 , 67004 , 67004 , 67004 , 67004 , 67004 , 67004 , 67004 , 67004 , 67004 , 67004 , 67004 , 67004 , 67004 , 67004 , 67004 , 67004 , 67004 , 67004 , 67004 , 67004 , 67004 , 67004 , 67004 , 67004 , 67004 , 67004 , 67004 , 67004 , 67004 , 67004 , 67004 , 67004 , 67004 , 67004 , 67004 , 67004 , 67004 , 67004 , 67004 , 67004 , 67004 , 67004 , 67004 , 67004 , 67004 , 67004 , 67004 , 67004 , 67004 , 67004 , 67004 , 67004 , 67004 , 67004 , 67004 , 67004 , 67004 , 67004 , 67004 , 67004 , 67004 , 67004 , 67004 , 67004 , 67004 , 67004 , 67004 , 67004 , 67004 , 67004 , 67004 , 67004 , 67004 , 67004 , 67004 , 67004 , 67004 , 67004 , 67004 , 67004 , 67004 , 67004 , 67004 , 67004 , 67004 , 67004 , 67004 , 67004 , 67004 , 67004 , 5749 , 5749 , 5749 , 5749 , 5749 , 5749 , 5749 , 5749 , 5749 , 5749 , 5749 , 5749 , 5749 , 5749 , 5749 , 5749 , 5749 , 5749 , 5749 , 5749 , 5749 , 5749 , 5749 , 5749 , 5749 , 5749 , 5749 , 5749 , 5749 , 5749 , 5749 , 5749 , 5749 , 5749 , 5749 , 5749 , 5749 , 5749 , 5749 , 5749 , 5749 , 5749 , 5749 , 5749 , 5749 , 5749 , 5749 , 5749 , 5749 , 5749 , 5749 , 5749 , 5749 , 5749 , 5749 , 5749 , 5749 , 5749 , 5749 , 5749 , 5749 , 5749 , 5749 , 5749 , 5749 , 5749 , 5749 , 5749 , 5749 , 5749 , 5749 , 5749 , 5749 , 5749 , 5749 , 5749 , 5749 , 5749 , 5749 , 5749 , 5749 , 5749 , 5749 , 5749 , 5749 , 5749 , 5749 , 5749 , 5749 , 5749 , 5749 , 5749 , 5749 , 5749 , 5749 , 5749 , 5749 , 5749 , 5749 , 5749 , 5749 , 5749 , 5749 , 5749 , 5749 , 5749 , 5749 , 5749 , 5749 , 5749 , 5749 , 5749 , 5749 , 5749 , 5749 , 5749 , 5749 , 5749 , 5749 , 5749 , 5749 , 5749 , 5749 , 5749 , 5749 , 5749 , 5749 , 5749</td>
+</tr>
+<tr class="odd">
+<td align="left">gram stain</td>
+<td align="left">invalid_ncbi_ids</td>
+<td align="left">920, 955, 956, 990, 1888, 2085, 2235, 2502, 3180, 3507, 3555, 3735, 4140, 4144, 4814, 4872, 4898, 4899</td>
+<td align="left">203907203907 , 5974859748 , 3769237692 , 376164 , 27168122716812, 1331737 , 204773204773 , 166974 , 40136 , 1050843 , 204451 , 262776 , 420233 , 332056 , 338187 , 163164163164 , 366648 , 90270</td>
+</tr>
+<tr class="even">
+<td align="left">growth medium</td>
+<td align="left">invalid_ncbi_ids</td>
+<td align="left">23, 25, 41, 57, 117, 228, 229, 230, 231, 249</td>
+<td align="left">265526, 67004 , 2832 , 2832 , 1172 , 330 , 330 , 330 , 330 , 330</td>
+</tr>
+<tr class="odd">
+<td align="left">growth temperature</td>
+<td align="left">invalid_ncbi_ids</td>
+<td align="left">520, 590, 591, 593, 609, 678, 825, 898, 902, 918, 923, 924, 925, 992, 993, 994, 995, 996, 1015, 1016, 1017, 1058, 1096, 2180, 2245</td>
+<td align="left">338187 , 1172 , 1172 , 1172 , 224324224324, 1108324602 , 29398 , 5749 , 265526 , 35624 , 2832 , 2832 , 2832 , 330 , 330 , 330 , 330 , 330 , 29549518766 , 518766518766, 29549518766 , 48937 , 67004 , 1050843 , 262776</td>
+</tr>
+<tr class="even">
+<td align="left">habitat</td>
+<td align="left">invalid_ncbi_ids</td>
+<td align="left">200, 921, 949, 3128, 3147, 3148, 3495, 3642, 4360, 4362, 4658, 4672, 4673</td>
+<td align="left">338187 , 1050843 , 262776 , 203907203907 , 5974859748 , 3769237692 , 27168122716812, 204773204773 , 420233 , 332056 , 163164163164 , 366648 , 90270</td>
+</tr>
+<tr class="odd">
+<td align="left">hydrogen gas producing</td>
+<td align="left">invalid_ncbi_ids</td>
+<td align="left">1, 2, 3, 4, 5, 6, 7, 8, 9, 10</td>
+<td align="left">, , , , , , , , ,</td>
+</tr>
+<tr class="even">
+<td align="left">isolation site</td>
+<td align="left">invalid_ncbi_ids</td>
+<td align="left">1141</td>
+<td align="left">338187</td>
+</tr>
+<tr class="odd">
+<td align="left">length</td>
+<td align="left">invalid_ncbi_ids</td>
+<td align="left">147, 412, 555, 635</td>
+<td align="left">376164, 166974, 40136 , 204451</td>
+</tr>
+<tr class="even">
+<td align="left">optimal ph</td>
+<td align="left">invalid_ncbi_ids</td>
+<td align="left">315, 407, 591</td>
+<td align="left">262776, 332056, 420233</td>
+</tr>
+<tr class="odd">
+<td align="left">plant pathogenicity</td>
+<td align="left">invalid_ncbi_ids</td>
+<td align="left">12, 473, 573, 1470, 1482</td>
+<td align="left">420233 , 1050843, 262776 , 90270 , 366648</td>
+</tr>
+<tr class="even">
+<td align="left">shape</td>
+<td align="left">invalid_ncbi_ids</td>
+<td align="left">27, 245, 595, 3078</td>
+<td align="left">1331737, 376164 , 40136 , 40136</td>
+</tr>
+<tr class="odd">
+<td align="left">width</td>
+<td align="left">invalid_ncbi_ids</td>
+<td align="left">147, 412, 555, 635</td>
+<td align="left">376164, 166974, 40136 , 204451</td>
 </tr>
 </tbody>
 </table>
