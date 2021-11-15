@@ -269,9 +269,11 @@
                                                      missing_parent_ncbi)
               missing_pos <- seq_along(col_values)[required_missing_parent_ncbi]
 
-              .stop_required_missing_row_value(
-                "Parent_NCBI_ID", missing_pos, dat_name
-              )
+              if (length(missing_pos) > 0) {
+                .stop_required_missing_row_value(
+                  "Parent_NCBI_ID", missing_pos, dat_name
+                )
+              }
             }
 
             if (!all(values_lgl)) {
