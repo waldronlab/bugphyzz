@@ -40,3 +40,6 @@ vignettes/*.pdf
 .Rproj.user
 docs
 inst/doc
+
+jupyter_notebooks/.ipynb_checkpoints/
+
