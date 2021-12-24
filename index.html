@@ -19,6 +19,8 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-home">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -31,17 +33,14 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">bugphyzz</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.1.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.1.3</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
 <li>
-  <a href="index.html">
-    <span class="fas fa-home fa-lg"></span>
-     
-  </a>
+  <a href="articles/bugphyzz.html">Get started</a>
 </li>
 <li>
   <a href="reference/index.html">Reference</a>
@@ -54,16 +53,13 @@
   </a>
   <ul class="dropdown-menu" role="menu">
 <li>
-      <a href="articles/articles/checks.html">Curation Checks</a>
+      <a href="articles/checks.html">Curation Checks</a>
     </li>
     <li>
-      <a href="articles/articles/descriptive_statistics.html">Descriptive statistcs of taxa annotations</a>
+      <a href="articles/descriptive_statistics.html">Descriptive statistcs of taxa annotations</a>
     </li>
     <li>
-      <a href="articles/articles/write_physiology_sets.html">Write physiology sets</a>
-    </li>
-    <li>
-      <a href="articles/makeSignatures.html">Make Signatures</a>
+      <a href="articles/write_physiology_sets.html">Write physiology sets</a>
     </li>
   </ul>
 </li>
@@ -80,76 +76,88 @@
 
       </header><div class="row">
   <div class="contents col-md-9">
-<div id="bugphyzz" class="section level1">
-<div class="page-header"><h1 class="hasAnchor">
-<a href="#bugphyzz" class="anchor"></a>bugphyzz</h1></div>
+<div class="section level1">
+<div class="page-header"><h1 id="bugphyzz">bugphyzz<a class="anchor" aria-label="anchor" href="#bugphyzz"></a>
+</h1></div>
 <!-- badges: start -->
 
 <p>Bugphyzz is a collection of physiological features about bacteria. We are curating the databases through 3 main methods: webscraping, bulk download from online databases, and manual curation from literature. Mainly this database will be used to analyze microbiome data.</p>
-<div id="definitions" class="section level2">
-<h2 class="hasAnchor">
-<a href="#definitions" class="anchor"></a>Definitions</h2>
+<div class="section level2">
+<h2 id="definitions">Definitions<a class="anchor" aria-label="anchor" href="#definitions"></a>
+</h2>
 <ul>
 <li>
-<strong>physiology</strong>: a microbial characteristic that can be measured or observed, that should be mapped to an ontology wherever possible. These are defined in <a href="https://github.com/waldronlab/bugphyzz/blob/main/inst/extdata/links.tsv">inst/extdata/links.tsv</a>
+<strong>physiology</strong>: a microbial characteristic that can be measured or observed, that should be mapped to an ontology wherever possible. These are defined in <a href="https://github.com/waldronlab/bugphyzz/blob/main/inst/extdata/links.tsv" class="external-link">inst/extdata/links.tsv</a>
 </li>
 <li>
-<strong>attribute</strong>: a possible value for a physiology, that should be mapped to an ontology wherever possible. These are defined in the <code>attribute</code> column of <a href="https://github.com/waldronlab/bugphyzz/blob/main/inst/extdata/attributes.tsv">inst/extdata/attributes.tsv</a>
+<strong>attribute</strong>: a possible value for a physiology, that should be mapped to an ontology wherever possible. These are defined in the <code>attribute</code> column of <a href="https://github.com/waldronlab/bugphyzz/blob/main/inst/extdata/attributes.tsv" class="external-link">inst/extdata/attributes.tsv</a>
 </li>
 <li>
-<strong>attribute value</strong>: a possible value for an attribute. Allowable values are defined by the <code>validity</code> column of <a href="https://github.com/waldronlab/bugphyzz/blob/main/inst/extdata/attributes.tsv">inst/extdata/attributes.tsv</a>. For categorical attributes (such as “obligately aerobic”), values can be “TRUE” and “FALSE”, for example. For numeric attributes, these can be numeric values.</li>
+<strong>attribute value</strong>: a possible value for an attribute. Allowable values are defined by the <code>validity</code> column of <a href="https://github.com/waldronlab/bugphyzz/blob/main/inst/extdata/attributes.tsv" class="external-link">inst/extdata/attributes.tsv</a>. For categorical attributes (such as “obligately aerobic”), values can be “TRUE” and “FALSE”, for example. For numeric attributes, these can be numeric values.</li>
 </ul>
 </div>
-<div id="installation" class="section level2">
-<h2 class="hasAnchor">
-<a href="#installation" class="anchor"></a>Installation</h2>
+<div class="section level2">
+<h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
+</h2>
 <p>You can install the development version of bugphyzz with:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># install.packages("devtools")</span>
-<span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://devtools.r-lib.org//reference/remote-reexports.html">install_github</a></span><span class="op">(</span><span class="st">"waldronlab/bugphyzz"</span><span class="op">)</span></code></pre></div>
+<span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://devtools.r-lib.org/reference/remote-reexports.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"waldronlab/bugphyzz"</span><span class="op">)</span></code></pre></div>
 </div>
 </div>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <div class="license">
-<h2>License</h2>
+<h2 data-toc-skip>License</h2>
 <ul class="list-unstyled">
 <li><a href="LICENSE.html">Full license</a></li>
-<li><small><a href="https://opensource.org/licenses/mit-license.php">MIT</a> + file <a href="LICENSE-text.html">LICENSE</a></small></li>
+<li><small><a href="https://opensource.org/licenses/mit-license.php" class="external-link">MIT</a> + file <a href="LICENSE-text.html">LICENSE</a></small></li>
 </ul>
 </div>
+
 <div class="community">
-<h2>Community</h2>
+<h2 data-toc-skip>Community</h2>
 <ul class="list-unstyled">
 <li><a href="CONTRIBUTING.html">Contributing guide</a></li>
 <li><a href="CODE_OF_CONDUCT.html">Code of conduct</a></li>
 </ul>
 </div>
-<div class="developers">
-<h2>Developers</h2>
+
+<div class="citation">
+<h2 data-toc-skip>Citation</h2>
 <ul class="list-unstyled">
-<li>First Last <br><small class="roles"> Author, maintainer </small> <a href="https://orcid.org/YOUR-ORCID-ID" target="orcid.widget" aria-label="ORCID"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
+<li><a href="authors.html#citation">Citing bugphyzz</a></li>
 </ul>
 </div>
 
-  <div class="dev-status">
-<h2>Dev status</h2>
+<div class="developers">
+<h2 data-toc-skip>Developers</h2>
 <ul class="list-unstyled">
-<li><a href="https://www.tidyverse.org/lifecycle/#experimental"><img src="https://img.shields.io/badge/lifecycle-experimental-orange.svg" alt="Lifecycle: experimental"></a></li>
-<li><a href="https://CRAN.R-project.org/package=bugphyzz"><img src="https://www.r-pkg.org/badges/version/bugphyzz" alt="CRAN status"></a></li>
+<li>First Last <br><small class="roles"> Author, maintainer </small> <a href="https://orcid.org/YOUR-ORCID-ID" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
 </ul>
 </div>
+
+<div class="dev-status">
+<h2 data-toc-skip>Dev status</h2>
+<ul class="list-unstyled">
+<li><a href="https://www.tidyverse.org/lifecycle/#experimental" class="external-link"><img src="https://img.shields.io/badge/lifecycle-experimental-orange.svg" alt="Lifecycle: experimental"></a></li>
+<li><a href="https://CRAN.R-project.org/package=bugphyzz" class="external-link"><img src="https://www.r-pkg.org/badges/version/bugphyzz" alt="CRAN status"></a></li>
+</ul>
 </div>
+
+  </div>
 </div>
 
 
       <footer><div class="copyright">
-  <p>Developed by First Last.</p>
+  <p></p>
+<p>Developed by First Last.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.</p>
 </div>
 
       </footer>
@@ -157,6 +165,8 @@
 
   
 
+
+  
 
   </body>
 </html>

@@ -5,13 +5,13 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Make Signatures • bugphyzz</title>
+<title>bugphyzz • bugphyzz</title>
 <!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script><!-- bootstrap-toc --><link rel="stylesheet" href="../bootstrap-toc.css">
 <script src="../bootstrap-toc.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
-<script src="../pkgdown.js"></script><meta property="og:title" content="Make Signatures">
+<script src="../pkgdown.js"></script><meta property="og:title" content="bugphyzz">
 <meta property="og:description" content="bugphyzz">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -19,6 +19,8 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-article">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -31,18 +33,12 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">bugphyzz</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.1.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.1.3</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-<li>
-  <a href="../index.html">
-    <span class="fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
 <li>
   <a href="../articles/bugphyzz.html">Get started</a>
 </li>
@@ -57,19 +53,13 @@
   </a>
   <ul class="dropdown-menu" role="menu">
 <li>
-      <a href="../articles/checks.html">Check Functions</a>
+      <a href="../articles/checks.html">Curation Checks</a>
     </li>
     <li>
-      <a href="../articles/complete_summary_stats.html">Complete BugPhyzz Stats</a>
+      <a href="../articles/descriptive_statistics.html">Descriptive statistcs of taxa annotations</a>
     </li>
     <li>
-      <a href="../articles/completeness_annotations.html">Completeness of annotations based on NCBI IDs</a>
-    </li>
-    <li>
-      <a href="../articles/summary_statistics.html">BugPhyzz Stats</a>
-    </li>
-    <li>
-      <a href="../articles/write_physiology_sets.html">write_physiology_sets</a>
+      <a href="../articles/write_physiology_sets.html">Write physiology sets</a>
     </li>
   </ul>
 </li>
@@ -84,10 +74,10 @@
 
       
 
-      </header><script src="bugphyzz_files/header-attrs-2.10/header-attrs.js"></script><div class="row">
+      </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
-      <h1 data-toc-skip>Make Signatures</h1>
+      <h1 data-toc-skip>bugphyzz</h1>
             
       
       
@@ -97,181 +87,290 @@
 
     
     
-<p>The bugphyzz package provides the <code>makeSignatures</code> function, which allows to create lists of microbe signatures per attribute from a dataset imported with the <code>physiologies</code> or <code>fattyAcidComposition</code> functions. These lists of signatures can be used for enrichment analysis using other R packages, such as <code>EnrichmentBrowser</code>.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">bugphyzz</span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Attaching package: 'dplyr'</span>
-<span class="co">#&gt; The following objects are masked from 'package:stats':</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt;     filter, lag</span>
-<span class="co">#&gt; The following objects are masked from 'package:base':</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt;     intersect, setdiff, setequal, union</span></code></pre></div>
-<div id="import-bugphyzz-datasets" class="section level1">
-<h1 class="hasAnchor">
-<a href="#import-bugphyzz-datasets" class="anchor"></a>Import bugphyzz datasets</h1>
-<p>The first step to crate a list of signatures is to import a bugphyzz dataset. This dataset can have attributes with categorical (e.g. aerophilicity) or continuous values (e.g. growth temperature).</p>
-<p>A dataset with attributes with categorical values:</p>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">aer</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/physiologies.html">physiologies</a></span><span class="op">(</span><span class="st">"aerophilicity"</span><span class="op">)</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span>
-<span class="co">#&gt; Finished aerophilicity</span>
-<span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">aer</span><span class="op">)</span>
-<span class="co">#&gt; Rows: 2,557</span>
-<span class="co">#&gt; Columns: 10</span>
-<span class="co">#&gt; $ NCBI_ID             &lt;int&gt; 6, 10, 16, 18, 20, 22, 59, 68, 71, 85, 93, 96, 99,…</span>
-<span class="co">#&gt; $ Genome_ID           &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…</span>
-<span class="co">#&gt; $ Accession_number    &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…</span>
-<span class="co">#&gt; $ Taxon_name          &lt;chr&gt; "Azorhizobium", "Cellvibrio", "Methylophilus", "Pe…</span>
-<span class="co">#&gt; $ Attribute           &lt;chr&gt; "microaerophilic", "aerobic", "aerobic", "anaerobi…</span>
-<span class="co">#&gt; $ Attribute_value     &lt;lgl&gt; TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TR…</span>
-<span class="co">#&gt; $ Attribute_source    &lt;chr&gt; "Garrity, G.M., Winters, M. &amp; Searles, D.B. 2001a.…</span>
-<span class="co">#&gt; $ Evidence            &lt;chr&gt; "EXP", "EXP", "EXP", "EXP", "EXP", "EXP", "EXP", "…</span>
-<span class="co">#&gt; $ Confidence_interval &lt;chr&gt; "always", "always", "always", "always", "always", …</span>
-<span class="co">#&gt; $ Note                &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…</span></code></pre></div>
-<p>An dataset with an attribute with continuous values:</p>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">gt</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/physiologies.html">physiologies</a></span><span class="op">(</span><span class="st">"growth temperature"</span><span class="op">)</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span>
-<span class="co">#&gt; Finished growth temperature</span>
-<span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">gt</span><span class="op">)</span>
-<span class="co">#&gt; Rows: 2,524</span>
-<span class="co">#&gt; Columns: 9</span>
-<span class="co">#&gt; $ Taxon_name          &lt;chr&gt; "Acholeplasma laidlawii PG-8A", "Acidilobus saccha…</span>
-<span class="co">#&gt; $ NCBI_ID             &lt;dbl&gt; 441768, 666510, 349163, 243159, 240015, 351607, 43…</span>
-<span class="co">#&gt; $ Genome_ID           &lt;chr&gt; "Unknown", "Unknown", "Unknown", "Unknown", "Unkno…</span>
-<span class="co">#&gt; $ Accession_number    &lt;chr&gt; "NC_010163", "NC_014374", "NC_009467, NC_009468, N…</span>
-<span class="co">#&gt; $ Attribute           &lt;chr&gt; "growth temperature", "growth temperature", "growt…</span>
-<span class="co">#&gt; $ Attribute_value     &lt;dbl&gt; 37, 80, 35, 30, 30, 58, 70, 37, 37, 37, 37, 37, 37…</span>
-<span class="co">#&gt; $ Attribute_source    &lt;chr&gt; "http://bacmap.wishartlab.com/", "http://bacmap.wi…</span>
-<span class="co">#&gt; $ Evidence            &lt;chr&gt; "EXP", "EXP", "EXP", "EXP", "EXP", "EXP", "EXP", "…</span>
-<span class="co">#&gt; $ Confidence_interval &lt;chr&gt; "Unknown", "Unknown", "Unknown", "Unknown", "Unkno…</span></code></pre></div>
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">bugphyzz</span><span class="op">)</span></code></pre></div>
+<div class="section level2">
+<h2 id="introduction">Introduction<a class="anchor" aria-label="anchor" href="#introduction"></a>
+</h2>
+<p>This document shows the main functions and operations that can be used to work with the bugphyzz datasets.</p>
 </div>
-<div id="make-signatures" class="section level1">
-<h1 class="hasAnchor">
-<a href="#make-signatures" class="anchor"></a>Make signatures</h1>
-<p>The <code>makeSignatures</code> function allows to create signatures at different taxonomic ranks and with different taxids.</p>
-<p>Signatures with NCBI taxids at the genus level:</p>
+<div class="section level2">
+<h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
+</h2>
+<p>Bugphyzz can be installed with:</p>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/ns-load.html" class="external-link">requireNamespace</a></span><span class="op">(</span><span class="st">"BiocManager"</span>, quietly <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span>
+    <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"BiocManager"</span><span class="op">)</span> 
+
+<span class="fu">BiocManager</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/BiocManager/man/install.html" class="external-link">install</a></span><span class="op">(</span><span class="st">"waldronlab/bugphyzz"</span><span class="op">)</span></code></pre></div>
+</div>
+<div class="section level2">
+<h2 id="importing-datasets">Importing datasets<a class="anchor" aria-label="anchor" href="#importing-datasets"></a>
+</h2>
+<p>The main function for importing datasets is the <code>physiologies</code> function, which has a single argument, <code>keyword</code>, and returns a list of data.frames. The <code>keyword</code> argument accepts a character vector specifying the name(s) of the dataset(s) that will be imported:</p>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co">## Import a single dataset</span>
+<span class="va">aer</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/physiologies.html">physiologies</a></span><span class="op">(</span><span class="st">"aerophilicity"</span><span class="op">)</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span>
+<span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">aer</span><span class="op">)</span>
+<span class="co">#&gt;   NCBI_ID Genome_ID Accession_ID       Taxon_name               Attribute</span>
+<span class="co">#&gt; 1       6        NA         &lt;NA&gt;     Azorhizobium         microaerophilic</span>
+<span class="co">#&gt; 2      10        NA         &lt;NA&gt;       Cellvibrio                 aerobic</span>
+<span class="co">#&gt; 3      16        NA         &lt;NA&gt;    Methylophilus                 aerobic</span>
+<span class="co">#&gt; 4      18        NA         &lt;NA&gt;       Pelobacter               anaerobic</span>
+<span class="co">#&gt; 5      20        NA         &lt;NA&gt; Phenylobacterium                 aerobic</span>
+<span class="co">#&gt; 6      22        NA         &lt;NA&gt;      Shewanella  facultatively anaerobic</span>
+<span class="co">#&gt;   Attribute_value</span>
+<span class="co">#&gt; 1            TRUE</span>
+<span class="co">#&gt; 2            TRUE</span>
+<span class="co">#&gt; 3            TRUE</span>
+<span class="co">#&gt; 4            TRUE</span>
+<span class="co">#&gt; 5            TRUE</span>
+<span class="co">#&gt; 6            TRUE</span>
+<span class="co">#&gt;                                                                                                                                                                          Attribute_source</span>
+<span class="co">#&gt; 1 Garrity, G.M., Winters, M. &amp; Searles, D.B. 2001a. Taxonomic Outline of the Procaryotic Genera. Bergey's Manual of Systematic Bacteriology, Second Edition. Release 1.0, Apr 2001: 1-39.</span>
+<span class="co">#&gt; 2 Garrity, G.M., Winters, M. &amp; Searles, D.B. 2001a. Taxonomic Outline of the Procaryotic Genera. Bergey's Manual of Systematic Bacteriology, Second Edition. Release 1.0, Apr 2001: 1-39.</span>
+<span class="co">#&gt; 3 Garrity, G.M., Winters, M. &amp; Searles, D.B. 2001a. Taxonomic Outline of the Procaryotic Genera. Bergey's Manual of Systematic Bacteriology, Second Edition. Release 1.0, Apr 2001: 1-39.</span>
+<span class="co">#&gt; 4 Garrity, G.M., Winters, M. &amp; Searles, D.B. 2001a. Taxonomic Outline of the Procaryotic Genera. Bergey's Manual of Systematic Bacteriology, Second Edition. Release 1.0, Apr 2001: 1-39.</span>
+<span class="co">#&gt; 5 Garrity, G.M., Winters, M. &amp; Searles, D.B. 2001a. Taxonomic Outline of the Procaryotic Genera. Bergey's Manual of Systematic Bacteriology, Second Edition. Release 1.0, Apr 2001: 1-39.</span>
+<span class="co">#&gt; 6 Garrity, G.M., Winters, M. &amp; Searles, D.B. 2001a. Taxonomic Outline of the Procaryotic Genera. Bergey's Manual of Systematic Bacteriology, Second Edition. Release 1.0, Apr 2001: 1-39.</span>
+<span class="co">#&gt;   Evidence Confidence_interval Note  Rank         Parent_name Parent_NCBI_ID</span>
+<span class="co">#&gt; 1      EXP              always   NA genus   Xanthobacteraceae         335928</span>
+<span class="co">#&gt; 2      EXP              always   NA genus    Cellvibrionaceae        1706371</span>
+<span class="co">#&gt; 3      EXP              always   NA genus    Methylophilaceae          32011</span>
+<span class="co">#&gt; 4      EXP              always   NA genus Desulfuromonadaceae         213421</span>
+<span class="co">#&gt; 5      EXP              always   NA genus    Caulobacteraceae          76892</span>
+<span class="co">#&gt; 6      EXP              always   NA genus      Shewanellaceae         267890</span>
+<span class="co">#&gt;   Parent_rank</span>
+<span class="co">#&gt; 1      family</span>
+<span class="co">#&gt; 2      family</span>
+<span class="co">#&gt; 3      family</span>
+<span class="co">#&gt; 4      family</span>
+<span class="co">#&gt; 5      family</span>
+<span class="co">#&gt; 6      family</span></code></pre></div>
+<p>You can use the <code>keyword = "all"</code> to import all of the datasets:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">aer_sig</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/makeSignatures.html">makeSignatures</a></span><span class="op">(</span><span class="va">aer</span>, taxids <span class="op">=</span> <span class="st">"NCBI_ID"</span>, tax_rank <span class="op">=</span> <span class="st">"genus"</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/base/lapply.html">lapply</a></span><span class="op">(</span><span class="va">aer_sig</span>, <span class="va">head</span><span class="op">)</span>
+<code class="sourceCode R"><span class="co">## Import all of the datasets available through the physiologies function</span>
+<span class="va">phys</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/physiologies.html">physiologies</a></span><span class="op">(</span>keyword <span class="op">=</span> <span class="st">"all"</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/utils/str.html" class="external-link">str</a></span><span class="op">(</span><span class="va">phys</span>, max.level <span class="op">=</span> <span class="fl">1</span><span class="op">)</span>
+<span class="co">#&gt; List of 27</span>
+<span class="co">#&gt;  $ animal pathogen                      :'data.frame':   1420 obs. of  13 variables:</span>
+<span class="co">#&gt;  $ antimicrobial resistance             :'data.frame':   10321 obs. of  13 variables:</span>
+<span class="co">#&gt;  $ antimicrobial sensitivity            :'data.frame':   832 obs. of  13 variables:</span>
+<span class="co">#&gt;  $ biofilm forming                      :'data.frame':   426 obs. of  14 variables:</span>
+<span class="co">#&gt;  $ butyrate producing                   :'data.frame':   24 obs. of  14 variables:</span>
+<span class="co">#&gt;  $ acetate producing                    :'data.frame':   24 obs. of  14 variables:</span>
+<span class="co">#&gt;  $ lactate producing                    :'data.frame':   24 obs. of  14 variables:</span>
+<span class="co">#&gt;  $ arrangement                          :'data.frame':   1823 obs. of  13 variables:</span>
+<span class="co">#&gt;  $ shape                                :'data.frame':   3129 obs. of  14 variables:</span>
+<span class="co">#&gt;  $ COGEM pathogenicity rating           :'data.frame':   1043 obs. of  13 variables:</span>
+<span class="co">#&gt;  $ mutation rate per site per generation:'data.frame':   26 obs. of  14 variables:</span>
+<span class="co">#&gt;  $ mutation rates per site per year     :'data.frame':   81 obs. of  14 variables:</span>
+<span class="co">#&gt;  $ extreme environment                  :'data.frame':   1875 obs. of  13 variables:</span>
+<span class="co">#&gt;  $ gram stain                           :'data.frame':   4967 obs. of  13 variables:</span>
+<span class="co">#&gt;  $ growth medium                        :'data.frame':   304 obs. of  14 variables:</span>
+<span class="co">#&gt;  $ growth temperature                   :'data.frame':   2524 obs. of  13 variables:</span>
+<span class="co">#&gt;  $ habitat                              :'data.frame':   18230 obs. of  14 variables:</span>
+<span class="co">#&gt;  $ optimal ph                           :'data.frame':   886 obs. of  13 variables:</span>
+<span class="co">#&gt;  $ aerophilicity                        :'data.frame':   2557 obs. of  14 variables:</span>
+<span class="co">#&gt;  $ plant pathogenicity                  :'data.frame':   1493 obs. of  13 variables:</span>
+<span class="co">#&gt;  $ width                                :'data.frame':   863 obs. of  13 variables:</span>
+<span class="co">#&gt;  $ spore shape                          :'data.frame':   1535 obs. of  13 variables:</span>
+<span class="co">#&gt;  $ isolation site                       :'data.frame':   1176 obs. of  13 variables:</span>
+<span class="co">#&gt;  $ disease association                  :'data.frame':   445 obs. of  13 variables:</span>
+<span class="co">#&gt;  $ hydrogen gas producing               :'data.frame':   24 obs. of  15 variables:</span>
+<span class="co">#&gt;  $ length                               :'data.frame':   863 obs. of  13 variables:</span>
+<span class="co">#&gt;  $ health associated                    :'data.frame':   30 obs. of  13 variables:</span></code></pre></div>
+<p>The <code>physiologiesList</code> function can be used to display which datasets are available through the <code>physiologies</code> function before importing them:</p>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/physiologiesList.html">physiologiesList</a></span><span class="op">(</span><span class="op">)</span>
+<span class="co">#&gt;  [1] "animal pathogen"                      </span>
+<span class="co">#&gt;  [2] "antimicrobial resistance"             </span>
+<span class="co">#&gt;  [3] "antimicrobial sensitivity"            </span>
+<span class="co">#&gt;  [4] "biofilm forming"                      </span>
+<span class="co">#&gt;  [5] "butyrate producing"                   </span>
+<span class="co">#&gt;  [6] "acetate producing"                    </span>
+<span class="co">#&gt;  [7] "lactate producing"                    </span>
+<span class="co">#&gt;  [8] "arrangement"                          </span>
+<span class="co">#&gt;  [9] "shape"                                </span>
+<span class="co">#&gt; [10] "COGEM pathogenicity rating"           </span>
+<span class="co">#&gt; [11] "mutation rate per site per generation"</span>
+<span class="co">#&gt; [12] "mutation rates per site per year"     </span>
+<span class="co">#&gt; [13] "extreme environment"                  </span>
+<span class="co">#&gt; [14] "gram stain"                           </span>
+<span class="co">#&gt; [15] "growth medium"                        </span>
+<span class="co">#&gt; [16] "growth temperature"                   </span>
+<span class="co">#&gt; [17] "habitat"                              </span>
+<span class="co">#&gt; [18] "optimal ph"                           </span>
+<span class="co">#&gt; [19] "aerophilicity"                        </span>
+<span class="co">#&gt; [20] "plant pathogenicity"                  </span>
+<span class="co">#&gt; [21] "width"                                </span>
+<span class="co">#&gt; [22] "spore shape"                          </span>
+<span class="co">#&gt; [23] "isolation site"                       </span>
+<span class="co">#&gt; [24] "disease association"                  </span>
+<span class="co">#&gt; [25] "hydrogen gas producing"               </span>
+<span class="co">#&gt; [26] "length"                               </span>
+<span class="co">#&gt; [27] "health associated"</span></code></pre></div>
+<p>A separate function is provided to import the fatty acid compositions dataset, <code>fattyAcidComposition</code>. This function takes no arguments and returns a single data.frame object:</p>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">fac</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/fattyAcidComposition.html">fattyAcidComposition</a></span><span class="op">(</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">fac</span><span class="op">)</span>
+<span class="co">#&gt;   NCBI_ID Genome_ID Accession_ID       Taxon_name              Attribute</span>
+<span class="co">#&gt; 1     562        NA           NA Escherichia coli Fatty Acid Composition</span>
+<span class="co">#&gt; 2     562        NA           NA Escherichia coli Fatty Acid Composition</span>
+<span class="co">#&gt; 3     562        NA           NA Escherichia coli Fatty Acid Composition</span>
+<span class="co">#&gt; 4     562        NA           NA Escherichia coli Fatty Acid Composition</span>
+<span class="co">#&gt; 5     562        NA           NA Escherichia coli Fatty Acid Composition</span>
+<span class="co">#&gt; 6     562        NA           NA Escherichia coli Fatty Acid Composition</span>
+<span class="co">#&gt;                    Attribute_source Evidence Confidence_interval Attribute_new</span>
+<span class="co">#&gt; 1 Microbial Fatty Acid Compositions      EXP             Unknown      Br-C10:1</span>
+<span class="co">#&gt; 2 Microbial Fatty Acid Compositions      EXP             Unknown      Br-C11:1</span>
+<span class="co">#&gt; 3 Microbial Fatty Acid Compositions      EXP             Unknown      Br-C12:1</span>
+<span class="co">#&gt; 4 Microbial Fatty Acid Compositions      EXP             Unknown      Br-C13:1</span>
+<span class="co">#&gt; 5 Microbial Fatty Acid Compositions      EXP             Unknown      Br-C13:0</span>
+<span class="co">#&gt; 6 Microbial Fatty Acid Compositions      EXP             Unknown      Br-C14:1</span>
+<span class="co">#&gt;   Attribute_value    Rank Parent_name Parent_NCBI_ID Parent_rank</span>
+<span class="co">#&gt; 1               0 species Escherichia            561       genus</span>
+<span class="co">#&gt; 2               0 species Escherichia            561       genus</span>
+<span class="co">#&gt; 3               0 species Escherichia            561       genus</span>
+<span class="co">#&gt; 4               0 species Escherichia            561       genus</span>
+<span class="co">#&gt; 5               0 species Escherichia            561       genus</span>
+<span class="co">#&gt; 6               0 species Escherichia            561       genus</span></code></pre></div>
+</div>
+<div class="section level2">
+<h2 id="creating-microbial-signatures">Creating microbial signatures<a class="anchor" aria-label="anchor" href="#creating-microbial-signatures"></a>
+</h2>
+<p>Bugphyzz provides the <code>makeSignatures</code> function to create a list of microbial signatures from a bugphyzz dataset.</p>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">aer_sig</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/makeSignatures.html">makeSignatures</a></span><span class="op">(</span>
+  <span class="va">aer</span>, tax_id_type <span class="op">=</span> <span class="st">"Taxon_name"</span>, tax_level <span class="op">=</span> <span class="st">"genus"</span>, evidence <span class="op">=</span> <span class="st">"EXP"</span>,
+  ci <span class="op">=</span> <span class="fl">1</span>, min_size <span class="op">=</span> <span class="fl">10</span>
+<span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">lapply</a></span><span class="op">(</span><span class="va">aer_sig</span>, <span class="va">head</span><span class="op">)</span>
 <span class="co">#&gt; $aerobic</span>
-<span class="co">#&gt; [1] "10" "16" "20" "59" "68" "71"</span>
+<span class="co">#&gt; [1] "Cellvibrio"       "Methylophilus"    "Phenylobacterium" "Vitreoscilla "   </span>
+<span class="co">#&gt; [5] "Lysobacter"       "Simonsiella"     </span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; $anaerobic</span>
-<span class="co">#&gt; [1] "18"  "96"  "157" "279" "657" "816"</span>
+<span class="co">#&gt; [1] "Pelobacter"     "Gallionella"    "Treponema"      "Xanthobacter"  </span>
+<span class="co">#&gt; [5] "Photobacterium" "Bacteroides"   </span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; $`facultatively anaerobic`</span>
-<span class="co">#&gt; [1] "22"  "146" "538" "541" "544" "547"</span>
+<span class="co">#&gt; [1] "Shewanella "  "Eikenella "   "Zymomonas "   "Citrobacter"  "Enterobacter"</span>
+<span class="co">#&gt; [6] "Erwinia "    </span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; $microaerophilic</span>
-<span class="co">#&gt; [1] "6"     "191"   "963"   "12960" "13134" "40544"</span>
+<span class="co">#&gt; [1] "Azorhizobium"     "Azospirillum"     "Herbaspirillum"   "Azoarcus "       </span>
+<span class="co">#&gt; [5] "Magnetospirillum" "Sutterella "     </span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; $`obligately aerobic`</span>
-<span class="co">#&gt; [1] "99"  "123" "179" "222" "237" "338"</span>
+<span class="co">#&gt; [1] "Ancylobacter"    "Pirellula"       "Leptospirillum"  "Achromobacter " </span>
+<span class="co">#&gt; [5] "Flavobacterium " "Xanthomonas"    </span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; $`obligately anaerobic`</span>
-<span class="co">#&gt; [1] "146" "832" "836" "848" "864" "866"</span></code></pre></div>
-<p>Signatures with taxon names at the strain level:</p>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">aer_sig</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/makeSignatures.html">makeSignatures</a></span><span class="op">(</span><span class="va">aer</span>, taxids <span class="op">=</span> <span class="st">"Taxon_name"</span>, tax_rank <span class="op">=</span> <span class="st">"strain"</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/base/lapply.html">lapply</a></span><span class="op">(</span><span class="va">aer_sig</span>, <span class="va">head</span><span class="op">)</span>
-<span class="co">#&gt; $aerobic</span>
-<span class="co">#&gt; [1] "Acaryochloris marina MBIC11017"           </span>
-<span class="co">#&gt; [2] "Achromobacter xylosoxidans A8"            </span>
-<span class="co">#&gt; [3] "Acidiphilium cryptum JF-5"                </span>
-<span class="co">#&gt; [4] "Acidiphilium multivorum AIU301"           </span>
-<span class="co">#&gt; [5] "Acidithiobacillus ferrooxidans ATCC 53993"</span>
-<span class="co">#&gt; [6] "Acidobacterium capsulatum ATCC 51196"     </span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; $anaerobic</span>
-<span class="co">#&gt; [1] "Acetohalobium arabaticum DSM 5501"    </span>
-<span class="co">#&gt; [2] "Acidaminococcus fermentans DSM 20731" </span>
-<span class="co">#&gt; [3] "Acidilobus saccharovorans 345-15"     </span>
-<span class="co">#&gt; [4] "Acidimicrobium ferrooxidans DSM 10331"</span>
-<span class="co">#&gt; [5] "Aciduliprofundum boonei T469"         </span>
-<span class="co">#&gt; [6] "Aerococcus urinae ACS-120-V-Col10a"   </span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; $`facultatively anaerobic`</span>
-<span class="co">#&gt; [1] "Acholeplasma laidlawii PG-8A"                       </span>
-<span class="co">#&gt; [2] "Acidianus hospitalis W1"                            </span>
-<span class="co">#&gt; [3] "Acidithiobacillus ferrooxidans ATCC 23270"          </span>
-<span class="co">#&gt; [4] "Acidovorax ebreus TPSY"                             </span>
-<span class="co">#&gt; [5] "Actinobacillus pleuropneumoniae serovar 3 str. JL03"</span>
-<span class="co">#&gt; [6] "Actinobacillus pleuropneumoniae serovar 5b str. L20"</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; $microaerophilic</span>
-<span class="co">#&gt; [1] "Arcobacter nitrofigilis DSM 7299" "Bacillus thuringiensis BMB171"   </span>
-<span class="co">#&gt; [3] "Borrelia bissettii DN127"         "Borrelia burgdorferi B31"        </span>
-<span class="co">#&gt; [5] "Borrelia burgdorferi ZS7"         "Caldivirga maquilingensis IC-167"</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; $`obligately anaerobic`</span>
-<span class="co">#&gt; [1] "Candidatus Zinderia insecticola CARI"     </span>
-<span class="co">#&gt; [2] "Clostridium acetobutylicum DSM 1731"      </span>
-<span class="co">#&gt; [3] "Clostridium botulinum BKT015925"          </span>
-<span class="co">#&gt; [4] "Clostridium difficile CD196"              </span>
-<span class="co">#&gt; [5] "Desulfotomaculum carboxydivorans CO-1-SRB"</span>
-<span class="co">#&gt; [6] "Desulfotomaculum kuznetsovii DSM 6115"</span></code></pre></div>
-<div id="inherirted-signatures" class="section level2">
-<h2 class="hasAnchor">
-<a href="#inherirted-signatures" class="anchor"></a>Inherirted signatures</h2>
-<p>The taxa annotated in bugphyzz belongs to different taxonomic ranks and from different sources. This could lead to some taxa annotated in a dataset at a rather low taxonomic level, e.g strain, but not at a higher taxonomic level, e.g. species. The implementation of inherited signatures allows that a given taxa inherits an attribute annotation from a lower rank taxa if they belong to the same lineage. This could lead to an increase of represented taxa per attribute.</p>
-<p>For example, let’s create a signature of thermophilic bacteria, i.e. with a growth temperature above 80 °C.</p>
-<p>The first step is to filter the taxa with a growth temperature above 80 °C:</p>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">gt_thermophilic</span> <span class="op">&lt;-</span> <span class="va">gt</span> <span class="op">%&gt;%</span> 
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">Attribute_value</span> <span class="op">&gt;</span> <span class="fl">80</span><span class="op">)</span>
-
-<span class="fu"><a href="https://rdrr.io/r/graphics/hist.html">hist</a></span><span class="op">(</span><span class="va">gt_thermophilic</span><span class="op">$</span><span class="va">Attribute_value</span>, 
-     xlab <span class="op">=</span> <span class="st">"Growth temperature (°C)"</span>, main <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></code></pre></div>
-<p><img src="bugphyzz_files/figure-html/unnamed-chunk-6-1.png" width="480"></p>
-<p>Now we can use the <code>makeSigature</code> function to create a microbe signature at the species level using the taxa names:</p>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">gt_therm_sig</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/makeSignatures.html">makeSignatures</a></span><span class="op">(</span><span class="va">gt_thermophilic</span>, taxids <span class="op">=</span> <span class="st">"Taxon_name"</span>,
-                               tax_rank <span class="op">=</span> <span class="st">"species"</span><span class="op">)</span>
-<span class="va">gt_therm_sig</span>
-<span class="co">#&gt; $`growth temperature`</span>
-<span class="co">#&gt;  [1] "Methanocaldococcus sp. FS406-22"    "Aquifex pyrophilus Ko15a; DSM 6858"</span>
-<span class="co">#&gt;  [3] "Anoxybacillus flavithermus"         "Aquifex aeolicus"                  </span>
-<span class="co">#&gt;  [5] "Burkholderia gladioli"              "Candidatus Korarchaeum cryptofilum"</span>
-<span class="co">#&gt;  [7] "Methanocaldococcus infernus"        "Methanopyrus kandleri"             </span>
-<span class="co">#&gt;  [9] "Methanothermus fervidus"            "Pyrococcus abyssi"                 </span>
-<span class="co">#&gt; [11] "Pyrococcus yayanosii"               "Thermodesulfobacterium geofontis"  </span>
-<span class="co">#&gt; [13] "Thermofilum pendens"                "Thermogladius cellulolyticus"      </span>
-<span class="co">#&gt; [15] "Thermus scotoductus"</span></code></pre></div>
-<p>In the output above there are only 15 species. However, if we set the <code>inherit</code> argument to <code>TRUE</code>, we can increase the number of thermophilic species represented in our microbe signature:</p>
+<span class="co">#&gt; [1] "Fibrobacter"   "Porphyromonas" "Fusobacterium" "Pectinatus"   </span>
+<span class="co">#&gt; [5] "Ruminobacter"  "Desulfovibrio"</span></code></pre></div>
+<p>In some cases, some filtering might be necessary before creating the signatures. For example, let’s create a signature of microbes that grow above 80°C.</p>
+<p>First, we must import the “growth temperature” dataset.</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">gt_therm_sig_inherited</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/makeSignatures.html">makeSignatures</a></span><span class="op">(</span><span class="va">gt_thermophilic</span>, taxids <span class="op">=</span> <span class="st">"Taxon_name"</span>,
-                                         tax_rank <span class="op">=</span> <span class="st">"species"</span>, inherited <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
-<span class="va">gt_therm_sig_inherited</span>
-<span class="co">#&gt; $`growth temperature`</span>
-<span class="co">#&gt;  [1] "Aeropyrum pernix"                   "Aquifex aeolicus"                  </span>
-<span class="co">#&gt;  [3] "Archaeoglobus fulgidus"             "Caldivirga maquilingensis"         </span>
-<span class="co">#&gt;  [5] "Desulfurococcus amylolyticus"       "Ferroglobus placidus"              </span>
-<span class="co">#&gt;  [7] "Hyperthermus butylicus"             "Ignisphaera aggregans"             </span>
-<span class="co">#&gt;  [9] "Methanocaldococcus infernus"        "Methanocaldococcus jannaschii"     </span>
-<span class="co">#&gt; [11] "Methanocaldococcus sp. FS406-22"    "Methanopyrus kandleri"             </span>
-<span class="co">#&gt; [13] "Pyrobaculum aerophilum"             "Pyrobaculum calidifontis"          </span>
-<span class="co">#&gt; [15] "Pyrobaculum islandicum"             "Pyrococcus abyssi"                 </span>
-<span class="co">#&gt; [17] "Pyrococcus furiosus"                "Pyrococcus horikoshii"             </span>
-<span class="co">#&gt; [19] "Staphylothermus hellenicus"         "Staphylothermus marinus"           </span>
-<span class="co">#&gt; [21] "Saccharolobus solfataricus"         "Thermococcus gammatolerans"        </span>
-<span class="co">#&gt; [23] "Thermococcus kodakarensis"          "Thermofilum pendens"               </span>
-<span class="co">#&gt; [25] "Pyrobaculum neutrophilum"           "Vulcanisaeta distributa"           </span>
-<span class="co">#&gt; [27] "Aquifex pyrophilus"                 "Anoxybacillus flavithermus"        </span>
-<span class="co">#&gt; [29] "Burkholderia gladioli"              "Candidatus Korarchaeum cryptofilum"</span>
-<span class="co">#&gt; [31] "Methanothermus fervidus"            "Pyrococcus yayanosii"              </span>
-<span class="co">#&gt; [33] "Thermodesulfobacterium geofontis"   "Thermogladius calderae"            </span>
-<span class="co">#&gt; [35] "Thermus scotoductus"</span></code></pre></div>
-<p>The number of species represented in our signature reached 35.</p>
-<p>We recommend caution in the use and interpretation of the inherited signatures option. For example, the output in the code below indicates that there are one or more thermophilic taxa representing the Archaea and Bacteria superkingdoms in the ‘growth temperature’ dataset, not that all Arcahea and Bacteria taxa are thermophilic.</p>
+<code class="sourceCode R"><span class="va">gt</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/physiologies.html">physiologies</a></span><span class="op">(</span><span class="st">"growth temperature"</span><span class="op">)</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span>
+<span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">gt</span><span class="op">)</span>
+<span class="co">#&gt;                                  Taxon_name NCBI_ID Genome_ID</span>
+<span class="co">#&gt; 1              Acholeplasma laidlawii PG-8A  441768   Unknown</span>
+<span class="co">#&gt; 2          Acidilobus saccharovorans 345-15  666510   Unknown</span>
+<span class="co">#&gt; 3                 Acidiphilium cryptum JF-5  349163   Unknown</span>
+<span class="co">#&gt; 4 Acidithiobacillus ferrooxidans ATCC 23270  243159   Unknown</span>
+<span class="co">#&gt; 5      Acidobacterium capsulatum ATCC 51196  240015   Unknown</span>
+<span class="co">#&gt; 6           Acidothermus cellulolyticus 11B  351607   Unknown</span>
+<span class="co">#&gt;                                                                                        Accession_ID</span>
+<span class="co">#&gt; 1                                                                                         NC_010163</span>
+<span class="co">#&gt; 2                                                                                         NC_014374</span>
+<span class="co">#&gt; 3 NC_009467, NC_009468, NC_009469, NC_009470, NC_009471, NC_009472, NC_009473, NC_009474, NC_009484</span>
+<span class="co">#&gt; 4                                                                                         NC_011761</span>
+<span class="co">#&gt; 5                                                                                         NC_012483</span>
+<span class="co">#&gt; 6                                                                                         NC_008578</span>
+<span class="co">#&gt;            Attribute Attribute_value              Attribute_source Evidence</span>
+<span class="co">#&gt; 1 growth temperature              37 http://bacmap.wishartlab.com/      EXP</span>
+<span class="co">#&gt; 2 growth temperature              80 http://bacmap.wishartlab.com/      EXP</span>
+<span class="co">#&gt; 3 growth temperature              35 http://bacmap.wishartlab.com/      EXP</span>
+<span class="co">#&gt; 4 growth temperature              30 http://bacmap.wishartlab.com/      EXP</span>
+<span class="co">#&gt; 5 growth temperature              30 http://bacmap.wishartlab.com/      EXP</span>
+<span class="co">#&gt; 6 growth temperature              58 http://bacmap.wishartlab.com/      EXP</span>
+<span class="co">#&gt;   Confidence_interval   Rank                    Parent_name Parent_NCBI_ID</span>
+<span class="co">#&gt; 1             Unknown strain         Acholeplasma laidlawii           2148</span>
+<span class="co">#&gt; 2             Unknown strain      Acidilobus saccharovorans         242703</span>
+<span class="co">#&gt; 3             Unknown strain           Acidiphilium cryptum            524</span>
+<span class="co">#&gt; 4             Unknown strain Acidithiobacillus ferrooxidans            920</span>
+<span class="co">#&gt; 5             Unknown strain      Acidobacterium capsulatum          33075</span>
+<span class="co">#&gt; 6             Unknown strain    Acidothermus cellulolyticus          28049</span>
+<span class="co">#&gt;   Parent_rank</span>
+<span class="co">#&gt; 1     species</span>
+<span class="co">#&gt; 2     species</span>
+<span class="co">#&gt; 3     species</span>
+<span class="co">#&gt; 4     species</span>
+<span class="co">#&gt; 5     species</span>
+<span class="co">#&gt; 6     species</span></code></pre></div>
+<p>Now, we filter only those taxa that grow above 80°C with regular R functions:</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/makeSignatures.html">makeSignatures</a></span><span class="op">(</span><span class="va">gt_thermophilic</span>, taxids <span class="op">=</span> <span class="st">"Taxon_name"</span>, 
-               tax_rank <span class="op">=</span> <span class="st">"superkingdom"</span>, inherited <span class="op">=</span> <span class="cn">TRUE</span>,
-               min_sig_size <span class="op">=</span> <span class="fl">1</span><span class="op">)</span>
+<code class="sourceCode R"><span class="va">gt_subset</span> <span class="op">&lt;-</span> <span class="va">gt</span><span class="op">[</span><span class="va">gt</span><span class="op">$</span><span class="va">Attribute_value</span> <span class="op">&gt;=</span> <span class="fl">80</span>, <span class="op">]</span>
+<span class="fu"><a href="https://rdrr.io/r/graphics/hist.html" class="external-link">hist</a></span><span class="op">(</span>
+  x <span class="op">=</span> <span class="va">gt_subset</span><span class="op">$</span><span class="va">Attribute_value</span>, xlab <span class="op">=</span> <span class="st">"Temperature (°C)"</span>, 
+  main <span class="op">=</span> <span class="st">"Microbes that grow above 80 °C"</span>
+<span class="op">)</span></code></pre></div>
+<p><img src="bugphyzz_files/figure-html/unnamed-chunk-9-1.png" width="700"></p>
+<p>Finally, we can create the microbial signatures from the filtered dataset. In his case, a signature of species using only the taxids.</p>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">gt_subset_sig</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/makeSignatures.html">makeSignatures</a></span><span class="op">(</span>
+  <span class="va">gt_subset</span>, tax_id_type <span class="op">=</span> <span class="st">"NCBI_ID"</span>, tax_level <span class="op">=</span> <span class="st">"species"</span>,
+  evidence <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Unknown"</span>, <span class="st">"EXP"</span>, <span class="st">"ASR"</span><span class="op">)</span>, ci <span class="op">=</span> <span class="fl">0.4</span>, include_unknown_ci <span class="op">=</span> <span class="cn">TRUE</span>
+<span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">gt_subset_sig</span><span class="op">)</span>
 <span class="co">#&gt; $`growth temperature`</span>
-<span class="co">#&gt; [1] "Archaea"  "Bacteria"</span></code></pre></div>
-</div>
+<span class="co">#&gt;  [1]  644281    2714    1394    1395    2336   33934   63363   28095  498846</span>
+<span class="co">#&gt; [10]   67760  667126   73913    2320    2180   29292 1008460 1295609    2269</span>
+<span class="co">#&gt; [19] 1200300   93930   93929   37636</span></code></pre></div>
+<p>Session information:</p>
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/sessionInfo.html" class="external-link">sessionInfo</a></span><span class="op">(</span><span class="op">)</span>
+<span class="co">#&gt; R Under development (unstable) (2021-12-16 r81386)</span>
+<span class="co">#&gt; Platform: x86_64-pc-linux-gnu (64-bit)</span>
+<span class="co">#&gt; Running under: Ubuntu 20.04.3 LTS</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Matrix products: default</span>
+<span class="co">#&gt; BLAS/LAPACK: /usr/lib/x86_64-linux-gnu/openblas-pthread/libopenblasp-r0.3.8.so</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; locale:</span>
+<span class="co">#&gt;  [1] LC_CTYPE=en_US.UTF-8       LC_NUMERIC=C              </span>
+<span class="co">#&gt;  [3] LC_TIME=en_US.UTF-8        LC_COLLATE=en_US.UTF-8    </span>
+<span class="co">#&gt;  [5] LC_MONETARY=en_US.UTF-8    LC_MESSAGES=C             </span>
+<span class="co">#&gt;  [7] LC_PAPER=en_US.UTF-8       LC_NAME=C                 </span>
+<span class="co">#&gt;  [9] LC_ADDRESS=C               LC_TELEPHONE=C            </span>
+<span class="co">#&gt; [11] LC_MEASUREMENT=en_US.UTF-8 LC_IDENTIFICATION=C       </span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; attached base packages:</span>
+<span class="co">#&gt; [1] stats     graphics  grDevices utils     datasets  methods   base     </span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; other attached packages:</span>
+<span class="co">#&gt; [1] bugphyzz_0.0.1.3</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; loaded via a namespace (and not attached):</span>
+<span class="co">#&gt;  [1] zoo_1.8-9         tidyselect_1.1.1  xfun_0.29         bslib_0.3.1      </span>
+<span class="co">#&gt;  [5] taxize_0.9.99     purrr_0.3.4       lattice_0.20-45   vctrs_0.3.8      </span>
+<span class="co">#&gt;  [9] generics_0.1.1    htmltools_0.5.2   yaml_2.2.1        utf8_1.2.2       </span>
+<span class="co">#&gt; [13] rlang_0.4.12      pkgdown_2.0.1     jquerylib_0.1.4   pillar_1.6.4     </span>
+<span class="co">#&gt; [17] glue_1.6.0        httpcode_0.3.0    DBI_1.1.2         uuid_1.0-3       </span>
+<span class="co">#&gt; [21] foreach_1.5.1     lifecycle_1.0.1   plyr_1.8.6        stringr_1.4.0    </span>
+<span class="co">#&gt; [25] ragg_1.2.1        codetools_0.2-18  memoise_2.0.1     evaluate_0.14    </span>
+<span class="co">#&gt; [29] knitr_1.37        fastmap_1.1.0     parallel_4.2.0    curl_4.3.2       </span>
+<span class="co">#&gt; [33] fansi_0.5.0       highr_0.9         Rcpp_1.0.7        cachem_1.0.6     </span>
+<span class="co">#&gt; [37] desc_1.4.0        jsonlite_1.7.2    systemfonts_1.0.3 fs_1.5.2         </span>
+<span class="co">#&gt; [41] textshaping_0.3.6 digest_0.6.29     stringi_1.7.6     dplyr_1.0.7      </span>
+<span class="co">#&gt; [45] rprojroot_2.0.2   grid_4.2.0        cli_3.1.0         tools_4.2.0      </span>
+<span class="co">#&gt; [49] magrittr_2.0.1    sass_0.4.0        tibble_3.1.6      mgsub_1.7.3      </span>
+<span class="co">#&gt; [53] bold_1.2.0        crul_1.2.0        tidyr_1.1.4       crayon_1.4.2     </span>
+<span class="co">#&gt; [57] ape_5.6           pkgconfig_2.0.3   ellipsis_0.3.2    data.table_1.14.2</span>
+<span class="co">#&gt; [61] xml2_1.3.3        iterators_1.0.13  assertthat_0.2.1  rmarkdown_2.11   </span>
+<span class="co">#&gt; [65] reshape_0.8.8     R6_2.5.1          conditionz_0.1.0  nlme_3.1-153     </span>
+<span class="co">#&gt; [69] compiler_4.2.0</span></code></pre></div>
 </div>
   </div>
 
@@ -286,11 +385,13 @@
 
 
       <footer><div class="copyright">
-  <p>Developed by First Last.</p>
+  <p></p>
+<p>Developed by First Last.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.</p>
 </div>
 
       </footer>
@@ -298,6 +399,8 @@
 
   
 
+
+  
 
   </body>
 </html>

@@ -1,10 +1,13 @@
 pandoc: 2.14.0.3
-pkgdown: 1.6.1
+pkgdown: 2.0.1
 pkgdown_sha: ~
 articles:
-  articles/checks: checks.html
-  articles/descriptive_statistics: descriptive_statistics.html
-  articles/write_physiology_sets: write_physiology_sets.html
-  makeSignatures: makeSignatures.html
-last_built: 2021-11-27T02:27Z
+  checks: checks.html
+  descriptive_statistics: descriptive_statistics.html
+  write_physiology_sets: write_physiology_sets.html
+  bugphyzz: bugphyzz.html
+last_built: 2021-12-24T16:16Z
+urls:
+  reference: https://waldronlab.io/bugphyzz/reference
+  article: https://waldronlab.io/bugphyzz/articles
 
