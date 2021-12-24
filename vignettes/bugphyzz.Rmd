@@ -42,7 +42,7 @@ has a single argument, `keyword`, and returns a list of data.frames.
 The `keyword` argument accepts a character vector specifying the name(s) 
 of the dataset(s) that will be imported:
 
-```{r import aerophilicity, message=FALSE}
+```{r, message=FALSE}
 ## Import a single dataset
 aer <- physiologies("aerophilicity")[[1]]
 head(aer)
@@ -50,7 +50,7 @@ head(aer)
 
 You can use the `keyword = "all"` to import all of the datasets:
 
-```{r import physiologies, message=FALSE}
+```{r, message=FALSE}
 ## Import all of the datasets available through the physiologies function
 phys <- physiologies(keyword = "all")
 str(phys, max.level = 1)
@@ -59,7 +59,7 @@ str(phys, max.level = 1)
 The `physiologiesList` function can be used to display which datasets are
 available through the `physiologies` function before importing them:
 
-```{r physiologiesList}
+```{r}
 physiologiesList()
 ```
 
@@ -67,7 +67,7 @@ A separate function is provided to import the fatty acid compositions dataset,
 `fattyAcidComposition`. This function takes no arguments and returns a single
 data.frame object:
 
-```{r import fac}
+```{r}
 fac <- fattyAcidComposition()
 head(fac)
 ```
@@ -77,7 +77,7 @@ head(fac)
 Bugphyzz provides the `makeSignatures` function to create a list of microbial
 signatures from a bugphyzz dataset.
 
-```{r aerophilicity signature}
+```{r}
 aer_sig <- makeSignatures(
   aer, tax_id_type = "Taxon_name", tax_level = "genus", evidence = "EXP",
   ci = 1, min_size = 10
@@ -90,14 +90,14 @@ For example, let's create a signature of microbes that grow above 80°C.
 
 First, we must import the "growth temperature" dataset.
 
-```{r import growth temperature, message=FALSE}
+```{r, message=FALSE}
 gt <- physiologies("growth temperature")[[1]]
 head(gt)
 ```
 
 Now, we filter only those taxa that grow above 80°C with regular R functions:
 
-```{r filter termophiles, fig.height=5, fig.width=5}
+```{r}
 gt_subset <- gt[gt$Attribute_value >= 80, ]
 hist(
   x = gt_subset$Attribute_value, xlab = "Temperature (°C)", 
@@ -108,7 +108,7 @@ hist(
 Finally, we can create the microbial signatures from the filtered dataset.
 In his case, a signature of species using only the taxids.
 
-```{r thermophiles signature}
+```{r}
 gt_subset_sig <- makeSignatures(
   gt_subset, tax_id_type = "NCBI_ID", tax_level = "species",
   evidence = c("Unknown", "EXP", "ASR"), ci = 0.4, include_unknown_ci = TRUE
@@ -118,7 +118,7 @@ head(gt_subset_sig)
 
 Session information:
 
-```{r sessionInfo}
+```{r}
 sessionInfo()
 ```
 
