@@ -34,7 +34,8 @@ Other custom stop functions:
 \code{\link{.stop_custom}()},
 \code{\link{.stop_invalid_column_values}()},
 \code{\link{.stop_required_columns_misplaced}()},
-\code{\link{.stop_required_columns_missing}()}
+\code{\link{.stop_required_columns_missing}()},
+\code{\link{.stop_required_missing_row_value}()}
 }
 \concept{custom stop functions}
 \keyword{internal}
