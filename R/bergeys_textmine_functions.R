@@ -8,7 +8,7 @@
 
     tibble_dat <- tibble_dat %>%
         tidytext::unnest_tokens(
-            output = .data[["word"]], input = .data[["abstract"]], 
+            output = .data[["word"]], input = .data[["abstract"]],
             strip_punct = T
         ) %>%
         dplyr::anti_join(.data[["stop_words"]], by = "word") %>%
@@ -20,12 +20,15 @@
 #' Function replaces synonyms with standard title
 #'
 #' @keywords internal
-#' 
+#'
 #' @examples
 #'
 #' \dontrun{
-#' Example: temp <- bugphyzz:::.standardize(dat, "gram", words[[1]], colnames(words)[[1]])
-#' \\bword\\b
+#'
+#' temp <- bugphyzz:::.standardize(
+#'     dat, "gram", words[[1]], colnames(words)[[1]]
+#' )
+#'
 #' }
 #'
 .standardize <- function(df, standard, synonyms = standard){
@@ -33,11 +36,11 @@
     df[[3]] <- gsub("[[:punct:][:blank:]]+", " ", df[[3]])
     df[[3]] <- tolower(df[[3]])
 
-    for (i in 1:length(synonyms)){
+    for (i in 1:length(synonyms)) {
         df[[3]] <- gsub(synonyms[i], standard, df[[3]])
     }
 
-    df <- .tokens(df) %>% 
+    df <- .tokens(df) %>%
         dplyr::filter(stringr::str_detect(.data[["word"]], regString))
     return(df)
 }
@@ -62,7 +65,7 @@
 #' @keywords internal
 #'
 .extractDuplicate <- function(df){
-    df <- df[duplicated(df$genus)|duplicated(df$genus, fromLast=TRUE),]
+    df <- df[duplicated(df$genus) | duplicated(df$genus, fromLast = TRUE),]
     df <- df[order(df$genus)]
     return(df)
 }
@@ -72,7 +75,7 @@
 #' @keywords internal
 #'
 .extract_accurate <- function(df){
-    df <- df[!(duplicated(df$genus)|duplicated(df$genus, fromLast=TRUE)),]
+    df <- df[!(duplicated(df$genus) | duplicated(df$genus, fromLast = TRUE)),]
     df <- df[order(df$genus)]
     return(df)
 }
