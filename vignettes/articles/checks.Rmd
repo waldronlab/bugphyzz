@@ -140,14 +140,20 @@ check_valid_NCBI_IDs <- function(dat) {
 
 
 ```{r}
-  err_list <- lapply(phys, function(x) {
+err_list <- lapply(phys, function(x) {
     tryCatch(
       invalid_ncbi_ids = function(e) e,
       check_valid_NCBI_IDs(x)
     )
   }) %>%
     discard(is.null)
+
+
+
 ```
+
+
+
 ```{r}
 map(err_list, ~{
   tibble::tibble(
