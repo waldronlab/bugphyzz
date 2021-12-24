@@ -29,7 +29,8 @@ fattyAcidComposition <- function(){
         tidyr::pivot_longer(cols = .data[["Br-C10:1"]]:.data[["Oxo-C19:1"]],
                                       names_to = "Attribute_new",
                                       values_to = "Attribute_value")
-    dplyr::left_join(fac_long, ranks_parents, by = "NCBI_ID")
+    dplyr::left_join(fac_long, ranks_parents, by = "NCBI_ID") %>%
+      as.data.frame()
 }
 
 #' Custom links
