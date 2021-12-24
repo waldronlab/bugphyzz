@@ -6,79 +6,49 @@
 \usage{
 makeSignatures(
   df,
-  taxids,
-  sig_type = "regular",
-  tax_rank = NULL,
-  min_sig_size = 1
+  tax_id_type = "NCBI_ID",
+  tax_level = "mixed",
+  evidence = c("EXP", "ASR", "Unknown"),
+  ci = 0.8,
+  include_unknown_ci = FALSE,
+  min_size = 5
 )
 }
 \arguments{
-\item{df}{A bugphyzz dataset.}
+\item{df}{A data.frame imported with bugphyzz.}
 
-\item{taxids}{A character string indicating the type of taxid. Valid
-options: NCBI_ID, Taxon_name, Genome_ID, Accession_ID.}
+\item{tax_id_type}{Type of ID. Options: NCBI_ID, Taxon_name.}
 
-\item{sig_type}{A character string. Valid options: regular, normal, inherited.}
+\item{tax_level}{Taxonomy level. Options: superkingdom, kingom, phylum,
+class, order, family, genus, species, strain, mixed (all taxonomies).
+Default is mixed.}
 
-\item{tax_rank}{A character string indicating the taxonomic rank of the
-microbes in the signatures. Valid options: superkingdom, kingdom, phylum,
-class, order, family, species, strain.}
+\item{evidence}{Type of evidence of the assigned attribute values to a
+given taxon. Options: EXP, experimental; ASR, ancestral state reconstruction.
+Default is both EXP and ASR.}
 
-\item{min_sig_size}{The minimum number of microbes in a signature.}
+\item{ci}{A double indicating how likely is that a given
+organism has that attribute value. Threshold options: 1, always; 0.8,
+Usually; 0.5, sometimes; 0.3, Occasionally.
+Values below 0.3 are not allowed. Default is 0.8.}
+
+\item{include_unknown_ci}{Include taxa whose attribute value confidence
+interval is unknown.}
+
+\item{min_size}{The minimal size of the returned microbial signatures.
+Default is 1.}
 }
 \value{
-A named list of microbe signatures.
+A list of microbial signatures
 }
 \description{
-\code{makeSignatures} creates a list of microbe signatures from a bugphyzz
-dataset, i.e., a dataset imported either with the \code{\link{physiologies}}
-or the \code{\link{fattyAcidComposition}} functions.
+\code{makeSignatures} converts a bugphyzz dataset into a list of microbial
+signatures.
 }
-\section{Types of signatures}{
-
-
-\code{\link{makeSignatures}} allows the creation of three types of
-signatures (regular, ranked, or inherited) with the \code{type} argument.
-\itemize{
-\item The \code{regular} option (default) creates a list of signatures per attribute
-considering all of the taxids and attributes in the dataset, regardless of
-taxonomic rank.
-\item The \code{ranked} option filters the taxids by taxonomic rank before creating
-the lists of signatures. Currently, only "species", "genus", and "strain"
-rank levels are supported.
-\item The \code{inherited} option allows the creation of signatures in which the
-members of the list inherit an attribute annotation from a taxon of a lower
-level, as long as they belong to the same lineage. For example, if the
-\emph{Pyrococcus abyssi} species is not annotated in a given bugphyzz dataset,
-but the \emph{Pyrococcus furiosus} DSM 3638 strain is, then the
-\code{type = "inherited"} argument allows to create a signature at the species
-level including the \emph{Pyrococcus abyssi} species.
-}
-}
-
 \examples{
 
-library(bugphyzz)
-library(dplyr)
-
-## Example 1- Crete a list of signatures from the aerophilicity dataset
 aer <- physiologies("aerophilicity")[[1]]
-aer_sig <- makeSignatures(aer, taxids = "NCBI_ID", min_sig_size = 5)
-
-## Exampl 2 - Create signatures of thermophilic bacteria
-gt <- physiologies("growth temperature")[[1]]
-tm <- gt |> filter(Attribute_value > 80)
-
-## Species level signatures with ranked option
-tm_sig_ranked <- makeSignatures(tm, taxids = "Taxon_name",
-                                tax_rank = "species", sig_type = "ranked")
-
-## Species level signtures with inherited option
-tm_sig_inherited <- makeSignatures(tm, taxids = "Taxon_name",
-                                   tax_rank = "species",
-                                   sig_type = "inherited")
-
-## Compare lengths
-length(tm_sig_inherited[[1]]) > length(tm_sig_ranked[[1]])
+aer_signatures <- makeSignatures(aer)
+lapply(aer, head)
 
 }
