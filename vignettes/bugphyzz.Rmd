@@ -21,7 +21,7 @@ library(bugphyzz)
 ## Introduction
 
 This document shows the main functions and operations that can be used
-to work with the bugphyzz datasets.
+to work with the bugphyzz datasets, such as seeing all physiologies, look at specific physiologies, and make signature sets using your own data!
 
 ## Installation
 
