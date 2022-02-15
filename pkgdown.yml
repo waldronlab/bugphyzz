@@ -1,12 +1,12 @@
 pandoc: 2.14.0.3
-pkgdown: 2.0.1
+pkgdown: 2.0.2
 pkgdown_sha: ~
 articles:
   checks: checks.html
   descriptive_statistics: descriptive_statistics.html
   write_physiology_sets: write_physiology_sets.html
   bugphyzz: bugphyzz.html
-last_built: 2021-12-24T16:16Z
+last_built: 2022-02-15T22:41Z
 urls:
   reference: https://waldronlab.io/bugphyzz/reference
   article: https://waldronlab.io/bugphyzz/articles

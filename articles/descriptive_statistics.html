@@ -114,9 +114,9 @@
 <span class="co">#&gt; 6         isolate    6</span>
 <span class="co">#&gt; 7         biotype    1</span>
 <span class="co">#&gt; 8 forma specialis    1</span></code></pre></div>
-<div class="section level1">
-<h1 id="taxa-annotated-with-ncbi-ids-by-rank">Taxa annotated with NCBI IDs by rank<a class="anchor" aria-label="anchor" href="#taxa-annotated-with-ncbi-ids-by-rank"></a>
-</h1>
+<div class="section level2">
+<h2 id="taxa-annotated-with-ncbi-ids-by-rank">Taxa annotated with NCBI IDs by rank<a class="anchor" aria-label="anchor" href="#taxa-annotated-with-ncbi-ids-by-rank"></a>
+</h2>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">data</span> <span class="op">&lt;-</span> <span class="va">phys</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> 
   <span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html" class="external-link">map</a></span><span class="op">(</span><span class="op">~</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">.x</span>, <span class="fu"><a href="https://tidyselect.r-lib.org/reference/all_of.html" class="external-link">all_of</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"NCBI_ID"</span>, <span class="st">"Rank"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> 
@@ -137,9 +137,9 @@
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html" class="external-link">theme</a></span><span class="op">(</span>legend.position <span class="op">=</span> <span class="st">"bottom"</span>, plot.margin <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grid/unit.html" class="external-link">unit</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">2</span>,<span class="fl">1</span>,<span class="fl">1</span><span class="op">)</span>,<span class="st">"cm"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <p><img src="descriptive_statistics_files/figure-html/unnamed-chunk-5-1.png" width="864"></p>
 </div>
-<div class="section level1">
-<h1 id="functions">Functions<a class="anchor" aria-label="anchor" href="#functions"></a>
-</h1>
+<div class="section level2">
+<h2 id="functions">Functions<a class="anchor" aria-label="anchor" href="#functions"></a>
+</h2>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co">## Create summary statistics per dataset</span>
 <span class="va">attributeSummaryByRank</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span>, <span class="va">categorical</span> <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op">{</span>
@@ -194,9 +194,9 @@
        <span class="op">)</span>
 <span class="op">}</span></code></pre></div>
 </div>
-<div class="section level1">
-<h1 id="datasets-with-categorical-attributes-in-physiologies">Datasets with categorical attributes in “physiologies”<a class="anchor" aria-label="anchor" href="#datasets-with-categorical-attributes-in-physiologies"></a>
-</h1>
+<div class="section level2">
+<h2 id="datasets-with-categorical-attributes-in-physiologies">Datasets with categorical attributes in “physiologies”<a class="anchor" aria-label="anchor" href="#datasets-with-categorical-attributes-in-physiologies"></a>
+</h2>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">categorical_phys</span> <span class="op">&lt;-</span> <span class="va">phys</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
     <span class="fu"><a href="https://purrr.tidyverse.org/reference/keep.html" class="external-link">keep</a></span><span class="op">(</span><span class="op">~</span><span class="fu"><a href="https://rdrr.io/r/base/logical.html" class="external-link">is.logical</a></span><span class="op">(</span><span class="va">.x</span><span class="op">$</span><span class="va">Attribute_value</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> 
@@ -215,9 +215,9 @@
 <code class="sourceCode R"><span class="va">cat_summary_tables</span> <span class="op">&lt;-</span> <span class="va">categorical_phys_names</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> 
     <span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html" class="external-link">map</a></span><span class="op">(</span><span class="op">~</span> <span class="fu">attributeSummaryByRank</span><span class="op">(</span><span class="va">categorical_phys</span>, <span class="va">.x</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> 
     <span class="fu"><a href="https://purrr.tidyverse.org/reference/set_names.html" class="external-link">set_names</a></span><span class="op">(</span><span class="va">categorical_phys_names</span><span class="op">)</span></code></pre></div>
-<div class="section level2">
-<h2 id="animal-pathogen">Animal pathogen<a class="anchor" aria-label="anchor" href="#animal-pathogen"></a>
-</h2>
+<div class="section level3">
+<h3 id="animal-pathogen">Animal pathogen<a class="anchor" aria-label="anchor" href="#animal-pathogen"></a>
+</h3>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">cat_summary_tables</span><span class="op">$</span><span class="va">`animal pathogen`</span></code></pre></div>
 <table class="table">
@@ -233,9 +233,9 @@
 </tr></tbody>
 </table>
 </div>
-<div class="section level2">
-<h2 id="antimicrobial-resistance">Antimicrobial resistance<a class="anchor" aria-label="anchor" href="#antimicrobial-resistance"></a>
-</h2>
+<div class="section level3">
+<h3 id="antimicrobial-resistance">Antimicrobial resistance<a class="anchor" aria-label="anchor" href="#antimicrobial-resistance"></a>
+</h3>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">cat_summary_tables</span><span class="op">$</span><span class="va">`antimicrobial resistance`</span></code></pre></div>
 <table class="table">
@@ -628,9 +628,9 @@
 </tbody>
 </table>
 </div>
-<div class="section level2">
-<h2 id="antimicrobial-sensitivity">Antimicrobial sensitivity<a class="anchor" aria-label="anchor" href="#antimicrobial-sensitivity"></a>
-</h2>
+<div class="section level3">
+<h3 id="antimicrobial-sensitivity">Antimicrobial sensitivity<a class="anchor" aria-label="anchor" href="#antimicrobial-sensitivity"></a>
+</h3>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">cat_summary_tables</span><span class="op">$</span><span class="va">`antimicrobial sensitivity`</span></code></pre></div>
 <table class="table">
@@ -650,9 +650,9 @@
 </tr></tbody>
 </table>
 </div>
-<div class="section level2">
-<h2 id="biofilm-forming">Biofilm forming<a class="anchor" aria-label="anchor" href="#biofilm-forming"></a>
-</h2>
+<div class="section level3">
+<h3 id="biofilm-forming">Biofilm forming<a class="anchor" aria-label="anchor" href="#biofilm-forming"></a>
+</h3>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">cat_summary_tables</span><span class="op">$</span><span class="va">`biofilm forming`</span></code></pre></div>
 <table class="table">
@@ -672,9 +672,9 @@
 </tr></tbody>
 </table>
 </div>
-<div class="section level2">
-<h2 id="arrangement">Arrangement<a class="anchor" aria-label="anchor" href="#arrangement"></a>
-</h2>
+<div class="section level3">
+<h3 id="arrangement">Arrangement<a class="anchor" aria-label="anchor" href="#arrangement"></a>
+</h3>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">cat_summary_tables</span><span class="op">$</span><span class="va">arrangement</span></code></pre></div>
 <table class="table">
@@ -812,9 +812,9 @@
 </tbody>
 </table>
 </div>
-<div class="section level2">
-<h2 id="shape">Shape<a class="anchor" aria-label="anchor" href="#shape"></a>
-</h2>
+<div class="section level3">
+<h3 id="shape">Shape<a class="anchor" aria-label="anchor" href="#shape"></a>
+</h3>
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">cat_summary_tables</span><span class="op">$</span><span class="va">shape</span></code></pre></div>
 <table class="table">
@@ -1075,9 +1075,9 @@
 </tbody>
 </table>
 </div>
-<div class="section level2">
-<h2 id="extreme-environment">Extreme environment<a class="anchor" aria-label="anchor" href="#extreme-environment"></a>
-</h2>
+<div class="section level3">
+<h3 id="extreme-environment">Extreme environment<a class="anchor" aria-label="anchor" href="#extreme-environment"></a>
+</h3>
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">cat_summary_tables</span><span class="op">$</span><span class="va">`extreme environment`</span></code></pre></div>
 <table class="table">
@@ -1086,20 +1086,18 @@
 <th align="left">Attribute</th>
 <th align="left">species</th>
 <th align="left">subspecies</th>
-<th align="left">NA</th>
 </tr></thead>
 <tbody><tr class="odd">
 <td align="left">1</td>
 <td align="left">Extreme environment</td>
-<td align="left">560 (99.47)</td>
+<td align="left">561 (99.64)</td>
 <td align="left">2 (0.36)</td>
-<td align="left">1 (0.18)</td>
 </tr></tbody>
 </table>
 </div>
-<div class="section level2">
-<h2 id="gram-stain">Gram stain<a class="anchor" aria-label="anchor" href="#gram-stain"></a>
-</h2>
+<div class="section level3">
+<h3 id="gram-stain">Gram stain<a class="anchor" aria-label="anchor" href="#gram-stain"></a>
+</h3>
 <div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">cat_summary_tables</span><span class="op">$</span><span class="va">`gram stain`</span></code></pre></div>
 <table class="table">
@@ -1131,26 +1129,26 @@
 <tr class="odd">
 <td align="left">1</td>
 <td align="left">gram stain negative</td>
-<td align="left">840 (25.85)</td>
-<td align="left">771 (23.73)</td>
-<td align="left">1581 (48.66)</td>
+<td align="left">842 (25.92)</td>
+<td align="left">772 (23.76)</td>
+<td align="left">1584 (48.75)</td>
 <td align="left">1 (0.03)</td>
 <td align="left">6 (0.18)</td>
 <td align="left">8 (0.25)</td>
 <td align="left">1 (0.03)</td>
-<td align="left">41 (1.26)</td>
+<td align="left">35 (1.08)</td>
 </tr>
 <tr class="even">
 <td align="left">2</td>
 <td align="left">gram stain positive</td>
-<td align="left">434 (26.21)</td>
+<td align="left">436 (26.33)</td>
 <td align="left">373 (22.52)</td>
-<td align="left">828 (50)</td>
+<td align="left">830 (50.12)</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
 <td align="left">4 (0.24)</td>
 <td align="left">7 (0.42)</td>
-<td align="left">10 (0.6)</td>
+<td align="left">6 (0.36)</td>
 </tr>
 <tr class="odd">
 <td align="left">3</td>
@@ -1167,9 +1165,9 @@
 </tbody>
 </table>
 </div>
-<div class="section level2">
-<h2 id="growth-medium">Growth medium<a class="anchor" aria-label="anchor" href="#growth-medium"></a>
-</h2>
+<div class="section level3">
+<h3 id="growth-medium">Growth medium<a class="anchor" aria-label="anchor" href="#growth-medium"></a>
+</h3>
 <div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">cat_summary_tables</span><span class="op">$</span><span class="va">`growth medium`</span></code></pre></div>
 <table class="table">
@@ -1408,9 +1406,9 @@
 </tbody>
 </table>
 </div>
-<div class="section level2">
-<h2 id="habitat">Habitat<a class="anchor" aria-label="anchor" href="#habitat"></a>
-</h2>
+<div class="section level3">
+<h3 id="habitat">Habitat<a class="anchor" aria-label="anchor" href="#habitat"></a>
+</h3>
 <div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">cat_summary_tables</span><span class="op">$</span><span class="va">habitat</span></code></pre></div>
 <table class="table">
@@ -1934,9 +1932,9 @@
 </tbody>
 </table>
 </div>
-<div class="section level2">
-<h2 id="aerophilicity">Aerophilicity<a class="anchor" aria-label="anchor" href="#aerophilicity"></a>
-</h2>
+<div class="section level3">
+<h3 id="aerophilicity">Aerophilicity<a class="anchor" aria-label="anchor" href="#aerophilicity"></a>
+</h3>
 <div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">cat_summary_tables</span><span class="op">$</span><span class="va">aerophilicity</span></code></pre></div>
 <table style="width:100%;" class="table">
@@ -2054,9 +2052,9 @@
 </tbody>
 </table>
 </div>
-<div class="section level2">
-<h2 id="plant-pathogenicity">Plant pathogenicity<a class="anchor" aria-label="anchor" href="#plant-pathogenicity"></a>
-</h2>
+<div class="section level3">
+<h3 id="plant-pathogenicity">Plant pathogenicity<a class="anchor" aria-label="anchor" href="#plant-pathogenicity"></a>
+</h3>
 <div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">cat_summary_tables</span><span class="op">$</span><span class="va">`plant pathogenicity`</span></code></pre></div>
 <table class="table">
@@ -2074,9 +2072,9 @@
 </tr></tbody>
 </table>
 </div>
-<div class="section level2">
-<h2 id="spore-shape">Spore shape<a class="anchor" aria-label="anchor" href="#spore-shape"></a>
-</h2>
+<div class="section level3">
+<h3 id="spore-shape">Spore shape<a class="anchor" aria-label="anchor" href="#spore-shape"></a>
+</h3>
 <div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">cat_summary_tables</span><span class="op">$</span><span class="va">`spore shape`</span></code></pre></div>
 <table class="table">
@@ -2156,9 +2154,9 @@
 </tbody>
 </table>
 </div>
-<div class="section level2">
-<h2 id="isolation-site">Isolation site<a class="anchor" aria-label="anchor" href="#isolation-site"></a>
-</h2>
+<div class="section level3">
+<h3 id="isolation-site">Isolation site<a class="anchor" aria-label="anchor" href="#isolation-site"></a>
+</h3>
 <div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">cat_summary_tables</span><span class="op">$</span><span class="va">`isolation site`</span></code></pre></div>
 <table class="table">
@@ -2886,9 +2884,9 @@
 </tbody>
 </table>
 </div>
-<div class="section level2">
-<h2 id="disease-association">Disease association<a class="anchor" aria-label="anchor" href="#disease-association"></a>
-</h2>
+<div class="section level3">
+<h3 id="disease-association">Disease association<a class="anchor" aria-label="anchor" href="#disease-association"></a>
+</h3>
 <div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">cat_summary_tables</span><span class="op">$</span><span class="va">`disease association`</span></code></pre></div>
 <table style="width:100%;" class="table">
@@ -5247,9 +5245,9 @@
 </table>
 </div>
 </div>
-<div class="section level1">
-<h1 id="datasests-with-numeric-attributes-in-physiologies">Datasests with numeric attributes in “physiologies”<a class="anchor" aria-label="anchor" href="#datasests-with-numeric-attributes-in-physiologies"></a>
-</h1>
+<div class="section level2">
+<h2 id="datasests-with-numeric-attributes-in-physiologies">Datasests with numeric attributes in “physiologies”<a class="anchor" aria-label="anchor" href="#datasests-with-numeric-attributes-in-physiologies"></a>
+</h2>
 <div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">numeric_phys</span> <span class="op">&lt;-</span> <span class="va">phys</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> 
     <span class="fu"><a href="https://purrr.tidyverse.org/reference/keep.html" class="external-link">keep</a></span><span class="op">(</span><span class="op">~</span><span class="fu"><a href="https://rdrr.io/r/base/numeric.html" class="external-link">is.numeric</a></span><span class="op">(</span><span class="va">.x</span><span class="op">$</span><span class="va">Attribute_value</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> 
@@ -5279,9 +5277,9 @@
     <span class="fu">boxplot_per_phylum</span><span class="op">(</span><span class="va">x</span>, <span class="va">.y</span><span class="op">)</span>
   <span class="op">}</span>
 <span class="op">)</span></code></pre></div>
-<div class="section level2">
-<h2 id="butyrate-producing">Butyrate producing<a class="anchor" aria-label="anchor" href="#butyrate-producing"></a>
-</h2>
+<div class="section level3">
+<h3 id="butyrate-producing">Butyrate producing<a class="anchor" aria-label="anchor" href="#butyrate-producing"></a>
+</h3>
 <div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">numeric_summary_tables</span><span class="op">$</span><span class="va">`butyrate producing`</span></code></pre></div>
 <table class="table">
@@ -5305,9 +5303,9 @@
 <code class="sourceCode R"><span class="va">boxplots</span><span class="op">$</span><span class="va">`butyrate producing`</span></code></pre></div>
 <p><img src="descriptive_statistics_files/figure-html/unnamed-chunk-27-1.png" width="700"></p>
 </div>
-<div class="section level2">
-<h2 id="mutation-rate-per-site-per-generation">Mutation rate per site per generation<a class="anchor" aria-label="anchor" href="#mutation-rate-per-site-per-generation"></a>
-</h2>
+<div class="section level3">
+<h3 id="mutation-rate-per-site-per-generation">Mutation rate per site per generation<a class="anchor" aria-label="anchor" href="#mutation-rate-per-site-per-generation"></a>
+</h3>
 <div class="sourceCode" id="cb29"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">numeric_summary_tables</span><span class="op">$</span><span class="va">`mutation rate per site per generation`</span></code></pre></div>
 <table class="table">
@@ -5329,9 +5327,9 @@
 <code class="sourceCode R"><span class="va">boxplots</span><span class="op">$</span><span class="va">`mutation rate per site per generation`</span></code></pre></div>
 <p><img src="descriptive_statistics_files/figure-html/unnamed-chunk-30-1.png" width="700"></p>
 </div>
-<div class="section level2">
-<h2 id="mutation-rates-per-site-per-year">Mutation rates per site per year<a class="anchor" aria-label="anchor" href="#mutation-rates-per-site-per-year"></a>
-</h2>
+<div class="section level3">
+<h3 id="mutation-rates-per-site-per-year">Mutation rates per site per year<a class="anchor" aria-label="anchor" href="#mutation-rates-per-site-per-year"></a>
+</h3>
 <div class="sourceCode" id="cb32"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">numeric_summary_tables</span><span class="op">$</span><span class="va">`mutation rates per site per year`</span></code></pre></div>
 <table class="table">
@@ -5355,9 +5353,9 @@
 <code class="sourceCode R"><span class="va">boxplots</span><span class="op">$</span><span class="va">`mutation rates per site per year`</span></code></pre></div>
 <p><img src="descriptive_statistics_files/figure-html/unnamed-chunk-33-1.png" width="700"></p>
 </div>
-<div class="section level2">
-<h2 id="growth-temperature">Growth temperature<a class="anchor" aria-label="anchor" href="#growth-temperature"></a>
-</h2>
+<div class="section level3">
+<h3 id="growth-temperature">Growth temperature<a class="anchor" aria-label="anchor" href="#growth-temperature"></a>
+</h3>
 <div class="sourceCode" id="cb35"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">numeric_summary_tables</span><span class="op">$</span><span class="va">`growth temperature`</span></code></pre></div>
 <table class="table">
@@ -5399,9 +5397,9 @@
 <code class="sourceCode R"><span class="va">boxplots</span><span class="op">$</span><span class="va">`growth temperature`</span></code></pre></div>
 <p><img src="descriptive_statistics_files/figure-html/unnamed-chunk-36-1.png" width="700"></p>
 </div>
-<div class="section level2">
-<h2 id="optimal-ph-in-physiologies">Optimal pH in “physiologies”<a class="anchor" aria-label="anchor" href="#optimal-ph-in-physiologies"></a>
-</h2>
+<div class="section level3">
+<h3 id="optimal-ph-in-physiologies">Optimal pH in “physiologies”<a class="anchor" aria-label="anchor" href="#optimal-ph-in-physiologies"></a>
+</h3>
 <div class="sourceCode" id="cb38"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">numeric_summary_tables</span><span class="op">$</span><span class="va">`optimal ph`</span></code></pre></div>
 <table class="table">
@@ -5427,9 +5425,9 @@
 <code class="sourceCode R"><span class="va">boxplots</span><span class="op">$</span><span class="va">`optimal ph`</span></code></pre></div>
 <p><img src="descriptive_statistics_files/figure-html/unnamed-chunk-39-1.png" width="700"></p>
 </div>
-<div class="section level2">
-<h2 id="cogem-pathogenicity-rating">COGEM pathogenicity rating<a class="anchor" aria-label="anchor" href="#cogem-pathogenicity-rating"></a>
-</h2>
+<div class="section level3">
+<h3 id="cogem-pathogenicity-rating">COGEM pathogenicity rating<a class="anchor" aria-label="anchor" href="#cogem-pathogenicity-rating"></a>
+</h3>
 <div class="sourceCode" id="cb41"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">numeric_summary_tables</span><span class="op">$</span><span class="va">`COGEM pathogenicity rating`</span></code></pre></div>
 <table class="table">
@@ -5443,9 +5441,9 @@
 <tbody><tr class="odd">
 <td align="left">1</td>
 <td align="left">COGEM pathogenicity rating</td>
-<td align="left">1038 (99.52)</td>
+<td align="left">1040 (99.71)</td>
 <td align="left">2 (0.19)</td>
-<td align="left">3 (0.29)</td>
+<td align="left">1 (0.1)</td>
 </tr></tbody>
 </table>
 <div class="sourceCode" id="cb42"><pre class="downlit sourceCode r">
@@ -5456,9 +5454,9 @@
 <p><img src="descriptive_statistics_files/figure-html/unnamed-chunk-42-1.png" width="700"></p>
 </div>
 </div>
-<div class="section level1">
-<h1 id="other-datasets">Other datasets<a class="anchor" aria-label="anchor" href="#other-datasets"></a>
-</h1>
+<div class="section level2">
+<h2 id="other-datasets">Other datasets<a class="anchor" aria-label="anchor" href="#other-datasets"></a>
+</h2>
 <ul>
 <li>Some datasets contain values different to logical or numeric in the “Attribute_value” column.</li>
 </ul>
@@ -5478,9 +5476,9 @@
 <div class="sourceCode" id="cb45"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">other_datasets_summary_tables</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html" class="external-link">map</a></span><span class="op">(</span><span class="va">other_datasets_names</span>, <span class="op">~</span> <span class="fu">attributeSummaryByRank</span><span class="op">(</span><span class="va">other_datasets</span>, <span class="va">.x</span>, categorical <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> 
     <span class="fu"><a href="https://purrr.tidyverse.org/reference/set_names.html" class="external-link">set_names</a></span><span class="op">(</span><span class="va">other_datasets_names</span><span class="op">)</span></code></pre></div>
-<div class="section level2">
-<h2 id="acetate-producing">Acetate producing<a class="anchor" aria-label="anchor" href="#acetate-producing"></a>
-</h2>
+<div class="section level3">
+<h3 id="acetate-producing">Acetate producing<a class="anchor" aria-label="anchor" href="#acetate-producing"></a>
+</h3>
 <div class="sourceCode" id="cb46"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">other_datasets_summary_tables</span><span class="op">$</span><span class="va">`acetate producing`</span></code></pre></div>
 <table class="table">
@@ -5498,9 +5496,9 @@
 </tr></tbody>
 </table>
 </div>
-<div class="section level2">
-<h2 id="lactate-producing">Lactate producing<a class="anchor" aria-label="anchor" href="#lactate-producing"></a>
-</h2>
+<div class="section level3">
+<h3 id="lactate-producing">Lactate producing<a class="anchor" aria-label="anchor" href="#lactate-producing"></a>
+</h3>
 <div class="sourceCode" id="cb47"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">other_datasets_summary_tables</span><span class="op">$</span><span class="va">`lactate producing`</span></code></pre></div>
 <table class="table">
@@ -5518,9 +5516,9 @@
 </tr></tbody>
 </table>
 </div>
-<div class="section level2">
-<h2 id="width">Width<a class="anchor" aria-label="anchor" href="#width"></a>
-</h2>
+<div class="section level3">
+<h3 id="width">Width<a class="anchor" aria-label="anchor" href="#width"></a>
+</h3>
 <div class="sourceCode" id="cb48"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">other_datasets_summary_tables</span><span class="op">$</span><span class="va">width</span></code></pre></div>
 <table class="table">
@@ -5538,9 +5536,9 @@
 </tr></tbody>
 </table>
 </div>
-<div class="section level2">
-<h2 id="hydrogen-gas-producing">Hydrogen gas producing<a class="anchor" aria-label="anchor" href="#hydrogen-gas-producing"></a>
-</h2>
+<div class="section level3">
+<h3 id="hydrogen-gas-producing">Hydrogen gas producing<a class="anchor" aria-label="anchor" href="#hydrogen-gas-producing"></a>
+</h3>
 <div class="sourceCode" id="cb49"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">other_datasets_summary_tables</span><span class="op">$</span><span class="va">`hydrogen gas producing`</span></code></pre></div>
 <table class="table">
@@ -5558,9 +5556,9 @@
 </tr></tbody>
 </table>
 </div>
-<div class="section level2">
-<h2 id="length">Length<a class="anchor" aria-label="anchor" href="#length"></a>
-</h2>
+<div class="section level3">
+<h3 id="length">Length<a class="anchor" aria-label="anchor" href="#length"></a>
+</h3>
 <div class="sourceCode" id="cb50"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">other_datasets_summary_tables</span><span class="op">$</span><span class="va">length</span></code></pre></div>
 <table class="table">
@@ -5579,9 +5577,9 @@
 </table>
 </div>
 </div>
-<div class="section level1">
-<h1 id="fatty-acid-composition">Fatty acid composition<a class="anchor" aria-label="anchor" href="#fatty-acid-composition"></a>
-</h1>
+<div class="section level2">
+<h2 id="fatty-acid-composition">Fatty acid composition<a class="anchor" aria-label="anchor" href="#fatty-acid-composition"></a>
+</h2>
 <ul>
 <li>Dataset imported with the <code>fattyAcidComposition</code> function.</li>
 </ul>
@@ -5648,7 +5646,7 @@
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
 </div>
 
       </footer>
