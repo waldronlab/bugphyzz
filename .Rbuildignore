@@ -11,3 +11,4 @@
 ^data-raw$
 ^jupyter_notebooks$
 ^vignettes/articles$
+^protraits_data$
