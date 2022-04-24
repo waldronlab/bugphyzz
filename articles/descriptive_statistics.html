@@ -203,14 +203,14 @@
     <span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html" class="external-link">map</a></span><span class="op">(</span> <span class="op">~</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html" class="external-link">left_join</a></span><span class="op">(</span> <span class="va">.x</span>, <span class="va">taxonomy_table</span>, by <span class="op">=</span> <span class="st">"NCBI_ID"</span><span class="op">)</span><span class="op">)</span>
 <span class="va">categorical_phys_names</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">categorical_phys</span><span class="op">)</span>
 <span class="va">categorical_phys_names</span>
-<span class="co">#&gt;  [1] "animal pathogen"           "antimicrobial resistance" </span>
-<span class="co">#&gt;  [3] "antimicrobial sensitivity" "biofilm forming"          </span>
-<span class="co">#&gt;  [5] "arrangement"               "shape"                    </span>
-<span class="co">#&gt;  [7] "extreme environment"       "gram stain"               </span>
-<span class="co">#&gt;  [9] "growth medium"             "habitat"                  </span>
-<span class="co">#&gt; [11] "aerophilicity"             "plant pathogenicity"      </span>
-<span class="co">#&gt; [13] "spore shape"               "isolation site"           </span>
-<span class="co">#&gt; [15] "disease association"       "health associated"</span></code></pre></div>
+<span class="co">#&gt;  [1] "aerophilicity"             "animal pathogen"          </span>
+<span class="co">#&gt;  [3] "antimicrobial resistance"  "antimicrobial sensitivity"</span>
+<span class="co">#&gt;  [5] "arrangement"               "biofilm forming"          </span>
+<span class="co">#&gt;  [7] "disease association"       "extreme environment"      </span>
+<span class="co">#&gt;  [9] "gram stain"                "growth medium"            </span>
+<span class="co">#&gt; [11] "habitat"                   "health associated"        </span>
+<span class="co">#&gt; [13] "isolation site"            "plant pathogenicity"      </span>
+<span class="co">#&gt; [15] "shape"                     "spore shape"</span></code></pre></div>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">cat_summary_tables</span> <span class="op">&lt;-</span> <span class="va">categorical_phys_names</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> 
     <span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html" class="external-link">map</a></span><span class="op">(</span><span class="op">~</span> <span class="fu">attributeSummaryByRank</span><span class="op">(</span><span class="va">categorical_phys</span>, <span class="va">.x</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> 
@@ -5348,9 +5348,9 @@ arthritis in human</td>
 <span class="va">numeric_phys_names</span>
 <span class="co">#&gt; [1] "butyrate producing"                   </span>
 <span class="co">#&gt; [2] "COGEM pathogenicity rating"           </span>
-<span class="co">#&gt; [3] "mutation rate per site per generation"</span>
-<span class="co">#&gt; [4] "mutation rates per site per year"     </span>
-<span class="co">#&gt; [5] "growth temperature"                   </span>
+<span class="co">#&gt; [3] "growth temperature"                   </span>
+<span class="co">#&gt; [4] "mutation rate per site per generation"</span>
+<span class="co">#&gt; [5] "mutation rates per site per year"     </span>
 <span class="co">#&gt; [6] "optimal ph"                           </span>
 <span class="co">#&gt; [7] "fatty acid composition"</span></code></pre></div>
 <div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
@@ -5562,8 +5562,8 @@ arthritis in human</td>
 <span class="va">other_datasets</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html" class="external-link">map</a></span><span class="op">(</span><span class="va">other_datasets</span>, <span class="op">~</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html" class="external-link">left_join</a></span><span class="op">(</span><span class="va">.x</span>, <span class="va">taxonomy_table</span>, by <span class="op">=</span> <span class="st">"NCBI_ID"</span><span class="op">)</span><span class="op">)</span>
 <span class="va">other_datasets_names</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">other_datasets</span><span class="op">)</span>
 <span class="va">other_datasets_names</span>
-<span class="co">#&gt; [1] "acetate producing"      "lactate producing"      "width"                 </span>
-<span class="co">#&gt; [4] "hydrogen gas producing" "length"</span></code></pre></div>
+<span class="co">#&gt; [1] "acetate producing"      "hydrogen gas producing" "lactate producing"     </span>
+<span class="co">#&gt; [4] "length"                 "width"</span></code></pre></div>
 <div class="sourceCode" id="cb45"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">other_datasets_summary_tables</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html" class="external-link">map</a></span><span class="op">(</span><span class="va">other_datasets_names</span>, <span class="op">~</span> <span class="fu">attributeSummaryByRank</span><span class="op">(</span><span class="va">other_datasets</span>, <span class="va">.x</span>, categorical <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> 
     <span class="fu"><a href="https://purrr.tidyverse.org/reference/set_names.html" class="external-link">set_names</a></span><span class="op">(</span><span class="va">other_datasets_names</span><span class="op">)</span></code></pre></div>

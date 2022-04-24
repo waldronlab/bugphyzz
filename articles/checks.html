@@ -117,82 +117,82 @@ column).<br>
 <code class="sourceCode R"><span class="fu"><a href="https://dplyr.tidyverse.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="va">err1</span><span class="op">)</span>
 <span class="co">#&gt; Rows: 9</span>
 <span class="co">#&gt; Columns: 4</span>
-<span class="co">#&gt; $ dataset    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "mutation rates per site per year", "extreme environment", …</span>
-<span class="co">#&gt; $ error_type <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "misplaced", "misplaced", "misplaced", "misplaced", "mispla…</span>
-<span class="co">#&gt; $ columns    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "NCBI_ID, Genome_ID, Accession_ID, Taxon_name", "NCBI_ID, G…</span>
-<span class="co">#&gt; $ link       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "https://docs.google.com/spreadsheets/d/e/2PACX-1vQGJBifwNI…</span></code></pre></div>
+<span class="co">#&gt; $ dataset     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "disease association", "extreme environment", "gram stain"…</span>
+<span class="co">#&gt; $ error_type  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "misplaced", "misplaced", "misplaced", "misplaced", "mispl…</span>
+<span class="co">#&gt; $ columns     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "NCBI_ID, Genome_ID, Accession_ID, Taxon_name", "NCBI_ID, …</span>
+<span class="co">#&gt; $ source_link <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "https://docs.google.com/spreadsheets/d/1GqY9-TMpcIPDuWUQw…</span></code></pre></div>
 <p>Visualization of the errors:</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">err1</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> 
     <span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html" class="external-link">kable</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <table class="table">
 <colgroup>
-<col width="13%">
-<col width="4%">
-<col width="25%">
-<col width="56%">
+<col width="17%">
+<col width="5%">
+<col width="33%">
+<col width="43%">
 </colgroup>
 <thead><tr class="header">
 <th align="left">dataset</th>
 <th align="left">error_type</th>
 <th align="left">columns</th>
-<th align="left">link</th>
+<th align="left">source_link</th>
 </tr></thead>
 <tbody>
 <tr class="odd">
-<td align="left">mutation rates per site per year</td>
+<td align="left">disease association</td>
 <td align="left">misplaced</td>
 <td align="left">NCBI_ID, Genome_ID, Accession_ID, Taxon_name</td>
-<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQGJBifwNIYz6znmGAFgGtzaSNPhxU8qagDgl4BWLHKDcjs_gm11pEaLV7X01qdyeacmwYxalTrx0um/pub?output=csv" class="external-link uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQGJBifwNIYz6znmGAFgGtzaSNPhxU8qagDgl4BWLHKDcjs_gm11pEaLV7X01qdyeacmwYxalTrx0um/pub?output=csv</a></td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/1GqY9-TMpcIPDuWUQwXja1GB1suc4-kUOj8QytvqAMq0" class="external-link uri">https://docs.google.com/spreadsheets/d/1GqY9-TMpcIPDuWUQwXja1GB1suc4-kUOj8QytvqAMq0</a></td>
 </tr>
 <tr class="even">
 <td align="left">extreme environment</td>
 <td align="left">misplaced</td>
 <td align="left">NCBI_ID, Genome_ID, Accession_ID, Taxon_name</td>
-<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vSh82md-R7XuM6PMs4UY6DYCY99wgwMcY6PD-m-VoxbJJl_Ce9JWhKtTEdFLEMmzrUxDyrQtfLBCbKj/pub?output=csv" class="external-link uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vSh82md-R7XuM6PMs4UY6DYCY99wgwMcY6PD-m-VoxbJJl_Ce9JWhKtTEdFLEMmzrUxDyrQtfLBCbKj/pub?output=csv</a></td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/1ECo3h91E090gCLejDSTBYwTmUqAPE44JDJlbLzVkpbE" class="external-link uri">https://docs.google.com/spreadsheets/d/1ECo3h91E090gCLejDSTBYwTmUqAPE44JDJlbLzVkpbE</a></td>
 </tr>
 <tr class="odd">
 <td align="left">gram stain</td>
 <td align="left">misplaced</td>
 <td align="left">NCBI_ID, Genome_ID, Accession_ID, Taxon_name</td>
-<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vRxQOO7O7oJDJrFbY3s1Y_rbouUSR3rM_a3kGlXgcVMys5pFLqmd00VjJh1adJBmh3xA3aM8r3Am2oC/pub?output=csv" class="external-link uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vRxQOO7O7oJDJrFbY3s1Y_rbouUSR3rM_a3kGlXgcVMys5pFLqmd00VjJh1adJBmh3xA3aM8r3Am2oC/pub?output=csv</a></td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/1ygWBlBczB24fyL0DTPmTModCuEDi-1j1_rsYBZ5JEOc" class="external-link uri">https://docs.google.com/spreadsheets/d/1ygWBlBczB24fyL0DTPmTModCuEDi-1j1_rsYBZ5JEOc</a></td>
 </tr>
 <tr class="even">
 <td align="left">growth temperature</td>
 <td align="left">misplaced</td>
 <td align="left">NCBI_ID, Genome_ID, Accession_ID, Taxon_name</td>
-<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vTWXUnR0_jkpZEE06C0GAypTGjOa2RnOPiLSmPiwAnaf2qS33hd-6GKG95CYDgKeSk6t4BFVjIAB_sh/pub?output=csv" class="external-link uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vTWXUnR0_jkpZEE06C0GAypTGjOa2RnOPiLSmPiwAnaf2qS33hd-6GKG95CYDgKeSk6t4BFVjIAB_sh/pub?output=csv</a></td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/1yJjKSd59tjpq1Oaifd7S3jFBWFe2ZU-kmxV4HtYJznc" class="external-link uri">https://docs.google.com/spreadsheets/d/1yJjKSd59tjpq1Oaifd7S3jFBWFe2ZU-kmxV4HtYJznc</a></td>
 </tr>
 <tr class="odd">
-<td align="left">width</td>
-<td align="left">misplaced</td>
-<td align="left">NCBI_ID, Genome_ID, Accession_ID, Taxon_name</td>
-<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vR45vzAobXMOH1SCECpkBkIvxTsG5d8jAweSHaUst-gFKQcS0tTYUjivmLVByOLbFZgF59miCyF11TC/pub?output=csv" class="external-link uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vR45vzAobXMOH1SCECpkBkIvxTsG5d8jAweSHaUst-gFKQcS0tTYUjivmLVByOLbFZgF59miCyF11TC/pub?output=csv</a></td>
-</tr>
-<tr class="even">
 <td align="left">isolation site</td>
 <td align="left">misplaced</td>
 <td align="left">NCBI_ID, Genome_ID, Accession_ID, Taxon_name</td>
-<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vR5qKaSI_iXovASXA2U8figFKFBRNOuuFcnr-wSedtGuxAu2m8IjHp1uD23NGTWK9NmnKcO0m7FfkIx/pub?output=csv" class="external-link uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vR5qKaSI_iXovASXA2U8figFKFBRNOuuFcnr-wSedtGuxAu2m8IjHp1uD23NGTWK9NmnKcO0m7FfkIx/pub?output=csv</a></td>
-</tr>
-<tr class="odd">
-<td align="left">disease association</td>
-<td align="left">misplaced</td>
-<td align="left">NCBI_ID, Genome_ID, Accession_ID, Taxon_name</td>
-<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vTboJM7necIfjgRgyYJ4LJWkCv_1y7O00yvyiSGzFdSfJDkeLqWrQ8FpcsYKFSOrQw75wCRst6KA0_a/pub?output=csv" class="external-link uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vTboJM7necIfjgRgyYJ4LJWkCv_1y7O00yvyiSGzFdSfJDkeLqWrQ8FpcsYKFSOrQw75wCRst6KA0_a/pub?output=csv</a></td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/1QmwZcfoXhBdWPxTt6qa7hhMckHGV7c0lU2pTPpcSVfI" class="external-link uri">https://docs.google.com/spreadsheets/d/1QmwZcfoXhBdWPxTt6qa7hhMckHGV7c0lU2pTPpcSVfI</a></td>
 </tr>
 <tr class="even">
 <td align="left">length</td>
 <td align="left">misplaced</td>
 <td align="left">NCBI_ID, Genome_ID, Accession_ID, Taxon_name</td>
-<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQkcQ7CJ0LjgE0928maxcVEiqq7QHl6vuosL7qdWaCMVuqHCDwsPJA7yNSeXm9FIip-mDRaU6pMk4Ww/pub?output=csv" class="external-link uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQkcQ7CJ0LjgE0928maxcVEiqq7QHl6vuosL7qdWaCMVuqHCDwsPJA7yNSeXm9FIip-mDRaU6pMk4Ww/pub?output=csv</a></td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/1gtD-kPb3XEQF0HAFcMMx3Deunj5GxVchPHXWHF-ZK9w" class="external-link uri">https://docs.google.com/spreadsheets/d/1gtD-kPb3XEQF0HAFcMMx3Deunj5GxVchPHXWHF-ZK9w</a></td>
+</tr>
+<tr class="odd">
+<td align="left">mutation rates per site per year</td>
+<td align="left">misplaced</td>
+<td align="left">NCBI_ID, Genome_ID, Accession_ID, Taxon_name</td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/1K9KUScp1VeEkeXjJmKft_Rdr4xqlyD9Cx7eQpijzWMQ" class="external-link uri">https://docs.google.com/spreadsheets/d/1K9KUScp1VeEkeXjJmKft_Rdr4xqlyD9Cx7eQpijzWMQ</a></td>
+</tr>
+<tr class="even">
+<td align="left">width</td>
+<td align="left">misplaced</td>
+<td align="left">NCBI_ID, Genome_ID, Accession_ID, Taxon_name</td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/1Wc14Gp4nygdR6XNnZEJ5mZMJtCP6pniqa9GQOwzriNo" class="external-link uri">https://docs.google.com/spreadsheets/d/1Wc14Gp4nygdR6XNnZEJ5mZMJtCP6pniqa9GQOwzriNo</a></td>
 </tr>
 <tr class="odd">
 <td align="left">fatty acid composition</td>
 <td align="left">misplaced</td>
 <td align="left">Attribute_value, Attribute_source, Evidence,
 Confidence_interval</td>
-<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQJh0AzSYWeYO1zOs4GSZIOde3zV_O71HGixPoN_F8gEY2KhxkZoj1XeSj0HcpCSz2Xu2dxBVyrm0GH/pub?output=csv" class="external-link uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQJh0AzSYWeYO1zOs4GSZIOde3zV_O71HGixPoN_F8gEY2KhxkZoj1XeSj0HcpCSz2Xu2dxBVyrm0GH/pub?output=csv</a></td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/1u_zgX9dDuk2hIUMlfHqC2pDAmc3ktGf6Vj2EbzRiV8M" class="external-link uri">https://docs.google.com/spreadsheets/d/1u_zgX9dDuk2hIUMlfHqC2pDAmc3ktGf6Vj2EbzRiV8M</a></td>
 </tr>
 </tbody>
 </table>
@@ -237,7 +237,7 @@ column.</p>
 <span class="co">#&gt; $ rows           <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> NA, NA, NA, NA, NA, NA, NA, NA, NA, "1051, 1069, 1072, …</span>
 <span class="co">#&gt; $ invalid_values <span style="color: #949494; font-style: italic;">&lt;list&gt;</span> NA, NA, &lt;"−2.0", "−10.0", "−10.6", "−2.3", "−3.9", "−3…</span>
 <span class="co">#&gt; $ invalid_pos    <span style="color: #949494; font-style: italic;">&lt;list&gt;</span> NA, NA, &lt;1, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 1…</span>
-<span class="co">#&gt; $ link           <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "https://docs.google.com/spreadsheets/d/e/2PACX-1vQb6gD…</span></code></pre></div>
+<span class="co">#&gt; $ source_link    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "https://docs.google.com/spreadsheets/d/1PGW4C8fkyZYUJK…</span></code></pre></div>
 <p>Invalid values and positions can be printed by subsetting the
 table:</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
@@ -286,7 +286,7 @@ table:</p>
 <th align="right">n_rows</th>
 <th align="left">column</th>
 <th align="left">rows</th>
-<th align="left">link</th>
+<th align="left">source_link</th>
 </tr></thead>
 <tbody>
 <tr class="odd">
@@ -298,7 +298,7 @@ table:</p>
 <td align="right">NA</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
-<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQb6gDQdhCMWHLQdkzMM4bgTPPosYCZvjzJu4NyOYaSBGOCaOPoQh0OiUr4btnJ8EAWn7NiF-T9JaCE/pub?gid=0&amp;single=true&amp;output=csv" class="external-link uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQb6gDQdhCMWHLQdkzMM4bgTPPosYCZvjzJu4NyOYaSBGOCaOPoQh0OiUr4btnJ8EAWn7NiF-T9JaCE/pub?gid=0&amp;single=true&amp;output=csv</a></td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/1PGW4C8fkyZYUJKA8yAW7ZjWEB6QXYdoTb6wrNxatK2c" class="external-link uri">https://docs.google.com/spreadsheets/d/1PGW4C8fkyZYUJKA8yAW7ZjWEB6QXYdoTb6wrNxatK2c</a></td>
 </tr>
 <tr class="even">
 <td align="left">acetate producing</td>
@@ -309,7 +309,7 @@ table:</p>
 <td align="right">NA</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
-<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQb6gDQdhCMWHLQdkzMM4bgTPPosYCZvjzJu4NyOYaSBGOCaOPoQh0OiUr4btnJ8EAWn7NiF-T9JaCE/pub?gid=0&amp;single=true&amp;output=csv" class="external-link uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQb6gDQdhCMWHLQdkzMM4bgTPPosYCZvjzJu4NyOYaSBGOCaOPoQh0OiUr4btnJ8EAWn7NiF-T9JaCE/pub?gid=0&amp;single=true&amp;output=csv</a></td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/1PGW4C8fkyZYUJKA8yAW7ZjWEB6QXYdoTb6wrNxatK2c" class="external-link uri">https://docs.google.com/spreadsheets/d/1PGW4C8fkyZYUJKA8yAW7ZjWEB6QXYdoTb6wrNxatK2c</a></td>
 </tr>
 <tr class="odd">
 <td align="left">acetate producing</td>
@@ -320,7 +320,7 @@ table:</p>
 <td align="right">22</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
-<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQb6gDQdhCMWHLQdkzMM4bgTPPosYCZvjzJu4NyOYaSBGOCaOPoQh0OiUr4btnJ8EAWn7NiF-T9JaCE/pub?gid=0&amp;single=true&amp;output=csv" class="external-link uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQb6gDQdhCMWHLQdkzMM4bgTPPosYCZvjzJu4NyOYaSBGOCaOPoQh0OiUr4btnJ8EAWn7NiF-T9JaCE/pub?gid=0&amp;single=true&amp;output=csv</a></td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/1PGW4C8fkyZYUJKA8yAW7ZjWEB6QXYdoTb6wrNxatK2c" class="external-link uri">https://docs.google.com/spreadsheets/d/1PGW4C8fkyZYUJKA8yAW7ZjWEB6QXYdoTb6wrNxatK2c</a></td>
 </tr>
 <tr class="even">
 <td align="left">acetate producing</td>
@@ -331,7 +331,7 @@ table:</p>
 <td align="right">24</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
-<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQb6gDQdhCMWHLQdkzMM4bgTPPosYCZvjzJu4NyOYaSBGOCaOPoQh0OiUr4btnJ8EAWn7NiF-T9JaCE/pub?gid=0&amp;single=true&amp;output=csv" class="external-link uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQb6gDQdhCMWHLQdkzMM4bgTPPosYCZvjzJu4NyOYaSBGOCaOPoQh0OiUr4btnJ8EAWn7NiF-T9JaCE/pub?gid=0&amp;single=true&amp;output=csv</a></td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/1PGW4C8fkyZYUJKA8yAW7ZjWEB6QXYdoTb6wrNxatK2c" class="external-link uri">https://docs.google.com/spreadsheets/d/1PGW4C8fkyZYUJKA8yAW7ZjWEB6QXYdoTb6wrNxatK2c</a></td>
 </tr>
 <tr class="odd">
 <td align="left">aerophilicity</td>
@@ -342,7 +342,7 @@ table:</p>
 <td align="right">NA</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
-<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQDC8VfkkOfN6MKGxrzMEoJjfgYIfpsJO-SxVr3pkUUChBNkMQ3YKaxSvDSSjjrPRf51nU3wbk-WWJp/pub?output=csv" class="external-link uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQDC8VfkkOfN6MKGxrzMEoJjfgYIfpsJO-SxVr3pkUUChBNkMQ3YKaxSvDSSjjrPRf51nU3wbk-WWJp/pub?output=csv</a></td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/1JgUzttAZf5Qu2obZ_2xXqsnEr_I1XKn_ZzNvrE6ssO4" class="external-link uri">https://docs.google.com/spreadsheets/d/1JgUzttAZf5Qu2obZ_2xXqsnEr_I1XKn_ZzNvrE6ssO4</a></td>
 </tr>
 <tr class="even">
 <td align="left">aerophilicity</td>
@@ -353,7 +353,7 @@ table:</p>
 <td align="right">NA</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
-<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQDC8VfkkOfN6MKGxrzMEoJjfgYIfpsJO-SxVr3pkUUChBNkMQ3YKaxSvDSSjjrPRf51nU3wbk-WWJp/pub?output=csv" class="external-link uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQDC8VfkkOfN6MKGxrzMEoJjfgYIfpsJO-SxVr3pkUUChBNkMQ3YKaxSvDSSjjrPRf51nU3wbk-WWJp/pub?output=csv</a></td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/1JgUzttAZf5Qu2obZ_2xXqsnEr_I1XKn_ZzNvrE6ssO4" class="external-link uri">https://docs.google.com/spreadsheets/d/1JgUzttAZf5Qu2obZ_2xXqsnEr_I1XKn_ZzNvrE6ssO4</a></td>
 </tr>
 <tr class="odd">
 <td align="left">aerophilicity</td>
@@ -364,7 +364,7 @@ table:</p>
 <td align="right">3</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
-<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQDC8VfkkOfN6MKGxrzMEoJjfgYIfpsJO-SxVr3pkUUChBNkMQ3YKaxSvDSSjjrPRf51nU3wbk-WWJp/pub?output=csv" class="external-link uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQDC8VfkkOfN6MKGxrzMEoJjfgYIfpsJO-SxVr3pkUUChBNkMQ3YKaxSvDSSjjrPRf51nU3wbk-WWJp/pub?output=csv</a></td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/1JgUzttAZf5Qu2obZ_2xXqsnEr_I1XKn_ZzNvrE6ssO4" class="external-link uri">https://docs.google.com/spreadsheets/d/1JgUzttAZf5Qu2obZ_2xXqsnEr_I1XKn_ZzNvrE6ssO4</a></td>
 </tr>
 <tr class="even">
 <td align="left">aerophilicity</td>
@@ -375,7 +375,7 @@ table:</p>
 <td align="right">1304</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
-<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQDC8VfkkOfN6MKGxrzMEoJjfgYIfpsJO-SxVr3pkUUChBNkMQ3YKaxSvDSSjjrPRf51nU3wbk-WWJp/pub?output=csv" class="external-link uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQDC8VfkkOfN6MKGxrzMEoJjfgYIfpsJO-SxVr3pkUUChBNkMQ3YKaxSvDSSjjrPRf51nU3wbk-WWJp/pub?output=csv</a></td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/1JgUzttAZf5Qu2obZ_2xXqsnEr_I1XKn_ZzNvrE6ssO4" class="external-link uri">https://docs.google.com/spreadsheets/d/1JgUzttAZf5Qu2obZ_2xXqsnEr_I1XKn_ZzNvrE6ssO4</a></td>
 </tr>
 <tr class="odd">
 <td align="left">aerophilicity</td>
@@ -386,7 +386,7 @@ table:</p>
 <td align="right">18</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
-<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQDC8VfkkOfN6MKGxrzMEoJjfgYIfpsJO-SxVr3pkUUChBNkMQ3YKaxSvDSSjjrPRf51nU3wbk-WWJp/pub?output=csv" class="external-link uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQDC8VfkkOfN6MKGxrzMEoJjfgYIfpsJO-SxVr3pkUUChBNkMQ3YKaxSvDSSjjrPRf51nU3wbk-WWJp/pub?output=csv</a></td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/1JgUzttAZf5Qu2obZ_2xXqsnEr_I1XKn_ZzNvrE6ssO4" class="external-link uri">https://docs.google.com/spreadsheets/d/1JgUzttAZf5Qu2obZ_2xXqsnEr_I1XKn_ZzNvrE6ssO4</a></td>
 </tr>
 <tr class="even">
 <td align="left">aerophilicity</td>
@@ -401,7 +401,7 @@ required in rows 1051, 1069, 1072, 1076, 1082, 1083, 1086, 1089, 1090,
 <td align="left">Parent_NCBI_ID</td>
 <td align="left">1051, 1069, 1072, 1076, 1082, 1083, 1086, 1089, 1090,
 1160, 1214, 1232</td>
-<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQDC8VfkkOfN6MKGxrzMEoJjfgYIfpsJO-SxVr3pkUUChBNkMQ3YKaxSvDSSjjrPRf51nU3wbk-WWJp/pub?output=csv" class="external-link uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQDC8VfkkOfN6MKGxrzMEoJjfgYIfpsJO-SxVr3pkUUChBNkMQ3YKaxSvDSSjjrPRf51nU3wbk-WWJp/pub?output=csv</a></td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/1JgUzttAZf5Qu2obZ_2xXqsnEr_I1XKn_ZzNvrE6ssO4" class="external-link uri">https://docs.google.com/spreadsheets/d/1JgUzttAZf5Qu2obZ_2xXqsnEr_I1XKn_ZzNvrE6ssO4</a></td>
 </tr>
 <tr class="odd">
 <td align="left">animal pathogen</td>
@@ -412,7 +412,7 @@ required in rows 1051, 1069, 1072, 1076, 1082, 1083, 1086, 1089, 1090,
 <td align="right">NA</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
-<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vT9s4PFd7NHr-1GMNyPexZ1KuNyj2u7ErC1Vq3-wAfroNNCG-Tu-y8gn3qKQ4C-URg1SIjOm9bGE4wQ/pub?output=csv" class="external-link uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vT9s4PFd7NHr-1GMNyPexZ1KuNyj2u7ErC1Vq3-wAfroNNCG-Tu-y8gn3qKQ4C-URg1SIjOm9bGE4wQ/pub?output=csv</a></td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/1Z9bWx4dAbCHXgtZI2Ep-0Www0DafSqsPvSr5M69CPlE" class="external-link uri">https://docs.google.com/spreadsheets/d/1Z9bWx4dAbCHXgtZI2Ep-0Www0DafSqsPvSr5M69CPlE</a></td>
 </tr>
 <tr class="even">
 <td align="left">animal pathogen</td>
@@ -423,7 +423,7 @@ required in rows 1051, 1069, 1072, 1076, 1082, 1083, 1086, 1089, 1090,
 <td align="right">NA</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
-<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vT9s4PFd7NHr-1GMNyPexZ1KuNyj2u7ErC1Vq3-wAfroNNCG-Tu-y8gn3qKQ4C-URg1SIjOm9bGE4wQ/pub?output=csv" class="external-link uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vT9s4PFd7NHr-1GMNyPexZ1KuNyj2u7ErC1Vq3-wAfroNNCG-Tu-y8gn3qKQ4C-URg1SIjOm9bGE4wQ/pub?output=csv</a></td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/1Z9bWx4dAbCHXgtZI2Ep-0Www0DafSqsPvSr5M69CPlE" class="external-link uri">https://docs.google.com/spreadsheets/d/1Z9bWx4dAbCHXgtZI2Ep-0Www0DafSqsPvSr5M69CPlE</a></td>
 </tr>
 <tr class="odd">
 <td align="left">animal pathogen</td>
@@ -434,7 +434,7 @@ required in rows 1051, 1069, 1072, 1076, 1082, 1083, 1086, 1089, 1090,
 <td align="right">NA</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
-<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vT9s4PFd7NHr-1GMNyPexZ1KuNyj2u7ErC1Vq3-wAfroNNCG-Tu-y8gn3qKQ4C-URg1SIjOm9bGE4wQ/pub?output=csv" class="external-link uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vT9s4PFd7NHr-1GMNyPexZ1KuNyj2u7ErC1Vq3-wAfroNNCG-Tu-y8gn3qKQ4C-URg1SIjOm9bGE4wQ/pub?output=csv</a></td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/1Z9bWx4dAbCHXgtZI2Ep-0Www0DafSqsPvSr5M69CPlE" class="external-link uri">https://docs.google.com/spreadsheets/d/1Z9bWx4dAbCHXgtZI2Ep-0Www0DafSqsPvSr5M69CPlE</a></td>
 </tr>
 <tr class="even">
 <td align="left">animal pathogen</td>
@@ -445,7 +445,7 @@ required in rows 1051, 1069, 1072, 1076, 1082, 1083, 1086, 1089, 1090,
 <td align="right">1420</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
-<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vT9s4PFd7NHr-1GMNyPexZ1KuNyj2u7ErC1Vq3-wAfroNNCG-Tu-y8gn3qKQ4C-URg1SIjOm9bGE4wQ/pub?output=csv" class="external-link uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vT9s4PFd7NHr-1GMNyPexZ1KuNyj2u7ErC1Vq3-wAfroNNCG-Tu-y8gn3qKQ4C-URg1SIjOm9bGE4wQ/pub?output=csv</a></td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/1Z9bWx4dAbCHXgtZI2Ep-0Www0DafSqsPvSr5M69CPlE" class="external-link uri">https://docs.google.com/spreadsheets/d/1Z9bWx4dAbCHXgtZI2Ep-0Www0DafSqsPvSr5M69CPlE</a></td>
 </tr>
 <tr class="odd">
 <td align="left">animal pathogen</td>
@@ -456,7 +456,7 @@ required in rows 1051, 1069, 1072, 1076, 1082, 1083, 1086, 1089, 1090,
 <td align="right">1</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
-<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vT9s4PFd7NHr-1GMNyPexZ1KuNyj2u7ErC1Vq3-wAfroNNCG-Tu-y8gn3qKQ4C-URg1SIjOm9bGE4wQ/pub?output=csv" class="external-link uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vT9s4PFd7NHr-1GMNyPexZ1KuNyj2u7ErC1Vq3-wAfroNNCG-Tu-y8gn3qKQ4C-URg1SIjOm9bGE4wQ/pub?output=csv</a></td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/1Z9bWx4dAbCHXgtZI2Ep-0Www0DafSqsPvSr5M69CPlE" class="external-link uri">https://docs.google.com/spreadsheets/d/1Z9bWx4dAbCHXgtZI2Ep-0Www0DafSqsPvSr5M69CPlE</a></td>
 </tr>
 <tr class="even">
 <td align="left">antimicrobial resistance</td>
@@ -467,7 +467,7 @@ required in rows 1051, 1069, 1072, 1076, 1082, 1083, 1086, 1089, 1090,
 <td align="right">NA</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
-<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vRWI3s8H0Izcs-PEo4W7Q0QAegNHq7IdSKCHSL0nZlrptTZ4dIusG0m1AMEUYv1_4GN3QX9rADAja_0/pub?output=csv" class="external-link uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vRWI3s8H0Izcs-PEo4W7Q0QAegNHq7IdSKCHSL0nZlrptTZ4dIusG0m1AMEUYv1_4GN3QX9rADAja_0/pub?output=csv</a></td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/1oOBg_sA00EY6fAwSXBatfplxRwi49n4mQgsepKy0BnA" class="external-link uri">https://docs.google.com/spreadsheets/d/1oOBg_sA00EY6fAwSXBatfplxRwi49n4mQgsepKy0BnA</a></td>
 </tr>
 <tr class="odd">
 <td align="left">antimicrobial resistance</td>
@@ -478,7 +478,7 @@ required in rows 1051, 1069, 1072, 1076, 1082, 1083, 1086, 1089, 1090,
 <td align="right">10321</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
-<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vRWI3s8H0Izcs-PEo4W7Q0QAegNHq7IdSKCHSL0nZlrptTZ4dIusG0m1AMEUYv1_4GN3QX9rADAja_0/pub?output=csv" class="external-link uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vRWI3s8H0Izcs-PEo4W7Q0QAegNHq7IdSKCHSL0nZlrptTZ4dIusG0m1AMEUYv1_4GN3QX9rADAja_0/pub?output=csv</a></td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/1oOBg_sA00EY6fAwSXBatfplxRwi49n4mQgsepKy0BnA" class="external-link uri">https://docs.google.com/spreadsheets/d/1oOBg_sA00EY6fAwSXBatfplxRwi49n4mQgsepKy0BnA</a></td>
 </tr>
 <tr class="even">
 <td align="left">antimicrobial resistance</td>
@@ -489,7 +489,7 @@ required in rows 1051, 1069, 1072, 1076, 1082, 1083, 1086, 1089, 1090,
 <td align="right">5</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
-<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vRWI3s8H0Izcs-PEo4W7Q0QAegNHq7IdSKCHSL0nZlrptTZ4dIusG0m1AMEUYv1_4GN3QX9rADAja_0/pub?output=csv" class="external-link uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vRWI3s8H0Izcs-PEo4W7Q0QAegNHq7IdSKCHSL0nZlrptTZ4dIusG0m1AMEUYv1_4GN3QX9rADAja_0/pub?output=csv</a></td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/1oOBg_sA00EY6fAwSXBatfplxRwi49n4mQgsepKy0BnA" class="external-link uri">https://docs.google.com/spreadsheets/d/1oOBg_sA00EY6fAwSXBatfplxRwi49n4mQgsepKy0BnA</a></td>
 </tr>
 <tr class="odd">
 <td align="left">antimicrobial sensitivity</td>
@@ -500,7 +500,7 @@ required in rows 1051, 1069, 1072, 1076, 1082, 1083, 1086, 1089, 1090,
 <td align="right">NA</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
-<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vR0FdQpAD-xhkyIXgZMtC9oCmlbx77Cj1ncCyojm9oO410NBwJRhBNFl4hnd4HMlj2okxEKLvA8EPr2/pub?output=csv" class="external-link uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vR0FdQpAD-xhkyIXgZMtC9oCmlbx77Cj1ncCyojm9oO410NBwJRhBNFl4hnd4HMlj2okxEKLvA8EPr2/pub?output=csv</a></td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/1eTceiQnE8YRoYGDWRL6uQqG6Wx9PPsBXk2X6Pvq7p6M" class="external-link uri">https://docs.google.com/spreadsheets/d/1eTceiQnE8YRoYGDWRL6uQqG6Wx9PPsBXk2X6Pvq7p6M</a></td>
 </tr>
 <tr class="even">
 <td align="left">antimicrobial sensitivity</td>
@@ -511,7 +511,7 @@ required in rows 1051, 1069, 1072, 1076, 1082, 1083, 1086, 1089, 1090,
 <td align="right">NA</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
-<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vR0FdQpAD-xhkyIXgZMtC9oCmlbx77Cj1ncCyojm9oO410NBwJRhBNFl4hnd4HMlj2okxEKLvA8EPr2/pub?output=csv" class="external-link uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vR0FdQpAD-xhkyIXgZMtC9oCmlbx77Cj1ncCyojm9oO410NBwJRhBNFl4hnd4HMlj2okxEKLvA8EPr2/pub?output=csv</a></td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/1eTceiQnE8YRoYGDWRL6uQqG6Wx9PPsBXk2X6Pvq7p6M" class="external-link uri">https://docs.google.com/spreadsheets/d/1eTceiQnE8YRoYGDWRL6uQqG6Wx9PPsBXk2X6Pvq7p6M</a></td>
 </tr>
 <tr class="odd">
 <td align="left">antimicrobial sensitivity</td>
@@ -522,7 +522,7 @@ required in rows 1051, 1069, 1072, 1076, 1082, 1083, 1086, 1089, 1090,
 <td align="right">832</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
-<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vR0FdQpAD-xhkyIXgZMtC9oCmlbx77Cj1ncCyojm9oO410NBwJRhBNFl4hnd4HMlj2okxEKLvA8EPr2/pub?output=csv" class="external-link uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vR0FdQpAD-xhkyIXgZMtC9oCmlbx77Cj1ncCyojm9oO410NBwJRhBNFl4hnd4HMlj2okxEKLvA8EPr2/pub?output=csv</a></td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/1eTceiQnE8YRoYGDWRL6uQqG6Wx9PPsBXk2X6Pvq7p6M" class="external-link uri">https://docs.google.com/spreadsheets/d/1eTceiQnE8YRoYGDWRL6uQqG6Wx9PPsBXk2X6Pvq7p6M</a></td>
 </tr>
 <tr class="even">
 <td align="left">antimicrobial sensitivity</td>
@@ -533,7 +533,7 @@ required in rows 1051, 1069, 1072, 1076, 1082, 1083, 1086, 1089, 1090,
 <td align="right">1</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
-<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vR0FdQpAD-xhkyIXgZMtC9oCmlbx77Cj1ncCyojm9oO410NBwJRhBNFl4hnd4HMlj2okxEKLvA8EPr2/pub?output=csv" class="external-link uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vR0FdQpAD-xhkyIXgZMtC9oCmlbx77Cj1ncCyojm9oO410NBwJRhBNFl4hnd4HMlj2okxEKLvA8EPr2/pub?output=csv</a></td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/1eTceiQnE8YRoYGDWRL6uQqG6Wx9PPsBXk2X6Pvq7p6M" class="external-link uri">https://docs.google.com/spreadsheets/d/1eTceiQnE8YRoYGDWRL6uQqG6Wx9PPsBXk2X6Pvq7p6M</a></td>
 </tr>
 <tr class="odd">
 <td align="left">arrangement</td>
@@ -544,7 +544,7 @@ required in rows 1051, 1069, 1072, 1076, 1082, 1083, 1086, 1089, 1090,
 <td align="right">1</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
-<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vSgNXC-VPLmG8dUN8VAun_pbT0Y4-qJo6u9ozHGO8j7Weq6ymPaPw9kJUPl-RpHSYvtUgACo-SVHyk5/pub?output=csv" class="external-link uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vSgNXC-VPLmG8dUN8VAun_pbT0Y4-qJo6u9ozHGO8j7Weq6ymPaPw9kJUPl-RpHSYvtUgACo-SVHyk5/pub?output=csv</a></td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/1qkNPdVDjpkdvZ-UtWeIrmWA3aYCInIQrseDDYqXiH-w" class="external-link uri">https://docs.google.com/spreadsheets/d/1qkNPdVDjpkdvZ-UtWeIrmWA3aYCInIQrseDDYqXiH-w</a></td>
 </tr>
 <tr class="even">
 <td align="left">arrangement</td>
@@ -555,7 +555,7 @@ required in rows 1051, 1069, 1072, 1076, 1082, 1083, 1086, 1089, 1090,
 <td align="right">12</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
-<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vSgNXC-VPLmG8dUN8VAun_pbT0Y4-qJo6u9ozHGO8j7Weq6ymPaPw9kJUPl-RpHSYvtUgACo-SVHyk5/pub?output=csv" class="external-link uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vSgNXC-VPLmG8dUN8VAun_pbT0Y4-qJo6u9ozHGO8j7Weq6ymPaPw9kJUPl-RpHSYvtUgACo-SVHyk5/pub?output=csv</a></td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/1qkNPdVDjpkdvZ-UtWeIrmWA3aYCInIQrseDDYqXiH-w" class="external-link uri">https://docs.google.com/spreadsheets/d/1qkNPdVDjpkdvZ-UtWeIrmWA3aYCInIQrseDDYqXiH-w</a></td>
 </tr>
 <tr class="odd">
 <td align="left">arrangement</td>
@@ -566,7 +566,7 @@ required in rows 1051, 1069, 1072, 1076, 1082, 1083, 1086, 1089, 1090,
 <td align="right">1071</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
-<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vSgNXC-VPLmG8dUN8VAun_pbT0Y4-qJo6u9ozHGO8j7Weq6ymPaPw9kJUPl-RpHSYvtUgACo-SVHyk5/pub?output=csv" class="external-link uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vSgNXC-VPLmG8dUN8VAun_pbT0Y4-qJo6u9ozHGO8j7Weq6ymPaPw9kJUPl-RpHSYvtUgACo-SVHyk5/pub?output=csv</a></td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/1qkNPdVDjpkdvZ-UtWeIrmWA3aYCInIQrseDDYqXiH-w" class="external-link uri">https://docs.google.com/spreadsheets/d/1qkNPdVDjpkdvZ-UtWeIrmWA3aYCInIQrseDDYqXiH-w</a></td>
 </tr>
 <tr class="even">
 <td align="left">arrangement</td>
@@ -577,7 +577,7 @@ required in rows 1051, 1069, 1072, 1076, 1082, 1083, 1086, 1089, 1090,
 <td align="right">1071</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
-<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vSgNXC-VPLmG8dUN8VAun_pbT0Y4-qJo6u9ozHGO8j7Weq6ymPaPw9kJUPl-RpHSYvtUgACo-SVHyk5/pub?output=csv" class="external-link uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vSgNXC-VPLmG8dUN8VAun_pbT0Y4-qJo6u9ozHGO8j7Weq6ymPaPw9kJUPl-RpHSYvtUgACo-SVHyk5/pub?output=csv</a></td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/1qkNPdVDjpkdvZ-UtWeIrmWA3aYCInIQrseDDYqXiH-w" class="external-link uri">https://docs.google.com/spreadsheets/d/1qkNPdVDjpkdvZ-UtWeIrmWA3aYCInIQrseDDYqXiH-w</a></td>
 </tr>
 <tr class="odd">
 <td align="left">arrangement</td>
@@ -588,7 +588,7 @@ required in rows 1051, 1069, 1072, 1076, 1082, 1083, 1086, 1089, 1090,
 <td align="right">26</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
-<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vSgNXC-VPLmG8dUN8VAun_pbT0Y4-qJo6u9ozHGO8j7Weq6ymPaPw9kJUPl-RpHSYvtUgACo-SVHyk5/pub?output=csv" class="external-link uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vSgNXC-VPLmG8dUN8VAun_pbT0Y4-qJo6u9ozHGO8j7Weq6ymPaPw9kJUPl-RpHSYvtUgACo-SVHyk5/pub?output=csv</a></td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/1qkNPdVDjpkdvZ-UtWeIrmWA3aYCInIQrseDDYqXiH-w" class="external-link uri">https://docs.google.com/spreadsheets/d/1qkNPdVDjpkdvZ-UtWeIrmWA3aYCInIQrseDDYqXiH-w</a></td>
 </tr>
 <tr class="even">
 <td align="left">biofilm forming</td>
@@ -599,7 +599,7 @@ required in rows 1051, 1069, 1072, 1076, 1082, 1083, 1086, 1089, 1090,
 <td align="right">NA</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
-<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vRduthxAWAhSLSoOgFNAmI8DX8ORerG1U6OmI8y6-5coe31pONYfISNsUE-e-E_eiyxtQzin6Xq9b0m/pub?output=csv" class="external-link uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vRduthxAWAhSLSoOgFNAmI8DX8ORerG1U6OmI8y6-5coe31pONYfISNsUE-e-E_eiyxtQzin6Xq9b0m/pub?output=csv</a></td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/1H8Pon9zmivcN7mtrlLuTLF4IL_lN5wi_k93XRlhWlRg" class="external-link uri">https://docs.google.com/spreadsheets/d/1H8Pon9zmivcN7mtrlLuTLF4IL_lN5wi_k93XRlhWlRg</a></td>
 </tr>
 <tr class="odd">
 <td align="left">biofilm forming</td>
@@ -610,7 +610,7 @@ required in rows 1051, 1069, 1072, 1076, 1082, 1083, 1086, 1089, 1090,
 <td align="right">NA</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
-<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vRduthxAWAhSLSoOgFNAmI8DX8ORerG1U6OmI8y6-5coe31pONYfISNsUE-e-E_eiyxtQzin6Xq9b0m/pub?output=csv" class="external-link uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vRduthxAWAhSLSoOgFNAmI8DX8ORerG1U6OmI8y6-5coe31pONYfISNsUE-e-E_eiyxtQzin6Xq9b0m/pub?output=csv</a></td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/1H8Pon9zmivcN7mtrlLuTLF4IL_lN5wi_k93XRlhWlRg" class="external-link uri">https://docs.google.com/spreadsheets/d/1H8Pon9zmivcN7mtrlLuTLF4IL_lN5wi_k93XRlhWlRg</a></td>
 </tr>
 <tr class="even">
 <td align="left">biofilm forming</td>
@@ -621,7 +621,7 @@ required in rows 1051, 1069, 1072, 1076, 1082, 1083, 1086, 1089, 1090,
 <td align="right">NA</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
-<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vRduthxAWAhSLSoOgFNAmI8DX8ORerG1U6OmI8y6-5coe31pONYfISNsUE-e-E_eiyxtQzin6Xq9b0m/pub?output=csv" class="external-link uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vRduthxAWAhSLSoOgFNAmI8DX8ORerG1U6OmI8y6-5coe31pONYfISNsUE-e-E_eiyxtQzin6Xq9b0m/pub?output=csv</a></td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/1H8Pon9zmivcN7mtrlLuTLF4IL_lN5wi_k93XRlhWlRg" class="external-link uri">https://docs.google.com/spreadsheets/d/1H8Pon9zmivcN7mtrlLuTLF4IL_lN5wi_k93XRlhWlRg</a></td>
 </tr>
 <tr class="odd">
 <td align="left">biofilm forming</td>
@@ -632,7 +632,7 @@ required in rows 1051, 1069, 1072, 1076, 1082, 1083, 1086, 1089, 1090,
 <td align="right">426</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
-<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vRduthxAWAhSLSoOgFNAmI8DX8ORerG1U6OmI8y6-5coe31pONYfISNsUE-e-E_eiyxtQzin6Xq9b0m/pub?output=csv" class="external-link uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vRduthxAWAhSLSoOgFNAmI8DX8ORerG1U6OmI8y6-5coe31pONYfISNsUE-e-E_eiyxtQzin6Xq9b0m/pub?output=csv</a></td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/1H8Pon9zmivcN7mtrlLuTLF4IL_lN5wi_k93XRlhWlRg" class="external-link uri">https://docs.google.com/spreadsheets/d/1H8Pon9zmivcN7mtrlLuTLF4IL_lN5wi_k93XRlhWlRg</a></td>
 </tr>
 <tr class="even">
 <td align="left">biofilm forming</td>
@@ -643,7 +643,7 @@ required in rows 1051, 1069, 1072, 1076, 1082, 1083, 1086, 1089, 1090,
 <td align="right">2</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
-<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vRduthxAWAhSLSoOgFNAmI8DX8ORerG1U6OmI8y6-5coe31pONYfISNsUE-e-E_eiyxtQzin6Xq9b0m/pub?output=csv" class="external-link uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vRduthxAWAhSLSoOgFNAmI8DX8ORerG1U6OmI8y6-5coe31pONYfISNsUE-e-E_eiyxtQzin6Xq9b0m/pub?output=csv</a></td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/1H8Pon9zmivcN7mtrlLuTLF4IL_lN5wi_k93XRlhWlRg" class="external-link uri">https://docs.google.com/spreadsheets/d/1H8Pon9zmivcN7mtrlLuTLF4IL_lN5wi_k93XRlhWlRg</a></td>
 </tr>
 <tr class="odd">
 <td align="left">butyrate producing</td>
@@ -654,7 +654,7 @@ required in rows 1051, 1069, 1072, 1076, 1082, 1083, 1086, 1089, 1090,
 <td align="right">NA</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
-<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQPnLOpbFbfLvOb8fvC6A-WfzVNMDYRWOUsT4hIseDNgI7nwZGjVwg3KBkWeFtOBBLK0j-DRiZ-jtqG/pub?output=csv" class="external-link uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQPnLOpbFbfLvOb8fvC6A-WfzVNMDYRWOUsT4hIseDNgI7nwZGjVwg3KBkWeFtOBBLK0j-DRiZ-jtqG/pub?output=csv</a></td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/1uPOIyeFD5ClPR2W2XyT6jAdD8FkgGuNBSl_8F2CT_uI" class="external-link uri">https://docs.google.com/spreadsheets/d/1uPOIyeFD5ClPR2W2XyT6jAdD8FkgGuNBSl_8F2CT_uI</a></td>
 </tr>
 <tr class="even">
 <td align="left">butyrate producing</td>
@@ -665,7 +665,7 @@ required in rows 1051, 1069, 1072, 1076, 1082, 1083, 1086, 1089, 1090,
 <td align="right">NA</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
-<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQPnLOpbFbfLvOb8fvC6A-WfzVNMDYRWOUsT4hIseDNgI7nwZGjVwg3KBkWeFtOBBLK0j-DRiZ-jtqG/pub?output=csv" class="external-link uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQPnLOpbFbfLvOb8fvC6A-WfzVNMDYRWOUsT4hIseDNgI7nwZGjVwg3KBkWeFtOBBLK0j-DRiZ-jtqG/pub?output=csv</a></td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/1uPOIyeFD5ClPR2W2XyT6jAdD8FkgGuNBSl_8F2CT_uI" class="external-link uri">https://docs.google.com/spreadsheets/d/1uPOIyeFD5ClPR2W2XyT6jAdD8FkgGuNBSl_8F2CT_uI</a></td>
 </tr>
 <tr class="odd">
 <td align="left">butyrate producing</td>
@@ -676,7 +676,7 @@ required in rows 1051, 1069, 1072, 1076, 1082, 1083, 1086, 1089, 1090,
 <td align="right">NA</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
-<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQPnLOpbFbfLvOb8fvC6A-WfzVNMDYRWOUsT4hIseDNgI7nwZGjVwg3KBkWeFtOBBLK0j-DRiZ-jtqG/pub?output=csv" class="external-link uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQPnLOpbFbfLvOb8fvC6A-WfzVNMDYRWOUsT4hIseDNgI7nwZGjVwg3KBkWeFtOBBLK0j-DRiZ-jtqG/pub?output=csv</a></td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/1uPOIyeFD5ClPR2W2XyT6jAdD8FkgGuNBSl_8F2CT_uI" class="external-link uri">https://docs.google.com/spreadsheets/d/1uPOIyeFD5ClPR2W2XyT6jAdD8FkgGuNBSl_8F2CT_uI</a></td>
 </tr>
 <tr class="even">
 <td align="left">butyrate producing</td>
@@ -687,7 +687,7 @@ required in rows 1051, 1069, 1072, 1076, 1082, 1083, 1086, 1089, 1090,
 <td align="right">22</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
-<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQPnLOpbFbfLvOb8fvC6A-WfzVNMDYRWOUsT4hIseDNgI7nwZGjVwg3KBkWeFtOBBLK0j-DRiZ-jtqG/pub?output=csv" class="external-link uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQPnLOpbFbfLvOb8fvC6A-WfzVNMDYRWOUsT4hIseDNgI7nwZGjVwg3KBkWeFtOBBLK0j-DRiZ-jtqG/pub?output=csv</a></td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/1uPOIyeFD5ClPR2W2XyT6jAdD8FkgGuNBSl_8F2CT_uI" class="external-link uri">https://docs.google.com/spreadsheets/d/1uPOIyeFD5ClPR2W2XyT6jAdD8FkgGuNBSl_8F2CT_uI</a></td>
 </tr>
 <tr class="odd">
 <td align="left">butyrate producing</td>
@@ -698,7 +698,7 @@ required in rows 1051, 1069, 1072, 1076, 1082, 1083, 1086, 1089, 1090,
 <td align="right">24</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
-<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQPnLOpbFbfLvOb8fvC6A-WfzVNMDYRWOUsT4hIseDNgI7nwZGjVwg3KBkWeFtOBBLK0j-DRiZ-jtqG/pub?output=csv" class="external-link uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQPnLOpbFbfLvOb8fvC6A-WfzVNMDYRWOUsT4hIseDNgI7nwZGjVwg3KBkWeFtOBBLK0j-DRiZ-jtqG/pub?output=csv</a></td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/1uPOIyeFD5ClPR2W2XyT6jAdD8FkgGuNBSl_8F2CT_uI" class="external-link uri">https://docs.google.com/spreadsheets/d/1uPOIyeFD5ClPR2W2XyT6jAdD8FkgGuNBSl_8F2CT_uI</a></td>
 </tr>
 <tr class="even">
 <td align="left">COGEM pathogenicity rating</td>
@@ -709,7 +709,7 @@ required in rows 1051, 1069, 1072, 1076, 1082, 1083, 1086, 1089, 1090,
 <td align="right">NA</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
-<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQYZjtf0RcacNAe54pLOnzor2q0ZeK4cF19f-gjji7cHfrtOf3VuDPA-jSAKRNDNZoWQanyw2QCugRZ/pub?output=csv" class="external-link uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQYZjtf0RcacNAe54pLOnzor2q0ZeK4cF19f-gjji7cHfrtOf3VuDPA-jSAKRNDNZoWQanyw2QCugRZ/pub?output=csv</a></td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/19DrBFbAMGNvqf17yJ4HzuKQjJoRlMCVYTCtmyugoDjQ" class="external-link uri">https://docs.google.com/spreadsheets/d/19DrBFbAMGNvqf17yJ4HzuKQjJoRlMCVYTCtmyugoDjQ</a></td>
 </tr>
 <tr class="odd">
 <td align="left">COGEM pathogenicity rating</td>
@@ -720,7 +720,7 @@ required in rows 1051, 1069, 1072, 1076, 1082, 1083, 1086, 1089, 1090,
 <td align="right">NA</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
-<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQYZjtf0RcacNAe54pLOnzor2q0ZeK4cF19f-gjji7cHfrtOf3VuDPA-jSAKRNDNZoWQanyw2QCugRZ/pub?output=csv" class="external-link uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQYZjtf0RcacNAe54pLOnzor2q0ZeK4cF19f-gjji7cHfrtOf3VuDPA-jSAKRNDNZoWQanyw2QCugRZ/pub?output=csv</a></td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/19DrBFbAMGNvqf17yJ4HzuKQjJoRlMCVYTCtmyugoDjQ" class="external-link uri">https://docs.google.com/spreadsheets/d/19DrBFbAMGNvqf17yJ4HzuKQjJoRlMCVYTCtmyugoDjQ</a></td>
 </tr>
 <tr class="even">
 <td align="left">COGEM pathogenicity rating</td>
@@ -731,7 +731,7 @@ required in rows 1051, 1069, 1072, 1076, 1082, 1083, 1086, 1089, 1090,
 <td align="right">NA</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
-<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQYZjtf0RcacNAe54pLOnzor2q0ZeK4cF19f-gjji7cHfrtOf3VuDPA-jSAKRNDNZoWQanyw2QCugRZ/pub?output=csv" class="external-link uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQYZjtf0RcacNAe54pLOnzor2q0ZeK4cF19f-gjji7cHfrtOf3VuDPA-jSAKRNDNZoWQanyw2QCugRZ/pub?output=csv</a></td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/19DrBFbAMGNvqf17yJ4HzuKQjJoRlMCVYTCtmyugoDjQ" class="external-link uri">https://docs.google.com/spreadsheets/d/19DrBFbAMGNvqf17yJ4HzuKQjJoRlMCVYTCtmyugoDjQ</a></td>
 </tr>
 <tr class="odd">
 <td align="left">COGEM pathogenicity rating</td>
@@ -742,7 +742,7 @@ required in rows 1051, 1069, 1072, 1076, 1082, 1083, 1086, 1089, 1090,
 <td align="right">1043</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
-<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQYZjtf0RcacNAe54pLOnzor2q0ZeK4cF19f-gjji7cHfrtOf3VuDPA-jSAKRNDNZoWQanyw2QCugRZ/pub?output=csv" class="external-link uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQYZjtf0RcacNAe54pLOnzor2q0ZeK4cF19f-gjji7cHfrtOf3VuDPA-jSAKRNDNZoWQanyw2QCugRZ/pub?output=csv</a></td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/19DrBFbAMGNvqf17yJ4HzuKQjJoRlMCVYTCtmyugoDjQ" class="external-link uri">https://docs.google.com/spreadsheets/d/19DrBFbAMGNvqf17yJ4HzuKQjJoRlMCVYTCtmyugoDjQ</a></td>
 </tr>
 <tr class="even">
 <td align="left">COGEM pathogenicity rating</td>
@@ -753,7 +753,7 @@ required in rows 1051, 1069, 1072, 1076, 1082, 1083, 1086, 1089, 1090,
 <td align="right">2</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
-<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQYZjtf0RcacNAe54pLOnzor2q0ZeK4cF19f-gjji7cHfrtOf3VuDPA-jSAKRNDNZoWQanyw2QCugRZ/pub?output=csv" class="external-link uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQYZjtf0RcacNAe54pLOnzor2q0ZeK4cF19f-gjji7cHfrtOf3VuDPA-jSAKRNDNZoWQanyw2QCugRZ/pub?output=csv</a></td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/19DrBFbAMGNvqf17yJ4HzuKQjJoRlMCVYTCtmyugoDjQ" class="external-link uri">https://docs.google.com/spreadsheets/d/19DrBFbAMGNvqf17yJ4HzuKQjJoRlMCVYTCtmyugoDjQ</a></td>
 </tr>
 <tr class="odd">
 <td align="left">disease association</td>
@@ -764,7 +764,7 @@ required in rows 1051, 1069, 1072, 1076, 1082, 1083, 1086, 1089, 1090,
 <td align="right">NA</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
-<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vTboJM7necIfjgRgyYJ4LJWkCv_1y7O00yvyiSGzFdSfJDkeLqWrQ8FpcsYKFSOrQw75wCRst6KA0_a/pub?output=csv" class="external-link uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vTboJM7necIfjgRgyYJ4LJWkCv_1y7O00yvyiSGzFdSfJDkeLqWrQ8FpcsYKFSOrQw75wCRst6KA0_a/pub?output=csv</a></td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/1GqY9-TMpcIPDuWUQwXja1GB1suc4-kUOj8QytvqAMq0" class="external-link uri">https://docs.google.com/spreadsheets/d/1GqY9-TMpcIPDuWUQwXja1GB1suc4-kUOj8QytvqAMq0</a></td>
 </tr>
 <tr class="even">
 <td align="left">disease association</td>
@@ -775,7 +775,7 @@ required in rows 1051, 1069, 1072, 1076, 1082, 1083, 1086, 1089, 1090,
 <td align="right">261</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
-<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vTboJM7necIfjgRgyYJ4LJWkCv_1y7O00yvyiSGzFdSfJDkeLqWrQ8FpcsYKFSOrQw75wCRst6KA0_a/pub?output=csv" class="external-link uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vTboJM7necIfjgRgyYJ4LJWkCv_1y7O00yvyiSGzFdSfJDkeLqWrQ8FpcsYKFSOrQw75wCRst6KA0_a/pub?output=csv</a></td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/1GqY9-TMpcIPDuWUQwXja1GB1suc4-kUOj8QytvqAMq0" class="external-link uri">https://docs.google.com/spreadsheets/d/1GqY9-TMpcIPDuWUQwXja1GB1suc4-kUOj8QytvqAMq0</a></td>
 </tr>
 <tr class="odd">
 <td align="left">disease association</td>
@@ -786,7 +786,7 @@ required in rows 1051, 1069, 1072, 1076, 1082, 1083, 1086, 1089, 1090,
 <td align="right">445</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
-<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vTboJM7necIfjgRgyYJ4LJWkCv_1y7O00yvyiSGzFdSfJDkeLqWrQ8FpcsYKFSOrQw75wCRst6KA0_a/pub?output=csv" class="external-link uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vTboJM7necIfjgRgyYJ4LJWkCv_1y7O00yvyiSGzFdSfJDkeLqWrQ8FpcsYKFSOrQw75wCRst6KA0_a/pub?output=csv</a></td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/1GqY9-TMpcIPDuWUQwXja1GB1suc4-kUOj8QytvqAMq0" class="external-link uri">https://docs.google.com/spreadsheets/d/1GqY9-TMpcIPDuWUQwXja1GB1suc4-kUOj8QytvqAMq0</a></td>
 </tr>
 <tr class="even">
 <td align="left">disease association</td>
@@ -797,7 +797,7 @@ required in rows 1051, 1069, 1072, 1076, 1082, 1083, 1086, 1089, 1090,
 <td align="right">11</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
-<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vTboJM7necIfjgRgyYJ4LJWkCv_1y7O00yvyiSGzFdSfJDkeLqWrQ8FpcsYKFSOrQw75wCRst6KA0_a/pub?output=csv" class="external-link uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vTboJM7necIfjgRgyYJ4LJWkCv_1y7O00yvyiSGzFdSfJDkeLqWrQ8FpcsYKFSOrQw75wCRst6KA0_a/pub?output=csv</a></td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/1GqY9-TMpcIPDuWUQwXja1GB1suc4-kUOj8QytvqAMq0" class="external-link uri">https://docs.google.com/spreadsheets/d/1GqY9-TMpcIPDuWUQwXja1GB1suc4-kUOj8QytvqAMq0</a></td>
 </tr>
 <tr class="odd">
 <td align="left">extreme environment</td>
@@ -808,7 +808,7 @@ required in rows 1051, 1069, 1072, 1076, 1082, 1083, 1086, 1089, 1090,
 <td align="right">NA</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
-<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vSh82md-R7XuM6PMs4UY6DYCY99wgwMcY6PD-m-VoxbJJl_Ce9JWhKtTEdFLEMmzrUxDyrQtfLBCbKj/pub?output=csv" class="external-link uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vSh82md-R7XuM6PMs4UY6DYCY99wgwMcY6PD-m-VoxbJJl_Ce9JWhKtTEdFLEMmzrUxDyrQtfLBCbKj/pub?output=csv</a></td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/1ECo3h91E090gCLejDSTBYwTmUqAPE44JDJlbLzVkpbE" class="external-link uri">https://docs.google.com/spreadsheets/d/1ECo3h91E090gCLejDSTBYwTmUqAPE44JDJlbLzVkpbE</a></td>
 </tr>
 <tr class="even">
 <td align="left">extreme environment</td>
@@ -819,7 +819,7 @@ required in rows 1051, 1069, 1072, 1076, 1082, 1083, 1086, 1089, 1090,
 <td align="right">NA</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
-<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vSh82md-R7XuM6PMs4UY6DYCY99wgwMcY6PD-m-VoxbJJl_Ce9JWhKtTEdFLEMmzrUxDyrQtfLBCbKj/pub?output=csv" class="external-link uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vSh82md-R7XuM6PMs4UY6DYCY99wgwMcY6PD-m-VoxbJJl_Ce9JWhKtTEdFLEMmzrUxDyrQtfLBCbKj/pub?output=csv</a></td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/1ECo3h91E090gCLejDSTBYwTmUqAPE44JDJlbLzVkpbE" class="external-link uri">https://docs.google.com/spreadsheets/d/1ECo3h91E090gCLejDSTBYwTmUqAPE44JDJlbLzVkpbE</a></td>
 </tr>
 <tr class="odd">
 <td align="left">extreme environment</td>
@@ -830,7 +830,7 @@ required in rows 1051, 1069, 1072, 1076, 1082, 1083, 1086, 1089, 1090,
 <td align="right">NA</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
-<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vSh82md-R7XuM6PMs4UY6DYCY99wgwMcY6PD-m-VoxbJJl_Ce9JWhKtTEdFLEMmzrUxDyrQtfLBCbKj/pub?output=csv" class="external-link uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vSh82md-R7XuM6PMs4UY6DYCY99wgwMcY6PD-m-VoxbJJl_Ce9JWhKtTEdFLEMmzrUxDyrQtfLBCbKj/pub?output=csv</a></td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/1ECo3h91E090gCLejDSTBYwTmUqAPE44JDJlbLzVkpbE" class="external-link uri">https://docs.google.com/spreadsheets/d/1ECo3h91E090gCLejDSTBYwTmUqAPE44JDJlbLzVkpbE</a></td>
 </tr>
 <tr class="even">
 <td align="left">extreme environment</td>
@@ -841,7 +841,7 @@ required in rows 1051, 1069, 1072, 1076, 1082, 1083, 1086, 1089, 1090,
 <td align="right">1875</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
-<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vSh82md-R7XuM6PMs4UY6DYCY99wgwMcY6PD-m-VoxbJJl_Ce9JWhKtTEdFLEMmzrUxDyrQtfLBCbKj/pub?output=csv" class="external-link uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vSh82md-R7XuM6PMs4UY6DYCY99wgwMcY6PD-m-VoxbJJl_Ce9JWhKtTEdFLEMmzrUxDyrQtfLBCbKj/pub?output=csv</a></td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/1ECo3h91E090gCLejDSTBYwTmUqAPE44JDJlbLzVkpbE" class="external-link uri">https://docs.google.com/spreadsheets/d/1ECo3h91E090gCLejDSTBYwTmUqAPE44JDJlbLzVkpbE</a></td>
 </tr>
 <tr class="odd">
 <td align="left">extreme environment</td>
@@ -852,7 +852,7 @@ required in rows 1051, 1069, 1072, 1076, 1082, 1083, 1086, 1089, 1090,
 <td align="right">4</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
-<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vSh82md-R7XuM6PMs4UY6DYCY99wgwMcY6PD-m-VoxbJJl_Ce9JWhKtTEdFLEMmzrUxDyrQtfLBCbKj/pub?output=csv" class="external-link uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vSh82md-R7XuM6PMs4UY6DYCY99wgwMcY6PD-m-VoxbJJl_Ce9JWhKtTEdFLEMmzrUxDyrQtfLBCbKj/pub?output=csv</a></td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/1ECo3h91E090gCLejDSTBYwTmUqAPE44JDJlbLzVkpbE" class="external-link uri">https://docs.google.com/spreadsheets/d/1ECo3h91E090gCLejDSTBYwTmUqAPE44JDJlbLzVkpbE</a></td>
 </tr>
 <tr class="even">
 <td align="left">fatty acid composition</td>
@@ -863,7 +863,7 @@ required in rows 1051, 1069, 1072, 1076, 1082, 1083, 1086, 1089, 1090,
 <td align="right">NA</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
-<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQJh0AzSYWeYO1zOs4GSZIOde3zV_O71HGixPoN_F8gEY2KhxkZoj1XeSj0HcpCSz2Xu2dxBVyrm0GH/pub?output=csv" class="external-link uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQJh0AzSYWeYO1zOs4GSZIOde3zV_O71HGixPoN_F8gEY2KhxkZoj1XeSj0HcpCSz2Xu2dxBVyrm0GH/pub?output=csv</a></td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/1u_zgX9dDuk2hIUMlfHqC2pDAmc3ktGf6Vj2EbzRiV8M" class="external-link uri">https://docs.google.com/spreadsheets/d/1u_zgX9dDuk2hIUMlfHqC2pDAmc3ktGf6Vj2EbzRiV8M</a></td>
 </tr>
 <tr class="odd">
 <td align="left">fatty acid composition</td>
@@ -874,7 +874,7 @@ required in rows 1051, 1069, 1072, 1076, 1082, 1083, 1086, 1089, 1090,
 <td align="right">NA</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
-<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQJh0AzSYWeYO1zOs4GSZIOde3zV_O71HGixPoN_F8gEY2KhxkZoj1XeSj0HcpCSz2Xu2dxBVyrm0GH/pub?output=csv" class="external-link uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQJh0AzSYWeYO1zOs4GSZIOde3zV_O71HGixPoN_F8gEY2KhxkZoj1XeSj0HcpCSz2Xu2dxBVyrm0GH/pub?output=csv</a></td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/1u_zgX9dDuk2hIUMlfHqC2pDAmc3ktGf6Vj2EbzRiV8M" class="external-link uri">https://docs.google.com/spreadsheets/d/1u_zgX9dDuk2hIUMlfHqC2pDAmc3ktGf6Vj2EbzRiV8M</a></td>
 </tr>
 <tr class="even">
 <td align="left">fatty acid composition</td>
@@ -885,7 +885,7 @@ required in rows 1051, 1069, 1072, 1076, 1082, 1083, 1086, 1089, 1090,
 <td align="right">8862</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
-<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQJh0AzSYWeYO1zOs4GSZIOde3zV_O71HGixPoN_F8gEY2KhxkZoj1XeSj0HcpCSz2Xu2dxBVyrm0GH/pub?output=csv" class="external-link uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQJh0AzSYWeYO1zOs4GSZIOde3zV_O71HGixPoN_F8gEY2KhxkZoj1XeSj0HcpCSz2Xu2dxBVyrm0GH/pub?output=csv</a></td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/1u_zgX9dDuk2hIUMlfHqC2pDAmc3ktGf6Vj2EbzRiV8M" class="external-link uri">https://docs.google.com/spreadsheets/d/1u_zgX9dDuk2hIUMlfHqC2pDAmc3ktGf6Vj2EbzRiV8M</a></td>
 </tr>
 <tr class="odd">
 <td align="left">fatty acid composition</td>
@@ -896,7 +896,7 @@ required in rows 1051, 1069, 1072, 1076, 1082, 1083, 1086, 1089, 1090,
 <td align="right">138496</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
-<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQJh0AzSYWeYO1zOs4GSZIOde3zV_O71HGixPoN_F8gEY2KhxkZoj1XeSj0HcpCSz2Xu2dxBVyrm0GH/pub?output=csv" class="external-link uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQJh0AzSYWeYO1zOs4GSZIOde3zV_O71HGixPoN_F8gEY2KhxkZoj1XeSj0HcpCSz2Xu2dxBVyrm0GH/pub?output=csv</a></td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/1u_zgX9dDuk2hIUMlfHqC2pDAmc3ktGf6Vj2EbzRiV8M" class="external-link uri">https://docs.google.com/spreadsheets/d/1u_zgX9dDuk2hIUMlfHqC2pDAmc3ktGf6Vj2EbzRiV8M</a></td>
 </tr>
 <tr class="even">
 <td align="left">fatty acid composition</td>
@@ -907,7 +907,7 @@ required in rows 1051, 1069, 1072, 1076, 1082, 1083, 1086, 1089, 1090,
 <td align="right">138496</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
-<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQJh0AzSYWeYO1zOs4GSZIOde3zV_O71HGixPoN_F8gEY2KhxkZoj1XeSj0HcpCSz2Xu2dxBVyrm0GH/pub?output=csv" class="external-link uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQJh0AzSYWeYO1zOs4GSZIOde3zV_O71HGixPoN_F8gEY2KhxkZoj1XeSj0HcpCSz2Xu2dxBVyrm0GH/pub?output=csv</a></td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/1u_zgX9dDuk2hIUMlfHqC2pDAmc3ktGf6Vj2EbzRiV8M" class="external-link uri">https://docs.google.com/spreadsheets/d/1u_zgX9dDuk2hIUMlfHqC2pDAmc3ktGf6Vj2EbzRiV8M</a></td>
 </tr>
 <tr class="odd">
 <td align="left">fatty acid composition</td>
@@ -918,7 +918,7 @@ required in rows 1051, 1069, 1072, 1076, 1082, 1083, 1086, 1089, 1090,
 <td align="right">640</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
-<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQJh0AzSYWeYO1zOs4GSZIOde3zV_O71HGixPoN_F8gEY2KhxkZoj1XeSj0HcpCSz2Xu2dxBVyrm0GH/pub?output=csv" class="external-link uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQJh0AzSYWeYO1zOs4GSZIOde3zV_O71HGixPoN_F8gEY2KhxkZoj1XeSj0HcpCSz2Xu2dxBVyrm0GH/pub?output=csv</a></td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/1u_zgX9dDuk2hIUMlfHqC2pDAmc3ktGf6Vj2EbzRiV8M" class="external-link uri">https://docs.google.com/spreadsheets/d/1u_zgX9dDuk2hIUMlfHqC2pDAmc3ktGf6Vj2EbzRiV8M</a></td>
 </tr>
 <tr class="even">
 <td align="left">fatty acid composition</td>
@@ -929,7 +929,7 @@ required in rows 1051, 1069, 1072, 1076, 1082, 1083, 1086, 1089, 1090,
 <td align="right">NA</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
-<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQJh0AzSYWeYO1zOs4GSZIOde3zV_O71HGixPoN_F8gEY2KhxkZoj1XeSj0HcpCSz2Xu2dxBVyrm0GH/pub?output=csv" class="external-link uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQJh0AzSYWeYO1zOs4GSZIOde3zV_O71HGixPoN_F8gEY2KhxkZoj1XeSj0HcpCSz2Xu2dxBVyrm0GH/pub?output=csv</a></td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/1u_zgX9dDuk2hIUMlfHqC2pDAmc3ktGf6Vj2EbzRiV8M" class="external-link uri">https://docs.google.com/spreadsheets/d/1u_zgX9dDuk2hIUMlfHqC2pDAmc3ktGf6Vj2EbzRiV8M</a></td>
 </tr>
 <tr class="odd">
 <td align="left">gram stain</td>
@@ -940,7 +940,7 @@ required in rows 1051, 1069, 1072, 1076, 1082, 1083, 1086, 1089, 1090,
 <td align="right">3614</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
-<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vRxQOO7O7oJDJrFbY3s1Y_rbouUSR3rM_a3kGlXgcVMys5pFLqmd00VjJh1adJBmh3xA3aM8r3Am2oC/pub?output=csv" class="external-link uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vRxQOO7O7oJDJrFbY3s1Y_rbouUSR3rM_a3kGlXgcVMys5pFLqmd00VjJh1adJBmh3xA3aM8r3Am2oC/pub?output=csv</a></td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/1ygWBlBczB24fyL0DTPmTModCuEDi-1j1_rsYBZ5JEOc" class="external-link uri">https://docs.google.com/spreadsheets/d/1ygWBlBczB24fyL0DTPmTModCuEDi-1j1_rsYBZ5JEOc</a></td>
 </tr>
 <tr class="even">
 <td align="left">gram stain</td>
@@ -951,7 +951,7 @@ required in rows 1051, 1069, 1072, 1076, 1082, 1083, 1086, 1089, 1090,
 <td align="right">27</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
-<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vRxQOO7O7oJDJrFbY3s1Y_rbouUSR3rM_a3kGlXgcVMys5pFLqmd00VjJh1adJBmh3xA3aM8r3Am2oC/pub?output=csv" class="external-link uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vRxQOO7O7oJDJrFbY3s1Y_rbouUSR3rM_a3kGlXgcVMys5pFLqmd00VjJh1adJBmh3xA3aM8r3Am2oC/pub?output=csv</a></td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/1ygWBlBczB24fyL0DTPmTModCuEDi-1j1_rsYBZ5JEOc" class="external-link uri">https://docs.google.com/spreadsheets/d/1ygWBlBczB24fyL0DTPmTModCuEDi-1j1_rsYBZ5JEOc</a></td>
 </tr>
 <tr class="odd">
 <td align="left">gram stain</td>
@@ -964,7 +964,7 @@ required in rows 4966, 4967.</td>
 <td align="right">NA</td>
 <td align="left">Parent_NCBI_ID</td>
 <td align="left">4966, 4967</td>
-<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vRxQOO7O7oJDJrFbY3s1Y_rbouUSR3rM_a3kGlXgcVMys5pFLqmd00VjJh1adJBmh3xA3aM8r3Am2oC/pub?output=csv" class="external-link uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vRxQOO7O7oJDJrFbY3s1Y_rbouUSR3rM_a3kGlXgcVMys5pFLqmd00VjJh1adJBmh3xA3aM8r3Am2oC/pub?output=csv</a></td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/1ygWBlBczB24fyL0DTPmTModCuEDi-1j1_rsYBZ5JEOc" class="external-link uri">https://docs.google.com/spreadsheets/d/1ygWBlBczB24fyL0DTPmTModCuEDi-1j1_rsYBZ5JEOc</a></td>
 </tr>
 <tr class="even">
 <td align="left">growth medium</td>
@@ -975,7 +975,7 @@ required in rows 4966, 4967.</td>
 <td align="right">NA</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
-<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vTLNLWfdNxo7NGNuJ4Pq6nji-7jQhO1glTHh1cQVS3j147WxbwhbWqhyI3FJR0I578o1hzeGbHwMOmY/pub?output=csv" class="external-link uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vTLNLWfdNxo7NGNuJ4Pq6nji-7jQhO1glTHh1cQVS3j147WxbwhbWqhyI3FJR0I578o1hzeGbHwMOmY/pub?output=csv</a></td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/1r7GIZWjBbmC-rRZYbHUwM31LGJ6YGexdZozYOvFZXVs" class="external-link uri">https://docs.google.com/spreadsheets/d/1r7GIZWjBbmC-rRZYbHUwM31LGJ6YGexdZozYOvFZXVs</a></td>
 </tr>
 <tr class="odd">
 <td align="left">growth medium</td>
@@ -986,7 +986,7 @@ required in rows 4966, 4967.</td>
 <td align="right">NA</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
-<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vTLNLWfdNxo7NGNuJ4Pq6nji-7jQhO1glTHh1cQVS3j147WxbwhbWqhyI3FJR0I578o1hzeGbHwMOmY/pub?output=csv" class="external-link uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vTLNLWfdNxo7NGNuJ4Pq6nji-7jQhO1glTHh1cQVS3j147WxbwhbWqhyI3FJR0I578o1hzeGbHwMOmY/pub?output=csv</a></td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/1r7GIZWjBbmC-rRZYbHUwM31LGJ6YGexdZozYOvFZXVs" class="external-link uri">https://docs.google.com/spreadsheets/d/1r7GIZWjBbmC-rRZYbHUwM31LGJ6YGexdZozYOvFZXVs</a></td>
 </tr>
 <tr class="even">
 <td align="left">growth medium</td>
@@ -997,7 +997,7 @@ required in rows 4966, 4967.</td>
 <td align="right">NA</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
-<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vTLNLWfdNxo7NGNuJ4Pq6nji-7jQhO1glTHh1cQVS3j147WxbwhbWqhyI3FJR0I578o1hzeGbHwMOmY/pub?output=csv" class="external-link uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vTLNLWfdNxo7NGNuJ4Pq6nji-7jQhO1glTHh1cQVS3j147WxbwhbWqhyI3FJR0I578o1hzeGbHwMOmY/pub?output=csv</a></td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/1r7GIZWjBbmC-rRZYbHUwM31LGJ6YGexdZozYOvFZXVs" class="external-link uri">https://docs.google.com/spreadsheets/d/1r7GIZWjBbmC-rRZYbHUwM31LGJ6YGexdZozYOvFZXVs</a></td>
 </tr>
 <tr class="odd">
 <td align="left">growth medium</td>
@@ -1008,7 +1008,7 @@ required in rows 4966, 4967.</td>
 <td align="right">304</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
-<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vTLNLWfdNxo7NGNuJ4Pq6nji-7jQhO1glTHh1cQVS3j147WxbwhbWqhyI3FJR0I578o1hzeGbHwMOmY/pub?output=csv" class="external-link uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vTLNLWfdNxo7NGNuJ4Pq6nji-7jQhO1glTHh1cQVS3j147WxbwhbWqhyI3FJR0I578o1hzeGbHwMOmY/pub?output=csv</a></td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/1r7GIZWjBbmC-rRZYbHUwM31LGJ6YGexdZozYOvFZXVs" class="external-link uri">https://docs.google.com/spreadsheets/d/1r7GIZWjBbmC-rRZYbHUwM31LGJ6YGexdZozYOvFZXVs</a></td>
 </tr>
 <tr class="even">
 <td align="left">growth temperature</td>
@@ -1019,7 +1019,7 @@ required in rows 4966, 4967.</td>
 <td align="right">NA</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
-<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vTWXUnR0_jkpZEE06C0GAypTGjOa2RnOPiLSmPiwAnaf2qS33hd-6GKG95CYDgKeSk6t4BFVjIAB_sh/pub?output=csv" class="external-link uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vTWXUnR0_jkpZEE06C0GAypTGjOa2RnOPiLSmPiwAnaf2qS33hd-6GKG95CYDgKeSk6t4BFVjIAB_sh/pub?output=csv</a></td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/1yJjKSd59tjpq1Oaifd7S3jFBWFe2ZU-kmxV4HtYJznc" class="external-link uri">https://docs.google.com/spreadsheets/d/1yJjKSd59tjpq1Oaifd7S3jFBWFe2ZU-kmxV4HtYJznc</a></td>
 </tr>
 <tr class="odd">
 <td align="left">growth temperature</td>
@@ -1030,7 +1030,7 @@ required in rows 4966, 4967.</td>
 <td align="right">274</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
-<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vTWXUnR0_jkpZEE06C0GAypTGjOa2RnOPiLSmPiwAnaf2qS33hd-6GKG95CYDgKeSk6t4BFVjIAB_sh/pub?output=csv" class="external-link uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vTWXUnR0_jkpZEE06C0GAypTGjOa2RnOPiLSmPiwAnaf2qS33hd-6GKG95CYDgKeSk6t4BFVjIAB_sh/pub?output=csv</a></td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/1yJjKSd59tjpq1Oaifd7S3jFBWFe2ZU-kmxV4HtYJznc" class="external-link uri">https://docs.google.com/spreadsheets/d/1yJjKSd59tjpq1Oaifd7S3jFBWFe2ZU-kmxV4HtYJznc</a></td>
 </tr>
 <tr class="even">
 <td align="left">growth temperature</td>
@@ -1041,7 +1041,7 @@ required in rows 4966, 4967.</td>
 <td align="right">2524</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
-<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vTWXUnR0_jkpZEE06C0GAypTGjOa2RnOPiLSmPiwAnaf2qS33hd-6GKG95CYDgKeSk6t4BFVjIAB_sh/pub?output=csv" class="external-link uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vTWXUnR0_jkpZEE06C0GAypTGjOa2RnOPiLSmPiwAnaf2qS33hd-6GKG95CYDgKeSk6t4BFVjIAB_sh/pub?output=csv</a></td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/1yJjKSd59tjpq1Oaifd7S3jFBWFe2ZU-kmxV4HtYJznc" class="external-link uri">https://docs.google.com/spreadsheets/d/1yJjKSd59tjpq1Oaifd7S3jFBWFe2ZU-kmxV4HtYJznc</a></td>
 </tr>
 <tr class="odd">
 <td align="left">growth temperature</td>
@@ -1052,7 +1052,7 @@ required in rows 4966, 4967.</td>
 <td align="right">16</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
-<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vTWXUnR0_jkpZEE06C0GAypTGjOa2RnOPiLSmPiwAnaf2qS33hd-6GKG95CYDgKeSk6t4BFVjIAB_sh/pub?output=csv" class="external-link uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vTWXUnR0_jkpZEE06C0GAypTGjOa2RnOPiLSmPiwAnaf2qS33hd-6GKG95CYDgKeSk6t4BFVjIAB_sh/pub?output=csv</a></td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/1yJjKSd59tjpq1Oaifd7S3jFBWFe2ZU-kmxV4HtYJznc" class="external-link uri">https://docs.google.com/spreadsheets/d/1yJjKSd59tjpq1Oaifd7S3jFBWFe2ZU-kmxV4HtYJznc</a></td>
 </tr>
 <tr class="even">
 <td align="left">habitat</td>
@@ -1063,7 +1063,7 @@ required in rows 4966, 4967.</td>
 <td align="right">16547</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
-<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQrR6R5nhANAU-CweaEp_X9P13eXiyq2A16_hOOREDYZuOqFS_4jAnI4JjihFmy3jAWtUW2V-4kZYPN/pub?output=csv" class="external-link uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQrR6R5nhANAU-CweaEp_X9P13eXiyq2A16_hOOREDYZuOqFS_4jAnI4JjihFmy3jAWtUW2V-4kZYPN/pub?output=csv</a></td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/16WVR910o0p_CyiqYxSa1hkDTdtsAM4Oy8TlbZNIr7ys" class="external-link uri">https://docs.google.com/spreadsheets/d/16WVR910o0p_CyiqYxSa1hkDTdtsAM4Oy8TlbZNIr7ys</a></td>
 </tr>
 <tr class="odd">
 <td align="left">habitat</td>
@@ -1074,7 +1074,7 @@ required in rows 4966, 4967.</td>
 <td align="right">14507</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
-<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQrR6R5nhANAU-CweaEp_X9P13eXiyq2A16_hOOREDYZuOqFS_4jAnI4JjihFmy3jAWtUW2V-4kZYPN/pub?output=csv" class="external-link uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQrR6R5nhANAU-CweaEp_X9P13eXiyq2A16_hOOREDYZuOqFS_4jAnI4JjihFmy3jAWtUW2V-4kZYPN/pub?output=csv</a></td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/16WVR910o0p_CyiqYxSa1hkDTdtsAM4Oy8TlbZNIr7ys" class="external-link uri">https://docs.google.com/spreadsheets/d/16WVR910o0p_CyiqYxSa1hkDTdtsAM4Oy8TlbZNIr7ys</a></td>
 </tr>
 <tr class="even">
 <td align="left">habitat</td>
@@ -1085,7 +1085,7 @@ required in rows 4966, 4967.</td>
 <td align="right">18230</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
-<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQrR6R5nhANAU-CweaEp_X9P13eXiyq2A16_hOOREDYZuOqFS_4jAnI4JjihFmy3jAWtUW2V-4kZYPN/pub?output=csv" class="external-link uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQrR6R5nhANAU-CweaEp_X9P13eXiyq2A16_hOOREDYZuOqFS_4jAnI4JjihFmy3jAWtUW2V-4kZYPN/pub?output=csv</a></td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/16WVR910o0p_CyiqYxSa1hkDTdtsAM4Oy8TlbZNIr7ys" class="external-link uri">https://docs.google.com/spreadsheets/d/16WVR910o0p_CyiqYxSa1hkDTdtsAM4Oy8TlbZNIr7ys</a></td>
 </tr>
 <tr class="odd">
 <td align="left">habitat</td>
@@ -1096,7 +1096,7 @@ required in rows 4966, 4967.</td>
 <td align="right">13160</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
-<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQrR6R5nhANAU-CweaEp_X9P13eXiyq2A16_hOOREDYZuOqFS_4jAnI4JjihFmy3jAWtUW2V-4kZYPN/pub?output=csv" class="external-link uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQrR6R5nhANAU-CweaEp_X9P13eXiyq2A16_hOOREDYZuOqFS_4jAnI4JjihFmy3jAWtUW2V-4kZYPN/pub?output=csv</a></td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/16WVR910o0p_CyiqYxSa1hkDTdtsAM4Oy8TlbZNIr7ys" class="external-link uri">https://docs.google.com/spreadsheets/d/16WVR910o0p_CyiqYxSa1hkDTdtsAM4Oy8TlbZNIr7ys</a></td>
 </tr>
 <tr class="even">
 <td align="left">habitat</td>
@@ -1107,7 +1107,7 @@ required in rows 4966, 4967.</td>
 <td align="right">28</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
-<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQrR6R5nhANAU-CweaEp_X9P13eXiyq2A16_hOOREDYZuOqFS_4jAnI4JjihFmy3jAWtUW2V-4kZYPN/pub?output=csv" class="external-link uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQrR6R5nhANAU-CweaEp_X9P13eXiyq2A16_hOOREDYZuOqFS_4jAnI4JjihFmy3jAWtUW2V-4kZYPN/pub?output=csv</a></td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/16WVR910o0p_CyiqYxSa1hkDTdtsAM4Oy8TlbZNIr7ys" class="external-link uri">https://docs.google.com/spreadsheets/d/16WVR910o0p_CyiqYxSa1hkDTdtsAM4Oy8TlbZNIr7ys</a></td>
 </tr>
 <tr class="odd">
 <td align="left">habitat</td>
@@ -3618,7 +3618,7 @@ required in rows 1220, 1223, 1224, 1225, 1227, 1230, 1232, 1233, 1234,
 18207, 18208, 18209, 18210, 18211, 18212, 18213, 18214, 18215, 18216,
 18217, 18218, 18219, 18220, 18221, 18222, 18223, 18224, 18225, 18226,
 18227, 18228, 18229, 18230</td>
-<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQrR6R5nhANAU-CweaEp_X9P13eXiyq2A16_hOOREDYZuOqFS_4jAnI4JjihFmy3jAWtUW2V-4kZYPN/pub?output=csv" class="external-link uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQrR6R5nhANAU-CweaEp_X9P13eXiyq2A16_hOOREDYZuOqFS_4jAnI4JjihFmy3jAWtUW2V-4kZYPN/pub?output=csv</a></td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/16WVR910o0p_CyiqYxSa1hkDTdtsAM4Oy8TlbZNIr7ys" class="external-link uri">https://docs.google.com/spreadsheets/d/16WVR910o0p_CyiqYxSa1hkDTdtsAM4Oy8TlbZNIr7ys</a></td>
 </tr>
 <tr class="even">
 <td align="left">habitat</td>
@@ -3629,7 +3629,7 @@ required in rows 1220, 1223, 1224, 1225, 1227, 1230, 1232, 1233, 1234,
 <td align="right">NA</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
-<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQrR6R5nhANAU-CweaEp_X9P13eXiyq2A16_hOOREDYZuOqFS_4jAnI4JjihFmy3jAWtUW2V-4kZYPN/pub?output=csv" class="external-link uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQrR6R5nhANAU-CweaEp_X9P13eXiyq2A16_hOOREDYZuOqFS_4jAnI4JjihFmy3jAWtUW2V-4kZYPN/pub?output=csv</a></td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/16WVR910o0p_CyiqYxSa1hkDTdtsAM4Oy8TlbZNIr7ys" class="external-link uri">https://docs.google.com/spreadsheets/d/16WVR910o0p_CyiqYxSa1hkDTdtsAM4Oy8TlbZNIr7ys</a></td>
 </tr>
 <tr class="odd">
 <td align="left">health associated</td>
@@ -3640,7 +3640,7 @@ required in rows 1220, 1223, 1224, 1225, 1227, 1230, 1232, 1233, 1234,
 <td align="right">NA</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
-<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQm5WlnrHECspbrKkrXpo7nAYD4YEllr2GYoc1rcxuchbXk26H2y_Foyx9kXefVFRU239982aCCb0Xv/pub?output=csv" class="external-link uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQm5WlnrHECspbrKkrXpo7nAYD4YEllr2GYoc1rcxuchbXk26H2y_Foyx9kXefVFRU239982aCCb0Xv/pub?output=csv</a></td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/1oKvcKub-2NnbwYsIyXPETt7nUl89RwTk5Vwzk1WX0j0" class="external-link uri">https://docs.google.com/spreadsheets/d/1oKvcKub-2NnbwYsIyXPETt7nUl89RwTk5Vwzk1WX0j0</a></td>
 </tr>
 <tr class="even">
 <td align="left">health associated</td>
@@ -3651,7 +3651,7 @@ required in rows 1220, 1223, 1224, 1225, 1227, 1230, 1232, 1233, 1234,
 <td align="right">NA</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
-<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQm5WlnrHECspbrKkrXpo7nAYD4YEllr2GYoc1rcxuchbXk26H2y_Foyx9kXefVFRU239982aCCb0Xv/pub?output=csv" class="external-link uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQm5WlnrHECspbrKkrXpo7nAYD4YEllr2GYoc1rcxuchbXk26H2y_Foyx9kXefVFRU239982aCCb0Xv/pub?output=csv</a></td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/1oKvcKub-2NnbwYsIyXPETt7nUl89RwTk5Vwzk1WX0j0" class="external-link uri">https://docs.google.com/spreadsheets/d/1oKvcKub-2NnbwYsIyXPETt7nUl89RwTk5Vwzk1WX0j0</a></td>
 </tr>
 <tr class="odd">
 <td align="left">health associated</td>
@@ -3662,7 +3662,7 @@ required in rows 1220, 1223, 1224, 1225, 1227, 1230, 1232, 1233, 1234,
 <td align="right">30</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
-<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQm5WlnrHECspbrKkrXpo7nAYD4YEllr2GYoc1rcxuchbXk26H2y_Foyx9kXefVFRU239982aCCb0Xv/pub?output=csv" class="external-link uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQm5WlnrHECspbrKkrXpo7nAYD4YEllr2GYoc1rcxuchbXk26H2y_Foyx9kXefVFRU239982aCCb0Xv/pub?output=csv</a></td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/1oKvcKub-2NnbwYsIyXPETt7nUl89RwTk5Vwzk1WX0j0" class="external-link uri">https://docs.google.com/spreadsheets/d/1oKvcKub-2NnbwYsIyXPETt7nUl89RwTk5Vwzk1WX0j0</a></td>
 </tr>
 <tr class="even">
 <td align="left">health associated</td>
@@ -3675,7 +3675,7 @@ and required in rows 4, 28.</td>
 <td align="right">NA</td>
 <td align="left">Parent_NCBI_ID</td>
 <td align="left">4, 28</td>
-<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQm5WlnrHECspbrKkrXpo7nAYD4YEllr2GYoc1rcxuchbXk26H2y_Foyx9kXefVFRU239982aCCb0Xv/pub?output=csv" class="external-link uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQm5WlnrHECspbrKkrXpo7nAYD4YEllr2GYoc1rcxuchbXk26H2y_Foyx9kXefVFRU239982aCCb0Xv/pub?output=csv</a></td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/1oKvcKub-2NnbwYsIyXPETt7nUl89RwTk5Vwzk1WX0j0" class="external-link uri">https://docs.google.com/spreadsheets/d/1oKvcKub-2NnbwYsIyXPETt7nUl89RwTk5Vwzk1WX0j0</a></td>
 </tr>
 <tr class="odd">
 <td align="left">hydrogen gas producing</td>
@@ -3686,7 +3686,7 @@ and required in rows 4, 28.</td>
 <td align="right">NA</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
-<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vSpucXiYrMe_iYvnZDuNSNkRVnEWRQhykCCXoIvtmTiKAVUdkVnRYvl17nbwGqZDg2xVDwaUXccGYsF/pub?output=csv" class="external-link uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vSpucXiYrMe_iYvnZDuNSNkRVnEWRQhykCCXoIvtmTiKAVUdkVnRYvl17nbwGqZDg2xVDwaUXccGYsF/pub?output=csv</a></td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/14CNe6W0OmR5iY9lQU2IPFtYZsLd8a77ehR3lVJkx1A8" class="external-link uri">https://docs.google.com/spreadsheets/d/14CNe6W0OmR5iY9lQU2IPFtYZsLd8a77ehR3lVJkx1A8</a></td>
 </tr>
 <tr class="even">
 <td align="left">hydrogen gas producing</td>
@@ -3697,7 +3697,7 @@ and required in rows 4, 28.</td>
 <td align="right">NA</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
-<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vSpucXiYrMe_iYvnZDuNSNkRVnEWRQhykCCXoIvtmTiKAVUdkVnRYvl17nbwGqZDg2xVDwaUXccGYsF/pub?output=csv" class="external-link uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vSpucXiYrMe_iYvnZDuNSNkRVnEWRQhykCCXoIvtmTiKAVUdkVnRYvl17nbwGqZDg2xVDwaUXccGYsF/pub?output=csv</a></td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/14CNe6W0OmR5iY9lQU2IPFtYZsLd8a77ehR3lVJkx1A8" class="external-link uri">https://docs.google.com/spreadsheets/d/14CNe6W0OmR5iY9lQU2IPFtYZsLd8a77ehR3lVJkx1A8</a></td>
 </tr>
 <tr class="odd">
 <td align="left">hydrogen gas producing</td>
@@ -3708,7 +3708,7 @@ and required in rows 4, 28.</td>
 <td align="right">24</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
-<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vSpucXiYrMe_iYvnZDuNSNkRVnEWRQhykCCXoIvtmTiKAVUdkVnRYvl17nbwGqZDg2xVDwaUXccGYsF/pub?output=csv" class="external-link uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vSpucXiYrMe_iYvnZDuNSNkRVnEWRQhykCCXoIvtmTiKAVUdkVnRYvl17nbwGqZDg2xVDwaUXccGYsF/pub?output=csv</a></td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/14CNe6W0OmR5iY9lQU2IPFtYZsLd8a77ehR3lVJkx1A8" class="external-link uri">https://docs.google.com/spreadsheets/d/14CNe6W0OmR5iY9lQU2IPFtYZsLd8a77ehR3lVJkx1A8</a></td>
 </tr>
 <tr class="even">
 <td align="left">hydrogen gas producing</td>
@@ -3719,7 +3719,7 @@ and required in rows 4, 28.</td>
 <td align="right">24</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
-<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vSpucXiYrMe_iYvnZDuNSNkRVnEWRQhykCCXoIvtmTiKAVUdkVnRYvl17nbwGqZDg2xVDwaUXccGYsF/pub?output=csv" class="external-link uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vSpucXiYrMe_iYvnZDuNSNkRVnEWRQhykCCXoIvtmTiKAVUdkVnRYvl17nbwGqZDg2xVDwaUXccGYsF/pub?output=csv</a></td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/14CNe6W0OmR5iY9lQU2IPFtYZsLd8a77ehR3lVJkx1A8" class="external-link uri">https://docs.google.com/spreadsheets/d/14CNe6W0OmR5iY9lQU2IPFtYZsLd8a77ehR3lVJkx1A8</a></td>
 </tr>
 <tr class="odd">
 <td align="left">isolation site</td>
@@ -3730,7 +3730,7 @@ and required in rows 4, 28.</td>
 <td align="right">NA</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
-<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vR5qKaSI_iXovASXA2U8figFKFBRNOuuFcnr-wSedtGuxAu2m8IjHp1uD23NGTWK9NmnKcO0m7FfkIx/pub?output=csv" class="external-link uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vR5qKaSI_iXovASXA2U8figFKFBRNOuuFcnr-wSedtGuxAu2m8IjHp1uD23NGTWK9NmnKcO0m7FfkIx/pub?output=csv</a></td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/1QmwZcfoXhBdWPxTt6qa7hhMckHGV7c0lU2pTPpcSVfI" class="external-link uri">https://docs.google.com/spreadsheets/d/1QmwZcfoXhBdWPxTt6qa7hhMckHGV7c0lU2pTPpcSVfI</a></td>
 </tr>
 <tr class="even">
 <td align="left">isolation site</td>
@@ -3741,7 +3741,7 @@ and required in rows 4, 28.</td>
 <td align="right">1147</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
-<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vR5qKaSI_iXovASXA2U8figFKFBRNOuuFcnr-wSedtGuxAu2m8IjHp1uD23NGTWK9NmnKcO0m7FfkIx/pub?output=csv" class="external-link uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vR5qKaSI_iXovASXA2U8figFKFBRNOuuFcnr-wSedtGuxAu2m8IjHp1uD23NGTWK9NmnKcO0m7FfkIx/pub?output=csv</a></td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/1QmwZcfoXhBdWPxTt6qa7hhMckHGV7c0lU2pTPpcSVfI" class="external-link uri">https://docs.google.com/spreadsheets/d/1QmwZcfoXhBdWPxTt6qa7hhMckHGV7c0lU2pTPpcSVfI</a></td>
 </tr>
 <tr class="odd">
 <td align="left">isolation site</td>
@@ -3752,7 +3752,7 @@ and required in rows 4, 28.</td>
 <td align="right">13</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
-<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vR5qKaSI_iXovASXA2U8figFKFBRNOuuFcnr-wSedtGuxAu2m8IjHp1uD23NGTWK9NmnKcO0m7FfkIx/pub?output=csv" class="external-link uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vR5qKaSI_iXovASXA2U8figFKFBRNOuuFcnr-wSedtGuxAu2m8IjHp1uD23NGTWK9NmnKcO0m7FfkIx/pub?output=csv</a></td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/1QmwZcfoXhBdWPxTt6qa7hhMckHGV7c0lU2pTPpcSVfI" class="external-link uri">https://docs.google.com/spreadsheets/d/1QmwZcfoXhBdWPxTt6qa7hhMckHGV7c0lU2pTPpcSVfI</a></td>
 </tr>
 <tr class="even">
 <td align="left">lactate producing</td>
@@ -3763,7 +3763,7 @@ and required in rows 4, 28.</td>
 <td align="right">NA</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
-<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vSDYef_4xX2-RVfxhz7XrHIglvHjB5a9bagpApN_zHNhnswhFXN7CRsaQr3pKW6bAyrh8b26tndxCFi/pub?output=csv" class="external-link uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vSDYef_4xX2-RVfxhz7XrHIglvHjB5a9bagpApN_zHNhnswhFXN7CRsaQr3pKW6bAyrh8b26tndxCFi/pub?output=csv</a></td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/1Am4XPHK9zyEuPV1h1je2TmsSHLitJJOLPcuhN6-v_hk" class="external-link uri">https://docs.google.com/spreadsheets/d/1Am4XPHK9zyEuPV1h1je2TmsSHLitJJOLPcuhN6-v_hk</a></td>
 </tr>
 <tr class="odd">
 <td align="left">lactate producing</td>
@@ -3774,7 +3774,7 @@ and required in rows 4, 28.</td>
 <td align="right">NA</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
-<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vSDYef_4xX2-RVfxhz7XrHIglvHjB5a9bagpApN_zHNhnswhFXN7CRsaQr3pKW6bAyrh8b26tndxCFi/pub?output=csv" class="external-link uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vSDYef_4xX2-RVfxhz7XrHIglvHjB5a9bagpApN_zHNhnswhFXN7CRsaQr3pKW6bAyrh8b26tndxCFi/pub?output=csv</a></td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/1Am4XPHK9zyEuPV1h1je2TmsSHLitJJOLPcuhN6-v_hk" class="external-link uri">https://docs.google.com/spreadsheets/d/1Am4XPHK9zyEuPV1h1je2TmsSHLitJJOLPcuhN6-v_hk</a></td>
 </tr>
 <tr class="even">
 <td align="left">lactate producing</td>
@@ -3785,7 +3785,7 @@ and required in rows 4, 28.</td>
 <td align="right">23</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
-<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vSDYef_4xX2-RVfxhz7XrHIglvHjB5a9bagpApN_zHNhnswhFXN7CRsaQr3pKW6bAyrh8b26tndxCFi/pub?output=csv" class="external-link uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vSDYef_4xX2-RVfxhz7XrHIglvHjB5a9bagpApN_zHNhnswhFXN7CRsaQr3pKW6bAyrh8b26tndxCFi/pub?output=csv</a></td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/1Am4XPHK9zyEuPV1h1je2TmsSHLitJJOLPcuhN6-v_hk" class="external-link uri">https://docs.google.com/spreadsheets/d/1Am4XPHK9zyEuPV1h1je2TmsSHLitJJOLPcuhN6-v_hk</a></td>
 </tr>
 <tr class="odd">
 <td align="left">lactate producing</td>
@@ -3796,7 +3796,7 @@ and required in rows 4, 28.</td>
 <td align="right">24</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
-<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vSDYef_4xX2-RVfxhz7XrHIglvHjB5a9bagpApN_zHNhnswhFXN7CRsaQr3pKW6bAyrh8b26tndxCFi/pub?output=csv" class="external-link uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vSDYef_4xX2-RVfxhz7XrHIglvHjB5a9bagpApN_zHNhnswhFXN7CRsaQr3pKW6bAyrh8b26tndxCFi/pub?output=csv</a></td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/1Am4XPHK9zyEuPV1h1je2TmsSHLitJJOLPcuhN6-v_hk" class="external-link uri">https://docs.google.com/spreadsheets/d/1Am4XPHK9zyEuPV1h1je2TmsSHLitJJOLPcuhN6-v_hk</a></td>
 </tr>
 <tr class="even">
 <td align="left">length</td>
@@ -3807,7 +3807,7 @@ and required in rows 4, 28.</td>
 <td align="right">840</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
-<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQkcQ7CJ0LjgE0928maxcVEiqq7QHl6vuosL7qdWaCMVuqHCDwsPJA7yNSeXm9FIip-mDRaU6pMk4Ww/pub?output=csv" class="external-link uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQkcQ7CJ0LjgE0928maxcVEiqq7QHl6vuosL7qdWaCMVuqHCDwsPJA7yNSeXm9FIip-mDRaU6pMk4Ww/pub?output=csv</a></td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/1gtD-kPb3XEQF0HAFcMMx3Deunj5GxVchPHXWHF-ZK9w" class="external-link uri">https://docs.google.com/spreadsheets/d/1gtD-kPb3XEQF0HAFcMMx3Deunj5GxVchPHXWHF-ZK9w</a></td>
 </tr>
 <tr class="odd">
 <td align="left">length</td>
@@ -3818,7 +3818,7 @@ and required in rows 4, 28.</td>
 <td align="right">196</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
-<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQkcQ7CJ0LjgE0928maxcVEiqq7QHl6vuosL7qdWaCMVuqHCDwsPJA7yNSeXm9FIip-mDRaU6pMk4Ww/pub?output=csv" class="external-link uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQkcQ7CJ0LjgE0928maxcVEiqq7QHl6vuosL7qdWaCMVuqHCDwsPJA7yNSeXm9FIip-mDRaU6pMk4Ww/pub?output=csv</a></td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/1gtD-kPb3XEQF0HAFcMMx3Deunj5GxVchPHXWHF-ZK9w" class="external-link uri">https://docs.google.com/spreadsheets/d/1gtD-kPb3XEQF0HAFcMMx3Deunj5GxVchPHXWHF-ZK9w</a></td>
 </tr>
 <tr class="even">
 <td align="left">length</td>
@@ -3831,7 +3831,7 @@ required in rows 32, 233, 324, 387, 423, 636, 679, 726, 753, 768.</td>
 <td align="right">NA</td>
 <td align="left">Parent_NCBI_ID</td>
 <td align="left">32, 233, 324, 387, 423, 636, 679, 726, 753, 768</td>
-<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQkcQ7CJ0LjgE0928maxcVEiqq7QHl6vuosL7qdWaCMVuqHCDwsPJA7yNSeXm9FIip-mDRaU6pMk4Ww/pub?output=csv" class="external-link uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQkcQ7CJ0LjgE0928maxcVEiqq7QHl6vuosL7qdWaCMVuqHCDwsPJA7yNSeXm9FIip-mDRaU6pMk4Ww/pub?output=csv</a></td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/1gtD-kPb3XEQF0HAFcMMx3Deunj5GxVchPHXWHF-ZK9w" class="external-link uri">https://docs.google.com/spreadsheets/d/1gtD-kPb3XEQF0HAFcMMx3Deunj5GxVchPHXWHF-ZK9w</a></td>
 </tr>
 <tr class="odd">
 <td align="left">mutation rate per site per generation</td>
@@ -3842,7 +3842,7 @@ required in rows 32, 233, 324, 387, 423, 636, 679, 726, 753, 768.</td>
 <td align="right">NA</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
-<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQxiU_sfIyCEcwua8vuCjbSCeZkUBsL1pnNxEK-985NAsCgy0sNbaSKuFMaU5ytPCQ86h9x2NEJsX-t/pub?output=csv" class="external-link uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQxiU_sfIyCEcwua8vuCjbSCeZkUBsL1pnNxEK-985NAsCgy0sNbaSKuFMaU5ytPCQ86h9x2NEJsX-t/pub?output=csv</a></td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/1YIlMJCwqtzU1v2hTrPOPbjhxjmj_t-ol6WvMLkkz1bs" class="external-link uri">https://docs.google.com/spreadsheets/d/1YIlMJCwqtzU1v2hTrPOPbjhxjmj_t-ol6WvMLkkz1bs</a></td>
 </tr>
 <tr class="even">
 <td align="left">mutation rate per site per generation</td>
@@ -3853,7 +3853,7 @@ required in rows 32, 233, 324, 387, 423, 636, 679, 726, 753, 768.</td>
 <td align="right">NA</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
-<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQxiU_sfIyCEcwua8vuCjbSCeZkUBsL1pnNxEK-985NAsCgy0sNbaSKuFMaU5ytPCQ86h9x2NEJsX-t/pub?output=csv" class="external-link uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQxiU_sfIyCEcwua8vuCjbSCeZkUBsL1pnNxEK-985NAsCgy0sNbaSKuFMaU5ytPCQ86h9x2NEJsX-t/pub?output=csv</a></td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/1YIlMJCwqtzU1v2hTrPOPbjhxjmj_t-ol6WvMLkkz1bs" class="external-link uri">https://docs.google.com/spreadsheets/d/1YIlMJCwqtzU1v2hTrPOPbjhxjmj_t-ol6WvMLkkz1bs</a></td>
 </tr>
 <tr class="odd">
 <td align="left">mutation rate per site per generation</td>
@@ -3864,7 +3864,7 @@ required in rows 32, 233, 324, 387, 423, 636, 679, 726, 753, 768.</td>
 <td align="right">25</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
-<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQxiU_sfIyCEcwua8vuCjbSCeZkUBsL1pnNxEK-985NAsCgy0sNbaSKuFMaU5ytPCQ86h9x2NEJsX-t/pub?output=csv" class="external-link uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQxiU_sfIyCEcwua8vuCjbSCeZkUBsL1pnNxEK-985NAsCgy0sNbaSKuFMaU5ytPCQ86h9x2NEJsX-t/pub?output=csv</a></td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/1YIlMJCwqtzU1v2hTrPOPbjhxjmj_t-ol6WvMLkkz1bs" class="external-link uri">https://docs.google.com/spreadsheets/d/1YIlMJCwqtzU1v2hTrPOPbjhxjmj_t-ol6WvMLkkz1bs</a></td>
 </tr>
 <tr class="even">
 <td align="left">mutation rate per site per generation</td>
@@ -3875,7 +3875,7 @@ required in rows 32, 233, 324, 387, 423, 636, 679, 726, 753, 768.</td>
 <td align="right">26</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
-<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQxiU_sfIyCEcwua8vuCjbSCeZkUBsL1pnNxEK-985NAsCgy0sNbaSKuFMaU5ytPCQ86h9x2NEJsX-t/pub?output=csv" class="external-link uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQxiU_sfIyCEcwua8vuCjbSCeZkUBsL1pnNxEK-985NAsCgy0sNbaSKuFMaU5ytPCQ86h9x2NEJsX-t/pub?output=csv</a></td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/1YIlMJCwqtzU1v2hTrPOPbjhxjmj_t-ol6WvMLkkz1bs" class="external-link uri">https://docs.google.com/spreadsheets/d/1YIlMJCwqtzU1v2hTrPOPbjhxjmj_t-ol6WvMLkkz1bs</a></td>
 </tr>
 <tr class="odd">
 <td align="left">mutation rates per site per year</td>
@@ -3886,7 +3886,7 @@ required in rows 32, 233, 324, 387, 423, 636, 679, 726, 753, 768.</td>
 <td align="right">NA</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
-<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQGJBifwNIYz6znmGAFgGtzaSNPhxU8qagDgl4BWLHKDcjs_gm11pEaLV7X01qdyeacmwYxalTrx0um/pub?output=csv" class="external-link uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQGJBifwNIYz6znmGAFgGtzaSNPhxU8qagDgl4BWLHKDcjs_gm11pEaLV7X01qdyeacmwYxalTrx0um/pub?output=csv</a></td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/1K9KUScp1VeEkeXjJmKft_Rdr4xqlyD9Cx7eQpijzWMQ" class="external-link uri">https://docs.google.com/spreadsheets/d/1K9KUScp1VeEkeXjJmKft_Rdr4xqlyD9Cx7eQpijzWMQ</a></td>
 </tr>
 <tr class="even">
 <td align="left">mutation rates per site per year</td>
@@ -3897,7 +3897,7 @@ required in rows 32, 233, 324, 387, 423, 636, 679, 726, 753, 768.</td>
 <td align="right">NA</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
-<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQGJBifwNIYz6znmGAFgGtzaSNPhxU8qagDgl4BWLHKDcjs_gm11pEaLV7X01qdyeacmwYxalTrx0um/pub?output=csv" class="external-link uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQGJBifwNIYz6znmGAFgGtzaSNPhxU8qagDgl4BWLHKDcjs_gm11pEaLV7X01qdyeacmwYxalTrx0um/pub?output=csv</a></td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/1K9KUScp1VeEkeXjJmKft_Rdr4xqlyD9Cx7eQpijzWMQ" class="external-link uri">https://docs.google.com/spreadsheets/d/1K9KUScp1VeEkeXjJmKft_Rdr4xqlyD9Cx7eQpijzWMQ</a></td>
 </tr>
 <tr class="odd">
 <td align="left">mutation rates per site per year</td>
@@ -3908,7 +3908,7 @@ required in rows 32, 233, 324, 387, 423, 636, 679, 726, 753, 768.</td>
 <td align="right">66</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
-<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQGJBifwNIYz6znmGAFgGtzaSNPhxU8qagDgl4BWLHKDcjs_gm11pEaLV7X01qdyeacmwYxalTrx0um/pub?output=csv" class="external-link uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQGJBifwNIYz6znmGAFgGtzaSNPhxU8qagDgl4BWLHKDcjs_gm11pEaLV7X01qdyeacmwYxalTrx0um/pub?output=csv</a></td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/1K9KUScp1VeEkeXjJmKft_Rdr4xqlyD9Cx7eQpijzWMQ" class="external-link uri">https://docs.google.com/spreadsheets/d/1K9KUScp1VeEkeXjJmKft_Rdr4xqlyD9Cx7eQpijzWMQ</a></td>
 </tr>
 <tr class="even">
 <td align="left">mutation rates per site per year</td>
@@ -3919,7 +3919,7 @@ required in rows 32, 233, 324, 387, 423, 636, 679, 726, 753, 768.</td>
 <td align="right">81</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
-<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQGJBifwNIYz6znmGAFgGtzaSNPhxU8qagDgl4BWLHKDcjs_gm11pEaLV7X01qdyeacmwYxalTrx0um/pub?output=csv" class="external-link uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQGJBifwNIYz6znmGAFgGtzaSNPhxU8qagDgl4BWLHKDcjs_gm11pEaLV7X01qdyeacmwYxalTrx0um/pub?output=csv</a></td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/1K9KUScp1VeEkeXjJmKft_Rdr4xqlyD9Cx7eQpijzWMQ" class="external-link uri">https://docs.google.com/spreadsheets/d/1K9KUScp1VeEkeXjJmKft_Rdr4xqlyD9Cx7eQpijzWMQ</a></td>
 </tr>
 <tr class="odd">
 <td align="left">mutation rates per site per year</td>
@@ -3930,7 +3930,7 @@ required in rows 32, 233, 324, 387, 423, 636, 679, 726, 753, 768.</td>
 <td align="right">1</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
-<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQGJBifwNIYz6znmGAFgGtzaSNPhxU8qagDgl4BWLHKDcjs_gm11pEaLV7X01qdyeacmwYxalTrx0um/pub?output=csv" class="external-link uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQGJBifwNIYz6znmGAFgGtzaSNPhxU8qagDgl4BWLHKDcjs_gm11pEaLV7X01qdyeacmwYxalTrx0um/pub?output=csv</a></td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/1K9KUScp1VeEkeXjJmKft_Rdr4xqlyD9Cx7eQpijzWMQ" class="external-link uri">https://docs.google.com/spreadsheets/d/1K9KUScp1VeEkeXjJmKft_Rdr4xqlyD9Cx7eQpijzWMQ</a></td>
 </tr>
 <tr class="even">
 <td align="left">optimal ph</td>
@@ -3941,7 +3941,7 @@ required in rows 32, 233, 324, 387, 423, 636, 679, 726, 753, 768.</td>
 <td align="right">NA</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
-<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQTIHjOUyJc7O6Y_w3QIj6wiZD2AA369oWByaS77XTP6VX2IhNgBULN4cccs4ZMD-dsLx9ggTBKOnlt/pub?output=csv" class="external-link uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQTIHjOUyJc7O6Y_w3QIj6wiZD2AA369oWByaS77XTP6VX2IhNgBULN4cccs4ZMD-dsLx9ggTBKOnlt/pub?output=csv</a></td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/1gDnJXdauXn16X-AJB9tK_hVrZVL1PmHTPP7gS8w7KOM" class="external-link uri">https://docs.google.com/spreadsheets/d/1gDnJXdauXn16X-AJB9tK_hVrZVL1PmHTPP7gS8w7KOM</a></td>
 </tr>
 <tr class="odd">
 <td align="left">optimal ph</td>
@@ -3952,7 +3952,7 @@ required in rows 32, 233, 324, 387, 423, 636, 679, 726, 753, 768.</td>
 <td align="right">NA</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
-<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQTIHjOUyJc7O6Y_w3QIj6wiZD2AA369oWByaS77XTP6VX2IhNgBULN4cccs4ZMD-dsLx9ggTBKOnlt/pub?output=csv" class="external-link uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQTIHjOUyJc7O6Y_w3QIj6wiZD2AA369oWByaS77XTP6VX2IhNgBULN4cccs4ZMD-dsLx9ggTBKOnlt/pub?output=csv</a></td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/1gDnJXdauXn16X-AJB9tK_hVrZVL1PmHTPP7gS8w7KOM" class="external-link uri">https://docs.google.com/spreadsheets/d/1gDnJXdauXn16X-AJB9tK_hVrZVL1PmHTPP7gS8w7KOM</a></td>
 </tr>
 <tr class="even">
 <td align="left">optimal ph</td>
@@ -3963,7 +3963,7 @@ required in rows 32, 233, 324, 387, 423, 636, 679, 726, 753, 768.</td>
 <td align="right">576</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
-<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQTIHjOUyJc7O6Y_w3QIj6wiZD2AA369oWByaS77XTP6VX2IhNgBULN4cccs4ZMD-dsLx9ggTBKOnlt/pub?output=csv" class="external-link uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQTIHjOUyJc7O6Y_w3QIj6wiZD2AA369oWByaS77XTP6VX2IhNgBULN4cccs4ZMD-dsLx9ggTBKOnlt/pub?output=csv</a></td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/1gDnJXdauXn16X-AJB9tK_hVrZVL1PmHTPP7gS8w7KOM" class="external-link uri">https://docs.google.com/spreadsheets/d/1gDnJXdauXn16X-AJB9tK_hVrZVL1PmHTPP7gS8w7KOM</a></td>
 </tr>
 <tr class="odd">
 <td align="left">optimal ph</td>
@@ -3974,7 +3974,7 @@ required in rows 32, 233, 324, 387, 423, 636, 679, 726, 753, 768.</td>
 <td align="right">886</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
-<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQTIHjOUyJc7O6Y_w3QIj6wiZD2AA369oWByaS77XTP6VX2IhNgBULN4cccs4ZMD-dsLx9ggTBKOnlt/pub?output=csv" class="external-link uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQTIHjOUyJc7O6Y_w3QIj6wiZD2AA369oWByaS77XTP6VX2IhNgBULN4cccs4ZMD-dsLx9ggTBKOnlt/pub?output=csv</a></td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/1gDnJXdauXn16X-AJB9tK_hVrZVL1PmHTPP7gS8w7KOM" class="external-link uri">https://docs.google.com/spreadsheets/d/1gDnJXdauXn16X-AJB9tK_hVrZVL1PmHTPP7gS8w7KOM</a></td>
 </tr>
 <tr class="even">
 <td align="left">optimal ph</td>
@@ -3985,7 +3985,7 @@ required in rows 32, 233, 324, 387, 423, 636, 679, 726, 753, 768.</td>
 <td align="right">3</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
-<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQTIHjOUyJc7O6Y_w3QIj6wiZD2AA369oWByaS77XTP6VX2IhNgBULN4cccs4ZMD-dsLx9ggTBKOnlt/pub?output=csv" class="external-link uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQTIHjOUyJc7O6Y_w3QIj6wiZD2AA369oWByaS77XTP6VX2IhNgBULN4cccs4ZMD-dsLx9ggTBKOnlt/pub?output=csv</a></td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/1gDnJXdauXn16X-AJB9tK_hVrZVL1PmHTPP7gS8w7KOM" class="external-link uri">https://docs.google.com/spreadsheets/d/1gDnJXdauXn16X-AJB9tK_hVrZVL1PmHTPP7gS8w7KOM</a></td>
 </tr>
 <tr class="odd">
 <td align="left">plant pathogenicity</td>
@@ -3996,7 +3996,7 @@ required in rows 32, 233, 324, 387, 423, 636, 679, 726, 753, 768.</td>
 <td align="right">NA</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
-<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vSLH__Hb4wPELYjnSsBR_FwJ4FHLUmx3KDO_pQG3CD9JqNyuugWbiBF9TBhXw9S5mSck2cbeY2ai77C/pub?output=csv" class="external-link uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vSLH__Hb4wPELYjnSsBR_FwJ4FHLUmx3KDO_pQG3CD9JqNyuugWbiBF9TBhXw9S5mSck2cbeY2ai77C/pub?output=csv</a></td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/1Kgt6cS9Fo94bC38iFdRUF9EJS9KeA5ysPfDKakI4jwM" class="external-link uri">https://docs.google.com/spreadsheets/d/1Kgt6cS9Fo94bC38iFdRUF9EJS9KeA5ysPfDKakI4jwM</a></td>
 </tr>
 <tr class="even">
 <td align="left">plant pathogenicity</td>
@@ -4007,7 +4007,7 @@ required in rows 32, 233, 324, 387, 423, 636, 679, 726, 753, 768.</td>
 <td align="right">NA</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
-<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vSLH__Hb4wPELYjnSsBR_FwJ4FHLUmx3KDO_pQG3CD9JqNyuugWbiBF9TBhXw9S5mSck2cbeY2ai77C/pub?output=csv" class="external-link uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vSLH__Hb4wPELYjnSsBR_FwJ4FHLUmx3KDO_pQG3CD9JqNyuugWbiBF9TBhXw9S5mSck2cbeY2ai77C/pub?output=csv</a></td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/1Kgt6cS9Fo94bC38iFdRUF9EJS9KeA5ysPfDKakI4jwM" class="external-link uri">https://docs.google.com/spreadsheets/d/1Kgt6cS9Fo94bC38iFdRUF9EJS9KeA5ysPfDKakI4jwM</a></td>
 </tr>
 <tr class="odd">
 <td align="left">plant pathogenicity</td>
@@ -4018,7 +4018,7 @@ required in rows 32, 233, 324, 387, 423, 636, 679, 726, 753, 768.</td>
 <td align="right">NA</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
-<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vSLH__Hb4wPELYjnSsBR_FwJ4FHLUmx3KDO_pQG3CD9JqNyuugWbiBF9TBhXw9S5mSck2cbeY2ai77C/pub?output=csv" class="external-link uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vSLH__Hb4wPELYjnSsBR_FwJ4FHLUmx3KDO_pQG3CD9JqNyuugWbiBF9TBhXw9S5mSck2cbeY2ai77C/pub?output=csv</a></td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/1Kgt6cS9Fo94bC38iFdRUF9EJS9KeA5ysPfDKakI4jwM" class="external-link uri">https://docs.google.com/spreadsheets/d/1Kgt6cS9Fo94bC38iFdRUF9EJS9KeA5ysPfDKakI4jwM</a></td>
 </tr>
 <tr class="even">
 <td align="left">plant pathogenicity</td>
@@ -4029,7 +4029,7 @@ required in rows 32, 233, 324, 387, 423, 636, 679, 726, 753, 768.</td>
 <td align="right">1493</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
-<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vSLH__Hb4wPELYjnSsBR_FwJ4FHLUmx3KDO_pQG3CD9JqNyuugWbiBF9TBhXw9S5mSck2cbeY2ai77C/pub?output=csv" class="external-link uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vSLH__Hb4wPELYjnSsBR_FwJ4FHLUmx3KDO_pQG3CD9JqNyuugWbiBF9TBhXw9S5mSck2cbeY2ai77C/pub?output=csv</a></td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/1Kgt6cS9Fo94bC38iFdRUF9EJS9KeA5ysPfDKakI4jwM" class="external-link uri">https://docs.google.com/spreadsheets/d/1Kgt6cS9Fo94bC38iFdRUF9EJS9KeA5ysPfDKakI4jwM</a></td>
 </tr>
 <tr class="odd">
 <td align="left">plant pathogenicity</td>
@@ -4040,7 +4040,7 @@ required in rows 32, 233, 324, 387, 423, 636, 679, 726, 753, 768.</td>
 <td align="right">2</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
-<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vSLH__Hb4wPELYjnSsBR_FwJ4FHLUmx3KDO_pQG3CD9JqNyuugWbiBF9TBhXw9S5mSck2cbeY2ai77C/pub?output=csv" class="external-link uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vSLH__Hb4wPELYjnSsBR_FwJ4FHLUmx3KDO_pQG3CD9JqNyuugWbiBF9TBhXw9S5mSck2cbeY2ai77C/pub?output=csv</a></td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/1Kgt6cS9Fo94bC38iFdRUF9EJS9KeA5ysPfDKakI4jwM" class="external-link uri">https://docs.google.com/spreadsheets/d/1Kgt6cS9Fo94bC38iFdRUF9EJS9KeA5ysPfDKakI4jwM</a></td>
 </tr>
 <tr class="even">
 <td align="left">shape</td>
@@ -4051,7 +4051,7 @@ required in rows 32, 233, 324, 387, 423, 636, 679, 726, 753, 768.</td>
 <td align="right">NA</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
-<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vSSBfC2jfuqioMyj891v-hYM-uL61-amoDNl0bufw5RwVOmjp5m2uNOKTeJsAsZVHFdujgjEAencl5E/pub?output=csv" class="external-link uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vSSBfC2jfuqioMyj891v-hYM-uL61-amoDNl0bufw5RwVOmjp5m2uNOKTeJsAsZVHFdujgjEAencl5E/pub?output=csv</a></td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/1OpjfL-EIosX9iUg8nRxv03qpAx8iKo0FpcK_ZQokr-k" class="external-link uri">https://docs.google.com/spreadsheets/d/1OpjfL-EIosX9iUg8nRxv03qpAx8iKo0FpcK_ZQokr-k</a></td>
 </tr>
 <tr class="odd">
 <td align="left">shape</td>
@@ -4062,7 +4062,7 @@ required in rows 32, 233, 324, 387, 423, 636, 679, 726, 753, 768.</td>
 <td align="right">NA</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
-<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vSSBfC2jfuqioMyj891v-hYM-uL61-amoDNl0bufw5RwVOmjp5m2uNOKTeJsAsZVHFdujgjEAencl5E/pub?output=csv" class="external-link uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vSSBfC2jfuqioMyj891v-hYM-uL61-amoDNl0bufw5RwVOmjp5m2uNOKTeJsAsZVHFdujgjEAencl5E/pub?output=csv</a></td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/1OpjfL-EIosX9iUg8nRxv03qpAx8iKo0FpcK_ZQokr-k" class="external-link uri">https://docs.google.com/spreadsheets/d/1OpjfL-EIosX9iUg8nRxv03qpAx8iKo0FpcK_ZQokr-k</a></td>
 </tr>
 <tr class="even">
 <td align="left">shape</td>
@@ -4073,7 +4073,7 @@ required in rows 32, 233, 324, 387, 423, 636, 679, 726, 753, 768.</td>
 <td align="right">482</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
-<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vSSBfC2jfuqioMyj891v-hYM-uL61-amoDNl0bufw5RwVOmjp5m2uNOKTeJsAsZVHFdujgjEAencl5E/pub?output=csv" class="external-link uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vSSBfC2jfuqioMyj891v-hYM-uL61-amoDNl0bufw5RwVOmjp5m2uNOKTeJsAsZVHFdujgjEAencl5E/pub?output=csv</a></td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/1OpjfL-EIosX9iUg8nRxv03qpAx8iKo0FpcK_ZQokr-k" class="external-link uri">https://docs.google.com/spreadsheets/d/1OpjfL-EIosX9iUg8nRxv03qpAx8iKo0FpcK_ZQokr-k</a></td>
 </tr>
 <tr class="odd">
 <td align="left">shape</td>
@@ -4084,7 +4084,7 @@ required in rows 32, 233, 324, 387, 423, 636, 679, 726, 753, 768.</td>
 <td align="right">1279</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
-<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vSSBfC2jfuqioMyj891v-hYM-uL61-amoDNl0bufw5RwVOmjp5m2uNOKTeJsAsZVHFdujgjEAencl5E/pub?output=csv" class="external-link uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vSSBfC2jfuqioMyj891v-hYM-uL61-amoDNl0bufw5RwVOmjp5m2uNOKTeJsAsZVHFdujgjEAencl5E/pub?output=csv</a></td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/1OpjfL-EIosX9iUg8nRxv03qpAx8iKo0FpcK_ZQokr-k" class="external-link uri">https://docs.google.com/spreadsheets/d/1OpjfL-EIosX9iUg8nRxv03qpAx8iKo0FpcK_ZQokr-k</a></td>
 </tr>
 <tr class="even">
 <td align="left">shape</td>
@@ -4095,7 +4095,7 @@ required in rows 32, 233, 324, 387, 423, 636, 679, 726, 753, 768.</td>
 <td align="right">18</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
-<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vSSBfC2jfuqioMyj891v-hYM-uL61-amoDNl0bufw5RwVOmjp5m2uNOKTeJsAsZVHFdujgjEAencl5E/pub?output=csv" class="external-link uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vSSBfC2jfuqioMyj891v-hYM-uL61-amoDNl0bufw5RwVOmjp5m2uNOKTeJsAsZVHFdujgjEAencl5E/pub?output=csv</a></td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/1OpjfL-EIosX9iUg8nRxv03qpAx8iKo0FpcK_ZQokr-k" class="external-link uri">https://docs.google.com/spreadsheets/d/1OpjfL-EIosX9iUg8nRxv03qpAx8iKo0FpcK_ZQokr-k</a></td>
 </tr>
 <tr class="odd">
 <td align="left">spore shape</td>
@@ -4106,7 +4106,7 @@ required in rows 32, 233, 324, 387, 423, 636, 679, 726, 753, 768.</td>
 <td align="right">1388</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
-<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQSMzIaqrE8gCV20sDu_8VBmu1WkpQ_vngaWzLCK2qe5E8IJL7-sOF8qEY0sHeUEavvLHpKVp-vmUxh/pub?output=csv" class="external-link uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQSMzIaqrE8gCV20sDu_8VBmu1WkpQ_vngaWzLCK2qe5E8IJL7-sOF8qEY0sHeUEavvLHpKVp-vmUxh/pub?output=csv</a></td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/1XPtnoqeSfJFwDC3QHsXuNrTSJpgIZgUpv4ZmSFtT38g" class="external-link uri">https://docs.google.com/spreadsheets/d/1XPtnoqeSfJFwDC3QHsXuNrTSJpgIZgUpv4ZmSFtT38g</a></td>
 </tr>
 <tr class="even">
 <td align="left">spore shape</td>
@@ -4117,7 +4117,7 @@ required in rows 32, 233, 324, 387, 423, 636, 679, 726, 753, 768.</td>
 <td align="right">2</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
-<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQSMzIaqrE8gCV20sDu_8VBmu1WkpQ_vngaWzLCK2qe5E8IJL7-sOF8qEY0sHeUEavvLHpKVp-vmUxh/pub?output=csv" class="external-link uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQSMzIaqrE8gCV20sDu_8VBmu1WkpQ_vngaWzLCK2qe5E8IJL7-sOF8qEY0sHeUEavvLHpKVp-vmUxh/pub?output=csv</a></td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/1XPtnoqeSfJFwDC3QHsXuNrTSJpgIZgUpv4ZmSFtT38g" class="external-link uri">https://docs.google.com/spreadsheets/d/1XPtnoqeSfJFwDC3QHsXuNrTSJpgIZgUpv4ZmSFtT38g</a></td>
 </tr>
 <tr class="odd">
 <td align="left">width</td>
@@ -4128,7 +4128,7 @@ required in rows 32, 233, 324, 387, 423, 636, 679, 726, 753, 768.</td>
 <td align="right">NA</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
-<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vR45vzAobXMOH1SCECpkBkIvxTsG5d8jAweSHaUst-gFKQcS0tTYUjivmLVByOLbFZgF59miCyF11TC/pub?output=csv" class="external-link uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vR45vzAobXMOH1SCECpkBkIvxTsG5d8jAweSHaUst-gFKQcS0tTYUjivmLVByOLbFZgF59miCyF11TC/pub?output=csv</a></td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/1Wc14Gp4nygdR6XNnZEJ5mZMJtCP6pniqa9GQOwzriNo" class="external-link uri">https://docs.google.com/spreadsheets/d/1Wc14Gp4nygdR6XNnZEJ5mZMJtCP6pniqa9GQOwzriNo</a></td>
 </tr>
 <tr class="even">
 <td align="left">width</td>
@@ -4139,7 +4139,7 @@ required in rows 32, 233, 324, 387, 423, 636, 679, 726, 753, 768.</td>
 <td align="right">NA</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
-<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vR45vzAobXMOH1SCECpkBkIvxTsG5d8jAweSHaUst-gFKQcS0tTYUjivmLVByOLbFZgF59miCyF11TC/pub?output=csv" class="external-link uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vR45vzAobXMOH1SCECpkBkIvxTsG5d8jAweSHaUst-gFKQcS0tTYUjivmLVByOLbFZgF59miCyF11TC/pub?output=csv</a></td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/1Wc14Gp4nygdR6XNnZEJ5mZMJtCP6pniqa9GQOwzriNo" class="external-link uri">https://docs.google.com/spreadsheets/d/1Wc14Gp4nygdR6XNnZEJ5mZMJtCP6pniqa9GQOwzriNo</a></td>
 </tr>
 <tr class="odd">
 <td align="left">width</td>
@@ -4150,7 +4150,7 @@ required in rows 32, 233, 324, 387, 423, 636, 679, 726, 753, 768.</td>
 <td align="right">833</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
-<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vR45vzAobXMOH1SCECpkBkIvxTsG5d8jAweSHaUst-gFKQcS0tTYUjivmLVByOLbFZgF59miCyF11TC/pub?output=csv" class="external-link uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vR45vzAobXMOH1SCECpkBkIvxTsG5d8jAweSHaUst-gFKQcS0tTYUjivmLVByOLbFZgF59miCyF11TC/pub?output=csv</a></td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/1Wc14Gp4nygdR6XNnZEJ5mZMJtCP6pniqa9GQOwzriNo" class="external-link uri">https://docs.google.com/spreadsheets/d/1Wc14Gp4nygdR6XNnZEJ5mZMJtCP6pniqa9GQOwzriNo</a></td>
 </tr>
 <tr class="even">
 <td align="left">width</td>
@@ -4161,7 +4161,7 @@ required in rows 32, 233, 324, 387, 423, 636, 679, 726, 753, 768.</td>
 <td align="right">1</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
-<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vR45vzAobXMOH1SCECpkBkIvxTsG5d8jAweSHaUst-gFKQcS0tTYUjivmLVByOLbFZgF59miCyF11TC/pub?output=csv" class="external-link uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vR45vzAobXMOH1SCECpkBkIvxTsG5d8jAweSHaUst-gFKQcS0tTYUjivmLVByOLbFZgF59miCyF11TC/pub?output=csv</a></td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/1Wc14Gp4nygdR6XNnZEJ5mZMJtCP6pniqa9GQOwzriNo" class="external-link uri">https://docs.google.com/spreadsheets/d/1Wc14Gp4nygdR6XNnZEJ5mZMJtCP6pniqa9GQOwzriNo</a></td>
 </tr>
 <tr class="odd">
 <td align="left">width</td>
@@ -4174,7 +4174,7 @@ in rows 32, 233, 324, 387, 423, 636, 679, 726, 753, 768.</td>
 <td align="right">NA</td>
 <td align="left">Parent_NCBI_ID</td>
 <td align="left">32, 233, 324, 387, 423, 636, 679, 726, 753, 768</td>
-<td align="left"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vR45vzAobXMOH1SCECpkBkIvxTsG5d8jAweSHaUst-gFKQcS0tTYUjivmLVByOLbFZgF59miCyF11TC/pub?output=csv" class="external-link uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vR45vzAobXMOH1SCECpkBkIvxTsG5d8jAweSHaUst-gFKQcS0tTYUjivmLVByOLbFZgF59miCyF11TC/pub?output=csv</a></td>
+<td align="left"><a href="https://docs.google.com/spreadsheets/d/1Wc14Gp4nygdR6XNnZEJ5mZMJtCP6pniqa9GQOwzriNo" class="external-link uri">https://docs.google.com/spreadsheets/d/1Wc14Gp4nygdR6XNnZEJ5mZMJtCP6pniqa9GQOwzriNo</a></td>
 </tr>
 </tbody>
 </table>

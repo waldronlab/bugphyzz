@@ -161,65 +161,65 @@ datasets:</p>
 <span class="va">phys</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/physiologies.html">physiologies</a></span><span class="op">(</span>keyword <span class="op">=</span> <span class="st">"all"</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/utils/str.html" class="external-link">str</a></span><span class="op">(</span><span class="va">phys</span>, max.level <span class="op">=</span> <span class="fl">1</span><span class="op">)</span>
 <span class="co">#&gt; List of 27</span>
+<span class="co">#&gt;  $ acetate producing                    :'data.frame':   24 obs. of  14 variables:</span>
+<span class="co">#&gt;  $ aerophilicity                        :'data.frame':   2557 obs. of  14 variables:</span>
 <span class="co">#&gt;  $ animal pathogen                      :'data.frame':   1420 obs. of  13 variables:</span>
 <span class="co">#&gt;  $ antimicrobial resistance             :'data.frame':   10321 obs. of  13 variables:</span>
 <span class="co">#&gt;  $ antimicrobial sensitivity            :'data.frame':   832 obs. of  13 variables:</span>
+<span class="co">#&gt;  $ arrangement                          :'data.frame':   1823 obs. of  13 variables:</span>
 <span class="co">#&gt;  $ biofilm forming                      :'data.frame':   426 obs. of  14 variables:</span>
 <span class="co">#&gt;  $ butyrate producing                   :'data.frame':   24 obs. of  14 variables:</span>
-<span class="co">#&gt;  $ acetate producing                    :'data.frame':   24 obs. of  14 variables:</span>
-<span class="co">#&gt;  $ lactate producing                    :'data.frame':   24 obs. of  14 variables:</span>
-<span class="co">#&gt;  $ arrangement                          :'data.frame':   1823 obs. of  13 variables:</span>
-<span class="co">#&gt;  $ shape                                :'data.frame':   3129 obs. of  14 variables:</span>
 <span class="co">#&gt;  $ COGEM pathogenicity rating           :'data.frame':   1043 obs. of  13 variables:</span>
-<span class="co">#&gt;  $ mutation rate per site per generation:'data.frame':   26 obs. of  14 variables:</span>
-<span class="co">#&gt;  $ mutation rates per site per year     :'data.frame':   81 obs. of  14 variables:</span>
+<span class="co">#&gt;  $ disease association                  :'data.frame':   445 obs. of  13 variables:</span>
 <span class="co">#&gt;  $ extreme environment                  :'data.frame':   1875 obs. of  13 variables:</span>
 <span class="co">#&gt;  $ gram stain                           :'data.frame':   4967 obs. of  13 variables:</span>
 <span class="co">#&gt;  $ growth medium                        :'data.frame':   304 obs. of  14 variables:</span>
 <span class="co">#&gt;  $ growth temperature                   :'data.frame':   2524 obs. of  13 variables:</span>
 <span class="co">#&gt;  $ habitat                              :'data.frame':   18230 obs. of  14 variables:</span>
-<span class="co">#&gt;  $ optimal ph                           :'data.frame':   886 obs. of  13 variables:</span>
-<span class="co">#&gt;  $ aerophilicity                        :'data.frame':   2557 obs. of  14 variables:</span>
-<span class="co">#&gt;  $ plant pathogenicity                  :'data.frame':   1493 obs. of  13 variables:</span>
-<span class="co">#&gt;  $ width                                :'data.frame':   863 obs. of  13 variables:</span>
-<span class="co">#&gt;  $ spore shape                          :'data.frame':   1535 obs. of  13 variables:</span>
-<span class="co">#&gt;  $ isolation site                       :'data.frame':   1176 obs. of  13 variables:</span>
-<span class="co">#&gt;  $ disease association                  :'data.frame':   445 obs. of  13 variables:</span>
+<span class="co">#&gt;  $ health associated                    :'data.frame':   30 obs. of  13 variables:</span>
 <span class="co">#&gt;  $ hydrogen gas producing               :'data.frame':   24 obs. of  15 variables:</span>
+<span class="co">#&gt;  $ isolation site                       :'data.frame':   1176 obs. of  13 variables:</span>
+<span class="co">#&gt;  $ lactate producing                    :'data.frame':   24 obs. of  14 variables:</span>
 <span class="co">#&gt;  $ length                               :'data.frame':   863 obs. of  13 variables:</span>
-<span class="co">#&gt;  $ health associated                    :'data.frame':   30 obs. of  13 variables:</span></code></pre></div>
+<span class="co">#&gt;  $ mutation rate per site per generation:'data.frame':   26 obs. of  14 variables:</span>
+<span class="co">#&gt;  $ mutation rates per site per year     :'data.frame':   81 obs. of  14 variables:</span>
+<span class="co">#&gt;  $ optimal ph                           :'data.frame':   886 obs. of  13 variables:</span>
+<span class="co">#&gt;  $ plant pathogenicity                  :'data.frame':   1493 obs. of  13 variables:</span>
+<span class="co">#&gt;  $ shape                                :'data.frame':   3129 obs. of  14 variables:</span>
+<span class="co">#&gt;  $ spore shape                          :'data.frame':   1535 obs. of  13 variables:</span>
+<span class="co">#&gt;  $ width                                :'data.frame':   863 obs. of  13 variables:</span></code></pre></div>
 <p>The <code>physiologiesList</code> function can be used to display
 which datasets are available through the <code>physiologies</code>
 function before importing them:</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/physiologiesList.html">physiologiesList</a></span><span class="op">(</span><span class="op">)</span>
-<span class="co">#&gt;  [1] "animal pathogen"                      </span>
-<span class="co">#&gt;  [2] "antimicrobial resistance"             </span>
-<span class="co">#&gt;  [3] "antimicrobial sensitivity"            </span>
-<span class="co">#&gt;  [4] "biofilm forming"                      </span>
-<span class="co">#&gt;  [5] "butyrate producing"                   </span>
-<span class="co">#&gt;  [6] "acetate producing"                    </span>
-<span class="co">#&gt;  [7] "lactate producing"                    </span>
-<span class="co">#&gt;  [8] "arrangement"                          </span>
-<span class="co">#&gt;  [9] "shape"                                </span>
-<span class="co">#&gt; [10] "COGEM pathogenicity rating"           </span>
-<span class="co">#&gt; [11] "mutation rate per site per generation"</span>
-<span class="co">#&gt; [12] "mutation rates per site per year"     </span>
-<span class="co">#&gt; [13] "extreme environment"                  </span>
-<span class="co">#&gt; [14] "gram stain"                           </span>
-<span class="co">#&gt; [15] "growth medium"                        </span>
-<span class="co">#&gt; [16] "growth temperature"                   </span>
-<span class="co">#&gt; [17] "habitat"                              </span>
-<span class="co">#&gt; [18] "optimal ph"                           </span>
-<span class="co">#&gt; [19] "aerophilicity"                        </span>
-<span class="co">#&gt; [20] "plant pathogenicity"                  </span>
-<span class="co">#&gt; [21] "width"                                </span>
-<span class="co">#&gt; [22] "spore shape"                          </span>
-<span class="co">#&gt; [23] "isolation site"                       </span>
-<span class="co">#&gt; [24] "disease association"                  </span>
-<span class="co">#&gt; [25] "hydrogen gas producing"               </span>
-<span class="co">#&gt; [26] "length"                               </span>
-<span class="co">#&gt; [27] "health associated"</span></code></pre></div>
+<span class="co">#&gt;  [1] "acetate producing"                    </span>
+<span class="co">#&gt;  [2] "aerophilicity"                        </span>
+<span class="co">#&gt;  [3] "animal pathogen"                      </span>
+<span class="co">#&gt;  [4] "antimicrobial resistance"             </span>
+<span class="co">#&gt;  [5] "antimicrobial sensitivity"            </span>
+<span class="co">#&gt;  [6] "arrangement"                          </span>
+<span class="co">#&gt;  [7] "biofilm forming"                      </span>
+<span class="co">#&gt;  [8] "butyrate producing"                   </span>
+<span class="co">#&gt;  [9] "COGEM pathogenicity rating"           </span>
+<span class="co">#&gt; [10] "disease association"                  </span>
+<span class="co">#&gt; [11] "extreme environment"                  </span>
+<span class="co">#&gt; [12] "gram stain"                           </span>
+<span class="co">#&gt; [13] "growth medium"                        </span>
+<span class="co">#&gt; [14] "growth temperature"                   </span>
+<span class="co">#&gt; [15] "habitat"                              </span>
+<span class="co">#&gt; [16] "health associated"                    </span>
+<span class="co">#&gt; [17] "hydrogen gas producing"               </span>
+<span class="co">#&gt; [18] "isolation site"                       </span>
+<span class="co">#&gt; [19] "lactate producing"                    </span>
+<span class="co">#&gt; [20] "length"                               </span>
+<span class="co">#&gt; [21] "mutation rate per site per generation"</span>
+<span class="co">#&gt; [22] "mutation rates per site per year"     </span>
+<span class="co">#&gt; [23] "optimal ph"                           </span>
+<span class="co">#&gt; [24] "plant pathogenicity"                  </span>
+<span class="co">#&gt; [25] "shape"                                </span>
+<span class="co">#&gt; [26] "spore shape"                          </span>
+<span class="co">#&gt; [27] "width"</span></code></pre></div>
 <p>A separate function is provided to import the fatty acid compositions
 dataset, <code>fattyAcidComposition</code>. This function takes no
 arguments and returns a single data.frame object:</p>
