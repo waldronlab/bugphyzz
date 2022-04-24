@@ -880,7 +880,7 @@ utils::globalVariables(c("."))
 #' \code{\link{.checkColumnValuesList}}
 #'
 .appendLinks <- function(x) {
-    select_cols <- c("physiology", "link")
+    select_cols <- c("physiology", "source_link")
     phys_links <- curationLinks() %>%
         dplyr::select(tidyselect::all_of(select_cols))
     custom_links <- customLinks() %>%

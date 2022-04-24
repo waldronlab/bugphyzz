@@ -51,7 +51,7 @@ fattyAcidComposition <- function(){
 customLinks <- function(keyword = "all"){
     fname <-
         system.file("extdata/customlinks.tsv", package = "bugphyzz")
-    links <- utils::read.table(fname, header = TRUE)
+    links <- utils::read.table(fname, sep = '\t', header = TRUE)
     ifelse(keyword[1] == "all", links, links <-
                       links[links$physiology %in% keyword,])
     links
