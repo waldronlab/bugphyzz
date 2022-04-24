@@ -136,7 +136,7 @@ Roughly, taxize behaves like https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwta
 while taxizedb behaves like https://www.ncbi.nlm.nih.gov/taxonomy/.
 
 
-```{r}
+```{r, message=FALSE, warning=FALSE}
 id_err <- lapply(phys, check_valid_ncbi_ids) %>% 
   purrr::discard(is.null) %>%
   bind_rows(.id = 'dataset')
