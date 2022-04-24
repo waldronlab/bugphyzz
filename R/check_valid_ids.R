@@ -24,6 +24,7 @@ check_valid_ncbi_ids <- function(dat) {
   ncbi_ids <- dat[['NCBI_ID']]
   ncbi_ids <- ncbi_ids[!is.na(ncbi_ids)]
   ncbi_ids <- unique(as.character(ncbi_ids))
+  ncbi_ids <- ncbi_ids[!ncbi_ids == 'unknown']
 
   ## I use the taxid2name just because it's faster. It could be
   ## another function of taxizedb
@@ -78,7 +79,4 @@ check_valid_ncbi_ids <- function(dat) {
       invalid_pos, comment, invalid_id, suggested_id,
       current_name, suggested_name
     )
-
-
-
 }
