@@ -110,65 +110,46 @@ err2 %>%
     knitr::kable()
 ```
 
+
 # Check valid NCBI IDs
 
-This function is not included in the package because it would add taxizedb
-as a dependency
+NCBI IDs are compared against the latest version of the NCBI ID database
+available through `taxizedb`.
 
-```{r}
-check_valid_NCBI_IDs <- function(dat) {
+If an NCBI ID is **outdated** (some IDs are no longer in use or are merged into
+another one), then a more recent NCBI ID and taxon name are suggested based on
+the result of `taxize::classification`. You should see "outdated" in the 
+comment column (below).
 
-  ncbi_ids <- dat[["NCBI_ID"]]
-  taxonomies <- taxizedb::classification(ncbi_ids, db = "ncbi")
-  invalid_positions_lgl <- !is.na(ncbi_ids) & is.na(taxonomies)
-  names(invalid_positions_lgl) <- NULL
-  invalid_positions <- which(invalid_positions_lgl)
+If no NCBI ID is suggested, it's likely because the taxid doesn't exist.
+You should see "not found" in the comment column (below).
 
-  if (!length(invalid_positions)) {
-    message("All NCBI IDs are valid.")
-    return(NULL)
-  }
+Note: taxize and taxizedb are not based on the same annotations. Both former
+and updated annotations can be accessed through taxize. However, this can take
+a long time since the client must make requests to the NCBI API. Having
+an NCBI API key can help (it's free once you created your NCBI account). On the
+other hand, working with the taxizedb functions is much faster. This is because
+the NCBI database is downloaded first to the user's machine. Only the most
+recent version of the database is downloaded, that's why only current 
+annotations are show. 
+Roughly, taxize behaves like https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi
+while taxizedb behaves like https://www.ncbi.nlm.nih.gov/taxonomy/.
 
-  invalid_values <- ncbi_ids[invalid_positions]
 
-  list(invalid_positions = invalid_positions, invalid_values = invalid_values)
+```{r, warning=FALSE}
+id_err <- lapply(phys, check_valid_ncbi_ids) %>% 
+  purrr::discard(is.null) %>%
+  bind_rows(.id = 'dataset')
 
-  bugphyzz:::.stop_custom("invalid_ncbi_ids", message = "Invalid NCBI IDs.",
-    invalid_positions = invalid_positions, invalid_values = invalid_values)
-}
+links_file <- system.file('extdata/source_links.tsv', package = 'bugphyzz')
+links <- readr::read_tsv(links_file, show_col_types = FALSE)
+
+id_err_tbl <- dplyr::left_join(id_err, links, by = c('dataset' = 'Attribute'))
+dim(id_err_tbl)
 ```
 
-
 ```{r}
-err_list <- lapply(phys, function(x) {
-    tryCatch(
-      invalid_ncbi_ids = function(e) e,
-      check_valid_NCBI_IDs(x)
-    )
-  }) %>%
-    discard(is.null)
-
-
-
+DT::datatable(id_err_tbl)
 ```
-
-
-
-```{r}
-map(err_list, ~{
-  tibble::tibble(
-    error_type = class(.x)[1],
-    invalid_pos = .x$invalid_positions,
-    invalid_val = as.character(.x$invalid_values)
-  )
-}) %>% bind_rows(.id = "dataset") %>% 
-  group_by(across(c(-invalid_val, -invalid_pos))) %>% 
-  summarise(across(starts_with("invalid"), ~list(.x))) %>% 
-  knitr::kable()
-```
-
-
-
-
 
 

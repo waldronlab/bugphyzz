@@ -12,8 +12,11 @@ Function replaces synonyms with standard title
 \examples{
 
 \dontrun{
-Example: temp <- bugphyzz:::.standardize(dat, "gram", words[[1]], colnames(words)[[1]])
-\\bword\\b
+
+temp <- bugphyzz:::.standardize(
+    dat, "gram", words[[1]], colnames(words)[[1]]
+)
+
 }
 
 }
