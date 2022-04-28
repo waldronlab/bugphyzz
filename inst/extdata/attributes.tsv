@@ -285,5 +285,5 @@
 "rabbit syphilis"	"logical"	NA	NA
 "whipple's disease"	"logical"	NA	NA
 "vibriosis"	"logical"	NA	NA
-"Genome size" "logical" "OMIT:0027643" NA
-"genes" "logical" "OMIT_0006994"  NA
+"Genome size" "numeric" "OMIT:0027643" NA
+"genes" "numeric" "OMIT_0006994"  NA
