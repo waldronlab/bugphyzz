@@ -25,3 +25,6 @@ You can install the development version of bugphyzz with:
 devtools::install_github("waldronlab/bugphyzz")
 ```
 
+## bugphyzzAnalyses
+
+Some analyses using data provided by this package can be found at https://waldronlab.io/bugphyzzAnalyses/
