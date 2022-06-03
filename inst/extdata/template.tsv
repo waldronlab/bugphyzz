@@ -1,6 +1,6 @@
 column_name	requiredness	required_column_order	valid_values	value_test	column_class
 NCBI_ID	required	1	^[0-9]+$	string	integer
-Genome_ID	required  2	^.+$	string	character|numeric|integer
+Genome_ID	required	2	^.+$	string	character|numeric|integer
 Accession_ID	required	3	^.+$	string	character|numeric|integer
 Taxon_name	required	4	^.+$	string	character
 Attribute	required	5	.attributes	function	character
