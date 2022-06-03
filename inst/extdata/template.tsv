@@ -1,12 +1,12 @@
 column_name	requiredness	required_column_order	valid_values	value_test	column_class
 NCBI_ID	required	1	^[0-9]+$	string	integer
-Genome_ID	required	2	^.+$	string	character|numeric|integer
+Genome_ID	required  2	^.+$	string	character|numeric|integer
 Accession_ID	required	3	^.+$	string	character|numeric|integer
 Taxon_name	required	4	^.+$	string	character
 Attribute	required	5	.attributes	function	character
 Attribute_value	required	6	^(TRUE|FALSE|[0-9]+(\\.|\\-)?([0-9]+)?)$	string	character|numeric|integer|logical
 Attribute_source	required	7	^.+$	string	character
-Evidence  required  8 ^(ASR|EXP)$ string  character
+Evidence  required  8 ^(EXP|IGCunknown) string  character
 Frequency required  9 ^(unknown|usually|always|sometimes)$  string  character
 Confidence_in_curation  required  10  ^(High|Medium|Low)$ string  character
 Note  optional	NA	^.+$	string	character
