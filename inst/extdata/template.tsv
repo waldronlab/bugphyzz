@@ -8,7 +8,6 @@ Attribute_value	required	6	^(TRUE|FALSE|[0-9]+(\\.|\\-)?([0-9]+)?)$	string	chara
 Attribute_source	required	7	^.+$	string	character
 Evidence	required	8	^(EXP|IGC|unknown)	string	character
 Frequency	required	9	^(unknown|usually|always|sometimes)$	string	character
-Confidence_in_curation	required	10	^(High|Medium|Low)$	string	character
 Note	optional	NA	^.+$	string	character
 Strain	optional	NA	^.+$	string	character
 Unit	optional	NA	^.+$	string	character
