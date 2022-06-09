@@ -8,6 +8,7 @@ library(magrittr)
 
 phys <- physiologies()
 phys[["fatty acid composition"]] <- fattyAcidComposition()
+phys <- discard(phys, ~ !"Evidence" %in% colnames(.x))
 
 
 # ranks and parents -------------------------------------------------------
