@@ -20,7 +20,9 @@ Bugphyzz is a collection of physiological features about bacteria. We are curati
 **Evidence codes**
 
 EXP: Experimental data, the attribute was obtained through labortory confirmations, and ideally more than once.
+
 IGC: Computational predicted through means of metagenomic analysis, or more broadly, genome analysis.
+
 ASR: Anstrestal State Reconstruction, was predicted using ASR computional techniques to predicted up and down the taxonmic tree of taxa that has a value.
 
 ## Installation
