@@ -16,6 +16,12 @@ Bugphyzz is a collection of physiological features about bacteria. We are curati
 * **attribute**: a possible value for a physiology, that should be mapped to an ontology wherever possible. These are defined in the `attribute` column of [inst/extdata/attributes.tsv](https://github.com/waldronlab/bugphyzz/blob/main/inst/extdata/attributes.tsv)
 * **attribute value**: a possible value for an attribute. Allowable values are defined by the `validity` column of [inst/extdata/attributes.tsv](https://github.com/waldronlab/bugphyzz/blob/main/inst/extdata/attributes.tsv). For categorical attributes (such as "obligately aerobic"), values can be "TRUE" and "FALSE", for example. For numeric attributes, these can be numeric values.
 
+## Documentation
+*Evidence codes*
+EXP: Experimental data, the attribute was obtained through labortory confirmations, and ideally more than once.
+IGC: Computational predicted through means of metagenomic analysis, or more broadly, genome analysis.
+ASR: Anstrestal State Reconstruction, was predicted using ASR computional techniques to predicted up and down the taxonmic tree of taxa that has a value.
+
 ## Installation
 
 You can install the development version of bugphyzz with:
