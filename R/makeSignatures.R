@@ -36,6 +36,15 @@ makeSignatures <- function(
   include_unknown_ci = TRUE, min_size = 5
 ) {
 
+  if (!is.data.frame(df)) {
+    invalid_class <- class(df)
+    msg <- paste0(
+      'Input should be a data frame imported from bugphyzz not an object of',
+      'class ', invalid_class, '.'
+    )
+    stop(msg, call. = FALSE)
+  }
+
   valid_ranks <- c(
     "superkingdom", "phylum", "class", "order", "family", "genus",
     "species", "strain"
