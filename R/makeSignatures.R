@@ -33,7 +33,7 @@
 makeSignatures <- function(
   df, tax_id_type = "NCBI_ID", tax_level = "mixed",
   evidence = c("EXP", "ASR", "Unknown"), ci = 0.8,
-  include_unknown_ci = FALSE, min_size = 5
+  include_unknown_ci = TRUE, min_size = 5
 ) {
 
   valid_ranks <- c(
@@ -65,7 +65,7 @@ makeSignatures <- function(
 
   filter_rows <- df$Rank %in% tax_level &
     df$Evidence %in% evidence &
-    df$Confidence_interval %in% filter_ci
+    df$Frequency %in% filter_ci
 
   select_cols <- c(tax_id_type, "Attribute")
 

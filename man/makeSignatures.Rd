@@ -10,7 +10,7 @@ makeSignatures(
   tax_level = "mixed",
   evidence = c("EXP", "ASR", "Unknown"),
   ci = 0.8,
-  include_unknown_ci = FALSE,
+  include_unknown_ci = TRUE,
   min_size = 5
 )
 }

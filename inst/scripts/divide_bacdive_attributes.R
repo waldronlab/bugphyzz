@@ -119,7 +119,7 @@ for (i in seq_along(bacdive_data_list)) {
 
 ## Save all files as csv files
 
-dirname <- '~/sandbox/'
+dirname <- '~/sandbox/' # Change this for real path.
 
 if (!dir.exists(dirname)) {
   stop(paste('There is no directory named as', dirname), call. = FALSE)
