@@ -39,8 +39,8 @@ makeSignatures <- function(
   if (!is.data.frame(df)) {
     invalid_class <- class(df)
     msg <- paste0(
-      'Input should be a data frame imported from bugphyzz not an object of',
-      'class ', invalid_class, '.'
+      'Input should be a data frame imported from bugphyzz, not an object of',
+      ' class ', invalid_class, '.'
     )
     stop(msg, call. = FALSE)
   }
