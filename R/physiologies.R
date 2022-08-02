@@ -6,6 +6,13 @@
 #' @return a large list of data.frames
 #' @importFrom utils read.table
 #' @importFrom utils read.csv
+#' @importFrom dplyr left_join
+#' @importFrom purrr modify_if
+#' @importFrom purrr modify_at
+#' @importFrom stringr str_squish
+#' @importFrom stringr str_to_lower
+#' @importFrom stringr str_to_upper
+#'
 #' @export
 #'
 #' @examples
@@ -13,7 +20,7 @@
 #' head(x[[1]])
 #'
 #' y <- physiologies(c("gram stain", "aerophilicity"))
-#' head(y[[1]])
+#' lapply(y, head)
 physiologies <- function(keyword = "all") {
 
   if (all(keyword != "all") & !all(keyword %in% physiologiesList())) {
@@ -22,27 +29,38 @@ physiologies <- function(keyword = "all") {
   }
 
   links <- curationLinks(keyword = keyword)[, c("physiology", "link")]
-
   database <- vector("list", nrow(links))
-
+  names(database) <- links[['physiology']]
   for (i in seq_along(database)) {
 
-    names(database)[i] <- links[i, "physiology"]
     database[[i]] <- utils::read.csv(links[i, "link"])
 
+    ## Drop missing values from the Attribute_value column
     nmissing <- sum(is.na(database[[i]]$Attribute_value))
-
     if (nmissing > 0) {
-      message("Dropped ", nmissing, " rows with missing Attribute_value from ", names(database)[[i]])
+      message(
+        "Dropped ", nmissing, " rows with missing Attribute_value from ",
+        names(database)[[i]]
+      )
     }else{
       message("Finished ", names(database)[[i]])
     }
-
     database[[i]] <- database[[i]][!is.na(database[[i]]$Attribute_value), ]
 
+    ## Add rank and parent information for taxa with NCBI_ID
     rp <- ranks_parents
     class(rp[["NCBI_ID"]]) <- class(database[[i]][["NCBI_ID"]])
     database[[i]] <- dplyr::left_join(database[[i]], rp, by = "NCBI_ID")
+
+    ## Some modifications for the curation of the datasets
+    database[[i]] <- database[[i]] |>
+      purrr::modify_if(.p = is.character, ~ stringr::str_squish(.x)) |>
+      purrr::modify_at(.at = c('Attribute', 'Frequency'),  ~ {
+        stringr::str_to_lower(.x)
+      }) |>
+      purrr::modify_at(.at = c('Evidence'), ~ {
+        stringr::str_to_upper(.x)
+      })
   }
   return(database)
 }
