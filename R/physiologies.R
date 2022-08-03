@@ -11,7 +11,6 @@
 #' @importFrom purrr modify_at
 #' @importFrom stringr str_squish
 #' @importFrom stringr str_to_lower
-#' @importFrom stringr str_to_upper
 #'
 #' @export
 #'
@@ -55,11 +54,8 @@ physiologies <- function(keyword = "all") {
     ## Some modifications for the curation of the datasets
     database[[i]] <- database[[i]] |>
       purrr::modify_if(.p = is.character, ~ stringr::str_squish(.x)) |>
-      purrr::modify_at(.at = c('Attribute', 'Frequency'),  ~ {
+      purrr::modify_at(.at = c('Attribute', 'Frequency', 'Evidence'),  ~ {
         stringr::str_to_lower(.x)
-      }) |>
-      purrr::modify_at(.at = c('Evidence'), ~ {
-        stringr::str_to_upper(.x)
       })
   }
   return(database)
