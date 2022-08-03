@@ -7,6 +7,7 @@
 #' @importFrom utils read.table
 #' @importFrom utils read.csv
 #' @importFrom dplyr left_join
+#' @importFrom dplyr distinct
 #' @importFrom purrr modify_if
 #' @importFrom purrr modify_at
 #' @importFrom stringr str_squish
@@ -32,7 +33,7 @@ physiologies <- function(keyword = "all") {
   names(database) <- links[['physiology']]
   for (i in seq_along(database)) {
 
-    database[[i]] <- utils::read.csv(links[i, "link"])
+    database[[i]] <- dplyr::distinct(utils::read.csv(links[i, "link"]))
 
     ## Drop missing values from the Attribute_value column
     nmissing <- sum(is.na(database[[i]]$Attribute_value))
