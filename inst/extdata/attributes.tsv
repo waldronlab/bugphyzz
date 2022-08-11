@@ -1,4 +1,4 @@
-"attribute"	"validity"	"ontology"	"desription"
+"attribute"	"validity"	"ontology"	"description"
 "aerobic"	"logical"	MICRO_0000494	"A prokaryotic metabolic quality where the organism grows in the presence of oxygen."
 "microaerophilic"	"logical"	MICRO_0000515	"A prokaryotic metabolic quality where the organism grows in the presence of oxygen, where the oxygen concentration is less than atmospheric levels."
 "obligately aerobic"	"logical"	MICRO_0000516	"A prokaryotic metabolic quality where the organism grows in the presence of oxygen. Is incapable of anaerobic growth (growth in the absence of oxygen)."
