@@ -57,7 +57,8 @@ physiologies <- function(keyword = "all") {
       purrr::modify_if(.p = is.character, ~ stringr::str_squish(.x)) |>
       purrr::modify_at(.at = c('Attribute', 'Frequency', 'Evidence'),  ~ {
         stringr::str_to_lower(.x)
-      })
+      }) |>
+      dplyr::distinct()
   }
   return(database)
 }
