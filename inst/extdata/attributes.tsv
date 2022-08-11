@@ -287,3 +287,81 @@
 "vibriosis"	"logical"	NA	NA
 "Genome size"	"numeric"	"OMIT:0027643"	NA
 "genes"	"numeric"	"OMIT_0006994"	NA
+"environmental system"	"logical"	"ENVO:01000254"	"A system which has the disposition to environ one or more material entities."
+"host-associated"	"logical"	NA	NA
+"food product"	"logical"	"FOODON:00001002"	"Food material for humans and animals which is processed with the intention that it be consumable as a whole or added to other food products."
+"plant matter"	"logical"	"ENVO:01001121"	"Organic material which is primarily composed of plant structures, living or dead."
+"blood"	"logical"	"UBERON:0000178"	"A fluid that is composed of blood plasma and erythrocytes."
+"hydrothermal vents"	"logical"	"OMIT:0027720"	NA
+"ocean"	"logical"	"ENVO:00000015"	"A marine water body which is constitutes the majority of an astronomical body's hydrosphere."
+"saline evaporation pond"	"logical"	"ENVO:00000055"	"A shallow man-made pond designed to produce salt from sea water. The seawater is fed into large ponds and water is drawn out through natural evaporation which allows the salt to be subsequently harvested."
+"phylloplane"	"logical"	NA	NA
+"respiratory system"	"logical"	"NCIT:C12779"	"The organs involved in the exchange of carbon dioxide and oxygen including the trachea, bronchi, and lung parenchyma."
+"insect endosymbiont"	"logical"	NA	NA
+"sediment"	"logical"	NA	NA
+"root"	"logical"	"PO:0009005"	"A plant axis (PO:0025004) that lacks shoot axis nodes (PO:0005004) and usually grows indeterminately."
+"nasopharyngeal cavity"	"logical"	"EHDAA2:0004555"	NA
+"plant symbiont"	"logical"	NA	NA
+"bioremediation"	"logical"	NA	NA
+"free-living"	"logical"	NA	NA
+"secondary"	"logical"	NA	NA
+"fish"	"logical"	"NCIT:C14207"	"A grouping of jawed and jawless vertebrate animals usually having fins and a covering of scales or plates, breathing by means of gills, and living almost entirely in the water."
+"feces"	"logical"	"FMA:64183"	"Excretion in semisolid state processed by the intestine."
+"large intestine"	"logical"	"NCIT:C12379"	"A muscular tube that extends from the end of the small intestine to the anus."
+"digestive system"	"logical"	"NCIT:C12378"	"The system that includes the esophagus, stomach, small and large intestine, anus, liver, biliary tract, and pancreas."
+"sputum"	"logical"	"NCIT:C13278"	"Material containing mucus, cellular debris, microorganisms and sometimes blood or pus. It is ejected through the mouth from the lungs, bronchi, and trachea."
+"vagina"	"logical"	"NCIT:C12407"	"The female genital canal, extending from the uterus to the vulva."
+"bovine"	"logical"	"FOODON:03414374"	"The biological subfamily *Bovinae* includes a diverse group of 10 genera of medium- to large-sized ungulates, including domestic cattle, the bison, African buffalo, the water buffalo, the yak, and the four-horned and spiral-horned antelopes. The evolutionary relationship between the members of the group is obscure, and their classification into loose tribes rather than formal subgroups reflects this uncertainty. General characteristics include cloven hoofs and usually at least one of the sexes o…"
+"insecta"	"logical"	"NCBITaxon:50557"	NA
+"food material"	"logical"	"FOODON:00002403"	"Any substance that can be consumed by an organism to satisfy nutritional or other health needs, or to provide a social or organoleptic food experience"
+"foregut"	"logical"	"UBERON:0001041"	"Anterior subdivision of a digestive tract."
+"lentic water body"	"logical"	"ENVO:01000617"	"A lentic water body is a water body in which the accumulated water, in its totality, has very little to no directed flow."
+"endosymbiont"	"logical"	NA	NA
+"mine"	"logical"	"ENVO:00000076"	"An excavation in the Earth for the purpose of extracting earth materials."
+"metal"	"logical"	"NCIT:C637"	"Electropositive chemical elements characterised by ductility, malleability, luster, and conductance of heat and electricity. They can replace the hydrogen of an acid and form bases with hydroxyl radicals."
+"gastrointestinal tract"	"logical"	"FMA:71132"	NA
+"mammal"	"logical"	"OMIT:0009396"	NA
+"dairy product"	"logical"	"NCIT:C413"	"Food made from the milk of some mammals, most commonly cows, goats and sheep."
+"skin"	"logical"	"NCIT:C12470"	"An organ that constitutes the external surface of the body. It consists of the epidermis, dermis, and skin appendages."
+"cerebral spinal fluid"	"logical"	"ZFA:0001626"	"Portion of organism substance that is a clear fluid that occupies the subarachnoid space and the ventricular system around and inside the brain."
+"lotic water body"	"logical"	"ENVO:01000618"	"A lotic water body is a water body in which the accumulated water, in its totality, is flowing."
+"animal"	"logical"	"NCIT:C14182"	"A living organism that has membranous cell walls, requires oxygen and organic foods, and is capable of voluntary movement, as distinguished from a plant or mineral."
+"intertidal zone"	"logical"	"ENVO:00000316"	"The area of the foreshore and seabed that is exposed to the air at low tide and submerged at high tide, i.e., the area between tide marks."
+"circulatory system"	"logical"	"SPD:0000611"	NA
+"wetland"	"logical"	"ENVO:00000043"	"An vegetated area which overlaps a wetland ecosystem."
+"reproductive system"	"logical"	"NCIT:C12841"	"The organs and tissues involved in the production and maturation of gametes and in their union and subsequent development as offspring."
+"bird"	"logical"	"IDOMAL:0000980"	"A vertebrate animal of the class Aves."
+"chemoorganotroph"	"logical"	"MICRO:0001504"	"A prokaryote capable of carrying out the role of chemoorganotrophy, where the oxidation and reduction of chemical compounds is the energy source, and the electron donor is an organic compound."
+"heterotroph"	"logical"	"MICRO:0001450"	"A prokaryote capable of carrying out the role of heterotrophy where the carbon or energy sources are organic compounds."
+"lithotroph"	"logical"	"MICRO:0001495"	"A prokaryote capable of carrying out the role of lithotrophy, where the oxidation and reduction of inorganic chemical compounds is the energy source."
+"methylotroph"	"logical"	NA	NA
+"photoautotroph"	"logical"	"ECOCORE:00000130"	"An autotroph which is capable of transforming light into chemical energy."
+"photosynthesis"	"logical"	"NCIT:C16986"	"The process through which light energy, water, and carbon dioxide are converted to carbohydrate and oxygen in the presence of chlorophyll. Occurs in plants, algae, cyanobacteria and lichens. (BioTech Life Science Dictionary)"
+"chemoautotroph"	"logical"	"ECOCORE:00000129"	"An autotroph which is capable of obtaining energy from the bonds in a chemical compound."
+"chemolithoautotroph"	"logical"	"MICRO:0001500"	"A prokaryote capable of carrying out the role of chemolithoautotrophy, where the oxidation and reduction of chemical compounds is the energy source, the electron donor is an inorganic compound, and the carbon source is carbon dioxide."
+"phototroph"	"logical"	"MICRO:0001452"	"A prokaryote capable of carrying out the role of phototrophy, where light is the energy source."
+"chemolithotroph"	"logical"	"MICRO:0001499"	"A prokaryote capable of carrying out the role of chemolithotrophy, where the oxidation and reduction of chemical compounds is the energy source, and the electron donor is an inorganic compound."
+"chemoheterotroph"	"logical"	"ECOCORE:00000132"	"A heterotroph which is capable of obtaining energy from the bonds in a chemical compound."
+"oligotroph"	"logical"	NA	NA
+"autotroph"	"logical"	"MICRO:0001446"	"A prokaryote capable of carrying out the role of autotrophy, where carbon dioxide is the source of carbon."
+"acidophile"	"logical"	"MICRO:0001390"	"Prokaryote specialized with respect to pH, which grows optimally at moderately acidic pH values (pH 4-6)."
+"alkaliphile"	"logical"	"MICRO:0001394"	"Prokaryote specialized with respect to pH, which grows optimally at moderately alkaline pH values (pH 8-10)."
+"cellulose degradation"	"logical"	"UPa:UPA00696"	"Degradation of cellulose."
+"hydrogen sulfide gas release"	"logical"	NA	NA
+"methanogen"	"logical"	"MICRO:0000166"	"Prokaryotic metabolically differentiated cell, specialized for the production of methane. Found only in the archaeal domain of life."
+"nitrogen production"	"logical"	NA	NA
+"pah degradation"	"logical"	NA	NA
+"sulfate-reducing"	"logical"	NA	NA
+"sulfur oxidation"	"logical"	"GO:0019417"	"The chemical reactions and pathways resulting the addition of oxygen to elemental sulfur."
+"sulfur respiration"	"logical"	"MICRO:0000312"	"The process of anaerobic respiration, where elemental sulfur reduced to hydrogen sulfide."
+"ammonia oxidation"	"logical"	"GO:0019329"	"The chemical reactions and pathways by which ammonia or ammonium is converted to molecular nitrogen or another nitrogen compound, with accompanying loss of electrons."
+"biomass degradation"	"logical"	NA	NA
+"iron-reducing"	"logical"	NA	NA
+"nitrogen fixation"	"logical"	"GO:0009399"	"The process in which nitrogen is taken from its relatively inert molecular form (N2) in the atmosphere and converted into nitrogen compounds useful for other chemical processes, such as ammonia, nitrate and nitrogen dioxide."
+"stores polyhydroxybutyrate"	"logical"	NA	NA
+"carbon dioxide fixation"	"logical"	"GO:0015977"	"A metabolic process in which carbon (usually derived from carbon dioxide) is incorporated into organic compounds (usually carbohydrates)."
+"iron oxidation"	"logical"	NA	NA
+"tail"	"logical"	NA	NA
+"staphylococcus"	"logical"	"MICRO:0000378"	"A multicellular relationship of prokaryotic cells where the shape of the cells is round (forming a coccus) and the cells are attached to one another end-to-end and side-to-side to form clumps or clusters."
+"pathogenic in mammals"	"logical"	NA	NA
+"pathogenic in fish"	"logical"	NA	NA
