@@ -19,14 +19,8 @@ Bugphyzz is a collection of physiological features about bacteria. We are curati
  **Physiology**: a microbial characteristic that can be measured or observed, that should be mapped to an ontology wherever possible. These are defined in [inst/extdata/links.tsv](https://github.com/waldronlab/bugphyzz/blob/main/inst/extdata/links.tsv).
 * **Attribute value**: a value describing a physiology. Allowable values are defined by the `validity` column of [inst/extdata/attributes.tsv](https://github.com/waldronlab/bugphyzz/blob/main/inst/extdata/attributes.tsv). For categorical attributes (such as "obligately aerobic"), values can be "TRUE" and "FALSE", for example. For numeric attributes, these can be numeric values.
 * **Attribute source**: a citeable domain which the annotation was obtained. A source can be another database or primary literature.
+* **Frequency**: Describes how often the attritbute (phenotype) occurs: Rarely, Sometimes, Usually, Always, or Unknown. If the source makes the attribute unclear how often it occurs, then an unknown is given.
 * **Evidence codes**: As the Gene Ontology defines different forms of evidence a source was obtained the annotation. 
-* **Note**: Any additional information that does not fit in any fixed column. The information here is variable.
-* **MIDAS ID**: Located in the Habitat attribute. Any annotation from the MIDAS database is assigned an ID number. We provided that ID here.
-* **Parent name**: The parent of descendant given in Taxon name column. Values can indudes names or NA.
-* **species name**: The species name, or descendant of parent, given in the Taxon name column. Values can indudes names or NA.
-* **Rank**: The taxonomic rank of the annotation. Values can indudes names or NA.
-* **Parent Rank**: The taxonmic rank of the parent of the annotation. Values can indudes names or NA.
-
 
 EXP: Experimental data, the attribute was obtained through labortory confirmations, and ideally more than once.
 
@@ -34,9 +28,12 @@ IGC: Computational predicted through means of metagenomic analysis, or more broa
 
 ASR: Anstrestal State Reconstruction, was predicted using ASR computional techniques to predicted up and down the taxonmic tree of taxa that has a value.
 
-* **Frequency**: Describes how often the attritbute (phenotype) occurs: Rarely, Sometimes, Usually, Always, or Unknown. If the source makes the attribute unclear how often it occurs, then an unknown is given.
-
-* **
+* **Note**: Any additional information that does not fit in any fixed column. The information here is variable.
+* **MIDAS ID**: Located in the Habitat attribute. Any annotation from the MIDAS database is assigned an ID number. We provided that ID here.
+* **Parent name**: The parent of descendant given in Taxon name column. Values can indudes names or NA.
+* **Species name**: The species name, or descendant of parent, given in the Taxon name column. Values can indudes names or NA.
+* **Rank**: The taxonomic rank of the annotation. Values can indudes names or NA.
+* **Parent Rank**: The taxonmic rank of the parent of the annotation. Values can indudes names or NA.
 
 ## Installation
 
