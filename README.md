@@ -32,6 +32,7 @@ ASR: Anstrestal State Reconstruction, was predicted using ASR computional techni
 * **MIDAS ID**: Located in the Habitat attribute. Any annotation from the MIDAS database is assigned an ID number. We provided that ID here.
 * **Parent name**: The parent of descendant given in Taxon name column. Values can indudes names or NA.
 * **Species name**: The species name, or descendant of parent, given in the Taxon name column. Values can indudes names or NA.
+* **Unit**: defines unit of attribute, like µm.
 * **Rank**: The taxonomic rank of the annotation. Values can indudes names or NA.
 * **Parent Rank**: The taxonmic rank of the parent of the annotation. Values can indudes names or NA.
 
