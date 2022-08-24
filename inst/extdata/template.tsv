@@ -6,7 +6,7 @@ Taxon_name	required	4	^.+$	string	character
 Attribute	required	5	.attributes	function	character
 Attribute_value	required	6	^(TRUE|FALSE|[0-9]+(\\.|\\-)?([0-9]+)?)$	string	character|numeric|integer|logical
 Attribute_source	required	7	^.+$	string	character
-Evidence	required	8	^(EXP|IGC|unknown)	string	character
+Evidence	required	8	^(EXP|IGC|ASR|unknown)	string	character
 Frequency	required	9	^(unknown|usually|always|sometimes)$	string	character
 Note	optional	NA	^.+$	string	character
 Strain	optional	NA	^.+$	string	character
