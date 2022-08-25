@@ -34,6 +34,7 @@ physiologies <- function(keyword = "all") {
   for (i in seq_along(database)) {
 
     database[[i]] <- dplyr::distinct(utils::read.csv(links[i, "link"]))
+    database[[i]] <- .reorderColumns(database[[i]], names(database)[i])
 
     ## Drop missing values from the Attribute_value column
     nmissing <- sum(is.na(database[[i]]$Attribute_value))
@@ -95,4 +96,33 @@ curationLinks <- function(keyword = "all"){
 #' x <- physiologiesList()
 physiologiesList <- function(){
   curationLinks()[["physiology"]]
+}
+
+## A function to reorder columns on import
+.reorderColumns <- function(df, name = NULL) {
+  col_names <- colnames(df)
+  req_cols <- .requiredColumns()
+
+  cols_lgl <- req_cols %in% col_names
+
+  if (!all(cols_lgl)) {
+
+    missing_cols <- paste0(req_cols[!cols_lgl], collapse = ', ')
+
+    if (!is.null(name)) {
+      msg <- paste0(
+        'Missing columns in ', name, '.', ' Missing columns are: ',
+        missing_cols
+      )
+    } else {
+      msg <- paste0(
+        'Missing columns.', ' Missing columns are: ', missing_cols
+      )
+    }
+      warning(msg, call. = FALSE)
+  }
+
+  cols <- req_cols[cols_lgl]
+  df |>
+    dplyr::relocate(dplyr::all_of(cols))
 }
