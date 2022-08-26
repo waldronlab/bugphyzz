@@ -1,12 +1,4 @@
 
-
-
-
-
-
-
-
-
 utils::globalVariables(c("."))
 ## Checks for required columns ---------------------------------------------
 
@@ -191,8 +183,15 @@ utils::globalVariables(c("."))
         ) %>%
         purrr::discard(is.null)
 
-    if (!length(err_list))
+    if (!length(err_list)) {
+      msg <- paste0(
+        'All required columns are present and in the right order in',
+        'this list of datasets.'
+      )
+      message(msg)
       return(invisible(NULL))
+    }
+
 
     if (table) {
         err_table <- err_list %>%

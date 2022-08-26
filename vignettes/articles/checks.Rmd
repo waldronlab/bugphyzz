@@ -42,15 +42,12 @@ column).
 3. 'columns' the name of the columns that must be corrected.  
 4. 'link' the link to the dataset.
 
-```{r}
-glimpse(err1)
-```
-
 Visualization of the errors:
 
 ```{r}
-err1 %>% 
-    knitr::kable()
+if (!is.null(err1)) {
+  DT::datatable(err1)
+}
 ```
 
 # Check the syntax of the values
