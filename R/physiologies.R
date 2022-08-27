@@ -59,6 +59,7 @@ physiologies <- function(keyword = "all") {
       purrr::modify_at(.at = c('Attribute', 'Frequency', 'Evidence'),  ~ {
         stringr::str_to_lower(.x)
       }) |>
+      .addConfidenceInCuration() |>
       dplyr::distinct()
   }
   return(database)
@@ -125,4 +126,14 @@ physiologiesList <- function(){
   cols <- req_cols[cols_lgl]
   df |>
     dplyr::relocate(dplyr::all_of(cols))
+}
+
+## Import confidece in curation
+.addConfidenceInCuration <- function(df) {
+  fpath <- 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTRiwYhaVaBhGkHQrjRMHJglc9cqxjA90GLsIxCQa91VwZQ65qRQn2wZgwpw3uAOBSMlwFgOPae8PYq/pub?gid=0&single=true&output=tsv'
+  fpath <- system.file(
+    'extdata/confidence_in_curation.tsv', package = 'bugphyzz'
+  )
+  cc <- readr::read_tsv(fpath, show_col_types = FALSE)
+  dplyr::left_join(df, cc, by = 'Attribute_source')
 }
