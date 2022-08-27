@@ -31,7 +31,8 @@ fattyAcidComposition <- function(){
                                       values_to = "Attribute_value")
     dplyr::left_join(fac_long, ranks_parents, by = "NCBI_ID") %>%
       as.data.frame() |>
-      .reorderColumns()
+      .reorderColumns() |>
+      .addConfidenceInCuration()
 }
 
 #' Custom links
