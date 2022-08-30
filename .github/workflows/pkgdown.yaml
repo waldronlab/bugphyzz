@@ -35,15 +35,11 @@ jobs:
         run: pkgdown::build_site_github_pages(new_process = FALSE, install = FALSE)
         shell: Rscript {0}
 
-      - name: Set up git 
-        run: |
-          git config --local user.email "actions@github.com"
-          git config --local user.name "Github Actions"
-        shell: bash {0}
-
       - name: Deploy to GitHub pages 🚀
         uses: JamesIves/github-pages-deploy-action@4.1.4
         with:
-          clean: false
           branch: gh-pages
+          clean: false
           folder: docs
+          git-config-email: "actions@github.com"
+          git-config-name: "Github Actions"
