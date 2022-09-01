@@ -6,49 +6,52 @@
 \usage{
 makeSignatures(
   df,
-  tax_id_type = "NCBI_ID",
-  tax_level = "mixed",
-  evidence = c("EXP", "ASR", "Unknown"),
-  ci = 0.8,
-  include_unknown_ci = TRUE,
-  min_size = 5
+  tax.id.type = "Taxon_name",
+  tax.level = "mixed",
+  Frequency = c("unknown", "sometimes", "usually", "always"),
+  Evidence = c("asr", "unknown", "igc", "asr"),
+  min.size = 1,
+  min = NULL,
+  max = NULL
 )
 }
 \arguments{
-\item{df}{A data.frame imported with bugphyzz.}
+\item{df}{A data frame from bugphyzz.}
 
-\item{tax_id_type}{Type of ID. Options: NCBI_ID, Taxon_name.}
+\item{tax.id.type}{Type of taxids. Check types with the \code{whichID} function.}
 
-\item{tax_level}{Taxonomy level. Options: superkingdom, kingom, phylum,
-class, order, family, genus, species, strain, mixed (all taxonomies).
-Default is mixed.}
+\item{tax.level}{A character vector with taxonomic ranks,
+e.g., genus, species, strain.}
 
-\item{evidence}{Type of evidence of the assigned attribute values to a
-given taxon. Options: EXP, experimental; ASR, ancestral state reconstruction.
-Default is both EXP and ASR.}
+\item{Frequency}{A character vector with one or more values of: unknown,
+sometimes, usually, always.}
 
-\item{ci}{A double indicating how likely is that a given
-organism has that attribute value. Threshold options: 1, always; 0.8,
-Usually; 0.5, sometimes; 0.3, Occasionally.
-Values below 0.3 are not allowed. Default is 0.8.}
+\item{Evidence}{A character vector with one or more values of: unknown,
+sometimes, usually, always.}
 
-\item{include_unknown_ci}{Include taxa whose attribute value confidence
-interval is unknown.}
-
-\item{min_size}{The minimal size of the returned microbial signatures.
+\item{min.size}{The minimun number of elements in a signatures.
 Default is 1.}
+
+\item{min}{Minimum threshold for attributes with continuous values. It's
+ignored when creating signatures for categorical attributes.}
+
+\item{max}{Maximum threshold for attributes with continuous values. It's
+ignored when creating signatures for categorical attributes.}
 }
 \value{
-A list of microbial signatures
+A list of signatures. NULL if no signatures.
 }
 \description{
-\code{makeSignatures} converts a bugphyzz dataset into a list of microbial
-signatures.
+\code{makeSignatures} creates a list of signatures from a bugphyzz
+data frame.
 }
 \examples{
 
-aer <- physiologies("aerophilicity")[[1]]
-aer_signatures <- makeSignatures(aer)
-lapply(aer, head)
+aer <- physiologies('aerophilicity')[[1]]
+aer_sig <- makeSignatures(aer)
+
+ph <- physiologies('optimal ph')[[1]]
+ph_sig <- makeSignatures(ph)
+
 
 }
