@@ -14,14 +14,17 @@ knitr::opts_chunk$set(
 )
 ```
 
-```{r setup}
+```{r setup, message=FALSE}
 library(bugphyzz)
+library(purrr)
+library(tibble)
 ```
 
 ## Introduction
 
 This document shows the main functions and operations that can be used
-to work with the bugphyzz datasets, such as seeing all physiologies, look at specific physiologies, and make signature sets using your own data!
+to work with the bugphyzz datasets, such as seeing all physiologies, 
+look at specific physiologies, and make signature sets.
 
 ## Installation
 
@@ -34,26 +37,25 @@ if (!requireNamespace("BiocManager", quietly = TRUE))
 BiocManager::install("waldronlab/bugphyzz")
 ```
 
-
 ## Importing datasets
 
 The main function for importing datasets is the `physiologies` function, which
 has a single argument, `keyword`, and returns a list of data.frames.
 The `keyword` argument accepts a character vector specifying the name(s) 
-of the dataset(s) that will be imported:
+of the dataset(s) that will be imported.
+
+A datset with categorical attribute values:
 
 ```{r, message=FALSE}
-## Import a single dataset
-aer <- physiologies("aerophilicity")[[1]]
-head(aer)
+aer <- as_tibble(physiologies("aerophilicity")[[1]])
+aer
 ```
 
-You can use the `keyword = "all"` to import all of the datasets:
+A dataset with numeric attribute values:
 
-```{r, message=FALSE}
-## Import all of the datasets available through the physiologies function
-phys <- physiologies(keyword = "all")
-str(phys, max.level = 1)
+```{r}
+ph <- as_tibble(physiologies('optimal ph')[[1]])
+ph
 ```
 
 The `physiologiesList` function can be used to display which datasets are
@@ -63,13 +65,20 @@ available through the `physiologies` function before importing them:
 physiologiesList()
 ```
 
+You can use the `keyword = "all"` to import all of the datasets:
+
+```{r, message=FALSE, eval=FALSE}
+## Import all of the datasets available through the physiologies function
+phys <- map(physiologies(keyword = "all"), as_tibble)
+```
+
 A separate function is provided to import the fatty acid compositions dataset,
 `fattyAcidComposition`. This function takes no arguments and returns a single
 data.frame object:
 
 ```{r}
-fac <- fattyAcidComposition()
-head(fac)
+fac <- as_tibble(fattyAcidComposition())
+fac
 ```
 
 ## Creating microbial signatures
@@ -77,48 +86,63 @@ head(fac)
 Bugphyzz provides the `makeSignatures` function to create a list of microbial
 signatures from a bugphyzz dataset.
 
+### Create signatures of an attribute with categorical/logical values:
+
+Create a list of signatures with the NCBI taxids of microbes at the
+taxonomic rank of genus. Only include microbes annotated based on
+experimental data with a high frequency value. The minimum number of
+microbes per signature is 10.
+
 ```{r}
 aer_sig <- makeSignatures(
-  aer, tax_id_type = "Taxon_name", tax_level = "genus", evidence = "EXP",
-  ci = 1, min_size = 10
+    aer, tax.id.type = 'NCBI_ID', tax.level = 'genus', 
+    Frequency = 'always', Evidence = 'exp', min.size = 10
 )
-lapply(aer_sig, head)
+map(aer_sig, ~ head(.x, 2))
 ```
 
-In some cases, some filtering might be necessary before creating the signatures.
-For example, let's create a signature of microbes that grow above 80°C.
-
-First, we must import the "growth temperature" dataset.
-
-```{r, message=FALSE}
-gt <- physiologies("growth temperature")[[1]]
-head(gt)
-```
-
-Now, we filter only those taxa that grow above 80°C with regular R functions:
+Number of microbes per signature:
 
 ```{r}
-gt_subset <- gt[gt$Attribute_value >= 80, ]
-hist(
-  x = gt_subset$Attribute_value, xlab = "Temperature (°C)", 
-  main = "Microbes that grow above 80 °C"
-)
+map_int(aer_sig, length)
 ```
 
-Finally, we can create the microbial signatures from the filtered dataset.
-In his case, a signature of species using only the taxids.
+### Create signatures of an atttribute with numerical values
+
+Create a signature list with species of acidiphilic microbes (ph <= 4):
 
 ```{r}
-gt_subset_sig <- makeSignatures(
-  gt_subset, tax_id_type = "NCBI_ID", tax_level = "species",
-  evidence = c("Unknown", "EXP", "ASR"), ci = 0.4, include_unknown_ci = TRUE
+acid_sig <- makeSignatures(
+    df = ph, tax.id.type = 'Taxon_name', tax.level = 'species',
+    max = 4
 )
-head(gt_subset_sig)
+map(acid_sig, ~ head(.x, 2))
 ```
 
-Session information:
+Number of microbes:
+
+```{r}
+map_int(acid_sig, length)
+```
+
+Create a signature list with species of alkaliphilic microbes (ph >= 8):
+
+```{r}
+basic_sig <- makeSignatures(
+    df = ph, tax.id.type = 'Taxon_name', tax.level = 'species', 
+    min = 8
+)
+map(basic_sig, ~ head(.x, 2))
+```
+
+Number of microbes:
+
+```{r}
+map_int(basic_sig, length)
+```
+
+## Session information:
 
 ```{r}
 sessionInfo()
 ```
-
