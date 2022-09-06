@@ -71,25 +71,34 @@ This function should be used within custom stop functions.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">.stop_custom</span><span class="op">(</span><span class="va">subclass</span>, <span class="va">message</span>, call <span class="op">=</span> <span class="cn">NULL</span>, <span class="va">...</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">.stop_custom</span><span class="op">(</span><span class="va">subclass</span>, <span class="va">message</span>, call <span class="op">=</span> <span class="cn">NULL</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>subclass</dt>
 <dd><p>A character string indicating the name of the custom error.</p></dd>
+
+
 <dt>message</dt>
 <dd><p>A character string with an informative message.</p></dd>
+
+
 <dt>call</dt>
 <dd><p>Include or not the function call that generates the error;
 e.g., <code>sys.call(-1)</code>.</p></dd>
+
+
 <dt>...</dt>
 <dd><p>Any other argument useful to identify the source of the error
 and/or how to fix it.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>Error condition. Object of class "error", "condition",
+    
+
+<p>Error condition. Object of class "error", "condition",
 and a custom error class name (subclass).</p>
     </div>
     <div id="see-also">
@@ -119,7 +128,7 @@ and a custom error class name (subclass).</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>

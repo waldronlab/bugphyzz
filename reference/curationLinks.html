@@ -63,7 +63,7 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">curationLinks</span><span class="op">(</span>keyword <span class="op">=</span> <span class="st">"all"</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">curationLinks</span><span class="op">(</span>keyword <span class="op">=</span> <span class="st">"all"</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -71,15 +71,18 @@
     <dl><dt>keyword</dt>
 <dd><p>a character vector of physiologies desired. For the available
 physiologies, run bugphyzz::physiologiesList(). Use "all" for all available physiologies.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>a data.frame with physiology names and URLs</p>
+    
+
+<p>a data.frame with physiology names and URLs</p>
     </div>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="fu">bugphyzz</span><span class="fu">:::</span><span class="fu">curationLinks</span><span class="op">(</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">bugphyzz</span><span class="fu">:::</span><span class="fu">curationLinks</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                               physiology      ontology</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1                      acetate producing          &lt;NA&gt;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 2                          aerophilicity MICRO_0000491</span>
@@ -108,34 +111,40 @@ physiologies, run bugphyzz::physiologiesList(). Use "all" for all available phys
 <span class="r-out co"><span class="r-pr">#&gt;</span> 25                                 shape          &lt;NA&gt;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 26                           spore shape   OMP_0008000</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 27                                 width          &lt;NA&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                                                                                                                                                                link</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1  https://docs.google.com/spreadsheets/d/e/2PACX-1vQb6gDQdhCMWHLQdkzMM4bgTPPosYCZvjzJu4NyOYaSBGOCaOPoQh0OiUr4btnJ8EAWn7NiF-T9JaCE/pub?gid=0&amp;single=true&amp;output=csv</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2                    https://docs.google.com/spreadsheets/d/e/2PACX-1vQDC8VfkkOfN6MKGxrzMEoJjfgYIfpsJO-SxVr3pkUUChBNkMQ3YKaxSvDSSjjrPRf51nU3wbk-WWJp/pub?output=csv</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3                    https://docs.google.com/spreadsheets/d/e/2PACX-1vT9s4PFd7NHr-1GMNyPexZ1KuNyj2u7ErC1Vq3-wAfroNNCG-Tu-y8gn3qKQ4C-URg1SIjOm9bGE4wQ/pub?output=csv</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4                    https://docs.google.com/spreadsheets/d/e/2PACX-1vRWI3s8H0Izcs-PEo4W7Q0QAegNHq7IdSKCHSL0nZlrptTZ4dIusG0m1AMEUYv1_4GN3QX9rADAja_0/pub?output=csv</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5                    https://docs.google.com/spreadsheets/d/e/2PACX-1vR0FdQpAD-xhkyIXgZMtC9oCmlbx77Cj1ncCyojm9oO410NBwJRhBNFl4hnd4HMlj2okxEKLvA8EPr2/pub?output=csv</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6                    https://docs.google.com/spreadsheets/d/e/2PACX-1vSgNXC-VPLmG8dUN8VAun_pbT0Y4-qJo6u9ozHGO8j7Weq6ymPaPw9kJUPl-RpHSYvtUgACo-SVHyk5/pub?output=csv</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 7                    https://docs.google.com/spreadsheets/d/e/2PACX-1vRduthxAWAhSLSoOgFNAmI8DX8ORerG1U6OmI8y6-5coe31pONYfISNsUE-e-E_eiyxtQzin6Xq9b0m/pub?output=csv</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 8                    https://docs.google.com/spreadsheets/d/e/2PACX-1vQPnLOpbFbfLvOb8fvC6A-WfzVNMDYRWOUsT4hIseDNgI7nwZGjVwg3KBkWeFtOBBLK0j-DRiZ-jtqG/pub?output=csv</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 9                    https://docs.google.com/spreadsheets/d/e/2PACX-1vQYZjtf0RcacNAe54pLOnzor2q0ZeK4cF19f-gjji7cHfrtOf3VuDPA-jSAKRNDNZoWQanyw2QCugRZ/pub?output=csv</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 10                   https://docs.google.com/spreadsheets/d/e/2PACX-1vTboJM7necIfjgRgyYJ4LJWkCv_1y7O00yvyiSGzFdSfJDkeLqWrQ8FpcsYKFSOrQw75wCRst6KA0_a/pub?output=csv</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 11                   https://docs.google.com/spreadsheets/d/e/2PACX-1vSh82md-R7XuM6PMs4UY6DYCY99wgwMcY6PD-m-VoxbJJl_Ce9JWhKtTEdFLEMmzrUxDyrQtfLBCbKj/pub?output=csv</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 12                   https://docs.google.com/spreadsheets/d/e/2PACX-1vRxQOO7O7oJDJrFbY3s1Y_rbouUSR3rM_a3kGlXgcVMys5pFLqmd00VjJh1adJBmh3xA3aM8r3Am2oC/pub?output=csv</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 13                   https://docs.google.com/spreadsheets/d/e/2PACX-1vTLNLWfdNxo7NGNuJ4Pq6nji-7jQhO1glTHh1cQVS3j147WxbwhbWqhyI3FJR0I578o1hzeGbHwMOmY/pub?output=csv</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 14                   https://docs.google.com/spreadsheets/d/e/2PACX-1vTWXUnR0_jkpZEE06C0GAypTGjOa2RnOPiLSmPiwAnaf2qS33hd-6GKG95CYDgKeSk6t4BFVjIAB_sh/pub?output=csv</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 15                   https://docs.google.com/spreadsheets/d/e/2PACX-1vQrR6R5nhANAU-CweaEp_X9P13eXiyq2A16_hOOREDYZuOqFS_4jAnI4JjihFmy3jAWtUW2V-4kZYPN/pub?output=csv</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 16                   https://docs.google.com/spreadsheets/d/e/2PACX-1vQm5WlnrHECspbrKkrXpo7nAYD4YEllr2GYoc1rcxuchbXk26H2y_Foyx9kXefVFRU239982aCCb0Xv/pub?output=csv</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 17                   https://docs.google.com/spreadsheets/d/e/2PACX-1vSpucXiYrMe_iYvnZDuNSNkRVnEWRQhykCCXoIvtmTiKAVUdkVnRYvl17nbwGqZDg2xVDwaUXccGYsF/pub?output=csv</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 18                   https://docs.google.com/spreadsheets/d/e/2PACX-1vR5qKaSI_iXovASXA2U8figFKFBRNOuuFcnr-wSedtGuxAu2m8IjHp1uD23NGTWK9NmnKcO0m7FfkIx/pub?output=csv</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 19                   https://docs.google.com/spreadsheets/d/e/2PACX-1vSDYef_4xX2-RVfxhz7XrHIglvHjB5a9bagpApN_zHNhnswhFXN7CRsaQr3pKW6bAyrh8b26tndxCFi/pub?output=csv</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 20                   https://docs.google.com/spreadsheets/d/e/2PACX-1vQkcQ7CJ0LjgE0928maxcVEiqq7QHl6vuosL7qdWaCMVuqHCDwsPJA7yNSeXm9FIip-mDRaU6pMk4Ww/pub?output=csv</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 21                   https://docs.google.com/spreadsheets/d/e/2PACX-1vQxiU_sfIyCEcwua8vuCjbSCeZkUBsL1pnNxEK-985NAsCgy0sNbaSKuFMaU5ytPCQ86h9x2NEJsX-t/pub?output=csv</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 22                   https://docs.google.com/spreadsheets/d/e/2PACX-1vQGJBifwNIYz6znmGAFgGtzaSNPhxU8qagDgl4BWLHKDcjs_gm11pEaLV7X01qdyeacmwYxalTrx0um/pub?output=csv</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 23                   https://docs.google.com/spreadsheets/d/e/2PACX-1vQTIHjOUyJc7O6Y_w3QIj6wiZD2AA369oWByaS77XTP6VX2IhNgBULN4cccs4ZMD-dsLx9ggTBKOnlt/pub?output=csv</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 24                   https://docs.google.com/spreadsheets/d/e/2PACX-1vSLH__Hb4wPELYjnSsBR_FwJ4FHLUmx3KDO_pQG3CD9JqNyuugWbiBF9TBhXw9S5mSck2cbeY2ai77C/pub?output=csv</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 25                   https://docs.google.com/spreadsheets/d/e/2PACX-1vSSBfC2jfuqioMyj891v-hYM-uL61-amoDNl0bufw5RwVOmjp5m2uNOKTeJsAsZVHFdujgjEAencl5E/pub?output=csv</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 26                   https://docs.google.com/spreadsheets/d/e/2PACX-1vQSMzIaqrE8gCV20sDu_8VBmu1WkpQ_vngaWzLCK2qe5E8IJL7-sOF8qEY0sHeUEavvLHpKVp-vmUxh/pub?output=csv</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 27                   https://docs.google.com/spreadsheets/d/e/2PACX-1vR45vzAobXMOH1SCECpkBkIvxTsG5d8jAweSHaUst-gFKQcS0tTYUjivmLVByOLbFZgF59miCyF11TC/pub?output=csv</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 28                           genome size          &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 29                          coding genes          &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 30                sphingolipid producing          &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                                                                                                                                                                        link</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1          https://docs.google.com/spreadsheets/d/e/2PACX-1vQb6gDQdhCMWHLQdkzMM4bgTPPosYCZvjzJu4NyOYaSBGOCaOPoQh0OiUr4btnJ8EAWn7NiF-T9JaCE/pub?gid=0&amp;single=true&amp;output=csv</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2                            https://docs.google.com/spreadsheets/d/e/2PACX-1vQDC8VfkkOfN6MKGxrzMEoJjfgYIfpsJO-SxVr3pkUUChBNkMQ3YKaxSvDSSjjrPRf51nU3wbk-WWJp/pub?output=csv</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3                            https://docs.google.com/spreadsheets/d/e/2PACX-1vT9s4PFd7NHr-1GMNyPexZ1KuNyj2u7ErC1Vq3-wAfroNNCG-Tu-y8gn3qKQ4C-URg1SIjOm9bGE4wQ/pub?output=csv</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4                            https://docs.google.com/spreadsheets/d/e/2PACX-1vRWI3s8H0Izcs-PEo4W7Q0QAegNHq7IdSKCHSL0nZlrptTZ4dIusG0m1AMEUYv1_4GN3QX9rADAja_0/pub?output=csv</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5                            https://docs.google.com/spreadsheets/d/e/2PACX-1vR0FdQpAD-xhkyIXgZMtC9oCmlbx77Cj1ncCyojm9oO410NBwJRhBNFl4hnd4HMlj2okxEKLvA8EPr2/pub?output=csv</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6                            https://docs.google.com/spreadsheets/d/e/2PACX-1vSgNXC-VPLmG8dUN8VAun_pbT0Y4-qJo6u9ozHGO8j7Weq6ymPaPw9kJUPl-RpHSYvtUgACo-SVHyk5/pub?output=csv</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 7                            https://docs.google.com/spreadsheets/d/e/2PACX-1vRduthxAWAhSLSoOgFNAmI8DX8ORerG1U6OmI8y6-5coe31pONYfISNsUE-e-E_eiyxtQzin6Xq9b0m/pub?output=csv</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 8                            https://docs.google.com/spreadsheets/d/e/2PACX-1vQPnLOpbFbfLvOb8fvC6A-WfzVNMDYRWOUsT4hIseDNgI7nwZGjVwg3KBkWeFtOBBLK0j-DRiZ-jtqG/pub?output=csv</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 9                            https://docs.google.com/spreadsheets/d/e/2PACX-1vQYZjtf0RcacNAe54pLOnzor2q0ZeK4cF19f-gjji7cHfrtOf3VuDPA-jSAKRNDNZoWQanyw2QCugRZ/pub?output=csv</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 10                           https://docs.google.com/spreadsheets/d/e/2PACX-1vTboJM7necIfjgRgyYJ4LJWkCv_1y7O00yvyiSGzFdSfJDkeLqWrQ8FpcsYKFSOrQw75wCRst6KA0_a/pub?output=csv</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 11                           https://docs.google.com/spreadsheets/d/e/2PACX-1vSh82md-R7XuM6PMs4UY6DYCY99wgwMcY6PD-m-VoxbJJl_Ce9JWhKtTEdFLEMmzrUxDyrQtfLBCbKj/pub?output=csv</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 12                           https://docs.google.com/spreadsheets/d/e/2PACX-1vRxQOO7O7oJDJrFbY3s1Y_rbouUSR3rM_a3kGlXgcVMys5pFLqmd00VjJh1adJBmh3xA3aM8r3Am2oC/pub?output=csv</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 13                           https://docs.google.com/spreadsheets/d/e/2PACX-1vTLNLWfdNxo7NGNuJ4Pq6nji-7jQhO1glTHh1cQVS3j147WxbwhbWqhyI3FJR0I578o1hzeGbHwMOmY/pub?output=csv</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 14                           https://docs.google.com/spreadsheets/d/e/2PACX-1vTWXUnR0_jkpZEE06C0GAypTGjOa2RnOPiLSmPiwAnaf2qS33hd-6GKG95CYDgKeSk6t4BFVjIAB_sh/pub?output=csv</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 15 https://docs.google.com/spreadsheets/d/e/2PACX-1vR8OyVqeLab0rFj_vbapA_t8T_w3ZAAzqlsvG0TSrSEoK1Tm9lNbP1cYoMhXWQqOXJRNAdwUXamKbUQ/pub?gid=888586110&amp;single=true&amp;output=csv</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 16                           https://docs.google.com/spreadsheets/d/e/2PACX-1vQm5WlnrHECspbrKkrXpo7nAYD4YEllr2GYoc1rcxuchbXk26H2y_Foyx9kXefVFRU239982aCCb0Xv/pub?output=csv</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 17                           https://docs.google.com/spreadsheets/d/e/2PACX-1vSpucXiYrMe_iYvnZDuNSNkRVnEWRQhykCCXoIvtmTiKAVUdkVnRYvl17nbwGqZDg2xVDwaUXccGYsF/pub?output=csv</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 18                           https://docs.google.com/spreadsheets/d/e/2PACX-1vR5qKaSI_iXovASXA2U8figFKFBRNOuuFcnr-wSedtGuxAu2m8IjHp1uD23NGTWK9NmnKcO0m7FfkIx/pub?output=csv</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 19                           https://docs.google.com/spreadsheets/d/e/2PACX-1vSDYef_4xX2-RVfxhz7XrHIglvHjB5a9bagpApN_zHNhnswhFXN7CRsaQr3pKW6bAyrh8b26tndxCFi/pub?output=csv</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 20                           https://docs.google.com/spreadsheets/d/e/2PACX-1vQkcQ7CJ0LjgE0928maxcVEiqq7QHl6vuosL7qdWaCMVuqHCDwsPJA7yNSeXm9FIip-mDRaU6pMk4Ww/pub?output=csv</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 21                           https://docs.google.com/spreadsheets/d/e/2PACX-1vQxiU_sfIyCEcwua8vuCjbSCeZkUBsL1pnNxEK-985NAsCgy0sNbaSKuFMaU5ytPCQ86h9x2NEJsX-t/pub?output=csv</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 22                           https://docs.google.com/spreadsheets/d/e/2PACX-1vQGJBifwNIYz6znmGAFgGtzaSNPhxU8qagDgl4BWLHKDcjs_gm11pEaLV7X01qdyeacmwYxalTrx0um/pub?output=csv</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 23                           https://docs.google.com/spreadsheets/d/e/2PACX-1vQTIHjOUyJc7O6Y_w3QIj6wiZD2AA369oWByaS77XTP6VX2IhNgBULN4cccs4ZMD-dsLx9ggTBKOnlt/pub?output=csv</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 24                           https://docs.google.com/spreadsheets/d/e/2PACX-1vSLH__Hb4wPELYjnSsBR_FwJ4FHLUmx3KDO_pQG3CD9JqNyuugWbiBF9TBhXw9S5mSck2cbeY2ai77C/pub?output=csv</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 25                           https://docs.google.com/spreadsheets/d/e/2PACX-1vSSBfC2jfuqioMyj891v-hYM-uL61-amoDNl0bufw5RwVOmjp5m2uNOKTeJsAsZVHFdujgjEAencl5E/pub?output=csv</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 26                           https://docs.google.com/spreadsheets/d/e/2PACX-1vQSMzIaqrE8gCV20sDu_8VBmu1WkpQ_vngaWzLCK2qe5E8IJL7-sOF8qEY0sHeUEavvLHpKVp-vmUxh/pub?output=csv</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 27                           https://docs.google.com/spreadsheets/d/e/2PACX-1vR45vzAobXMOH1SCECpkBkIvxTsG5d8jAweSHaUst-gFKQcS0tTYUjivmLVByOLbFZgF59miCyF11TC/pub?output=csv</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 28                           https://docs.google.com/spreadsheets/d/e/2PACX-1vT3FGe5zB0y6l3x1s0Xlc41xHVdlCg2ddllxOrHcYabYmDtemwBCYa5ar86UCZaGJRdQomYihwN1niX/pub?output=csv</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 29                           https://docs.google.com/spreadsheets/d/e/2PACX-1vTnz-m2zfMkOiPOEjZgq6Q04TNP44qsC1DUYcGnSuDT37k_jyIP9HavVw8qNgGcQU-H4mO8_zobnqTE/pub?output=csv</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 30         https://docs.google.com/spreadsheets/d/e/2PACX-1vQsNoXw2Noa29eSM0kbn_MCMFGC40nTQffmBHqiqY0Aalax0tHVVjNZBg83t9p0vyLpoSxwkfoWwySL/pub?gid=0&amp;single=true&amp;output=csv</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                                                                            source_link</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1  https://docs.google.com/spreadsheets/d/1PGW4C8fkyZYUJKA8yAW7ZjWEB6QXYdoTb6wrNxatK2c</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 2  https://docs.google.com/spreadsheets/d/1JgUzttAZf5Qu2obZ_2xXqsnEr_I1XKn_ZzNvrE6ssO4</span>
@@ -164,14 +173,17 @@ physiologies, run bugphyzz::physiologiesList(). Use "all" for all available phys
 <span class="r-out co"><span class="r-pr">#&gt;</span> 25 https://docs.google.com/spreadsheets/d/1OpjfL-EIosX9iUg8nRxv03qpAx8iKo0FpcK_ZQokr-k</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 26 https://docs.google.com/spreadsheets/d/1XPtnoqeSfJFwDC3QHsXuNrTSJpgIZgUpv4ZmSFtT38g</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 27 https://docs.google.com/spreadsheets/d/1Wc14Gp4nygdR6XNnZEJ5mZMJtCP6pniqa9GQOwzriNo</span>
-<span class="r-in"><span class="fu">bugphyzz</span><span class="fu">:::</span><span class="fu">curationLinks</span><span class="op">(</span>keyword <span class="op">=</span> <span class="st">"aerophilicity"</span><span class="op">)</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 28                                                                                &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 29                                                                                &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 30                                                                                &lt;NA&gt;</span>
+<span class="r-in"><span><span class="fu">bugphyzz</span><span class="fu">:::</span><span class="fu">curationLinks</span><span class="op">(</span>keyword <span class="op">=</span> <span class="st">"aerophilicity"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>      physiology      ontology</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 2 aerophilicity MICRO_0000491</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                                                                                                                                             link</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 2 https://docs.google.com/spreadsheets/d/e/2PACX-1vQDC8VfkkOfN6MKGxrzMEoJjfgYIfpsJO-SxVr3pkUUChBNkMQ3YKaxSvDSSjjrPRf51nU3wbk-WWJp/pub?output=csv</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                                                                           source_link</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 2 https://docs.google.com/spreadsheets/d/1JgUzttAZf5Qu2obZ_2xXqsnEr_I1XKn_ZzNvrE6ssO4</span>
-<span class="r-in"><span class="fu">bugphyzz</span><span class="fu">:::</span><span class="fu">curationLinks</span><span class="op">(</span>keyword <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"aerophilicity"</span>, <span class="st">"gram stain"</span><span class="op">)</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="fu">bugphyzz</span><span class="fu">:::</span><span class="fu">curationLinks</span><span class="op">(</span>keyword <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"aerophilicity"</span>, <span class="st">"gram stain"</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>       physiology      ontology</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 2  aerophilicity MICRO_0000491</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 12    gram stain          &lt;NA&gt;</span>
@@ -195,7 +207,7 @@ physiologies, run bugphyzz::physiologiesList(). Use "all" for all available phys
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>

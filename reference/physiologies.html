@@ -63,7 +63,7 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">physiologies</span><span class="op">(</span>keyword <span class="op">=</span> <span class="st">"all"</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">physiologies</span><span class="op">(</span>keyword <span class="op">=</span> <span class="st">"all"</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -71,20 +71,23 @@
     <dl><dt>keyword</dt>
 <dd><p>a character vector of physiologies desired (see <code><a href="curationLinks.html">curationLinks</a></code>). For the available
 physiologies, run bugphyzz::physiologiesList()</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>a large list of data.frames</p>
+    
+
+<p>a large list of data.frames</p>
     </div>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu">physiologies</span><span class="op">(</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu">physiologies</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Finished acetate producing</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Finished aerophilicity</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Finished animal pathogen</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Finished antimicrobial resistance</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Dropped 3054 rows with missing Attribute_value from antimicrobial sensitivity</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Dropped 3 rows with missing Attribute_value from antimicrobial sensitivity</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Finished arrangement</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Finished biofilm forming</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Dropped 4 rows with missing Attribute_value from butyrate producing</span>
@@ -96,18 +99,21 @@ physiologies, run bugphyzz::physiologiesList()</p></dd>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Finished growth temperature</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Finished habitat</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Finished health associated</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Finished hydrogen gas producing</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Dropped 10 rows with missing Attribute_value from hydrogen gas producing</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Finished isolation site</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Finished lactate producing</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Dropped 9 rows with missing Attribute_value from lactate producing</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Finished length</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Finished mutation rate per site per generation</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Finished mutation rates per site per year</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Finished optimal ph</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Finished plant pathogenicity</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Dropped 9304 rows with missing Attribute_value from shape</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Finished shape</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Finished spore shape</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Finished width</span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">x</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span><span class="op">)</span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Dropped 5 rows with missing Attribute_value from genome size</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Finished coding genes</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Finished sphingolipid producing</span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">x</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   NCBI_ID Genome_ID Accession_ID                          Taxon_name</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1  105834        NA           NA  Butyrate-producing bacterium L1-81</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 2  105835        NA           NA Butyrate-producing bacterium L1-810</span>
@@ -115,74 +121,92 @@ physiologies, run bugphyzz::physiologiesList()</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 4  105832        NA           NA  Butyrate-producing bacterium L1-93</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 5  360807        NA           NA             Roseburia inulinivorans</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 6  411490        NA           NA           Anaerostipes caccae L1-92</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>           Attribute Attribute_value</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1 acetate producing            −2.0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2 acetate producing              41</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3 acetate producing           −10.0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4 acetate producing           −10.6</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5 acetate producing            −2.3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6 acetate producing            −3.9</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                                                                                                                                                                                                                                                                        Attribute_source</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1 Barcenilla A, Pryde SE, Martin JC, Duncan SH, Stewart CS, Henderson C, Flint HJ. Phylogenetic relationships of butyrate-producing bacteria from the human gut. Appl Environ Microbiol. 2000 Apr;66(4):1654-61. doi: 10.1128/aem.66.4.1654-1661.2000. PMID: 10742256; PMCID: PMC92037.</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2 Barcenilla A, Pryde SE, Martin JC, Duncan SH, Stewart CS, Henderson C, Flint HJ. Phylogenetic relationships of butyrate-producing bacteria from the human gut. Appl Environ Microbiol. 2000 Apr;66(4):1654-61. doi: 10.1128/aem.66.4.1654-1661.2000. PMID: 10742256; PMCID: PMC92037.</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3 Barcenilla A, Pryde SE, Martin JC, Duncan SH, Stewart CS, Henderson C, Flint HJ. Phylogenetic relationships of butyrate-producing bacteria from the human gut. Appl Environ Microbiol. 2000 Apr;66(4):1654-61. doi: 10.1128/aem.66.4.1654-1661.2000. PMID: 10742256; PMCID: PMC92037.</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4 Barcenilla A, Pryde SE, Martin JC, Duncan SH, Stewart CS, Henderson C, Flint HJ. Phylogenetic relationships of butyrate-producing bacteria from the human gut. Appl Environ Microbiol. 2000 Apr;66(4):1654-61. doi: 10.1128/aem.66.4.1654-1661.2000. PMID: 10742256; PMCID: PMC92037.</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5 Barcenilla A, Pryde SE, Martin JC, Duncan SH, Stewart CS, Henderson C, Flint HJ. Phylogenetic relationships of butyrate-producing bacteria from the human gut. Appl Environ Microbiol. 2000 Apr;66(4):1654-61. doi: 10.1128/aem.66.4.1654-1661.2000. PMID: 10742256; PMCID: PMC92037.</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6 Barcenilla A, Pryde SE, Martin JC, Duncan SH, Stewart CS, Henderson C, Flint HJ. Phylogenetic relationships of butyrate-producing bacteria from the human gut. Appl Environ Microbiol. 2000 Apr;66(4):1654-61. doi: 10.1128/aem.66.4.1654-1661.2000. PMID: 10742256; PMCID: PMC92037.</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   Evidence Confidence_interval Strain    Rank Parent_name Parent_NCBI_ID</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1      EXP             Unknown  L1-81    &lt;NA&gt;        &lt;NA&gt;             NA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2      EXP             Unknown L1-810    &lt;NA&gt;        &lt;NA&gt;             NA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3      EXP             Unknown L1-952    &lt;NA&gt;        &lt;NA&gt;             NA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4      EXP             Unknown  L1-93    &lt;NA&gt;        &lt;NA&gt;             NA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5      EXP             Unknown  L1-83 species   Roseburia            841</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6      EXP             Unknown  L1-92    &lt;NA&gt;        &lt;NA&gt;             NA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   Parent_rank</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1        &lt;NA&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2        &lt;NA&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3        &lt;NA&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4        &lt;NA&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5       genus</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6        &lt;NA&gt;</span>
-<span class="r-in"></span>
-<span class="r-in"><span class="va">y</span> <span class="op">&lt;-</span> <span class="fu">physiologies</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"gram stain"</span>, <span class="st">"aerophilicity"</span><span class="op">)</span><span class="op">)</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           Attribute Attribute_value Attribute_source Evidence Frequency Strain</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1 acetate producing            -2.0  Barcenilla_2000      exp   usually  L1-81</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2 acetate producing            41.0  Barcenilla_2000      exp   usually L1-810</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3 acetate producing           -10.0  Barcenilla_2000      exp   usually L1-952</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4 acetate producing           -10.6  Barcenilla_2000      exp   usually  L1-93</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5 acetate producing            -2.3  Barcenilla_2000      exp   usually  L1-83</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6 acetate producing            -3.9  Barcenilla_2000      exp   usually  L1-92</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      Rank         Parent_name Parent_NCBI_ID Parent_rank Confidence_in_curation</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1 species       Eubacteriales         186802       order                   High</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2 species       Eubacteriales         186802       order                   High</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3 species       Eubacteriales         186802       order                   High</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4 species       Eubacteriales         186802       order                   High</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5 species           Roseburia            841       genus                   High</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6  strain Anaerostipes caccae         105841     species                   High</span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">y</span> <span class="op">&lt;-</span> <span class="fu">physiologies</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"gram stain"</span>, <span class="st">"aerophilicity"</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Finished aerophilicity</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Finished gram stain</span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">y</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span><span class="op">)</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   NCBI_ID Genome_ID Accession_ID       Taxon_name               Attribute</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1       6        NA         &lt;NA&gt;     Azorhizobium         microaerophilic</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2      10        NA         &lt;NA&gt;       Cellvibrio                 aerobic</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3      16        NA         &lt;NA&gt;    Methylophilus                 aerobic</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4      18        NA         &lt;NA&gt;       Pelobacter               anaerobic</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5      20        NA         &lt;NA&gt; Phenylobacterium                 aerobic</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6      22        NA         &lt;NA&gt;      Shewanella  facultatively anaerobic</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   Attribute_value</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1            TRUE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2            TRUE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3            TRUE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4            TRUE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5            TRUE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6            TRUE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                                                                                                                                                                          Attribute_source</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1 Garrity, G.M., Winters, M. &amp; Searles, D.B. 2001a. Taxonomic Outline of the Procaryotic Genera. Bergey's Manual of Systematic Bacteriology, Second Edition. Release 1.0, Apr 2001: 1-39.</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2 Garrity, G.M., Winters, M. &amp; Searles, D.B. 2001a. Taxonomic Outline of the Procaryotic Genera. Bergey's Manual of Systematic Bacteriology, Second Edition. Release 1.0, Apr 2001: 1-39.</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3 Garrity, G.M., Winters, M. &amp; Searles, D.B. 2001a. Taxonomic Outline of the Procaryotic Genera. Bergey's Manual of Systematic Bacteriology, Second Edition. Release 1.0, Apr 2001: 1-39.</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4 Garrity, G.M., Winters, M. &amp; Searles, D.B. 2001a. Taxonomic Outline of the Procaryotic Genera. Bergey's Manual of Systematic Bacteriology, Second Edition. Release 1.0, Apr 2001: 1-39.</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5 Garrity, G.M., Winters, M. &amp; Searles, D.B. 2001a. Taxonomic Outline of the Procaryotic Genera. Bergey's Manual of Systematic Bacteriology, Second Edition. Release 1.0, Apr 2001: 1-39.</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6 Garrity, G.M., Winters, M. &amp; Searles, D.B. 2001a. Taxonomic Outline of the Procaryotic Genera. Bergey's Manual of Systematic Bacteriology, Second Edition. Release 1.0, Apr 2001: 1-39.</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   Evidence Confidence_interval Note  Rank         Parent_name Parent_NCBI_ID</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1      EXP              always   NA genus   Xanthobacteraceae         335928</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2      EXP              always   NA genus    Cellvibrionaceae        1706371</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3      EXP              always   NA genus    Methylophilaceae          32011</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4      EXP              always   NA genus Desulfuromonadaceae         213421</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5      EXP              always   NA genus    Caulobacteraceae          76892</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6      EXP              always   NA genus      Shewanellaceae         267890</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   Parent_rank</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1      family</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2      family</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3      family</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4      family</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5      family</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6      family</span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">lapply</a></span><span class="op">(</span><span class="va">y</span>, <span class="va">head</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $aerophilicity</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   NCBI_ID Genome_ID</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1  442869        NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2  291967        NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3  291968        NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4  329726        NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5  258514        NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6 1427378        NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                                                                                                   Accession_ID</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1                                                                                                             </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2                                                                                                             </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3                                                                                                             </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4 NC_009925, NC_009926, NC_009927, NC_009928, NC_009929, NC_009930, NC_009931, NC_009932, NC_009933, NC_009934</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5                                                                                                             </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6                                                                                                             </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                       Taxon_name            Attribute Attribute_value</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1            Acanthopleuribacter   obligately aerobic            TRUE</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2                     Acaricomes              aerobic            TRUE</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3         Acaricomes phytoseiuli              aerobic            TRUE</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4 Acaryochloris marina MBIC11017              aerobic            TRUE</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5            Acetanaerobacterium obligately anaerobic            TRUE</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6                  Acetatifactor            anaerobic            TRUE</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                                                                                      Attribute_source</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1                                                                                     Bergey's Manual</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2                                                                                     Bergey's Manual</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3 https://github.com/bacteria-archaea-traits/bacteria-archaea-traits/tree/master/output/prepared_data</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4                                                                                              BacMap</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5                                                                                     Bergey's Manual</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6                                                                                     Bergey's Manual</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   Evidence Frequency Note Strain    Rank              Parent_name</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1      exp    always   NA     NA   genus Acanthopleuribacteraceae</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2      exp    always   NA     NA   genus           Micrococcaceae</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3  unknown    always   NA     NA species               Acaricomes</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4  unknown    always   NA     NA  strain     Acaryochloris marina</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5      exp    always   NA     NA   genus         Oscillospiraceae</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6      exp    always   NA     NA   genus          Lachnospiraceae</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   Parent_NCBI_ID Parent_rank Confidence_in_curation</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1         533207      family                   High</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2           1268      family                   High</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3         291967       genus                 Medium</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4         155978     species                   High</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5         216572      family                   High</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6         186803      family                   High</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`gram stain`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   NCBI_ID Genome_ID Accession_ID           Taxon_name           Attribute</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1 2867376   unknown      unknown        Desulfoscipio gram stain negative</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2 2759766   unknown      unknown           Longispora gram stain positive</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3 2282743   unknown      unknown Desulfohalotomaculum gram stain negative</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4 2282742   unknown      unknown      Desulfofarcimen gram stain negative</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5 2282740   unknown      unknown          Desulfallas gram stain negative</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6 2211639   unknown      unknown   Pseudaestuariivita gram stain negative</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   Attribute_value Attribute_source Evidence Frequency  Rank       Parent_name</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1            TRUE  Bergey's Manual      exp    always genus    Desulfallaceae</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2            TRUE  Bergey's Manual      exp    always genus Phaeosphaeriaceae</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3            TRUE  Bergey's Manual      exp    always genus    Peptococcaceae</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4            TRUE  Bergey's Manual      exp    always genus    Peptococcaceae</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5            TRUE  Bergey's Manual      exp    always genus    Desulfallaceae</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6            TRUE  Bergey's Manual      exp    always genus  Rhodobacteraceae</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   Parent_NCBI_ID Parent_rank Confidence_in_curation</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1        2867375      family                   High</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2           5020      family                   High</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3         186807      family                   High</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4         186807      family                   High</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5        2867375      family                   High</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6          31989      family                   High</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 </code></pre></div>
     </div>
   </div>
@@ -197,7 +221,7 @@ physiologies, run bugphyzz::physiologiesList()</p></dd>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>

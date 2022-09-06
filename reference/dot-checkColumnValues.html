@@ -65,25 +65,34 @@ valid values according to the extdata/template.tsv file.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">.checkColumnValues</span><span class="op">(</span><span class="va">dat</span>, <span class="va">col</span>, dat_name <span class="op">=</span> <span class="cn">NULL</span>, quiet_success <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">.checkColumnValues</span><span class="op">(</span><span class="va">dat</span>, <span class="va">col</span>, dat_name <span class="op">=</span> <span class="cn">NULL</span>, quiet_success <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>dat</dt>
 <dd><p>A data frame imported through the bugphyzz functions.</p></dd>
+
+
 <dt>col</dt>
 <dd><p>A character string indicating the name of the column.</p></dd>
+
+
 <dt>dat_name</dt>
 <dd><p>A character string indicating the name of the dataset.
 Default is NULL.</p></dd>
+
+
 <dt>quiet_success</dt>
 <dd><p>If FALSE, an error message is printed when no errors
 are found. Default is TRUE.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>An error condition of subclass "invalid_column_values".
+    
+
+<p>An error condition of subclass "invalid_column_values".
 If <code>quiet_success</code> is FALSE and no errors were
 found, it returns NULL and prints a message indicating that no errors were
 found.</p>
@@ -103,17 +112,17 @@ found.</p>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"></span>
-<span class="r-in"><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="physiologies.html">physiologies</a></span><span class="op">(</span><span class="st">"aerophilicity"</span><span class="op">)</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span></span>
-<span class="r-in"><span class="va">err</span> <span class="op">&lt;-</span> <span class="kw"><a href="https://rdrr.io/r/base/conditions.html" class="external-link">tryCatch</a></span><span class="op">(</span></span>
-<span class="r-in">    error <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">e</span><span class="op">)</span> <span class="va">e</span>,</span>
-<span class="r-in">    <span class="fu">bugphyzz</span><span class="fu">:::</span><span class="fu">.checkColumnValues</span><span class="op">(</span><span class="va">x</span>, <span class="st">"Taxon_name"</span><span class="op">)</span></span>
-<span class="r-in"><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="op">}</span></span>
-<span class="r-in"></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="physiologies.html">physiologies</a></span><span class="op">(</span><span class="st">"aerophilicity"</span><span class="op">)</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span></span></span>
+<span class="r-in"><span><span class="va">err</span> <span class="op">&lt;-</span> <span class="kw"><a href="https://rdrr.io/r/base/conditions.html" class="external-link">tryCatch</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>    error <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">e</span><span class="op">)</span> <span class="va">e</span>,</span></span>
+<span class="r-in"><span>    <span class="fu">bugphyzz</span><span class="fu">:::</span><span class="fu">.checkColumnValues</span><span class="op">(</span><span class="va">x</span>, <span class="st">"Taxon_name"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="op">}</span></span></span>
+<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -128,7 +137,7 @@ found.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>
