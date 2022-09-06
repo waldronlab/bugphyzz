@@ -10,7 +10,9 @@ status](https://www.r-pkg.org/badges/version/bugphyzz)](https://CRAN.R-project.o
  
 BugPhyzz is a collection of physiological features about bacteria to be used as a resource for physiological discovery and producing signatures. We are continuously curating BugPhyzz databases through 3 main methods: webscraping, bulk download from online databases, and manual curation from literature. Mainly this database was concieve for analyzing microbiome data using physiological information. BugPhyzz can allow a user to look at specific physiologies, and make signature sets with specific bugs. The uniform structure of the data is what allows for the latter to manifest.
 
-We curated informatiob like Gram stain, optimal temperature, fermenation, respiration, size, shape, colony arrangement, and 27 more physiologies. We have made BugPhyzz accessible via direct download or through our R package.  
+We curated informatiob like Gram stain, optimal temperature, fermenation, respiration, size, shape, colony arrangement, and 27 more physiologies. We have made BugPhyzz accessible via direct download or through our R package.
+
+Here, you can find installation instructions, examples of making signatures, BugPhyzz analysis link and how to add your own curation to the database.
 
 
 ## Installation
