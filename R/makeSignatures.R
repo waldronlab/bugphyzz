@@ -1,7 +1,41 @@
 
 #' Make signatures
 #'
-#' \code{makeSignatures} creates a list of signatures from a bugphyzz
+#' \code{makeSignatures} creates a list of signatures.
+#'
+#' @param keyword A valid keyword as determined by `physiologiesList()`.
+#' @param ... Parameters used for the `getSignature` function.
+#'
+#' @return A list of signatures. NULL if no signatures.
+#' @export
+#'
+#' @examples
+#' aer_sig <- makeSignatures('aerophilicity')
+#' ph_sig <- makeSignatures('optimal ph')
+#'
+makeSignatures <- function(keyword = NULL, ...) {
+
+  if (is.null(keyword)) {
+    msg <- paste0(
+      'You need to provide a keyword.',
+      ' "all" for importing all signatures. Or ',
+      ' Valid keyword options: ', paste0(physiologiesList(), collapse = ', ')
+    )
+    stop(msg, call. = FALSE)
+  }
+
+  phys <- physiologies(keyword = keyword)
+  output <- vector('list', length(phys))
+  names(output) <- names(phys)
+  for (i in seq_along(output)) {
+    output[[i]] <- getSignatures(df = phys[[i]], ...)
+  }
+  return(output)
+}
+
+#' Get signatures
+#'
+#' \code{getSignatures} creates a list of signatures from a bugphyzz
 #' data frame.
 #'
 #' @param df A data frame from bugphyzz.
@@ -25,13 +59,13 @@
 #' @examples
 #'
 #' aer <- physiologies('aerophilicity')[[1]]
-#' aer_sig <- makeSignatures(aer)
+#' aer_sig <- getSignatures(aer)
 #'
 #' ph <- physiologies('optimal ph')[[1]]
-#' ph_sig <- makeSignatures(ph)
+#' ph_sig <- getSignatures(ph)
 #'
 #'
-makeSignatures <- function(
+getSignatures <- function(
     df,
     tax.id.type = 'Taxon_name', tax.level = 'mixed',
     Frequency = c('unknown', 'sometimes', 'usually', 'always'),
