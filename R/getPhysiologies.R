@@ -38,9 +38,9 @@ getPhysiologies <- function(x, phys = physiologies(), taxid.type = 'Taxon_name')
       purrr::map( ~{
         if (is.logical(.x$Attribute_value)) {
           .x <- .x[which(.x$Attribute_value == TRUE),]
-          return(.x$Attribute)
+          return(unique(.x$Attribute))
         } else if (is.numeric(.x$Attribute_value)) {
-          return(.x$Attribute_value)
+          return(unique(.x$Attribute_value))
         }
       }) |>
       purrr::discard(~ !length(.x))
