@@ -4,8 +4,8 @@
 #' \code{getPhysiologies} get all physiology annotations for one or more taxa.
 #'
 #' @param x A valid NCBI ID or taxon name
-#' @param phys A list of dataframes with physiologies imported with the
-#' `physiologies` function. If not specified, all physiologies will be imported.
+#' @param phys A list of dataframes with physiologies imported with the `physiologies` function.
+#' If not specified, all physiologies will be imported.
 #' @param taxid.type The type of taxid. Valid options: Taxon_name or NCBI_ID.
 #' Default is Taxon_name.
 #'

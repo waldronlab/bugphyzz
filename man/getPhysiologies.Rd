@@ -9,8 +9,8 @@ getPhysiologies(x, phys = physiologies(), taxid.type = "Taxon_name")
 \arguments{
 \item{x}{A valid NCBI ID or taxon name}
 
-\item{phys}{A list of dataframes with physiologies imported with the
-\code{physiologies} function. If not specified, all physiologies will be imported.}
+\item{phys}{A list of dataframes with physiologies imported with the \code{physiologies} function.
+If not specified, all physiologies will be imported.}
 
 \item{taxid.type}{The type of taxid. Valid options: Taxon_name or NCBI_ID.
 Default is Taxon_name.}
