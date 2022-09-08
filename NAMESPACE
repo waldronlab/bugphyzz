@@ -3,6 +3,7 @@
 export(check_valid_ncbi_ids)
 export(fattyAcidComposition)
 export(getPhysiologies)
+export(getSignatures)
 export(makeSignatures)
 export(physiologies)
 export(physiologiesList)

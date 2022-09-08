@@ -14,7 +14,7 @@ A character vector.
 }
 \description{
 \code{whichID} gives valid values for the tax.id.type
-argument of the \code\link{makeSignatures} function.
+argument of the \code{makeSignatures} function.
 }
 \examples{
 
