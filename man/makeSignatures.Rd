@@ -4,12 +4,39 @@
 \alias{makeSignatures}
 \title{Make signatures}
 \usage{
-makeSignatures(keyword = NULL, ...)
+makeSignatures(
+  keyword = NULL,
+  tax.id.type = "Taxon_name",
+  tax.level = "mixed",
+  Frequency = c("unknown", "sometimes", "usually", "always"),
+  Evidence = c("asr", "unknown", "igc", "asr"),
+  min.size = 1,
+  min = NULL,
+  max = NULL
+)
 }
 \arguments{
 \item{keyword}{A valid keyword as determined by \code{physiologiesList()}.}
 
-\item{...}{Parameters used for the \code{getSignature} function.}
+\item{tax.id.type}{Type of taxids. Check types with the \code{whichID} function.}
+
+\item{tax.level}{A character vector with taxonomic ranks,
+e.g., genus, species, strain.}
+
+\item{Frequency}{A character vector with one or more values of: unknown,
+sometimes, usually, always.}
+
+\item{Evidence}{A character vector with one or more values of: unknown,
+sometimes, usually, always.}
+
+\item{min.size}{The minimun number of elements in a signatures.
+Default is 1.}
+
+\item{min}{Minimum threshold for attributes with continuous values. It's
+ignored when creating signatures for categorical attributes.}
+
+\item{max}{Maximum threshold for attributes with continuous values. It's
+ignored when creating signatures for categorical attributes.}
 }
 \value{
 A list of signatures. NULL if no signatures.
@@ -21,4 +48,7 @@ A list of signatures. NULL if no signatures.
 aer_sig <- makeSignatures('aerophilicity')
 ph_sig <- makeSignatures('optimal ph')
 
+}
+\seealso{
+\code{\link{getSignatures}}
 }
