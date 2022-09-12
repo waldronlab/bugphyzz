@@ -29,7 +29,6 @@ jobs:
         run: |
           install.packages("pkgdown", dependencies = TRUE)
           remotes::install_deps(dependencies = TRUE, repos = BiocManager::repositories())
-          BiocManager::install("waldronlab/curatedMetagenomicData", dependencies = TRUE)
         shell: Rscript {0}
 
       - name: Install package
