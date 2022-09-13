@@ -39,7 +39,7 @@ look at specific physiologies, and make signature sets. _bugphyzz_ is a collecti
 * **Note**: Any additional information that does not fit in any fixed column. The information here is variable.
 * **Parent name**: The parent of descendant given in Taxon name column. Values can includes names or NA.
 * **Species name**: The species name, or descendant of parent, given in the Taxon name column. Values can includes names or NA.
-* **Unit**: defines unit of attribute, like µm.
+* **Unit**: defines unit of attribute value, like µm.
 * **Rank**: The taxonomic rank of the annotation. Values can includes names or NA.
 * **Parent Rank**: The taxonmic rank of the parent of the annotation. Values can includes names or NA.
 
@@ -60,8 +60,8 @@ Curation steps:
  2. Add reference(s) to Confidence in Curation
 
 If using Google Sheets, publish a csv file to web:
- 4. Add Google Doc "publish to web" link and add in Links (**link to file in GitHub**)
- 5. Add Google Doc link to Source Link (**link to file in GitHub**)
+ 4. Add Google Doc "publish to web" link and add in (Link)[https://github.com/waldronlab/bugphyzz/blob/main/inst/extdata/links.tsv] 
+ 5. Add Google Doc link to (Source Link)[https://github.com/waldronlab/bugphyzz/blob/main/inst/extdata/source_links.tsv
 
 Steps in the `bugphyzz` package:
  1. _Samuel fill in_
