@@ -100,7 +100,7 @@ head(basic_sig[[1]])
 
 Some analyses using data provided by this package can be found at https://waldronlab.io/bugphyzzAnalyses/
 
-## How to add a new attribute in GitHub to the BugPhyzz database
+## How to add a new attribute in GitHub to the bugphyzz database
 Curation steps:
  1. Add attributes of physiology to Attributes using ontology terms
  2. Add reference(s) to Confidence in Curation
