@@ -87,13 +87,13 @@
       </header><div class="row">
   <div class="contents col-md-9">
 <div class="section level1">
-<div class="page-header"><h1 id="bugphyzz-bacterial-physiologies">BugPhyzz (Bacterial Physiologies)<a class="anchor" aria-label="anchor" href="#bugphyzz-bacterial-physiologies"></a>
+<div class="page-header"><h1 id="bugphyzz-bacterial-physiologies">bugphyzz (bacterial physiologies)<a class="anchor" aria-label="anchor" href="#bugphyzz-bacterial-physiologies"></a>
 </h1></div>
 <!-- badges: start -->
 
-<p>BugPhyzz is a collection of physiological features about bacteria to be used as a resource for physiological discovery and producing signatures. We are continuously curating BugPhyzz databases through 3 main methods: webscraping, bulk download from online databases, and manual curation from literature. Mainly this database was concieve for analyzing microbiome data using physiological information. BugPhyzz can allow a user to look at specific physiologies, and make signature sets with specific bugs. The uniform structure of the data is what allows for the latter to manifest.</p>
+<p>bugphyzz is a collection of physiological features about bacteria to be used as a resource for physiological discovery and producing signatures. We are continuously curating BugPhyzz databases through 3 main methods: webscraping, bulk download from online databases, and manual curation from literature. Mainly this database was concieve for analyzing microbiome data using physiological information. BugPhyzz can allow a user to look at specific physiologies, and make signature sets with specific bugs. The uniform structure of the data is what allows for the latter to manifest.</p>
 <p>We curated informatiob like Gram stain, optimal temperature, fermenation, respiration, size, shape, colony arrangement, and 27 more physiologies. We have made BugPhyzz accessible via direct download or through our R package.</p>
-<p>Here, you can find installation instructions, examples of making signatures, BugPhyzz analysis link and how to add your own curation to the database.</p>
+<p>Here, you can find installation instructions, examples of making signatures, bugphyzz analysis link and how to add your own curation to the database.</p>
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h2>
@@ -181,11 +181,13 @@
 <div class="section level2">
 <h2 id="how-to-add-a-new-attribute-in-github-to-the-bugphyzz-database">How to add a new attribute in GitHub to the BugPhyzz database<a class="anchor" aria-label="anchor" href="#how-to-add-a-new-attribute-in-github-to-the-bugphyzz-database"></a>
 </h2>
-<ol style="list-style-type: decimal">
-<li>Add attributes of physiology to Attributes using ontology terms</li>
-<li>Add reference(s) to Confidence in Curation</li>
-<li>Add Google Doc “publish to web” link and add in Links</li>
-<li>Add Google Doc link to Source Link</li>
+<p>Curation steps: 1. Add attributes of physiology to Attributes using ontology terms 2. Add reference(s) to Confidence in Curation</p>
+<p>If using Google Sheets, publish a csv file to web:</p>
+<ol start="4" style="list-style-type: decimal">
+<li>Add Google Doc “publish to web” link and add in <a href="https://github.com/waldronlab/bugphyzz/blob/main/inst/extdata/links.tsv" class="external-link">Link</a>
+</li>
+<li>Add Google Doc link to <a href="https://github.com/waldronlab/bugphyzz/blob/main/inst/extdata/source_links.tsv" class="external-link">Source Link</a>
+</li>
 </ol>
 </div>
 </div>
