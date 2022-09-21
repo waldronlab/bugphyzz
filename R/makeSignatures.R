@@ -34,19 +34,39 @@ makeSignatures <- function(
     stop(msg, call. = FALSE)
   }
 
+  message('Importing spreadsheet(s)...')
   phys <- physiologies(keyword = keyword)
-  output <- vector('list', length(phys))
-  names(output) <- names(phys)
-  for (i in seq_along(output)) {
-    output[[i]] <- getSignatures(
-      df = phys[[i]],
+
+  output <- lapply(phys, function(.x) {
+    getSignatures(
+      df = .x,
       tax.id.type = tax.id.type, tax.level = tax.level,
       Frequency = Frequency,
       Evidence = Evidence,
       min.size = min.size,
       min = min, max = min
     )
+  })
+
+  # output <- vector('list', length(phys))
+  # names(output) <- names(phys)
+  # for (i in seq_along(output)) {
+  #   message('Dataset:', names(output)[i])
+  #   output[[i]] <- getSignatures(
+  #     df = phys[[i]],
+  #     tax.id.type = tax.id.type, tax.level = tax.level,
+  #     Frequency = Frequency,
+  #     Evidence = Evidence,
+  #     min.size = min.size,
+  #     min = min, max = min
+  #   )
+  # }
+
+  if (!length(output)) {
+    message('No signatures')
+    return(NULL)
   }
+
   return(output)
 }
 
@@ -143,6 +163,8 @@ getSignatures <- function(
       df = df, tax.level = tax.level, Evidence = Evidence,
       Frequency = Frequency, min = min, max = max
     )
+  } else {
+    filtered_df <- NULL
   }
 
   if (is.null(filtered_df)) {
