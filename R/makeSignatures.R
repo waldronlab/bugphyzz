@@ -46,7 +46,8 @@ makeSignatures <- function(
       min.size = min.size,
       min = min, max = min
     )
-  })
+  }) |>
+    purrr::discard(is.null)
 
   # output <- vector('list', length(phys))
   # names(output) <- names(phys)
