@@ -34,7 +34,7 @@ physiologies <- function(keyword = "all") {
   for (i in seq_along(database)) {
 
     database[[i]] <- dplyr::distinct(utils::read.csv(links[i, "link"]))
-    database[[i]] <- .reorderColumns(database[[i]], names(database)[i])
+    # database[[i]] <- .reorderColumns(database[[i]], names(database)[i])
 
     ## Drop missing values from the Attribute_value column
     nmissing <- sum(is.na(database[[i]]$Attribute_value))
@@ -56,12 +56,15 @@ physiologies <- function(keyword = "all") {
     ## Some modifications for the curation of the datasets
     database[[i]] <- database[[i]] |>
       purrr::modify_if(.p = is.character, ~ stringr::str_squish(.x)) |>
+      .addConfidenceInCuration() |>
       purrr::modify_at(.at = c('Attribute', 'Frequency', 'Evidence', 'Confidence_in_curation'), ~ {
         stringr::str_to_lower(.x)
       }) |>
-      .addConfidenceInCuration() |>
       dplyr::distinct()
   }
+
+  database[[i]] <- .reorderColumns(database[[i]], names(database)[i])
+
   return(database)
 }
 
