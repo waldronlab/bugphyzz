@@ -236,6 +236,8 @@ name(s) of the dataset(s) that will be imported.</p>
 <p>A datset with categorical attribute values:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">aer</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/as_tibble.html" class="external-link">as_tibble</a></span><span class="op">(</span><span class="fu"><a href="../reference/physiologies.html">physiologies</a></span><span class="op">(</span><span class="st">"aerophilicity"</span><span class="op">)</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Warning: Missing columns in aerophilicity. Missing columns are:</span></span>
+<span><span class="co">#&gt; Confidence_in_curation</span></span>
 <span><span class="va">aer</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 11,470 × 16</span></span></span>
 <span><span class="co">#&gt;    NCBI_ID Genom…¹ Acces…² Taxon…³ Attri…⁴ Attri…⁵ Attri…⁶ Evide…⁷ Frequ…⁸ Note </span></span>
@@ -258,6 +260,8 @@ name(s) of the dataset(s) that will be imported.</p>
 <p>A dataset with numeric attribute values:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">ph</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/as_tibble.html" class="external-link">as_tibble</a></span><span class="op">(</span><span class="fu"><a href="../reference/physiologies.html">physiologies</a></span><span class="op">(</span><span class="st">'optimal ph'</span><span class="op">)</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Warning: Missing columns in optimal ph. Missing columns are:</span></span>
+<span><span class="co">#&gt; Confidence_in_curation</span></span>
 <span><span class="co">#&gt; Finished optimal ph</span></span>
 <span><span class="va">ph</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 886 × 14</span></span></span>
@@ -322,6 +326,7 @@ dataset, <code>fattyAcidComposition</code>. This function takes no
 arguments and returns a single data.frame object:</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">fac</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/as_tibble.html" class="external-link">as_tibble</a></span><span class="op">(</span><span class="fu"><a href="../reference/fattyAcidComposition.html">fattyAcidComposition</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Warning: Missing columns. Missing columns are: Confidence_in_curation</span></span>
 <span><span class="va">fac</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 138,496 × 15</span></span></span>
 <span><span class="co">#&gt;    NCBI_ID Genome_ID Accession…¹ Taxon…² Attri…³ Attri…⁴ Attri…⁵ Evide…⁶ Frequ…⁷</span></span>
@@ -351,6 +356,8 @@ arguments and returns a single data.frame object:</p>
 <span>    keyword <span class="op">=</span> <span class="st">'aerophilicity'</span>, tax.id.type <span class="op">=</span> <span class="st">'NCBI_ID'</span>, tax.level <span class="op">=</span> <span class="st">'genus'</span>, </span>
 <span>    Frequency <span class="op">=</span> <span class="st">'always'</span>, Evidence <span class="op">=</span> <span class="st">'exp'</span>, min.size <span class="op">=</span> <span class="fl">10</span></span>
 <span><span class="op">)</span></span>
+<span><span class="co">#&gt; Warning: Missing columns in aerophilicity. Missing columns are:</span></span>
+<span><span class="co">#&gt; Confidence_in_curation</span></span>
 <span><span class="co">#&gt; Warning: Dropping 3648 rows with FALSE values.</span></span>
 <span></span>
 <span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map_if.html" class="external-link">map_depth</a></span><span class="op">(</span>.x <span class="op">=</span> <span class="va">aer_sig</span>, .depth <span class="op">=</span> <span class="fl">2</span>, .f <span class="op">=</span> <span class="op">~</span> <span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">.x</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
@@ -388,6 +395,8 @@ bacteria):</p>
 <span>    max <span class="op">=</span> <span class="fl">4</span></span>
 <span><span class="op">)</span></span>
 <span><span class="co">#&gt; Importing spreadsheet(s)...</span></span>
+<span><span class="co">#&gt; Warning: Missing columns in optimal ph. Missing columns are:</span></span>
+<span><span class="co">#&gt; Confidence_in_curation</span></span>
 <span><span class="co">#&gt; Finished optimal ph</span></span>
 <span><span class="co">#&gt; Creating signature for continuous attribute.</span></span>
 <span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map_if.html" class="external-link">map_depth</a></span><span class="op">(</span>.x <span class="op">=</span> <span class="va">acid_sig</span>, .depth <span class="op">=</span> <span class="fl">2</span>, .f <span class="op">=</span> <span class="op">~</span> <span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">.x</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
