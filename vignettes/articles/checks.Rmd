@@ -119,7 +119,7 @@ err2 %>%
 err2 |> 
   tidyr::unnest(cols = c(invalid_values, invalid_pos)) |> 
   head(100) |> 
-  DT::datatable(filter = 'top')
+  knitr::kable()
 ```
 
 
