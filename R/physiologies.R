@@ -61,9 +61,11 @@ physiologies <- function(keyword = "all") {
         stringr::str_to_lower(.x)
       }) |>
       dplyr::distinct()
+
+    database[[i]] <- .reorderColumns(database[[i]], names(database)[i])
   }
 
-  database[[i]] <- .reorderColumns(database[[i]], names(database)[i])
+
 
   return(database)
 }

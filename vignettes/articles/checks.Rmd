@@ -15,8 +15,8 @@ library(dplyr)
 library(purrr)
 ```
 
-Import all of the datasets through the functions provided by the bugphyzz
-package.
+
+# bugphyzz data
 
 ```{r, message=FALSE}
 phys <- physiologies()
@@ -25,7 +25,7 @@ phys <- physiologies()
 phys[["fatty acid composition"]] <- fattyAcidComposition()
 ```
 
-# Check required columns
+# Check presence and oreder of 'required' columns
 
 The function `.checkRequiredColumnList()` performs two checks:  
 1. That all of the required columns are present.  
@@ -35,7 +35,7 @@ The function `.checkRequiredColumnList()` performs two checks:
 err1 <- bugphyzz:::.checkRequiredColumnsList(phys)
 ```
 
-The resutls have four columns:  
+The result has four columns:  
 1. 'dataset' contains the name of each dataset.  
 2. 'error_type' contains the type of error (missing column or misplaced
 column).  
@@ -47,13 +47,15 @@ Visualization of the errors:
 ```{r}
 if (!is.null(err1)) {
   DT::datatable(err1)
+} else {
+  message('No errors found.')
 }
 ```
 
 # Check the syntax of the values
 
-The function `.checkColumnValuesList` performs two checks:  
-1. That a column is cataloged in the template file.  
+`.checkColumnValuesList` performs two checks on the list of physiologies:
+1. That a column is in the template file.  
 2. That all of the values in a column are valid according to the template  
 file.
 
@@ -110,8 +112,6 @@ err2 %>%
     select(-invalid_values, -invalid_pos) %>% # to many values
     knitr::kable()
 ```
-
-
 
 ## First 100 rows printed here:
 
