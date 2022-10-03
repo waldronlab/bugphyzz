@@ -252,14 +252,11 @@ utils::globalVariables(c("."))
 .checkColumnValues <-
     function(dat, col, dat_name = NULL, quiet_success = TRUE) {
 
-        ## Check that the column is in the template
         template <- .template(dat)
 
         if (!col %in% template[["column_name"]])
             .stop_uncatalogued_column(col, dat_name)
 
-        ## Check column values based on the "value_test" column of the
-        ## extdata/template.tsv file
         type_of_test <-
             template[["value_test"]][template[["column_name"]] == col]
 
@@ -268,8 +265,6 @@ utils::globalVariables(c("."))
             string <-
                 template[["valid_values"]][template[["column_name"]] == col]
             values_lgl <- grepl(string, col_values) | is.na(col_values)
-
-
 
             if (!all(values_lgl)) {
                 invalid_values <- col_values[!values_lgl]
@@ -307,15 +302,13 @@ utils::globalVariables(c("."))
                     "The values in the ", col, "column in the", dat_name,
                     "dataset are all valid."
                 ))
-                # return(invisible(NULL))
             } else {
                 message(crayon::green(
                     "The values in the ", col, "are all valid."
                 ))
-                # return(invisible(NULL))
             }
-          return(invisible(NULL))
         }
+        return(invisible(NULL))
 }
 
 #' Check column values in a data frame
