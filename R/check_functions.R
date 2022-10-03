@@ -269,20 +269,7 @@ utils::globalVariables(c("."))
                 template[["valid_values"]][template[["column_name"]] == col]
             values_lgl <- grepl(string, col_values) | is.na(col_values)
 
-            if (col == "NCBI_ID") {
-              parent_ncbi <- dat[["Parent_NCBI_ID"]]
-              required_parent_ncbi <- !grepl(string, col_values)
-              missing_parent_ncbi <- !grepl(string, parent_ncbi)
-              required_missing_parent_ncbi <- mapply("&", required_parent_ncbi,
-                                                     missing_parent_ncbi)
-              missing_pos <- seq_along(col_values)[required_missing_parent_ncbi]
 
-              if (length(missing_pos) > 0) {
-                .stop_required_missing_row_value(
-                  "Parent_NCBI_ID", missing_pos, dat_name
-                )
-              }
-            }
 
             if (!all(values_lgl)) {
                 invalid_values <- col_values[!values_lgl]
@@ -314,32 +301,20 @@ utils::globalVariables(c("."))
             }
         }
 
-        ## Check column class
-        col_class <- class(dat[[col]])
-        col_regex <-
-          template[["column_class"]][template[["column_name"]] == col]
-        class_lgl <- grepl(col_regex, col_class)
-
-        if (isFALSE(class_lgl)) {
-          .stop_invalid_column_class(
-              col = col, dat_name = dat_name, invalid_class = col_class,
-              valid_class = col_regex
-          )
-        }
-
         if (!quiet_success) {
             if (!is.null(dat_name)) {
                 message(crayon::green(
                     "The values in the ", col, "column in the", dat_name,
                     "dataset are all valid."
-                )) %>%
-                return(invisible(NULL))
+                ))
+                # return(invisible(NULL))
             } else {
                 message(crayon::green(
                     "The values in the ", col, "are all valid."
                 ))
-                return(invisible(NULL))
+                # return(invisible(NULL))
             }
+          return(invisible(NULL))
         }
 }
 
@@ -1007,3 +982,38 @@ utils::globalVariables(c("."))
     FUN(...)
   )
 }
+
+## Check column class
+## This section was removed from checkColumnValues because this was as different
+## check. Check syntax/values and column class are two different types of checks
+## mixing the outputs can cause confusing names.
+
+# col_class <- class(dat[[col]])
+# col_regex <-
+#   template[["column_class"]][template[["column_name"]] == col]
+# class_lgl <- grepl(col_regex, col_class)
+#
+# if (isFALSE(class_lgl)) {
+#   .stop_invalid_column_class(
+#     col = col, dat_name = dat_name, invalid_class = col_class,
+#     valid_class = col_regex
+#   )
+# }
+
+## Temporarily moving this code from checkColumnValues
+## I think this is a different check that must be perfromed separetely.
+
+# if (col == "NCBI_ID") {
+#   parent_ncbi <- dat[["Parent_NCBI_ID"]]
+#   required_parent_ncbi <- !grepl(string, col_values)
+#   missing_parent_ncbi <- !grepl(string, parent_ncbi)
+#   required_missing_parent_ncbi <- mapply("&", required_parent_ncbi,
+#                                          missing_parent_ncbi)
+#   missing_pos <- seq_along(col_values)[required_missing_parent_ncbi]
+#
+#   if (length(missing_pos) > 0) {
+#     .stop_required_missing_row_value(
+#       "Parent_NCBI_ID", missing_pos, dat_name
+#     )
+#   }
+# }
