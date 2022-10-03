@@ -322,26 +322,24 @@ dataset, <code>fattyAcidComposition</code>. This function takes no
 arguments and returns a single data.frame object:</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">fac</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/as_tibble.html" class="external-link">as_tibble</a></span><span class="op">(</span><span class="fu"><a href="../reference/fattyAcidComposition.html">fattyAcidComposition</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Warning: Missing columns. Missing columns are: Confidence_in_curation</span></span>
 <span><span class="va">fac</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 138,496 × 15</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 138,496 × 14</span></span></span>
 <span><span class="co">#&gt;    NCBI_ID Genome_ID Accession…¹ Taxon…² Attri…³ Attri…⁴ Attri…⁵ Evide…⁶ Frequ…⁷</span></span>
 <span><span class="co">#&gt;      <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span>     562 <span style="color: #BB0000;">NA</span>        <span style="color: #BB0000;">NA</span>          Escher… Fatty …       0 Microb… EXP     unknown</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span>     562 <span style="color: #BB0000;">NA</span>        <span style="color: #BB0000;">NA</span>          Escher… Fatty …       0 Microb… EXP     unknown</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span>     562 <span style="color: #BB0000;">NA</span>        <span style="color: #BB0000;">NA</span>          Escher… Fatty …       0 Microb… EXP     unknown</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span>     562 <span style="color: #BB0000;">NA</span>        <span style="color: #BB0000;">NA</span>          Escher… Fatty …       0 Microb… EXP     unknown</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span>     562 <span style="color: #BB0000;">NA</span>        <span style="color: #BB0000;">NA</span>          Escher… Fatty …       0 Microb… EXP     unknown</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span>     562 <span style="color: #BB0000;">NA</span>        <span style="color: #BB0000;">NA</span>          Escher… Fatty …       0 Microb… EXP     unknown</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span>     562 <span style="color: #BB0000;">NA</span>        <span style="color: #BB0000;">NA</span>          Escher… Fatty …       0 Microb… EXP     unknown</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span>     562 <span style="color: #BB0000;">NA</span>        <span style="color: #BB0000;">NA</span>          Escher… Fatty …       0 Microb… EXP     unknown</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span>     562 <span style="color: #BB0000;">NA</span>        <span style="color: #BB0000;">NA</span>          Escher… Fatty …       0 Microb… EXP     unknown</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span>     562 <span style="color: #BB0000;">NA</span>        <span style="color: #BB0000;">NA</span>          Escher… Fatty …       0 Microb… EXP     unknown</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># … with 138,486 more rows, 6 more variables: Attribute_new &lt;chr&gt;, Rank &lt;chr&gt;,</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;">#   Parent_name &lt;chr&gt;, Parent_NCBI_ID &lt;int&gt;, Parent_rank &lt;chr&gt;,</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;">#   Confidence_in_curation &lt;chr&gt;, and abbreviated variable names ¹​Accession_ID,</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;">#   ²​Taxon_name, ³​Attribute, ⁴​Attribute_value, ⁵​Attribute_source, ⁶​Evidence,</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;">#   ⁷​Frequency</span></span></span></code></pre></div>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span>     562 <span style="color: #BB0000;">NA</span>        <span style="color: #BB0000;">NA</span>          Escher… Br-C10…       0 Microb… exp     unknown</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span>     562 <span style="color: #BB0000;">NA</span>        <span style="color: #BB0000;">NA</span>          Escher… Br-C11…       0 Microb… exp     unknown</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span>     562 <span style="color: #BB0000;">NA</span>        <span style="color: #BB0000;">NA</span>          Escher… Br-C12…       0 Microb… exp     unknown</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span>     562 <span style="color: #BB0000;">NA</span>        <span style="color: #BB0000;">NA</span>          Escher… Br-C13…       0 Microb… exp     unknown</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span>     562 <span style="color: #BB0000;">NA</span>        <span style="color: #BB0000;">NA</span>          Escher… Br-C13…       0 Microb… exp     unknown</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span>     562 <span style="color: #BB0000;">NA</span>        <span style="color: #BB0000;">NA</span>          Escher… Br-C14…       0 Microb… exp     unknown</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span>     562 <span style="color: #BB0000;">NA</span>        <span style="color: #BB0000;">NA</span>          Escher… Br-C14…       0 Microb… exp     unknown</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span>     562 <span style="color: #BB0000;">NA</span>        <span style="color: #BB0000;">NA</span>          Escher… Br-C15…       0 Microb… exp     unknown</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span>     562 <span style="color: #BB0000;">NA</span>        <span style="color: #BB0000;">NA</span>          Escher… Br-C15…       0 Microb… exp     unknown</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span>     562 <span style="color: #BB0000;">NA</span>        <span style="color: #BB0000;">NA</span>          Escher… Br-C15…       0 Microb… exp     unknown</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># … with 138,486 more rows, 5 more variables: Confidence_in_curation &lt;chr&gt;,</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;">#   Rank &lt;chr&gt;, Parent_name &lt;chr&gt;, Parent_NCBI_ID &lt;int&gt;, Parent_rank &lt;chr&gt;, and</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;">#   abbreviated variable names ¹​Accession_ID, ²​Taxon_name, ³​Attribute,</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;">#   ⁴​Attribute_value, ⁵​Attribute_source, ⁶​Evidence, ⁷​Frequency</span></span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="some-examples-of-how-to-create-signatures">Some examples of how to create signatures<a class="anchor" aria-label="anchor" href="#some-examples-of-how-to-create-signatures"></a>
