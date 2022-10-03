@@ -56,7 +56,7 @@ physiologies <- function(keyword = "all") {
     ## Some modifications for the curation of the datasets
     database[[i]] <- database[[i]] |>
       purrr::modify_if(.p = is.character, ~ stringr::str_squish(.x)) |>
-      purrr::modify_at(.at = c('Attribute', 'Frequency', 'Evidence'),  ~ {
+      purrr::modify_at(.at = c('Attribute', 'Frequency', 'Evidence', 'Confidence_in_curation'), ~ {
         stringr::str_to_lower(.x)
       }) |>
       .addConfidenceInCuration() |>
