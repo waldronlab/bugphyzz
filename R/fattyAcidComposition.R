@@ -21,18 +21,24 @@
 #' x
 #'
 fattyAcidComposition <- function(){
-    link <- customLinks() %>%
-        dplyr::filter(.data[["functionname"]] == "fattyAcidComposition") %>%
-        dplyr::pull(.data[["link"]])
-    fac_wide <- utils::read.csv(link,check.names = FALSE)
-    fac_long <- fac_wide %>%
-        tidyr::pivot_longer(cols = .data[["Br-C10:1"]]:.data[["Oxo-C19:1"]],
-                                      names_to = "Attribute_new",
-                                      values_to = "Attribute_value")
-    dplyr::left_join(fac_long, ranks_parents, by = "NCBI_ID") %>%
-      as.data.frame() |>
-      .reorderColumns() |>
-      .addConfidenceInCuration()
+  link <- customLinks() |>
+    dplyr::filter(.data[["functionname"]] == "fattyAcidComposition") |>
+    dplyr::pull(.data[["link"]])
+  fac_wide <- utils::read.csv(link,check.names = FALSE)
+  fac_long <- fac_wide %>%
+    tidyr::pivot_longer(
+      cols = .data[["Br-C10:1"]]:.data[["Oxo-C19:1"]],
+      names_to = "Attribute_new", values_to = "Attribute_value")
+  dplyr::left_join(fac_long, ranks_parents, by = "NCBI_ID") |>
+    as.data.frame() |>
+    .addConfidenceInCuration() |>
+    purrr::modify_at(
+      .at = c('Attribute', 'Frequency', 'Evidence', 'Confidence_in_curation'),
+      .f = ~ stringr::str_to_lower(.x)
+    ) |>
+    dplyr::select(-Attribute) |>
+    dplyr::rename(Attribute = Attribute_new) |>
+    .reorderColumns()
 }
 
 #' Custom links
