@@ -4,12 +4,12 @@ Genome_ID	required	2	^.*$	string	character|numeric|integer|logical
 Accession_ID	required	3	^.*$	string	character|numeric|integer|logical
 Taxon_name	required	4	^.+$	string	character
 Attribute	required	5	.attributes	function	character
-Attribute_value	required	6	^(TRUE|FALSE|[0-9]+(\\.|\\-)?([0-9]+)?)$	string	character|numeric|integer|logical
+Attribute_value	required	6	^(TRUE|FALSE|-*[0-9]+(\\.|\\-)?([0-9]+)?)$	string	character|numeric|integer|logical
 Attribute_source	required	7	^.+$	string	character
 Evidence	required	8	^(exp|igc|asr|unknown)	string	character
 Frequency	required	9	^(unknown|usually|always|sometimes)$	string	character
 Confidence_in_curation	required	10	^(low|medium|high)$	string	character
-Note	optional	NA	^.+$	string	character
+Note	optional	NA	^.*$	string	character
 Strain	optional	NA	^.+$	string	character
 Unit	optional	NA	^.+$	string	character
 Rank	optional	NA	^(superkingdom|kingdom|clade|phylum|class|order|family|genus|species|no rank|strain|species group|isolate|subspecies|forma|varietas|forma specialis|subgenus|tribe|species subgroup|serogroup|subphylum|subclass|suborder|serotype|biotype|subfamily|pathogroup)$	string	character
