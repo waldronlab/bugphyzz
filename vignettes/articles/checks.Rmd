@@ -59,6 +59,10 @@ file.
 
 ```{r, message=FALSE}
 err2 <- bugphyzz:::.checkColumnValuesList(phys)
+err2 <- dplyr::filter(err2, error_type == 'Invalid values')
+
+err2
+
 ```
 
 The output contains seven columns:  
@@ -106,6 +110,18 @@ err2 %>%
     select(-invalid_values, -invalid_pos) %>% # to many values
     knitr::kable()
 ```
+
+
+
+## First 100 rows printed here:
+
+```{r}
+err2 |> 
+  tidyr::unnest(cols = c(invalid_values, invalid_pos)) |> 
+  head(100) |> 
+  DT::datatable(filter = 'top')
+```
+
 
 
 # Check valid NCBI IDs
