@@ -92,65 +92,35 @@ physiologies, run bugphyzz::physiologiesList()</p></dd>
     <div id="ref-examples">
     <h2>Examples</h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu">physiologies</span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Missing columns in acetate producing. Missing columns are: Confidence_in_curation</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Finished acetate producing</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Missing columns in aerophilicity. Missing columns are: Confidence_in_curation</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Finished aerophilicity</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Missing columns in animal pathogen. Missing columns are: Confidence_in_curation</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Finished animal pathogen</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Missing columns in antimicrobial resistance. Missing columns are: Confidence_in_curation</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Finished antimicrobial resistance</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Missing columns in antimicrobial sensitivity. Missing columns are: Confidence_in_curation</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Dropped 1 rows with missing Attribute_value from antimicrobial sensitivity</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Missing columns in arrangement. Missing columns are: Confidence_in_curation</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Finished arrangement</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Missing columns in biofilm forming. Missing columns are: Confidence_in_curation</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Finished biofilm forming</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Missing columns in butyrate producing. Missing columns are: Confidence_in_curation</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Dropped 4 rows with missing Attribute_value from butyrate producing</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Missing columns in COGEM pathogenicity rating. Missing columns are: Confidence_in_curation</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Finished COGEM pathogenicity rating</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Missing columns in disease association. Missing columns are: Confidence_in_curation</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Finished disease association</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Missing columns in extreme environment. Missing columns are: Confidence_in_curation</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Finished extreme environment</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Missing columns in gram stain. Missing columns are: Confidence_in_curation</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Finished gram stain</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Missing columns in growth medium. Missing columns are: Confidence_in_curation</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Finished growth medium</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Missing columns in growth temperature. Missing columns are: Confidence_in_curation</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Finished growth temperature</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Missing columns in habitat. Missing columns are: Confidence_in_curation</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Finished habitat</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Missing columns in health associated. Missing columns are: Confidence_in_curation</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Finished health associated</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Missing columns in hydrogen gas producing. Missing columns are: Confidence_in_curation</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Dropped 1 rows with missing Attribute_value from hydrogen gas producing</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Missing columns in isolation site. Missing columns are: Confidence_in_curation</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Finished isolation site</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Missing columns in lactate producing. Missing columns are: Confidence_in_curation</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Dropped 1 rows with missing Attribute_value from lactate producing</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Missing columns in length. Missing columns are: Confidence_in_curation</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Finished length</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Missing columns in mutation rate per site per generation. Missing columns are: Confidence_in_curation</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Finished mutation rate per site per generation</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Missing columns in mutation rates per site per year. Missing columns are: Confidence_in_curation</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Finished mutation rates per site per year</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Missing columns in optimal ph. Missing columns are: Confidence_in_curation</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Finished optimal ph</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Missing columns in plant pathogenicity. Missing columns are: Confidence_in_curation</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Finished plant pathogenicity</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Missing columns in shape. Missing columns are: Confidence_in_curation</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Finished shape</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Missing columns in spore shape. Missing columns are: Confidence_in_curation</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Finished spore shape</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Missing columns in width. Missing columns are: Confidence_in_curation</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Finished width</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Missing columns in genome size. Missing columns are: Confidence_in_curation</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Dropped 5 rows with missing Attribute_value from genome size</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Missing columns in coding genes. Missing columns are: Confidence_in_curation</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Finished coding genes</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Missing columns in sphingolipid producing. Missing columns are: Confidence_in_curation</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Finished sphingolipid producing</span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">x</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   NCBI_ID Genome_ID Accession_ID                          Taxon_name</span>
@@ -175,17 +145,15 @@ physiologies, run bugphyzz::physiologiesList()</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 5   mM species           Roseburia            841       genus</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 6   mM  strain Anaerostipes caccae         105841     species</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   Confidence_in_curation</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1                   High</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2                   High</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3                   High</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4                   High</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5                   High</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6                   High</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1                   high</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2                   high</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3                   high</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4                   high</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5                   high</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6                   high</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">y</span> <span class="op">&lt;-</span> <span class="fu">physiologies</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"gram stain"</span>, <span class="st">"aerophilicity"</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Missing columns in aerophilicity. Missing columns are: Confidence_in_curation</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Finished aerophilicity</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Missing columns in gram stain. Missing columns are: Confidence_in_curation</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Finished gram stain</span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">lapply</a></span><span class="op">(</span><span class="va">y</span>, <span class="va">head</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $aerophilicity</span>
@@ -211,12 +179,12 @@ physiologies, run bugphyzz::physiologiesList()</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 5   NA     NA species          Cellulomonas           1707       genus</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 6   NA     NA species          Cellulomonas           1707       genus</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   Confidence_in_curation</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1                 Medium</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2                 Medium</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3                 Medium</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4                 Medium</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5                 Medium</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6                 Medium</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1                 medium</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2                 medium</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3                 medium</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4                 medium</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5                 medium</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6                 medium</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $`gram stain`</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   NCBI_ID Genome_ID Accession_ID           Taxon_name           Attribute</span>
@@ -226,20 +194,20 @@ physiologies, run bugphyzz::physiologiesList()</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 4 2282742   unknown      unknown      Desulfofarcimen gram stain negative</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 5 2282740   unknown      unknown          Desulfallas gram stain negative</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 6 2211639   unknown      unknown   Pseudaestuariivita gram stain negative</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   Attribute_value Attribute_source Evidence Frequency  Rank       Parent_name</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1            TRUE  Bergey's Manual      exp    always genus    Desulfallaceae</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2            TRUE  Bergey's Manual      exp    always genus Phaeosphaeriaceae</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3            TRUE  Bergey's Manual      exp    always genus    Peptococcaceae</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4            TRUE  Bergey's Manual      exp    always genus    Peptococcaceae</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5            TRUE  Bergey's Manual      exp    always genus    Desulfallaceae</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6            TRUE  Bergey's Manual      exp    always genus  Rhodobacteraceae</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   Parent_NCBI_ID Parent_rank Confidence_in_curation</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1        2867375      family                   High</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2           5020      family                   High</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3         186807      family                   High</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4         186807      family                   High</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5        2867375      family                   High</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6          31989      family                   High</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   Attribute_value Attribute_source Evidence Frequency Confidence_in_curation</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1            TRUE  Bergey's Manual      exp    always                   high</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2            TRUE  Bergey's Manual      exp    always                   high</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3            TRUE  Bergey's Manual      exp    always                   high</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4            TRUE  Bergey's Manual      exp    always                   high</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5            TRUE  Bergey's Manual      exp    always                   high</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6            TRUE  Bergey's Manual      exp    always                   high</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    Rank       Parent_name Parent_NCBI_ID Parent_rank</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1 genus    Desulfallaceae        2867375      family</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2 genus Phaeosphaeriaceae           5020      family</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3 genus    Peptococcaceae         186807      family</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4 genus    Peptococcaceae         186807      family</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5 genus    Desulfallaceae        2867375      family</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6 genus  Rhodobacteraceae          31989      family</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 </code></pre></div>
     </div>
