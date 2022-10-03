@@ -802,8 +802,9 @@ utils::globalVariables(c("."))
 .template <- function(dataset) {
     template_tsv <- system.file("extdata/template.tsv", package = "bugphyzz")
     template <- utils::read.table(
-        file = template_tsv, sep = "\t", check.names = FALSE, header = TRUE
-    )
+        file = template_tsv, sep = "\t", check.names = FALSE, header = TRUE,
+        allowEscapes = TRUE )
+    # template <- readr::read_tsv(template_tsv, show_col_types = FALSE)
     template[template[["column_name"]] %in% colnames(dataset), ]
 }
 

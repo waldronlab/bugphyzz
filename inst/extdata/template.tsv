@@ -4,7 +4,7 @@ Genome_ID	required	2	^.*$	string	character|numeric|integer|logical
 Accession_ID	required	3	^.*$	string	character|numeric|integer|logical
 Taxon_name	required	4	^.+$	string	character
 Attribute	required	5	.attributes	function	character
-Attribute_value	required	6	^(TRUE|FALSE|[0-9]+(\\.|\\-)?([0-9]+)?)$	string	character|numeric|integer|logical
+Attribute_value	required	6	^(TRUE|FALSE|-*[0-9]+(\\.|\\-)?([0-9]+)?)$	string	character|numeric|integer|logical
 Attribute_source	required	7	^.+$	string	character
 Evidence	required	8	^(exp|igc|asr|unknown)	string	character
 Frequency	required	9	^(unknown|usually|always|sometimes)$	string	character
