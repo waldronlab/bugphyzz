@@ -210,7 +210,7 @@ utils::globalVariables(c("."))
     return(invisible(err_list))
 }
 
-## Checks for column values ------------------------------------------------
+## Check values and syntax ####
 
 #' Check column values
 #'
