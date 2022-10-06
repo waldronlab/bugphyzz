@@ -103,7 +103,7 @@ Some analyses using data provided by this package can be found at https://waldro
 ## How to add a new attribute in GitHub to the bugphyzz database
 Curation steps:
  1. Add attributes of physiology to [Attributes](https://github.com/waldronlab/bugphyzz/blob/main/inst/extdata/attributes.tsv) using ontology terms
- 2. Add reference(s) to Confidence in Curation
+ 2. Add reference(s) to [Confidence in Curation](https://github.com/waldronlab/bugphyzz/blob/main/inst/extdata/confidence_in_curation.tsv)
 
 If using Google Sheets, publish a csv file to web:
 
