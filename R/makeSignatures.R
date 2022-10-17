@@ -1,4 +1,6 @@
-
+utils::globalVariables(c(
+  'Frequency', 'Evidence', 'Rank'
+))
 #' Make signatures
 #'
 #' \code{makeSignatures} creates a list of signatures.
@@ -204,12 +206,11 @@ getSignatures <- function(
 ## A helper function for makeSignatures
 .filterCategorical <- function(df, tax.level, Frequency, Evidence) {
   message('Creating signature for categorical attributes.')
-  Rank <- Frequency <- Evidence <- NULL
   output <- df |>
     dplyr::filter(
-      Rank %in% tax.level,
-      Frequency %in% Frequency,
-      Evidence %in% Evidence
+      rlang::.data[['Rank']] %in% rlang::.env[['tax.level']],
+      rlang::.data[['Frequency']] %in% rlang::.env[['Frequency']],
+      rlang::.data[['Evidence']] %in% rlang::.env[['Evidence']]
     )
 
   if (!nrow(output)) {
@@ -235,10 +236,11 @@ getSignatures <- function(
 
   output <- df |>
     dplyr::filter(
-      Rank %in% tax.level,
-      Frequency %in% Frequency,
-      Evidence %in% Evidence,
-      Attribute_value >= min, Attribute_value <= max
+      rlang::.data[['Rank']] %in% rlang::.env[['tax.level']],
+      rlang::.data[['Frequency']] %in% rlang::.env[['Frequency']],
+      rlang::.data[['Evidence']] %in% rlang::.env[['Evidence']],
+      rlang::.data[['Attribute_value']] >= rlang::.env[['min']],
+      rlang::.data[['Attribute_value']] <= rlang::.env[['max']]
     )
 
   if (!nrow(output)) {
