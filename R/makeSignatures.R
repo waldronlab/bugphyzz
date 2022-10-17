@@ -1,5 +1,5 @@
 utils::globalVariables(c(
-  'Frequency', 'Evidence', 'Rank'
+  '.data', '.env'
 ))
 #' Make signatures
 #'
@@ -208,9 +208,9 @@ getSignatures <- function(
   message('Creating signature for categorical attributes.')
   output <- df |>
     dplyr::filter(
-      rlang::.data[['Rank']] %in% rlang::.env[['tax.level']],
-      rlang::.data[['Frequency']] %in% rlang::.env[['Frequency']],
-      rlang::.data[['Evidence']] %in% rlang::.env[['Evidence']]
+      .data[['Rank']] %in% .env[['tax.level']],
+      .data[['Frequency']] %in% .env[['Frequency']],
+      .data[['Evidence']] %in% .env[['Evidence']]
     )
 
   if (!nrow(output)) {
@@ -236,11 +236,11 @@ getSignatures <- function(
 
   output <- df |>
     dplyr::filter(
-      rlang::.data[['Rank']] %in% rlang::.env[['tax.level']],
-      rlang::.data[['Frequency']] %in% rlang::.env[['Frequency']],
-      rlang::.data[['Evidence']] %in% rlang::.env[['Evidence']],
-      rlang::.data[['Attribute_value']] >= rlang::.env[['min']],
-      rlang::.data[['Attribute_value']] <= rlang::.env[['max']]
+      .data[['Rank']] %in% .env[['tax.level']],
+      .data[['Frequency']] %in% .env[['Frequency']],
+      .data[['Evidence']] %in% .env[['Evidence']],
+      .data[['Attribute_value']] >= .env[['min']],
+      .data[['Attribute_value']] <= .env[['max']]
     )
 
   if (!nrow(output)) {
