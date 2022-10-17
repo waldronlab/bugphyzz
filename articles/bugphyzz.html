@@ -355,11 +355,11 @@ arguments and returns a single data.frame object:</p>
 <span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map_if.html" class="external-link">map_depth</a></span><span class="op">(</span>.x <span class="op">=</span> <span class="va">aer_sig</span>, .depth <span class="op">=</span> <span class="fl">2</span>, .f <span class="op">=</span> <span class="op">~</span> <span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">.x</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/unlist.html" class="external-link">unlist</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt;                 aerophilicity.aerobic               aerophilicity.anaerobic </span></span>
-<span><span class="co">#&gt;                                   574                                   294 </span></span>
+<span><span class="co">#&gt;                                   565                                   291 </span></span>
 <span><span class="co">#&gt; aerophilicity.facultatively anaerobic         aerophilicity.microaerophilic </span></span>
-<span><span class="co">#&gt;                                   174                                    17 </span></span>
+<span><span class="co">#&gt;                                   165                                    16 </span></span>
 <span><span class="co">#&gt;      aerophilicity.obligately aerobic    aerophilicity.obligately anaerobic </span></span>
-<span><span class="co">#&gt;                                    52                                   104</span></span>
+<span><span class="co">#&gt;                                    51                                   103</span></span>
 <span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map_if.html" class="external-link">map_depth</a></span><span class="op">(</span>.x <span class="op">=</span> <span class="va">aer_sig</span>, .depth <span class="op">=</span> <span class="fl">2</span>, .f <span class="op">=</span> <span class="op">~</span> <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">.x</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt; $aerophilicity</span></span>
 <span><span class="co">#&gt; $aerophilicity$aerobic</span></span>
@@ -389,16 +389,13 @@ bacteria):</p>
 <span><span class="co">#&gt; Importing spreadsheet(s)...</span></span>
 <span><span class="co">#&gt; Finished optimal ph</span></span>
 <span><span class="co">#&gt; Creating signature for continuous attribute.</span></span>
+<span><span class="co">#&gt; Not enough microbes to create signature.</span></span>
+<span><span class="co">#&gt; No signatures</span></span>
 <span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map_if.html" class="external-link">map_depth</a></span><span class="op">(</span>.x <span class="op">=</span> <span class="va">acid_sig</span>, .depth <span class="op">=</span> <span class="fl">2</span>, .f <span class="op">=</span> <span class="op">~</span> <span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">.x</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/unlist.html" class="external-link">unlist</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt; optimal ph.optimal ph </span></span>
-<span><span class="co">#&gt;                   878</span></span>
+<span><span class="co">#&gt; NULL</span></span>
 <span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map_if.html" class="external-link">map_depth</a></span><span class="op">(</span>.x <span class="op">=</span> <span class="va">acid_sig</span>, .depth <span class="op">=</span> <span class="fl">2</span>, .f <span class="op">=</span> <span class="op">~</span> <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">.x</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="co">#&gt; $`optimal ph`</span></span>
-<span><span class="co">#&gt; $`optimal ph`$`optimal ph`</span></span>
-<span><span class="co">#&gt; [1] "Hoeflea phototrophica"          "Loktanella cinnabarina"        </span></span>
-<span><span class="co">#&gt; [3] "Leptospirillum ferriphilum"     "Sulfobacillus acidophilus"     </span></span>
-<span><span class="co">#&gt; [5] "Acidithiobacillus ferrivorans"  "Acidithiobacillus ferrooxidans"</span></span></code></pre></div>
+<span><span class="co">#&gt; list()</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="session-information">Session information:<a class="anchor" aria-label="anchor" href="#session-information"></a>
