@@ -20,7 +20,7 @@ makeSignatures <- function(
     keyword = NULL,
     tax.id.type = 'Taxon_name', tax.level = 'mixed',
     Frequency = c('unknown', 'sometimes', 'usually', 'always'),
-    Evidence = c('asr', 'unknown', 'igc', 'asr'),
+    Evidence = c('asr', 'unknown', 'igc', 'inh-tax'),
     min.size = 1,
     min = NULL, max = NULL
 ) {
@@ -107,7 +107,7 @@ getSignatures <- function(
     df,
     tax.id.type = 'Taxon_name', tax.level = 'mixed',
     Frequency = c('unknown', 'sometimes', 'usually', 'always'),
-    Evidence = c('asr', 'unknown', 'igc', 'asr'),
+    Evidence = c('asr', 'unknown', 'igc', 'inh-tax'),
     min.size = 1,
     min = NULL, max = NULL
 ) {
