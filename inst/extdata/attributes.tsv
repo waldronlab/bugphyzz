@@ -365,3 +365,4 @@
 "staphylococcus"	"logical"	"MICRO:0000378"	"A multicellular relationship of prokaryotic cells where the shape of the cells is round (forming a coccus) and the cells are attached to one another end-to-end and side-to-side to form clumps or clusters."
 "pathogenic in mammals"	"logical"	NA	NA
 "pathogenic in fish"	"logical"	NA	NA
+"disease" "logical" "EFO:0000408" "A disease is a disposition to undergo pathological processes that exists in an organism because of one or more disorders in that organism."
