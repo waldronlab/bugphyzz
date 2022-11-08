@@ -24,7 +24,7 @@ You can install the development version of bugphyzz with:
 devtools::install_github("waldronlab/bugphyzz")
 ```
 
-## Some examples of how to create signatures
+## Some examples of how to create signatures 
 
 ``` r
 suppressMessages({
