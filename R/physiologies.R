@@ -57,7 +57,7 @@ physiologies <- function(keyword = "all") {
     database[[i]] <- database[[i]] |>
       purrr::modify_if(.p = is.character, ~ stringr::str_squish(.x)) |>
       .addConfidenceInCuration() |>
-      purrr::modify_at(.at = c('Attribute', 'Frequency', 'Evidence', 'Confidence_in_curation'), ~ {
+      purrr::modify_at(.at = c('Frequency', 'Evidence', 'Confidence_in_curation'), ~ {
         stringr::str_to_lower(.x)
       }) |>
       dplyr::distinct()
