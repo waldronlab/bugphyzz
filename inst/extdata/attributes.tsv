@@ -367,3 +367,236 @@
 "pathogenic in fish"	"logical"	NA	NA
 "disease"	"logical"	"EFO:0000408"	"A disease is a disposition to undergo pathological processes that exists in an organism because of one or more disorders in that organism."
 "sampling site"	"logical"	"EFO:0000688"	"A site from which a sample, i.e. a statistically representative of the whole, is extracted from the whole. e.g. a liver sample"
+"Attribute_value
+acne
+acrodermatitis chronica atrophicans
+acute rat polyarthritis and murine chronic proliferative arthritis
+african heartwater
+african tick-bite fever
+anaplasmosis
+anemia
+anthrax
+antibiotic-associated diarrhea and pseudomembraneous colitis
+apple proliferation disease
+aster yellows witches'-broom
+atypical pneumonia in older children and young adults
+bacillary angiomatosis, cat scratch fever
+bacillary angiomatosis, trench fever
+bacteremia
+bacteremia, endocarditis, urinary tract infection
+bacteremia, gastroenteritis
+bacteremia, meningoencephalitis, multiple brain abscesses
+bacteremia, pneumonia
+bacterial endocarditis
+bacterial fruit blotch
+bacterial kidney disease (bkd)
+bacterial leaf blight of maize and sorghum, brown stripe of rice and red stripe of sugarcane
+bacterial spot
+bacterial vaginosis
+bartinellosis
+black rot
+black rot and citrus canker
+black rot and citrus canker
+blight
+blood, respiratory, and urinary infections
+bordetellosis
+botulism
+bovine anaplasmosis
+bovine anaplasmosis
+bovine tuberculosis
+brucellosis
+brucellosis, infectious abortions, fever
+brucellosis, infectious abortions, fever
+bubonic plague
+buruli ulcer
+canine brucellosis
+caries and periodontal disease
+carrion's disease, oroya fever
+cell lysis
+cellular destruction
+cepacia syndrome
+cholera
+chronic granulomatous disease
+chronic respiratory disease in chicken
+chronic respiratory diseases
+citrus canker
+citrus variegated chlorosis
+cold water disease, rainbow trout fry syndrome
+colibacillosis
+contagious bovine pleuropneumonia (cbpp)
+crown gall
+cyanobacterial hepatotoxicosis, gastroenteritis, skin irritation
+cystitis
+dental caries
+dental caries, endocarditis
+diarrhea
+diarrhea and occasionally septicemia
+diphtheria
+dysentery
+ehrlichiosis
+encephalitis, urinary tract infections, surgical wound infections, pyelonephritis, pneumonia, septicemia
+endemic typhus and murine typhus
+endocarditis
+endocarditis. septicemia, meningitis
+endospore-forming
+enteric septicemia
+enzootic pneumonia
+epidemic typhus
+epizootic infectious polyserositis and septcemia
+erysipelas in animals, erysipeloid in human
+farmer's lung, hypersensitivity pneumonitis
+fibrinous and necrotizing pleuropneumonia
+food poisoning
+fowl typhoid
+furunculosis
+gas gangrene
+gastric inflammation and peptic ulcer disease
+gastric lesions
+gastric ulcer
+gastroenteritis
+gastroenteritis and bacteremia
+gastroenteritis and diarrhea
+gastroenteritis and food poisoning
+gastroenteritis, opportunistic infections
+gastroenteritis, periodontal disease
+gastroenteritis, septicemia, and others
+gastroenteritis, wound infections, primary septicemia
+genital ulcer disease
+glanders and pneumonia
+glasser's disease
+gonorrhea
+heartwater
+hemorrhagic colitis
+hepatitis, typhlitis, hepatocellular tumors, and gastric bowel disease
+hitra disease
+huanglongbing
+human granulocytic anaplasmosis
+infectious keratoconjunctivitis
+infertility, infectious abortions, septicemia, meningitis
+inflammation of the epididymis and placenta
+inflammatory airway disease, opportunistic infections
+intestinal spirochetosis
+larvicidal toxin
+leaf blight, stewart's bacterial wilt
+legionnaire's disease
+leprosy
+leptospirosis
+listeriosis
+louse-borne relapsing fever
+louse-borne typhus, mediterranean spotted fever, epidemic typhus
+lung infections
+lung, skin, and wound infections
+lyme disease
+lymphogranuloma vernerum
+lymphogranuloma vernerum, proctitis
+mastitis
+mastitis, arthritis, and pneumonia
+melioidosis
+meningitis and septicemia
+meningitis, arthritis, pneumonia
+meningitis, endocarditis, septicemia and arthritis
+meningitis, septicemia, necrotizing enterocolitis
+meningitis, septicemia, otitis media, sinusitis, chronic bronchitis
+monocytic ehrlichiosis
+murine colonic hyperplasia
+mushroom worker's disease, farmer's lung disease
+necrotizing pneumonia and chroninc infections
+necrotizing pneumonia, chronic infections
+neonatal gbs meningitis
+no
+nocardiosis
+nocosomial infections
+nosocomial infections in immunocompromised individuals
+nosocomial infections, nosocomial pneumonia
+ocular infection
+onions yellow disease
+opportunistic infections
+opportunistic peritoneal diseases
+ovine footrot
+paratuberculosis
+paratyphoid fever
+pasteurellosis
+periodontal disease
+periodontal disease, gum inflamation
+periodontal diseases and some inflammations
+pharyngitis, bronchitis and pneumonitis
+plant rot
+pneumonia
+pneumonia
+pneumonia and urinary tract infections
+pneumonia and urinary tract infections
+pneumonia, arthritis, myocarditis, and reproductive problems
+pneumonia, meningitis, and bacteremia
+pneumonia, meningitis, bacteremia, sinusitis, otitis media, conjunctivitis
+polyarthritis
+potomac horse fever, equine monocytic ehrlichiosis
+probable pneumonia agent
+proliferative enteropathy
+q fever
+rabbit syphilis
+rare bacteremia
+rare bacteremia, endocarditis
+rare infections
+rare opportunistic infections
+rare opportunistic pathogen of humans
+rat bite fever
+ratoon stunting disease
+respiratory and urogenital tract infections, arthritis
+respiratory disease, mastitis, arthritis
+respiratory diseases
+respiratory illness and arthritis
+respiratory mycoplasmosis
+rice bacterial blight disease
+rickettsialpox
+rocky mountain spotted fever
+salmonellosis
+salmonellosis and swine paratyphoid
+scab disease
+scrub typhus
+sennetsu fever
+septicemia, endocarditis, lung and wound infections
+septicemia, pneumonia
+septicemia, pneumonia, and meningitis
+severe arthritis and septicemia
+severe infection, diarrhea, and abcesses
+shell disease
+skin infections, pneumonia, endocarditis
+soft rot
+soft rot and wilt
+soft rot disease
+soft rot disease of potatoes
+soft tissue infections
+soft tissue lesions
+sotto disease
+spondylodiscitis (rare)
+spontaneous abortion
+spotted-fever like illness
+strangles
+swine dysentery
+swine mycoplasmosis
+syphilis
+systemic disease in fish, occassional gastroenteritis, septicemia, and wound infections in humans
+tetanus
+tick-borne relapsing fever
+tomato bacterial wilt and canker
+toxemia and septicemia
+toxic-shock syndrome and staphylococcal scarlet fever
+tuberculosis
+tuberculosis (attenuated)
+tuberculosis in cattle
+tuberculosis type pulmonary infections
+tuberculosis-like infection in fish, skin infection, arthritis in human
+tularemia
+tumors
+typhoid fever
+urinary tract infection
+urogenital or respiratory tract infections
+variety of infections
+vibriosis
+vibriosis
+whipple's disease
+wide range of infections
+wide range of opportunistic infections
+wilt and tuber rot, ring rot
+wound and urinary tract infections, bacteremia
+wound infections, bacteremia
