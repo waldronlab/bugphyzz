@@ -309,16 +309,17 @@ antibiotic-associated diarrhea "logical"  "NCIT:C128350"  "Diarrhea that is asso
 "abscess"   "logical" "NCIT:C26686" "An inflammatory process characterized by the accumulation of pus within a newly formed tissue cavity which is the result of a bacterial, fungal, or parasitic infection or the presence of a foreign body"
 "pneumonia" "logical" "NCIT:C3333" "An acute, acute and chronic, or chronic inflammation focally or diffusely affecting the lung parenchyma, due to infections (viruses, fungi, mycoplasma, or bacteria), treatment (e.g. radiation), or exposure (inhalation) to chemicals. Symptoms include cough, shortness of breath, fevers, chills, chest pain, headache, sweating, and weakness."
 "Blunervirus" "logical"  "NCBITaxon:2022856" "NA"
-kidney disease "logical"  "EFO:0003086" "A disease involving the kidney"
-bacterial leaf blight of maize and sorghum
-bacterial spot
-bacterial vaginosis
-bartinellosis
-black rot
-black rot and citrus canker
-black rot and citrus canker
-blight
-blood, respiratory, and urinary infections
+"kidney disease" "logical"  "EFO:0003086" "A disease involving the kidney"
+"bacterial leaf blight" "logical" "CO_320:0000173"  "The type and severity of bacterial blight symptoms on leaves caused by the bacterial pathogen Xanthomonas oryzae pv. oryzae. Symptoms: lesions usually start near the leaf tip or leaf margins or both, and extend down the outer edge(s). Young lesions are pale green to grayish green, later turning yellow to gray (dead) with time. In very susceptible varieties, lesions may extend to the entire leaf length into the leaf sheath"
+"sorghum" "logical" "NCBITaxon:4557"  "Hemisorghum"
+"Reaction to Leaf spot" "logical"   "CO_331:0000386"  "The reaction of the plant to leaf spot"
+"bacterial vaginosis" "logical" "NCIT:C116973"  "Infection caused by bacterial overgrowth in the vagina. Most affected women are asymptomatic. When symptoms occur, they include foul-smelling vaginal discharge, vaginal itching, and burning. Risk factors include sexual activity with multiple partners and the use of vaginal douches and intrauterine devices. Up to a third of cases resolve without treatment. Antibiotic treatment is recommended when symptoms are present and for women that are pregnant at the time of infection."
+"bartonellosis" "logical" "EFO:0007166" "An infectious disease produced by bacteria of the genus Bartonella"
+"black rot" "logical" "CO_331:0000380"  "The reaction of the plant to Black rot"
+"canker" "logical" "CO_357:0000487"  "NA"
+blood, 
+respiratory
+urinary infections
 bordetellosis
 botulism
 bovine anaplasmosis
