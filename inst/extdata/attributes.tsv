@@ -203,88 +203,6 @@
 "1940s by lilleengen"	"logical"	NA	NA
 "30-m-tall sulfide mound in the iheya north field, japan (water depth, 1,000 m)"	"logical"	NA	NA
 "tumors"	"logical"	NA	NA
-"hitra disease"	"logical"	NA	NA
-"anaplasmosis"	"logical"	NA	NA
-"bovine anaplasmosis"	"logical"	NA	NA
-"anthrax"	"logical"	NA	NA
-"no"	"logical"	NA	NA
-"pneumonia"	"logical"	NA	NA
-"food poisoning"	"logical"	NA	NA
-"periodontal disease"	"logical"	NA	NA
-"sotto disease"	"logical"	NA	NA
-"bartinellosis"	"logical"	NA	NA
-"bordetellosis"	"logical"	NA	NA
-"respiratory diseases"	"logical"	NA	NA
-"respiratory deseases"	"logical"	NA	NA
-"lyme disease"	"logical"	NA	NA
-"louse-borne relapsing fever"	"logical"	NA	NA
-"swine dysentery"	"logical"	NA	NA
-"spontaneous abortion"	"logical"	NA	NA
-"glanders and pneumonia"	"logical"	NA	NA
-"melioidosis"	"logical"	NA	NA
-"gastroenteritis"	"logical"	NA	NA
-"gastroenteritis, periodontal disease"	"logical"	NA	NA
-"gastroenteritis and diarrhea"	"logical"	NA	NA
-"huanglongbing"	"logical"	NA	NA
-"apple proliferation disease"	"logical"	NA	NA
-"probable pneumonia agent"	"logical"	NA	NA
-"lymphogranuloma vernerum"	"logical"	NA	NA
-"wilt and tuber rot, ring rot"	"logical"	NA	NA
-"botulism"	"logical"	NA	NA
-"gas gangrene"	"logical"	NA	NA
-"tetanus"	"logical"	NA	NA
-"diphtheria"	"logical"	NA	NA
-"q fever"	"logical"	NA	NA
-"q-fever"	"logical"	NA	NA
-"ovine footrot"	"logical"	NA	NA
-"soft rot"	"logical"	NA	NA
-"soft rot disease"	"logical"	NA	NA
-"soft rot and wilt"	"logical"	NA	NA
-"heartwater"	"logical"	NA	NA
-"erysipelas in animals, erysipeloid in human"	"logical"	NA	NA
-"diarrhea"	"logical"	NA	NA
-"tularemia"	"logical"	NA	NA
-"periodontal diseases and some inflammations"	"logical"	NA	NA
-"glasser's disease"	"logical"	NA	NA
-"proliferative enteropathy"	"logical"	NA	NA
-"ratoon stunting disease"	"logical"	NA	NA
-"leptospirosis"	"logical"	NA	NA
-"listeriosis"	"logical"	NA	NA
-"leprosy"	"logical"	NA	NA
-"soft tissue lesions"	"logical"	NA	NA
-"mastitis, arthritis, and pneumonia"	"logical"	NA	NA
-"respiratory disease, mastitis, arthritis"	"logical"	NA	NA
-"polyarthritis"	"logical"	NA	NA
-"respiratory illness and arthritis"	"logical"	NA	NA
-"anemia"	"logical"	NA	NA
-"gonorrhea"	"logical"	NA	NA
-"sennetsu fever"	"logical"	NA	NA
-"onions yellow disease"	"logical"	NA	NA
-"blight"	"logical"	NA	NA
-"pasteurellosis"	"logical"	NA	NA
-"soft rot disease of potatoes"	"logical"	NA	NA
-"shell disease"	"logical"	NA	NA
-"plant rot"	"logical"	NA	NA
-"spotted-fever like illness"	"logical"	NA	NA
-"farmer's lung, hypersensitivity pneumonitis"	"logical"	NA	NA
-"salmonellosis and swine paratyphoid"	"logical"	NA	NA
-"salmonellosis"	"logical"	NA	NA
-"fowl typhoid"	"logical"	NA	NA
-"paratyphoid fever"	"logical"	NA	NA
-"typhoid fever"	"logical"	NA	NA
-"gastroenteritis and food poisoning"	"logical"	NA	NA
-"dysentery"	"logical"	NA	NA
-"mastitis"	"logical"	NA	NA
-"rat bite fever"	"logical"	NA	NA
-"neonatal gbs meningitis"	"logical"	NA	NA
-"strangles"	"logical"	NA	NA
-"meningitis, arthritis, pneumonia"	"logical"	NA	NA
-"mushroom worker's disease, farmer's lung disease"	"logical"	NA	NA
-"periodontal disease, gum inflamation"	"logical"	NA	NA
-"syphilis"	"logical"	NA	NA
-"rabbit syphilis"	"logical"	NA	NA
-"whipple's disease"	"logical"	NA	NA
-"vibriosis"	"logical"	NA	NA
 "Genome size"	"numeric"	"OMIT:0027643"	NA
 "genes"	"numeric"	"OMIT_0006994"	NA
 "environmental system"	"logical"	"ENVO:01000254"	"A system which has the disposition to environ one or more material entities."
@@ -367,8 +285,8 @@
 "pathogenic in fish"	"logical"	NA	NA
 "disease"	"logical"	"EFO:0000408"	"A disease is a disposition to undergo pathological processes that exists in an organism because of one or more disorders in that organism."
 "sampling site"	"logical"	"EFO:0000688"	"A site from which a sample, i.e. a statistically representative of the whole, is extracted from the whole. e.g. a liver sample"
-
 "Acne"  "logical" "NCIT:C27195" "An inflammatory process of the sebaceous glands which is characterized by comedones, nodules, papules and/or pustules on the skin."
+
 "acrodermatitis" "logical"  "NCIT:C84532" "An inflammatory skin condition affecting children. It is often associated with Epstein-Barr virus infection, hepatitis B infection or cytomegalovirus infection. It is characterized by the presence of cutaneous rashes and patches on the palms and soles. The trunk is not affected."
 "polyarthritis" "logical" "NCIT:C26996" "An arthritis affecting five or more separate joints"
 "heartwater"  "logical" "OMIT:0007528"  "NA"
@@ -378,8 +296,7 @@
 "anthrax" "logical" "NCIT:C84565" "An infection caused by Bacillus anthracis bacteria. It may affect the lungs, gastrointestinal tract, or skin. Patients with lung infection present with fever, headaches, cough, chest pain and shortness of breath. Patients with gastrointestinal infection present with nausea, vomiting and bloody diarrhea. Patients with skin infection develop blisters and ulcers."
 antibiotic-associated diarrhea "logical"  "NCIT:C128350"  "Diarrhea that is associated with current or recent antibiotic use."
 “colitis”	“logical”	“OMIT:0004401”	“NA”
-16SrX	“logical”	“NCBITaxon:85630”	“NA”
-“aster yellows witches-broom”	“logical”	“NCBITaxon:229545”	“NA”
+"Terrabacteria group"	“logical”	NCBITaxon:1783272”	“NA”
 “atypical pneumonia	“logical”	“NCIT:C128338”	“Historical term that references a form of pneumonia caused by Mycoplasma pneumoniae, Chlamydophila pneumoniae, or Legionella species.”
 “bacillary angiomatosis”	“logical”	“NCIT:C3477”	“A condition that is caused by infection with Bartonella, and which is characterized by vascular proliferation, usually in immunocompromised individuals.”
 “cat scratch fever”	“logical”	“EFO_0007195”	“Cat scratch disease is an infectious illness caused by the bacteria bartonella (Bartonella henselae). It is believed to be transmitted by cat scratches, bites, or exposure to cat saliva. This self-limiting infectious disease is characterized by a bump or blister at the site of the bite or scratch and swelling and pain in the lymph nodes. Other features may include fatigue, headache, achiness, and fever. Although cat-scratch disease usually subsides without treatment, antibiotic and/or antimicrobial therapy may help speed recovery”
@@ -388,14 +305,12 @@ antibiotic-associated diarrhea "logical"  "NCIT:C128350"  "Diarrhea that is asso
 “endocarditis”	“logical”	“NCIT:C34582”	“Inflammation of the endocardium”
 “urinary tract infection” “logical”	“NCIT:C50791”	“A bacterial infectious process affecting any part of the urinary tract, most commonly the bladder and the urethra. Symptoms include urinary urgency and frequency, burning sensation during urination, lower abdominal discomfort, and cloudy urine.”
 “gastroenteritis”	“logical”	“NCIT:C34632”	“An inflammatory disorder that affects the upper and lower gastrointestinal tract. Most commonly, this is attributed to viruses; however bacteria, parasites or adverse reactions can also be the culprit. Symptoms include acute diarrhea and vomiting”
-
-
-bacteremia, meningoencephalitis, multiple brain abscesses
-bacteremia, pneumonia
-bacterial endocarditis
-bacterial fruit blotch
-bacterial kidney disease (bkd)
-bacterial leaf blight of maize and sorghum, brown stripe of rice and red stripe of sugarcane
+"meningoencephalitis" "logical" "NCIT:C34813" "Inflammation of the meninges and brain, generally secondary to an infectious cause. Pathogens may be bacterial, viral, fungal, or protozoan."
+"abscess"   "logical" "NCIT:C26686" "An inflammatory process characterized by the accumulation of pus within a newly formed tissue cavity which is the result of a bacterial, fungal, or parasitic infection or the presence of a foreign body"
+"pneumonia" "logical" "NCIT:C3333" "An acute, acute and chronic, or chronic inflammation focally or diffusely affecting the lung parenchyma, due to infections (viruses, fungi, mycoplasma, or bacteria), treatment (e.g. radiation), or exposure (inhalation) to chemicals. Symptoms include cough, shortness of breath, fevers, chills, chest pain, headache, sweating, and weakness."
+"Blunervirus" "logical"  "NCBITaxon:2022856" "NA"
+kidney disease "logical"  "EFO:0003086" "A disease involving the kidney"
+bacterial leaf blight of maize and sorghum
 bacterial spot
 bacterial vaginosis
 bartinellosis
