@@ -317,10 +317,9 @@ antibiotic-associated diarrhea "logical"  "NCIT:C128350"  "Diarrhea that is asso
 "bartonellosis" "logical" "EFO:0007166" "An infectious disease produced by bacteria of the genus Bartonella"
 "black rot" "logical" "CO_331:0000380"  "The reaction of the plant to Black rot"
 "canker" "logical" "CO_357:0000487"  "NA"
-blood, 
-respiratory
-urinary infections
-bordetellosis
+"blood infection" "logical" "NA"  "NA" 
+"respiratory infection" "logical" "NA "NA"
+"bordetellosis" "logical" "MONDO:0037872" "Any disease caused by infection with organisms of the genus Bordetella"
 botulism
 bovine anaplasmosis
 bovine anaplasmosis
