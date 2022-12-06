@@ -34,7 +34,6 @@ physiologies <- function(keyword = "all") {
   for (i in seq_along(database)) {
 
     database[[i]] <- dplyr::distinct(utils::read.csv(links[i, "link"]))
-    # database[[i]] <- .reorderColumns(database[[i]], names(database)[i])
 
     ## Drop missing values from the Attribute_value column
     nmissing <- sum(is.na(database[[i]]$Attribute_value))
@@ -49,9 +48,16 @@ physiologies <- function(keyword = "all") {
     database[[i]] <- database[[i]][!is.na(database[[i]]$Attribute_value), ]
 
     ## Add rank and parent information for taxa with NCBI_ID
-    rp <- ranks_parents
-    class(rp[["NCBI_ID"]]) <- class(database[[i]][["NCBI_ID"]])
-    database[[i]] <- dplyr::left_join(database[[i]], rp, by = "NCBI_ID")
+
+    col_names <- colnames(database[[i]])
+    parent_col_names <- c('Parent_name', 'Parent_NCBI_ID', 'Parent_rank')
+    if (all(parent_col_names %in% col_names)) {
+      database[[i]][["NCBI_ID"]] <- as.character(database[[i]][["NCBI_ID"]])
+    } else {
+      rp <- ranks_parents
+      class(rp[["NCBI_ID"]]) <- class(database[[i]][["NCBI_ID"]])
+      database[[i]] <- dplyr::left_join(database[[i]], rp, by = "NCBI_ID")
+    }
 
     ## Some modifications for the curation of the datasets
     database[[i]] <- database[[i]] |>
