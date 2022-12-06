@@ -7,14 +7,14 @@
 .bergeysAbstracts()
 }
 \value{
-A tidy data.frame
+A tidy data.frame.
 }
 \description{
-This function fetches Kelly Eckenrode's and Jonathan Ye's scraping of the
-Bergey's abstracts and returns a tidy data.frame
+\code{.bergeyAbstracts} fetches Kelly Eckenrode's and Jonathan Ye's scraping
+of the Bergey's abstracts and returns a tidy data.frame.
 }
 \examples{
-x <- bugphyzz:::.bergeysAbstracts()
-dim(x)
+bergeys <- bugphyzz:::.bergeysAbstracts()
+head(bergeys)
 }
 \keyword{internal}
