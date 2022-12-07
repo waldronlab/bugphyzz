@@ -347,11 +347,14 @@
 "septicemia"  "logical" "NCIT:C3364"  "The presence of pathogenic microorganisms in the blood stream causing a rapidly progressing systemic reaction that may lead to shock. Symptoms include fever, chills, tachycardia, and increased respiratory rate. It is a medical emergency that requires urgent medical attention"
 "diphtheria"  "logical" "NCIT:C34541  "A Gram-positive bacterial infection caused by Corynebacterium diphtheriae. It usually involves the oral cavity, pharynx, and nasal cavity. Patients develop pseudomembranes in the affected areas and manifest signs and symptoms of an upper respiratory infection. The diphtheria toxin may cause myocarditis, polyneuritis, and other systemic effects."
 "dysentery" "logical" "EFO:1001869" "Acute inflammation of the intestine associated with infectious diarrhea of various etiologies, generally acquired by eating contaminated food containing toxins, biological derived from bacteria or other microorganisms. Dysentery is characterized initially by watery feces then by bloody mucoid stools. It is often associated with abdominal pain; fever; and dehydration."
-ehrlichiosis
-encephalitis, urinary tract infections, surgical wound infections, pyelonephritis, pneumonia, septicemia
-endemic typhus and murine typhus
+"Ehrlichiosis"  "logical" "OMIT:0017306"  "NA"
+encephalitis
+surgical wound infections
+pyelonephritis
+endemic typhus
 endocarditis
-endocarditis. septicemia, meningitis
+endocarditis
+meningitis
 endospore-forming
 enteric septicemia
 enzootic pneumonia
