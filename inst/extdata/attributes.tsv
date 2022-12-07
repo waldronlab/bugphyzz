@@ -335,14 +335,14 @@
 "chronic granulomatous disease" "logical" "NCIT:C26788" "A rare genetic disorder with a predominantly X-linked recessive pattern of inheritance resulting in impaired phagocytic clearance of bacteria and fungi. It is caused by a defect in the phagocytic NADPH oxidase (phox) complex. The phagocytes can engulf pathogens but are unable to produce the microbicidal precursors needed to destroy them. Clinical signs of severe disease present in childhood with milder forms later in life. They include recurrent infection especially pneumonia, cervical lymphadenopathy and hepatosplenomegaly. The clinical course includes the appearance of granulomata in the skin and gastrointestinal or genitourinary tracts. The clinical prognosis is dependent on effectively treating and preventing infection"
 "respiratory system disease"  "logical" "EFO_0000684" "A non-neoplastic or neoplastic disorder that affects the respiratory system. Representative examples include pneumonia, chronic obstructive pulmonary disease, pulmonary failure, lung adenoma, lung carcinoma, and tracheal carcinoma"
 "Plant chlorosis" "logical" "CO_345:0000033"  "NA"
-cold water disease, rainbow trout fry syndrome
+"Flavobacterium psychrophilum"  "logical"  "NCBITaxon:96345"  "https://thefishsite.com/articles/rainbow-trout-fry-syndrome-rtfs-explained-1"
 colibacillosis
 contagious bovine pleuropneumonia (cbpp)
 crown gall
-cyanobacterial hepatotoxicosis, gastroenteritis, skin irritation
-cystitis
-dental caries
-dental caries, endocarditis
+cyanobacterial hepatotoxicosis
+gastroenteritis
+skin irritation
+"cystitis"  "logical" "NCIT:C26738" "Inflammation of the urinary bladder"
 diarrhea
 diarrhea and occasionally septicemia
 diphtheria
