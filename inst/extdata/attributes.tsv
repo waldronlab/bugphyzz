@@ -286,7 +286,6 @@
 "disease"	"logical"	"EFO:0000408"	"A disease is a disposition to undergo pathological processes that exists in an organism because of one or more disorders in that organism."
 "sampling site"	"logical"	"EFO:0000688"	"A site from which a sample, i.e. a statistically representative of the whole, is extracted from the whole. e.g. a liver sample"
 "Acne"  "logical" "NCIT:C27195" "An inflammatory process of the sebaceous glands which is characterized by comedones, nodules, papules and/or pustules on the skin."
-
 "acrodermatitis" "logical"  "NCIT:C84532" "An inflammatory skin condition affecting children. It is often associated with Epstein-Barr virus infection, hepatitis B infection or cytomegalovirus infection. It is characterized by the presence of cutaneous rashes and patches on the palms and soles. The trunk is not affected."
 "polyarthritis" "logical" "NCIT:C26996" "An arthritis affecting five or more separate joints"
 "heartwater"  "logical" "OMIT:0007528"  "NA"
@@ -294,7 +293,7 @@
 "anaplasmosis"  "logical" "NCIT:C128425"  "An infection that is caused by Anaplasma phagocytophilum, which is transmitted to humans by infected ticks; it is characterized by fever, headache, chills, and myalgia."
 "anemia"  "logical" "NCIT:C2869"  "A reduction in the number of red blood cells, the amount of hemoglobin, and/or the volume of packed red blood cells. Clinically, anemia represents a reduction in the oxygen-transporting capacity of a designated volume of blood, resulting from an imbalance between blood loss (through hemorrhage or hemolysis) and blood production. Signs and symptoms of anemia may include pallor of the skin and mucous membranes, shortness of breath, palpitations of the heart, soft systolic murmurs, lethargy, and fatigability"
 "anthrax" "logical" "NCIT:C84565" "An infection caused by Bacillus anthracis bacteria. It may affect the lungs, gastrointestinal tract, or skin. Patients with lung infection present with fever, headaches, cough, chest pain and shortness of breath. Patients with gastrointestinal infection present with nausea, vomiting and bloody diarrhea. Patients with skin infection develop blisters and ulcers."
-antibiotic-associated diarrhea "logical"  "NCIT:C128350"  "Diarrhea that is associated with current or recent antibiotic use."
+"antibiotic-associated diarrhea" "logical"  "NCIT:C128350"  "Diarrhea that is associated with current or recent antibiotic use."
 “colitis”	“logical”	“OMIT:0004401”	“NA”
 "Terrabacteria group"	“logical”	NCBITaxon:1783272”	“NA”
 “atypical pneumonia	“logical”	“NCIT:C128338”	“Historical term that references a form of pneumonia caused by Mycoplasma pneumoniae, Chlamydophila pneumoniae, or Legionella species.”
@@ -321,24 +320,21 @@ antibiotic-associated diarrhea "logical"  "NCIT:C128350"  "Diarrhea that is asso
 "respiratory infection" "logical" "NA "NA"
 "bordetellosis" "logical" "MONDO:0037872" "Any disease caused by infection with organisms of the genus Bordetella"
 "botulism"  "logical" "NCIT:C84599" "A serious bacterial infection caused by botulinum toxin which is produced by Clostridium botulinum. Patients are infected usually by ingestion of contaminated food or wound contamination. It leads to muscle paralysis which may result in respiratory failure"
-bovine anaplasmosis
-bovine tuberculosis
-brucellosis
-brucellosis, infectious abortions, fever
-bubonic plague
-buruli ulcer
-canine brucellosis
-caries and periodontal disease
-carrion's disease, oroya fever
-cell lysis
-cellular destruction
-cepacia syndrome
-cholera
-chronic granulomatous disease
-chronic respiratory disease in chicken
-chronic respiratory diseases
-citrus canker
-citrus variegated chlorosis
+"anaplasmosis" "logical  "NCIT:C128425"  "An infection that is caused by Anaplasma phagocytophilum, which is transmitted to humans by infected ticks; it is characterized by fever, headache, chills, and myalgia."
+"tuberculosis"  "logical" "NCIT:C3423"  "A chronic, recurrent infection caused by the bacterium Mycobacterium tuberculosis. Tuberculosis (TB) may affect almost any tissue or organ of the body with the lungs being the most common site of infection. The clinical stages of TB are primary or initial infection, latent or dormant infection, and recrudescent or adult-type TB. Ninety to 95% of primary TB infections may go unrecognized. Histopathologically, tissue lesions consist of granulomas which usually undergo central caseation necrosis. Local symptoms of TB vary according to the part affected; acute symptoms include hectic fever, sweats, and emaciation; serious complications include granulomatous erosion of pulmonary bronchi associated with hemoptysis. If untreated, progressive TB may be associated with a high degree of mortality. This infection is frequently observed in immunocompromised individuals with AIDS or a history of illicit IV drug use"
+"brucellosis" "logical" "NCIT:C84602" "A gram negative bacterial infection caused by bacteria of the genus Brucella. Humans are infected by ingesting unpasteurized milk or meat from infected animals. Signs and symptoms include fevers, sweating, weakness, headache, muscle pain, arthritis and anemia"
+"abortion"  "logical" "SYMP:0000197"  "Abortion is a reproductive system symptom resulting in the expulsion of a fetus of a domestic animal often due to infection at any time before completion of pregnancy."
+"fever" "logical" "NCIT:C3038"  "Elevation of body temperature above normal due to inflammatory or immune responses"
+"plague"  "logical" "NCIT:C85015" "A Gram-negative bacterial infection caused by Yersinia pestis. It is usually transmitted to humans from bites of infected rodent fleas. It is manifested as a bubonic, septicemic, or pneumonic plague. In bubonic plague, the lymph nodes adjacent to the site of the skin bite are infected and enlarged. In septicemic plague, the infection spreads directly through the bloodstream. In pneumonic plague, the infection spreads to the lungs either following bubonic plague, or by inhalation of infective droplets. If untreated, it may lead to death."
+"Mycobacterial Infection" "logical" "NCIT:C26831"  "Infection due to organisms from the genus Mycobacteria"
+"caries"  "logical" "NCIT:C52593" "The decay of a tooth, in which it becomes softened, discolored, and/or porous"
+"Periodontal Disorder" "logical" "NCIT:C63743" "An inflammatory process of the gingival tissues and/or periodontal membrane of the teeth, resulting in an abnormally deep gingival sulcus, possibly producing periodontal pockets and loss of alveolar bone support"
+"cell lysis"  "logical" "OBI:0302894" cell lysis is a process by which cell membrane integrity of live cells is compromised and leads to cell death. Cell lysis may be achieved by means of viral action or osmotic shock."
+"Burkholderia cepacia"  "logical" "NCBITaxon:292" "NA"
+"cholera" "logical" "NCIT:C157812"  "An acute diarrheal illness caused by consuming water or food contaminated by the bacterium Vibrio cholerae. Adequate rehydration is key to surviving this illness."
+"chronic granulomatous disease" "logical" "NCIT:C26788" "A rare genetic disorder with a predominantly X-linked recessive pattern of inheritance resulting in impaired phagocytic clearance of bacteria and fungi. It is caused by a defect in the phagocytic NADPH oxidase (phox) complex. The phagocytes can engulf pathogens but are unable to produce the microbicidal precursors needed to destroy them. Clinical signs of severe disease present in childhood with milder forms later in life. They include recurrent infection especially pneumonia, cervical lymphadenopathy and hepatosplenomegaly. The clinical course includes the appearance of granulomata in the skin and gastrointestinal or genitourinary tracts. The clinical prognosis is dependent on effectively treating and preventing infection"
+"respiratory system disease"  "logical" "EFO_0000684" "A non-neoplastic or neoplastic disorder that affects the respiratory system. Representative examples include pneumonia, chronic obstructive pulmonary disease, pulmonary failure, lung adenoma, lung carcinoma, and tracheal carcinoma"
+"Plant chlorosis" "logical" "CO_345:0000033"  "NA"
 cold water disease, rainbow trout fry syndrome
 colibacillosis
 contagious bovine pleuropneumonia (cbpp)
