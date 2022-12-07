@@ -331,22 +331,22 @@
 "Periodontal Disorder" "logical" "NCIT:C63743" "An inflammatory process of the gingival tissues and/or periodontal membrane of the teeth, resulting in an abnormally deep gingival sulcus, possibly producing periodontal pockets and loss of alveolar bone support"
 "cell lysis"  "logical" "OBI:0302894" cell lysis is a process by which cell membrane integrity of live cells is compromised and leads to cell death. Cell lysis may be achieved by means of viral action or osmotic shock."
 "Burkholderia cepacia"  "logical" "NCBITaxon:292" "NA"
-"cholera" "logical" "NCIT:C157812"  "An acute diarrheal illness caused by consuming water or food contaminated by the bacterium Vibrio cholerae. Adequate rehydration is key to surviving this illness."
-"chronic granulomatous disease" "logical" "NCIT:C26788" "A rare genetic disorder with a predominantly X-linked recessive pattern of inheritance resulting in impaired phagocytic clearance of bacteria and fungi. It is caused by a defect in the phagocytic NADPH oxidase (phox) complex. The phagocytes can engulf pathogens but are unable to produce the microbicidal precursors needed to destroy them. Clinical signs of severe disease present in childhood with milder forms later in life. They include recurrent infection especially pneumonia, cervical lymphadenopathy and hepatosplenomegaly. The clinical course includes the appearance of granulomata in the skin and gastrointestinal or genitourinary tracts. The clinical prognosis is dependent on effectively treating and preventing infection"
+"Cholera" "logical" "NCIT:C157812"  "An acute diarrheal illness caused by consuming water or food contaminated by the bacterium Vibrio cholerae. Adequate rehydration is key to surviving this illness."
+"Chronic granulomatous disease" "logical" "NCIT:C26788" "A rare genetic disorder with a predominantly X-linked recessive pattern of inheritance resulting in impaired phagocytic clearance of bacteria and fungi. It is caused by a defect in the phagocytic NADPH oxidase (phox) complex. The phagocytes can engulf pathogens but are unable to produce the microbicidal precursors needed to destroy them. Clinical signs of severe disease present in childhood with milder forms later in life. They include recurrent infection especially pneumonia, cervical lymphadenopathy and hepatosplenomegaly. The clinical course includes the appearance of granulomata in the skin and gastrointestinal or genitourinary tracts. The clinical prognosis is dependent on effectively treating and preventing infection"
 "respiratory system disease"  "logical" "EFO_0000684" "A non-neoplastic or neoplastic disorder that affects the respiratory system. Representative examples include pneumonia, chronic obstructive pulmonary disease, pulmonary failure, lung adenoma, lung carcinoma, and tracheal carcinoma"
 "Plant chlorosis" "logical" "CO_345:0000033"  "NA"
 "Flavobacterium psychrophilum"  "logical"  "NCBITaxon:96345"  "https://thefishsite.com/articles/rainbow-trout-fry-syndrome-rtfs-explained-1"
-colibacillosis
-contagious bovine pleuropneumonia (cbpp)
-crown gall
-cyanobacterial hepatotoxicosis
-gastroenteritis
-skin irritation
+"Infection caused by Escherichia coli (disorder)" "logical" "71057007"  "NA"
+"contagious pleuropneumonia"  "logical" "MONDO:0005716" "A pleuropneumonia of cattle and goats caused by species of mycoplasma"
+"crown gall"  "logical" "BTO:0000303" "A disease that affects many species of plants and is caused by a bacterium (Agrobacterium tumefaciens) which forms tumorous enlargements just below the ground on the stem."
+"Microcystis aeruginosa"  "logical" "NCBITaxon:1126"  "NA"
+"gastroenteritis" "logical" "NCIT:C34632" "An inflammatory disorder that affects the upper and lower gastrointestinal tract. Most commonly, this is attributed to viruses; however bacteria, parasites or adverse reactions can also be the culprit. Symptoms include acute diarrhea and vomiting"
+"skin irritation" "logical"   "NCIT:C50743"  "A mild inflammatory dermal tissue reaction; it can be caused by physical contact with an irritant or can be a local response to a systemic trigger."
 "cystitis"  "logical" "NCIT:C26738" "Inflammation of the urinary bladder"
-diarrhea
-diarrhea and occasionally septicemia
-diphtheria
-dysentery
+"diarrhea"  "logical" "NCIT:C2987"  "Watery bowel movements"
+"septicemia"  "logical" "NCIT:C3364"  "The presence of pathogenic microorganisms in the blood stream causing a rapidly progressing systemic reaction that may lead to shock. Symptoms include fever, chills, tachycardia, and increased respiratory rate. It is a medical emergency that requires urgent medical attention"
+"diphtheria"  "logical" "NCIT:C34541  "A Gram-positive bacterial infection caused by Corynebacterium diphtheriae. It usually involves the oral cavity, pharynx, and nasal cavity. Patients develop pseudomembranes in the affected areas and manifest signs and symptoms of an upper respiratory infection. The diphtheria toxin may cause myocarditis, polyneuritis, and other systemic effects."
+"dysentery" "logical" "EFO:1001869" "Acute inflammation of the intestine associated with infectious diarrhea of various etiologies, generally acquired by eating contaminated food containing toxins, biological derived from bacteria or other microorganisms. Dysentery is characterized initially by watery feces then by bloody mucoid stools. It is often associated with abdominal pain; fever; and dehydration."
 ehrlichiosis
 encephalitis, urinary tract infections, surgical wound infections, pyelonephritis, pneumonia, septicemia
 endemic typhus and murine typhus
