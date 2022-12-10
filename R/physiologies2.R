@@ -1,6 +1,11 @@
-
 physiologies2 <- function(keyword = 'all') {
+
+  if ('all' %in% keyword) {
+    keyword <- showPhys()
+  }
+
   links_df <- curationLinks()
+  links_df <- links_df[links_df$physiology %in% keyword,]
   output <- vector('list', nrow(links_df))
   for (i in seq_along(output)) {
     one_row <- links_df[i, , drop = FALSE]
@@ -33,14 +38,11 @@ physiologies2 <- function(keyword = 'all') {
   if (attr_type == 'categorical')
     df <- .importCategorical(link, attr_grp)
 
-  if (attr_type == 'logical')
-    df <- .importLogical(link, attr_grp)
-
   if (attr_type == 'range')
     df <- .importRange(link, attr_grp)
 
-  if (attr_type == 'numeric')
-    df <- .importNumeric(link, attr_grp)
+  if (attr_type == 'numeric' || attr_type == 'logical')
+    df <- read.csv(link)
 
   df$Attribute_type <- attr_type
   df$Attribute_group <- attr_grp
@@ -48,20 +50,49 @@ physiologies2 <- function(keyword = 'all') {
   df
 }
 
-.importCategorical <- function(link, phys_name) {
-
+.importCategorical <- function(link) {
   df <- read.csv(link)
+  df
 }
 
-.importLogical <- function(link, phys_name) {
-  df <- read.csv(link)
-
-}
-.importRange <- function(link, phys_name) {
-  df <- read.csv(link)
-
-}
-
-.importNumeric <- function(link, phys_name) {
-  df <- read.csv(link)
+#' Import range
+#'
+#' \code{.importRange} imports a dataset labeled with "range" in
+#' \code{curationLinks}.
+#'
+#' @param link A character string. Url to the spreadsheet.
+#'
+#' @return A data.frame.
+#'
+#' @keywords internal
+#'
+.importRange <- function(link) {
+  link |>
+    read.csv() |>
+    dplyr::mutate(
+      Attribute_value = gsub(' ', '', .data$Attribute_value),
+      Attribute_value = dplyr::case_when(
+        grepl('<', .data$Attribute_value) ~ paste0('-', .data$Attribute_value),
+        grepl('>', .data$Attribute_value) ~ paste0(.data$Attribute_value, '-'),
+        !grepl("-", .data$Attribute_value) ~ paste0(.data$Attribute_value, '-', .data$Attribute_value),
+        grepl("^-", .data$Attribute_value) ~ paste0("0", .data$Attribute_value),
+        grepl("-$", .data$Attribute_value) ~ paste0(.data$Attribute_value, "Inf"),
+        TRUE ~ .data$Attribute_value
+      ),
+      Attribute_value = sub('(<|>)', '', .data$Attribute_value),
+      Attribute_value = dplyr::case_when(
+        ## For some reason this does not work int he case_when call above. ??
+        grepl("^-", .data$Attribute_value) ~ paste0("0", .data$Attribute_value),
+        grepl("-$", .data$Attribute_value) ~ paste0(.data$Attribute_value, "Inf"),
+        TRUE ~ .data$Attribute_value
+      )
+    ) |>
+    tidyr::separate(
+      col = 'Attribute_value',
+      into = c('Attribute_value_min', 'Attribute_value_max'), sep = '-'
+    ) |>
+    dplyr::mutate(
+      Attribute_value_min = as.double(.data$Attribute_value_min),
+      Attribute_value_max = as.double(.data$Attribute_value_max)
+    )
 }
