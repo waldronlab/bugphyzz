@@ -36,10 +36,10 @@ physiologies2 <- function(keyword = 'all') {
   message('Importing ', attr_grp, ' (', attr_type, ')')
 
   if (attr_type == 'categorical')
-    df <- .importCategorical(link, attr_grp)
+    df <- .importCategorical(link)
 
   if (attr_type == 'range')
-    df <- .importRange(link, attr_grp)
+    df <- .importRange(link)
 
   if (attr_type == 'numeric' || attr_type == 'logical')
     df <- read.csv(link)
