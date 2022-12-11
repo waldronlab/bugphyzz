@@ -71,8 +71,6 @@ physiologies <- function(keyword = "all") {
     database[[i]] <- .reorderColumns(database[[i]], names(database)[i])
   }
 
-
-
   return(database)
 }
 
