@@ -79,7 +79,7 @@ makeSignatures <- function(
 #' data frame.
 #'
 #' @param df A data frame from bugphyzz.
-#' @param tax.id.type Type of taxids. Check types with the `whichID` function.
+#' @param tax.id.type Type of taxids. Check types with the `.whichID` function.
 #' @param tax.level A character vector with taxonomic ranks,
 #' e.g., genus, species, strain.
 #' @param Frequency A character vector with one or more values of: unknown,
@@ -118,10 +118,10 @@ getSignatures <- function(
   if (length(tax.id.type) > 1)
     stop('The tax.id.type argument must be of legth 1.', call. = FALSE)
 
-  if (!tax.id.type %in% whichID(df)) {
+  if (!tax.id.type %in% .whichID(df)) {
     stop(
       'The tax.level argument must be one of ',
-      paste0(whichID(df), collapse = ", "), call. = FALSE
+      paste0(.whichID(df), collapse = ", "), call. = FALSE
       )
   }
 
@@ -255,7 +255,7 @@ getSignatures <- function(
 
 #' Which IDs
 #'
-#' \code{whichID} gives valid values for the tax.id.type
+#' \code{.whichID} gives valid values for the tax.id.type
 #' argument of the \code{makeSignatures} function.
 #'
 #' @param df A data frame from bugphyzz.
@@ -266,8 +266,8 @@ getSignatures <- function(
 #' @examples
 #'
 #' aer <- physiologies('aerophilicity')[[1]]
-#' whichID(aer)
-whichID <- function(df) {
+#' .whichID(aer)
+.whichID <- function(df) {
   ID_cols <- c('Taxon_name', colnames(df)[grepl('ID$', colnames(df))])
   ID_cols[!ID_cols %in% c('Parent_NCBI_ID')]
 }

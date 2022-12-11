@@ -18,7 +18,7 @@ getSignatures(
 \arguments{
 \item{df}{A data frame from bugphyzz.}
 
-\item{tax.id.type}{Type of taxids. Check types with the \code{whichID} function.}
+\item{tax.id.type}{Type of taxids. Check types with the \code{.whichID} function.}
 
 \item{tax.level}{A character vector with taxonomic ranks,
 e.g., genus, species, strain.}
