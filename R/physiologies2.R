@@ -35,6 +35,7 @@ physiologies2 <- function(keyword = 'all', remove_false = FALSE) {
     invalid_keywords <- keyword[!lgl_vct]
     stop(
       "Invalid keyword(s): ", paste0(invalid_keywords, collapse = ', '), '.',
+      " Check valid options with showPhys().",
       call. = FALSE
     )
   }
