@@ -73,7 +73,7 @@ physiologies2 <- function(keyword = 'all', remove_false = FALSE) {
 
   message('Importing ', attr_grp, ' (', attr_type, ')')
   df <- dplyr::distinct(utils::read.csv(link))
-  df$NCBI_ID <- as.character(df$NCBI_ID) # This must be character always
+  df$NCBI_ID <- as.character(df$NCBI_ID) # This must be class character always
 
   if (remove_false)
     df <- dplyr::filter(df, !Attribute_value == FALSE)
@@ -106,9 +106,10 @@ physiologies2 <- function(keyword = 'all', remove_false = FALSE) {
   df <- df |>
     purrr::modify_if(.p = is.character, ~ stringr::str_squish(.x)) |>
     .addConfidenceInCuration() |>
-    purrr::modify_at(.at = c('Frequency', 'Evidence', 'Confidence_in_curation'), ~ {
-      stringr::str_to_lower(.x)
-    }) |>
+    purrr::modify_at(
+      .at = c('Frequency', 'Evidence', 'Confidence_in_curation'),
+      ~ stringr::str_to_lower(.x)
+    ) |>
     dplyr::distinct() |>
     .reorderColumns(attr_grp)
 
