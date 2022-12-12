@@ -362,32 +362,17 @@
 "Ulcer" "logical" "NCIT:C3426"  "A circumscribed inflammatory and often suppurating lesion on the skin or an internal mucous surface resulting in necrosis of tissue."
 "duodenal lesions"  "logical" "MP:0002580"  "focal pathological changes characterized by alteration in the size, shape and organization of the cellular components of the duodenum epithelium tissue"
 "Gastroenteritis" "logical" "NCIT:C34632" "An inflammatory disorder that affects the upper and lower gastrointestinal tract. Most commonly, this is attributed to viruses; however bacteria, parasites or adverse reactions can also be the culprit. Symptoms include acute diarrhea and vomiting."
-genital ulcer disease
-glanders and pneumonia
-glasser's disease
-gonorrhea
-heartwater
-hemorrhagic colitis
-hepatitis, typhlitis, hepatocellular tumors, and gastric bowel disease
-hitra disease
-huanglongbing
-human granulocytic anaplasmosis
-infectious keratoconjunctivitis
-infertility, infectious abortions, septicemia, meningitis
-inflammation of the epididymis and placenta
-inflammatory airway disease, opportunistic infections
-intestinal spirochetosis
-larvicidal toxin
-leaf blight, stewart's bacterial wilt
-legionnaire's disease
-leprosy
-leptospirosis
-listeriosis
-louse-borne relapsing fever
-louse-borne typhus, mediterranean spotted fever, epidemic typhus
-lung infections
-lung, skin, and wound infections
-lyme disease
+"Glanders"  "logical" "NCIT:C34638" "A condition resulting from infection by Burkholderia mallei, which mainly affects horses."
+"Haemophilus" "logical" "NCIT:C76324" "A genus of Gram-negative, pleomorphic, coccobacilli bacteria belonging to the Proteobacteria phylum."
+"Gonorrhea" "logical" "NCIT_C92950" "A common sexually transmitted bacterial infection caused by Neisseria gonorrhoeae. It is transmitted through vaginal, oral, or anal intercourse. Infected individuals may be asymptomatic. Symptoms in males include burning sensation during urination, discharge from the penis, and painful swelling of the testes. Symptoms in females include painful urination, vaginal discharge, and vaginal bleeding between periods. If untreated, the infection may lead to pelvic inflammatory disease."
+"human granulocytic anaplasmosis" "logical" "EFO:0000777" "A tick-borne, infectious disease caused by Anaplasma phagocytophilum, an obligate intracellular bacterium that is typically transmitted to humans by ticks of the Ixodes ricinus species complex"
+"Conjunctivitis"  "logical" "NCIT:C34504" "Inflammation of the conjunctiva of the eye"
+"Infertility" "logical" "NCIT:C3836"  "Inability to conceive for at least one year after trying and having unprotected sex. Causes of female infertility include endometriosis, fallopian tubes obstruction, and polycystic ovary syndrome. Causes of male infertility include abnormal sperm production or function, blockage of the epididymis, blockage of the ejaculatory ducts, hypospadias, exposure to pesticides, and health related issues"
+"Inflammation"  "logical" "NCIT:C3137"  "A finding of a localized protective response resulting from injury or destruction of tissues. Inflammation serves to destroy, dilute, or wall off both the injurious agent and the injured tissue. In the acute phase, inflammation is characterized by the signs of pain, heat, redness, swelling, and loss of function. Histologically, inflammation involves a complex series of events, including dilatation of arterioles, capillaries, and venules, with increased permeability and blood flow; exudation of fluids, including plasma proteins; and leukocyte migration into the site of inflammation"
+"toxin" "logical" "XCO:0000240" "A protein or conjugated protein produced by some higher plants, certain animals, and pathogenic bacteria, that is highly poisonous for other living organisms"
+"Legionnaire's disease" "logical" "EFO:0007343" "A pneumonia caused by Legionella pneumophila and other Legionella species, which is characterized by fever, cough, progressive respiratory distress, and which is often accompanied by extrapulmonary manifestations."
+"leprosy" "logical" "EFO:0001054" "Leprosy is a chronic infectious disease affecting primarily the skin and peripheral nervous system"
+"Lyme disease"  "logical" "EFO:0008510" "Lyme disease (named after the towns in the USA where the disease was first identified) is a bacterial infection caused by Borrelia burgdorferi."
 lymphogranuloma vernerum
 lymphogranuloma vernerum, proctitis
 mastitis
@@ -404,7 +389,6 @@ mushroom worker's disease, farmer's lung disease
 necrotizing pneumonia and chroninc infections
 necrotizing pneumonia, chronic infections
 neonatal gbs meningitis
-no
 nocardiosis
 nocosomial infections
 nosocomial infections in immunocompromised individuals
@@ -487,13 +471,8 @@ tuberculosis type pulmonary infections
 tuberculosis-like infection in fish, skin infection, arthritis in human
 tularemia
 tumors
-typhoid fever
-respiratory tract infections
-variety of infections
 vibriosis
 whipple's disease
 opportunistic infections
 wilt and tuber rot
 ring rot
-wound and urinary tract infections
-wound infections
