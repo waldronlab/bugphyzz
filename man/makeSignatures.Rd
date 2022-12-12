@@ -5,50 +5,54 @@
 \title{Make signatures}
 \usage{
 makeSignatures(
-  keyword = NULL,
-  tax.id.type = "Taxon_name",
+  keyword,
+  tax.id.type,
   tax.level = "mixed",
   Frequency = c("unknown", "sometimes", "usually", "always"),
-  Evidence = c("asr", "unknown", "igc", "inh"),
+  Evidence = c("unknown", "exp", "igc", "inh", "exp"),
   min.size = 1,
   min = NULL,
-  max = NULL
+  max = NULL,
+  num = NULL,
+  remove_false = FALSE
 )
 }
 \arguments{
-\item{keyword}{A valid keyword as determined by \code{physiologiesList()}.}
+\item{keyword}{One or more values in a character vector. The values can
+be checked with the \code{showPhys} function.}
 
-\item{tax.id.type}{Type of taxids. Check types with the \code{whichID} function.}
+\item{tax.id.type}{A character string. NCBI_ID or Taxon_name.}
 
-\item{tax.level}{A character vector with taxonomic ranks,
-e.g., genus, species, strain.}
+\item{tax.level}{A taxonomy level. Check valid ranks with \code{validRanks()}.
+Default is 'mixed', which uses all valid ranks.}
 
-\item{Frequency}{A character vector with one or more values of: unknown,
-sometimes, usually, always.}
+\item{Frequency}{A character string. Possible values are 'always',
+'sometimes', 'usually', 'unknown'.}
 
-\item{Evidence}{A character vector with one or more values of: unknown,
-sometimes, usually, always.}
+\item{Evidence}{A character string. Possible values are 'exp', 'igc', 'inh',
+'asr', 'unknown'.}
 
-\item{min.size}{The minimun number of elements in a signatures.
-Default is 1.}
+\item{min.size}{Minimum size of the signatures. Default is 1.}
 
-\item{min}{Minimum threshold for attributes with continuous values. It's
-ignored when creating signatures for categorical attributes.}
+\item{min}{Minimum for range and numeric attributes.}
 
-\item{max}{Maximum threshold for attributes with continuous values. It's
-ignored when creating signatures for categorical attributes.}
+\item{max}{Maximum for range and numeric attributes.}
+
+\item{num}{Exact number for numeric attributes.}
+
+\item{remove_false}{Whether include the creation of signatures with FALSE
+values or not. Default is TRUE, i.e., FALSE values are not included.}
 }
 \value{
-A list of signatures. NULL if no signatures.
+List of signatures
 }
 \description{
-\code{makeSignatures} creates a list of signatures.
+\code{makeSignatures} is a wrapper of \code{physiologies} followed by
+\code{getSignatures}.
 }
 \examples{
-aer_sig <- makeSignatures('aerophilicity')
-ph_sig <- makeSignatures('optimal ph')
 
-}
-\seealso{
-\code{\link{getSignatures}}
+bugphyzz_sigs <- makeSignatures('all', 'Taxon_name')
+
+
 }
