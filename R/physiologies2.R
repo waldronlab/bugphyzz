@@ -137,6 +137,8 @@ physiologies2 <- function(keyword = 'all', remove_false = FALSE) {
 #' @keywords internal
 #'
 .modifyRange <- function(df) {
+  ## Some lines are beyond the recommended 80 characters length, but I think is
+  ## better for readebiliy of the code.
   df |>
     dplyr::mutate(
       Attribute_value = gsub(' ', '', .data$Attribute_value),
