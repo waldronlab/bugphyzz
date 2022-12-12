@@ -2,24 +2,27 @@
 % Please edit documentation in R/physiologies.R
 \name{physiologies}
 \alias{physiologies}
-\title{Fetch physiological data}
+\title{Import physiologies}
 \usage{
-physiologies(keyword = "all")
+physiologies(keyword = "all", remove_false = FALSE)
 }
 \arguments{
-\item{keyword}{a character vector of physiologies desired (see \code{\link{curationLinks}}). For the available
-physiologies, run bugphyzz::showPhys()}
+\item{keyword}{One or more values in a character vector. The values can
+be checked with the \code{showPhys} function.}
+
+\item{remove_false}{if TRUE, remove all attributes with FALSE values.
+Default is FALSE (no filtering).}
 }
 \value{
-a large list of data.frames
+A list of data frames.
 }
 \description{
-Fetch physiological data
+\code{physiologies} imports physiologies from Google spreadsheets.
 }
 \examples{
-x <- physiologies()
-head(x[[1]])
 
-y <- physiologies(c("gram stain", "aerophilicity"))
-lapply(y, head)
+phys <- physiologies('all')
+aer <- physiologies('aerophilicity')
+
+
 }
