@@ -14,7 +14,7 @@ makeSignatures(
   min = NULL,
   max = NULL,
   num = NULL,
-  remove_false = FALSE
+  remove_false = TRUE
 )
 }
 \arguments{

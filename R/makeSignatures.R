@@ -24,7 +24,7 @@ makeSignatures <- function(
     min.size = 1,
     min = NULL, max = NULL,
     num = NULL,
-    remove_false = FALSE
+    remove_false = TRUE
 ) {
 
   if (missing(tax.id.type))
