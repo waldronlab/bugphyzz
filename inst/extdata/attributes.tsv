@@ -348,36 +348,20 @@
 "diphtheria"  "logical" "NCIT:C34541  "A Gram-positive bacterial infection caused by Corynebacterium diphtheriae. It usually involves the oral cavity, pharynx, and nasal cavity. Patients develop pseudomembranes in the affected areas and manifest signs and symptoms of an upper respiratory infection. The diphtheria toxin may cause myocarditis, polyneuritis, and other systemic effects."
 "dysentery" "logical" "EFO:1001869" "Acute inflammation of the intestine associated with infectious diarrhea of various etiologies, generally acquired by eating contaminated food containing toxins, biological derived from bacteria or other microorganisms. Dysentery is characterized initially by watery feces then by bloody mucoid stools. It is often associated with abdominal pain; fever; and dehydration."
 "Ehrlichiosis"  "logical" "OMIT:0017306"  "NA"
-encephalitis
-surgical wound infections
-pyelonephritis
-endemic typhus
-endocarditis
-endocarditis
-meningitis
-endospore-forming
-enteric septicemia
-enzootic pneumonia
-epidemic typhus
-epizootic infectious polyserositis and septcemia
-erysipelas in animals, erysipeloid in human
-farmer's lung, hypersensitivity pneumonitis
-fibrinous and necrotizing pleuropneumonia
-food poisoning
-fowl typhoid
-furunculosis
-gas gangrene
-gastric inflammation and peptic ulcer disease
-gastric lesions
-gastric ulcer
-gastroenteritis
-gastroenteritis and bacteremia
-gastroenteritis and diarrhea
-gastroenteritis and food poisoning
-gastroenteritis, opportunistic infections
-gastroenteritis, periodontal disease
-gastroenteritis, septicemia, and others
-gastroenteritis, wound infections, primary septicemia
+"encephalitis"  "logical" "NCIT:C26760" "An inflammatory process affecting the brain parenchyma. Causes include viral infections and less frequently bacterial infections, toxins, and immune-mediated processes."
+"infection"  "logical" "EFO:0000544" "The state of being infected such as from the introduction of a foreign agent such as serum, vaccine, antigenic substance or organism."
+"pyelonephritis"  "logical" "NCIT:C34965" "An inflammatory process affecting the kidney. The cause is most often bacterial, but may also be fungal in nature. Signs and symptoms may include fever, chills, flank pain, painful and frequent urination, cloudy or bloody urine, and confusion"
+"typhus"  "logical" "EFO:0009117" "A group of infectious diseases that include epidemic typhus, scrub typhus and murine typhus"
+"Endocarditis"  "logical" "NCIT:C34582" "NA"
+"Meningitis"  "logical" "NCIT:C26828" "A disorder characterized by acute inflammation of the meninges of the brain and/or spinal cord"
+"erysipelas"  "logical" "EFO:1001462" "An infection of the upper layers of the skin caused by species of streptococcus. Erysipelas results in a fiery red rash with raised edges that can easily be distinguished from the skin around it. The affected skin may be warm to the touch"
+"Foodborne Illness" "logical" "NCIT:C128351"  "Any disorder that results from the consumption of food contaminated with an infectious agent or toxin"
+"typhoid" "logical" "Orphanet:99745"  "Typhoid or typhoid fever is a reportable, fecal-oral, potentially fatal infectious disease, caused by the bacteria Salmonella typhi and characterized by a non-focal fever."
+"Furunculosis"  "logical" "NCIT:C34629" "A skin condition that is characterized by recurring furuncles, lesions primarily caused by staphylococcus aureus infection of the hair follicles and surrounding skin. Furunculosis occurs more frequently in persons with immune systems disorders than in the general population"
+"Gangrene"  "logical" "NCIT:C50573" "Death of tissue, usually in considerable mass and generally associated with loss of vascular (nutritive) supply and followed by bacterial invasion and putrefaction."
+"Ulcer" "logical" "NCIT:C3426"  "A circumscribed inflammatory and often suppurating lesion on the skin or an internal mucous surface resulting in necrosis of tissue."
+"duodenal lesions"  "logical" "MP:0002580"  "focal pathological changes characterized by alteration in the size, shape and organization of the cellular components of the duodenum epithelium tissue"
+"Gastroenteritis" "logical" "NCIT:C34632" "An inflammatory disorder that affects the upper and lower gastrointestinal tract. Most commonly, this is attributed to viruses; however bacteria, parasites or adverse reactions can also be the culprit. Symptoms include acute diarrhea and vomiting."
 genital ulcer disease
 glanders and pneumonia
 glasser's disease
