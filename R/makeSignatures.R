@@ -27,6 +27,12 @@ makeSignatures <- function(
     remove_false = FALSE
 ) {
 
+  if (missing(tax.id.type))
+    stop(
+      'Need tax.id.type argument. Either NCBI_ID or Taxon_name.',
+      call. = FALSE
+    )
+
   message('>>> Importing dataset(s) <<<')
   message('')
   list_of_df <- physiologies(keyword, remove_false = FALSE)
@@ -80,6 +86,7 @@ getSignatures <- function(
 ) {
 
   sig_type <- unique(df$Attribute_type)
+  Attribute_name_ <- unique(df$Attribute_group)
 
   if (missing(tax.id.type))
     stop(
@@ -115,7 +122,7 @@ getSignatures <- function(
 
   if (!nrow(df)) {
     warning(
-      'No signatures for ', unique(df$Attribute_group), ' (', sig_type, ').',
+      'No signatures for ', Attribute_name_, ' (', sig_type, ').',
       ' Returning NULL.', call. = FALSE
     )
     return(NULL)
@@ -153,7 +160,7 @@ getSignatures <- function(
 
     if (!nrow(df)) {
       warning(
-        'No signatures for ', unique(df$Attribute_group), ' (', sig_type, ').',
+        'No signatures for ', Attribute_name_, ' (', sig_type, ').',
         ' Returning NULL.', call. = FALSE
       )
       return(NULL)
@@ -172,7 +179,7 @@ getSignatures <- function(
 
     if (!length(sigs)) {
       warning(
-        'No signatures for ', unique(df$Attribute_group), ' (', sig_type, ').',
+        'No signatures for ', Attribute_name_, ' (', sig_type, ').',
         ' Returning NULL.', call. = FALSE
       )
       return(NULL)
@@ -204,7 +211,7 @@ getSignatures <- function(
 
     if (!nrow(df)) {
       warning(
-        'No signatures for ', unique(df$Attribute_group), ' (', sig_type, ').',
+        'No signatures for ', Attribute_name_, ' (', sig_type, ').',
         ' Returning NULL.', call. = FALSE
       )
       return(NULL)
@@ -234,7 +241,7 @@ getSignatures <- function(
 
       if (!nrow(df)) {
         warning(
-          'No signatures for ', unique(df$Attribute_group), ' (', sig_type, ').',
+          'No signatures for ', Attribute_name_, ' (', sig_type, ').',
           ' Returning NULL.', call. = FALSE
         )
         return(NULL)
@@ -265,7 +272,7 @@ getSignatures <- function(
 
       if (!nrow(df)) {
         warning(
-          'No signatures for ', unique(df$Attribute_group), ' (', sig_type, ').',
+          'No signatures for ', Attribute_name_, ' (', sig_type, ').',
           ' Returning NULL.', call. = FALSE
         )
         return(NULL)
