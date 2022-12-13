@@ -16,3 +16,7 @@ Rank	optional	NA	^(superkingdom|kingdom|clade|phylum|class|order|family|genus|sp
 Parent_NCBI_ID	optional	NA	^[0-9]+$	string	character
 Parent_name	optional	NA	^.+$	string	character
 Parent_rank	optional	NA	^(superkingdom|kingdom|phylum|class|order|family|genus|species|strain)$	string	character
+Attribute_group	optional	NA	^.*$		
+Attribute_type	optional	NA	^.*$		
+MIDAS_ID	optional	NA	^.*$		
+PATRIC_ID	optional	NA	^.*$		
