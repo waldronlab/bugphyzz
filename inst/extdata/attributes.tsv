@@ -373,16 +373,10 @@
 "Legionnaire's disease" "logical" "EFO:0007343" "A pneumonia caused by Legionella pneumophila and other Legionella species, which is characterized by fever, cough, progressive respiratory distress, and which is often accompanied by extrapulmonary manifestations."
 "leprosy" "logical" "EFO:0001054" "Leprosy is a chronic infectious disease affecting primarily the skin and peripheral nervous system"
 "Lyme disease"  "logical" "EFO:0008510" "Lyme disease (named after the towns in the USA where the disease was first identified) is a bacterial infection caused by Borrelia burgdorferi."
-lymphogranuloma vernerum
-lymphogranuloma vernerum, proctitis
-mastitis
-mastitis, arthritis, and pneumonia
+"Mastitis"  "logical" "NCIT:C53662" "Inflammation of breast tissue during lactation or postpartum due to an obstructed duct or infection."
+"Arthritis" "logical" "NCIT:C2883"  "An inflammatory process affecting a joint. Causes include infection, autoimmune processes, degenerative processes, and trauma. Signs and symptoms may include swelling around the affected joint and pain"
 melioidosis
-meningitis and septicemia
-meningitis, arthritis, pneumonia
-meningitis, endocarditis, septicemia and arthritis
-meningitis, septicemia, necrotizing enterocolitis
-meningitis, septicemia, otitis media, sinusitis, chronic bronchitis
+necrotizing enterocolitis
 monocytic ehrlichiosis
 murine colonic hyperplasia
 mushroom worker's disease, farmer's lung disease
