@@ -375,7 +375,7 @@
 "Lyme disease"  "logical" "EFO:0008510" "Lyme disease (named after the towns in the USA where the disease was first identified) is a bacterial infection caused by Borrelia burgdorferi."
 "Mastitis"  "logical" "NCIT:C53662" "Inflammation of breast tissue during lactation or postpartum due to an obstructed duct or infection."
 "Arthritis" "logical" "NCIT:C2883"  "An inflammatory process affecting a joint. Causes include infection, autoimmune processes, degenerative processes, and trauma. Signs and symptoms may include swelling around the affected joint and pain"
-melioidosis
+"Melioidosis" "logical" "NCIT:C128336"  "An infection that is caused by Burkholderia pseudomallei, which is found in soil and water; symptoms vary widely, but most commonly include fever, cough, pneumonia, arthralgia, myalgia, and skin ulceration."
 necrotizing enterocolitis
 monocytic ehrlichiosis
 murine colonic hyperplasia
