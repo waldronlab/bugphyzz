@@ -1,2 +1,3 @@
 
-bd <- .importBD()
+bd <- .getBacDive() |>
+  .reshapeBD()

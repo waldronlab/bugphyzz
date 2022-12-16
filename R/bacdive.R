@@ -1,13 +1,19 @@
 .physiologiesBD <- function() {
-  ## TODO
+  ## TODO maybe some code to select an specific physiology
 }
 
-.importBacDive <- function() {
+.getBacDive <- function() {
+  bacdive_data <- .importBacDiveExcel()
+  colnames(bacdive_data) <- .changeBDColNames(colnames(bacdive_data))
+  .getTidyBD(bacdive_data)
+}
+
+.importBacDiveExcel <- function(verbose = TRUE) {
+  if (verbose)
+    message('Importing BacDive...')
   url <- 'https://docs.google.com/spreadsheets/d/1smQTi1IKt4wSGTrGTW25I6u47M5txZkq/export?format=csv'
-  data <- .cleanBD(utils::read.csv(url))
-  colnames(data) <- .changeBDColNames(colnames(data))
-  data |>
-    .tidyBD()
+  bacdive_data <- .cleanBD(utils::read.csv(url))
+  bacdive_data
 }
 
 .cleanBD <- function(df) {
@@ -36,16 +42,52 @@
   )
 }
 
-.tidyBD <- function(bd) {
-  bd |>
+.getTidyBD <- function(bacdive_data) {
+  bacdive_data |>
     tidyr::pivot_longer(
       cols = .data$gram_stain:tidyr::last_col(),
       names_to = 'Attribute', values_to = 'Attribute_value'
     ) |>
-    dplyr::filter(Attribute_value != '')
+    dplyr::filter(.data$Attribute_value != '') |>
+    dplyr::mutate(Attribute = gsub('_', ' ', .data$Attribute)) |>
+    dplyr::mutate(
+      ## TODO Matching of attribute to those in the spreadsheets goes here
+      Attribute = dplyr::case_when(
+        .data$Attribute == 'oxygen tolerance' ~ 'aerophilicity',
+        .data$Attribute == 'cell shape' ~ 'shape',
+        .data$Attribute == 'pathogenicity animal' ~ 'animal pathongen',
+        .data$Attribute == 'sample type' ~ 'isolation site',
+        TRUE ~ .data$Attribute
+      )
+    ) |>
+    dplyr::distinct()
 }
 
+.reshapeBD <- function(df) {
 
+  split_df <- split(df, factor(df[['Attribute']]))
 
+  ## biosafey level and biosafety level comment should be joined
+  ## biosafey level comment should then be removed
+  biosafety_level <- split_df[['biosafety level']]
+  biosafety_level_comment <- split_df[['biosafety level comment']]
+  col_pos <- which(colnames(biosafety_level_comment) == 'Attribute_value')
+  colnames(biosafety_level_comment)[col_pos] <- 'Note'
+  biosafety_level <- dplyr::left_join(
+    biosafety_level, biosafety_level_comment[,c('BacDive_ID', 'Note')],
+    by = 'BacDive_ID'
+  )
+  split_df[['biosafety level']] <- biosafety_level
+  split_df[['biosafety level comment']] <- NULL
+
+  return(split_df)
+
+  # output <- vector('list', length(split_df))
+  # for (i in seq_along(output)) {
+    # names(output)[i] <- names(split_df)[i]
+    # output[[i]] <- split_df[[i]]
+  # }
+  # output
+}
 
 
