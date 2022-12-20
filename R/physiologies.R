@@ -98,7 +98,7 @@ physiologies <- function(keyword = 'all', remove_false = FALSE) {
   } else {
     rp <- ranks_parents # ranks_parents is a data frame
     rp$NCBI_ID <- as.character(rp$NCBI_ID)
-    rp$Parent_NCBI_ID <- as.character(rp$NCBI_ID)
+    rp$Parent_NCBI_ID <- as.character(rp$Parent_NCBI_ID)
     df <- dplyr::left_join(df, rp, by = "NCBI_ID")
   }
 
