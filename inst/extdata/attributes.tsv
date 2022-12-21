@@ -296,7 +296,7 @@
 "antibiotic-associated diarrhea" "logical"  "NCIT:C128350"  "Diarrhea that is associated with current or recent antibiotic use."
 “colitis”	“logical”	“OMIT:0004401”	“NA”
 "Terrabacteria group"	“logical”	NCBITaxon:1783272”	“NA”
-“atypical pneumonia	“logical”	“NCIT:C128338”	“Historical term that references a form of pneumonia caused by Mycoplasma pneumoniae, Chlamydophila pneumoniae, or Legionella species.”
+“atypical pneumonia"	“logical”	“NCIT:C128338”	“Historical term that references a form of pneumonia caused by Mycoplasma pneumoniae, Chlamydophila pneumoniae, or Legionella species.”
 “bacillary angiomatosis”	“logical”	“NCIT:C3477”	“A condition that is caused by infection with Bartonella, and which is characterized by vascular proliferation, usually in immunocompromised individuals.”
 “cat scratch fever”	“logical”	“EFO_0007195”	“Cat scratch disease is an infectious illness caused by the bacteria bartonella (Bartonella henselae). It is believed to be transmitted by cat scratches, bites, or exposure to cat saliva. This self-limiting infectious disease is characterized by a bump or blister at the site of the bite or scratch and swelling and pain in the lymph nodes. Other features may include fatigue, headache, achiness, and fever. Although cat-scratch disease usually subsides without treatment, antibiotic and/or antimicrobial therapy may help speed recovery”
 “trench fever”		“logical”	“EFO_0007519”	“An intermittent fever characterized by intervals of chills, fever, and splenomegaly each of which may last as long as 40 hours. It is caused by bartonella quintana and transmitted by the human louse”
@@ -344,7 +344,7 @@
 "cystitis"  "logical" "NCIT:C26738" "Inflammation of the urinary bladder"
 "diarrhea"  "logical" "NCIT:C2987"  "Watery bowel movements"
 "septicemia"  "logical" "NCIT:C3364"  "The presence of pathogenic microorganisms in the blood stream causing a rapidly progressing systemic reaction that may lead to shock. Symptoms include fever, chills, tachycardia, and increased respiratory rate. It is a medical emergency that requires urgent medical attention"
-"diphtheria"  "logical" "NCIT:C34541  "A Gram-positive bacterial infection caused by Corynebacterium diphtheriae. It usually involves the oral cavity, pharynx, and nasal cavity. Patients develop pseudomembranes in the affected areas and manifest signs and symptoms of an upper respiratory infection. The diphtheria toxin may cause myocarditis, polyneuritis, and other systemic effects."
+"diphtheria"  "logical" "NCIT:C34541"  "A Gram-positive bacterial infection caused by Corynebacterium diphtheriae. It usually involves the oral cavity, pharynx, and nasal cavity. Patients develop pseudomembranes in the affected areas and manifest signs and symptoms of an upper respiratory infection. The diphtheria toxin may cause myocarditis, polyneuritis, and other systemic effects."
 "dysentery" "logical" "EFO:1001869" "Acute inflammation of the intestine associated with infectious diarrhea of various etiologies, generally acquired by eating contaminated food containing toxins, biological derived from bacteria or other microorganisms. Dysentery is characterized initially by watery feces then by bloody mucoid stools. It is often associated with abdominal pain; fever; and dehydration."
 "Ehrlichiosis"  "logical" "OMIT:0017306"  "NA"
 "encephalitis"  "logical" "NCIT:C26760" "An inflammatory process affecting the brain parenchyma. Causes include viral infections and less frequently bacterial infections, toxins, and immune-mediated processes."
