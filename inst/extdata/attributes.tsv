@@ -289,7 +289,7 @@
 "acrodermatitis"	"logical"	"NCIT:C84532"	"An inflammatory skin condition affecting children. It is often associated with Epstein-Barr virus infection, hepatitis B infection or cytomegalovirus infection. It is characterized by the presence of cutaneous rashes and patches on the palms and soles. The trunk is not affected."
 "polyarthritis"	"logical"	"NCIT:C26996"	"An arthritis affecting five or more separate joints"
 "heartwater"	"logical"	"OMIT:0007528"	"NA"
-"african tick-bite fever"	"logical"	"MONDO:0000227" NA
+"african tick-bite fever"	"logical"	"MONDO:0000227"	NA
 "anaplasmosis"	"logical"	"NCIT:C128425"	"An infection that is caused by Anaplasma phagocytophilum, which is transmitted to humans by infected ticks; it is characterized by fever, headache, chills, and myalgia."
 "anemia"	"logical"	"NCIT:C2869"	"A reduction in the number of red blood cells, the amount of hemoglobin, and/or the volume of packed red blood cells. Clinically, anemia represents a reduction in the oxygen-transporting capacity of a designated volume of blood, resulting from an imbalance between blood loss (through hemorrhage or hemolysis) and blood production. Signs and symptoms of anemia may include pallor of the skin and mucous membranes, shortness of breath, palpitations of the heart, soft systolic murmurs, lethargy, and fatigability"
 "anthrax"	"logical"	"NCIT:C84565"	"An infection caused by Bacillus anthracis bacteria. It may affect the lungs, gastrointestinal tract, or skin. Patients with lung infection present with fever, headaches, cough, chest pain and shortness of breath. Patients with gastrointestinal infection present with nausea, vomiting and bloody diarrhea. Patients with skin infection develop blisters and ulcers."
