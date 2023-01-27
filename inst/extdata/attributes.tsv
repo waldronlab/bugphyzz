@@ -317,7 +317,7 @@
 "black rot"	"logical"	"CO_331:0000380"	"The reaction of the plant to Black rot"
 "canker"	"logical"	"CO_357:0000487"	"NA"
 "blood infection"	"logical"	"NA"	"NA"
-"respiratory infection"	"logical"	"NA "NA"
+"respiratory infection"	"logical"	"NA"	"NA"
 "bordetellosis"	"logical"	"MONDO:0037872"	"Any disease caused by infection with organisms of the genus Bordetella"
 "botulism"	"logical"	"NCIT:C84599"	"A serious bacterial infection caused by botulinum toxin which is produced by Clostridium botulinum. Patients are infected usually by ingestion of contaminated food or wound contamination. It leads to muscle paralysis which may result in respiratory failure"
 "anaplasmosis"	"logical	"NCIT:C128425"	"An infection that is caused by Anaplasma phagocytophilum, which is transmitted to humans by infected ticks; it is characterized by fever, headache, chills, and myalgia."
