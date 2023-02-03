@@ -5,9 +5,10 @@
 #'
 #' @param keyword One or more values in a character vector. The values can
 #' be checked with the \code{showPhys} function.
-#'
 #' @param remove_false if TRUE, remove all attributes with FALSE values.
 #' Default is FALSE (no filtering).
+#' @param full_source If TRUE, full source is provided. If FALSE, a
+#' shortened name of the source.
 #'
 #' @return A list of data frames.
 #' @export
@@ -18,7 +19,9 @@
 #' aer <- physiologies('aerophilicity')
 #'
 #'
-physiologies <- function(keyword = 'all', remove_false = FALSE) {
+physiologies <- function(
+    keyword = 'all', remove_false = FALSE, full_source = TRUE
+) {
 
   ## Some checks about the validity of the keywords
   keyword <- unique(keyword)
@@ -47,7 +50,9 @@ physiologies <- function(keyword = 'all', remove_false = FALSE) {
   for (i in seq_along(output)) {
     one_row <- links_df[i, , drop = FALSE] # this ensures always a data.frame
     names(output)[i] <- one_row$physiology
-    output[[i]] <- .importPhysiology(one_row, remove_false = remove_false)
+    output[[i]] <- .importPhysiology(
+      one_row, remove_false = remove_false, full_source = full_source
+    )
   }
   output
 }
@@ -59,13 +64,15 @@ physiologies <- function(keyword = 'all', remove_false = FALSE) {
 #'
 #' @param x A row from the output of \code{curationLinks()}.
 #' @param remvoe_false If TRUE, attributes with FALSE values are dropped.
-#' Default is FALSE (all valeus included).
+#' Default is FALSE (all values included).
+#' @param full_source if TRUE, the full source is displayed. Otherwise, an
+#' abreviated form.
 #'
 #' @keywords internal
 #'
 #' @return A data frame.
 #'
-.importPhysiology <- function(x, remove_false = FALSE) {
+.importPhysiology <- function(x, remove_false = FALSE, full_source) {
 
   link <- x$link
   attr_grp <- x$physiology
@@ -98,7 +105,7 @@ physiologies <- function(keyword = 'all', remove_false = FALSE) {
   } else {
     rp <- ranks_parents # ranks_parents is a data frame
     rp$NCBI_ID <- as.character(rp$NCBI_ID)
-    rp$Parent_NCBI_ID <- as.character(rp$NCBI_ID)
+    rp$Parent_NCBI_ID <- as.character(rp$Parent_NCBI_ID)
     df <- dplyr::left_join(df, rp, by = "NCBI_ID")
   }
 
@@ -122,7 +129,10 @@ physiologies <- function(keyword = 'all', remove_false = FALSE) {
   df$Attribute_type <- attr_type
   df$Attribute_group <- attr_grp
 
-  df
+  ## Change curation if needed
+  if (full_source)
+    df <- .addFullSource(df)
+  return(df)
 }
 
 #' Import range
@@ -240,3 +250,28 @@ showPhys <- function(){
   cc <- readr::read_tsv(fpath, show_col_types = FALSE)
   dplyr::left_join(df, cc, by = 'Attribute_source')
 }
+
+## Add full source
+.addFullSource <- function(df) {
+  sources_path <- system.file(
+    'extdata/attribute_sources.tsv', package = 'bugphyzz'
+  )
+  sources <- utils::read.table(
+    sources_path, header = TRUE, sep = '\t',
+    quote = '', check.names = FALSE, comment.char = ''
+  )
+  output <- dplyr::left_join(
+    x = df, y = sources, by = 'Attribute_source'
+  ) |>
+    dplyr::mutate(
+      full_source = ifelse(
+        is.na(.data$full_source), .data$Attribute_source, .data$full_source
+      )
+    )
+  output$Attribute_source <- output$full_source
+  output$full_source <- NULL
+  return(output)
+}
+
+
+

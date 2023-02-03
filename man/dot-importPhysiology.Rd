@@ -4,13 +4,16 @@
 \alias{.importPhysiology}
 \title{Import physiology}
 \usage{
-.importPhysiology(x, remove_false = FALSE)
+.importPhysiology(x, remove_false = FALSE, full_source)
 }
 \arguments{
 \item{x}{A row from the output of \code{curationLinks()}.}
 
+\item{full_source}{if TRUE, the full source is displayed. Otherwise, an
+abreviated form.}
+
 \item{remvoe_false}{If TRUE, attributes with FALSE values are dropped.
-Default is FALSE (all valeus included).}
+Default is FALSE (all values included).}
 }
 \value{
 A data frame.
