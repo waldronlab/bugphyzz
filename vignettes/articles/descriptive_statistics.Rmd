@@ -121,6 +121,7 @@ boxplot_per_phylum <- function(data, phys, unit = "unit") {
 # Datasets with categorical attributes in "physiologies"
 
 ```{r categorical attributes}
+taxonomy_table$NCBI_ID <- as.character(taxonomy_table$NCBI_ID)
 categorical_phys <- phys %>%
     keep(~is.logical(.x$Attribute_value)) %>% 
     map( ~ left_join( .x, taxonomy_table, by = "NCBI_ID"))
@@ -227,6 +228,8 @@ cat_summary_tables$`disease association`
 # Datasests with numeric attributes in "physiologies"
 
 ```{r}
+phys$`fatty acid composition` <- phys$`fatty acid composition` |> 
+  mutate(NCBI_ID = as.character(NCBI_ID))
 numeric_phys <- phys %>% 
     keep(~is.numeric(.x$Attribute_value)) %>% 
     map(~left_join(.x, taxonomy_table, by = "NCBI_ID"))
@@ -346,7 +349,7 @@ other_datasets <- phys %>%
     discard(~ is.logical(.x$Attribute_value) || is.numeric(.x$Attribute_value))
 
 for (i in seq_along(other_datasets)) {
-    other_datasets[[i]]$NCBI_ID <- as.double(other_datasets[[i]]$NCBI_ID)
+    other_datasets[[i]]$NCBI_ID <- as.character(other_datasets[[i]]$NCBI_ID)
 }
 
 other_datasets <- map(other_datasets, ~ left_join(.x, taxonomy_table, by = "NCBI_ID"))
@@ -413,5 +416,9 @@ histograms$`fatty acid composition`
 
 ```{r}
 boxplots$`fatty acid composition`
+```
+
+```{r}
+sessioninfo::session_info()
 ```
 
