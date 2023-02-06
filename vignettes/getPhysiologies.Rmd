@@ -20,7 +20,7 @@ library(bugphyzz)
 
 # Import physiologies first
 
-```{r}
+```{r, message=FALSE}
 phys <- physiologies()
 
 taxa_names <- c('Escherichia coli', 'Staphylococcus aureus')
@@ -36,5 +36,8 @@ phys_ids <- getPhysiologies(taxa_ids, taxid.type = 'NCBI_ID')
 phys_ids
 ```
 
+```{r}
+sessioninfo::session_info()
+```
 
 
