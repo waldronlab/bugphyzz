@@ -40,8 +40,10 @@ utils::globalVariables(c("."))
 #'
 .checkRequiredColumns <- function(dat, dat_name = NULL) {
 
+    attr_type <- unique(dat$Attribute_type)
+
     ## Check for missing columns
-    columns_lgl <- .requiredColumns() %in% colnames(dat)
+    columns_lgl <- .requiredColumns(attr_type) %in% colnames(dat)
 
     if (!all(columns_lgl)) {
         missing_cols <- .requiredColumns()[!columns_lgl]
@@ -753,6 +755,9 @@ utils::globalVariables(c("."))
 #' \code{.requiredColumns} prints the names and order of the columns that must
 #' be present in all of the bugphyzz data sets.
 #'
+#' @param attr_type Attribute type. A character string. Options: logical,
+#' numeric, character, range.
+#'
 #' @return A character vector with mandatory column names (required columns).
 #'
 #' @seealso
@@ -766,10 +771,12 @@ utils::globalVariables(c("."))
 #' bugphyzz:::.requiredColumns()
 #' }
 #'
-.requiredColumns <- function() {
+.requiredColumns <- function(attr_type) {
     fname <- system.file("extdata/template.tsv", package = "bugphyzz")
     df <- utils::read.table(fname, sep = "\t", header = TRUE)
-    df <- df[df[["requiredness"]] == "required",]
+    lgl_vct_1 <- df$requiredness == "required"
+    lgl_vct_2 <- grepl(attr_type, df$attribute_types)
+    df <- df[lgl_vct_1 & lgl_vct_2,]
     df[order(df[["required_column_order"]]), "column_name"]
 }
 

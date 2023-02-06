@@ -117,12 +117,13 @@ physiologies <- function(
       .at = c('Frequency', 'Evidence', 'Confidence_in_curation'),
       ~ stringr::str_to_lower(.x)
     ) |>
-    dplyr::distinct() |>
-    .reorderColumns(attr_grp)
+    dplyr::distinct()
 
   ## Special modification for range values
   if (attr_type == 'range')
     df <- .modifyRange(df)
+
+  df <- .reorderColumns(df, attr_grp, attr_type = attr_type)
 
   ## Add some extra columns for attribute group (physiology) and
   ## type of signature (this will be relevant for creating signatures).
@@ -213,9 +214,10 @@ showPhys <- function(){
 }
 
 ## A function to reorder columns on import
-.reorderColumns <- function(df, name = NULL) {
+.reorderColumns <- function(df, name = NULL, attr_type) {
+
   col_names <- colnames(df)
-  req_cols <- .requiredColumns()
+  req_cols <- .requiredColumns(attr_type)
 
   cols_lgl <- req_cols %in% col_names
 

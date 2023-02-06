@@ -4,7 +4,11 @@
 \alias{.requiredColumns}
 \title{Required columns}
 \usage{
-.requiredColumns()
+.requiredColumns(attr_type)
+}
+\arguments{
+\item{attr_type}{Attribute type. A character string. Options: logical,
+numeric, character, range.}
 }
 \value{
 A character vector with mandatory column names (required columns).
