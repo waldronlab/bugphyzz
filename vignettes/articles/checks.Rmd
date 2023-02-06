@@ -1,5 +1,8 @@
 ---
 title: "Curation Checks"
+output:
+  html_document:
+    toc: true
 ---
 
 ```{r, include = FALSE}
@@ -15,17 +18,13 @@ library(dplyr)
 library(purrr)
 ```
 
-
-# bugphyzz data
+# Import bugphyzz data
 
 ```{r, message=FALSE}
 phys <- physiologies()
-
-## the full name of the 'fatty acid composition' must be used here
-phys[["fatty acid composition"]] <- fattyAcidComposition()
 ```
 
-# Check presence and oreder of 'required' columns
+# Check presence and order of 'required' columns
 
 The function `.checkRequiredColumnList()` performs two checks:  
 1. That all of the required columns are present.  
