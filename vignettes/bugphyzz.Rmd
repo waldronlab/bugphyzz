@@ -1,5 +1,5 @@
 ---
-title: "Data curation for bugphyzz"
+title: "bugphyzz"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{bugphyzz}
