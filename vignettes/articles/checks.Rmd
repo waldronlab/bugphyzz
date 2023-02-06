@@ -18,7 +18,7 @@ library(dplyr)
 library(purrr)
 ```
 
-# Import bugphyzz data
+# Import bugphyzz data (physiologies)
 
 ```{r, message=FALSE}
 phys <- physiologies()
@@ -27,19 +27,19 @@ phys <- physiologies()
 # Check presence and order of 'required' columns
 
 The function `.checkRequiredColumnList()` performs two checks:  
-1. That all of the required columns are present.  
-2. That the required columns are in the right order.
+1. All of the required columns are present.  
+2. The required columns are in the right order.
 
 ```{r, message=FALSE}
-err1 <- bugphyzz:::.checkRequiredColumnsList(phys)
+err1 <- bugphyzz:::.checkRequiredColumnsList(phys, table = TRUE)
 ```
 
 The result has four columns:  
-1. 'dataset' contains the name of each dataset.  
-2. 'error_type' contains the type of error (missing column or misplaced
-column).  
-3. 'columns' the name of the columns that must be corrected.  
-4. 'link' the link to the dataset.
+1. **dataset** contains the name of each dataset.  
+2. **error_type** contains the type of error ('missing column' or 'misplaced
+column').  
+3. **columns** the name of the columns that must be corrected.  
+4. **link** the link to the dataset.
 
 Visualization of the errors:
 
@@ -51,7 +51,7 @@ if (!is.null(err1)) {
 }
 ```
 
-# Check the syntax of the values
+# Check syntax
 
 `.checkColumnValuesList` performs two checks on the list of physiologies:
 1. That a column is in the template file.  
@@ -59,68 +59,46 @@ if (!is.null(err1)) {
 file.
 
 ```{r, message=FALSE}
-err2 <- bugphyzz:::.checkColumnValuesList(phys)
-err2 <- dplyr::filter(err2, error_type == 'Invalid values')
-
-err2
-
+err2 <- bugphyzz:::.checkColumnValuesList(phys, table = TRUE)
 ```
 
-The output contains seven columns:  
-1. 'dataset' contains the name of the dataset.  
-2. 'error_type' contains the type of the error. 'uncatalogued' if the column has
-not been added to the template.tsv file, and 'Invalid' if the values don't
-match the values in the template.tsv file.  
-3. 'col' contains the name of the column with invalid values (or uncatalogued).  
-4. 'n_rows' the number of rows with invalid values. NA if the column is
-uncatalogued.  
-5. 'invalid_values' a list with the invalid values. NA if the column is
-uncatalogued.  
-6. 'invalid_pos' a list with the positions with invalid values. NA if the
-column is uncatalogued.  
-7. 'link' which contains the link to the dataset indicated in the first column.  
+## Uncatalogued columns
+
+Columns in the output:
+
++ **dataset** the name of the spreadsheet.
++ **col** the name of the column that has not been added to the template.csv
+file.
++ **source_link** link to the spreadsheet.
 
 ```{r}
-glimpse(err2)
+uncat_columns <- dplyr::filter(err2, error_type == 'Uncatalogued column') |> 
+  discard(~ all(is.na(.x))) |> 
+  select(-error_type)
+DT::datatable(uncat_columns)
 ```
 
-Invalid values and positions can be printed by subsetting the table:
 
-```{r}
-## Print the invalid values in the Attribute_value column of the
-## acetate producing dataset
-err2 %>% 
-    filter(dataset == "acetate producing", col == "Attribute_value") %>% 
-    pull(invalid_values)
-```
+## Errors in syntax/values
 
-```{r}
-## Print the position with invalid values in the Attribute_value column of
-## the acetate producing dataset
-err2 %>% 
-    filter(dataset == "acetate producing", col == "Attribute_value") %>% 
-    pull(invalid_pos)
-```
+Columns in the output:
 
-Visualization of the errors:
++ **dataset.** Name of the spreadsheet.
++ **col.**  Name of the column with invalid values.
++ **n_rows.** Number of rows with the same invalid value.
++ **invalid_values.** The value that most be corrected or added to
+the attributes.tsv file or the template.tsv file
++ **source_link.** The link to the spreadsheet.
 
-```{r}
-## invalid_values and invalid_pos are not printed here because they
-## are too many
-err2 %>% 
-    select(-invalid_values, -invalid_pos) %>% # to many values
-    knitr::kable()
-```
-
-## First 100 rows printed here:
-
-```{r}
-err2 |> 
+```{r, message=FALSE}
+invalid_values <- dplyr::filter(err2, error_type == 'Invalid values') |> 
+  discard(~ all(is.na(.x))) |> 
   tidyr::unnest(cols = c(invalid_values, invalid_pos)) |> 
+  select(-error_type, -invalid_pos)
+invalid_values |> 
   head(100) |> 
-  knitr::kable()
+  DT::datatable(options = list(pageLength = 100, scrollY = TRUE))
 ```
-
 
 
 # Check valid NCBI IDs
