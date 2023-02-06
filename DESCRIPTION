@@ -15,6 +15,7 @@ Suggests:
     ggplot2,
     knitr,
     rmarkdown,
+    sessioninfo,
     testthat
 Config/testthat/edition: 3
 Encoding: UTF-8
