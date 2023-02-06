@@ -59,9 +59,6 @@
       <a href="../articles/descriptive_statistics.html">Descriptive statistcs of taxa annotations</a>
     </li>
     <li>
-      <a href="../articles/write_physiology_sets.html">Write physiology sets</a>
-    </li>
-    <li>
       <a href="../articles/getPhysiologies.html">Get all physiologies for a set of taxa</a>
     </li>
   </ul>
@@ -135,7 +132,7 @@
 <code class="sourceCode R"><span><span class="va">data</span> <span class="op">&lt;-</span> <span class="va">phys</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html" class="external-link">map</a></span><span class="op">(</span><span class="op">~</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">.x</span>, <span class="fu"><a href="https://tidyselect.r-lib.org/reference/all_of.html" class="external-link">all_of</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"NCBI_ID"</span>, <span class="st">"Rank"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html" class="external-link">map</a></span><span class="op">(</span><span class="op">~</span> <span class="fu"><a href="https://purrr.tidyverse.org/reference/modify.html" class="external-link">modify_at</a></span><span class="op">(</span><span class="va">.x</span>, <span class="st">"NCBI_ID"</span>, <span class="va">as.integer</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/bind.html" class="external-link">bind_rows</a></span><span class="op">(</span>.id <span class="op">=</span> <span class="st">"dataset"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/bind_rows.html" class="external-link">bind_rows</a></span><span class="op">(</span>.id <span class="op">=</span> <span class="st">"dataset"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://tibble.tidyverse.org/reference/as_tibble.html" class="external-link">as_tibble</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
@@ -212,7 +209,8 @@
 <h2 id="datasets-with-categorical-attributes-in-physiologies">Datasets with categorical attributes in “physiologies”<a class="anchor" aria-label="anchor" href="#datasets-with-categorical-attributes-in-physiologies"></a>
 </h2>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">categorical_phys</span> <span class="op">&lt;-</span> <span class="va">phys</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<code class="sourceCode R"><span><span class="va">taxonomy_table</span><span class="op">$</span><span class="va">NCBI_ID</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">as.character</a></span><span class="op">(</span><span class="va">taxonomy_table</span><span class="op">$</span><span class="va">NCBI_ID</span><span class="op">)</span></span>
+<span><span class="va">categorical_phys</span> <span class="op">&lt;-</span> <span class="va">phys</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>    <span class="fu"><a href="https://purrr.tidyverse.org/reference/keep.html" class="external-link">keep</a></span><span class="op">(</span><span class="op">~</span><span class="fu"><a href="https://rdrr.io/r/base/logical.html" class="external-link">is.logical</a></span><span class="op">(</span><span class="va">.x</span><span class="op">$</span><span class="va">Attribute_value</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
 <span>    <span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html" class="external-link">map</a></span><span class="op">(</span> <span class="op">~</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html" class="external-link">left_join</a></span><span class="op">(</span> <span class="va">.x</span>, <span class="va">taxonomy_table</span>, by <span class="op">=</span> <span class="st">"NCBI_ID"</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="va">categorical_phys_names</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">categorical_phys</span><span class="op">)</span></span>
@@ -220,11 +218,11 @@
 <span><span class="co">#&gt;  [1] "aerophilicity"             "animal pathogen"          </span></span>
 <span><span class="co">#&gt;  [3] "antimicrobial resistance"  "antimicrobial sensitivity"</span></span>
 <span><span class="co">#&gt;  [5] "arrangement"               "biofilm forming"          </span></span>
-<span><span class="co">#&gt;  [7] "extreme environment"       "gram stain"               </span></span>
-<span><span class="co">#&gt;  [9] "growth medium"             "habitat"                  </span></span>
-<span><span class="co">#&gt; [11] "health associated"         "plant pathogenicity"      </span></span>
-<span><span class="co">#&gt; [13] "shape"                     "spore shape"              </span></span>
-<span><span class="co">#&gt; [15] "sphingolipid producing"</span></span></code></pre></div>
+<span><span class="co">#&gt;  [7] "disease association"       "extreme environment"      </span></span>
+<span><span class="co">#&gt;  [9] "gram stain"                "growth medium"            </span></span>
+<span><span class="co">#&gt; [11] "habitat"                   "health associated"        </span></span>
+<span><span class="co">#&gt; [13] "plant pathogenicity"       "shape"                    </span></span>
+<span><span class="co">#&gt; [15] "spore shape"               "sphingolipid producing"</span></span></code></pre></div>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">cat_summary_tables</span> <span class="op">&lt;-</span> <span class="va">categorical_phys_names</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
 <span>    <span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html" class="external-link">map</a></span><span class="op">(</span><span class="op">~</span> <span class="fu">attributeSummaryByRank</span><span class="op">(</span><span class="va">categorical_phys</span>, <span class="va">.x</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
@@ -255,19 +253,11 @@
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">cat_summary_tables</span><span class="op">$</span><span class="va">`antimicrobial resistance`</span></span></code></pre></div>
 <table class="table">
-<colgroup>
-<col width="4%">
-<col width="50%">
-<col width="17%">
-<col width="13%">
-<col width="14%">
-</colgroup>
 <thead><tr class="header">
 <th align="left"></th>
 <th align="left">Attribute</th>
-<th align="left">species</th>
-<th align="left">no rank</th>
 <th align="left">strain</th>
+<th align="left">no rank</th>
 </tr></thead>
 <tbody>
 <tr class="odd">
@@ -275,20 +265,17 @@
 <td align="left">carbapenem-resistant Acinetobacter</td>
 <td align="left">36 (100)</td>
 <td align="left">NA</td>
-<td align="left">NA</td>
 </tr>
 <tr class="even">
 <td align="left">2</td>
 <td align="left">not resistant to beta-lactam</td>
 <td align="left">22 (95.65)</td>
 <td align="left">1 (4.35)</td>
-<td align="left">NA</td>
 </tr>
 <tr class="odd">
 <td align="left">3</td>
 <td align="left">resistance to amikacin</td>
 <td align="left">159 (100)</td>
-<td align="left">NA</td>
 <td align="left">NA</td>
 </tr>
 <tr class="even">
@@ -296,13 +283,11 @@
 <td align="left">resistance to aztreonam</td>
 <td align="left">31 (100)</td>
 <td align="left">NA</td>
-<td align="left">NA</td>
 </tr>
 <tr class="odd">
 <td align="left">5</td>
 <td align="left">resistance to capreomycin</td>
 <td align="left">158 (100)</td>
-<td align="left">NA</td>
 <td align="left">NA</td>
 </tr>
 <tr class="even">
@@ -310,13 +295,11 @@
 <td align="left">resistance to cefepime</td>
 <td align="left">34 (100)</td>
 <td align="left">NA</td>
-<td align="left">NA</td>
 </tr>
 <tr class="odd">
 <td align="left">7</td>
 <td align="left">resistance to cefoxitin</td>
 <td align="left">26 (100)</td>
-<td align="left">NA</td>
 <td align="left">NA</td>
 </tr>
 <tr class="even">
@@ -324,13 +307,11 @@
 <td align="left">resistance to chloramphenicol</td>
 <td align="left">4 (100)</td>
 <td align="left">NA</td>
-<td align="left">NA</td>
 </tr>
 <tr class="odd">
 <td align="left">9</td>
 <td align="left">resistance to ciprofloxacin</td>
 <td align="left">118 (100)</td>
-<td align="left">NA</td>
 <td align="left">NA</td>
 </tr>
 <tr class="even">
@@ -338,13 +319,11 @@
 <td align="left">resistance to clindamycin</td>
 <td align="left">132 (100)</td>
 <td align="left">NA</td>
-<td align="left">NA</td>
 </tr>
 <tr class="odd">
 <td align="left">11</td>
 <td align="left">resistance to ertapenem</td>
 <td align="left">16 (100)</td>
-<td align="left">NA</td>
 <td align="left">NA</td>
 </tr>
 <tr class="even">
@@ -352,13 +331,11 @@
 <td align="left">resistance to erythromycin A</td>
 <td align="left">187 (100)</td>
 <td align="left">NA</td>
-<td align="left">NA</td>
 </tr>
 <tr class="odd">
 <td align="left">13</td>
 <td align="left">resistance to ethambutol</td>
 <td align="left">206 (100)</td>
-<td align="left">NA</td>
 <td align="left">NA</td>
 </tr>
 <tr class="even">
@@ -366,13 +343,11 @@
 <td align="left">resistance to gentamicin</td>
 <td align="left">147 (100)</td>
 <td align="left">NA</td>
-<td align="left">NA</td>
 </tr>
 <tr class="odd">
 <td align="left">15</td>
 <td align="left">resistance to imipenem</td>
 <td align="left">20 (100)</td>
-<td align="left">NA</td>
 <td align="left">NA</td>
 </tr>
 <tr class="even">
@@ -380,13 +355,11 @@
 <td align="left">resistance to isoniazid</td>
 <td align="left">352 (100)</td>
 <td align="left">NA</td>
-<td align="left">NA</td>
 </tr>
 <tr class="odd">
 <td align="left">17</td>
 <td align="left">resistance to kanamycin A</td>
 <td align="left">164 (100)</td>
-<td align="left">NA</td>
 <td align="left">NA</td>
 </tr>
 <tr class="even">
@@ -394,13 +367,11 @@
 <td align="left">resistance to levofloxacin</td>
 <td align="left">27 (100)</td>
 <td align="left">NA</td>
-<td align="left">NA</td>
 </tr>
 <tr class="odd">
 <td align="left">19</td>
 <td align="left">resistance to meropenem</td>
 <td align="left">15 (100)</td>
-<td align="left">NA</td>
 <td align="left">NA</td>
 </tr>
 <tr class="even">
@@ -408,13 +379,11 @@
 <td align="left">resistance to methicillin</td>
 <td align="left">196 (100)</td>
 <td align="left">NA</td>
-<td align="left">NA</td>
 </tr>
 <tr class="odd">
 <td align="left">21</td>
 <td align="left">resistance to ofloxacin</td>
 <td align="left">116 (100)</td>
-<td align="left">NA</td>
 <td align="left">NA</td>
 </tr>
 <tr class="even">
@@ -422,34 +391,29 @@
 <td align="left">resistance to penicillin</td>
 <td align="left">288 (100)</td>
 <td align="left">NA</td>
-<td align="left">NA</td>
 </tr>
 <tr class="odd">
 <td align="left">23</td>
 <td align="left">resistance to piperacillin</td>
 <td align="left">26 (100)</td>
 <td align="left">NA</td>
-<td align="left">NA</td>
 </tr>
 <tr class="even">
 <td align="left">24</td>
 <td align="left">resistance to rifampicin</td>
-<td align="left">311 (98.42)</td>
+<td align="left">316 (100)</td>
 <td align="left">NA</td>
-<td align="left">5 (1.58)</td>
 </tr>
 <tr class="odd">
 <td align="left">25</td>
 <td align="left">resistance to streptomycin</td>
-<td align="left">533 (99.81)</td>
+<td align="left">534 (100)</td>
 <td align="left">NA</td>
-<td align="left">1 (0.19)</td>
 </tr>
 <tr class="even">
 <td align="left">26</td>
 <td align="left">resistance to tetracycline</td>
 <td align="left">98 (100)</td>
-<td align="left">NA</td>
 <td align="left">NA</td>
 </tr>
 <tr class="odd">
@@ -457,13 +421,11 @@
 <td align="left">resistance to tobramycin</td>
 <td align="left">34 (100)</td>
 <td align="left">NA</td>
-<td align="left">NA</td>
 </tr>
 <tr class="even">
 <td align="left">28</td>
 <td align="left">resistance to trimethoprim</td>
 <td align="left">82 (100)</td>
-<td align="left">NA</td>
 <td align="left">NA</td>
 </tr>
 <tr class="odd">
@@ -471,41 +433,35 @@
 <td align="left">resistant to beta-lactam</td>
 <td align="left">10 (100)</td>
 <td align="left">NA</td>
-<td align="left">NA</td>
 </tr>
 <tr class="even">
 <td align="left">30</td>
 <td align="left">sensitive to amikacin</td>
-<td align="left">654 (98.05)</td>
+<td align="left">667 (100)</td>
 <td align="left">NA</td>
-<td align="left">13 (1.95)</td>
 </tr>
 <tr class="odd">
 <td align="left">31</td>
 <td align="left">sensitive to aztreonam</td>
 <td align="left">21 (100)</td>
 <td align="left">NA</td>
-<td align="left">NA</td>
 </tr>
 <tr class="even">
 <td align="left">32</td>
 <td align="left">sensitive to capreomycin</td>
-<td align="left">603 (97.89)</td>
+<td align="left">616 (100)</td>
 <td align="left">NA</td>
-<td align="left">13 (2.11)</td>
 </tr>
 <tr class="odd">
 <td align="left">33</td>
 <td align="left">sensitive to carbapenems</td>
-<td align="left">106 (99.07)</td>
+<td align="left">107 (100)</td>
 <td align="left">NA</td>
-<td align="left">1 (0.93)</td>
 </tr>
 <tr class="even">
 <td align="left">34</td>
 <td align="left">sensitive to cefoxitin</td>
 <td align="left">26 (100)</td>
-<td align="left">NA</td>
 <td align="left">NA</td>
 </tr>
 <tr class="odd">
@@ -513,13 +469,11 @@
 <td align="left">sensitive to chloramphenicol</td>
 <td align="left">27 (96.43)</td>
 <td align="left">1 (3.57)</td>
-<td align="left">NA</td>
 </tr>
 <tr class="even">
 <td align="left">36</td>
 <td align="left">sensitive to ciprofloxacin</td>
 <td align="left">313 (100)</td>
-<td align="left">NA</td>
 <td align="left">NA</td>
 </tr>
 <tr class="odd">
@@ -527,13 +481,11 @@
 <td align="left">sensitive to clindamycin</td>
 <td align="left">247 (100)</td>
 <td align="left">NA</td>
-<td align="left">NA</td>
 </tr>
 <tr class="even">
 <td align="left">38</td>
 <td align="left">sensitive to ertapenem</td>
 <td align="left">36 (100)</td>
-<td align="left">NA</td>
 <td align="left">NA</td>
 </tr>
 <tr class="odd">
@@ -541,20 +493,17 @@
 <td align="left">sensitive to erythromycin A</td>
 <td align="left">223 (99.55)</td>
 <td align="left">1 (0.45)</td>
-<td align="left">NA</td>
 </tr>
 <tr class="even">
 <td align="left">40</td>
 <td align="left">sensitive to ethambutol</td>
-<td align="left">555 (97.71)</td>
+<td align="left">568 (100)</td>
 <td align="left">NA</td>
-<td align="left">13 (2.29)</td>
 </tr>
 <tr class="odd">
 <td align="left">41</td>
 <td align="left">sensitive to gentamicin</td>
 <td align="left">284 (100)</td>
-<td align="left">NA</td>
 <td align="left">NA</td>
 </tr>
 <tr class="even">
@@ -562,34 +511,29 @@
 <td align="left">sensitive to imipenem</td>
 <td align="left">31 (100)</td>
 <td align="left">NA</td>
-<td align="left">NA</td>
 </tr>
 <tr class="odd">
 <td align="left">43</td>
 <td align="left">sensitive to isoniazid</td>
-<td align="left">416 (95.85)</td>
+<td align="left">434 (100)</td>
 <td align="left">NA</td>
-<td align="left">18 (4.15)</td>
 </tr>
 <tr class="even">
 <td align="left">44</td>
 <td align="left">sensitive to kanamycin A</td>
-<td align="left">603 (97.1)</td>
+<td align="left">621 (100)</td>
 <td align="left">NA</td>
-<td align="left">18 (2.9)</td>
 </tr>
 <tr class="odd">
 <td align="left">45</td>
 <td align="left">sensitive to levofloxacin</td>
-<td align="left">45 (97.83)</td>
+<td align="left">46 (100)</td>
 <td align="left">NA</td>
-<td align="left">1 (2.17)</td>
 </tr>
 <tr class="even">
 <td align="left">46</td>
 <td align="left">sensitive to meropenem</td>
 <td align="left">37 (100)</td>
-<td align="left">NA</td>
 <td align="left">NA</td>
 </tr>
 <tr class="odd">
@@ -597,20 +541,17 @@
 <td align="left">sensitive to methicillin</td>
 <td align="left">190 (100)</td>
 <td align="left">NA</td>
-<td align="left">NA</td>
 </tr>
 <tr class="even">
 <td align="left">48</td>
 <td align="left">sensitive to ofloxacin</td>
-<td align="left">651 (97.31)</td>
+<td align="left">669 (100)</td>
 <td align="left">NA</td>
-<td align="left">18 (2.69)</td>
 </tr>
 <tr class="odd">
 <td align="left">49</td>
 <td align="left">sensitive to penicillin</td>
 <td align="left">91 (100)</td>
-<td align="left">NA</td>
 <td align="left">NA</td>
 </tr>
 <tr class="even">
@@ -618,35 +559,30 @@
 <td align="left">sensitive to piperacillin</td>
 <td align="left">26 (100)</td>
 <td align="left">NA</td>
-<td align="left">NA</td>
 </tr>
 <tr class="odd">
 <td align="left">51</td>
 <td align="left">sensitive to rifampicin</td>
-<td align="left">456 (97.23)</td>
+<td align="left">469 (100)</td>
 <td align="left">NA</td>
-<td align="left">13 (2.77)</td>
 </tr>
 <tr class="even">
 <td align="left">52</td>
 <td align="left">sensitive to streptomycin</td>
-<td align="left">234 (93.23)</td>
+<td align="left">251 (100)</td>
 <td align="left">NA</td>
-<td align="left">17 (6.77)</td>
 </tr>
 <tr class="odd">
 <td align="left">53</td>
 <td align="left">sensitive to tetracycline</td>
 <td align="left">372 (99.73)</td>
 <td align="left">1 (0.27)</td>
-<td align="left">NA</td>
 </tr>
 <tr class="even">
 <td align="left">54</td>
 <td align="left">sensitive to trimethoprim</td>
 <td align="left">380 (99.74)</td>
 <td align="left">1 (0.26)</td>
-<td align="left">NA</td>
 </tr>
 </tbody>
 </table>
@@ -711,14 +647,14 @@
 <table style="width:100%;" class="table">
 <colgroup>
 <col width="2%">
-<col width="19%">
-<col width="11%">
-<col width="11%">
-<col width="11%">
-<col width="9%">
+<col width="25%">
+<col width="10%">
+<col width="10%">
 <col width="10%">
 <col width="8%">
-<col width="15%">
+<col width="9%">
+<col width="7%">
+<col width="14%">
 </colgroup>
 <thead><tr class="header">
 <th align="left"></th>
@@ -800,8 +736,8 @@
 </tr>
 <tr class="odd">
 <td align="left">7</td>
-<td align="left">rosettes</td>
-<td align="left">9 (100)</td>
+<td align="left">reverse Y-branched filaments</td>
+<td align="left">3 (100)</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
@@ -811,6 +747,17 @@
 </tr>
 <tr class="even">
 <td align="left">8</td>
+<td align="left">rosettes</td>
+<td align="left">9 (100)</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">9</td>
 <td align="left">single</td>
 <td align="left">228 (28.93)</td>
 <td align="left">526 (66.75)</td>
@@ -820,8 +767,8 @@
 <td align="left">NA</td>
 <td align="left">1 (0.13)</td>
 </tr>
-<tr class="odd">
-<td align="left">9</td>
+<tr class="even">
+<td align="left">10</td>
 <td align="left">tetrads</td>
 <td align="left">20 (44.44)</td>
 <td align="left">6 (13.33)</td>
@@ -831,8 +778,8 @@
 <td align="left">1 (2.22)</td>
 <td align="left">NA</td>
 </tr>
-<tr class="even">
-<td align="left">10</td>
+<tr class="odd">
+<td align="left">11</td>
 <td align="left">unbranched</td>
 <td align="left">11 (100)</td>
 <td align="left">NA</td>
@@ -842,33 +789,11 @@
 <td align="left">NA</td>
 <td align="left">NA</td>
 </tr>
-<tr class="odd">
-<td align="left">11</td>
-<td align="left">v-branched filament</td>
-<td align="left">NA</td>
-<td align="left">1 (100)</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-</tr>
 <tr class="even">
 <td align="left">12</td>
 <td align="left">v-formation</td>
-<td align="left">8 (100)</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-</tr>
-<tr class="odd">
-<td align="left">13</td>
-<td align="left">y-branched formation</td>
-<td align="left">3 (100)</td>
-<td align="left">NA</td>
+<td align="left">8 (88.89)</td>
+<td align="left">1 (11.11)</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
@@ -1373,192 +1298,192 @@
 </tr>
 <tr class="even">
 <td align="left">6</td>
-<td align="left">artificial seawater</td>
-<td align="left">34 (89.47)</td>
-<td align="left">4 (10.53)</td>
-<td align="left">NA</td>
-</tr>
-<tr class="odd">
-<td align="left">7</td>
-<td align="left">asp-2</td>
-<td align="left">4 (100)</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-</tr>
-<tr class="even">
-<td align="left">8</td>
-<td align="left">bg11</td>
-<td align="left">31 (67.39)</td>
-<td align="left">NA</td>
-<td align="left">15 (32.61)</td>
-</tr>
-<tr class="odd">
-<td align="left">9</td>
-<td align="left">brackish microbiological culture medium</td>
-<td align="left">1 (100)</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-</tr>
-<tr class="even">
-<td align="left">10</td>
-<td align="left">c</td>
-<td align="left">1 (50)</td>
-<td align="left">1 (50)</td>
-<td align="left">NA</td>
-</tr>
-<tr class="odd">
-<td align="left">11</td>
-<td align="left">casitone-yeast extract agar</td>
-<td align="left">1 (100)</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-</tr>
-<tr class="even">
-<td align="left">12</td>
-<td align="left">charcoal-yeast extract</td>
-<td align="left">2 (100)</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-</tr>
-<tr class="odd">
-<td align="left">13</td>
-<td align="left">chocolate agar</td>
-<td align="left">1 (100)</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-</tr>
-<tr class="even">
-<td align="left">14</td>
-<td align="left">conway</td>
-<td align="left">5 (100)</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-</tr>
-<tr class="odd">
-<td align="left">15</td>
-<td align="left">defined microbiological culture medium</td>
-<td align="left">1 (50)</td>
-<td align="left">NA</td>
-<td align="left">1 (50)</td>
-</tr>
-<tr class="even">
-<td align="left">16</td>
 <td align="left">DSMZ Medium 1000</td>
 <td align="left">1 (100)</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
 </tr>
 <tr class="odd">
+<td align="left">7</td>
+<td align="left">ZoBell marine agar</td>
+<td align="left">10 (100)</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="even">
+<td align="left">8</td>
+<td align="left">artificial seawater</td>
+<td align="left">34 (89.47)</td>
+<td align="left">4 (10.53)</td>
+<td align="left">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">9</td>
+<td align="left">asp-2</td>
+<td align="left">4 (100)</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="even">
+<td align="left">10</td>
+<td align="left">bg11</td>
+<td align="left">31 (67.39)</td>
+<td align="left">NA</td>
+<td align="left">15 (32.61)</td>
+</tr>
+<tr class="odd">
+<td align="left">11</td>
+<td align="left">brackish microbiological culture medium</td>
+<td align="left">1 (100)</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="even">
+<td align="left">12</td>
+<td align="left">c</td>
+<td align="left">1 (50)</td>
+<td align="left">1 (50)</td>
+<td align="left">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">13</td>
+<td align="left">casitone-yeast extract agar</td>
+<td align="left">1 (100)</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="even">
+<td align="left">14</td>
+<td align="left">charcoal-yeast extract</td>
+<td align="left">2 (100)</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">15</td>
+<td align="left">chocolate agar</td>
+<td align="left">1 (100)</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="even">
+<td align="left">16</td>
+<td align="left">conway</td>
+<td align="left">5 (100)</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="odd">
 <td align="left">17</td>
+<td align="left">defined microbiological culture medium</td>
+<td align="left">1 (50)</td>
+<td align="left">NA</td>
+<td align="left">1 (50)</td>
+</tr>
+<tr class="even">
+<td align="left">18</td>
 <td align="left">fildes enrichment</td>
 <td align="left">1 (100)</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
 </tr>
-<tr class="even">
-<td align="left">18</td>
+<tr class="odd">
+<td align="left">19</td>
 <td align="left">gse</td>
 <td align="left">3 (100)</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
 </tr>
-<tr class="odd">
-<td align="left">19</td>
+<tr class="even">
+<td align="left">20</td>
 <td align="left">heart infusion agar</td>
 <td align="left">5 (100)</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
 </tr>
-<tr class="even">
-<td align="left">20</td>
-<td align="left">lb agar</td>
-<td align="left">1 (100)</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-</tr>
 <tr class="odd">
 <td align="left">21</td>
-<td align="left">lb medium</td>
+<td align="left">lb agar</td>
 <td align="left">1 (100)</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
 </tr>
 <tr class="even">
 <td align="left">22</td>
-<td align="left">medium 31 agar</td>
-<td align="left">4 (100)</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-</tr>
-<tr class="odd">
-<td align="left">23</td>
-<td align="left">modified shieh agar</td>
-<td align="left">10 (100)</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-</tr>
-<tr class="even">
-<td align="left">24</td>
-<td align="left">mrs broth</td>
+<td align="left">lb medium</td>
 <td align="left">1 (100)</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
 </tr>
 <tr class="odd">
+<td align="left">23</td>
+<td align="left">medium 31 agar</td>
+<td align="left">4 (100)</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="even">
+<td align="left">24</td>
+<td align="left">modified shieh agar</td>
+<td align="left">10 (100)</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="odd">
 <td align="left">25</td>
-<td align="left">mueller-hinton</td>
-<td align="left">2 (100)</td>
+<td align="left">mrs broth</td>
+<td align="left">1 (100)</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
 </tr>
 <tr class="even">
 <td align="left">26</td>
-<td align="left">nutrient broth</td>
-<td align="left">4 (100)</td>
+<td align="left">mueller-hinton</td>
+<td align="left">2 (100)</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
 </tr>
 <tr class="odd">
 <td align="left">27</td>
-<td align="left">pyg medium</td>
+<td align="left">nutrient broth</td>
 <td align="left">4 (100)</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
 </tr>
 <tr class="even">
 <td align="left">28</td>
-<td align="left">sm agar</td>
-<td align="left">2 (100)</td>
+<td align="left">pyg medium</td>
+<td align="left">4 (100)</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
 </tr>
 <tr class="odd">
 <td align="left">29</td>
-<td align="left">staley pyg</td>
-<td align="left">3 (100)</td>
+<td align="left">sm agar</td>
+<td align="left">2 (100)</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
 </tr>
 <tr class="even">
 <td align="left">30</td>
+<td align="left">staley pyg</td>
+<td align="left">3 (100)</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">31</td>
 <td align="left">tryptic soy agar</td>
 <td align="left">86 (94.51)</td>
 <td align="left">5 (5.49)</td>
 <td align="left">NA</td>
 </tr>
-<tr class="odd">
-<td align="left">31</td>
+<tr class="even">
+<td align="left">32</td>
 <td align="left">tryptic soy broth</td>
 <td align="left">1 (50)</td>
 <td align="left">NA</td>
 <td align="left">1 (50)</td>
-</tr>
-<tr class="even">
-<td align="left">32</td>
-<td align="left">ZoBell marine agar</td>
-<td align="left">10 (100)</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
 </tr>
 </tbody>
 </table>
@@ -1587,9 +1512,9 @@
 <thead><tr class="header">
 <th align="left"></th>
 <th align="left">Attribute</th>
+<th align="left">NA</th>
 <th align="left">strain</th>
 <th align="left">species</th>
-<th align="left">NA</th>
 <th align="left">subspecies</th>
 <th align="left">forma specialis</th>
 <th align="left">isolate</th>
@@ -1602,9 +1527,9 @@
 <tbody>
 <tr class="odd">
 <td align="left">1</td>
-<td align="left">air</td>
-<td align="left">1 (50)</td>
-<td align="left">1 (50)</td>
+<td align="left">Waste and sludge water</td>
+<td align="left">12999 (100)</td>
+<td align="left">NA</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
@@ -1617,10 +1542,10 @@
 </tr>
 <tr class="even">
 <td align="left">2</td>
-<td align="left">animal</td>
+<td align="left">air</td>
 <td align="left">NA</td>
-<td align="left">3 (100)</td>
-<td align="left">NA</td>
+<td align="left">1 (50)</td>
+<td align="left">1 (50)</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
@@ -1632,10 +1557,10 @@
 </tr>
 <tr class="odd">
 <td align="left">3</td>
-<td align="left">aquatic</td>
-<td align="left">180 (89.11)</td>
-<td align="left">21 (10.4)</td>
-<td align="left">1 (0.5)</td>
+<td align="left">animal</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">3 (100)</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
@@ -1647,10 +1572,10 @@
 </tr>
 <tr class="even">
 <td align="left">4</td>
-<td align="left">aquatic biome</td>
-<td align="left">7 (10.45)</td>
-<td align="left">58 (86.57)</td>
-<td align="left">2 (2.99)</td>
+<td align="left">aquatic</td>
+<td align="left">1 (0.5)</td>
+<td align="left">180 (89.11)</td>
+<td align="left">21 (10.4)</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
@@ -1662,10 +1587,10 @@
 </tr>
 <tr class="odd">
 <td align="left">5</td>
-<td align="left">bioremediation</td>
-<td align="left">NA</td>
-<td align="left">3 (100)</td>
-<td align="left">NA</td>
+<td align="left">aquatic biome</td>
+<td align="left">2 (2.99)</td>
+<td align="left">7 (10.45)</td>
+<td align="left">58 (86.57)</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
@@ -1677,11 +1602,11 @@
 </tr>
 <tr class="even">
 <td align="left">6</td>
-<td align="left">blood</td>
+<td align="left">bioremediation</td>
 <td align="left">NA</td>
-<td align="left">51 (96.23)</td>
 <td align="left">NA</td>
-<td align="left">2 (3.77)</td>
+<td align="left">3 (100)</td>
+<td align="left">NA</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
@@ -1692,11 +1617,11 @@
 </tr>
 <tr class="odd">
 <td align="left">7</td>
-<td align="left">cerebral spinal fluid</td>
-<td align="left">NA</td>
-<td align="left">3 (100)</td>
+<td align="left">blood</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
+<td align="left">51 (96.23)</td>
+<td align="left">2 (3.77)</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
@@ -1707,10 +1632,10 @@
 </tr>
 <tr class="even">
 <td align="left">8</td>
-<td align="left">circulatory system</td>
+<td align="left">cerebral spinal fluid</td>
+<td align="left">NA</td>
 <td align="left">NA</td>
 <td align="left">3 (100)</td>
-<td align="left">NA</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
@@ -1722,22 +1647,8 @@
 </tr>
 <tr class="odd">
 <td align="left">9</td>
-<td align="left">colonization of host</td>
-<td align="left">470 (48.4)</td>
-<td align="left">482 (49.64)</td>
-<td align="left">3 (0.31)</td>
-<td align="left">2 (0.21)</td>
-<td align="left">3 (0.31)</td>
-<td align="left">2 (0.21)</td>
-<td align="left">9 (0.93)</td>
+<td align="left">circulatory system</td>
 <td align="left">NA</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-</tr>
-<tr class="even">
-<td align="left">10</td>
-<td align="left">creosote contaminated soil</td>
 <td align="left">NA</td>
 <td align="left">3 (100)</td>
 <td align="left">NA</td>
@@ -1748,14 +1659,28 @@
 <td align="left">NA</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
+</tr>
+<tr class="even">
+<td align="left">10</td>
+<td align="left">colonization of host</td>
+<td align="left">3 (0.31)</td>
+<td align="left">470 (48.4)</td>
+<td align="left">482 (49.64)</td>
+<td align="left">2 (0.21)</td>
+<td align="left">3 (0.31)</td>
+<td align="left">2 (0.21)</td>
+<td align="left">9 (0.93)</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
 <td align="left">NA</td>
 </tr>
 <tr class="odd">
 <td align="left">11</td>
-<td align="left">creosote-contaminated soil</td>
+<td align="left">creosote contaminated soil</td>
 <td align="left">NA</td>
-<td align="left">1 (100)</td>
 <td align="left">NA</td>
+<td align="left">3 (100)</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
@@ -1767,10 +1692,10 @@
 </tr>
 <tr class="even">
 <td align="left">12</td>
-<td align="left">dairy</td>
+<td align="left">creosote-contaminated soil</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
 <td align="left">1 (100)</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
@@ -1782,9 +1707,9 @@
 </tr>
 <tr class="odd">
 <td align="left">13</td>
-<td align="left">dairy product</td>
+<td align="left">dairy</td>
 <td align="left">NA</td>
-<td align="left">4 (100)</td>
+<td align="left">1 (100)</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
@@ -1797,10 +1722,10 @@
 </tr>
 <tr class="even">
 <td align="left">14</td>
-<td align="left">digestive system</td>
+<td align="left">dairy product</td>
 <td align="left">NA</td>
-<td align="left">207 (96.28)</td>
-<td align="left">8 (3.72)</td>
+<td align="left">NA</td>
+<td align="left">4 (100)</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
@@ -1812,10 +1737,10 @@
 </tr>
 <tr class="odd">
 <td align="left">15</td>
-<td align="left">endosymbiont</td>
+<td align="left">digestive system</td>
+<td align="left">8 (3.72)</td>
 <td align="left">NA</td>
-<td align="left">3 (100)</td>
-<td align="left">NA</td>
+<td align="left">207 (96.28)</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
@@ -1827,10 +1752,10 @@
 </tr>
 <tr class="even">
 <td align="left">16</td>
-<td align="left">environmental system</td>
-<td align="left">3 (3.26)</td>
-<td align="left">87 (94.57)</td>
-<td align="left">2 (2.17)</td>
+<td align="left">endosymbiont</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">3 (100)</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
@@ -1842,10 +1767,10 @@
 </tr>
 <tr class="odd">
 <td align="left">17</td>
-<td align="left">feces</td>
-<td align="left">NA</td>
-<td align="left">296 (97.05)</td>
-<td align="left">9 (2.95)</td>
+<td align="left">environmental system</td>
+<td align="left">2 (2.17)</td>
+<td align="left">3 (3.26)</td>
+<td align="left">87 (94.57)</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
@@ -1857,10 +1782,10 @@
 </tr>
 <tr class="even">
 <td align="left">18</td>
-<td align="left">fish</td>
+<td align="left">feces</td>
+<td align="left">9 (2.95)</td>
 <td align="left">NA</td>
-<td align="left">3 (100)</td>
-<td align="left">NA</td>
+<td align="left">296 (97.05)</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
@@ -1872,10 +1797,10 @@
 </tr>
 <tr class="odd">
 <td align="left">19</td>
-<td align="left">food material</td>
+<td align="left">fish</td>
 <td align="left">NA</td>
-<td align="left">2 (100)</td>
 <td align="left">NA</td>
+<td align="left">3 (100)</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
@@ -1887,10 +1812,10 @@
 </tr>
 <tr class="even">
 <td align="left">20</td>
-<td align="left">food product</td>
+<td align="left">food material</td>
 <td align="left">NA</td>
-<td align="left">20 (100)</td>
 <td align="left">NA</td>
+<td align="left">2 (100)</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
@@ -1902,10 +1827,10 @@
 </tr>
 <tr class="odd">
 <td align="left">21</td>
-<td align="left">foregut</td>
+<td align="left">food product</td>
 <td align="left">NA</td>
-<td align="left">6 (100)</td>
 <td align="left">NA</td>
+<td align="left">20 (100)</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
@@ -1917,10 +1842,10 @@
 </tr>
 <tr class="even">
 <td align="left">22</td>
-<td align="left">free-living</td>
-<td align="left">11 (0.86)</td>
-<td align="left">1246 (97.34)</td>
-<td align="left">23 (1.8)</td>
+<td align="left">foregut</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">6 (100)</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
@@ -1932,10 +1857,10 @@
 </tr>
 <tr class="odd">
 <td align="left">23</td>
-<td align="left">fresh water</td>
-<td align="left">37 (66.07)</td>
-<td align="left">19 (33.93)</td>
-<td align="left">NA</td>
+<td align="left">free-living</td>
+<td align="left">23 (1.8)</td>
+<td align="left">11 (0.86)</td>
+<td align="left">1246 (97.34)</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
@@ -1947,10 +1872,10 @@
 </tr>
 <tr class="even">
 <td align="left">24</td>
-<td align="left">gastrointestinal tract</td>
+<td align="left">fresh water</td>
 <td align="left">NA</td>
-<td align="left">1 (100)</td>
-<td align="left">NA</td>
+<td align="left">37 (66.07)</td>
+<td align="left">19 (33.93)</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
@@ -1962,10 +1887,10 @@
 </tr>
 <tr class="odd">
 <td align="left">25</td>
-<td align="left">groundwater</td>
+<td align="left">gastrointestinal tract</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
 <td align="left">1 (100)</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
@@ -1977,10 +1902,25 @@
 </tr>
 <tr class="even">
 <td align="left">26</td>
+<td align="left">groundwater</td>
+<td align="left">NA</td>
+<td align="left">1 (100)</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">27</td>
 <td align="left">host-associated</td>
+<td align="left">33 (2.79)</td>
 <td align="left">NA</td>
 <td align="left">1143 (96.62)</td>
-<td align="left">33 (2.79)</td>
 <td align="left">5 (0.42)</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
@@ -1990,12 +1930,12 @@
 <td align="left">NA</td>
 <td align="left">NA</td>
 </tr>
-<tr class="odd">
-<td align="left">27</td>
+<tr class="even">
+<td align="left">28</td>
 <td align="left">hot spring</td>
+<td align="left">2 (8)</td>
 <td align="left">14 (56)</td>
 <td align="left">9 (36)</td>
-<td align="left">2 (8)</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
@@ -2005,12 +1945,12 @@
 <td align="left">NA</td>
 <td align="left">NA</td>
 </tr>
-<tr class="even">
-<td align="left">28</td>
+<tr class="odd">
+<td align="left">29</td>
 <td align="left">human gut microbiome</td>
+<td align="left">246 (38.2)</td>
 <td align="left">209 (32.45)</td>
 <td align="left">131 (20.34)</td>
-<td align="left">246 (38.2)</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
@@ -2020,28 +1960,13 @@
 <td align="left">1 (0.16)</td>
 <td align="left">NA</td>
 </tr>
-<tr class="odd">
-<td align="left">29</td>
-<td align="left">human microbiome</td>
-<td align="left">NA</td>
-<td align="left">109 (94.78)</td>
-<td align="left">5 (4.35)</td>
-<td align="left">1 (0.87)</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-</tr>
 <tr class="even">
 <td align="left">30</td>
-<td align="left">human microflora</td>
-<td align="left">2 (100)</td>
+<td align="left">human microbiome</td>
+<td align="left">5 (4.35)</td>
 <td align="left">NA</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
+<td align="left">109 (94.78)</td>
+<td align="left">1 (0.87)</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
@@ -2052,7 +1977,23 @@
 </tr>
 <tr class="odd">
 <td align="left">31</td>
+<td align="left">human microflora</td>
+<td align="left">NA</td>
+<td align="left">2 (100)</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="even">
+<td align="left">32</td>
 <td align="left">human urine</td>
+<td align="left">NA</td>
 <td align="left">NA</td>
 <td align="left">1 (11.11)</td>
 <td align="left">NA</td>
@@ -2062,30 +2003,14 @@
 <td align="left">NA</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
-<td align="left">NA</td>
 <td align="left">8 (88.89)</td>
-</tr>
-<tr class="even">
-<td align="left">32</td>
-<td align="left">hydrothermal vent</td>
-<td align="left">4 (80)</td>
-<td align="left">1 (20)</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
 </tr>
 <tr class="odd">
 <td align="left">33</td>
-<td align="left">hydrothermal vents</td>
+<td align="left">hydrothermal vent</td>
 <td align="left">NA</td>
-<td align="left">45 (100)</td>
-<td align="left">NA</td>
+<td align="left">4 (80)</td>
+<td align="left">1 (20)</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
@@ -2097,10 +2022,10 @@
 </tr>
 <tr class="even">
 <td align="left">34</td>
-<td align="left">hypersaline salinity</td>
-<td align="left">1 (100)</td>
+<td align="left">hydrothermal vents</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
+<td align="left">45 (100)</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
@@ -2112,9 +2037,9 @@
 </tr>
 <tr class="odd">
 <td align="left">35</td>
-<td align="left">insect endosymbiont</td>
+<td align="left">hypersaline salinity</td>
 <td align="left">NA</td>
-<td align="left">4 (100)</td>
+<td align="left">1 (100)</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
@@ -2127,10 +2052,10 @@
 </tr>
 <tr class="even">
 <td align="left">36</td>
-<td align="left">insecta</td>
+<td align="left">insect endosymbiont</td>
 <td align="left">NA</td>
-<td align="left">1 (100)</td>
 <td align="left">NA</td>
+<td align="left">4 (100)</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
@@ -2142,10 +2067,10 @@
 </tr>
 <tr class="odd">
 <td align="left">37</td>
-<td align="left">intertidal zone</td>
+<td align="left">insecta</td>
 <td align="left">NA</td>
-<td align="left">2 (100)</td>
 <td align="left">NA</td>
+<td align="left">1 (100)</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
@@ -2157,10 +2082,10 @@
 </tr>
 <tr class="even">
 <td align="left">38</td>
-<td align="left">intestinal microflora</td>
-<td align="left">3 (60)</td>
-<td align="left">2 (40)</td>
+<td align="left">intertidal zone</td>
 <td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">2 (100)</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
@@ -2172,10 +2097,10 @@
 </tr>
 <tr class="odd">
 <td align="left">39</td>
-<td align="left">large intestine</td>
+<td align="left">intestinal microflora</td>
 <td align="left">NA</td>
-<td align="left">81 (96.43)</td>
-<td align="left">3 (3.57)</td>
+<td align="left">3 (60)</td>
+<td align="left">2 (40)</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
@@ -2187,10 +2112,10 @@
 </tr>
 <tr class="even">
 <td align="left">40</td>
-<td align="left">lentic water body</td>
+<td align="left">large intestine</td>
+<td align="left">3 (3.57)</td>
 <td align="left">NA</td>
-<td align="left">6 (100)</td>
-<td align="left">NA</td>
+<td align="left">81 (96.43)</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
@@ -2202,10 +2127,10 @@
 </tr>
 <tr class="odd">
 <td align="left">41</td>
-<td align="left">lotic water body</td>
+<td align="left">lentic water body</td>
 <td align="left">NA</td>
-<td align="left">2 (100)</td>
 <td align="left">NA</td>
+<td align="left">6 (100)</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
@@ -2217,10 +2142,10 @@
 </tr>
 <tr class="even">
 <td align="left">42</td>
-<td align="left">mammal</td>
+<td align="left">lotic water body</td>
 <td align="left">NA</td>
-<td align="left">24 (100)</td>
 <td align="left">NA</td>
+<td align="left">2 (100)</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
@@ -2232,10 +2157,10 @@
 </tr>
 <tr class="odd">
 <td align="left">43</td>
-<td align="left">marine water body</td>
-<td align="left">16 (17.58)</td>
-<td align="left">74 (81.32)</td>
-<td align="left">1 (1.1)</td>
+<td align="left">mammal</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">24 (100)</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
@@ -2247,10 +2172,10 @@
 </tr>
 <tr class="even">
 <td align="left">44</td>
-<td align="left">metal</td>
-<td align="left">NA</td>
-<td align="left">3 (100)</td>
-<td align="left">NA</td>
+<td align="left">marine water body</td>
+<td align="left">1 (1.1)</td>
+<td align="left">16 (17.58)</td>
+<td align="left">74 (81.32)</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
@@ -2262,10 +2187,10 @@
 </tr>
 <tr class="odd">
 <td align="left">45</td>
-<td align="left">mine</td>
+<td align="left">metal</td>
 <td align="left">NA</td>
-<td align="left">7 (100)</td>
 <td align="left">NA</td>
+<td align="left">3 (100)</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
@@ -2277,10 +2202,10 @@
 </tr>
 <tr class="even">
 <td align="left">46</td>
-<td align="left">mud</td>
-<td align="left">7 (77.78)</td>
-<td align="left">2 (22.22)</td>
+<td align="left">mine</td>
 <td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">7 (100)</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
@@ -2292,10 +2217,25 @@
 </tr>
 <tr class="odd">
 <td align="left">47</td>
+<td align="left">mud</td>
+<td align="left">NA</td>
+<td align="left">7 (77.78)</td>
+<td align="left">2 (22.22)</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="even">
+<td align="left">48</td>
 <td align="left">multiple</td>
+<td align="left">NA</td>
 <td align="left">296 (93.08)</td>
 <td align="left">17 (5.35)</td>
-<td align="left">NA</td>
 <td align="left">2 (0.63)</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
@@ -2305,9 +2245,10 @@
 <td align="left">NA</td>
 <td align="left">NA</td>
 </tr>
-<tr class="even">
-<td align="left">48</td>
+<tr class="odd">
+<td align="left">49</td>
 <td align="left">nasopharyngeal cavity</td>
+<td align="left">NA</td>
 <td align="left">NA</td>
 <td align="left">2 (100)</td>
 <td align="left">NA</td>
@@ -2318,14 +2259,13 @@
 <td align="left">NA</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
-<td align="left">NA</td>
 </tr>
-<tr class="odd">
-<td align="left">49</td>
+<tr class="even">
+<td align="left">50</td>
 <td align="left">not host-associated</td>
+<td align="left">26 (1.07)</td>
 <td align="left">347 (14.22)</td>
 <td align="left">2045 (83.81)</td>
-<td align="left">26 (1.07)</td>
 <td align="left">7 (0.29)</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
@@ -2335,27 +2275,12 @@
 <td align="left">NA</td>
 <td align="left">9 (0.37)</td>
 </tr>
-<tr class="even">
-<td align="left">50</td>
-<td align="left">ocean trench</td>
-<td align="left">3 (75)</td>
-<td align="left">1 (25)</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-</tr>
 <tr class="odd">
 <td align="left">51</td>
-<td align="left">oil field production water</td>
-<td align="left">1 (50)</td>
-<td align="left">1 (50)</td>
+<td align="left">ocean trench</td>
 <td align="left">NA</td>
+<td align="left">3 (75)</td>
+<td align="left">1 (25)</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
@@ -2367,14 +2292,14 @@
 </tr>
 <tr class="even">
 <td align="left">52</td>
-<td align="left">oral</td>
-<td align="left">43 (41.75)</td>
-<td align="left">47 (45.63)</td>
-<td align="left">11 (10.68)</td>
-<td align="left">1 (0.97)</td>
+<td align="left">oil field production water</td>
+<td align="left">NA</td>
+<td align="left">1 (50)</td>
+<td align="left">1 (50)</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
-<td align="left">1 (0.97)</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
@@ -2382,14 +2307,14 @@
 </tr>
 <tr class="odd">
 <td align="left">53</td>
-<td align="left">other host associated</td>
-<td align="left">69 (63.89)</td>
-<td align="left">32 (29.63)</td>
-<td align="left">7 (6.48)</td>
+<td align="left">oral</td>
+<td align="left">11 (10.68)</td>
+<td align="left">43 (41.75)</td>
+<td align="left">47 (45.63)</td>
+<td align="left">1 (0.97)</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
+<td align="left">1 (0.97)</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
@@ -2397,10 +2322,10 @@
 </tr>
 <tr class="even">
 <td align="left">54</td>
-<td align="left">phylloplane</td>
-<td align="left">NA</td>
-<td align="left">13 (100)</td>
-<td align="left">NA</td>
+<td align="left">other host associated</td>
+<td align="left">7 (6.48)</td>
+<td align="left">69 (63.89)</td>
+<td align="left">32 (29.63)</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
@@ -2412,10 +2337,10 @@
 </tr>
 <tr class="odd">
 <td align="left">55</td>
-<td align="left">plant matter</td>
+<td align="left">phylloplane</td>
 <td align="left">NA</td>
-<td align="left">83 (94.32)</td>
-<td align="left">5 (5.68)</td>
+<td align="left">NA</td>
+<td align="left">13 (100)</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
@@ -2427,10 +2352,10 @@
 </tr>
 <tr class="even">
 <td align="left">56</td>
-<td align="left">pond</td>
-<td align="left">1 (100)</td>
+<td align="left">plant matter</td>
+<td align="left">5 (5.68)</td>
 <td align="left">NA</td>
-<td align="left">NA</td>
+<td align="left">83 (94.32)</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
@@ -2442,9 +2367,9 @@
 </tr>
 <tr class="odd">
 <td align="left">57</td>
-<td align="left">respiratory system</td>
+<td align="left">pond</td>
 <td align="left">NA</td>
-<td align="left">3 (100)</td>
+<td align="left">1 (100)</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
@@ -2457,10 +2382,10 @@
 </tr>
 <tr class="even">
 <td align="left">58</td>
-<td align="left">rhizosphere</td>
-<td align="left">1 (2.22)</td>
-<td align="left">42 (93.33)</td>
-<td align="left">2 (4.44)</td>
+<td align="left">respiratory system</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">3 (100)</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
@@ -2472,10 +2397,10 @@
 </tr>
 <tr class="odd">
 <td align="left">59</td>
-<td align="left">rice paddies</td>
-<td align="left">1 (100)</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
+<td align="left">rhizosphere</td>
+<td align="left">2 (4.44)</td>
+<td align="left">1 (2.22)</td>
+<td align="left">42 (93.33)</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
@@ -2487,10 +2412,10 @@
 </tr>
 <tr class="even">
 <td align="left">60</td>
-<td align="left">root</td>
+<td align="left">rice paddies</td>
 <td align="left">NA</td>
-<td align="left">4 (80)</td>
-<td align="left">1 (20)</td>
+<td align="left">1 (100)</td>
+<td align="left">NA</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
@@ -2502,10 +2427,10 @@
 </tr>
 <tr class="odd">
 <td align="left">61</td>
-<td align="left">root nodule</td>
-<td align="left">1 (1.64)</td>
-<td align="left">56 (91.8)</td>
-<td align="left">4 (6.56)</td>
+<td align="left">root</td>
+<td align="left">1 (20)</td>
+<td align="left">NA</td>
+<td align="left">4 (80)</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
@@ -2517,10 +2442,10 @@
 </tr>
 <tr class="even">
 <td align="left">62</td>
-<td align="left">rumen</td>
-<td align="left">27 (34.62)</td>
-<td align="left">51 (65.38)</td>
-<td align="left">NA</td>
+<td align="left">root nodule</td>
+<td align="left">4 (6.56)</td>
+<td align="left">1 (1.64)</td>
+<td align="left">56 (91.8)</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
@@ -2532,10 +2457,10 @@
 </tr>
 <tr class="odd">
 <td align="left">63</td>
-<td align="left">saline evaporation pond</td>
+<td align="left">rumen</td>
 <td align="left">NA</td>
-<td align="left">3 (100)</td>
-<td align="left">NA</td>
+<td align="left">27 (34.62)</td>
+<td align="left">51 (65.38)</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
@@ -2547,10 +2472,10 @@
 </tr>
 <tr class="even">
 <td align="left">64</td>
-<td align="left">saline water</td>
-<td align="left">1 (100)</td>
+<td align="left">saline evaporation pond</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
+<td align="left">3 (100)</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
@@ -2562,9 +2487,9 @@
 </tr>
 <tr class="odd">
 <td align="left">65</td>
-<td align="left">sea water</td>
-<td align="left">3 (50)</td>
-<td align="left">3 (50)</td>
+<td align="left">saline water</td>
+<td align="left">NA</td>
+<td align="left">1 (100)</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
@@ -2577,10 +2502,10 @@
 </tr>
 <tr class="even">
 <td align="left">66</td>
-<td align="left">secondary</td>
+<td align="left">sea water</td>
 <td align="left">NA</td>
-<td align="left">56 (98.25)</td>
-<td align="left">1 (1.75)</td>
+<td align="left">3 (50)</td>
+<td align="left">3 (50)</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
@@ -2592,10 +2517,10 @@
 </tr>
 <tr class="odd">
 <td align="left">67</td>
-<td align="left">sediment</td>
-<td align="left">9 (10.47)</td>
-<td align="left">76 (88.37)</td>
-<td align="left">1 (1.16)</td>
+<td align="left">secondary</td>
+<td align="left">1 (1.75)</td>
+<td align="left">NA</td>
+<td align="left">56 (98.25)</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
@@ -2607,10 +2532,10 @@
 </tr>
 <tr class="even">
 <td align="left">68</td>
-<td align="left">sludge</td>
-<td align="left">7 (70)</td>
-<td align="left">3 (30)</td>
-<td align="left">NA</td>
+<td align="left">sediment</td>
+<td align="left">1 (1.16)</td>
+<td align="left">9 (10.47)</td>
+<td align="left">76 (88.37)</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
@@ -2622,10 +2547,10 @@
 </tr>
 <tr class="odd">
 <td align="left">69</td>
-<td align="left">soil</td>
-<td align="left">31 (50)</td>
-<td align="left">30 (48.39)</td>
-<td align="left">1 (1.61)</td>
+<td align="left">sludge</td>
+<td align="left">NA</td>
+<td align="left">7 (70)</td>
+<td align="left">3 (30)</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
@@ -2637,10 +2562,25 @@
 </tr>
 <tr class="even">
 <td align="left">70</td>
+<td align="left">soil</td>
+<td align="left">1 (1.61)</td>
+<td align="left">31 (50)</td>
+<td align="left">30 (48.39)</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">71</td>
 <td align="left">specialized</td>
+<td align="left">NA</td>
 <td align="left">128 (88.89)</td>
 <td align="left">15 (10.42)</td>
-<td align="left">NA</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
 <td align="left">1 (0.69)</td>
@@ -2650,27 +2590,12 @@
 <td align="left">NA</td>
 <td align="left">NA</td>
 </tr>
-<tr class="odd">
-<td align="left">71</td>
-<td align="left">sputum</td>
-<td align="left">NA</td>
-<td align="left">4 (100)</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-</tr>
 <tr class="even">
 <td align="left">72</td>
-<td align="left">submarine</td>
-<td align="left">1 (100)</td>
+<td align="left">sputum</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
+<td align="left">4 (100)</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
@@ -2682,9 +2607,9 @@
 </tr>
 <tr class="odd">
 <td align="left">73</td>
-<td align="left">sulfur spring</td>
-<td align="left">1 (100)</td>
+<td align="left">submarine</td>
 <td align="left">NA</td>
+<td align="left">1 (100)</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
@@ -2697,10 +2622,25 @@
 </tr>
 <tr class="even">
 <td align="left">74</td>
+<td align="left">sulfur spring</td>
+<td align="left">NA</td>
+<td align="left">1 (100)</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">75</td>
 <td align="left">terrestrial biome</td>
+<td align="left">NA</td>
 <td align="left">79 (80.61)</td>
 <td align="left">17 (17.35)</td>
-<td align="left">NA</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
 <td align="left">2 (2.04)</td>
@@ -2710,27 +2650,12 @@
 <td align="left">NA</td>
 <td align="left">NA</td>
 </tr>
-<tr class="odd">
-<td align="left">75</td>
-<td align="left">vagina</td>
-<td align="left">NA</td>
-<td align="left">3 (100)</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-</tr>
 <tr class="even">
 <td align="left">76</td>
-<td align="left">volcanic field</td>
-<td align="left">1 (100)</td>
+<td align="left">vagina</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
+<td align="left">3 (100)</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
@@ -2742,10 +2667,10 @@
 </tr>
 <tr class="odd">
 <td align="left">77</td>
-<td align="left">Waste and sludge water</td>
+<td align="left">volcanic field</td>
 <td align="left">NA</td>
+<td align="left">1 (100)</td>
 <td align="left">NA</td>
-<td align="left">12999 (100)</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
@@ -2758,9 +2683,9 @@
 <tr class="even">
 <td align="left">78</td>
 <td align="left">waste water</td>
+<td align="left">NA</td>
 <td align="left">1 (14.29)</td>
 <td align="left">6 (85.71)</td>
-<td align="left">NA</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
@@ -2774,8 +2699,8 @@
 <td align="left">79</td>
 <td align="left">water surface</td>
 <td align="left">NA</td>
-<td align="left">2 (100)</td>
 <td align="left">NA</td>
+<td align="left">2 (100)</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
@@ -2789,8 +2714,8 @@
 <td align="left">80</td>
 <td align="left">wetland</td>
 <td align="left">NA</td>
-<td align="left">2 (100)</td>
 <td align="left">NA</td>
+<td align="left">2 (100)</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
@@ -3056,15 +2981,1239 @@
 <h3 id="disease-association">Disease association<a class="anchor" aria-label="anchor" href="#disease-association"></a>
 </h3>
 <div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">cat_summary_tables</span><span class="op">$</span><span class="va">`disease association`</span></span>
-<span><span class="co">#&gt; NULL</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">cat_summary_tables</span><span class="op">$</span><span class="va">`disease association`</span></span></code></pre></div>
+<table style="width:100%;" class="table">
+<colgroup>
+<col width="2%">
+<col width="61%">
+<col width="7%">
+<col width="6%">
+<col width="7%">
+<col width="6%">
+<col width="6%">
+</colgroup>
+<thead><tr class="header">
+<th align="left"></th>
+<th align="left">Attribute</th>
+<th align="left">strain</th>
+<th align="left">no rank</th>
+<th align="left">subspecies</th>
+<th align="left">species</th>
+<th align="left">isolate</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="left">1</td>
+<td align="left">Acne</td>
+<td align="left">1 (100)</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="even">
+<td align="left">2</td>
+<td align="left">Arthritis</td>
+<td align="left">1 (100)</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">3</td>
+<td align="left">Arthritis, infection</td>
+<td align="left">1 (100)</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="even">
+<td align="left">4</td>
+<td align="left">Blunervirus</td>
+<td align="left">1 (100)</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">5</td>
+<td align="left">Burkholderia cepacia</td>
+<td align="left">1 (100)</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="even">
+<td align="left">6</td>
+<td align="left">Caries</td>
+<td align="left">2 (100)</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">7</td>
+<td align="left">Caries, endocarditis</td>
+<td align="left">1 (100)</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="even">
+<td align="left">8</td>
+<td align="left">Conjunctivitis</td>
+<td align="left">1 (100)</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">9</td>
+<td align="left">Endocarditis</td>
+<td align="left">1 (100)</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="even">
+<td align="left">10</td>
+<td align="left">Endocarditis. septicemia, Meningitis</td>
+<td align="left">1 (100)</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">11</td>
+<td align="left">Fever</td>
+<td align="left">16 (100)</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="even">
+<td align="left">12</td>
+<td align="left">Fever, ehrlichiosis</td>
+<td align="left">1 (100)</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">13</td>
+<td align="left">Flavobacterium psychrophilum</td>
+<td align="left">1 (100)</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="even">
+<td align="left">14</td>
+<td align="left">Foodborne Illness</td>
+<td align="left">16 (100)</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">15</td>
+<td align="left">Furunculosis</td>
+<td align="left">1 (100)</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="even">
+<td align="left">16</td>
+<td align="left">Gangrene</td>
+<td align="left">2 (100)</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">17</td>
+<td align="left">Gastroenteritis</td>
+<td align="left">13 (92.86)</td>
+<td align="left">1 (7.14)</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="even">
+<td align="left">18</td>
+<td align="left">Gastroenteritis, Foodborne Illness</td>
+<td align="left">1 (100)</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">19</td>
+<td align="left">Gastroenteritis, Periodontal Disorder</td>
+<td align="left">1 (100)</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="even">
+<td align="left">20</td>
+<td align="left">Gastroenteritis, bacteremia</td>
+<td align="left">1 (100)</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">21</td>
+<td align="left">Gastroenteritis, diarrhea</td>
+<td align="left">1 (100)</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="even">
+<td align="left">22</td>
+<td align="left">Gastroenteritis, infection</td>
+<td align="left">2 (100)</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">23</td>
+<td align="left">Gastroenteritis, infection, septicemia</td>
+<td align="left">2 (100)</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="even">
+<td align="left">24</td>
+<td align="left">Gastroenteritis, septicemia</td>
+<td align="left">1 (100)</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">25</td>
+<td align="left">Glanders, pneumonia</td>
+<td align="left">4 (100)</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="even">
+<td align="left">26</td>
+<td align="left">Gonorrhea</td>
+<td align="left">2 (100)</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">27</td>
+<td align="left">Haemophilus</td>
+<td align="left">1 (100)</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="even">
+<td align="left">28</td>
+<td align="left">Infection</td>
+<td align="left">1 (100)</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">29</td>
+<td align="left">Infection caused by Escherichia coli (disorder)</td>
+<td align="left">1 (100)</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="even">
+<td align="left">30</td>
+<td align="left">Infertility, abortion, septicemia, meningitis</td>
+<td align="left">1 (100)</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">31</td>
+<td align="left">Inflammation</td>
+<td align="left">1 (100)</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="even">
+<td align="left">32</td>
+<td align="left">Inflammation, infection</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">1 (100)</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">33</td>
+<td align="left">Lyme Disease</td>
+<td align="left">4 (100)</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="even">
+<td align="left">34</td>
+<td align="left">Microcystis aeruginosa, gastroenteritis, skin
+irritation</td>
+<td align="left">1 (100)</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">35</td>
+<td align="left">Mycobacterial Infection</td>
+<td align="left">1 (100)</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="even">
+<td align="left">36</td>
+<td align="left">Periodontal disorder</td>
+<td align="left">5 (100)</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">37</td>
+<td align="left">Plant chlorosis</td>
+<td align="left">2 (100)</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="even">
+<td align="left">38</td>
+<td align="left">Reaction to Leaf spot</td>
+<td align="left">1 (100)</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">39</td>
+<td align="left">Terrabacteria group</td>
+<td align="left">2 (66.67)</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">1 (33.33)</td>
+<td align="left">NA</td>
+</tr>
+<tr class="even">
+<td align="left">40</td>
+<td align="left">Tetnus</td>
+<td align="left">1 (100)</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">41</td>
+<td align="left">Toxic Shock Syndrome, Fever</td>
+<td align="left">11 (100)</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="even">
+<td align="left">42</td>
+<td align="left">Tuberculosis</td>
+<td align="left">1 (100)</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">43</td>
+<td align="left">Tumor</td>
+<td align="left">1 (100)</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="even">
+<td align="left">44</td>
+<td align="left">abortion</td>
+<td align="left">1 (100)</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">45</td>
+<td align="left">acrodermatitis</td>
+<td align="left">1 (100)</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="even">
+<td align="left">46</td>
+<td align="left">african heartwater</td>
+<td align="left">1 (100)</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">47</td>
+<td align="left">african tick-bite fever</td>
+<td align="left">1 (100)</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="even">
+<td align="left">48</td>
+<td align="left">anaplasmosis</td>
+<td align="left">3 (100)</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">49</td>
+<td align="left">anemia</td>
+<td align="left">1 (100)</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="even">
+<td align="left">50</td>
+<td align="left">anthrax</td>
+<td align="left">6 (100)</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">51</td>
+<td align="left">atypical pneumonia</td>
+<td align="left">1 (100)</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="even">
+<td align="left">52</td>
+<td align="left">bacillary angiomatosis, cat scratch fever</td>
+<td align="left">1 (100)</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">53</td>
+<td align="left">bacillary angiomatosis, trench fever</td>
+<td align="left">1 (100)</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="even">
+<td align="left">54</td>
+<td align="left">bacteremia</td>
+<td align="left">2 (100)</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">55</td>
+<td align="left">bacteremia, endocarditis, urinary tract infection</td>
+<td align="left">1 (100)</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="even">
+<td align="left">56</td>
+<td align="left">bacteremia, gastroenteritis</td>
+<td align="left">1 (100)</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">57</td>
+<td align="left">bacteremia, meningoencephalitis, abscess</td>
+<td align="left">1 (100)</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="even">
+<td align="left">58</td>
+<td align="left">bacteremia, pneumonia</td>
+<td align="left">1 (100)</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">59</td>
+<td align="left">bacterial leaf blight</td>
+<td align="left">1 (50)</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">1 (50)</td>
+<td align="left">NA</td>
+</tr>
+<tr class="even">
+<td align="left">60</td>
+<td align="left">bacterial leaf blight, sorghum</td>
+<td align="left">1 (100)</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">61</td>
+<td align="left">bacterial vaginosis</td>
+<td align="left">1 (100)</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="even">
+<td align="left">62</td>
+<td align="left">bartonellosis</td>
+<td align="left">2 (100)</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">63</td>
+<td align="left">bordetellosis</td>
+<td align="left">1 (100)</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="even">
+<td align="left">64</td>
+<td align="left">botulism</td>
+<td align="left">7 (87.5)</td>
+<td align="left">1 (12.5)</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">65</td>
+<td align="left">brucellosis</td>
+<td align="left">5 (100)</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="even">
+<td align="left">66</td>
+<td align="left">brucellosis, abortion, fever</td>
+<td align="left">2 (100)</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">67</td>
+<td align="left">canker</td>
+<td align="left">1 (100)</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="even">
+<td align="left">68</td>
+<td align="left">caries, periodontal disorder</td>
+<td align="left">1 (50)</td>
+<td align="left">1 (50)</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">69</td>
+<td align="left">cell lysis</td>
+<td align="left">2 (100)</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="even">
+<td align="left">70</td>
+<td align="left">cholera</td>
+<td align="left">4 (100)</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">71</td>
+<td align="left">chronic granulomatous disease</td>
+<td align="left">1 (100)</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="even">
+<td align="left">72</td>
+<td align="left">colitis</td>
+<td align="left">7 (100)</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">73</td>
+<td align="left">contagious pleuropneumonia</td>
+<td align="left">NA</td>
+<td align="left">1 (100)</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="even">
+<td align="left">74</td>
+<td align="left">crown gall</td>
+<td align="left">1 (100)</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">75</td>
+<td align="left">cystitis</td>
+<td align="left">1 (100)</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="even">
+<td align="left">76</td>
+<td align="left">diarrhea</td>
+<td align="left">1 (100)</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">77</td>
+<td align="left">diarrhea, septicemia</td>
+<td align="left">1 (100)</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="even">
+<td align="left">78</td>
+<td align="left">diphtheria</td>
+<td align="left">1 (100)</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">79</td>
+<td align="left">duodenal lesions</td>
+<td align="left">1 (100)</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="even">
+<td align="left">80</td>
+<td align="left">dysentery</td>
+<td align="left">8 (100)</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">81</td>
+<td align="left">ehrlichiosis</td>
+<td align="left">2 (100)</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="even">
+<td align="left">82</td>
+<td align="left">endocarditis</td>
+<td align="left">1 (100)</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">83</td>
+<td align="left">erysipelas</td>
+<td align="left">1 (100)</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="even">
+<td align="left">84</td>
+<td align="left">heartwater</td>
+<td align="left">1 (100)</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">85</td>
+<td align="left">human granulocytic anaplasmosis</td>
+<td align="left">1 (100)</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="even">
+<td align="left">86</td>
+<td align="left">infection</td>
+<td align="left">90 (96.77)</td>
+<td align="left">NA</td>
+<td align="left">1 (1.08)</td>
+<td align="left">2 (2.15)</td>
+<td align="left">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">87</td>
+<td align="left">infection, canker</td>
+<td align="left">1 (100)</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="even">
+<td align="left">88</td>
+<td align="left">infection, diarrhea</td>
+<td align="left">2 (100)</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">89</td>
+<td align="left">infection, encephalitis, urinary tract infection,
+pyelonephritis, pneumonia, septicemia</td>
+<td align="left">1 (100)</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="even">
+<td align="left">90</td>
+<td align="left">infection, endocarditis</td>
+<td align="left">1 (100)</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">91</td>
+<td align="left">infection, pneumonia</td>
+<td align="left">7 (77.78)</td>
+<td align="left">2 (22.22)</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="even">
+<td align="left">92</td>
+<td align="left">infection, pneumonia, endocarditis</td>
+<td align="left">1 (100)</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">93</td>
+<td align="left">infection, pneumonia, meningitis</td>
+<td align="left">2 (100)</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="even">
+<td align="left">94</td>
+<td align="left">infection, septicemia</td>
+<td align="left">2 (100)</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">95</td>
+<td align="left">infection, tumors, colitis</td>
+<td align="left">1 (100)</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="even">
+<td align="left">96</td>
+<td align="left">infection, typhus</td>
+<td align="left">2 (100)</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">97</td>
+<td align="left">infection, urinary tract infection</td>
+<td align="left">1 (100)</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="even">
+<td align="left">98</td>
+<td align="left">kidney disease</td>
+<td align="left">1 (100)</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">99</td>
+<td align="left">legionnaire’s disease</td>
+<td align="left">5 (100)</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="even">
+<td align="left">100</td>
+<td align="left">leprosy</td>
+<td align="left">6 (100)</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">101</td>
+<td align="left">mastitis</td>
+<td align="left">2 (100)</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="even">
+<td align="left">102</td>
+<td align="left">mastitis, arthritis, and pneumonia</td>
+<td align="left">1 (100)</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">103</td>
+<td align="left">melioidosis</td>
+<td align="left">4 (100)</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="even">
+<td align="left">104</td>
+<td align="left">meningitis</td>
+<td align="left">1 (100)</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">105</td>
+<td align="left">meningitis and septicemia</td>
+<td align="left">4 (100)</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="even">
+<td align="left">106</td>
+<td align="left">meningitis, arthritis, pneumonia</td>
+<td align="left">2 (100)</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">107</td>
+<td align="left">meningitis, endocarditis, septicemia and arthritis</td>
+<td align="left">2 (100)</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="even">
+<td align="left">108</td>
+<td align="left">plague</td>
+<td align="left">7 (100)</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">109</td>
+<td align="left">pneumonia</td>
+<td align="left">29 (96.67)</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">1 (3.33)</td>
+</tr>
+<tr class="even">
+<td align="left">110</td>
+<td align="left">pneumonia, Arthritis</td>
+<td align="left">2 (100)</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">111</td>
+<td align="left">pneumonia, infection</td>
+<td align="left">6 (85.71)</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">1 (14.29)</td>
+<td align="left">NA</td>
+</tr>
+<tr class="even">
+<td align="left">112</td>
+<td align="left">pneumonia, meningitis, infection</td>
+<td align="left">1 (100)</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">113</td>
+<td align="left">pneumonia,urinary tract infection</td>
+<td align="left">2 (100)</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="even">
+<td align="left">114</td>
+<td align="left">polyarthritis</td>
+<td align="left">1 (100)</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">115</td>
+<td align="left">reaction to black rot</td>
+<td align="left">1 (100)</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="even">
+<td align="left">116</td>
+<td align="left">reaction to black rot, canker</td>
+<td align="left">2 (100)</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">117</td>
+<td align="left">respiratory infection</td>
+<td align="left">3 (75)</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">1 (25)</td>
+</tr>
+<tr class="even">
+<td align="left">118</td>
+<td align="left">respiratory infection, Arthritis</td>
+<td align="left">1 (100)</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">119</td>
+<td align="left">respiratory infection, infection, Arthritis</td>
+<td align="left">1 (100)</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="even">
+<td align="left">120</td>
+<td align="left">respiratory infection, urlnary tract infection,
+Arthritis</td>
+<td align="left">1 (100)</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">121</td>
+<td align="left">respiratory system disease</td>
+<td align="left">1 (50)</td>
+<td align="left">1 (50)</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="even">
+<td align="left">122</td>
+<td align="left">septicemia</td>
+<td align="left">1 (100)</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">123</td>
+<td align="left">septicemia, infection</td>
+<td align="left">1 (100)</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="even">
+<td align="left">124</td>
+<td align="left">syphilis</td>
+<td align="left">3 (100)</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">125</td>
+<td align="left">toxin</td>
+<td align="left">1 (100)</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="even">
+<td align="left">126</td>
+<td align="left">tuberculosis</td>
+<td align="left">9 (100)</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">127</td>
+<td align="left">typhoid</td>
+<td align="left">3 (100)</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="even">
+<td align="left">128</td>
+<td align="left">typhus</td>
+<td align="left">4 (100)</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">129</td>
+<td align="left">ulcer</td>
+<td align="left">5 (100)</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="even">
+<td align="left">130</td>
+<td align="left">ulcer, Gastroenteritis</td>
+<td align="left">3 (100)</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">131</td>
+<td align="left">urinary tract infection</td>
+<td align="left">6 (100)</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="even">
+<td align="left">132</td>
+<td align="left">urinary tract infection, blood infection, respiratory
+system disease</td>
+<td align="left">1 (100)</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">133</td>
+<td align="left">urinary tract infection, respiratory infection</td>
+<td align="left">5 (100)</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 <div class="section level2">
 <h2 id="datasests-with-numeric-attributes-in-physiologies">Datasests with numeric attributes in “physiologies”<a class="anchor" aria-label="anchor" href="#datasests-with-numeric-attributes-in-physiologies"></a>
 </h2>
 <div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">numeric_phys</span> <span class="op">&lt;-</span> <span class="va">phys</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
+<code class="sourceCode R"><span><span class="va">phys</span><span class="op">$</span><span class="va">`fatty acid composition`</span> <span class="op">&lt;-</span> <span class="va">phys</span><span class="op">$</span><span class="va">`fatty acid composition`</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>NCBI_ID <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">as.character</a></span><span class="op">(</span><span class="va">NCBI_ID</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">numeric_phys</span> <span class="op">&lt;-</span> <span class="va">phys</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
 <span>    <span class="fu"><a href="https://purrr.tidyverse.org/reference/keep.html" class="external-link">keep</a></span><span class="op">(</span><span class="op">~</span><span class="fu"><a href="https://rdrr.io/r/base/numeric.html" class="external-link">is.numeric</a></span><span class="op">(</span><span class="va">.x</span><span class="op">$</span><span class="va">Attribute_value</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
 <span>    <span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html" class="external-link">map</a></span><span class="op">(</span><span class="op">~</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html" class="external-link">left_join</a></span><span class="op">(</span><span class="va">.x</span>, <span class="va">taxonomy_table</span>, by <span class="op">=</span> <span class="st">"NCBI_ID"</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
@@ -3286,14 +4435,13 @@
 <span>    <span class="fu"><a href="https://purrr.tidyverse.org/reference/keep.html" class="external-link">discard</a></span><span class="op">(</span><span class="op">~</span> <span class="fu"><a href="https://rdrr.io/r/base/logical.html" class="external-link">is.logical</a></span><span class="op">(</span><span class="va">.x</span><span class="op">$</span><span class="va">Attribute_value</span><span class="op">)</span> <span class="op">||</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html" class="external-link">is.numeric</a></span><span class="op">(</span><span class="va">.x</span><span class="op">$</span><span class="va">Attribute_value</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
 <span><span class="kw">for</span> <span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq_along</a></span><span class="op">(</span><span class="va">other_datasets</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
-<span>    <span class="va">other_datasets</span><span class="op">[[</span><span class="va">i</span><span class="op">]</span><span class="op">]</span><span class="op">$</span><span class="va">NCBI_ID</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/double.html" class="external-link">as.double</a></span><span class="op">(</span><span class="va">other_datasets</span><span class="op">[[</span><span class="va">i</span><span class="op">]</span><span class="op">]</span><span class="op">$</span><span class="va">NCBI_ID</span><span class="op">)</span></span>
+<span>    <span class="va">other_datasets</span><span class="op">[[</span><span class="va">i</span><span class="op">]</span><span class="op">]</span><span class="op">$</span><span class="va">NCBI_ID</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">as.character</a></span><span class="op">(</span><span class="va">other_datasets</span><span class="op">[[</span><span class="va">i</span><span class="op">]</span><span class="op">]</span><span class="op">$</span><span class="va">NCBI_ID</span><span class="op">)</span></span>
 <span><span class="op">}</span></span>
 <span></span>
 <span><span class="va">other_datasets</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html" class="external-link">map</a></span><span class="op">(</span><span class="va">other_datasets</span>, <span class="op">~</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html" class="external-link">left_join</a></span><span class="op">(</span><span class="va">.x</span>, <span class="va">taxonomy_table</span>, by <span class="op">=</span> <span class="st">"NCBI_ID"</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="va">other_datasets_names</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">other_datasets</span><span class="op">)</span></span>
 <span><span class="va">other_datasets_names</span></span>
-<span><span class="co">#&gt; [1] "disease association" "isolation site"      "length"             </span></span>
-<span><span class="co">#&gt; [4] "width"</span></span></code></pre></div>
+<span><span class="co">#&gt; [1] "isolation site" "length"         "width"</span></span></code></pre></div>
 <div class="sourceCode" id="cb45"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">other_datasets_summary_tables</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html" class="external-link">map</a></span><span class="op">(</span><span class="va">other_datasets_names</span>, <span class="op">~</span> <span class="fu">attributeSummaryByRank</span><span class="op">(</span><span class="va">other_datasets</span>, <span class="va">.x</span>, categorical <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
 <span>    <span class="fu"><a href="https://rlang.r-lib.org/reference/set_names.html" class="external-link">set_names</a></span><span class="op">(</span><span class="va">other_datasets_names</span><span class="op">)</span></span></code></pre></div>
@@ -3353,8 +4501,8 @@
 <tbody><tr class="odd">
 <td align="left">1</td>
 <td align="left">length</td>
-<td align="left">659 (98.8)</td>
-<td align="left">8 (1.2)</td>
+<td align="left">655 (98.79)</td>
+<td align="left">8 (1.21)</td>
 </tr></tbody>
 </table>
 </div>
@@ -4482,6 +5630,116 @@ function.</li>
 <div class="sourceCode" id="cb55"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">boxplots</span><span class="op">$</span><span class="va">`fatty acid composition`</span></span></code></pre></div>
 <p><img src="descriptive_statistics_files/figure-html/unnamed-chunk-54-1.png" width="700"></p>
+<div class="sourceCode" id="cb56"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu">sessioninfo</span><span class="fu">::</span><span class="fu"><a href="https://r-lib.github.io/sessioninfo/reference/session_info.html" class="external-link">session_info</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co">#&gt; <span style="color: #00BBBB; font-weight: bold;">─ Session info ───────────────────────────────────────────────────────────────</span></span></span>
+<span><span class="co">#&gt;  <span style="color: #555555; font-style: italic;">setting </span> <span style="color: #555555; font-style: italic;">value</span></span></span>
+<span><span class="co">#&gt;  version  R Under development (unstable) (2023-02-01 r83747)</span></span>
+<span><span class="co">#&gt;  os       Ubuntu 22.04.1 LTS</span></span>
+<span><span class="co">#&gt;  system   x86_64, linux-gnu</span></span>
+<span><span class="co">#&gt;  ui       X11</span></span>
+<span><span class="co">#&gt;  language en</span></span>
+<span><span class="co">#&gt;  collate  en_US.UTF-8</span></span>
+<span><span class="co">#&gt;  ctype    en_US.UTF-8</span></span>
+<span><span class="co">#&gt;  tz       Etc/UTC</span></span>
+<span><span class="co">#&gt;  date     2023-02-06</span></span>
+<span><span class="co">#&gt;  pandoc   2.19.2 @ /usr/local/bin/ (via rmarkdown)</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; <span style="color: #00BBBB; font-weight: bold;">─ Packages ───────────────────────────────────────────────────────────────────</span></span></span>
+<span><span class="co">#&gt;  <span style="color: #555555; font-style: italic;">package    </span> <span style="color: #555555; font-style: italic;">*</span> <span style="color: #555555; font-style: italic;">version</span> <span style="color: #555555; font-style: italic;">date (UTC)</span> <span style="color: #555555; font-style: italic;">lib</span> <span style="color: #555555; font-style: italic;">source</span></span></span>
+<span><span class="co">#&gt;  ape           5.6-2   <span style="color: #555555;">2022-03-02</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
+<span><span class="co">#&gt;  assertthat    0.2.1   <span style="color: #555555;">2019-03-21</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
+<span><span class="co">#&gt;  bit           4.0.5   <span style="color: #555555;">2022-11-15</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
+<span><span class="co">#&gt;  bit64         4.0.5   <span style="color: #555555;">2020-08-30</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
+<span><span class="co">#&gt;  blob          1.2.3   <span style="color: #555555;">2022-04-10</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
+<span><span class="co">#&gt;  bold          1.2.0   <span style="color: #555555;">2021-05-11</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
+<span><span class="co">#&gt;  bslib         0.4.2   <span style="color: #555555;">2022-12-16</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
+<span><span class="co">#&gt;  bugphyzz    * 0.0.1.3 <span style="color: #555555;">2023-02-06</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">local</span></span></span>
+<span><span class="co">#&gt;  cachem        1.0.6   <span style="color: #555555;">2021-08-19</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
+<span><span class="co">#&gt;  cli           3.6.0   <span style="color: #555555;">2023-01-09</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
+<span><span class="co">#&gt;  codetools     0.2-19  <span style="color: #555555;">2023-02-01</span> <span style="color: #555555;">[2]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
+<span><span class="co">#&gt;  colorspace    2.1-0   <span style="color: #555555;">2023-01-23</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
+<span><span class="co">#&gt;  conditionz    0.1.0   <span style="color: #555555;">2019-04-24</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
+<span><span class="co">#&gt;  crayon        1.5.2   <span style="color: #555555;">2022-09-29</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
+<span><span class="co">#&gt;  crul          1.3     <span style="color: #555555;">2022-09-03</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
+<span><span class="co">#&gt;  curl          5.0.0   <span style="color: #555555;">2023-01-12</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
+<span><span class="co">#&gt;  data.table    1.14.6  <span style="color: #555555;">2022-11-16</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
+<span><span class="co">#&gt;  DBI           1.1.3   <span style="color: #555555;">2022-06-18</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
+<span><span class="co">#&gt;  dbplyr        2.3.0   <span style="color: #555555;">2023-01-16</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
+<span><span class="co">#&gt;  desc          1.4.2   <span style="color: #555555;">2022-09-08</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
+<span><span class="co">#&gt;  digest        0.6.31  <span style="color: #555555;">2022-12-11</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
+<span><span class="co">#&gt;  dplyr       * 1.1.0   <span style="color: #555555;">2023-01-29</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
+<span><span class="co">#&gt;  ellipsis      0.3.2   <span style="color: #555555;">2021-04-29</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
+<span><span class="co">#&gt;  evaluate      0.20    <span style="color: #555555;">2023-01-17</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
+<span><span class="co">#&gt;  fansi         1.0.4   <span style="color: #555555;">2023-01-22</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
+<span><span class="co">#&gt;  farver        2.1.1   <span style="color: #555555;">2022-07-06</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
+<span><span class="co">#&gt;  fastmap       1.1.0   <span style="color: #555555;">2021-01-25</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
+<span><span class="co">#&gt;  forcats       1.0.0   <span style="color: #555555;">2023-01-29</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
+<span><span class="co">#&gt;  foreach       1.5.2   <span style="color: #555555;">2022-02-02</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
+<span><span class="co">#&gt;  fs            1.6.0   <span style="color: #555555;">2023-01-23</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
+<span><span class="co">#&gt;  generics      0.1.3   <span style="color: #555555;">2022-07-05</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
+<span><span class="co">#&gt;  ggplot2     * 3.4.0   <span style="color: #555555;">2022-11-04</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
+<span><span class="co">#&gt;  glue          1.6.2   <span style="color: #555555;">2022-02-24</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
+<span><span class="co">#&gt;  gtable        0.3.1   <span style="color: #555555;">2022-09-01</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
+<span><span class="co">#&gt;  highr         0.10    <span style="color: #555555;">2022-12-22</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
+<span><span class="co">#&gt;  hms           1.1.2   <span style="color: #555555;">2022-08-19</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
+<span><span class="co">#&gt;  hoardr        0.5.3   <span style="color: #555555;">2023-01-26</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
+<span><span class="co">#&gt;  htmltools     0.5.4   <span style="color: #555555;">2022-12-07</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
+<span><span class="co">#&gt;  httpcode      0.3.0   <span style="color: #555555;">2020-04-10</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
+<span><span class="co">#&gt;  iterators     1.0.14  <span style="color: #555555;">2022-02-05</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
+<span><span class="co">#&gt;  jquerylib     0.1.4   <span style="color: #555555;">2021-04-26</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
+<span><span class="co">#&gt;  jsonlite      1.8.4   <span style="color: #555555;">2022-12-06</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
+<span><span class="co">#&gt;  knitr         1.42    <span style="color: #555555;">2023-01-25</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
+<span><span class="co">#&gt;  labeling      0.4.2   <span style="color: #555555;">2020-10-20</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
+<span><span class="co">#&gt;  lattice       0.20-45 <span style="color: #555555;">2021-09-22</span> <span style="color: #555555;">[2]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
+<span><span class="co">#&gt;  lifecycle     1.0.3   <span style="color: #555555;">2022-10-07</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
+<span><span class="co">#&gt;  magrittr      2.0.3   <span style="color: #555555;">2022-03-30</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
+<span><span class="co">#&gt;  memoise       2.0.1   <span style="color: #555555;">2021-11-26</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
+<span><span class="co">#&gt;  mgsub         1.7.3   <span style="color: #555555;">2021-07-28</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
+<span><span class="co">#&gt;  munsell       0.5.0   <span style="color: #555555;">2018-06-12</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
+<span><span class="co">#&gt;  nlme          3.1-162 <span style="color: #555555;">2023-01-31</span> <span style="color: #555555;">[2]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
+<span><span class="co">#&gt;  pillar        1.8.1   <span style="color: #555555;">2022-08-19</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
+<span><span class="co">#&gt;  pkgconfig     2.0.3   <span style="color: #555555;">2019-09-22</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
+<span><span class="co">#&gt;  pkgdown       2.0.7   <span style="color: #555555;">2022-12-14</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
+<span><span class="co">#&gt;  plyr          1.8.8   <span style="color: #555555;">2022-11-11</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
+<span><span class="co">#&gt;  purrr       * 1.0.1   <span style="color: #555555;">2023-01-10</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
+<span><span class="co">#&gt;  R6            2.5.1   <span style="color: #555555;">2021-08-19</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
+<span><span class="co">#&gt;  ragg          1.2.5   <span style="color: #555555;">2023-01-12</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
+<span><span class="co">#&gt;  rappdirs      0.3.3   <span style="color: #555555;">2021-01-31</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
+<span><span class="co">#&gt;  Rcpp          1.0.10  <span style="color: #555555;">2023-01-22</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
+<span><span class="co">#&gt;  readr         2.1.3   <span style="color: #555555;">2022-10-01</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
+<span><span class="co">#&gt;  reshape       0.8.9   <span style="color: #555555;">2022-04-12</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
+<span><span class="co">#&gt;  rlang         1.0.6   <span style="color: #555555;">2022-09-24</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
+<span><span class="co">#&gt;  rmarkdown     2.20    <span style="color: #555555;">2023-01-19</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
+<span><span class="co">#&gt;  rprojroot     2.0.3   <span style="color: #555555;">2022-04-02</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
+<span><span class="co">#&gt;  RSQLite       2.2.20  <span style="color: #555555;">2022-12-22</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
+<span><span class="co">#&gt;  sass          0.4.5   <span style="color: #555555;">2023-01-24</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
+<span><span class="co">#&gt;  scales        1.2.1   <span style="color: #555555;">2022-08-20</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
+<span><span class="co">#&gt;  sessioninfo   1.2.2   <span style="color: #555555;">2021-12-06</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
+<span><span class="co">#&gt;  stringi       1.7.12  <span style="color: #555555;">2023-01-11</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
+<span><span class="co">#&gt;  stringr       1.5.0   <span style="color: #555555;">2022-12-02</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
+<span><span class="co">#&gt;  systemfonts   1.0.4   <span style="color: #555555;">2022-02-11</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
+<span><span class="co">#&gt;  taxize        0.9.100 <span style="color: #555555;">2022-04-22</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
+<span><span class="co">#&gt;  taxizedb      0.3.0   <span style="color: #555555;">2021-01-15</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
+<span><span class="co">#&gt;  textshaping   0.3.6   <span style="color: #555555;">2021-10-13</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
+<span><span class="co">#&gt;  tibble        3.1.8   <span style="color: #555555;">2022-07-22</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
+<span><span class="co">#&gt;  tidyr         1.3.0   <span style="color: #555555;">2023-01-24</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
+<span><span class="co">#&gt;  tidyselect    1.2.0   <span style="color: #555555;">2022-10-10</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
+<span><span class="co">#&gt;  tzdb          0.3.0   <span style="color: #555555;">2022-03-28</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
+<span><span class="co">#&gt;  utf8          1.2.3   <span style="color: #555555;">2023-01-31</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
+<span><span class="co">#&gt;  uuid          1.1-0   <span style="color: #555555;">2022-04-19</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
+<span><span class="co">#&gt;  vctrs         0.5.2   <span style="color: #555555;">2023-01-23</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
+<span><span class="co">#&gt;  vroom         1.6.1   <span style="color: #555555;">2023-01-22</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
+<span><span class="co">#&gt;  withr         2.5.0   <span style="color: #555555;">2022-03-03</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
+<span><span class="co">#&gt;  xfun          0.37    <span style="color: #555555;">2023-01-31</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
+<span><span class="co">#&gt;  xml2          1.3.3   <span style="color: #555555;">2021-11-30</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
+<span><span class="co">#&gt;  yaml          2.3.7   <span style="color: #555555;">2023-01-23</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
+<span><span class="co">#&gt;  zoo           1.8-11  <span style="color: #555555;">2022-09-17</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; <span style="color: #555555;"> [1] /usr/local/lib/R/site-library</span></span></span>
+<span><span class="co">#&gt; <span style="color: #555555;"> [2] /usr/local/lib/R/library</span></span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; <span style="color: #00BBBB; font-weight: bold;">──────────────────────────────────────────────────────────────────────────────</span></span></span></code></pre></div>
 </div>
   </div>
 
@@ -4502,7 +5760,7 @@ function.</li>
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer>

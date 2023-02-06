@@ -41,9 +41,6 @@
       <a href="../articles/descriptive_statistics.html">Descriptive statistcs of taxa annotations</a>
     </li>
     <li>
-      <a href="../articles/write_physiology_sets.html">Write physiology sets</a>
-    </li>
-    <li>
       <a href="../articles/getPhysiologies.html">Get all physiologies for a set of taxa</a>
     </li>
   </ul></li>
@@ -79,7 +76,7 @@
     <h2>Arguments</h2>
     <dl><dt>keyword</dt>
 <dd><p>a character vector of physiologies desired. For the available
-physiologies, run bugphyzz::physiologiesList(). Use "all" for all available physiologies.</p></dd>
+physiologies, run bugphyzz::showPhys(). Use "all" for all available physiologies.</p></dd>
 
 </dl></div>
     <div id="value">
@@ -92,42 +89,42 @@ physiologies, run bugphyzz::physiologiesList(). Use "all" for all available phys
     <div id="ref-examples">
     <h2>Examples</h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">bugphyzz</span><span class="fu">:::</span><span class="fu">curationLinks</span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                               physiology      ontology</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1                      acetate producing          &lt;NA&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2                          aerophilicity MICRO_0000491</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3                        animal pathogen          &lt;NA&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4               antimicrobial resistance          &lt;NA&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5              antimicrobial sensitivity          &lt;NA&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6                            arrangement          &lt;NA&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 7                        biofilm forming          &lt;NA&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 8                     butyrate producing          &lt;NA&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 9             COGEM pathogenicity rating          &lt;NA&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 10                   disease association          &lt;NA&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 11                   extreme environment          &lt;NA&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 12                            gram stain          &lt;NA&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 13                         growth medium          &lt;NA&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 14                    growth temperature          &lt;NA&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 15                               habitat          &lt;NA&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 16                     health associated          &lt;NA&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 17                hydrogen gas producing          &lt;NA&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 18                        isolation site          &lt;NA&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 19                     lactate producing          &lt;NA&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 20                                length          &lt;NA&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 21 mutation rate per site per generation          &lt;NA&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 22      mutation rates per site per year          &lt;NA&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 23                            optimal ph          &lt;NA&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 24                   plant pathogenicity          &lt;NA&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 25                                 shape          &lt;NA&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 26                           spore shape   OMP_0008000</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 27                                 width          &lt;NA&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 28                           genome size          &lt;NA&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 29                          coding genes          &lt;NA&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 30                sphingolipid producing          &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                               physiology      ontology    sig_type</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1                      acetate producing          &lt;NA&gt;     numeric</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2                          aerophilicity MICRO_0000491 categorical</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3                        animal pathogen          &lt;NA&gt;     logical</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4               antimicrobial resistance          &lt;NA&gt; categorical</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5              antimicrobial sensitivity          &lt;NA&gt;     logical</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6                            arrangement          &lt;NA&gt; categorical</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 7                        biofilm forming          &lt;NA&gt;     logical</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 8                     butyrate producing          &lt;NA&gt;     numeric</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 9             COGEM pathogenicity rating          &lt;NA&gt; categorical</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 10                   disease association          &lt;NA&gt; categorical</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 11                   extreme environment          &lt;NA&gt;     logical</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 12                            gram stain          &lt;NA&gt; categorical</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 13                         growth medium          &lt;NA&gt; categorical</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 14                    growth temperature          &lt;NA&gt;     numeric</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 15                               habitat          &lt;NA&gt; categorical</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 16                     health associated          &lt;NA&gt;     logical</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 17                hydrogen gas producing          &lt;NA&gt;     numeric</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 18                        isolation site          &lt;NA&gt; categorical</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 19                     lactate producing          &lt;NA&gt;     numeric</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 20                                length          &lt;NA&gt;       range</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 21 mutation rate per site per generation          &lt;NA&gt;     numeric</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 22      mutation rates per site per year          &lt;NA&gt;     numeric</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 23                            optimal ph          &lt;NA&gt;     numeric</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 24                   plant pathogenicity          &lt;NA&gt;     logical</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 25                                 shape          &lt;NA&gt; categorical</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 26                           spore shape   OMP_0008000 categorical</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 27                                 width          &lt;NA&gt;       range</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 28                           genome size          &lt;NA&gt;     numeric</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 29                          coding genes          &lt;NA&gt;     numeric</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 30                sphingolipid producing          &lt;NA&gt; categorical</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                                                                                                                                                                        link</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1          https://docs.google.com/spreadsheets/d/e/2PACX-1vQb6gDQdhCMWHLQdkzMM4bgTPPosYCZvjzJu4NyOYaSBGOCaOPoQh0OiUr4btnJ8EAWn7NiF-T9JaCE/pub?gid=0&amp;single=true&amp;output=csv</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 2                            https://docs.google.com/spreadsheets/d/e/2PACX-1vQDC8VfkkOfN6MKGxrzMEoJjfgYIfpsJO-SxVr3pkUUChBNkMQ3YKaxSvDSSjjrPRf51nU3wbk-WWJp/pub?output=csv</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 3                            https://docs.google.com/spreadsheets/d/e/2PACX-1vT9s4PFd7NHr-1GMNyPexZ1KuNyj2u7ErC1Vq3-wAfroNNCG-Tu-y8gn3qKQ4C-URg1SIjOm9bGE4wQ/pub?output=csv</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4                            https://docs.google.com/spreadsheets/d/e/2PACX-1vRWI3s8H0Izcs-PEo4W7Q0QAegNHq7IdSKCHSL0nZlrptTZ4dIusG0m1AMEUYv1_4GN3QX9rADAja_0/pub?output=csv</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4          https://docs.google.com/spreadsheets/d/e/2PACX-1vQmtXGNF7n8mGZKow2Kj2m5JPXsisau9T4TF_u53ovqeELiIVxrDUjaNbdGi-qiKanTKoO5xfba5LTq/pub?gid=0&amp;single=true&amp;output=csv</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 5                            https://docs.google.com/spreadsheets/d/e/2PACX-1vR0FdQpAD-xhkyIXgZMtC9oCmlbx77Cj1ncCyojm9oO410NBwJRhBNFl4hnd4HMlj2okxEKLvA8EPr2/pub?output=csv</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 6                            https://docs.google.com/spreadsheets/d/e/2PACX-1vSgNXC-VPLmG8dUN8VAun_pbT0Y4-qJo6u9ozHGO8j7Weq6ymPaPw9kJUPl-RpHSYvtUgACo-SVHyk5/pub?output=csv</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 7                            https://docs.google.com/spreadsheets/d/e/2PACX-1vRduthxAWAhSLSoOgFNAmI8DX8ORerG1U6OmI8y6-5coe31pONYfISNsUE-e-E_eiyxtQzin6Xq9b0m/pub?output=csv</span>
@@ -158,7 +155,7 @@ physiologies, run bugphyzz::physiologiesList(). Use "all" for all available phys
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1  https://docs.google.com/spreadsheets/d/1PGW4C8fkyZYUJKA8yAW7ZjWEB6QXYdoTb6wrNxatK2c</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 2  https://docs.google.com/spreadsheets/d/1JgUzttAZf5Qu2obZ_2xXqsnEr_I1XKn_ZzNvrE6ssO4</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 3  https://docs.google.com/spreadsheets/d/1Z9bWx4dAbCHXgtZI2Ep-0Www0DafSqsPvSr5M69CPlE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4  https://docs.google.com/spreadsheets/d/1oOBg_sA00EY6fAwSXBatfplxRwi49n4mQgsepKy0BnA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4  https://docs.google.com/spreadsheets/d/1ldVVQr6zT9g_Bf6WsJtAjke8yyP-gLp8llMYh6bipag</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 5  https://docs.google.com/spreadsheets/d/1eTceiQnE8YRoYGDWRL6uQqG6Wx9PPsBXk2X6Pvq7p6M</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 6  https://docs.google.com/spreadsheets/d/1qkNPdVDjpkdvZ-UtWeIrmWA3aYCInIQrseDDYqXiH-w</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 7  https://docs.google.com/spreadsheets/d/1H8Pon9zmivcN7mtrlLuTLF4IL_lN5wi_k93XRlhWlRg</span>
@@ -169,7 +166,7 @@ physiologies, run bugphyzz::physiologiesList(). Use "all" for all available phys
 <span class="r-out co"><span class="r-pr">#&gt;</span> 12 https://docs.google.com/spreadsheets/d/1ygWBlBczB24fyL0DTPmTModCuEDi-1j1_rsYBZ5JEOc</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 13 https://docs.google.com/spreadsheets/d/1r7GIZWjBbmC-rRZYbHUwM31LGJ6YGexdZozYOvFZXVs</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 14 https://docs.google.com/spreadsheets/d/1yJjKSd59tjpq1Oaifd7S3jFBWFe2ZU-kmxV4HtYJznc</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 15 https://docs.google.com/spreadsheets/d/16WVR910o0p_CyiqYxSa1hkDTdtsAM4Oy8TlbZNIr7ys</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 15 https://docs.google.com/spreadsheets/d/1PpZ56km1XJ7Dk9KOFtDTPzJ62n6AoiZ3ABgac-_4Ags</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 16 https://docs.google.com/spreadsheets/d/1oKvcKub-2NnbwYsIyXPETt7nUl89RwTk5Vwzk1WX0j0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 17 https://docs.google.com/spreadsheets/d/14CNe6W0OmR5iY9lQU2IPFtYZsLd8a77ehR3lVJkx1A8</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 18 https://docs.google.com/spreadsheets/d/1QmwZcfoXhBdWPxTt6qa7hhMckHGV7c0lU2pTPpcSVfI</span>
@@ -186,16 +183,16 @@ physiologies, run bugphyzz::physiologiesList(). Use "all" for all available phys
 <span class="r-out co"><span class="r-pr">#&gt;</span> 29 https://docs.google.com/spreadsheets/d/1MVQ3o4fRYA4EOjp9mNAF0AvyQ0SzzdTMoZXruAIHmb4</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 30 https://docs.google.com/spreadsheets/d/1mVeLtc94SykCBBHhxxPhrbUgFopZ4OMWHrM_c5-grjU</span>
 <span class="r-in"><span><span class="fu">bugphyzz</span><span class="fu">:::</span><span class="fu">curationLinks</span><span class="op">(</span>keyword <span class="op">=</span> <span class="st">"aerophilicity"</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      physiology      ontology</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2 aerophilicity MICRO_0000491</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      physiology      ontology    sig_type</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2 aerophilicity MICRO_0000491 categorical</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                                                                                                                                             link</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 2 https://docs.google.com/spreadsheets/d/e/2PACX-1vQDC8VfkkOfN6MKGxrzMEoJjfgYIfpsJO-SxVr3pkUUChBNkMQ3YKaxSvDSSjjrPRf51nU3wbk-WWJp/pub?output=csv</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                                                                           source_link</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 2 https://docs.google.com/spreadsheets/d/1JgUzttAZf5Qu2obZ_2xXqsnEr_I1XKn_ZzNvrE6ssO4</span>
 <span class="r-in"><span><span class="fu">bugphyzz</span><span class="fu">:::</span><span class="fu">curationLinks</span><span class="op">(</span>keyword <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"aerophilicity"</span>, <span class="st">"gram stain"</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       physiology      ontology</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2  aerophilicity MICRO_0000491</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 12    gram stain          &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       physiology      ontology    sig_type</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2  aerophilicity MICRO_0000491 categorical</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 12    gram stain          &lt;NA&gt; categorical</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                                                                                                                                              link</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 2  https://docs.google.com/spreadsheets/d/e/2PACX-1vQDC8VfkkOfN6MKGxrzMEoJjfgYIfpsJO-SxVr3pkUUChBNkMQ3YKaxSvDSSjjrPRf51nU3wbk-WWJp/pub?output=csv</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 12 https://docs.google.com/spreadsheets/d/e/2PACX-1vRxQOO7O7oJDJrFbY3s1Y_rbouUSR3rM_a3kGlXgcVMys5pFLqmd00VjJh1adJBmh3xA3aM8r3Am2oC/pub?output=csv</span>
@@ -216,7 +213,7 @@ physiologies, run bugphyzz::physiologiesList(). Use "all" for all available phys
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer></div>

@@ -34,9 +34,6 @@
     <loc>https://waldronlab.io/bugphyzz/articles/index.html</loc>
   </url>
   <url>
-    <loc>https://waldronlab.io/bugphyzz/articles/write_physiology_sets.html</loc>
-  </url>
-  <url>
     <loc>https://waldronlab.io/bugphyzz/authors.html</loc>
   </url>
   <url>
@@ -56,9 +53,6 @@
   </url>
   <url>
     <loc>https://waldronlab.io/bugphyzz/reference/dot-attributes.html</loc>
-  </url>
-  <url>
-    <loc>https://waldronlab.io/bugphyzz/reference/dot-bergeysAbstracts.html</loc>
   </url>
   <url>
     <loc>https://waldronlab.io/bugphyzz/reference/dot-checkColumnValues.html</loc>
@@ -85,16 +79,13 @@
     <loc>https://waldronlab.io/bugphyzz/reference/dot-errorHandler.html</loc>
   </url>
   <url>
-    <loc>https://waldronlab.io/bugphyzz/reference/dot-extractDuplicate.html</loc>
+    <loc>https://waldronlab.io/bugphyzz/reference/dot-importPhysiology.html</loc>
   </url>
   <url>
-    <loc>https://waldronlab.io/bugphyzz/reference/dot-extract_accurate.html</loc>
+    <loc>https://waldronlab.io/bugphyzz/reference/dot-modifyRange.html</loc>
   </url>
   <url>
     <loc>https://waldronlab.io/bugphyzz/reference/dot-requiredColumns.html</loc>
-  </url>
-  <url>
-    <loc>https://waldronlab.io/bugphyzz/reference/dot-standardize.html</loc>
   </url>
   <url>
     <loc>https://waldronlab.io/bugphyzz/reference/dot-stop_custom.html</loc>
@@ -115,13 +106,7 @@
     <loc>https://waldronlab.io/bugphyzz/reference/dot-stop_uncatalogued_column.html</loc>
   </url>
   <url>
-    <loc>https://waldronlab.io/bugphyzz/reference/dot-sub_word.html</loc>
-  </url>
-  <url>
     <loc>https://waldronlab.io/bugphyzz/reference/dot-template.html</loc>
-  </url>
-  <url>
-    <loc>https://waldronlab.io/bugphyzz/reference/dot-tokens.html</loc>
   </url>
   <url>
     <loc>https://waldronlab.io/bugphyzz/reference/fattyAcidComposition.html</loc>
@@ -145,9 +130,9 @@
     <loc>https://waldronlab.io/bugphyzz/reference/physiologies.html</loc>
   </url>
   <url>
-    <loc>https://waldronlab.io/bugphyzz/reference/physiologiesList.html</loc>
+    <loc>https://waldronlab.io/bugphyzz/reference/showPhys.html</loc>
   </url>
   <url>
-    <loc>https://waldronlab.io/bugphyzz/reference/whichID.html</loc>
+    <loc>https://waldronlab.io/bugphyzz/reference/validRanks.html</loc>
   </url>
 </urlset>
