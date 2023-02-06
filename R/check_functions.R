@@ -39,30 +39,22 @@ utils::globalVariables(c("."))
 #' }
 #'
 .checkRequiredColumns <- function(dat, dat_name = NULL) {
-
     attr_type <- unique(dat$Attribute_type)
-
-    ## Check for missing columns
     columns_lgl <- .requiredColumns(attr_type) %in% colnames(dat)
-
     if (!all(columns_lgl)) {
-        missing_cols <- .requiredColumns()[!columns_lgl]
+        missing_cols <- .requiredColumns(attr_type)[!columns_lgl]
         .stop_required_columns_missing(missing_cols, dat_name)
     }
-
-    ## Check for misplaced columns
-    expected_position <- seq_along(.requiredColumns())
-    actual_position <- match(.requiredColumns(), colnames(dat))
+    expected_position <- seq_along(.requiredColumns(attr_type))
+    actual_position <- match(.requiredColumns(attr_type), colnames(dat))
     positions_lgl <- expected_position == actual_position
-
     if (!all(positions_lgl)) {
         misplaced <- ifelse(expected_position != actual_position, "*", "")
         df <- data.frame(expected_position, actual_position, misplaced)
-        misplaced_columns <- .requiredColumns()[!positions_lgl]
+        misplaced_columns <- .requiredColumns(attr_type)[!positions_lgl]
         .stop_required_columns_misplaced(misplaced_columns, dat_name, df)
     }
-
-    invisible(NULL)
+    return(invisible(NULL))
 }
 
 #' Check required columns in a bugphyzz dataset
@@ -188,12 +180,11 @@ utils::globalVariables(c("."))
     if (!length(err_list)) {
       msg <- paste0(
         'All required columns are present and in the right order in',
-        'this list of datasets.'
+        ' this list of datasets.'
       )
       message(msg)
       return(invisible(NULL))
     }
-
 
     if (table) {
         err_table <- err_list %>%
