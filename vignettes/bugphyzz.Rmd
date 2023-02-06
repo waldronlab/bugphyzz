@@ -104,7 +104,7 @@ The `physiologiesList` function can be used to display which datasets are
 available through the `physiologies` function before importing them:
 
 ```{r}
-physiologiesList()
+showPhys()
 ```
 
 You can use the `keyword = "all"` to import all of the datasets:
@@ -133,9 +133,7 @@ aer_sig <- makeSignatures(
     Frequency = 'always', Evidence = 'exp', min.size = 10
 )
 
-map_depth(.x = aer_sig, .depth = 2, .f = ~ length(.x)) |> 
-  unlist()
-map_depth(.x = aer_sig, .depth = 2, .f = ~ head(.x))
+map(aer_sig, head)
 ```
 
 A signature of an attribute with numeric values (acidic bacteria):
@@ -145,13 +143,11 @@ acid_sig <- makeSignatures(
     keyword = 'optimal ph', tax.id.type = 'Taxon_name', tax.level = 'species',
     max = 4
 )
-map_depth(.x = acid_sig, .depth = 2, .f = ~ length(.x)) |> 
-  unlist()
-map_depth(.x = acid_sig, .depth = 2, .f = ~ head(.x))
+map(acid_sig, head)
 ```
 
 ## Session information:
 
 ```{r}
-sessionInfo()
+sessioninfo::session_info()
 ```
