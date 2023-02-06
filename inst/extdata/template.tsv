@@ -1,5 +1,5 @@
 column_name	requiredness	required_column_order	valid_values	value_test	column_class
-NCBI_ID	required	1	^[0-9]+$	string	character
+NCBI_ID	required	1	^([0-9]+|unknown)$	string	character
 Genome_ID	required	2	^.*$	string	character|numeric|integer|logical
 Accession_ID	required	3	^.*$	string	character|numeric|integer|logical
 Taxon_name	required	4	^.+$	string	character
