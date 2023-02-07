@@ -25,7 +25,7 @@ fattyAcidComposition <- function(){
     dplyr::filter(.data[["functionname"]] == "fattyAcidComposition") |>
     dplyr::pull(.data[["link"]])
   fac_wide <- utils::read.csv(link,check.names = FALSE)
-  fac_long <- fac_wide %>%
+  fac_long <- fac_wide |>
     tidyr::pivot_longer(
       cols = .data[["Br-C10:1"]]:.data[["Oxo-C19:1"]],
       names_to = "Attribute_new", values_to = "Attribute_value")
@@ -38,7 +38,7 @@ fattyAcidComposition <- function(){
     ) |>
     dplyr::select(-Attribute) |>
     dplyr::rename(Attribute = Attribute_new) |>
-    .reorderColumns()
+    .reorderColumns(attr_type = 'numeric')
 }
 
 #' Custom links
