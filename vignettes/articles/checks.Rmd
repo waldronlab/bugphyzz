@@ -131,10 +131,13 @@ id_err <- lapply(phys, check_valid_ncbi_ids) %>%
   purrr::discard(is.null) %>%
   bind_rows(.id = 'dataset')
 
-links_file <- system.file('extdata/source_links.tsv', package = 'bugphyzz')
+links_file <- system.file('extdata/links.tsv', package = 'bugphyzz')
 links <- readr::read_tsv(links_file, show_col_types = FALSE)
+links <- links[,c('physiology', 'source_link')]
 
-id_err_tbl <- dplyr::left_join(id_err, links, by = c('dataset' = 'Attribute'))
+id_err_tbl <- dplyr::left_join(
+  id_err, links, by = c('dataset' = 'physiology')
+)
 dim(id_err_tbl)
 ```
 
