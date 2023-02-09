@@ -31,7 +31,7 @@ fattyAcidComposition <- function(){
       names_to = "Attribute_new", values_to = "Attribute_value")
   dplyr::left_join(fac_long, ranks_parents, by = "NCBI_ID") |>
     as.data.frame() |>
-    .addConfidenceInCuration() |>
+    .addSourceInfo() |>
     purrr::modify_at(
       .at = c('Attribute', 'Frequency', 'Evidence', 'Confidence_in_curation'),
       .f = ~ stringr::str_to_lower(.x)
