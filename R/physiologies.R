@@ -80,7 +80,7 @@ physiologies <- function(
 
   message('Importing ', attr_grp, ' (', attr_type, ')')
   df <- dplyr::distinct(utils::read.csv(link))
-  df$NCBI_ID <- as.character(df$NCBI_ID) # This must be class character always
+  df$NCBI_ID <- as.character(df$NCBI_ID)
 
   if (remove_false)
     df <- dplyr::filter(df, !Attribute_value == FALSE)
@@ -112,7 +112,7 @@ physiologies <- function(
   ## Some general modification for the datasets
   df <- df |>
     purrr::modify_if(.p = is.character, ~ stringr::str_squish(.x)) |>
-    .addConfidenceInCuration() |>
+    .addSourceInfo() |>
     purrr::modify_at(
       .at = c('Frequency', 'Evidence', 'Confidence_in_curation'),
       ~ stringr::str_to_lower(.x)
@@ -131,8 +131,10 @@ physiologies <- function(
   df$Attribute_group <- attr_grp
 
   ## Change curation if needed
-  if (full_source)
-    df <- .addFullSource(df)
+  if (full_source) {
+    df$Attribute_source <- df$full_source
+  }
+  df$full_source <- NULL
   return(df)
 }
 
@@ -243,37 +245,11 @@ showPhys <- function(){
     dplyr::relocate(dplyr::all_of(cols))
 }
 
-## Import confidece in curation
-.addConfidenceInCuration <- function(df) {
-  fpath <- 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTRiwYhaVaBhGkHQrjRMHJglc9cqxjA90GLsIxCQa91VwZQ65qRQn2wZgwpw3uAOBSMlwFgOPae8PYq/pub?gid=0&single=true&output=tsv'
-  fpath <- system.file(
-    'extdata/confidence_in_curation.tsv', package = 'bugphyzz'
+.addSourceInfo <- function(df) {
+  fpath <- system.file('extdata/attribute_sources.tsv', package = 'bugphyzz')
+  data <- utils::read.table(
+    file = fpath, header = TRUE, sep = '\t', quote = '', check.names = FALSE,
+    comment.char = ''
   )
-  cc <- readr::read_tsv(fpath, show_col_types = FALSE)
-  dplyr::left_join(df, cc, by = 'Attribute_source')
+  dplyr::left_join(df, data, by = 'Attribute_source')
 }
-
-## Add full source
-.addFullSource <- function(df) {
-  sources_path <- system.file(
-    'extdata/attribute_sources.tsv', package = 'bugphyzz'
-  )
-  sources <- utils::read.table(
-    sources_path, header = TRUE, sep = '\t',
-    quote = '', check.names = FALSE, comment.char = ''
-  )
-  output <- dplyr::left_join(
-    x = df, y = sources, by = 'Attribute_source'
-  ) |>
-    dplyr::mutate(
-      full_source = ifelse(
-        is.na(.data$full_source), .data$Attribute_source, .data$full_source
-      )
-    )
-  output$Attribute_source <- output$full_source
-  output$full_source <- NULL
-  return(output)
-}
-
-
-
