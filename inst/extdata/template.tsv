@@ -8,7 +8,7 @@ Attribute_value	required	6	logical;numeric;character	^(TRUE|FALSE|-*[0-9]+(\\.|\
 Attribute_value_max	required		range	^[0-9]+$		
 Attribute_value_min	required		range	^[0-9]+$		
 Attribute_source	required	7	logical;numeric;range;character	^.+$	string	character
-Evidence	required	8	logical;numeric;range;character	^(exp|igc|asr|nas|unknown)	string	character
+Evidence	required	8	logical;numeric;range;character	^(exp|igc|asr|nas|tas|unknown)	string	character
 Frequency	required	9	logical;numeric;range;character	^(unknown|usually|always|sometimes)$	string	character
 Confidence_in_curation	required	10	logical;numeric;range;character	^(low|medium|high)$	string	character
 Note	optional	NA	logical;numeric;range;character	^.*$	string	character
