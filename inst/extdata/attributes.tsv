@@ -338,7 +338,7 @@
 "infection caused by Escherichia coli (disorder)"	"logical"	"71057007"	"NA"
 "contagious pleuropneumonia"	"logical"	"MONDO:0005716"	"A pleuropneumonia of cattle and goats caused by species of mycoplasma"
 "crown gall"	"logical"	"BTO:0000303"	"A disease that affects many species of plants and is caused by a bacterium (Agrobacterium tumefaciens) which forms tumorous enlargements just below the ground on the stem."
-"microcystis aeruginosa"	"logical"	"NCBITaxon:1126"	"NA"
+"Microcystis aeruginosa"	"logical"	"NCBITaxon:1126"	"NA"
 "gastroenteritis"	"logical"	"NCIT:C34632"	"An inflammatory disorder that affects the upper and lower gastrointestinal tract. Most commonly, this is attributed to viruses; however bacteria, parasites or adverse reactions can also be the culprit. Symptoms include acute diarrhea and vomiting"
 "skin irritation"	"logical"	 "NCIT:C50743"	"A mild inflammatory dermal tissue reaction; it can be caused by physical contact with an irritant or can be a local response to a systemic trigger."
 "cystitis"	"logical"	"NCIT:C26738"	"Inflammation of the urinary bladder"
