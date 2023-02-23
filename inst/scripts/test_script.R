@@ -1,3 +1,0 @@
-
-bd <- .getBacDive() |>
-  .reshapeBD()
