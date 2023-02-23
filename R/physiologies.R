@@ -115,7 +115,7 @@ physiologies <- function(
 
   ## Special modification for range values
   if (attr_type == 'range')
-    df <- .modifyRange(df)
+    df <- dplyr::distinct(.modifyRange(df))
 
   df <- .reorderColumns(df,name = attr_grp, attr_type = attr_type)
 
