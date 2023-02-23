@@ -768,7 +768,9 @@ utils::globalVariables(c("."))
     lgl_vct_1 <- df$requiredness == "required"
     lgl_vct_2 <- grepl(attr_type, df$attribute_types)
     df <- df[lgl_vct_1 & lgl_vct_2,]
-    df[order(df[["required_column_order"]]), "column_name"]
+    df[order(df[["required_column_order"]]), , drop = FALSE]
+    output <- df[['column_name']]
+    return(output)
 }
 
 #' Generate a template for a bugphyzz dataset

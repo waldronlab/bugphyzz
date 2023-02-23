@@ -22,17 +22,13 @@
 physiologies <- function(
     keyword = 'all', remove_false = FALSE, full_source = TRUE
 ) {
-
-  ## Some checks about the validity of the keywords
   keyword <- unique(keyword)
   valid_keywords <- showPhys()
-
   if ('all' %in% keyword) {
     if (length(keyword) > 1)
       message("Found 'all' among the keywords. Importing all physiologies.")
     keyword <- valid_keywords
   }
-
   lgl_vct <- keyword %in% valid_keywords
   if (any(!lgl_vct)) {
     invalid_keywords <- keyword[!lgl_vct]
@@ -42,19 +38,17 @@ physiologies <- function(
       call. = FALSE
     )
   }
-
-  ## Import physiologies one by one
   links_df <- curationLinks()
   links_df <- links_df[links_df$physiology %in% keyword,]
   output <- vector('list', nrow(links_df))
   for (i in seq_along(output)) {
-    one_row <- links_df[i, , drop = FALSE] # this ensures always a data.frame
+    one_row <- links_df[i, , drop = FALSE]
     names(output)[i] <- one_row$physiology
     output[[i]] <- .importPhysiology(
       one_row, remove_false = remove_false, full_source = full_source
     )
   }
-  output
+  return(output)
 }
 
 #' Import physiology
@@ -103,7 +97,7 @@ physiologies <- function(
   if (all(parent_col_names %in% col_names)) {
     df$Parent_NCBI_ID <- as.character(df$Parent_NCBI_ID)
   } else {
-    rp <- ranks_parents # ranks_parents is a data frame
+    rp <- ranks_parents # ranks_parents is a data.frame object in bugphyzz
     rp$NCBI_ID <- as.character(rp$NCBI_ID)
     rp$Parent_NCBI_ID <- as.character(rp$Parent_NCBI_ID)
     df <- dplyr::left_join(df, rp, by = "NCBI_ID")
@@ -123,14 +117,14 @@ physiologies <- function(
   if (attr_type == 'range')
     df <- .modifyRange(df)
 
-  df <- .reorderColumns(df, attr_grp, attr_type = attr_type)
+  df <- .reorderColumns(df,name = attr_grp, attr_type = attr_type)
 
   ## Add some extra columns for attribute group (physiology) and
   ## type of signature (this will be relevant for creating signatures).
   df$Attribute_type <- attr_type
   df$Attribute_group <- attr_grp
 
-  ## Change curation if needed
+  ## Change source if needed
   if (full_source) {
     df$Attribute_source <- df$full_source
   }
@@ -217,16 +211,11 @@ showPhys <- function(){
 
 ## A function to reorder columns on import
 .reorderColumns <- function(df, name = NULL, attr_type) {
-
   col_names <- colnames(df)
   req_cols <- .requiredColumns(attr_type)
-
   cols_lgl <- req_cols %in% col_names
-
   if (!all(cols_lgl)) {
-
     missing_cols <- paste0(req_cols[!cols_lgl], collapse = ', ')
-
     if (!is.null(name)) {
       msg <- paste0(
         'Missing columns in ', name, '.', ' Missing columns are: ',
@@ -239,7 +228,6 @@ showPhys <- function(){
     }
       warning(msg, call. = FALSE)
   }
-
   cols <- req_cols[cols_lgl]
   df |>
     dplyr::relocate(dplyr::all_of(cols))
