@@ -352,7 +352,7 @@
 "pyelonephritis"	"logical"	"NCIT:C34965"	"An inflammatory process affecting the kidney. The cause is most often bacterial, but may also be fungal in nature. Signs and symptoms may include fever, chills, flank pain, painful and frequent urination, cloudy or bloody urine, and confusion"
 "typhus"	"logical"	"EFO:0009117"	"A group of infectious diseases that include epidemic typhus, scrub typhus and murine typhus"
 "Endocarditis"	"logical"	"NCIT:C34582"	"NA"
-"Meningitis"	"logical"	"NCIT:C26828"	"A disorder characterized by acute inflammation of the meninges of the brain and/or spinal cord"
+"meningitis"	"logical"	"NCIT:C26828"	"A disorder characterized by acute inflammation of the meninges of the brain and/or spinal cord"
 "erysipelas"	"logical"	"EFO:1001462"	"An infection of the upper layers of the skin caused by species of streptococcus. Erysipelas results in a fiery red rash with raised edges that can easily be distinguished from the skin around it. The affected skin may be warm to the touch"
 "Foodborne Illness"	"logical"	"NCIT:C128351"	"Any disorder that results from the consumption of food contaminated with an infectious agent or toxin"
 "typhoid"	"logical"	"Orphanet:99745"	"Typhoid or typhoid fever is a reportable, fecal-oral, potentially fatal infectious disease, caused by the bacteria Salmonella typhi and characterized by a non-focal fever."
