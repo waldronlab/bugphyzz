@@ -4,22 +4,22 @@
 \alias{.importPhysiology}
 \title{Import physiology}
 \usage{
-.importPhysiology(x, remove_false = FALSE, full_source)
+.importPhysiology(x, remove_false, full_source)
 }
 \arguments{
 \item{x}{A row from the output of \code{curationLinks()}.}
 
-\item{full_source}{if TRUE, the full source is displayed. Otherwise, an
-abreviated form.}
-
-\item{remvoe_false}{If TRUE, attributes with FALSE values are dropped.
+\item{remove_false}{If TRUE, attributes with FALSE values are dropped.
 Default is FALSE (all values included).}
+
+\item{full_source}{if TRUE, the full source is displayed. Otherwise, an
+abbreviated form.}
 }
 \value{
 A data frame.
 }
 \description{
 \code{.importPhysiology} imports a physiology directly from one row of the
-\code{curationLinks()} output.
+\code{curationLinks} output.
 }
 \keyword{internal}

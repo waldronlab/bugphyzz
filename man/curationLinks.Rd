@@ -4,21 +4,16 @@
 \alias{curationLinks}
 \title{Show links to curation spreadsheets}
 \usage{
-curationLinks(keyword = "all")
-}
-\arguments{
-\item{keyword}{a character vector of physiologies desired. For the available
-physiologies, run bugphyzz::showPhys(). Use "all" for all available physiologies.}
+curationLinks()
 }
 \value{
-a data.frame with physiology names and URLs
+A data.frame with physiology names and URLs.
 }
 \description{
-Show links to curation spreadsheets
+\code{curationLinks} returns a data.frame with the links the the spreadhseets
+of the physiologies (both csv exports and source).
 }
 \examples{
 bugphyzz:::curationLinks()
-bugphyzz:::curationLinks(keyword = "aerophilicity")
-bugphyzz:::curationLinks(keyword = c("aerophilicity", "gram stain"))
 }
 \keyword{internal}

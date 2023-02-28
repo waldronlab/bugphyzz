@@ -1,4 +1,3 @@
-
 #' Import physiologies
 #'
 #' \code{physiologies} imports physiologies from Google spreadsheets.
@@ -54,27 +53,27 @@ physiologies <- function(
 #' Import physiology
 #'
 #' \code{.importPhysiology} imports a physiology directly from one row of the
-#' \code{curationLinks()} output.
+#' \code{curationLinks} output.
 #'
 #' @param x A row from the output of \code{curationLinks()}.
-#' @param remvoe_false If TRUE, attributes with FALSE values are dropped.
+#' @param remove_false If TRUE, attributes with FALSE values are dropped.
 #' Default is FALSE (all values included).
 #' @param full_source if TRUE, the full source is displayed. Otherwise, an
-#' abreviated form.
+#' abbreviated form.
 #'
 #' @keywords internal
 #'
 #' @return A data frame.
 #'
-.importPhysiology <- function(x, remove_false = FALSE, full_source) {
+.importPhysiology <- function(x, remove_false, full_source) {
 
   link <- x$link
   attr_grp <- x$physiology
   attr_type <- x$sig_type
 
-  message('Importing ', attr_grp, ' (', attr_type, ')')
+  # message('Importing ', attr_grp, '.')
   df <- dplyr::distinct(utils::read.csv(link))
-  df$NCBI_ID <- as.character(df$NCBI_ID)
+  df$NCBI_ID <- stringr::str_squish(tolower(as.character(df$NCBI_ID)))
 
   if (remove_false)
     df <- dplyr::filter(df, !Attribute_value == FALSE)
@@ -95,7 +94,7 @@ physiologies <- function(
   col_names <- colnames(df)
   parent_col_names <- c('Parent_name', 'Parent_NCBI_ID', 'Parent_rank')
   if (all(parent_col_names %in% col_names)) {
-    df$Parent_NCBI_ID <- as.character(df$Parent_NCBI_ID)
+    df$Parent_NCBI_ID <- stringr::str_squish(as.character(df$Parent_NCBI_ID))
   } else {
     rp <- ranks_parents # ranks_parents is a data.frame object in bugphyzz
     rp$NCBI_ID <- as.character(rp$NCBI_ID)
@@ -109,7 +108,7 @@ physiologies <- function(
     .addSourceInfo() |>
     purrr::modify_at(
       .at = c('Frequency', 'Evidence', 'Confidence_in_curation'),
-      ~ stringr::str_to_lower(.x)
+      ~ stringr::str_squish(stringr::str_to_lower(.x))
     ) |>
     dplyr::distinct()
 
@@ -132,7 +131,7 @@ physiologies <- function(
   return(df)
 }
 
-#' Import range
+#' Modify attributes of type range
 #'
 #' \code{.modifyRange} imports a dataset labeled with "range" in
 #' \code{curationLinks}.
@@ -144,8 +143,8 @@ physiologies <- function(
 #' @keywords internal
 #'
 .modifyRange <- function(df) {
-  ## Some lines are beyond the recommended 80 characters length, but I think is
-  ## better for readebiliy of the code.
+  ## Some lines are beyond the recommended 80 characters length,
+  ## but I think it's OK.
   df |>
     dplyr::mutate(
       Attribute_value = gsub(' ', '', .data$Attribute_value),
@@ -172,29 +171,25 @@ physiologies <- function(
     dplyr::mutate(
       Attribute_value_min = as.double(.data$Attribute_value_min),
       Attribute_value_max = as.double(.data$Attribute_value_max)
-    )
+    ) |>
+    dplyr::distinct()
 }
 
 #' Show links to curation spreadsheets
 #'
-#' @param keyword a character vector of physiologies desired. For the available
-#' physiologies, run bugphyzz::showPhys(). Use "all" for all available physiologies.
+#' \code{curationLinks} returns a data.frame with the links the the spreadhseets
+#' of the physiologies (both csv exports and source).
 #'
-#' @return a data.frame with physiology names and URLs
+#' @return A data.frame with physiology names and URLs.
 #' @keywords internal
 #'
 #' @examples
 #' bugphyzz:::curationLinks()
-#' bugphyzz:::curationLinks(keyword = "aerophilicity")
-#' bugphyzz:::curationLinks(keyword = c("aerophilicity", "gram stain"))
-curationLinks <- function(keyword = "all"){
-  fname <-
-    system.file(file.path("extdata", "links.tsv"), package = "bugphyzz")
-  links <- utils::read.table(fname, sep = "\t", header = TRUE)
-  ifelse(keyword[1] == "all", links, links <-
-           links[links$physiology %in% keyword,])
-  return(links)
+curationLinks <- function(){
+  fname <- system.file("extdata/links.tsv", package = "bugphyzz")
+  utils::read.table(fname, sep = "\t", header = TRUE)
 }
+
 #' List of available physiologies
 #'
 #' \code{showPhys} prints the names of the available datasets provided by
