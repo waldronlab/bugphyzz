@@ -1,6 +1,11 @@
-.physiologiesBD <- function() {
-  ## TODO maybe some code to select an specific physiology
-}
+
+## Steps to follow: Import BacDive
+## Store in Cache
+##
+
+
+
+
 
 .getBacDive <- function() {
   bacdive_data <- .importBacDiveExcel()
@@ -81,13 +86,6 @@
   split_df[['biosafety level comment']] <- NULL
 
   return(split_df)
-
-  # output <- vector('list', length(split_df))
-  # for (i in seq_along(output)) {
-    # names(output)[i] <- names(split_df)[i]
-    # output[[i]] <- split_df[[i]]
-  # }
-  # output
 }
 
-
+# Code --------------------------------------------------------------------
