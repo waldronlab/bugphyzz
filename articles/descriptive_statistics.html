@@ -215,15 +215,17 @@
 <span>    <span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html" class="external-link">map</a></span><span class="op">(</span> <span class="op">~</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html" class="external-link">left_join</a></span><span class="op">(</span> <span class="va">.x</span>, <span class="va">taxonomy_table</span>, by <span class="op">=</span> <span class="st">"NCBI_ID"</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="va">categorical_phys_names</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">categorical_phys</span><span class="op">)</span></span>
 <span><span class="va">categorical_phys_names</span></span>
-<span><span class="co">#&gt;  [1] "aerophilicity"             "animal pathogen"          </span></span>
-<span><span class="co">#&gt;  [3] "antimicrobial resistance"  "antimicrobial sensitivity"</span></span>
-<span><span class="co">#&gt;  [5] "arrangement"               "biofilm forming"          </span></span>
-<span><span class="co">#&gt;  [7] "disease association"       "extreme environment"      </span></span>
-<span><span class="co">#&gt;  [9] "gram stain"                "growth medium"            </span></span>
-<span><span class="co">#&gt; [11] "habitat"                   "health associated"        </span></span>
-<span><span class="co">#&gt; [13] "isolation site"            "plant pathogenicity"      </span></span>
-<span><span class="co">#&gt; [15] "shape"                     "spore shape"              </span></span>
-<span><span class="co">#&gt; [17] "sphingolipid producing"</span></span></code></pre></div>
+<span><span class="co">#&gt;  [1] "acetate producing"         "aerophilicity"            </span></span>
+<span><span class="co">#&gt;  [3] "animal pathogen"           "antimicrobial resistance" </span></span>
+<span><span class="co">#&gt;  [5] "antimicrobial sensitivity" "arrangement"              </span></span>
+<span><span class="co">#&gt;  [7] "biofilm forming"           "butyrate producing"       </span></span>
+<span><span class="co">#&gt;  [9] "disease association"       "extreme environment"      </span></span>
+<span><span class="co">#&gt; [11] "gram stain"                "growth medium"            </span></span>
+<span><span class="co">#&gt; [13] "habitat"                   "health associated"        </span></span>
+<span><span class="co">#&gt; [15] "hydrogen gas producing"    "isolation site"           </span></span>
+<span><span class="co">#&gt; [17] "lactate producing"         "plant pathogenicity"      </span></span>
+<span><span class="co">#&gt; [19] "shape"                     "spore shape"              </span></span>
+<span><span class="co">#&gt; [21] "sphingolipid producing"</span></span></code></pre></div>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">cat_summary_tables</span> <span class="op">&lt;-</span> <span class="va">categorical_phys_names</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
 <span>    <span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html" class="external-link">map</a></span><span class="op">(</span><span class="op">~</span> <span class="fu">attributeSummaryByRank</span><span class="op">(</span><span class="va">categorical_phys</span>, <span class="va">.x</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
@@ -40831,18 +40833,14 @@ sao miguel in the azores, portugal</td>
 <span><span class="va">numeric_phys_names</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">numeric_phys</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">numeric_phys_names</span></span>
-<span><span class="co">#&gt;  [1] "acetate producing"                    </span></span>
-<span><span class="co">#&gt;  [2] "butyrate producing"                   </span></span>
-<span><span class="co">#&gt;  [3] "COGEM pathogenicity rating"           </span></span>
-<span><span class="co">#&gt;  [4] "growth temperature"                   </span></span>
-<span><span class="co">#&gt;  [5] "hydrogen gas producing"               </span></span>
-<span><span class="co">#&gt;  [6] "lactate producing"                    </span></span>
-<span><span class="co">#&gt;  [7] "mutation rate per site per generation"</span></span>
-<span><span class="co">#&gt;  [8] "mutation rates per site per year"     </span></span>
-<span><span class="co">#&gt;  [9] "optimal ph"                           </span></span>
-<span><span class="co">#&gt; [10] "genome size"                          </span></span>
-<span><span class="co">#&gt; [11] "coding genes"                         </span></span>
-<span><span class="co">#&gt; [12] "fatty acid composition"</span></span></code></pre></div>
+<span><span class="co">#&gt; [1] "COGEM pathogenicity rating"           </span></span>
+<span><span class="co">#&gt; [2] "growth temperature"                   </span></span>
+<span><span class="co">#&gt; [3] "mutation rate per site per generation"</span></span>
+<span><span class="co">#&gt; [4] "mutation rates per site per year"     </span></span>
+<span><span class="co">#&gt; [5] "optimal ph"                           </span></span>
+<span><span class="co">#&gt; [6] "genome size"                          </span></span>
+<span><span class="co">#&gt; [7] "coding genes"                         </span></span>
+<span><span class="co">#&gt; [8] "fatty acid composition"</span></span></code></pre></div>
 <div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">numeric_summary_tables</span> <span class="op">=</span> <span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html" class="external-link">map</a></span><span class="op">(</span><span class="va">numeric_phys_names</span>, <span class="op">~</span> <span class="fu">attributeSummaryByRank</span><span class="op">(</span><span class="va">numeric_phys</span>, <span class="va">.x</span>, categorical <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
 <span>    <span class="fu"><a href="https://rlang.r-lib.org/reference/set_names.html" class="external-link">set_names</a></span><span class="op">(</span><span class="va">numeric_phys_names</span><span class="op">)</span></span>
@@ -40861,27 +40859,14 @@ sao miguel in the azores, portugal</td>
 <h3 id="butyrate-producing">Butyrate producing<a class="anchor" aria-label="anchor" href="#butyrate-producing"></a>
 </h3>
 <div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">numeric_summary_tables</span><span class="op">$</span><span class="va">`butyrate producing`</span></span></code></pre></div>
-<table class="table">
-<thead><tr class="header">
-<th align="left"></th>
-<th align="left">Attribute</th>
-<th align="left">strain</th>
-<th align="left">species</th>
-</tr></thead>
-<tbody><tr class="odd">
-<td align="left">1</td>
-<td align="left">Butyrate-Producing Bacteria</td>
-<td align="left">4 (16.67)</td>
-<td align="left">20 (83.33)</td>
-</tr></tbody>
-</table>
+<code class="sourceCode R"><span><span class="va">numeric_summary_tables</span><span class="op">$</span><span class="va">`butyrate producing`</span></span>
+<span><span class="co">#&gt; NULL</span></span></code></pre></div>
 <div class="sourceCode" id="cb27"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">histograms</span><span class="op">$</span><span class="va">`butyrate producing`</span></span></code></pre></div>
-<p><img src="descriptive_statistics_files/figure-html/unnamed-chunk-26-1.png" width="700"></p>
+<code class="sourceCode R"><span><span class="va">histograms</span><span class="op">$</span><span class="va">`butyrate producing`</span></span>
+<span><span class="co">#&gt; NULL</span></span></code></pre></div>
 <div class="sourceCode" id="cb28"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">boxplots</span><span class="op">$</span><span class="va">`butyrate producing`</span></span></code></pre></div>
-<p><img src="descriptive_statistics_files/figure-html/unnamed-chunk-27-1.png" width="700"></p>
+<code class="sourceCode R"><span><span class="va">boxplots</span><span class="op">$</span><span class="va">`butyrate producing`</span></span>
+<span><span class="co">#&gt; NULL</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="mutation-rate-per-site-per-generation">Mutation rate per site per generation<a class="anchor" aria-label="anchor" href="#mutation-rate-per-site-per-generation"></a>
@@ -42253,7 +42238,7 @@ function.</li>
 <span><span class="co">#&gt;  collate  en_US.UTF-8</span></span>
 <span><span class="co">#&gt;  ctype    en_US.UTF-8</span></span>
 <span><span class="co">#&gt;  tz       Etc/UTC</span></span>
-<span><span class="co">#&gt;  date     2023-02-27</span></span>
+<span><span class="co">#&gt;  date     2023-02-28</span></span>
 <span><span class="co">#&gt;  pandoc   2.19.2 @ /usr/local/bin/ (via rmarkdown)</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; <span style="color: #00BBBB; font-weight: bold;">─ Packages ───────────────────────────────────────────────────────────────────</span></span></span>
@@ -42264,7 +42249,7 @@ function.</li>
 <span><span class="co">#&gt;  blob          1.2.3   <span style="color: #555555;">2022-04-10</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
 <span><span class="co">#&gt;  bold          1.2.0   <span style="color: #555555;">2021-05-11</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
 <span><span class="co">#&gt;  bslib         0.4.2   <span style="color: #555555;">2022-12-16</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
-<span><span class="co">#&gt;  bugphyzz    * 0.0.1.3 <span style="color: #555555;">2023-02-27</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">local</span></span></span>
+<span><span class="co">#&gt;  bugphyzz    * 0.0.1.3 <span style="color: #555555;">2023-02-28</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">local</span></span></span>
 <span><span class="co">#&gt;  cachem        1.0.7   <span style="color: #555555;">2023-02-24</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
 <span><span class="co">#&gt;  cli           3.6.0   <span style="color: #555555;">2023-01-09</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
 <span><span class="co">#&gt;  codetools     0.2-19  <span style="color: #555555;">2023-02-01</span> <span style="color: #555555;">[2]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
