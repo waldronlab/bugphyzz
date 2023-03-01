@@ -1,18 +1,12 @@
 
-## Steps to follow: Import BacDive
-## Store in Cache
-##
-
-
-
-
-
+## Main function for importing BacDive
 .getBacDive <- function() {
   bacdive_data <- .importBacDiveExcel()
   colnames(bacdive_data) <- .changeBDColNames(colnames(bacdive_data))
   .getTidyBD(bacdive_data)
 }
 
+## Helper function for .getBacDive
 .importBacDiveExcel <- function(verbose = TRUE) {
   if (verbose)
     message('Importing BacDive...')
@@ -21,6 +15,7 @@
   bacdive_data
 }
 
+## Helper function for .getBacDive
 .cleanBD <- function(df) {
   x_cols <- colnames(df)[grep('X', colnames(df))]
   output <- vector('list', length(x_cols))
@@ -31,6 +26,7 @@
   df[-row_numbers, !colnames(df) %in% x_cols]
 }
 
+## Helper function for .getBacDive
 .changeBDColNames <- function(x) {
   dplyr::case_when(
     x == 'bacdive_id' ~ 'BacDive_ID',
@@ -47,6 +43,7 @@
   )
 }
 
+## Helper function for .getBacDive
 .getTidyBD <- function(bacdive_data) {
   bacdive_data |>
     tidyr::pivot_longer(
@@ -68,6 +65,7 @@
     dplyr::distinct()
 }
 
+## Function for getting a list of data.frames (one per attribute)
 .reshapeBD <- function(df) {
 
   split_df <- split(df, factor(df[['Attribute']]))
@@ -88,4 +86,3 @@
   return(split_df)
 }
 
-# Code --------------------------------------------------------------------
