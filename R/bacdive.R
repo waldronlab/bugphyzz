@@ -66,24 +66,104 @@
 }
 
 ## Function for getting a list of data.frames (one per attribute)
+## This function works over several datasets.
 .reshapeBD <- function(df) {
 
+  df[['Attribute_source']] <- 'BacDive'
   split_df <- split(df, factor(df[['Attribute']]))
 
-  ## biosafey level and biosafety level comment should be joined
-  ## biosafey level comment should then be removed
-  biosafety_level <- split_df[['biosafety level']]
-  biosafety_level_comment <- split_df[['biosafety level comment']]
-  col_pos <- which(colnames(biosafety_level_comment) == 'Attribute_value')
-  colnames(biosafety_level_comment)[col_pos] <- 'Note'
-  biosafety_level <- dplyr::left_join(
-    biosafety_level, biosafety_level_comment[,c('BacDive_ID', 'Note')],
-    by = 'BacDive_ID'
+  ## Attributes that must be changed from character to logical (simplest fix)
+  attr_names <- c(
+    'aerophilicity', 'biosafety level', 'colony color', 'country',
+    'cultivation medim used', 'geographic location'
   )
-  split_df[['biosafety level']] <- biosafety_level
-  split_df[['biosafety level comment']] <- NULL
 
+  for (i in seq_along(attr_names)) {
+    split_df[[attr_names[i]]] <- .catToLog(split_df[[attr_names[i]]])
+  }
+
+  ## animal pathogen
+  pos <- names(split_df) == 'animal pathongen'
+  names(split_df)[pos] <- 'animal pathogen'
+  x_ <- split_df[['animal pathogen']][['Attribute_value']]
+  x_ <- ifelse(x_ == "yes, in single cases", "yes", x_)
+  x_ <- dplyr::case_when(x_ == 'yes' ~ TRUE, x_ == 'no' ~ FALSE)
+  split_df[['animal pathogen']][['Attribute_value']] <- x_
+  split_df[['animal pathogen']][['Attribute_group']] <- 'animal pathogen'
+  split_df[['animal pathogen']][['Attribute_type']] <- 'logical'
+
+  ## cultivation medium used - growth medium
+  pos <- names(split_df) == 'cultivation medium used'
+  names(split_df)[pos] <- 'growth medium'
+
+  ## growth temperature
+  ## culture temperature
+  ## culture temperature growth
+  ## culture temperature range (ignore)
+  ## culture temperature type (ignore)
+  split_df[['culture temperature range']] <- NULL
+  split_df[['culture temperature type']] <- NULL
+  a <- split_df[['culture temperature']]
+  b <- split_df[['culture temperature growth']]
+  b_ <- b[,c('BacDive_ID', 'Attribute_value')]
+  colnames(b_)[2] <- 'growth'
+  ab <- dplyr::left_join(a, b_, by = 'BacDive_ID')
+  ab <- ab[ab[['growth']] == 'positive',]
+  ab[['growth']] <- NULL
+  ab[['Attribute_group']] <- 'growth temperature'
+  ab[['Attribute_type']] <- 'numeric'
+  ab[['Attribute']] <- 'growth temperature'
+  split_df[['growth temperature']] <- ab
+  split_df[['culture temperature']] <- NULL
+  split_df[['culture temperature growth']] <- NULL
+
+  ## gram stain
+  gs <- split_df[['gram stain']]
+  gs[['Attribute']] <- paste(gs[['Attribute']], gs[['Attribute_value']])
+  gs[['Attribute_value']] <- TRUE
+  split_df[['gram stain']] <- gs
+
+  ## halophily
+  valid_terms <- c(
+    'NaCl', 'KCl', 'MgCl2', 'MgCl2x6H2O', 'Na\\+', 'MgSO4x7H2O', 'Na2SO4',
+    'Sea salts', 'Chromium \\(Cr6\\+\\)'
+
+  )
+  regex <- paste0('(', paste0(valid_terms, collapse = '|'), ')')
+  split_df[['halophily']] <- split_df[['halophily']] |>
+    dplyr::mutate(Attribute_value = strsplit(.data$Attribute_value, ';')) |>
+    tidyr::unnest(cols = 'Attribute_value') |>
+    dplyr::filter(!grepl('no growth', .data$Attribute_value)) |>
+    dplyr::mutate(
+      Attribute_value = stringr::str_squish(.data$Attribute_value),
+      Attribute_value = sub('NaCL', 'NaCl', .data$Attribute_value),
+      Attribute_value = sub('Marine', 'Sea', .data$Attribute_value),
+      Attribute_value = sub('Salts', 'salts', .data$Attribute_value)
+    ) |>
+    dplyr::filter(grepl(regex, .data$Attribute_value)) |>
+    dplyr::mutate(
+      Attribute = stringr::str_extract(.data$Attribute_value, regex),
+      Unit = .data$Attribute_value |>
+        stringr::str_extract(' [<>]??[0-9]+\\.??[0-9]*.*') |>
+        stringr::str_squish() |>
+        stringr::str_remove('^.* '),
+      Attribute_value = .data$Attribute_value |>
+        stringr::str_extract(' [<>]??[0-9]+\\.??[0-9]*.*') |>
+        stringr::str_squish() |>
+        stringr::str_remove(' .*$'),
+      Attribute_group = 'halophily',
+      Attribute_type = 'range'
+    ) |>
+    dplyr::filter(!grepl('[0-9]', .data$Unit)) |>
+    dplyr::distinct()
   return(split_df)
 }
 
+.catToLog <- function(df) {
+  df[['Attribute_group']] <- df[['Attribute']]
+  df[['Attribute']] <- df[['Attribute_value']]
+  df[['Attribute_value']] <- TRUE
+  df[['Attribute_type']] <- 'logical'
+  return(df)
+}
 
