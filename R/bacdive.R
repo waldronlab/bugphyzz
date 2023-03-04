@@ -75,7 +75,7 @@
   ## Attributes that must be changed from character to logical (simplest fix)
   attr_names <- c(
     'aerophilicity', 'biosafety level', 'colony color', 'country',
-    'cultivation medim used', 'geographic location'
+    'cultivation medium used', 'geographic location'
   )
 
   for (i in seq_along(attr_names)) {
@@ -95,6 +95,7 @@
   ## cultivation medium used - growth medium
   pos <- names(split_df) == 'cultivation medium used'
   names(split_df)[pos] <- 'growth medium'
+  split_df[['growth medium']][['Attribute_group']] <- 'growth medium'
 
   ## growth temperature
   ## culture temperature
@@ -127,7 +128,6 @@
   valid_terms <- c(
     'NaCl', 'KCl', 'MgCl2', 'MgCl2x6H2O', 'Na\\+', 'MgSO4x7H2O', 'Na2SO4',
     'Sea salts', 'Chromium \\(Cr6\\+\\)'
-
   )
   regex <- paste0('(', paste0(valid_terms, collapse = '|'), ')')
   split_df[['halophily']] <- split_df[['halophily']] |>
@@ -156,8 +156,27 @@
     ) |>
     dplyr::filter(!grepl('[0-9]', .data$Unit)) |>
     dplyr::distinct()
+
+  ## hemolysis
+  split_df[['hemolysis']] <- split_df[['hemolysis']] |>
+    dplyr::mutate(
+      Attribute_value = strsplit(.data$Attribute_value, ';|/')
+    ) |>
+    tidyr::unnest(.data$Attribute_value) |>
+    dplyr::mutate(Attribute_value = stringr::str_squish(.data$Attribute_value)) |>
+    dplyr::filter(.data$Attribute_value != '') |>
+    dplyr::mutate(
+      Attribute = .data$Attribute_value,
+      Attribute_value = TRUE,
+      Attribute_group = 'hemolysis',
+      Attribute_type = 'logical'
+    )
+
+
+
   return(split_df)
 }
+
 
 .catToLog <- function(df) {
   df[['Attribute_group']] <- df[['Attribute']]
