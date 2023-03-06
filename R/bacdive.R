@@ -200,9 +200,50 @@
   pat <- pat[!is.na(pat[['Attribute_value']]),]
   split_df[['pathogenicity human']] <- pat
 
-  return(split_df)
-}
+  ## metabolite production
+  mp <- split_df[['metabolite production']]
+  mp <- mp |>
+    dplyr::mutate(Attribute_value = strsplit(.data$Attribute_value, ';')) |>
+    tidyr::unnest(.data$Attribute_value)
+  x <- stringr::str_extract(mp[['Attribute_value']], '(yes|no)$')
+  mp <- mp[which(!is.na(x)),]
+  y <- stringr::str_extract(mp[['Attribute_value']], '(yes|no)$')
+  mp[['Attribute']] <- mp[['Attribute_value']]
+  mp[['Attribute_value']] <- ifelse(y == 'yes', TRUE , FALSE)
+  mp[['Attribute']] <- sub(' (yes|no)$', '', mp[['Attribute']])
+  split_df[['metabolite production']] <- mp
 
+  ## metabolite utilization
+  pos <- names(split_df) == 'metabolite utiilization'
+  names(split_df)[pos] <- 'metabolite utilization'
+  mu <- split_df[['metabolite utilization']]
+  mu <- mu |>
+    dplyr::mutate(Attribute_value = strsplit(.data$Attribute_value, ';')) |>
+    tidyr::unnest(.data$Attribute_value) |>
+    dplyr::mutate(Attribute_value = stringr::str_squish(.data$Attribute_value))
+  x <- sub('^.* (\\+|-|\\+/-) *.*$', '\\1', mu[['Attribute_value']])
+  y <- ifelse(!x %in% c('+', '-', '+/-'), NA, x)
+  mu <- mu[which(!is.na(y)),]
+  mu[['Attribute']] <- stringr::str_remove(mu[['Attribute_value']], ' (\\+|-|\\+/-) *.*$')
+  mu[['Note']] <- sub('^.*(\\+|-|\\+/-) ', '', mu[['Attribute_value']])
+  mu[['Note']] <- paste('kind of utilization tested:', mu[['Note']])
+  y <- y[!is.na(y)]
+  mu[['Attribute_value']] <- dplyr::case_when(
+    y == '+' ~ 'TRUE',
+    y == '-' ~ 'FALSE',
+    y == '+/-' ~ 'TRUE/FALSE'
+  )
+  mu <- mu |>
+    dplyr::mutate(Attribute_value = strsplit(.data$Attribute_value, '/')) |>
+    tidyr::unnest(.data$Attribute_value) |>
+    dplyr::mutate(Attribute_value = as.logical(.data$Attribute_value))
+  mu[['Attribute_group']] <- 'metabolite utilization'
+  mh[['Attribute_type']] <- 'logical'
+  split_df[['metabolite utilization']] <- mu
+
+  return(split_df)
+
+}
 
 .catToLog <- function(df) {
   df[['Attribute_group']] <- df[['Attribute']]
