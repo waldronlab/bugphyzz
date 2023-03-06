@@ -183,7 +183,22 @@
   ip[['Attribute_type']] <- 'range'
   split_df[['incubation period']] <- ip
 
+  ## motility
+  split_df[['motility']] <- split_df[['motility']] |>
+    dplyr::mutate(
+      Attribute_value = dplyr::case_when(
+        .data[['Attribute_value']] == 'yes' ~ TRUE,
+        .data[['Attribute_value']] == 'no' ~ FALSE
+      )
+    )
 
+  ## pathogenicity human
+  pat <- split_df[['pathogenicity human']]
+  pat[['Note']] <- stringr::str_extract(pat[['Attribute_value']], 'in single cases')
+  pat[['Note']] <- ifelse(is.na(pat[['Note']]), "", pat[['Note']])
+  pat[['Attribute_value']] <- ifelse(grepl('^yes', pat[['Attribute_value']]), TRUE, NA)
+  pat <- pat[!is.na(pat[['Attribute_value']]),]
+  split_df[['pathogenicity human']] <- pat
 
   return(split_df)
 }
