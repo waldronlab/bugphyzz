@@ -75,7 +75,8 @@
   ## Attributes that must be changed from character to logical (simplest fix)
   attr_names <- c(
     'aerophilicity', 'biosafety level', 'colony color', 'country',
-    'cultivation medium used', 'geographic location'
+    'cultivation medium used', 'geographic location', 'isolation site',
+    'shape'
   )
 
   for (i in seq_along(attr_names)) {
@@ -171,6 +172,16 @@
       Attribute_group = 'hemolysis',
       Attribute_type = 'logical'
     )
+
+  ## incubation period
+  ip <- split_df[['incubation period']]
+  ip[['Unit']] <- 'days'
+  ip[['Attribute_value']] <- ip[['Attribute_value']] |>
+    stringr::str_remove(' .*day.*$') |>
+    stringr::str_squish()
+  ip[['Attribute_group']] <- 'incubation period'
+  ip[['Attribute_type']] <- 'range'
+  split_df[['incubation period']] <- ip
 
 
 
