@@ -281,7 +281,11 @@
     dplyr::filter(!is.na(.data$Attribute_value))
   split_df[['spore formation']] <- sf
 
-  split_df <- lapply(split_df, as.data.frame)
+  split_df <- lapply(split_df, function(x) {
+    x <- as.data.frame(x)
+    x[['NCBI_ID']] <- as.character(x[['NCBI_ID']])
+    x
+  })
 
   return(split_df)
 }
