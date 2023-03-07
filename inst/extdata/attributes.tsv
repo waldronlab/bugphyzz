@@ -385,7 +385,7 @@
 "human gut microbiome"	"logical"	"NA"	"NA"
 "other host associated"	"logical"	"NA"	"NA"
 "aquatic biome"	"logical"	"NA"	"NA"
-"colonization of host"	"logical"	"NA" "NA"
+"colonization of host"	"logical"	"NA"	"NA"
 "creosote-contaminated soil"	"logical"	"NA"	"NA"
 "dairy"	"logical"	"NA"	"NA"
 "fresh water"	"logical"	"NA"	"NA"
