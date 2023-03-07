@@ -385,7 +385,7 @@
 "human gut microbiome"	"logical"	"NA"	"NA"
 "other host associated"	"logical"	"NA"	"NA"
 "aquatic biome"	"logical"	"NA"	"NA"
-"colonization of host"	"logical"	"NA" "NA"
+"colonization of host"	"logical"	"NA"	"NA"
 "creosote-contaminated soil"	"logical"	"NA"	"NA"
 "dairy"	"logical"	"NA"	"NA"
 "fresh water"	"logical"	"NA"	"NA"
@@ -402,7 +402,7 @@
 "rhizosphere"	"logical"	"NA"	"NA"
 "rice paddies"	"logical"	"NA"	"NA"
 "sea water"	"logical"	"NA"	"NA"
-"sediment"	'logical"	"NA"	"NA"
+"sediment"	"logical"	"NA"	"NA"
 "specialized"	"logical"	"NA"	"NA"
 "terrestrial biome"	"logical"	"NA"	"NA"
 "not host-associated"	"logical"	"NA"	"NA"
@@ -421,7 +421,7 @@
 "free-living"	"logical"	"NA"	"NA"
 "host-associated"	"logical"	"NA"	"NA"
 "insect endosymbiont"	"logical"	"NA"	"NA"
-"insect"	"logical"	"logical"	"NA"	"NA"
+"insect"	"logical"	"logical"	"NA"
 "intertidal zone"	"logical"	"NA"	"NA"
 "lentic water body"	"logical"	"NA"	"NA"
 "lotic water body"	"logical"	"NA"	"NA"
@@ -429,15 +429,3 @@
 "metal"	"logical"	"NA"	"NA"
 "mine"	"logical"	"NA"	"NA"
 "plant matter"	"logical"	"NA"	"NA"
-"
-
-
-
-
-
-
-
-
-
-
-

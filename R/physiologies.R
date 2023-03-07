@@ -47,6 +47,9 @@ physiologies <- function(
       one_row, remove_false = remove_false, full_source = full_source
     )
   }
+
+  output <- .addBacDive(output)
+
   return(output)
 }
 
@@ -235,4 +238,32 @@ showPhys <- function(){
     comment.char = ''
   )
   dplyr::left_join(df, data, by = 'Attribute_source')
+}
+
+## phys is the list of physiologies, just before returning output
+.addBacDive <- function(phys) {
+  message('Adding BacDive data')
+  bacdive <- .getBacDive()
+  bacdive2 <- .reshapeBacDive(bacdive)
+  names1 <- names(phys)
+  names2 <- names(bacdive2)
+  names <- sort(unique(c(names1, names2)))
+  output <- vector('list', length(names))
+  for (i in seq_along(output)) {
+    if (names[i] %in% names1 && names[i] %in% names2) {
+      message('Adding BacDive data to ', names[i])
+      df1 <- phys[[names[i]]]
+      df2 <- phys[[names[i]]]
+      output[[i]] <- dplyr::bind_rows(df1, df2)
+      names(output)[i] <- names[i]
+    } else if (names[i] %in% names1) {
+      output[[i]] <- phys[[names[i]]]
+      names(output)[i] <- names[i]
+    } else if (names[i] %in% names2) {
+      message('Adding new physiology from BacDive: ', names[i])
+      output[[i]] <- bacdive2[[names[i]]]
+      names(output)[i] <- names[i]
+    }
+  }
+  return(output)
 }
