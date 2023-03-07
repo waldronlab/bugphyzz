@@ -402,7 +402,7 @@
 "rhizosphere"	"logical"	"NA"	"NA"
 "rice paddies"	"logical"	"NA"	"NA"
 "sea water"	"logical"	"NA"	"NA"
-"sediment"	'logical"	"NA"	"NA"
+"sediment"	"logical"	"NA"	"NA"
 "specialized"	"logical"	"NA"	"NA"
 "terrestrial biome"	"logical"	"NA"	"NA"
 "not host-associated"	"logical"	"NA"	"NA"
