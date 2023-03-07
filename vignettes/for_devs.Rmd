@@ -1,0 +1,74 @@
+---
+title: "For developers, contributors, and curators"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{'For developers, contributors, and curators'}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+# Introduction
+
+This vignette is intended as a guide for those interested in contributing
+to the bugphyzz project.
+
+# How is the data formatted in bugphyzz?
+
+In bugphyzz, the data is stored and provided in tabular format. 
+Each row represents a link between a taxon and an attribute annotation
+(see description in main vignette). TODO: add link to the description of the
+columns.
+
+# Adding data
+
+Data can be added in two main ways 1) curated spreadsheets, 2) importing and
+parsing data with code (e.g., using and API).
+
+Independently of the option choses, the data must be in the format established
+in the [attributes.tsv]() file.
+
+## Curated spreadsheets
+
+1. Add a new curated spreadsheet to drive and publish to the web as a csv file.
+If this data was parsed with code, store the script in 
+[waldronlab/bugphyzzWrangling/scripts](). Otherwise, write a description in a
+README.txt file.
+2. Download the github repo [waldronlab/bugphyzz]().
+3. Create and checkout a new branch with username and an identifier (e.g.,
+sdgamboa/new-physiology). 
+Command example: `git checkout -b sdgamboa/new-physiology`. 
+4. Add the links of the published csv and the spreadsheet source to the
+[links.csv]() file.
+5. Run the [sysdata.R]() script to add full taxonomy, including parent ranks,
+to each taxon with taxid.
+6. Add and commit changes.
+7. Create a pull request and ask for a review -->> name here who could be
+those reviewers <<--.
+
+The changes will be checked with the unit tests. Changes might be requested.
+For example, adding values to the [attributes.tsv]() file if not present.
+
+## Through and API
+
+This is the ideal way for adding data, because it's eaiser to update. It's
+also the most complicated way of contributing because it requires the
+creation of new functions or modifying existing functions in bugphyzz.
+
+1. Write code to parse and use the API.
+2. Download the github repo [waldronlab/bugphyzz]().
+3. Create and checkout a new branch with username and an identifier (e.g.,
+sdgamboa/new-physiology). 
+Command example: `git checkout -b sdgamboa/new-physiology`. 
+4. Create functions for using the data from the API and integratint the
+data into currenct bugphyzz physiologies (or add new physiologies).
+5. Add and commit.
+6. Create a pull request, asking for a review.
+
+
