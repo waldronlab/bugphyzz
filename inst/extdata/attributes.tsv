@@ -383,3 +383,61 @@
 "reaction to black rot"	"logical"	"CO_331:0000380"	"NA"
 "human microflora"	"logical"	"NA"	"NA"
 "human gut microbiome"	"logical"	"NA"	"NA"
+"other host associated"	"logical"	"NA"	"NA"
+"aquatic biome"	"logical"	"NA"	"NA"
+"colonization of host"	"logical"	"NA" "NA"
+"creosote-contaminated soil"	"logical"	"NA"	"NA"
+"dairy"	"logical"	"NA"	"NA"
+"fresh water"	"logical"	"NA"	"NA"
+"hot spring"	"logical"	"NA"	"NA"
+"groundwater"	"logical"	"NA"	"NA"
+"hydrothermal vent"	"logical"	"NA"	"NA"
+"intestinal microflora"	"logical"	"NA"	"NA"
+"marine water body"	"logical"	"NA"	"NA"
+"mud"	"logical"	"NA"	"NA"
+"multiple"	"logical"	"NA"	"NA"
+"ocean trench"	"logical"	"NA"	"NA"
+"oil field production water"	"logical"	"NA"	"NA"
+"pond"	"logical"	"NA"	"NA"
+"rhizosphere"	"logical"	"NA"	"NA"
+"rice paddies"	"logical"	"NA"	"NA"
+"sea water"	"logical"	"NA"	"NA"
+"sediment"	'logical"	"NA"	"NA"
+"specialized"	"logical"	"NA"	"NA"
+"terrestrial biome"	"logical"	"NA"	"NA"
+"not host-associated"	"logical"	"NA"	"NA"
+"rumen"	"logical"	"NA"	"NA"
+"Waste and sludge water"	"logical"	"NA"	"NA"
+"blood"	"logical"	"NA"	"NA"
+"bovine"	"logical"	"NA"	"NA"
+"cerebral spinal fluid"	"logical"	"NA"	"NA"
+"circulatory system"	"logical"	"NA"	"NA"
+"creosote contaminated soil"	"logical"	"NA"	"NA"
+"digestive system"	"logical"	"NA"	"NA"
+"endosymbiont"	"logical"	"NA"	"NA"
+"environmental system"	"logical"	"NA"	"NA"
+"food product"	"logical"	"NA"	"NA"
+"foregut"	"logical"	"NA"	"NA"
+"free-living"	"logical"	"NA"	"NA"
+"host-associated"	"logical"	"NA"	"NA"
+"insect endosymbiont"	"logical"	"NA"	"NA"
+"insect"	"logical"	"logical"	"NA"	"NA"
+"intertidal zone"	"logical"	"NA"	"NA"
+"lentic water body"	"logical"	"NA"	"NA"
+"lotic water body"	"logical"	"NA"	"NA"
+"mammal"	"logical"	"NA"	"NA"
+"metal"	"logical"	"NA"	"NA"
+"mine"	"logical"	"NA"	"NA"
+"plant matter"	"logical"	"NA"	"NA"
+"
+
+
+
+
+
+
+
+
+
+
+
