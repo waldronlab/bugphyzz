@@ -421,7 +421,7 @@
 "free-living"	"logical"	"NA"	"NA"
 "host-associated"	"logical"	"NA"	"NA"
 "insect endosymbiont"	"logical"	"NA"	"NA"
-"insect"	"logical"	"logical"	"NA"	"NA"
+"insect"	"logical"	"logical"	"NA"
 "intertidal zone"	"logical"	"NA"	"NA"
 "lentic water body"	"logical"	"NA"	"NA"
 "lotic water body"	"logical"	"NA"	"NA"
