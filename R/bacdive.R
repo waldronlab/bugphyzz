@@ -74,9 +74,10 @@
 
   ## Attributes that must be changed from character to logical (simplest fix)
   attr_names <- c(
-    'aerophilicity', 'colony color', 'country',
+    'aerophilicity', 'country',
     'cultivation medium used', 'geographic location', 'isolation site',
     'shape'
+    ## colony color (delete)
   )
 
   for (i in seq_along(attr_names)) {
@@ -93,7 +94,7 @@
   split_df[['animal pathogen']][['Attribute_group']] <- 'animal pathogen'
   split_df[['animal pathogen']][['Attribute_type']] <- 'logical'
 
-  ## Biosafety level
+  ## biosafety level
   y <- split_df[['biosafety level comment']][, c('BacDive_ID', 'Attribute_value')]
   colnames(y)[2] <- 'Note'
   x <- dplyr::left_join(split_df[['biosafety level']], y, by = 'BacDive_ID')
@@ -104,6 +105,9 @@
   x[['Attribute_type']] <- 'logical'
   split_df[['biosafety level']] <- x
   split_df[['biosafety level comment']] <- NULL
+
+  ## colony color
+  split_df[['colony color']] <- NULL
 
   ## cultivation medium used - growth medium
   pos <- names(split_df) == 'cultivation medium used'
@@ -188,14 +192,15 @@
     )
 
   ## incubation period
-  ip <- split_df[['incubation period']]
-  ip[['Unit']] <- 'days'
-  ip[['Attribute_value']] <- ip[['Attribute_value']] |>
-    stringr::str_remove(' .*day.*$') |>
-    stringr::str_squish()
-  ip[['Attribute_group']] <- 'incubation period'
-  ip[['Attribute_type']] <- 'range'
-  split_df[['incubation period']] <- ip
+  split_df[['incubation period']] <- NULL
+  # ip <- split_df[['incubation period']]
+  # ip[['Unit']] <- 'days'
+  # ip[['Attribute_value']] <- ip[['Attribute_value']] |>
+  #   stringr::str_remove(' .*day.*$') |>
+  #   stringr::str_squish()
+  # ip[['Attribute_group']] <- 'incubation period'
+  # ip[['Attribute_type']] <- 'range'
+  # split_df[['incubation period']] <- ip
 
   ## motility
   split_df[['motility']] <- split_df[['motility']] |>
