@@ -15,7 +15,7 @@ importBugphyzz <- function(keyword = 'all', version = 'devel', cache = TRUE) {
   return(bugphyzz)
 }
 
-getSignatures <- function(
+getBugphyzzSignatures <- function(
     df, tax.id.type = c('ncbi', 'taxname'), tax.level = 'mixed', min.size = 5,
     evidence = c('asr', 'inh', 'exp', 'tas', 'nas', 'igc'),
     frequency = c('unknown', 'always', 'usually', 'sometimes')
