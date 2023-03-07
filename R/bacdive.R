@@ -67,14 +67,14 @@
 
 ## Function for getting a list of data.frames (one per attribute)
 ## This function works over several datasets.
-.reshapeBD <- function(df) {
+.reshapeBacDive <- function(df) {
 
   df[['Attribute_source']] <- 'BacDive'
   split_df <- split(df, factor(df[['Attribute']]))
 
   ## Attributes that must be changed from character to logical (simplest fix)
   attr_names <- c(
-    'aerophilicity', 'biosafety level', 'colony color', 'country',
+    'aerophilicity', 'colony color', 'country',
     'cultivation medium used', 'geographic location', 'isolation site',
     'shape'
   )
@@ -92,6 +92,18 @@
   split_df[['animal pathogen']][['Attribute_value']] <- x_
   split_df[['animal pathogen']][['Attribute_group']] <- 'animal pathogen'
   split_df[['animal pathogen']][['Attribute_type']] <- 'logical'
+
+  ## Biosafety level
+  y <- split_df[['biosafety level comment']][, c('BacDive_ID', 'Attribute_value')]
+  colnames(y)[2] <- 'Note'
+  x <- dplyr::left_join(split_df[['biosafety level']], y, by = 'BacDive_ID')
+  x[['Attribute_value']] <- paste0('biosafety level ', x[['Attribute_value']])
+  x[['Attribute']] <- x[['Attribute_value']]
+  x[['Attribute_value']] <- TRUE
+  x[['Attribute_group']] <- 'biosafety level'
+  x[['Attribute_type']] <- 'logical'
+  split_df[['biosafety level']] <- x
+  split_df[['biosafety level comment']] <- NULL
 
   ## cultivation medium used - growth medium
   pos <- names(split_df) == 'cultivation medium used'
@@ -123,6 +135,8 @@
   gs <- split_df[['gram stain']]
   gs[['Attribute']] <- paste(gs[['Attribute']], gs[['Attribute_value']])
   gs[['Attribute_value']] <- TRUE
+  gs[['Attribute_group']] <- 'gram stain'
+  gs[['Attribute_type']] <- 'logical'
   split_df[['gram stain']] <- gs
 
   ## halophily
@@ -191,6 +205,8 @@
         .data[['Attribute_value']] == 'no' ~ FALSE
       )
     )
+  split_df[['motility']][['Attribute_group']] <- 'motility'
+  split_df[['motility']][['Attribute_type']] <- 'logical'
 
   ## pathogenicity human
   pat <- split_df[['pathogenicity human']]
@@ -198,7 +214,10 @@
   pat[['Note']] <- ifelse(is.na(pat[['Note']]), "", pat[['Note']])
   pat[['Attribute_value']] <- ifelse(grepl('^yes', pat[['Attribute_value']]), TRUE, NA)
   pat <- pat[!is.na(pat[['Attribute_value']]),]
+  pat[['Attribute_group']] <- 'pathogenicity human'
+  pat[['Attribute_type']] <- 'logical'
   split_df[['pathogenicity human']] <- pat
+
 
   ## metabolite production
   mp <- split_df[['metabolite production']]
@@ -211,6 +230,8 @@
   mp[['Attribute']] <- mp[['Attribute_value']]
   mp[['Attribute_value']] <- ifelse(y == 'yes', TRUE , FALSE)
   mp[['Attribute']] <- sub(' (yes|no)$', '', mp[['Attribute']])
+  mp[['Attribute_group']] <- 'metabolite utilization'
+  mp[['Attribute_type']] <- 'logical'
   split_df[['metabolite production']] <- mp
 
   ## metabolite utilization
@@ -238,11 +259,26 @@
     tidyr::unnest(.data$Attribute_value) |>
     dplyr::mutate(Attribute_value = as.logical(.data$Attribute_value))
   mu[['Attribute_group']] <- 'metabolite utilization'
-  mh[['Attribute_type']] <- 'logical'
+  mu[['Attribute_type']] <- 'logical'
   split_df[['metabolite utilization']] <- mu
 
-  return(split_df)
+  ## spore formation
+  sf <- split_df[['spore formation']]
+  sf <- sf |>
+    dplyr::mutate(
+      Attribute_value = dplyr::case_when(
+        .data[['Attribute_value']] == 'yes' ~ TRUE,
+        .data[['Attribute_value']] == 'no' ~ FALSE
+      ),
+      Attribute_group = 'spore formation',
+      Attribute_type = 'logical'
+    ) |>
+    dplyr::filter(!is.na(.data$Attribute_value))
+  split_df[['spore formation']] <- sf
 
+  split_df <- lapply(split_df, as.data.frame)
+
+  return(split_df)
 }
 
 .catToLog <- function(df) {
