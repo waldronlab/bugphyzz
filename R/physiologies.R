@@ -21,8 +21,11 @@
 physiologies <- function(
     keyword = 'all', remove_false = FALSE, full_source = TRUE
 ) {
-  keyword <- unique(keyword)
+  keyword <- unique(sort(keyword))
   valid_keywords <- showPhys()
+  phys_names <- valid_keywords[!valid_keywords %in% bacdive_phys_names]
+  bacd_names <- valid_keywords[valid_keywords %in% bacdive_phys_names]
+
   if ('all' %in% keyword) {
     if (length(keyword) > 1)
       message("Found 'all' among the keywords. Importing all physiologies.")
@@ -37,6 +40,7 @@ physiologies <- function(
       call. = FALSE
     )
   }
+
   links_df <- curationLinks()
   links_df <- links_df[links_df$physiology %in% keyword,]
   output <- vector('list', nrow(links_df))
@@ -74,7 +78,6 @@ physiologies <- function(
   attr_grp <- x$physiology
   attr_type <- x$sig_type
 
-  # message('Importing ', attr_grp, '.')
   df <- dplyr::distinct(utils::read.csv(link))
   df$NCBI_ID <- stringr::str_squish(tolower(as.character(df$NCBI_ID)))
 
@@ -204,7 +207,10 @@ curationLinks <- function(){
 #' @examples
 #' x <- showPhys()
 showPhys <- function(){
-  curationLinks()[["physiology"]]
+  spreadsheet_phys <- curationLinks()[["physiology"]]
+  bacdive_phys <- bacdive_phys_names # this is a character vector saved as internal data
+  phys_names <- sort(unique(c(spreadsheet_phys, bacdive_phys)))
+  return(phys_names)
 }
 
 ## A function to reorder columns on import
@@ -253,7 +259,7 @@ showPhys <- function(){
     if (names[i] %in% names1 && names[i] %in% names2) {
       message('Adding BacDive data to ', names[i])
       df1 <- phys[[names[i]]]
-      df2 <- phys[[names[i]]]
+      df2 <- bacdive2[[names[i]]]
       output[[i]] <- dplyr::bind_rows(df1, df2)
       names(output)[i] <- names[i]
     } else if (names[i] %in% names1) {
@@ -267,3 +273,4 @@ showPhys <- function(){
   }
   return(output)
 }
+

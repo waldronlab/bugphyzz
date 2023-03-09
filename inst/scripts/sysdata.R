@@ -1,3 +1,12 @@
+## We need a package from github for this:
+## sdgamboa/taxPPro --> waldronlab/taxPPro (in the future).
+
+if (!requireNamespace('BiocManager', quietly = TRUE))
+  install.packages('BiocManager')
+BiocManager::install('sdgamboa/taxPPro', force = TRUE)
+
+
+
 ## code to prepare `sysdata.rda` dataset goes here
 
 library(taxizedb)
@@ -7,15 +16,14 @@ library(dplyr)
 library(magrittr)
 
 phys <- physiologies()
-phys[["fatty acid composition"]] <- fattyAcidComposition()
-phys <- discard(phys, ~ !"Evidence" %in% colnames(.x))
+# phys[["fatty acid composition"]] <- fattyAcidComposition()
+# phys <- discard(phys, ~ !"Evidence" %in% colnames(.x))
 
 
 # ranks and parents -------------------------------------------------------
 ncbi_ids <- phys %>%
-    ## as.integer helps to remove invalid NCBI IDs
-    purrr::map(~ as.integer(.x[["NCBI_ID"]])) %>%
-    purrr::flatten_int() %>%
+    purrr::map(~ as.character(.x[["NCBI_ID"]])) %>%
+    purrr::flatten_chr() %>%
     unique() %>%
     .[!is.na(.)] %>%
     sort(decreasing = TRUE)
@@ -82,13 +90,19 @@ taxonomyAnnotations <- taxonomy_table %>%
 ranks_parents <- purrr::modify_if(
   ranks_parents,
   .p = grepl("NCBI_ID", colnames(ranks_parents)),
-  .f =  ~ as.integer(.x)
+  .f =  ~ as.character(.x)
 )
+
+## bacdive
+bacdive <- bugphyzz:::.getBacDive() |>
+  bugphyzz:::.reshapeBacDive()
+bacdive_phys_names <- names(bacdive)
 
 ## Save data -------------------------------------------------------------
 usethis::use_data(
   ranks_parents,
   taxonomyAnnotations,
+  bacdive_phys_names,
   overwrite = TRUE, internal = TRUE
 )
 
