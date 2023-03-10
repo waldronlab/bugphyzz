@@ -23,8 +23,6 @@ physiologies <- function(
 ) {
   keyword <- unique(sort(keyword))
   valid_keywords <- showPhys()
-  phys_names <- valid_keywords[!valid_keywords %in% bacdive_phys_names]
-  bacd_names <- valid_keywords[valid_keywords %in% bacdive_phys_names]
 
   if ('all' %in% keyword) {
     if (length(keyword) > 1)
@@ -40,6 +38,42 @@ physiologies <- function(
       call. = FALSE
     )
   }
+
+  cond1 <- any(keyword %in% showPhys('spreadsheets'))
+  cond2 <- any(keyword %in% showPhys('bacdive'))
+
+  if (cond1 && cond2) {
+    spreadsheets <- .importSpreadsheets(keyword = keyword)
+    spreadsheets <- spreadsheets[names(spreadsheets) %in% keyword]
+    bacdive <- .reshapeBacDive(.getBacDive())
+    bacdive <- bacdive[names(bacdive) %in% keyword]
+    physiologies <- vector('list', length(keyword))
+    for (i in seq_along(keyword)) {
+      if (keyword[i] %in% names(spreadsheets) && keyword[i] %in% names(bacdive)) {
+        df1 <- spreadsheets[[keyword[i]]]
+        df2 <- bacdive[[keyword[i]]]
+        physiologies[[i]] <- dplyr::bind_rows(df1, df2)
+        names(physiologies)[i] <- keyword[i]
+      } else if (names[i] %in% names1) {
+        output[[i]] <- phys[[names[i]]]
+        names(output)[i] <- names[i]
+      } else if (names[i] %in% names2) {
+        message('Adding new physiology from BacDive: ', names[i])
+        output[[i]] <- bacdive2[[names[i]]]
+        names(output)[i] <- names[i]
+      }
+    }
+  } else if (cond1 && !cond2) {
+
+  } else if (!cond1 && cond2) {
+
+  }
+
+  return(physiologies)
+
+
+
+
 
   links_df <- curationLinks()
   links_df <- links_df[links_df$physiology %in% keyword,]
@@ -181,21 +215,6 @@ physiologies <- function(
     dplyr::distinct()
 }
 
-#' Show links to curation spreadsheets
-#'
-#' \code{curationLinks} returns a data.frame with the links the the spreadhseets
-#' of the physiologies (both csv exports and source).
-#'
-#' @return A data.frame with physiology names and URLs.
-#' @keywords internal
-#'
-#' @examples
-#' bugphyzz:::curationLinks()
-curationLinks <- function(){
-  fname <- system.file("extdata/links.tsv", package = "bugphyzz")
-  utils::read.table(fname, sep = "\t", header = TRUE)
-}
-
 #' List of available physiologies
 #'
 #' \code{showPhys} prints the names of the available datasets provided by
@@ -284,3 +303,21 @@ showPhys <- function(which_names = 'all') {
   return(output)
 }
 
+.importSpreadsheets <- function(keyword) {
+  fname <- system.file('extdata/links.tsv', package = 'bugphyzz')
+  links <- utils::read.table(fname, header = TRUE, sep = '\t')
+  links <- links[links[['physiology']] %in% keyword,]
+  spreadsheets <- vector('list', nrow(links))
+  for (i in seq_along(spreadsheets)) {
+    names(spreadsheets)[i] <- links[i, 'physiology', drop = FALSE][[1]]
+    url <- links[i, 'link', drop = FALSE][[1]]
+    df <- unique(utils::read.csv(url))
+    df[['NCBI_ID']] <- as.character(df[['NCBI_ID']])
+    spreadsheets[[i]] <- df
+  }
+  ## TODO This is the place to convert numeric to rangesRemove NAs from Attribute_value.
+  ## Append information:
+  ## Append taxonomy information.
+  ## Append type of physiology and physiology group information.
+  return(spreadsheets)
+}
