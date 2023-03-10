@@ -201,15 +201,25 @@ curationLinks <- function(){
 #' \code{showPhys} prints the names of the available datasets provided by
 #' the \code{\link{physiologies}} function.
 #'
+#' @param which_names A character string. Options: 'all' (default),
+#' 'spreadsheets', 'bacdive'.
+#'
 #' @return A character vector with the names of the physiologies datasets.
 #' @export
 #'
 #' @examples
-#' x <- showPhys()
-showPhys <- function(){
+#' showPhys()
+#' showPhys('bacdive')
+#' showPhys('spreadsheets')
+showPhys <- function(which_names = 'all') {
   spreadsheet_phys <- curationLinks()[["physiology"]]
-  bacdive_phys <- bacdive_phys_names # this is a character vector saved as internal data
-  phys_names <- sort(unique(c(spreadsheet_phys, bacdive_phys)))
+  if (which_names == 'all')
+    ## bacdive_phys_names is a character vector saved as internal data
+    phys_names <- sort(unique(c(spreadsheet_phys, bacdive_phys_names)))
+  if (which_names == 'spreadsheets')
+    phys_names <- spreadsheet_phys
+  if (which_names == 'bacdive')
+    phys_names <- bacdive_phys_names
   return(phys_names)
 }
 
