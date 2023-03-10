@@ -34,7 +34,7 @@ physiologies <- function(
     invalid_keywords <- keyword[!lgl_vct]
     stop(
       "Invalid keyword(s): ", paste0(invalid_keywords, collapse = ', '), '.',
-      " Check valid options with showPhys().",
+      " Check valid keywords with showPhys() or use 'all'.",
       call. = FALSE
     )
   }
@@ -45,7 +45,7 @@ physiologies <- function(
   if (cond1 && cond2) {
     spreadsheets <- .importSpreadsheets(keyword = keyword)
     spreadsheets <- spreadsheets[names(spreadsheets) %in% keyword]
-    bacdive <- .reshapeBacDive(.getBacDive())
+    bacdive <- .reshapeBacDive(.getBacDive(verbose = FALSE))
     bacdive <- bacdive[names(bacdive) %in% keyword]
     physiologies <- vector('list', length(keyword))
     for (i in seq_along(keyword)) {
@@ -54,13 +54,7 @@ physiologies <- function(
         df2 <- bacdive[[keyword[i]]]
         physiologies[[i]] <- dplyr::bind_rows(df1, df2)
         names(physiologies)[i] <- keyword[i]
-      } else if (names[i] %in% names1) {
-        output[[i]] <- phys[[names[i]]]
-        names(output)[i] <- names[i]
-      } else if (names[i] %in% names2) {
-        message('Adding new physiology from BacDive: ', names[i])
-        output[[i]] <- bacdive2[[names[i]]]
-        names(output)[i] <- names[i]
+        message('Finished ', keyword[i])
       }
     }
   } else if (cond1 && !cond2) {
@@ -182,7 +176,7 @@ physiologies <- function(
 #'
 #' @keywords internal
 #'
-.modifyRange <- function(df) {
+.modidifyRange <- function(df) {
   ## Some lines are beyond the recommended 80 characters length,
   ## but I think it's OK.
   df |>
@@ -215,6 +209,10 @@ physiologies <- function(
     dplyr::distinct()
 }
 
+.numericToRange <- function() {
+
+}
+
 #' List of available physiologies
 #'
 #' \code{showPhys} prints the names of the available datasets provided by
@@ -231,7 +229,10 @@ physiologies <- function(
 #' showPhys('bacdive')
 #' showPhys('spreadsheets')
 showPhys <- function(which_names = 'all') {
-  spreadsheet_phys <- curationLinks()[["physiology"]]
+  # spreadsheet_phys <- curationLinks()[["physiology"]]
+  fname <- system.file('extdata/links.tsv', package = 'bugphyzz')
+  links <- utils::read.table(fname, header = TRUE, sep = '\t')
+  spreadsheet_phys <- links[['physiology']]
   if (which_names == 'all')
     ## bacdive_phys_names is a character vector saved as internal data
     phys_names <- sort(unique(c(spreadsheet_phys, bacdive_phys_names)))

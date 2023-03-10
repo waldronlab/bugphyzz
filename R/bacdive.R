@@ -1,7 +1,7 @@
 
 ## Main function for importing BacDive
-.getBacDive <- function() {
-  bacdive_data <- .importBacDiveExcel()
+.getBacDive <- function(verbose = FALSE ) {
+  bacdive_data <- .importBacDiveExcel(verbose = verbose)
   colnames(bacdive_data) <- .changeBDColNames(colnames(bacdive_data))
   .getTidyBD(bacdive_data)
 }
