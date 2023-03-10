@@ -48,7 +48,7 @@ bacdive <- bugphyzz:::.getBacDive() |>
 bacdive_ids <- lapply(bacdive, function(x) {
   res <- as.character(x$NCBI_ID)
   if ('Parent_NCBI_ID' %in% colnames(x)) {
-    res_ <- as.character(x$NCBI_ID)
+    res_ <- as.character(x$Parent_NCBI_ID)
     res <- unique(res, res_)
   }
   return(res)
@@ -58,7 +58,6 @@ bacdive_ids <- lapply(bacdive, function(x) {
 ncbi_ids <- unique(spreadsheets_ids, bacdive_ids)
 
 # Get NCBI taxonomy ------------------------------------------------------
-
 ncbi <- get_ncbi_taxonomy(force_download = TRUE)
 colnames(ncbi)[which(colnames(ncbi) == 'kingdom')] <- 'superkingdom'
 ranks <- c('superkingdom', 'phylum', 'class', 'order', 'family', 'genus', 'species', 'strain')
@@ -73,6 +72,7 @@ ranks_parents <- taxnames[,c('NCBI_ID', 'Rank', 'Parent_NCBI_ID')]
 ranks_parents$Parent_name <- x[ranks_parents$Parent_NCBI_ID]
 ranks_parents$Parent_rank <- y[ranks_parents$Parent_NCBI_ID]
 ranks_parents <- ranks_parents[ranks_parents$NCBI_ID %in% ncbi_ids,]
+ranks_parents$NCBI_ID <- as.character(ranks_parents$NCBI_ID)
 
 ## taxonomyAnnotations
 colnames(taxnames) <- paste0('bugphyzz_', colnames(taxnames))
@@ -85,10 +85,11 @@ taxonomyAnnotations <- left_join(taxnames, taxids)
 taxonomyAnnotations$bugphyzz_Taxon_name <- NULL
 taxonomyAnnotations$bugphyzz_Parent_NCBI_ID <- NULL
 taxonomyAnnotations <- taxonomyAnnotations[taxonomyAnnotations$bugphyzz_NCBI_ID %in% ncbi_ids,]
-
+taxonomyAnnotations$bugphyzz_NCBI_ID <- as.character(taxonomyAnnotations$bugphyzz_NCBI_ID)
 
 # names -------------------------------------------------------------------
 bacdive_phys_names <- names(bacdive)
+
 ## Save data -------------------------------------------------------------
 usethis::use_data(
   ranks_parents,
