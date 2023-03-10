@@ -284,7 +284,9 @@
   split_df <- lapply(split_df, function(x) {
     x <- as.data.frame(x)
     x[['NCBI_ID']] <- as.character(x[['NCBI_ID']])
-    x
+    x[['Parent_NCBI_ID']] <- as.character(x[['Parent_NCBI_ID']])
+    x[['Frequency']] <- 'always'
+    dplyr::distinct(x)
   })
 
   return(split_df)
