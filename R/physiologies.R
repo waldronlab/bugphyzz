@@ -1,3 +1,6 @@
+## TODO create fuction numeric to range.
+## corrent where I use modify range for both.
+
 #' Import physiologies
 #'
 #' \code{physiologies} imports physiologies from Google spreadsheets.
@@ -68,6 +71,29 @@ physiologies <- function(
       message('Finished ', keyword[i], '.')
     }
   }
+  physiologies <- lapply(physiologies, function(df) {
+    df <- df |>
+      purrr::modify_if(.p = is.character, ~ stringr::str_squish(.x)) |>
+      .addSourceInfo() |>
+      purrr::modify_at(
+        .at = c('Frequency', 'Evidence', 'Confidence_in_curation'),
+        ~ stringr::str_squish(stringr::str_to_lower(.x))
+      ) |>
+      dplyr::distinct()
+    if (remove_false) {
+      df <- dplyr::filter(df, !Attribute_value == FALSE)
+    }
+    if (full_source) {
+      df$Attribute_source <- df$full_source
+    }
+    df$full_source <- NULL
+    df <- .reorderColumns(
+      df = df,
+      name = unique(df$Attribute_group),
+      attr_type = unique(df$Attribute_type)
+    )
+    df
+  })
   return(physiologies)
 }
 
@@ -137,7 +163,6 @@ physiologies <- function(
     df <- dplyr::distinct(.modifyRange(df))
 
   df <- .reorderColumns(df,name = attr_grp, attr_type = attr_type)
-
   ## Add some extra columns for attribute group (physiology) and
   ## type of signature (this will be relevant for creating signatures).
   df$Attribute_type <- attr_type
@@ -163,8 +188,6 @@ physiologies <- function(
 #' @keywords internal
 #'
 .modifyRange <- function(df) {
-  ## TODO need to account for negative values
-  # vct <- c('-10.2-23', '>10', '<-10.3', '2-5', '10', '-2.3', '>10-80', '0.2-1-230')
   num <- '[0-9]+(\\.[0-9]+)?'
   regex1 <- paste0('^\\-?', num, '(\\-', num, ')?$')
   regex2 <- paste0('^(<|>)(\\-)?', num, '$')
@@ -273,6 +296,7 @@ showPhys <- function(which_names = 'all') {
 }
 
 .importSpreadsheets <- function(keyword) {
+  parent_col_names <- c('Parent_name', 'Parent_NCBI_ID', 'Parent_rank')
   fname <- system.file('extdata/links.tsv', package = 'bugphyzz')
   links <- utils::read.table(fname, header = TRUE, sep = '\t')
   links <- links[links[['physiology']] %in% keyword,]
@@ -287,12 +311,19 @@ showPhys <- function(which_names = 'all') {
     df[['Attribute_group']] <- phys_name
     df[['NCBI_ID']] <- as.character(df[['NCBI_ID']])
     df <- df[!is.na(df[['Attribute_value']]),]
-    df <- .addSourceInfo(df)
+    # df <- .addSourceInfo(df)
     if (attr_type %in% c('numeric', 'range')) {
       df <- .modifyRange(df)
     }
+    if (all(parent_col_names %in% colnames(df))) {
+      df$Parent_NCBI_ID <- stringr::str_squish(as.character(df$Parent_NCBI_ID))
+    } else {
+        rp <- ranks_parents # ranks_parents is a data.frame object in bugphyzz
+        rp$NCBI_ID <- as.character(rp$NCBI_ID)
+        rp$Parent_NCBI_ID <- as.character(rp$Parent_NCBI_ID)
+        df <- dplyr::left_join(df, rp, by = "NCBI_ID")
+    }
     spreadsheets[[i]] <- df
   }
-  ## Append taxonomy information.
   return(spreadsheets)
 }

@@ -291,7 +291,7 @@
       x <- .modifyRange(x)
     }
     dplyr::distinct(x)
-    x <- .addSourceInfo(x)
+    # x <- .addSourceInfo(x)
   })
 
   return(split_df)
