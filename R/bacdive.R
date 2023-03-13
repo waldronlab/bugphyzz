@@ -1,7 +1,7 @@
 
 ## Main function for importing BacDive
-.getBacDive <- function() {
-  bacdive_data <- .importBacDiveExcel()
+.getBacDive <- function(verbose = FALSE ) {
+  bacdive_data <- .importBacDiveExcel(verbose = verbose)
   colnames(bacdive_data) <- .changeBDColNames(colnames(bacdive_data))
   .getTidyBD(bacdive_data)
 }
@@ -286,7 +286,12 @@
     x[['NCBI_ID']] <- as.character(x[['NCBI_ID']])
     x[['Parent_NCBI_ID']] <- as.character(x[['Parent_NCBI_ID']])
     x[['Frequency']] <- 'always'
+    x <- x[!is.na(x[['Attribute_value']]),]
+    if (unique(x[['Attribute_type']]) %in% c('numeric', 'range')) {
+      x <- .modifyRange(x)
+    }
     dplyr::distinct(x)
+    # x <- .addSourceInfo(x)
   })
 
   return(split_df)
