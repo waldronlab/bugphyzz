@@ -97,10 +97,10 @@ physiologies <- function(
   })
   return(physiologies)
 }
+
 #' Modify attributes of type range
 #'
 #' \code{.modifyRange} imports a dataset labeled with "range" in
-#' \code{curationLinks}.
 #'
 #' @param df A data frame.
 #'
@@ -169,7 +169,6 @@ physiologies <- function(
 #' showPhys('bacdive')
 #' showPhys('spreadsheets')
 showPhys <- function(which_names = 'all') {
-  # spreadsheet_phys <- curationLinks()[["physiology"]]
   fname <- system.file('extdata/links.tsv', package = 'bugphyzz')
   links <- utils::read.table(fname, header = TRUE, sep = '\t')
   spreadsheet_phys <- links[['physiology']]
