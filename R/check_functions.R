@@ -860,7 +860,6 @@ utils::globalVariables(c("."))
     dplyr::left_join(links, by = c("dataset" = "physiology"))
 }
 
-
 #' Error list to table
 #'
 #' \code{.errListToTable} converts a list of errors generated with the
