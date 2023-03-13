@@ -4,7 +4,11 @@
 \alias{showPhys}
 \title{List of available physiologies}
 \usage{
-showPhys()
+showPhys(which_names = "all")
+}
+\arguments{
+\item{which_names}{A character string. Options: 'all' (default),
+'spreadsheets', 'bacdive'.}
 }
 \value{
 A character vector with the names of the physiologies datasets.
@@ -14,5 +18,7 @@ A character vector with the names of the physiologies datasets.
 the \code{\link{physiologies}} function.
 }
 \examples{
-x <- showPhys()
+showPhys()
+showPhys('bacdive')
+showPhys('spreadsheets')
 }
