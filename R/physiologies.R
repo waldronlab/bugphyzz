@@ -1,5 +1,5 @@
 ## TODO create fuction numeric to range.
-## corrent where I use modify range for both.
+## fix where I use modify range for both.
 
 #' Import physiologies
 #'
@@ -233,13 +233,15 @@ showPhys <- function(which_names = 'all') {
     df[['NCBI_ID']] <- as.character(df[['NCBI_ID']])
     df <- df[!is.na(df[['Attribute_value']]),]
     # df <- .addSourceInfo(df)
-    if (attr_type %in% c('numeric', 'range')) {
+    if (unique(df[['Attribute_type']]) == 'numeric') {
+      df <- .numericToRange(df)
+    } else if (unique(df[['Attribute_type']] == 'range')) {
       df <- .modifyRange(df)
     }
     if (all(parent_col_names %in% colnames(df))) {
       df$Parent_NCBI_ID <- stringr::str_squish(as.character(df$Parent_NCBI_ID))
     } else {
-        rp <- ranks_parents # ranks_parents is a data.frame object in bugphyzz
+        rp <- ranks_parents # ranks_parents is a data.frame internal object in bugphyzz
         rp$NCBI_ID <- as.character(rp$NCBI_ID)
         rp$Parent_NCBI_ID <- as.character(rp$Parent_NCBI_ID)
         df <- dplyr::left_join(df, rp, by = "NCBI_ID")
@@ -247,4 +249,19 @@ showPhys <- function(which_names = 'all') {
     spreadsheets[[i]] <- df
   }
   return(spreadsheets)
+}
+
+## Helper function for making all numeric values into ranges
+.numericToRange <- function(df) {
+  df <- df |>
+    dplyr::group_by(.data$NCBI_ID, .data$Taxon_name) |>
+    dplyr::mutate(
+      Attribute_value_min = as.double(Attribute_value),
+      Attribute_value_max = as.double(Attribute_value),
+      Attribute_type = 'range'
+    ) |>
+    dplyr::ungroup() |>
+    dplyr::distinct()
+  df[['Attribute_value']] <- NULL
+  return(df)
 }

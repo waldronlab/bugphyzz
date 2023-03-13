@@ -129,7 +129,7 @@
   ab <- ab[ab[['growth']] == 'positive',]
   ab[['growth']] <- NULL
   ab[['Attribute_group']] <- 'growth temperature'
-  ab[['Attribute_type']] <- 'numeric'
+  ab[['Attribute_type']] <- 'range'
   ab[['Attribute']] <- 'growth temperature'
   split_df[['growth temperature']] <- ab
   split_df[['culture temperature']] <- NULL
@@ -287,7 +287,9 @@
     x[['Parent_NCBI_ID']] <- as.character(x[['Parent_NCBI_ID']])
     x[['Frequency']] <- 'always'
     x <- x[!is.na(x[['Attribute_value']]),]
-    if (unique(x[['Attribute_type']]) %in% c('numeric', 'range')) {
+    if (unique(x[['Attribute_type']]) == 'numeric') {
+      x <- .numericToRange(x)
+    } else if (unique(x[['Attribute_type']] == 'range')) {
       x <- .modifyRange(x)
     }
     dplyr::distinct(x)
