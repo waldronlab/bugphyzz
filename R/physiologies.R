@@ -49,40 +49,26 @@ physiologies <- function(
     bacdive <- bacdive[names(bacdive) %in% keyword]
     physiologies <- vector('list', length(keyword))
     for (i in seq_along(keyword)) {
-      if (keyword[i] %in% names(spreadsheets) && keyword[i] %in% names(bacdive)) {
         df1 <- spreadsheets[[keyword[i]]]
         df2 <- bacdive[[keyword[i]]]
         physiologies[[i]] <- dplyr::bind_rows(df1, df2)
         names(physiologies)[i] <- keyword[i]
-        message('Finished ', keyword[i])
-      }
+        message('Finished ', keyword[i], '.')
     }
   } else if (cond1 && !cond2) {
-
+    spreadsheets <- .importSpreadsheets(keyword = keyword)
+    physiologies <- spreadsheets[names(spreadsheets) %in% keyword]
+    for (i in seq_along(keyword)) {
+      message('Finished ', keyword[i], '.')
+    }
   } else if (!cond1 && cond2) {
-
+    bacdive <- .reshapeBacDive(.getBacDive(verbose = FALSE))
+    physiologies <- bacdive[names(bacdive) %in% keyword]
+    for (i in seq_along(keyword)) {
+      message('Finished ', keyword[i], '.')
+    }
   }
-
   return(physiologies)
-
-
-
-
-
-  links_df <- curationLinks()
-  links_df <- links_df[links_df$physiology %in% keyword,]
-  output <- vector('list', nrow(links_df))
-  for (i in seq_along(output)) {
-    one_row <- links_df[i, , drop = FALSE]
-    names(output)[i] <- one_row$physiology
-    output[[i]] <- .importPhysiology(
-      one_row, remove_false = remove_false, full_source = full_source
-    )
-  }
-
-  output <- .addBacDive(output)
-
-  return(output)
 }
 
 #' Import physiology
@@ -176,25 +162,35 @@ physiologies <- function(
 #'
 #' @keywords internal
 #'
-.modidifyRange <- function(df) {
-  ## Some lines are beyond the recommended 80 characters length,
-  ## but I think it's OK.
-  df |>
+.modifyRange <- function(df) {
+  ## TODO need to account for negative values
+  # vct <- c('-10.2-23', '>10', '<-10.3', '2-5', '10', '-2.3', '>10-80', '0.2-1-230')
+  num <- '[0-9]+(\\.[0-9]+)?'
+  regex1 <- paste0('^\\-?', num, '(\\-', num, ')?$')
+  regex2 <- paste0('^(<|>)(\\-)?', num, '$')
+  regex <- paste0('(', regex1, '|', regex2, ')')
+  df <- df |>
+    dplyr::filter(grepl(regex, .data$Attribute_value)) |>
+    dplyr::mutate(
+      Attribute_value = sub('^(\\-)([0-9]+(\\.[0-9]+)?)', 'minus\\2', .data$Attribute_value)
+    ) |>
     dplyr::mutate(
       Attribute_value = gsub(' ', '', .data$Attribute_value),
       Attribute_value = dplyr::case_when(
         grepl('<', .data$Attribute_value) ~ paste0('-', .data$Attribute_value),
         grepl('>', .data$Attribute_value) ~ paste0(.data$Attribute_value, '-'),
-        !grepl("-", .data$Attribute_value) ~ paste0(.data$Attribute_value, '-', .data$Attribute_value),
-        grepl("^-", .data$Attribute_value) ~ paste0("0", .data$Attribute_value),
-        grepl("-$", .data$Attribute_value) ~ paste0(.data$Attribute_value, "Inf"),
+        !grepl("\\-", .data$Attribute_value) ~ paste0(.data$Attribute_value, '-', .data$Attribute_value),
+        grepl("^\\-", .data$Attribute_value) ~ paste0("minusInf", .data$Attribute_value),
+        # grepl("^-", .data$Attribute_value) ~ paste0("0", .data$Attribute_value),
+        grepl("\\-$", .data$Attribute_value) ~ paste0(.data$Attribute_value, "Inf"),
         TRUE ~ .data$Attribute_value
       ),
       Attribute_value = sub('(<|>)', '', .data$Attribute_value),
       Attribute_value = dplyr::case_when(
         ## For some reason this does not work int he case_when call above. ??
-        grepl("^-", .data$Attribute_value) ~ paste0("0", .data$Attribute_value),
-        grepl("-$", .data$Attribute_value) ~ paste0(.data$Attribute_value, "Inf"),
+        # grepl("^-", .data$Attribute_value) ~ paste0("0", .data$Attribute_value),
+        grepl("^\\-", .data$Attribute_value) ~ paste0("minusInf", .data$Attribute_value),
+        grepl("\\-$", .data$Attribute_value) ~ paste0(.data$Attribute_value, "Inf"),
         TRUE ~ .data$Attribute_value
       )
     ) |>
@@ -203,14 +199,14 @@ physiologies <- function(
       into = c('Attribute_value_min', 'Attribute_value_max'), sep = '-'
     ) |>
     dplyr::mutate(
+        Attribute_value_min = sub('minus', '-', .data$Attribute_value_min),
+        Attribute_value_max = sub('minus', '-', .data$Attribute_value_min)
+      ) |>
+    dplyr::mutate(
       Attribute_value_min = as.double(.data$Attribute_value_min),
       Attribute_value_max = as.double(.data$Attribute_value_max)
     ) |>
     dplyr::distinct()
-}
-
-.numericToRange <- function() {
-
 }
 
 #' List of available physiologies
@@ -276,49 +272,27 @@ showPhys <- function(which_names = 'all') {
   dplyr::left_join(df, data, by = 'Attribute_source')
 }
 
-## phys is the list of physiologies, just before returning output
-.addBacDive <- function(phys) {
-  message('Adding BacDive data')
-  bacdive <- .getBacDive()
-  bacdive2 <- .reshapeBacDive(bacdive)
-  names1 <- names(phys)
-  names2 <- names(bacdive2)
-  names <- sort(unique(c(names1, names2)))
-  output <- vector('list', length(names))
-  for (i in seq_along(output)) {
-    if (names[i] %in% names1 && names[i] %in% names2) {
-      message('Adding BacDive data to ', names[i])
-      df1 <- phys[[names[i]]]
-      df2 <- bacdive2[[names[i]]]
-      output[[i]] <- dplyr::bind_rows(df1, df2)
-      names(output)[i] <- names[i]
-    } else if (names[i] %in% names1) {
-      output[[i]] <- phys[[names[i]]]
-      names(output)[i] <- names[i]
-    } else if (names[i] %in% names2) {
-      message('Adding new physiology from BacDive: ', names[i])
-      output[[i]] <- bacdive2[[names[i]]]
-      names(output)[i] <- names[i]
-    }
-  }
-  return(output)
-}
-
 .importSpreadsheets <- function(keyword) {
   fname <- system.file('extdata/links.tsv', package = 'bugphyzz')
   links <- utils::read.table(fname, header = TRUE, sep = '\t')
   links <- links[links[['physiology']] %in% keyword,]
   spreadsheets <- vector('list', nrow(links))
   for (i in seq_along(spreadsheets)) {
-    names(spreadsheets)[i] <- links[i, 'physiology', drop = FALSE][[1]]
+    phys_name <- links[i, 'physiology', drop = FALSE][[1]]
+    attr_type <- links[i, 'sig_type', drop = FALSE][[1]]
+    names(spreadsheets)[i] <- phys_name
     url <- links[i, 'link', drop = FALSE][[1]]
     df <- unique(utils::read.csv(url))
+    df[['Attribute_type']] <- attr_type
+    df[['Attribute_group']] <- phys_name
     df[['NCBI_ID']] <- as.character(df[['NCBI_ID']])
+    df <- df[!is.na(df[['Attribute_value']]),]
+    df <- .addSourceInfo(df)
+    if (attr_type %in% c('numeric', 'range')) {
+      df <- .modifyRange(df)
+    }
     spreadsheets[[i]] <- df
   }
-  ## TODO This is the place to convert numeric to rangesRemove NAs from Attribute_value.
-  ## Append information:
   ## Append taxonomy information.
-  ## Append type of physiology and physiology group information.
   return(spreadsheets)
 }
