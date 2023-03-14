@@ -101,9 +101,40 @@
 </h2>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">phys</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/physiologies.html">physiologies</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Warning: Missing columns in biosafety level. Missing columns are: Accession_ID</span></span>
+<span><span class="co">#&gt; Warning: Missing columns in country. Missing columns are: Accession_ID</span></span>
+<span><span class="co">#&gt; Warning: Missing columns in geographic location. Missing columns are:</span></span>
+<span><span class="co">#&gt; Accession_ID</span></span>
+<span><span class="co">#&gt; Warning: Missing columns in halophily. Missing columns are: Accession_ID</span></span>
+<span><span class="co">#&gt; Warning: Missing columns in hemolysis. Missing columns are: Accession_ID</span></span>
+<span><span class="co">#&gt; Warning: Missing columns in metabolite utilization. Missing columns are:</span></span>
+<span><span class="co">#&gt; Accession_ID</span></span>
+<span></span>
+<span><span class="co">#&gt; Warning: Missing columns in metabolite utilization. Missing columns are:</span></span>
+<span><span class="co">#&gt; Accession_ID</span></span>
+<span><span class="co">#&gt; Warning: Missing columns in motility. Missing columns are: Accession_ID</span></span>
+<span><span class="co">#&gt; Warning: Missing columns in pathogenicity human. Missing columns are:</span></span>
+<span><span class="co">#&gt; Accession_ID</span></span>
+<span><span class="co">#&gt; Warning: Missing columns in spore formation. Missing columns are: Accession_ID</span></span>
 <span></span>
 <span><span class="va">taxa_names</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">'Escherichia coli'</span>, <span class="st">'Staphylococcus aureus'</span><span class="op">)</span></span>
 <span><span class="va">phys_names</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/getPhysiologies.html">getPhysiologies</a></span><span class="op">(</span><span class="va">taxa_names</span>, <span class="va">phys</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Warning: Unknown or uninitialised column: `Attribute_value`.</span></span>
+<span><span class="co">#&gt; Warning: Unknown or uninitialised column: `Attribute_value`.</span></span>
+<span><span class="co">#&gt; Unknown or uninitialised column: `Attribute_value`.</span></span>
+<span><span class="co">#&gt; Unknown or uninitialised column: `Attribute_value`.</span></span>
+<span><span class="co">#&gt; Unknown or uninitialised column: `Attribute_value`.</span></span>
+<span><span class="co">#&gt; Unknown or uninitialised column: `Attribute_value`.</span></span>
+<span><span class="co">#&gt; Unknown or uninitialised column: `Attribute_value`.</span></span>
+<span><span class="co">#&gt; Unknown or uninitialised column: `Attribute_value`.</span></span>
+<span><span class="co">#&gt; Unknown or uninitialised column: `Attribute_value`.</span></span>
+<span><span class="co">#&gt; Unknown or uninitialised column: `Attribute_value`.</span></span>
+<span><span class="co">#&gt; Unknown or uninitialised column: `Attribute_value`.</span></span>
+<span><span class="co">#&gt; Unknown or uninitialised column: `Attribute_value`.</span></span>
+<span><span class="co">#&gt; Unknown or uninitialised column: `Attribute_value`.</span></span>
+<span><span class="co">#&gt; Unknown or uninitialised column: `Attribute_value`.</span></span>
+<span><span class="co">#&gt; Unknown or uninitialised column: `Attribute_value`.</span></span>
+<span><span class="co">#&gt; Unknown or uninitialised column: `Attribute_value`.</span></span>
 <span><span class="va">phys_names</span></span>
 <span><span class="co">#&gt; $`Escherichia coli`</span></span>
 <span><span class="co">#&gt; $`Escherichia coli`$aerophilicity</span></span>
@@ -120,9 +151,6 @@
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $`Escherichia coli`$`gram stain`</span></span>
 <span><span class="co">#&gt; [1] "gram stain negative"</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; $`Escherichia coli`$`growth temperature`</span></span>
-<span><span class="co">#&gt; [1] 37</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $`Escherichia coli`$habitat</span></span>
 <span><span class="co">#&gt; [1] "digestive system"    "feces"               "host-associated"    </span></span>
@@ -172,15 +200,6 @@
 <span><span class="co">#&gt; [41] "unknown"                                       </span></span>
 <span><span class="co">#&gt; [42] "urine"                                         </span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; $`Escherichia coli`$`mutation rate per site per generation`</span></span>
-<span><span class="co">#&gt; [1] 2.54</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; $`Escherichia coli`$`mutation rates per site per year`</span></span>
-<span><span class="co">#&gt; [1] 1.44</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; $`Escherichia coli`$`optimal ph`</span></span>
-<span><span class="co">#&gt; [1] 6.75</span></span>
-<span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $`Escherichia coli`$shape</span></span>
 <span><span class="co">#&gt; [1] "bacillus"</span></span>
 <span><span class="co">#&gt; </span></span>
@@ -209,20 +228,8 @@
 <span><span class="co">#&gt; $`Staphylococcus aureus`$`gram stain`</span></span>
 <span><span class="co">#&gt; [1] "gram stain positive"</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; $`Staphylococcus aureus`$`growth temperature`</span></span>
-<span><span class="co">#&gt; [1] 33.5</span></span>
-<span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $`Staphylococcus aureus`$habitat</span></span>
 <span><span class="co">#&gt; [1] "host-associated"     "not host-associated"</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; $`Staphylococcus aureus`$`mutation rate per site per generation`</span></span>
-<span><span class="co">#&gt; [1] 4.38</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; $`Staphylococcus aureus`$`mutation rates per site per year`</span></span>
-<span><span class="co">#&gt;  [1]  4.5 12.2 12.5 13.0 16.0 16.8 20.0 27.7 32.5 33.0 37.9</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; $`Staphylococcus aureus`$`optimal ph`</span></span>
-<span><span class="co">#&gt; [1] 6.5</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $`Staphylococcus aureus`$shape</span></span>
 <span><span class="co">#&gt; [1] "coccus"         "staphylococcus"</span></span></code></pre></div>
@@ -233,66 +240,82 @@
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">taxa_ids</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">'562'</span>, <span class="st">'1280'</span><span class="op">)</span></span>
 <span><span class="va">phys_ids</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/getPhysiologies.html">getPhysiologies</a></span><span class="op">(</span><span class="va">taxa_ids</span>, taxid.type <span class="op">=</span> <span class="st">'NCBI_ID'</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Importing acetate producing (numeric)</span></span>
-<span><span class="co">#&gt; Finished acetate producing</span></span>
-<span><span class="co">#&gt; Importing aerophilicity (logical)</span></span>
-<span><span class="co">#&gt; Finished aerophilicity</span></span>
-<span><span class="co">#&gt; Importing animal pathogen (logical)</span></span>
-<span><span class="co">#&gt; Finished animal pathogen</span></span>
-<span><span class="co">#&gt; Importing antimicrobial resistance (logical)</span></span>
-<span><span class="co">#&gt; Finished antimicrobial resistance</span></span>
-<span><span class="co">#&gt; Importing antimicrobial sensitivity (logical)</span></span>
-<span><span class="co">#&gt; Finished antimicrobial sensitivity</span></span>
-<span><span class="co">#&gt; Importing arrangement (logical)</span></span>
-<span><span class="co">#&gt; Finished arrangement</span></span>
-<span><span class="co">#&gt; Importing biofilm forming (logical)</span></span>
-<span><span class="co">#&gt; Finished biofilm forming</span></span>
-<span><span class="co">#&gt; Importing butyrate producing (numeric)</span></span>
-<span><span class="co">#&gt; Finished butyrate producing</span></span>
-<span><span class="co">#&gt; Importing COGEM pathogenicity rating (logical)</span></span>
-<span><span class="co">#&gt; Finished COGEM pathogenicity rating</span></span>
-<span><span class="co">#&gt; Importing disease association (logical)</span></span>
-<span><span class="co">#&gt; Finished disease association</span></span>
-<span><span class="co">#&gt; Importing extreme environment (logical)</span></span>
-<span><span class="co">#&gt; Finished extreme environment</span></span>
-<span><span class="co">#&gt; Importing gram stain (logical)</span></span>
-<span><span class="co">#&gt; Finished gram stain</span></span>
-<span><span class="co">#&gt; Importing growth medium (logical)</span></span>
-<span><span class="co">#&gt; Finished growth medium</span></span>
-<span><span class="co">#&gt; Importing growth temperature (numeric)</span></span>
-<span><span class="co">#&gt; Finished growth temperature</span></span>
-<span><span class="co">#&gt; Importing habitat (logical)</span></span>
-<span><span class="co">#&gt; Finished habitat</span></span>
-<span><span class="co">#&gt; Importing health associated (logical)</span></span>
-<span><span class="co">#&gt; Finished health associated</span></span>
-<span><span class="co">#&gt; Importing hydrogen gas producing (numeric)</span></span>
-<span><span class="co">#&gt; Finished hydrogen gas producing</span></span>
-<span><span class="co">#&gt; Importing isolation site (logical)</span></span>
-<span><span class="co">#&gt; Finished isolation site</span></span>
-<span><span class="co">#&gt; Importing lactate producing (numeric)</span></span>
-<span><span class="co">#&gt; Finished lactate producing</span></span>
-<span><span class="co">#&gt; Importing length (range)</span></span>
-<span><span class="co">#&gt; Finished length</span></span>
-<span><span class="co">#&gt; Importing mutation rate per site per generation (numeric)</span></span>
-<span><span class="co">#&gt; Finished mutation rate per site per generation</span></span>
-<span><span class="co">#&gt; Importing mutation rates per site per year (numeric)</span></span>
-<span><span class="co">#&gt; Finished mutation rates per site per year</span></span>
-<span><span class="co">#&gt; Importing optimal ph (numeric)</span></span>
-<span><span class="co">#&gt; Finished optimal ph</span></span>
-<span><span class="co">#&gt; Importing plant pathogenicity (logical)</span></span>
-<span><span class="co">#&gt; Finished plant pathogenicity</span></span>
-<span><span class="co">#&gt; Importing shape (logical)</span></span>
-<span><span class="co">#&gt; Finished shape</span></span>
-<span><span class="co">#&gt; Importing spore shape (logical)</span></span>
-<span><span class="co">#&gt; Finished spore shape</span></span>
-<span><span class="co">#&gt; Importing width (range)</span></span>
-<span><span class="co">#&gt; Finished width</span></span>
-<span><span class="co">#&gt; Importing genome size (numeric)</span></span>
-<span><span class="co">#&gt; Finished genome size</span></span>
-<span><span class="co">#&gt; Importing coding genes (numeric)</span></span>
-<span><span class="co">#&gt; Finished coding genes</span></span>
-<span><span class="co">#&gt; Importing sphingolipid producing (logical)</span></span>
-<span><span class="co">#&gt; Finished sphingolipid producing</span></span>
+<span><span class="co">#&gt; Importing physiology data. This might take a while...</span></span>
+<span><span class="co">#&gt; Finished acetate producing.</span></span>
+<span><span class="co">#&gt; Finished aerophilicity.</span></span>
+<span><span class="co">#&gt; Finished animal pathogen.</span></span>
+<span><span class="co">#&gt; Finished antimicrobial resistance.</span></span>
+<span><span class="co">#&gt; Finished antimicrobial sensitivity.</span></span>
+<span><span class="co">#&gt; Finished arrangement.</span></span>
+<span><span class="co">#&gt; Finished biofilm forming.</span></span>
+<span><span class="co">#&gt; Finished biosafety level.</span></span>
+<span><span class="co">#&gt; Finished butyrate producing.</span></span>
+<span><span class="co">#&gt; Finished coding genes.</span></span>
+<span><span class="co">#&gt; Finished COGEM pathogenicity rating.</span></span>
+<span><span class="co">#&gt; Finished country.</span></span>
+<span><span class="co">#&gt; Finished disease association.</span></span>
+<span><span class="co">#&gt; Finished extreme environment.</span></span>
+<span><span class="co">#&gt; Finished genome size.</span></span>
+<span><span class="co">#&gt; Finished geographic location.</span></span>
+<span><span class="co">#&gt; Finished gram stain.</span></span>
+<span><span class="co">#&gt; Finished growth medium.</span></span>
+<span><span class="co">#&gt; Finished growth temperature.</span></span>
+<span><span class="co">#&gt; Finished habitat.</span></span>
+<span><span class="co">#&gt; Finished halophily.</span></span>
+<span><span class="co">#&gt; Finished health associated.</span></span>
+<span><span class="co">#&gt; Finished hemolysis.</span></span>
+<span><span class="co">#&gt; Finished hydrogen gas producing.</span></span>
+<span><span class="co">#&gt; Finished isolation site.</span></span>
+<span><span class="co">#&gt; Finished lactate producing.</span></span>
+<span><span class="co">#&gt; Finished length.</span></span>
+<span><span class="co">#&gt; Finished metabolite production.</span></span>
+<span><span class="co">#&gt; Finished metabolite utilization.</span></span>
+<span><span class="co">#&gt; Finished motility.</span></span>
+<span><span class="co">#&gt; Finished mutation rate per site per generation.</span></span>
+<span><span class="co">#&gt; Finished mutation rates per site per year.</span></span>
+<span><span class="co">#&gt; Finished optimal ph.</span></span>
+<span><span class="co">#&gt; Finished pathogenicity human.</span></span>
+<span><span class="co">#&gt; Finished plant pathogenicity.</span></span>
+<span><span class="co">#&gt; Finished shape.</span></span>
+<span><span class="co">#&gt; Finished sphingolipid producing.</span></span>
+<span><span class="co">#&gt; Finished spore formation.</span></span>
+<span><span class="co">#&gt; Finished spore shape.</span></span>
+<span><span class="co">#&gt; Finished width.</span></span>
+<span><span class="co">#&gt; Warning: Missing columns in biosafety level. Missing columns are: Accession_ID</span></span>
+<span><span class="co">#&gt; Warning: Missing columns in country. Missing columns are: Accession_ID</span></span>
+<span><span class="co">#&gt; Warning: Missing columns in geographic location. Missing columns are:</span></span>
+<span><span class="co">#&gt; Accession_ID</span></span>
+<span><span class="co">#&gt; Warning: Missing columns in halophily. Missing columns are: Accession_ID</span></span>
+<span><span class="co">#&gt; Warning: Missing columns in hemolysis. Missing columns are: Accession_ID</span></span>
+<span><span class="co">#&gt; Warning: Missing columns in metabolite utilization. Missing columns are:</span></span>
+<span><span class="co">#&gt; Accession_ID</span></span>
+<span></span>
+<span><span class="co">#&gt; Warning: Missing columns in metabolite utilization. Missing columns are:</span></span>
+<span><span class="co">#&gt; Accession_ID</span></span>
+<span><span class="co">#&gt; Warning: Missing columns in motility. Missing columns are: Accession_ID</span></span>
+<span><span class="co">#&gt; Warning: Missing columns in pathogenicity human. Missing columns are:</span></span>
+<span><span class="co">#&gt; Accession_ID</span></span>
+<span><span class="co">#&gt; Warning: Missing columns in spore formation. Missing columns are: Accession_ID</span></span>
+<span><span class="co">#&gt; Warning: Unknown or uninitialised column: `Attribute_value`.</span></span>
+<span><span class="co">#&gt; Unknown or uninitialised column: `Attribute_value`.</span></span>
+<span><span class="co">#&gt; Unknown or uninitialised column: `Attribute_value`.</span></span>
+<span><span class="co">#&gt; Unknown or uninitialised column: `Attribute_value`.</span></span>
+<span><span class="co">#&gt; Unknown or uninitialised column: `Attribute_value`.</span></span>
+<span><span class="co">#&gt; Unknown or uninitialised column: `Attribute_value`.</span></span>
+<span><span class="co">#&gt; Unknown or uninitialised column: `Attribute_value`.</span></span>
+<span><span class="co">#&gt; Unknown or uninitialised column: `Attribute_value`.</span></span>
+<span><span class="co">#&gt; Unknown or uninitialised column: `Attribute_value`.</span></span>
+<span><span class="co">#&gt; Unknown or uninitialised column: `Attribute_value`.</span></span>
+<span><span class="co">#&gt; Unknown or uninitialised column: `Attribute_value`.</span></span>
+<span><span class="co">#&gt; Unknown or uninitialised column: `Attribute_value`.</span></span>
+<span><span class="co">#&gt; Unknown or uninitialised column: `Attribute_value`.</span></span>
+<span><span class="co">#&gt; Unknown or uninitialised column: `Attribute_value`.</span></span>
+<span><span class="co">#&gt; Unknown or uninitialised column: `Attribute_value`.</span></span>
+<span><span class="co">#&gt; Unknown or uninitialised column: `Attribute_value`.</span></span>
+<span><span class="co">#&gt; Unknown or uninitialised column: `Attribute_value`.</span></span>
+<span><span class="co">#&gt; Unknown or uninitialised column: `Attribute_value`.</span></span>
+<span><span class="co">#&gt; Unknown or uninitialised column: `Attribute_value`.</span></span>
+<span><span class="co">#&gt; Unknown or uninitialised column: `Attribute_value`.</span></span>
 <span><span class="va">phys_ids</span></span>
 <span><span class="co">#&gt; $`562`</span></span>
 <span><span class="co">#&gt; $`562`$aerophilicity</span></span>
@@ -312,9 +335,6 @@
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $`562`$`growth medium`</span></span>
 <span><span class="co">#&gt; [1] "tryptic soy agar"</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; $`562`$`growth temperature`</span></span>
-<span><span class="co">#&gt; [1] 10 15 20 25 30 35 37 40 43</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $`562`$habitat</span></span>
 <span><span class="co">#&gt; [1] "digestive system"    "feces"               "host-associated"    </span></span>
@@ -364,15 +384,6 @@
 <span><span class="co">#&gt; [41] "unknown"                                       </span></span>
 <span><span class="co">#&gt; [42] "urine"                                         </span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; $`562`$`mutation rate per site per generation`</span></span>
-<span><span class="co">#&gt; [1] 2.54</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; $`562`$`mutation rates per site per year`</span></span>
-<span><span class="co">#&gt; [1] 1.44</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; $`562`$`optimal ph`</span></span>
-<span><span class="co">#&gt; [1] 6.75</span></span>
-<span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $`562`$shape</span></span>
 <span><span class="co">#&gt; [1] "bacillus"</span></span>
 <span><span class="co">#&gt; </span></span>
@@ -393,53 +404,35 @@
 <span><span class="co">#&gt; $`1280`$`gram stain`</span></span>
 <span><span class="co">#&gt; [1] "gram stain positive"</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; $`1280`$`growth temperature`</span></span>
-<span><span class="co">#&gt; [1] 33.5</span></span>
-<span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $`1280`$habitat</span></span>
 <span><span class="co">#&gt; [1] "host-associated"     "not host-associated"</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; $`1280`$`mutation rate per site per generation`</span></span>
-<span><span class="co">#&gt; [1] 4.38</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; $`1280`$`mutation rates per site per year`</span></span>
-<span><span class="co">#&gt;  [1]  4.5 12.2 12.5 13.0 16.0 16.8 20.0 27.7 32.5 33.0 37.9</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; $`1280`$`optimal ph`</span></span>
-<span><span class="co">#&gt; [1] 6.5</span></span>
-<span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $`1280`$shape</span></span>
-<span><span class="co">#&gt; [1] "coccus"         "staphylococcus"</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; $`1280`$`genome size`</span></span>
-<span><span class="co">#&gt; [1] 2709797 2787689 2823087</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; $`1280`$`coding genes`</span></span>
-<span><span class="co">#&gt; [1] 2500 2595 2628</span></span></code></pre></div>
+<span><span class="co">#&gt; [1] "coccus"         "staphylococcus"</span></span></code></pre></div>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">sessioninfo</span><span class="fu">::</span><span class="fu"><a href="https://r-lib.github.io/sessioninfo/reference/session_info.html" class="external-link">session_info</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #00BBBB; font-weight: bold;">─ Session info ───────────────────────────────────────────────────────────────</span></span></span>
 <span><span class="co">#&gt;  <span style="color: #555555; font-style: italic;">setting </span> <span style="color: #555555; font-style: italic;">value</span></span></span>
-<span><span class="co">#&gt;  version  R Under development (unstable) (2023-02-22 r83892)</span></span>
-<span><span class="co">#&gt;  os       Ubuntu 22.04.1 LTS</span></span>
+<span><span class="co">#&gt;  version  R Under development (unstable) (2023-03-09 r83957)</span></span>
+<span><span class="co">#&gt;  os       Ubuntu 22.04.2 LTS</span></span>
 <span><span class="co">#&gt;  system   x86_64, linux-gnu</span></span>
 <span><span class="co">#&gt;  ui       X11</span></span>
 <span><span class="co">#&gt;  language en</span></span>
 <span><span class="co">#&gt;  collate  en_US.UTF-8</span></span>
 <span><span class="co">#&gt;  ctype    en_US.UTF-8</span></span>
 <span><span class="co">#&gt;  tz       Etc/UTC</span></span>
-<span><span class="co">#&gt;  date     2023-03-02</span></span>
+<span><span class="co">#&gt;  date     2023-03-14</span></span>
 <span><span class="co">#&gt;  pandoc   2.19.2 @ /usr/local/bin/ (via rmarkdown)</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; <span style="color: #00BBBB; font-weight: bold;">─ Packages ───────────────────────────────────────────────────────────────────</span></span></span>
 <span><span class="co">#&gt;  <span style="color: #555555; font-style: italic;">package    </span> <span style="color: #555555; font-style: italic;">*</span> <span style="color: #555555; font-style: italic;">version</span> <span style="color: #555555; font-style: italic;">date (UTC)</span> <span style="color: #555555; font-style: italic;">lib</span> <span style="color: #555555; font-style: italic;">source</span></span></span>
-<span><span class="co">#&gt;  ape           5.7     <span style="color: #555555;">2023-02-16</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
+<span><span class="co">#&gt;  ape           5.7-1   <span style="color: #555555;">2023-03-13</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
 <span><span class="co">#&gt;  bit           4.0.5   <span style="color: #555555;">2022-11-15</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
 <span><span class="co">#&gt;  bit64         4.0.5   <span style="color: #555555;">2020-08-30</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
 <span><span class="co">#&gt;  blob          1.2.3   <span style="color: #555555;">2022-04-10</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
 <span><span class="co">#&gt;  bold          1.2.0   <span style="color: #555555;">2021-05-11</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
 <span><span class="co">#&gt;  bslib         0.4.2   <span style="color: #555555;">2022-12-16</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
-<span><span class="co">#&gt;  bugphyzz    * 0.0.1.3 <span style="color: #555555;">2023-03-02</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">local</span></span></span>
+<span><span class="co">#&gt;  bugphyzz    * 0.0.1.3 <span style="color: #555555;">2023-03-14</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">local</span></span></span>
 <span><span class="co">#&gt;  cachem        1.0.7   <span style="color: #555555;">2023-02-24</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
 <span><span class="co">#&gt;  cli           3.6.0   <span style="color: #555555;">2023-01-09</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
 <span><span class="co">#&gt;  codetools     0.2-19  <span style="color: #555555;">2023-02-01</span> <span style="color: #555555;">[2]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
@@ -483,7 +476,7 @@
 <span><span class="co">#&gt;  rappdirs      0.3.3   <span style="color: #555555;">2021-01-31</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
 <span><span class="co">#&gt;  Rcpp          1.0.10  <span style="color: #555555;">2023-01-22</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
 <span><span class="co">#&gt;  reshape       0.8.9   <span style="color: #555555;">2022-04-12</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
-<span><span class="co">#&gt;  rlang         1.0.6   <span style="color: #555555;">2022-09-24</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
+<span><span class="co">#&gt;  rlang         1.1.0   <span style="color: #555555;">2023-03-14</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
 <span><span class="co">#&gt;  rmarkdown     2.20    <span style="color: #555555;">2023-01-19</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
 <span><span class="co">#&gt;  rprojroot     2.0.3   <span style="color: #555555;">2022-04-02</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
 <span><span class="co">#&gt;  RSQLite       2.3.0   <span style="color: #555555;">2023-02-17</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
@@ -495,7 +488,7 @@
 <span><span class="co">#&gt;  taxize        0.9.100 <span style="color: #555555;">2022-04-22</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
 <span><span class="co">#&gt;  taxizedb      0.3.0   <span style="color: #555555;">2021-01-15</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
 <span><span class="co">#&gt;  textshaping   0.3.6   <span style="color: #555555;">2021-10-13</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
-<span><span class="co">#&gt;  tibble        3.1.8   <span style="color: #555555;">2022-07-22</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
+<span><span class="co">#&gt;  tibble        3.2.0   <span style="color: #555555;">2023-03-08</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
 <span><span class="co">#&gt;  tidyr         1.3.0   <span style="color: #555555;">2023-01-24</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
 <span><span class="co">#&gt;  tidyselect    1.2.0   <span style="color: #555555;">2022-10-10</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
 <span><span class="co">#&gt;  utf8          1.2.3   <span style="color: #555555;">2023-01-31</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>

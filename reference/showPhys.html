@@ -71,9 +71,16 @@ the <code><a href="physiologies.html">physiologies</a></code> function.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">showPhys</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">showPhys</span><span class="op">(</span>which_names <span class="op">=</span> <span class="st">"all"</span><span class="op">)</span></span></code></pre></div>
     </div>
 
+    <div id="arguments">
+    <h2>Arguments</h2>
+    <dl><dt>which_names</dt>
+<dd><p>A character string. Options: 'all' (default),
+'spreadsheets', 'bacdive'.</p></dd>
+
+</dl></div>
     <div id="value">
     <h2>Value</h2>
     
@@ -83,7 +90,85 @@ the <code><a href="physiologies.html">physiologies</a></code> function.</p>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu">showPhys</span><span class="op">(</span><span class="op">)</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">showPhys</span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] "COGEM pathogenicity rating"           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [2] "acetate producing"                    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [3] "aerophilicity"                        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [4] "animal pathogen"                      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [5] "antimicrobial resistance"             </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [6] "antimicrobial sensitivity"            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [7] "arrangement"                          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [8] "biofilm forming"                      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [9] "biosafety level"                      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [10] "butyrate producing"                   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [11] "coding genes"                         </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [12] "country"                              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [13] "disease association"                  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [14] "extreme environment"                  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [15] "genome size"                          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [16] "geographic location"                  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [17] "gram stain"                           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [18] "growth medium"                        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [19] "growth temperature"                   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [20] "habitat"                              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [21] "halophily"                            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [22] "health associated"                    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [23] "hemolysis"                            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [24] "hydrogen gas producing"               </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [25] "isolation site"                       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [26] "lactate producing"                    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [27] "length"                               </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [28] "metabolite production"                </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [29] "metabolite utilization"               </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [30] "motility"                             </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [31] "mutation rate per site per generation"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [32] "mutation rates per site per year"     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [33] "optimal ph"                           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [34] "pathogenicity human"                  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [35] "plant pathogenicity"                  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [36] "shape"                                </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [37] "sphingolipid producing"               </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [38] "spore formation"                      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [39] "spore shape"                          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [40] "width"                                </span>
+<span class="r-in"><span><span class="fu">showPhys</span><span class="op">(</span><span class="st">'bacdive'</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] "aerophilicity"          "animal pathogen"        "biosafety level"       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [4] "country"                "growth medium"          "geographic location"   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [7] "gram stain"             "halophily"              "hemolysis"             </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [10] "isolation site"         "metabolite production"  "metabolite utilization"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [13] "motility"               "pathogenicity human"    "shape"                 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [16] "spore formation"        "growth temperature"    </span>
+<span class="r-in"><span><span class="fu">showPhys</span><span class="op">(</span><span class="st">'spreadsheets'</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] "acetate producing"                    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [2] "aerophilicity"                        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [3] "animal pathogen"                      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [4] "antimicrobial resistance"             </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [5] "antimicrobial sensitivity"            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [6] "arrangement"                          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [7] "biofilm forming"                      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [8] "butyrate producing"                   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [9] "COGEM pathogenicity rating"           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [10] "disease association"                  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [11] "extreme environment"                  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [12] "gram stain"                           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [13] "growth medium"                        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [14] "growth temperature"                   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [15] "habitat"                              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [16] "health associated"                    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [17] "hydrogen gas producing"               </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [18] "isolation site"                       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [19] "lactate producing"                    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [20] "length"                               </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [21] "mutation rate per site per generation"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [22] "mutation rates per site per year"     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [23] "optimal ph"                           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [24] "plant pathogenicity"                  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [25] "shape"                                </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [26] "spore shape"                          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [27] "width"                                </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [28] "genome size"                          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [29] "coding genes"                         </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [30] "sphingolipid producing"               </span>
 </code></pre></div>
     </div>
   </div>
