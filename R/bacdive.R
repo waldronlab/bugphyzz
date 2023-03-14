@@ -92,6 +92,7 @@
   x_ <- dplyr::case_when(x_ == 'yes' ~ TRUE, x_ == 'no' ~ FALSE)
   split_df[['animal pathogen']][['Attribute_value']] <- x_
   split_df[['animal pathogen']][['Attribute_group']] <- 'animal pathogen'
+  split_df[['animal pathogen']][['Attribute']] <- 'animal pathogen'
   split_df[['animal pathogen']][['Attribute_type']] <- 'logical'
 
   ## biosafety level
