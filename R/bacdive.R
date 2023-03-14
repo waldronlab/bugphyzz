@@ -292,6 +292,7 @@
     } else if (unique(x[['Attribute_type']] == 'range')) {
       x <- .modifyRange(x)
     }
+    x <- x[,purrr::map_lgl(x, ~ !all(is.na(.x)))]
     dplyr::distinct(x)
     # x <- .addSourceInfo(x)
   })
