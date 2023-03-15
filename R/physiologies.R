@@ -81,7 +81,7 @@ physiologies <- function(
         ~ stringr::str_squish(stringr::str_to_lower(.x))
       ) |>
       dplyr::distinct()
-    if (remove_false) {
+    if (remove_false && 'Attribute_value' %in% colnames(df)) {
       df <- dplyr::filter(df, !Attribute_value == FALSE)
     }
     if (full_source) {
