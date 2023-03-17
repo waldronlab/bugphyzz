@@ -37,7 +37,7 @@ valid_ranks <- c(
 )
 
 taxonomies <- map(taxonomies, ~ filter(.x, rank %in% valid_ranks))
-taxonomies <- discard(taxonomies, ~ nrow(.x) => 2)
+taxonomies <- discard(taxonomies, ~ nrow(.x) <= 2)
 
 ## Get parents
 parents <- taxonomies %>%
