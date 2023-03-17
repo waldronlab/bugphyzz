@@ -1,5 +1,3 @@
-## TODO create fuction numeric to range.
-## fix where I use modify range for both.
 
 #' Import physiologies
 #'
@@ -93,7 +91,7 @@ physiologies <- function(
       name = unique(df$Attribute_group),
       attr_type = unique(df$Attribute_type)
     )
-    df
+    df[, vapply(df, \(y) !all(is.na(y)), logical(1))]
   })
   return(physiologies)
 }
@@ -255,8 +253,8 @@ showPhys <- function(which_names = 'all') {
   df <- df |>
     dplyr::group_by(.data$NCBI_ID, .data$Taxon_name) |>
     dplyr::mutate(
-      Attribute_value_min = as.double(Attribute_value),
-      Attribute_value_max = as.double(Attribute_value),
+      Attribute_value_min = as.double(.data$Attribute_value),
+      Attribute_value_max = as.double(.data$Attribute_value),
       Attribute_type = 'range'
     ) |>
     dplyr::ungroup() |>
