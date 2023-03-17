@@ -248,11 +248,11 @@ name(s) of the dataset(s) that will be imported.</p>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> 304077  <span style="color: #BB0000;">NA</span>        <span style="color: #949494;">""</span>          Acetob… aerobic TRUE    https:… tas     always </span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> 146474  <span style="color: #BB0000;">NA</span>        <span style="color: #949494;">""</span>          Acetob… aerobic TRUE    https:… tas     always </span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># … with 29,601 more rows, 9 more variables: Confidence_in_curation &lt;chr&gt;,</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;">#   Attribute_type &lt;chr&gt;, Attribute_group &lt;chr&gt;, Rank &lt;chr&gt;,</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;">#   Parent_NCBI_ID &lt;chr&gt;, Parent_name &lt;chr&gt;, Parent_rank &lt;chr&gt;,</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;">#   BacDive_ID &lt;int&gt;, Type_strain &lt;chr&gt;, and abbreviated variable names</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;">#   ¹​Accession_ID, ²​Taxon_name, ³​Attribute, ⁴​Attribute_value,</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;">#   ⁵​Attribute_source, ⁶​Evidence, ⁷​Frequency</span></span></span></code></pre></div>
+<span><span class="co">#&gt; <span style="color: #949494;">#   Attribute_type &lt;chr&gt;, Attribute_group &lt;chr&gt;, Rank &lt;chr&gt;, Parent_name &lt;chr&gt;,</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;">#   Parent_NCBI_ID &lt;chr&gt;, Parent_rank &lt;chr&gt;, BacDive_ID &lt;int&gt;,</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;">#   Type_strain &lt;chr&gt;, and abbreviated variable names ¹​Accession_ID,</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;">#   ²​Taxon_name, ³​Attribute, ⁴​Attribute_value, ⁵​Attribute_source, ⁶​Evidence,</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;">#   ⁷​Frequency</span></span></span></code></pre></div>
 <p>A dataset with numeric attribute values:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">ph</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/as_tibble.html" class="external-link">as_tibble</a></span><span class="op">(</span><span class="fu"><a href="../reference/physiologies.html">physiologies</a></span><span class="op">(</span><span class="st">'optimal ph'</span><span class="op">)</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span><span class="op">)</span></span>
@@ -273,7 +273,7 @@ name(s) of the dataset(s) that will be imported.</p>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> 405212  Alicyclobaci… optima…    3.5     3.5  https:… nas     unknown low    </span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> 61645   Enterobacter… optima…    3.5     3.5  https:… nas     unknown low    </span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># … with 876 more rows, 6 more variables: Attribute_type &lt;chr&gt;,</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;">#   Attribute_group &lt;chr&gt;, Rank &lt;chr&gt;, Parent_NCBI_ID &lt;chr&gt;, Parent_name &lt;chr&gt;,</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;">#   Attribute_group &lt;chr&gt;, Rank &lt;chr&gt;, Parent_name &lt;chr&gt;, Parent_NCBI_ID &lt;chr&gt;,</span></span></span>
 <span><span class="co">#&gt; <span style="color: #949494;">#   Parent_rank &lt;chr&gt;, and abbreviated variable names ¹​Attribute,</span></span></span>
 <span><span class="co">#&gt; <span style="color: #949494;">#   ²​Attribute_value_max, ³​Attribute_value_min, ⁴​Attribute_source, ⁵​Evidence,</span></span></span>
 <span><span class="co">#&gt; <span style="color: #949494;">#   ⁶​Frequency, ⁷​Confidence_in_curation</span></span></span></code></pre></div>
@@ -381,7 +381,7 @@ bacteria):</p>
 <code class="sourceCode R"><span><span class="fu">sessioninfo</span><span class="fu">::</span><span class="fu"><a href="https://r-lib.github.io/sessioninfo/reference/session_info.html" class="external-link">session_info</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #00BBBB; font-weight: bold;">─ Session info ───────────────────────────────────────────────────────────────</span></span></span>
 <span><span class="co">#&gt;  <span style="color: #555555; font-style: italic;">setting </span> <span style="color: #555555; font-style: italic;">value</span></span></span>
-<span><span class="co">#&gt;  version  R Under development (unstable) (2023-03-09 r83957)</span></span>
+<span><span class="co">#&gt;  version  R Under development (unstable) (2023-03-16 r83996)</span></span>
 <span><span class="co">#&gt;  os       Ubuntu 22.04.2 LTS</span></span>
 <span><span class="co">#&gt;  system   x86_64, linux-gnu</span></span>
 <span><span class="co">#&gt;  ui       X11</span></span>
