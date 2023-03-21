@@ -91,7 +91,7 @@ physiologies <- function(
       name = unique(df$Attribute_group),
       attr_type = unique(df$Attribute_type)
     )
-    df[, vapply(df, \(y) !all(is.na(y)), logical(1))]
+    as.data.frame(df[, vapply(df, \(y) !all(is.na(y)), logical(1))])
   })
   return(physiologies)
 }
