@@ -294,7 +294,8 @@
       x <- .modifyRange(x)
     }
     x <- x[,purrr::map_lgl(x, ~ !all(is.na(.x)))]
-    dplyr::distinct(x)
+    x <- dplyr::distinct(x)
+    as.data.frame(x)
     # x <- .addSourceInfo(x)
   })
 
