@@ -84,6 +84,18 @@
     split_df[[attr_names[i]]] <- .catToLog(split_df[[attr_names[i]]])
   }
 
+  ## aerophilicity
+  aer <- split_df[['aerophilicity']]
+  aer$Attribute <- case_when(
+    aer$Attribute == 'aerobe' ~ 'aerobic',
+    aer$Attribute == 'anaerobe' ~ 'anaerobic',
+    aer$Attribute == 'facultative anaerobe' ~ 'facultatively anaerobic',
+    aer$Attribute == 'microaerophile' ~ 'microaerophilic',
+    aer$Attribute == 'obligate anaerobe' ~ 'obligately anaerobic',
+    TRUE ~ aer$Attribute
+  )
+  split_df[['aerophilicity']]
+
   ## animal pathogen
   pos <- names(split_df) == 'animal pathongen'
   names(split_df)[pos] <- 'animal pathogen'
