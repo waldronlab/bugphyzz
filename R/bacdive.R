@@ -86,7 +86,7 @@
 
   ## aerophilicity
   aer <- split_df[['aerophilicity']]
-  aer$Attribute <- case_when(
+  aer$Attribute <- dplyr::case_when(
     aer$Attribute == 'aerobe' ~ 'aerobic',
     aer$Attribute == 'anaerobe' ~ 'anaerobic',
     aer$Attribute == 'facultative anaerobe' ~ 'facultatively anaerobic',
