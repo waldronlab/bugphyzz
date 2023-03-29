@@ -1,6 +1,6 @@
 library(bugphyzz)
-library(purrr)
-bp <- importBugphyzz()
+##
+bp <- importBugphyzz(keyword = 'all', version = 'devel', cache = FALSE)
 sigs <- getBugphyzzSignatures(
   bp, tax.id.type = 'Taxon_name', tax.level = 'order', frequency = 'always'
 )
