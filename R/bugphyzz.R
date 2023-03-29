@@ -31,15 +31,15 @@ importBugphyzz <- function(keyword = 'all', version = 'devel', cache = TRUE) {
     col_types = vroom::cols(NCBI_ID = vroom::col_character())
   )
   if ('all' %in% keyword) {
-    output <- split(bp, factor(bp$Attribute_group))
-    output <- purrr::map(output, ~ purrr::discard(.x, ~all(is.na(.x))))
-    return(output)
+    # output <- split(bp, factor(bp$Attribute_group))
+    # output <- purrr::map(output, ~ purrr::discard(.x, ~all(is.na(.x))))
+    return(bp)
   }
   bp <- bp |>
     dplyr::filter(.data$Attribute %in% keyword)
-  output <- split_df(bp, factor(bp$Attribute_group))
-  output <- purrr::map(output, ~ purrr::discard(.x, ~all(is.na(.x))))
-  return(output)
+  # output <- split_df(bp, factor(bp$Attribute_group))
+  # output <- purrr::map(output, ~ purrr::discard(.x, ~all(is.na(.x))))
+  return(bp)
 }
 
 #' Get Bugphyzz Signatures
@@ -80,7 +80,7 @@ getBugphyzzSignatures <- function(
     'strain'
   )
   if (tax.level == 'mixed') {
-    tax.level = valid_ranks
+    tax.level <- valid_ranks
   }
   df <- df[which(df$Rank %in% tax.level),]
   df <- df[which(df$Evidence %in% evidence), ]
@@ -89,5 +89,4 @@ getBugphyzzSignatures <- function(
   output <- lapply(output, function(x) unique(x[[tax.id.type]]))
   output <- purrr::discard(output, ~ length(.x) < min.size)
   return(output)
-
 }
