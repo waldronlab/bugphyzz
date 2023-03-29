@@ -84,6 +84,19 @@
     split_df[[attr_names[i]]] <- .catToLog(split_df[[attr_names[i]]])
   }
 
+  ## aerophilicity
+  aer <- split_df[['aerophilicity']]
+  aer$Attribute <- dplyr::case_when(
+    aer$Attribute == 'aerobe' ~ 'aerobic',
+    aer$Attribute == 'anaerobe' ~ 'anaerobic',
+    aer$Attribute == 'facultative anaerobe' ~ 'facultatively anaerobic',
+    aer$Attribute == 'microaerophile' ~ 'microaerophilic',
+    aer$Attribute == 'obligate anaerobe' ~ 'obligately anaerobic',
+    aer$Attribute == 'obligate aerobe' ~ 'obligately aerobic',
+    TRUE ~ aer$Attribute
+  )
+  split_df[['aerophilicity']] <- aer
+
   ## animal pathogen
   pos <- names(split_df) == 'animal pathongen'
   names(split_df)[pos] <- 'animal pathogen'
@@ -92,6 +105,7 @@
   x_ <- dplyr::case_when(x_ == 'yes' ~ TRUE, x_ == 'no' ~ FALSE)
   split_df[['animal pathogen']][['Attribute_value']] <- x_
   split_df[['animal pathogen']][['Attribute_group']] <- 'animal pathogen'
+  split_df[['animal pathogen']][['Attribute']] <- 'animal pathogen'
   split_df[['animal pathogen']][['Attribute_type']] <- 'logical'
 
   ## biosafety level
@@ -129,7 +143,7 @@
   ab <- ab[ab[['growth']] == 'positive',]
   ab[['growth']] <- NULL
   ab[['Attribute_group']] <- 'growth temperature'
-  ab[['Attribute_type']] <- 'numeric'
+  ab[['Attribute_type']] <- 'range'
   ab[['Attribute']] <- 'growth temperature'
   split_df[['growth temperature']] <- ab
   split_df[['culture temperature']] <- NULL
@@ -287,10 +301,14 @@
     x[['Parent_NCBI_ID']] <- as.character(x[['Parent_NCBI_ID']])
     x[['Frequency']] <- 'always'
     x <- x[!is.na(x[['Attribute_value']]),]
-    if (unique(x[['Attribute_type']]) %in% c('numeric', 'range')) {
+    if (unique(x[['Attribute_type']]) == 'numeric') {
+      x <- .numericToRange(x)
+    } else if (unique(x[['Attribute_type']] == 'range')) {
       x <- .modifyRange(x)
     }
-    dplyr::distinct(x)
+    x <- x[,purrr::map_lgl(x, ~ !all(is.na(.x)))]
+    x <- dplyr::distinct(x)
+    as.data.frame(x)
     # x <- .addSourceInfo(x)
   })
 

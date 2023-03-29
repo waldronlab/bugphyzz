@@ -114,14 +114,6 @@ You can use the `keyword = "all"` to import all of the datasets:
 phys <- map(physiologies(keyword = "all"), as_tibble)
 ```
 
-A separate function is provided to import the fatty acid compositions dataset,
-`fattyAcidComposition`. This function takes no arguments and returns a single
-data.frame object:
-
-```{r}
-fac <- as_tibble(fattyAcidComposition())
-fac
-```
 
 ## Some examples of how to create signatures
 
