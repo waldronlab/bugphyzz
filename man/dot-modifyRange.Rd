@@ -14,6 +14,5 @@ A data.frame.
 }
 \description{
 \code{.modifyRange} imports a dataset labeled with "range" in
-\code{curationLinks}.
 }
 \keyword{internal}

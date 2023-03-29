@@ -1,5 +1,3 @@
-## TODO create fuction numeric to range.
-## corrent where I use modify range for both.
 
 #' Import physiologies
 #'
@@ -24,6 +22,7 @@
 physiologies <- function(
     keyword = 'all', remove_false = FALSE, full_source = TRUE
 ) {
+  message('Importing physiology data. This might take a while...')
   keyword <- unique(sort(keyword))
   valid_keywords <- showPhys()
 
@@ -80,7 +79,7 @@ physiologies <- function(
         ~ stringr::str_squish(stringr::str_to_lower(.x))
       ) |>
       dplyr::distinct()
-    if (remove_false) {
+    if (remove_false && 'Attribute_value' %in% colnames(df)) {
       df <- dplyr::filter(df, !Attribute_value == FALSE)
     }
     if (full_source) {
@@ -92,94 +91,14 @@ physiologies <- function(
       name = unique(df$Attribute_group),
       attr_type = unique(df$Attribute_type)
     )
-    df
+    as.data.frame(df[, vapply(df, \(y) !all(is.na(y)), logical(1))])
   })
   return(physiologies)
-}
-
-#' Import physiology
-#'
-#' \code{.importPhysiology} imports a physiology directly from one row of the
-#' \code{curationLinks} output.
-#'
-#' @param x A row from the output of \code{curationLinks()}.
-#' @param remove_false If TRUE, attributes with FALSE values are dropped.
-#' Default is FALSE (all values included).
-#' @param full_source if TRUE, the full source is displayed. Otherwise, an
-#' abbreviated form.
-#'
-#' @keywords internal
-#'
-#' @return A data frame.
-#'
-.importPhysiology <- function(x, remove_false, full_source) {
-
-  link <- x$link
-  attr_grp <- x$physiology
-  attr_type <- x$sig_type
-
-  df <- dplyr::distinct(utils::read.csv(link))
-  df$NCBI_ID <- stringr::str_squish(tolower(as.character(df$NCBI_ID)))
-
-  if (remove_false)
-    df <- dplyr::filter(df, !Attribute_value == FALSE)
-
-  ## Remove missing data from the Attribute_value column
-  nmissing <- sum(is.na(df$Attribute_value))
-  if (nmissing > 0) {
-    message(
-      "Dropped ", nmissing, " rows with missing Attribute_value from ",
-      attr_grp
-    )
-  }else{
-    message("Finished ", attr_grp)
-  }
-  df <- df[!is.na(df$Attribute_value), ]
-
-  ## Add rank and parent information for taxa with NCBI_ID
-  col_names <- colnames(df)
-  parent_col_names <- c('Parent_name', 'Parent_NCBI_ID', 'Parent_rank')
-  if (all(parent_col_names %in% col_names)) {
-    df$Parent_NCBI_ID <- stringr::str_squish(as.character(df$Parent_NCBI_ID))
-  } else {
-    rp <- ranks_parents # ranks_parents is a data.frame object in bugphyzz
-    rp$NCBI_ID <- as.character(rp$NCBI_ID)
-    rp$Parent_NCBI_ID <- as.character(rp$Parent_NCBI_ID)
-    df <- dplyr::left_join(df, rp, by = "NCBI_ID")
-  }
-
-  ## Some general modification for the datasets
-  df <- df |>
-    purrr::modify_if(.p = is.character, ~ stringr::str_squish(.x)) |>
-    .addSourceInfo() |>
-    purrr::modify_at(
-      .at = c('Frequency', 'Evidence', 'Confidence_in_curation'),
-      ~ stringr::str_squish(stringr::str_to_lower(.x))
-    ) |>
-    dplyr::distinct()
-
-  ## Special modification for range values
-  if (attr_type == 'range')
-    df <- dplyr::distinct(.modifyRange(df))
-
-  df <- .reorderColumns(df,name = attr_grp, attr_type = attr_type)
-  ## Add some extra columns for attribute group (physiology) and
-  ## type of signature (this will be relevant for creating signatures).
-  df$Attribute_type <- attr_type
-  df$Attribute_group <- attr_grp
-
-  ## Change source if needed
-  if (full_source) {
-    df$Attribute_source <- df$full_source
-  }
-  df$full_source <- NULL
-  return(df)
 }
 
 #' Modify attributes of type range
 #'
 #' \code{.modifyRange} imports a dataset labeled with "range" in
-#' \code{curationLinks}.
 #'
 #' @param df A data frame.
 #'
@@ -248,7 +167,6 @@ physiologies <- function(
 #' showPhys('bacdive')
 #' showPhys('spreadsheets')
 showPhys <- function(which_names = 'all') {
-  # spreadsheet_phys <- curationLinks()[["physiology"]]
   fname <- system.file('extdata/links.tsv', package = 'bugphyzz')
   links <- utils::read.table(fname, header = TRUE, sep = '\t')
   spreadsheet_phys <- links[['physiology']]
@@ -312,13 +230,15 @@ showPhys <- function(which_names = 'all') {
     df[['NCBI_ID']] <- as.character(df[['NCBI_ID']])
     df <- df[!is.na(df[['Attribute_value']]),]
     # df <- .addSourceInfo(df)
-    if (attr_type %in% c('numeric', 'range')) {
+    if (unique(df[['Attribute_type']]) == 'numeric') {
+      df <- .numericToRange(df)
+    } else if (unique(df[['Attribute_type']] == 'range')) {
       df <- .modifyRange(df)
     }
     if (all(parent_col_names %in% colnames(df))) {
       df$Parent_NCBI_ID <- stringr::str_squish(as.character(df$Parent_NCBI_ID))
     } else {
-        rp <- ranks_parents # ranks_parents is a data.frame object in bugphyzz
+        rp <- ranks_parents # ranks_parents is a data.frame internal object in bugphyzz
         rp$NCBI_ID <- as.character(rp$NCBI_ID)
         rp$Parent_NCBI_ID <- as.character(rp$Parent_NCBI_ID)
         df <- dplyr::left_join(df, rp, by = "NCBI_ID")
@@ -326,4 +246,19 @@ showPhys <- function(which_names = 'all') {
     spreadsheets[[i]] <- df
   }
   return(spreadsheets)
+}
+
+## Helper function for making all numeric values into ranges
+.numericToRange <- function(df) {
+  df <- df |>
+    dplyr::group_by(.data$NCBI_ID, .data$Taxon_name) |>
+    dplyr::mutate(
+      Attribute_value_min = as.double(.data$Attribute_value),
+      Attribute_value_max = as.double(.data$Attribute_value),
+      Attribute_type = 'range'
+    ) |>
+    dplyr::ungroup() |>
+    dplyr::distinct()
+  df[['Attribute_value']] <- NULL
+  return(df)
 }
