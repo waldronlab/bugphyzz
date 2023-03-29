@@ -92,9 +92,10 @@
     aer$Attribute == 'facultative anaerobe' ~ 'facultatively anaerobic',
     aer$Attribute == 'microaerophile' ~ 'microaerophilic',
     aer$Attribute == 'obligate anaerobe' ~ 'obligately anaerobic',
+    aer$Attribute == 'obligate aerobe' ~ 'obligately aerobic',
     TRUE ~ aer$Attribute
   )
-  split_df[['aerophilicity']]
+  split_df[['aerophilicity']] <- aer
 
   ## animal pathogen
   pos <- names(split_df) == 'animal pathongen'
