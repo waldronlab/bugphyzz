@@ -2,7 +2,7 @@
 % Please edit documentation in R/bugphyzz.R
 \name{importBugphyzz}
 \alias{importBugphyzz}
-\title{Import bugphyzz as a single data.frame (or several?}
+\title{Import bugphyzz data as a single data.frame}
 \usage{
 importBugphyzz(keyword = "all", version = "devel", cache = TRUE)
 }
