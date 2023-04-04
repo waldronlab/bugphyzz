@@ -4,7 +4,11 @@
 \alias{importBugphyzzNumeric}
 \title{Import bugphyzz data as a list of numeric data.frames}
 \usage{
-importBugphyzzNumeric(keyword = "all", version = "devel", cache = TRUE)
+importBugphyzzNumeric(
+  keyword = "all",
+  version = "devel",
+  force_download = FALSE
+)
 }
 \arguments{
 \item{keyword}{Name of the numeric attributes.
@@ -14,7 +18,7 @@ Default value is 'all'.}
 \item{version}{Zenodo version of dataset. If 'devel' the data from
 the bugphyzzExports repo on GitHub will be downloaded.}
 
-\item{cache}{Whether use or not cached data. Default is TRUE.}
+\item{force_download}{use cache or a fresh download. Default is FALSE.}
 }
 \value{
 A list of data.frames.

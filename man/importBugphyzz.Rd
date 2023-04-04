@@ -4,14 +4,14 @@
 \alias{importBugphyzz}
 \title{Import bugphyzz data as a single data.frame}
 \usage{
-importBugphyzz(keyword = "all", version = "devel", cache = TRUE)
+importBugphyzz(keyword = "all", version = "devel", force_download = FALSE)
 }
 \arguments{
 \item{keyword}{The name of the physiology/attribute. Default is 'all'.}
 
 \item{version}{Version to download. Default is 'devel'.}
 
-\item{cache}{Use cache or use a fresh download.}
+\item{force_download}{Use cache or use a fresh download. Default is FALSE.}
 }
 \value{
 A list of data.frames (tibbles).

@@ -5,7 +5,7 @@
 #'
 #' @param keyword The name of the physiology/attribute. Default is 'all'.
 #' @param version Version to download. Default is 'devel'.
-#' @param cache Use cache or use a fresh download.
+#' @param force_download Use cache or use a fresh download. Default is FALSE.
 #'
 #' @return A list of data.frames (tibbles).
 #' @export
@@ -14,19 +14,24 @@
 #'
 #' bp <- importBugphyzz()
 #'
-importBugphyzz <- function(keyword = 'all', version = 'devel', cache = TRUE) {
-  if (cache) {
-    ## TODO add code for BiocFileCache
-  }
+importBugphyzz <- function(
+    keyword = 'all', version = 'devel', force_download = FALSE
+) {
+
   if (version == 'devel') {
     url <- 'https://github.com/waldronlab/bugphyzzExports/raw/sdgamboa/update-exports/full_dump_categorical.csv.bz2'
   }
-  temp_dir <- tempdir()
-  temp_file <- paste0(temp_dir, '/', 'full_dump_categorical.csv.bz2')
-  download.file(url = url, destfile = temp_file, quiet = TRUE)
+
+  rpath <- .getResource(
+    rname = 'full_dump_categorical.csv.bz2', url = url, verbose = TRUE,
+    force = force_download
+  )
+  # temp_dir <- tempdir()
+  # temp_file <- paste0(temp_dir, '/', 'full_dump_categorical.csv.bz2')
+  # download.file(url = url, destfile = temp_file, quiet = TRUE)
   ## Need to add skip = 1 to the vroom call when header is added to the text
   bp <- vroom::vroom(
-    file = temp_file, show_col_types = FALSE, delim = ',', progress = FALSE,
+    file = rpath, show_col_types = FALSE, delim = ',', progress = FALSE,
     col_types = vroom::cols(NCBI_ID = vroom::col_character())
   )
   if ('all' %in% keyword) {
@@ -52,7 +57,7 @@ importBugphyzz <- function(keyword = 'all', version = 'devel', cache = TRUE) {
 #' Default value is 'all'.
 #' @param version Zenodo version of dataset. If 'devel' the data from
 #' the bugphyzzExports repo on GitHub will be downloaded.
-#' @param cache Whether use or not cached data. Default is TRUE.
+#' @param force_download use cache or a fresh download. Default is FALSE.
 #'
 #' @return A list of data.frames.
 #' @export
@@ -61,19 +66,23 @@ importBugphyzz <- function(keyword = 'all', version = 'devel', cache = TRUE) {
 #'
 #' numeric <- importBugphyzzNumeric(version = 'devel', cache = TRUE)
 #'
-importBugphyzzNumeric <- function(keyword = 'all', version = 'devel', cache = TRUE) {
-  if (cache) {
-    ## TODO
-  }
+importBugphyzzNumeric <- function(
+    keyword = 'all', version = 'devel', force_download = FALSE
+) {
   if (version == 'devel') {
     url <- 'https://github.com/waldronlab/bugphyzzExports/raw/sdgamboa/update-exports/full_dump_numeric.csv.bz2'
   }
-  temp_dir <- tempdir()
-  temp_file <- paste0(temp_dir, '/', 'full_dump_numeric.csv.bz2')
-  download.file(url = url, destfile = temp_file, quiet = TRUE)
+  # temp_dir <- tempdir()
+  # temp_file <- paste0(temp_dir, '/', 'full_dump_numeric.csv.bz2')
+  # download.file(url = url, destfile = temp_file, quiet = TRUE)
   ## Need to add skip = 1 to the vroom call when header is added to the text
+
+  rpath <- .getResource(
+    rname = 'full_dump_numeric.csv.bz2', url = url, verbose = TRUE,
+    force = force_download
+  )
   bp <- vroom::vroom(
-    file = temp_file, show_col_types = FALSE, delim = ',', progress = FALSE,
+    file = rpath, show_col_types = FALSE, delim = ',', progress = FALSE,
     col_types = vroom::cols(NCBI_ID = vroom::col_character())
   )
   if ('all' %in% keyword) {
