@@ -2,7 +2,7 @@
 % Please edit documentation in R/bugphyzz.R
 \name{importBugphyzzNumeric}
 \alias{importBugphyzzNumeric}
-\title{Import bugphyzz data as a list of numeric data.frames}
+\title{Import bugphyzz (numeric/continuous data)}
 \usage{
 importBugphyzzNumeric(
   keyword = "all",
@@ -11,25 +11,36 @@ importBugphyzzNumeric(
 )
 }
 \arguments{
-\item{keyword}{Name of the numeric attributes.
-Use \code{showBugphyzzNumeric} to check valid values.
-Default value is 'all'.}
+\item{version}{Character string. The version to download. Default is 'devel'
+(current file on the GitHub repo waldronlab/bugphyzzExports).}
 
-\item{version}{Zenodo version of dataset. If 'devel' the data from
-the bugphyzzExports repo on GitHub will be downloaded.}
-
-\item{force_download}{use cache or a fresh download. Default is FALSE.}
+\item{force_download}{Logical value. Force a fresh download of the data or
+use the one stored in the cache (if available). Default is FALSE.}
 }
 \value{
 A list of data.frames.
 }
 \description{
-\code{importBugphyzzNumeric} imports numeric attributes as a list of
-data.frames. Attributes are in separate data.frames since they can
-have different units for filtering (e.g. Celsius degrees, ph, etc.)
+\code{importBugphyzzNumeric} imports a list of data.frames containing
+numeric attributes. In this case, the attributes are in separate
+data.frames because they can have different units or scales
+(e.g. Celsius degrees, ph, etc.)
 }
 \examples{
 
-numeric <- importBugphyzzNumeric(version = 'devel', cache = TRUE)
+bp_num <- importBugphyzzNumeric()
+
+## Check available numeric attributes
+names(bp_num)
+
+## Select growth temperature
+gt <- bp_num[['growth temperature']]
+
+## Get taxa that grows better betwen 0 and 25 Celsius degrees
+sub_gt <- gt[which(gt$Attribute_value_min >= 0 & gt$Attribute_value_max <= 25),]
+
+## Creat signature at the genus level
+sigs <- getBugphyzzSignatures(sub_gt, tax.id.type = 'Taxon_name', tax.level = 'genus')
+head(sigs[[1]])
 
 }
