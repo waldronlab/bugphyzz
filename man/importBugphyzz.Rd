@@ -2,25 +2,37 @@
 % Please edit documentation in R/bugphyzz.R
 \name{importBugphyzz}
 \alias{importBugphyzz}
-\title{Import bugphyzz as a single data.frame (or several?}
+\title{Import bugphyzz (categorical and binary)}
 \usage{
-importBugphyzz(keyword = "all", version = "devel", cache = TRUE)
+importBugphyzz(version = "devel", force_download = FALSE)
 }
 \arguments{
-\item{keyword}{The name of the physiology/attribute. Default is 'all'.}
+\item{version}{Character string. The version to download. Default is 'devel'
+(current file on the GitHub repo waldronlab/bugphyzzExports).}
 
-\item{version}{Version to download. Default is 'devel'.}
-
-\item{cache}{Use cache or use a fresh download.}
+\item{force_download}{Logical value. Force a fresh download of the data or
+use the one stored in the cache (if available). Default is FALSE.}
 }
 \value{
-A list of data.frames (tibbles).
+A data.frame.
 }
 \description{
-\code{importBugphyzz} imports bugphyzz.
+\code{importBugphyzz} imports bugphyzz as a single data.frame. It includes
+attributes with categorical and binary (boolean) attributes.
 }
 \examples{
 
 bp <- importBugphyzz()
+
+## Check available groups of attributes
+unique(bp$Attribute_group)
+
+## Filter only for growth temperature
+gt <- bp[which(bp$Attribute_group == 'growth temperature'), ]
+
+## Create signatures with taxids at the species level
+gt_sigs <- getBugphyzzSignatures(gt, tax.id.type = 'NCBI_ID', tax.level = 'species')]
+lapply(gt_sigs, function(x) head(x))
+
 
 }

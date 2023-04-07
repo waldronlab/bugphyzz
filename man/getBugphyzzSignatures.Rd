@@ -2,7 +2,7 @@
 % Please edit documentation in R/bugphyzz.R
 \name{getBugphyzzSignatures}
 \alias{getBugphyzzSignatures}
-\title{Get Bugphyzz Signatures}
+\title{Get bugphyzz signatures}
 \usage{
 getBugphyzzSignatures(
   df,
@@ -16,33 +16,49 @@ getBugphyzzSignatures(
 \arguments{
 \item{df}{A data.frame}
 
-\item{tax.id.type}{NCBI_ID or Taxon_name.}
+\item{tax.id.type}{A character string. NCBI_ID or Taxon_name.}
 
-\item{tax.level}{Domain to strain.}
+\item{tax.level}{A character string indicating taxonomic level.
+Valid options: domain, phylum, class,
+order, family, genus, species, strain.}
 
-\item{evidence}{asr, inh, exp, igc, nas, tas}
+\item{evidence}{A character string indicating type of evidence.
+Valid option: asr, inh, exp, igc, nas, tas. See details for meaning of
+each keyword.}
 
-\item{frequency}{unknown, sometimes, usually, always}
+\item{frequency}{A cahracter string indicating frequency.
+Valid options: unknown, sometimes, usually, always. See details for
+meaning of each keyword.}
 
-\item{min.size}{Default 5.}
+\item{min.size}{An integer. Minimum number of elements in a signature.}
 }
 \value{
-List of signatures
+Named list of signatures.
 }
 \description{
-\code{getBugphyzzSignatures} convert data to signatures
+\code{getBugphyzzSignatures} convert a data.frame imported with bugphyzz
+to signatures.
 }
 \examples{
 
+## load purrr package (for managing lists)
 library(purrr)
-bp <- importBugphyzz()
-my_fun <- function(x) {
+
+## Create helper function
+sig_fun <- function(x) {
   getBugphyzzSignatures(
-    df = x, tax.id.type = 'Taxon_name', tax.level = 'species', min.size = 5,
-    frequency = 'always'
+  df = x, tax.id.type = 'NCBI_ID', tax.level = 'species'
   )
 }
-o <- flatten(map(bp, my_fun))
 
+## Create signatures of categorical or binary attributes
+bp <- importBugphyzz()
+sigs <- sig_fun(bp)
+map(sigs, head)
+
+## Create signatures of numeric attributes
+bp_num <- importBugphyzzNumeric()
+num_sigs <- flatten(map(bp_num, sig_fun))
+lapply(num_sigs, head)
 
 }

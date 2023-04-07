@@ -1,73 +1,154 @@
-
-#' Import bugphyzz as a single data.frame (or several?
+#' Import bugphyzz (categorical and binary)
 #'
-#' \code{importBugphyzz} imports bugphyzz.
+#' \code{importBugphyzz} imports bugphyzz as a single data.frame. It includes
+#' attributes with categorical and binary (boolean) attributes.
 #'
-#' @param keyword The name of the physiology/attribute. Default is 'all'.
-#' @param version Version to download. Default is 'devel'.
-#' @param cache Use cache or use a fresh download.
+#' @param version Character string. The version to download. Default is 'devel'
+#' (current file on the GitHub repo waldronlab/bugphyzzExports).
+#' @param force_download Logical value. Force a fresh download of the data or
+#' use the one stored in the cache (if available). Default is FALSE.
 #'
-#' @return A list of data.frames (tibbles).
+#' @return A data.frame.
 #' @export
 #'
 #' @examples
 #'
 #' bp <- importBugphyzz()
 #'
-importBugphyzz <- function(keyword = 'all', version = 'devel', cache = TRUE) {
-  if (cache) {
-    ## TODO add code for BiocFileCache
+#' ## Check available groups of attributes
+#' unique(bp$Attribute_group)
+#'
+#' ## Filter only for growth temperature
+#' gt <- bp[which(bp$Attribute_group == 'growth temperature'), ]
+#'
+#' ## Create signatures with taxids at the species level
+#' gt_sigs <- getBugphyzzSignatures(gt, tax.id.type = 'NCBI_ID', tax.level = 'species')]
+#' lapply(gt_sigs, function(x) head(x))
+#'
+#'
+importBugphyzz <- function(version = 'devel', force_download = FALSE
+) {
+  if (version == 'devel' || grepl("^[0-9a-z]{7}$", version)) {
+    url <- 'https://github.com/waldronlab/bugphyzzExports/raw/sdgamboa/update-exports/full_dump_categorical.csv.bz2'
+    ## update code when contente has been merged into main
+    # if (version == 'devel') version <- 'main'
+    # url <- paste0(
+    #   'https://raw.githubusercontent.com/waldronlab/bugphyzzExports/', version,
+    #   '/full_dump_categorical.csv.bz2'
+    # )
+
   }
-  if (version == 'devel') {
-    # url <- 'https://github.com/waldronlab/bugphyzzExports/blob/sdgamboa/update-exports/full_dump_bugphyzz.csv.bz2?raw=true'
-    url <- 'https://github.com/waldronlab/bugphyzzExports/raw/sdgamboa/update-exports/full_dump_bugphyzz.csv.bz2'
-  }
-  temp_dir <- tempdir()
-  temp_file <- paste0(temp_dir, '/', 'full_dump_bugphyzz.csv.bz2')
-  download.file(url = url, destfile = temp_file, quiet = TRUE)
-  ## Need to add skip = 1 to the vroom call when header is added to the text
+  rpath <- .getResource(
+    rname = 'full_dump_categorical.csv.bz2', url = url, verbose = TRUE,
+    force = force_download
+  )
+  ## TODO Add skip = 1 to the vroom call when header is added to the file
   bp <- vroom::vroom(
-    file = temp_file, show_col_types = FALSE, delim = ',', progress = FALSE,
+    file = rpath, show_col_types = FALSE, delim = ',', progress = FALSE,
     col_types = vroom::cols(NCBI_ID = vroom::col_character())
   )
-  if ('all' %in% keyword) {
-    # output <- split(bp, factor(bp$Attribute_group))
-    # output <- purrr::map(output, ~ purrr::discard(.x, ~all(is.na(.x))))
-    return(bp)
-  }
-  bp <- bp |>
-    dplyr::filter(.data$Attribute %in% keyword)
-  # output <- split_df(bp, factor(bp$Attribute_group))
-  # output <- purrr::map(output, ~ purrr::discard(.x, ~all(is.na(.x))))
   return(bp)
 }
 
-#' Get Bugphyzz Signatures
+#' Import bugphyzz (numeric/continuous data)
 #'
-#' \code{getBugphyzzSignatures} convert data to signatures
+#' \code{importBugphyzzNumeric} imports a list of data.frames containing
+#' numeric attributes. In this case, the attributes are in separate
+#' data.frames because they can have different units or scales
+#' (e.g. Celsius degrees, ph, etc.)
 #'
-#' @param df A data.frame
-#' @param tax.id.type NCBI_ID or Taxon_name.
-#' @param tax.level Domain to strain.
-#' @param evidence asr, inh, exp, igc, nas, tas
-#' @param frequency unknown, sometimes, usually, always
-#' @param min.size Default 5.
+#' @param version Character string. The version to download. Default is 'devel'
+#' (current file on the GitHub repo waldronlab/bugphyzzExports).
+#' @param force_download Logical value. Force a fresh download of the data or
+#' use the one stored in the cache (if available). Default is FALSE.
 #'
-#' @return List of signatures
+#' @return A list of data.frames.
 #' @export
 #'
 #' @examples
 #'
+#' bp_num <- importBugphyzzNumeric()
+#'
+#' ## Check available numeric attributes
+#' names(bp_num)
+#'
+#' ## Select growth temperature
+#' gt <- bp_num[['growth temperature']]
+#'
+#' ## Get taxa that grows better betwen 0 and 25 Celsius degrees
+#' sub_gt <- gt[which(gt$Attribute_value_min >= 0 & gt$Attribute_value_max <= 25),]
+#'
+#' ## Creat signature at the genus level
+#' sigs <- getBugphyzzSignatures(sub_gt, tax.id.type = 'Taxon_name', tax.level = 'genus')
+#' head(sigs[[1]])
+#'
+importBugphyzzNumeric <- function(
+    keyword = 'all', version = 'devel', force_download = FALSE
+) {
+  if (version == 'devel' || grepl("^[0-9a-z]{7}$", version)) {
+    url <- 'https://github.com/waldronlab/bugphyzzExports/raw/sdgamboa/update-exports/full_dump_numeric.csv.bz2'
+    ## update code when contente has been merged into main
+    # if (version == 'devel') version <- 'main'
+    # url <- paste0(
+    #   'https://raw.githubusercontent.com/waldronlab/bugphyzzExports/', version,
+    #   '/full_dump_numeric.csv.bz2'
+    # )
+  }
+  rpath <- .getResource(
+    rname = 'full_dump_numeric.csv.bz2', url = url, verbose = TRUE,
+    force = force_download
+  )
+  ## TODO Add skip = 1 to the vroom call when header is added to the file
+  bp <- vroom::vroom(
+    file = rpath, show_col_types = FALSE, delim = ',', progress = FALSE,
+    col_types = vroom::cols(NCBI_ID = vroom::col_character())
+  )
+  output <- split(bp, factor(bp$Attribute_group))
+  return(output)
+}
+
+#' Get bugphyzz signatures
+#'
+#' \code{getBugphyzzSignatures} convert a data.frame imported with bugphyzz
+#' to signatures.
+#'
+#' @param df A data.frame
+#' @param tax.id.type A character string. NCBI_ID or Taxon_name.
+#' @param tax.level A character string indicating taxonomic level.
+#' Valid options: domain, phylum, class,
+#' order, family, genus, species, strain.
+#' @param evidence A character string indicating type of evidence.
+#' Valid option: asr, inh, exp, igc, nas, tas. See details for meaning of
+#' each keyword.
+#' @param frequency A cahracter string indicating frequency.
+#' Valid options: unknown, sometimes, usually, always. See details for
+#' meaning of each keyword.
+#' @param min.size An integer. Minimum number of elements in a signature.
+#'
+#' @return Named list of signatures.
+#' @export
+#'
+#' @examples
+#'
+#' ## load purrr package (for managing lists)
 #' library(purrr)
-#' bp <- importBugphyzz()
-#' my_fun <- function(x) {
+#'
+#' ## Create helper function
+#' sig_fun <- function(x) {
 #'   getBugphyzzSignatures(
-#'     df = x, tax.id.type = 'Taxon_name', tax.level = 'species', min.size = 5,
-#'     frequency = 'always'
+#'   df = x, tax.id.type = 'NCBI_ID', tax.level = 'species'
 #'   )
 #' }
-#' o <- flatten(map(bp, my_fun))
 #'
+#' ## Create signatures of categorical or binary attributes
+#' bp <- importBugphyzz()
+#' sigs <- sig_fun(bp)
+#' map(sigs, head)
+#'
+#' ## Create signatures of numeric attributes
+#' bp_num <- importBugphyzzNumeric()
+#' num_sigs <- flatten(map(bp_num, sig_fun))
+#' lapply(num_sigs, head)
 #'
 getBugphyzzSignatures <- function(
     df, tax.id.type = 'NCBI_ID', tax.level = 'mixed',
