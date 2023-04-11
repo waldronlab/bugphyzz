@@ -97,289 +97,147 @@
 <div class="section level2">
 <h2 id="introduction">Introduction<a class="anchor" aria-label="anchor" href="#introduction"></a>
 </h2>
-<p>This document shows the main functions and operations that can be
-used to work with the bugphyzz datasets, such as seeing all
-physiologies, look at specific physiologies, and make signature sets.
-<em>bugphyzz</em> is a collection of physiological features about
-bacteria. We are curating the databases through 3 main methods:
-webscraping, bulk download from online databases, and manual curation
-from literature. Mainly this database will be used to analyze microbiome
-data.</p>
+<p>The <code>bugphyzz</code> package provides access to an electronic
+resource of harmonized microbial annotations from different sources. The
+resource can also be accessed by direct download at <strong>&gt;&gt;&gt;
+insert Zenodo link here &lt;&lt;&lt;</strong>.</p>
 </div>
 <div class="section level2">
-<h2 id="definitions">Definitions<a class="anchor" aria-label="anchor" href="#definitions"></a>
-</h2>
-<div class="section level3">
-<h3 id="always-present">Always present<a class="anchor" aria-label="anchor" href="#always-present"></a>
-</h3>
-<ul>
-<li>
-<strong>NCBI ID</strong>: National Center for Bioinfomatic numeric
-ID to link to specific taxa.</li>
-<li>
-<strong>Taxon name</strong>: a human readable organismal name that
-can delinate which level taxa the annotation is describing.</li>
-<li>
-<strong>Attribute</strong>: a value for a physiology, that is mapped
-to an ontology whenever possible. These are defined in the
-<code>attribute</code> column of [inst/extdata/attributes.tsv](<a href="https://github.com/waldronlab/bugphyzz/blob/main/inst/extdata/attributes.tsv" class="external-link uri">https://github.com/waldronlab/bugphyzz/blob/main/inst/extdata/attributes.tsv</a>
-<strong>Physiology</strong>: a microbial characteristic that can be
-measured or observed, that should be mapped to an ontology wherever
-possible. These are defined in <a href="https://github.com/waldronlab/bugphyzz/blob/main/inst/extdata/links.tsv" class="external-link">inst/extdata/links.tsv</a>.</li>
-<li>
-<strong>Attribute value</strong>: a value describing a physiology.
-Allowable values are defined by the <code>validity</code> column of <a href="https://github.com/waldronlab/bugphyzz/blob/main/inst/extdata/attributes.tsv" class="external-link">inst/extdata/attributes.tsv</a>.
-For categorical attributes (such as “obligately aerobic”), values can be
-“TRUE” and “FALSE”, for example. For numeric attributes, these can be
-numeric values.</li>
-<li>
-<strong>Attribute source</strong>: a citeable domain which the
-annotation was obtained. A source can be another database or primary
-literature.</li>
-<li>
-<strong>Frequency</strong>: Describes how often the attritbute
-(phenotype) occurs: Rarely, Sometimes, Usually, Always, or Unknown. If
-the source makes the attribute unclear how often it occurs, then an
-unknown is given.</li>
-<li>
-<strong>Evidence codes</strong>: As the Gene Ontology defines
-different forms of evidence a source was obtained the annotation.
-<ul>
-<li>EXP: Experimental data, the attribute was obtained through labortory
-confirmations, and ideally more than once.</li>
-<li>IGC: Computational predicted through means of metagenomic analysis,
-or more broadly, genome analysis.</li>
-<li>ASR: Anstrestal State Reconstruction, was predicted using ASR
-computional techniques to predicted up and down the taxonmic tree of
-taxa that has a value.</li>
-</ul>
-</li>
-<li>
-<strong>Note</strong>: Any additional information that does not fit
-in any fixed column. The information here is variable.</li>
-<li>
-<strong>Parent name</strong>: The parent of descendant given in
-Taxon name column. Values can includes names or NA.</li>
-<li>
-<strong>Species name</strong>: The species name, or descendant of
-parent, given in the Taxon name column. Values can includes names or
-NA.</li>
-<li>
-<strong>Unit</strong>: defines unit of attribute value, like
-µm.</li>
-<li>
-<strong>Rank</strong>: The taxonomic rank of the annotation. Values
-can includes names or NA.</li>
-<li>
-<strong>Parent Rank</strong>: The taxonmic rank of the parent of the
-annotation. Values can includes names or NA.</li>
-</ul>
-</div>
-<div class="section level3">
-<h3 id="sometimes-present">Sometimes present<a class="anchor" aria-label="anchor" href="#sometimes-present"></a>
-</h3>
-<ul>
-<li>
-<strong>MIDAS ID</strong>: Located in the Habitat attribute. Any
-annotation from the MIDAS database is assigned an ID number. We provided
-that ID here.</li>
-<li>
-<strong>Genome ID</strong>: From NCBI, another type of numeric ID,
-that links to a specific sequenced genome. Not all taxa have a NCBI ID,
-and might only have a Genome ID</li>
-<li>
-<strong>Accession ID</strong>: The accession number is a unique
-identifier assigned to a record in sequence databases such as GenBank.
-Several NCBI databases use the format
-<code>[alphabetical prefix][series of digits]</code>. A change in the
-record in some databases (e.g. GenBank) is tracked by an integer
-extension of the accession number, an Accession.</li>
-</ul>
-</div>
-</div>
-<div class="section level2">
-<h2 id="bugphyzzanalyses">bugphyzzAnalyses<a class="anchor" aria-label="anchor" href="#bugphyzzanalyses"></a>
-</h2>
-<p>Some analyses using data provided by this package can be found at <a href="https://waldronlab.io/bugphyzzAnalyses/" class="uri">https://waldronlab.io/bugphyzzAnalyses/</a></p>
-</div>
-<div class="section level2">
-<h2 id="how-to-add-a-new-attribute-in-github-to-the-bugphyzz-database">How to add a new attribute in GitHub to the BugPhyzz database<a class="anchor" aria-label="anchor" href="#how-to-add-a-new-attribute-in-github-to-the-bugphyzz-database"></a>
-</h2>
-<p>Curation steps: 1. Add attributes of physiology to Attributes using
-ontology terms 2. Add reference(s) to Confidence in Curation</p>
-<p>If using Google Sheets, publish a csv file to web: 4. Add Google Doc
-“publish to web” link and add in “Link” <a href="https://github.com/waldronlab/bugphyzz/blob/main/inst/extdata/links.tsv" class="external-link uri">https://github.com/waldronlab/bugphyzz/blob/main/inst/extdata/links.tsv</a>
-5. Add Google Doc link to “Source Link” <a href="https://github.com/waldronlab/bugphyzz/blob/main/inst/extdata/source_links.tsv" class="external-link uri">https://github.com/waldronlab/bugphyzz/blob/main/inst/extdata/source_links.tsv</a></p>
-<p>Steps in the <code>bugphyzz</code> package: 1. <em>Samuel fill
-in</em></p>
-</div>
-<div class="section level2">
-<h2 id="loading-datasets-in-r">Loading datasets in R<a class="anchor" aria-label="anchor" href="#loading-datasets-in-r"></a>
+<h2 id="import-bugphyzz">Import bugphyzz<a class="anchor" aria-label="anchor" href="#import-bugphyzz"></a>
 </h2>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">require</a></span><span class="op">(</span><span class="st">"BiocManager"</span>, quietly <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span>
 <span>    <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"BiocManager"</span><span class="op">)</span></span>
 <span></span>
+<span><span class="co">## Devel version</span></span>
 <span><span class="fu">BiocManager</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/BiocManager/man/install.html" class="external-link">install</a></span><span class="op">(</span><span class="st">"waldronlab/bugphyzz"</span><span class="op">)</span></span></code></pre></div>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/waldronlab/bugphyzz" class="external-link">bugphyzz</a></span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://purrr.tidyverse.org/" class="external-link">purrr</a></span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://tibble.tidyverse.org/" class="external-link">tibble</a></span><span class="op">)</span></span></code></pre></div>
-<p>The main function for importing datasets is the
-<code>physiologies</code> function, which has a single argument,
-<code>keyword</code>, and returns a list of data.frames. The
-<code>keyword</code> argument accepts a character vector specifying the
-name(s) of the dataset(s) that will be imported.</p>
-<p>A datset with categorical attribute values:</p>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://purrr.tidyverse.org/" class="external-link">purrr</a></span><span class="op">)</span></span></code></pre></div>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">aer</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/as_tibble.html" class="external-link">as_tibble</a></span><span class="op">(</span><span class="fu"><a href="../reference/physiologies.html">physiologies</a></span><span class="op">(</span><span class="st">"aerophilicity"</span><span class="op">)</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span><span class="op">)</span></span>
-<span><span class="va">aer</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 29,611 × 18</span></span></span>
-<span><span class="co">#&gt;    NCBI_ID Genome_ID Accession_ID           Taxon_name Attribute Attribute_value</span></span>
-<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span>          </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> 291967  <span style="color: #BB0000;">NA</span>        <span style="color: #949494;">""</span>                     Acaricomes aerobic   TRUE           </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> 291968  <span style="color: #BB0000;">NA</span>        <span style="color: #949494;">""</span>                     Acaricome… aerobic   TRUE           </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> 329726  <span style="color: #BB0000;">NA</span>        <span style="color: #949494;">"</span>NC_009925, NC_009926… Acaryochl… aerobic   TRUE           </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> 435     <span style="color: #BB0000;">NA</span>        <span style="color: #949494;">""</span>                     Acetobact… aerobic   TRUE           </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> 435     <span style="color: #BB0000;">NA</span>        <span style="color: #949494;">""</span>                     Acetobact… aerobic   TRUE           </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> 178900  <span style="color: #BB0000;">NA</span>        <span style="color: #949494;">""</span>                     Acetobact… aerobic   TRUE           </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> 146475  <span style="color: #BB0000;">NA</span>        <span style="color: #949494;">""</span>                     Acetobact… aerobic   TRUE           </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> 178901  <span style="color: #BB0000;">NA</span>        <span style="color: #949494;">""</span>                     Acetobact… aerobic   TRUE           </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> 304077  <span style="color: #BB0000;">NA</span>        <span style="color: #949494;">""</span>                     Acetobact… aerobic   TRUE           </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> 146474  <span style="color: #BB0000;">NA</span>        <span style="color: #949494;">""</span>                     Acetobact… aerobic   TRUE           </span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 29,601 more rows</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 12 more variables: Attribute_source &lt;chr&gt;, Evidence &lt;chr&gt;, Frequency &lt;chr&gt;,</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;">#   Confidence_in_curation &lt;chr&gt;, Attribute_type &lt;chr&gt;, Attribute_group &lt;chr&gt;,</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;">#   Rank &lt;chr&gt;, Parent_name &lt;chr&gt;, Parent_NCBI_ID &lt;chr&gt;, Parent_rank &lt;chr&gt;,</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;">#   BacDive_ID &lt;int&gt;, Type_strain &lt;chr&gt;</span></span></span></code></pre></div>
-<p>A dataset with numeric attribute values:</p>
+<code class="sourceCode R"><span><span class="va">bp</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/importBugphyzz.html">importBugphyzz</a></span><span class="op">(</span>version <span class="op">=</span> <span class="st">'devel'</span>, force_download <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Registered S3 method overwritten by 'httr':</span></span>
+<span><span class="co">#&gt;   method           from  </span></span>
+<span><span class="co">#&gt;   print.cache_info hoardr</span></span>
+<span><span class="co">#&gt; Using data downloaded on 2023-04-11 15:05:18.</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">bp</span><span class="op">)</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 6 × 12</span></span></span>
+<span><span class="co">#&gt;   NCBI_ID Taxon_name     Rank  Attribute     Attribute_source Evidence Frequency</span></span>
+<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> 10      Cellvibrio     genus aerophilicit… Bergey's Manual  exp      always   </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> 1000999 Acidipila      genus aerophilicit… Bergey's Manual  exp      always   </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> 100132  Sporobacterium genus aerophilicit… Bergey's Manual  exp      always   </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> 100175  Papillibacter  genus aerophilicit… Bergey's Manual  exp      always   </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> 1004300 Hydrotalea     genus aerophilicit… Bergey's Manual  exp      always   </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span> 1007    Saprospira     genus aerophilicit… Bergey's Manual  exp      always   </span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 5 more variables: Attribute_type &lt;chr&gt;, Attribute_group &lt;chr&gt;,</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;">#   Confidence_in_curation &lt;chr&gt;, Score &lt;dbl&gt;, Attribute_value &lt;lgl&gt;</span></span></span></code></pre></div>
+<div class="section level3">
+<h3 id="explore-wich-attribute-groups-are-available">Explore wich attribute groups are available<a class="anchor" aria-label="anchor" href="#explore-wich-attribute-groups-are-available"></a>
+</h3>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">ph</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/as_tibble.html" class="external-link">as_tibble</a></span><span class="op">(</span><span class="fu"><a href="../reference/physiologies.html">physiologies</a></span><span class="op">(</span><span class="st">'optimal ph'</span><span class="op">)</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Importing physiology data. This might take a while...</span></span>
-<span><span class="co">#&gt; Finished optimal ph.</span></span>
-<span><span class="va">ph</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 886 × 15</span></span></span>
-<span><span class="co">#&gt;    NCBI_ID Taxon_name          Attribute Attribute_value_max Attribute_value_min</span></span>
-<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>               <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>               <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> 178606  Leptospirillum fer… optimal …                1.65                1.65</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> 53633   Sulfobacillus acid… optimal …                1.8                 1.8 </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> 160808  Acidithiobacillus … optimal …                1.9                 1.9 </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> 920     Acidithiobacillus … optimal …                2                   2   </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> 53635   Acidimicrobium fer… optimal …                2                   2   </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> 50339   Thermoplasma volca… optimal …                2                   2   </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> 28034   Sulfobacillus ther… optimal …                2.15                2.15</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> 67780   Edwardsiella ictal… optimal …                2.5                 2.5 </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> 405212  Alicyclobacillus a… optimal …                3.5                 3.5 </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> 61645   Enterobacter asbur… optimal …                3.5                 3.5 </span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 876 more rows</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 10 more variables: Attribute_source &lt;chr&gt;, Evidence &lt;chr&gt;, Frequency &lt;chr&gt;,</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;">#   Confidence_in_curation &lt;chr&gt;, Attribute_type &lt;chr&gt;, Attribute_group &lt;chr&gt;,</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;">#   Rank &lt;chr&gt;, Parent_name &lt;chr&gt;, Parent_NCBI_ID &lt;chr&gt;, Parent_rank &lt;chr&gt;</span></span></span></code></pre></div>
-<p>The <code>physiologiesList</code> function can be used to display
-which datasets are available through the <code>physiologies</code>
-function before importing them:</p>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/unique.html" class="external-link">unique</a></span><span class="op">(</span><span class="va">bp</span><span class="op">$</span><span class="va">Attribute_group</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] "aerophilicity"      "gram stain"         "growth temperature"</span></span>
+<span><span class="co">#&gt; [4] "optimal ph"</span></span></code></pre></div>
+</div>
+<div class="section level3">
+<h3 id="explore-which-attribute-signatures-are-available">Explore which attribute signatures are available<a class="anchor" aria-label="anchor" href="#explore-which-attribute-signatures-are-available"></a>
+</h3>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/showPhys.html">showPhys</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt;  [1] "acetate producing"                    </span></span>
-<span><span class="co">#&gt;  [2] "aerophilicity"                        </span></span>
-<span><span class="co">#&gt;  [3] "animal pathogen"                      </span></span>
-<span><span class="co">#&gt;  [4] "antimicrobial resistance"             </span></span>
-<span><span class="co">#&gt;  [5] "antimicrobial sensitivity"            </span></span>
-<span><span class="co">#&gt;  [6] "arrangement"                          </span></span>
-<span><span class="co">#&gt;  [7] "biofilm forming"                      </span></span>
-<span><span class="co">#&gt;  [8] "biosafety level"                      </span></span>
-<span><span class="co">#&gt;  [9] "butyrate producing"                   </span></span>
-<span><span class="co">#&gt; [10] "coding genes"                         </span></span>
-<span><span class="co">#&gt; [11] "COGEM pathogenicity rating"           </span></span>
-<span><span class="co">#&gt; [12] "country"                              </span></span>
-<span><span class="co">#&gt; [13] "disease association"                  </span></span>
-<span><span class="co">#&gt; [14] "extreme environment"                  </span></span>
-<span><span class="co">#&gt; [15] "genome size"                          </span></span>
-<span><span class="co">#&gt; [16] "geographic location"                  </span></span>
-<span><span class="co">#&gt; [17] "gram stain"                           </span></span>
-<span><span class="co">#&gt; [18] "growth medium"                        </span></span>
-<span><span class="co">#&gt; [19] "growth temperature"                   </span></span>
-<span><span class="co">#&gt; [20] "habitat"                              </span></span>
-<span><span class="co">#&gt; [21] "halophily"                            </span></span>
-<span><span class="co">#&gt; [22] "health associated"                    </span></span>
-<span><span class="co">#&gt; [23] "hemolysis"                            </span></span>
-<span><span class="co">#&gt; [24] "hydrogen gas producing"               </span></span>
-<span><span class="co">#&gt; [25] "isolation site"                       </span></span>
-<span><span class="co">#&gt; [26] "lactate producing"                    </span></span>
-<span><span class="co">#&gt; [27] "length"                               </span></span>
-<span><span class="co">#&gt; [28] "metabolite production"                </span></span>
-<span><span class="co">#&gt; [29] "metabolite utilization"               </span></span>
-<span><span class="co">#&gt; [30] "motility"                             </span></span>
-<span><span class="co">#&gt; [31] "mutation rate per site per generation"</span></span>
-<span><span class="co">#&gt; [32] "mutation rates per site per year"     </span></span>
-<span><span class="co">#&gt; [33] "optimal ph"                           </span></span>
-<span><span class="co">#&gt; [34] "pathogenicity human"                  </span></span>
-<span><span class="co">#&gt; [35] "plant pathogenicity"                  </span></span>
-<span><span class="co">#&gt; [36] "shape"                                </span></span>
-<span><span class="co">#&gt; [37] "sphingolipid producing"               </span></span>
-<span><span class="co">#&gt; [38] "spore formation"                      </span></span>
-<span><span class="co">#&gt; [39] "spore shape"                          </span></span>
-<span><span class="co">#&gt; [40] "width"</span></span></code></pre></div>
-<p>You can use the <code>keyword = "all"</code> to import all of the
-datasets:</p>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/unique.html" class="external-link">unique</a></span><span class="op">(</span><span class="va">bp</span><span class="op">$</span><span class="va">Attribute</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] "aerophilicity:aerobic"                </span></span>
+<span><span class="co">#&gt; [2] "aerophilicity:anaerobic"              </span></span>
+<span><span class="co">#&gt; [3] "aerophilicity:obligately_anaerobic"   </span></span>
+<span><span class="co">#&gt; [4] "aerophilicity:facultatively_anaerobic"</span></span>
+<span><span class="co">#&gt; [5] "aerophilicity:microaerophilic"        </span></span>
+<span><span class="co">#&gt; [6] "aerophilicity:obligately_aerobic"</span></span></code></pre></div>
+</div>
+</div>
+<div class="section level2">
+<h2 id="creating-signatures">Creating signatures<a class="anchor" aria-label="anchor" href="#creating-signatures"></a>
+</h2>
+<div class="section level3">
+<h3 id="create-signatures-of-taxids-at-the-species-level-for-aerophilicity">Create signatures of taxids at the species level for
+aerophilicity<a class="anchor" aria-label="anchor" href="#create-signatures-of-taxids-at-the-species-level-for-aerophilicity"></a>
+</h3>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co">## Import all of the datasets available through the physiologies function</span></span>
-<span><span class="va">phys</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html" class="external-link">map</a></span><span class="op">(</span><span class="fu"><a href="../reference/physiologies.html">physiologies</a></span><span class="op">(</span>keyword <span class="op">=</span> <span class="st">"all"</span><span class="op">)</span>, <span class="va">as_tibble</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">aer</span> <span class="op">&lt;-</span> <span class="va">bp</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/which.html" class="external-link">which</a></span><span class="op">(</span><span class="va">bp</span><span class="op">$</span><span class="va">Attribute_group</span> <span class="op">==</span> <span class="st">'aerophilicity'</span><span class="op">)</span>,<span class="op">]</span></span>
+<span><span class="va">sigs1</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/getBugphyzzSignatures.html">getBugphyzzSignatures</a></span><span class="op">(</span></span>
+<span>  df <span class="op">=</span> <span class="va">aer</span>, tax.id.type <span class="op">=</span> <span class="st">'NCBI_ID'</span>, tax.level <span class="op">=</span> <span class="st">'species'</span>, min.size <span class="op">=</span> <span class="fl">10</span></span>
+<span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html" class="external-link">map</a></span><span class="op">(</span><span class="va">sigs1</span>, <span class="va">head</span><span class="op">)</span></span>
+<span><span class="co">#&gt; $`aerophilicity:aerobic`</span></span>
+<span><span class="co">#&gt; [1] "1001240" "1002"    "1002227" "100225"  "1002672" "1003091"</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $`aerophilicity:anaerobic`</span></span>
+<span><span class="co">#&gt; [1] "100133"  "100174"  "1002795" "1004583" "1005740" "1006155"</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $`aerophilicity:facultatively_anaerobic`</span></span>
+<span><span class="co">#&gt; [1] "1017095" "102684"  "1028752" "1031538" "1034471" "1036133"</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $`aerophilicity:microaerophilic`</span></span>
+<span><span class="co">#&gt; [1] "1000562" "100177"  "1017"    "1031542" "104608"  "1050107"</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $`aerophilicity:obligately_aerobic`</span></span>
+<span><span class="co">#&gt; [1] "1002689" "1002691" "1003110" "100379"  "1007087" "1007089"</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $`aerophilicity:obligately_anaerobic`</span></span>
+<span><span class="co">#&gt; [1] "1000568" "1000569" "1008305" "1008460" "101192"  "102134"</span></span></code></pre></div>
 </div>
-<div class="section level2">
-<h2 id="some-examples-of-how-to-create-signatures">Some examples of how to create signatures<a class="anchor" aria-label="anchor" href="#some-examples-of-how-to-create-signatures"></a>
-</h2>
-<p>A signature of attributes with character values:</p>
+<div class="section level3">
+<h3 id="create-signatures-of-taxa-names-at-the-genus-level-for-growth-temperature">Create signatures of taxa names at the genus level for growth
+temperature<a class="anchor" aria-label="anchor" href="#create-signatures-of-taxa-names-at-the-genus-level-for-growth-temperature"></a>
+</h3>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">aer_sig</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/makeSignatures.html">makeSignatures</a></span><span class="op">(</span></span>
-<span>    keyword <span class="op">=</span> <span class="st">'aerophilicity'</span>, tax.id.type <span class="op">=</span> <span class="st">'NCBI_ID'</span>, tax.level <span class="op">=</span> <span class="st">'genus'</span>, </span>
-<span>    Frequency <span class="op">=</span> <span class="st">'always'</span>, Evidence <span class="op">=</span> <span class="st">'exp'</span>, min.size <span class="op">=</span> <span class="fl">10</span></span>
+<code class="sourceCode R"><span><span class="va">gt</span> <span class="op">&lt;-</span> <span class="va">bp</span><span class="op">[</span><span class="va">bp</span><span class="op">$</span><span class="va">Attribute_group</span> <span class="op">==</span> <span class="st">'growth temperature'</span>, <span class="op">]</span></span>
+<span><span class="va">sigs2</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/getBugphyzzSignatures.html">getBugphyzzSignatures</a></span><span class="op">(</span></span>
+<span>  df <span class="op">=</span> <span class="va">gt</span>, tax.id.type <span class="op">=</span> <span class="st">'Taxon_name'</span>, tax.level <span class="op">=</span> <span class="st">'genus'</span>, min.size <span class="op">=</span> <span class="fl">10</span></span>
 <span><span class="op">)</span></span>
-<span></span>
-<span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html" class="external-link">map</a></span><span class="op">(</span><span class="va">aer_sig</span>, <span class="va">head</span><span class="op">)</span></span>
-<span><span class="co">#&gt; $`bugphyzz:aerophilicity|aerobic`</span></span>
-<span><span class="co">#&gt; [1] "291967"  "1078830" "53634"   "522"     "1000999" "50714"  </span></span>
+<span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html" class="external-link">map</a></span><span class="op">(</span><span class="va">sigs2</span>, <span class="va">head</span><span class="op">)</span></span>
+<span><span class="co">#&gt; $`growth_temperature:hyperthermophile`</span></span>
+<span><span class="co">#&gt; [1] "Ferroglobus"         "Geoglobus"           "Methanothermus"     </span></span>
+<span><span class="co">#&gt; [4] "Methanotorris"       "Methanothermococcus" "Methanopyrus"       </span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; $`bugphyzz:aerophilicity|anaerobic`</span></span>
-<span><span class="co">#&gt; [1] "1427378" "33951"   "558418"  "28186"   "49894"   "2373"   </span></span>
+<span><span class="co">#&gt; $`growth_temperature:mesophile`</span></span>
+<span><span class="co">#&gt; [1] "Candidatus Poseidonia"      "Candidatus Thalassarchaeum"</span></span>
+<span><span class="co">#&gt; [3] "Candidatus Haladaptoplasma" "Candidatus Haloplasma"     </span></span>
+<span><span class="co">#&gt; [5] NA                           "Candidatus Saliniplasma"   </span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; $`bugphyzz:aerophilicity|facultatively anaerobic`</span></span>
-<span><span class="co">#&gt; [1] "2147"   "12914"  "507753" "713"    "458839" "1375"  </span></span>
+<span><span class="co">#&gt; $`growth_temperature:psychrophile`</span></span>
+<span><span class="co">#&gt; [1] "Natronobiforma"        "Bryocella"             "Candidatus Koribacter"</span></span>
+<span><span class="co">#&gt; [4] "Occallatibacter"       "Pseudacidobacterium"   "Telmatobacter"        </span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; $`bugphyzz:aerophilicity|microaerophilic`</span></span>
-<span><span class="co">#&gt; [1] "46352" "12960" "6"     "191"   "78328" "963"  </span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; $`bugphyzz:aerophilicity|obligately aerobic`</span></span>
-<span><span class="co">#&gt; [1] "442869" "434"    "222"    "33973"  "110934" "160700"</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; $`bugphyzz:aerophilicity|obligately anaerobic`</span></span>
-<span><span class="co">#&gt; [1] "258514" "31980"  "35829"  "186831" "239759" "151038"</span></span></code></pre></div>
-<p>A signature of an attribute with numeric values (acidic
-bacteria):</p>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">acid_sig</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/makeSignatures.html">makeSignatures</a></span><span class="op">(</span></span>
-<span>    keyword <span class="op">=</span> <span class="st">'optimal ph'</span>, tax.id.type <span class="op">=</span> <span class="st">'Taxon_name'</span>, tax.level <span class="op">=</span> <span class="st">'species'</span>,</span>
-<span>    max <span class="op">=</span> <span class="fl">4</span></span>
-<span><span class="op">)</span></span>
-<span><span class="co">#&gt; &gt;&gt;&gt; Importing dataset(s) &lt;&lt;&lt;</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; Importing physiology data. This might take a while...</span></span>
-<span><span class="co">#&gt; Finished optimal ph.</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; &gt;&gt;&gt; Creating signatures &lt;&lt;&lt;</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; Warning: No signatures for optimal ph (range). Returning NULL.</span></span>
-<span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html" class="external-link">map</a></span><span class="op">(</span><span class="va">acid_sig</span>, <span class="va">head</span><span class="op">)</span></span>
-<span><span class="co">#&gt; list()</span></span></code></pre></div>
+<span><span class="co">#&gt; $`growth_temperature:thermophile`</span></span>
+<span><span class="co">#&gt; [1] "Acidiplasma"                   "Picrophilus"                  </span></span>
+<span><span class="co">#&gt; [3] "Thermoplasma"                  "Candidatus Methanohalarchaeum"</span></span>
+<span><span class="co">#&gt; [5] "Methanonatronarchaeum"         "Halorhabdus"</span></span></code></pre></div>
+</div>
 </div>
 <div class="section level2">
-<h2 id="session-information">Session information:<a class="anchor" aria-label="anchor" href="#session-information"></a>
+<h2 id="numeric-attributes">Numeric attributes<a class="anchor" aria-label="anchor" href="#numeric-attributes"></a>
 </h2>
+<p>Some attributes can be obtained with predefined labels or with
+numeric values. An example is growth temperature, which we obtained as
+categorical labels above (hyperthermophile, thermophile, psychrophile,
+mesophile). Let’s get the numeric values:</p>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">gt_num</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/importBugphyzzNumeric.html">importBugphyzzNumeric</a></span><span class="op">(</span>version <span class="op">=</span> <span class="st">'devel'</span>, force_download <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span></span>
+<span><span class="co">#&gt; Using data downloaded on 2023-04-11 15:05:21.</span></span>
+<span><span class="va">df</span> <span class="op">&lt;-</span> <span class="va">gt_num</span><span class="op">[</span><span class="va">gt_num</span><span class="op">$</span><span class="va">Attribute_value_min</span> <span class="op">&gt;</span> <span class="fl">0</span> <span class="op">&amp;</span> <span class="va">gt_num</span><span class="op">$</span><span class="va">Attribute_value_max</span> <span class="op">&lt;</span> <span class="fl">25</span>,<span class="op">]</span></span>
+<span><span class="va">sigs3</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/getBugphyzzSignatures.html">getBugphyzzSignatures</a></span><span class="op">(</span></span>
+<span>  df <span class="op">=</span> <span class="va">gt_num</span>, tax.id.type <span class="op">=</span> <span class="st">'NCBI_ID'</span>, tax.level <span class="op">=</span> <span class="st">'species'</span></span>
+<span><span class="op">)</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">sigs3</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] "100"     "100053"  "1000562" "1001"    "1001240" "100133"</span></span></code></pre></div>
+<div class="section level3">
+<h3 id="session-information">Session information:<a class="anchor" aria-label="anchor" href="#session-information"></a>
+</h3>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">sessioninfo</span><span class="fu">::</span><span class="fu"><a href="https://r-lib.github.io/sessioninfo/reference/session_info.html" class="external-link">session_info</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #00BBBB; font-weight: bold;">─ Session info ───────────────────────────────────────────────────────────────</span></span></span>
 <span><span class="co">#&gt;  <span style="color: #555555; font-style: italic;">setting </span> <span style="color: #555555; font-style: italic;">value</span></span></span>
-<span><span class="co">#&gt;  version  R Under development (unstable) (2023-03-16 r83996)</span></span>
+<span><span class="co">#&gt;  version  R version 4.3.0 beta (2023-04-06 r84184)</span></span>
 <span><span class="co">#&gt;  os       Ubuntu 22.04.2 LTS</span></span>
 <span><span class="co">#&gt;  system   x86_64, linux-gnu</span></span>
 <span><span class="co">#&gt;  ui       X11</span></span>
@@ -387,89 +245,95 @@ bacteria):</p>
 <span><span class="co">#&gt;  collate  en_US.UTF-8</span></span>
 <span><span class="co">#&gt;  ctype    en_US.UTF-8</span></span>
 <span><span class="co">#&gt;  tz       Etc/UTC</span></span>
-<span><span class="co">#&gt;  date     2023-04-04</span></span>
+<span><span class="co">#&gt;  date     2023-04-11</span></span>
 <span><span class="co">#&gt;  pandoc   2.19.2 @ /usr/local/bin/ (via rmarkdown)</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; <span style="color: #00BBBB; font-weight: bold;">─ Packages ───────────────────────────────────────────────────────────────────</span></span></span>
-<span><span class="co">#&gt;  <span style="color: #555555; font-style: italic;">package    </span> <span style="color: #555555; font-style: italic;">*</span> <span style="color: #555555; font-style: italic;">version</span> <span style="color: #555555; font-style: italic;">date (UTC)</span> <span style="color: #555555; font-style: italic;">lib</span> <span style="color: #555555; font-style: italic;">source</span></span></span>
-<span><span class="co">#&gt;  ape           5.7-1   <span style="color: #555555;">2023-03-13</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
-<span><span class="co">#&gt;  bit           4.0.5   <span style="color: #555555;">2022-11-15</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
-<span><span class="co">#&gt;  bit64         4.0.5   <span style="color: #555555;">2020-08-30</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
-<span><span class="co">#&gt;  blob          1.2.4   <span style="color: #555555;">2023-03-17</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
-<span><span class="co">#&gt;  bold          1.2.0   <span style="color: #555555;">2021-05-11</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
-<span><span class="co">#&gt;  bslib         0.4.2   <span style="color: #555555;">2022-12-16</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
-<span><span class="co">#&gt;  bugphyzz    * 0.0.1.3 <span style="color: #555555;">2023-04-04</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">local</span></span></span>
-<span><span class="co">#&gt;  cachem        1.0.7   <span style="color: #555555;">2023-02-24</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
-<span><span class="co">#&gt;  cli           3.6.1   <span style="color: #555555;">2023-03-23</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
-<span><span class="co">#&gt;  codetools     0.2-19  <span style="color: #555555;">2023-02-01</span> <span style="color: #555555;">[2]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
-<span><span class="co">#&gt;  conditionz    0.1.0   <span style="color: #555555;">2019-04-24</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
-<span><span class="co">#&gt;  crayon        1.5.2   <span style="color: #555555;">2022-09-29</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
-<span><span class="co">#&gt;  crul          1.3     <span style="color: #555555;">2022-09-03</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
-<span><span class="co">#&gt;  curl          5.0.0   <span style="color: #555555;">2023-01-12</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
-<span><span class="co">#&gt;  data.table    1.14.8  <span style="color: #555555;">2023-02-17</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
-<span><span class="co">#&gt;  DBI           1.1.3   <span style="color: #555555;">2022-06-18</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
-<span><span class="co">#&gt;  dbplyr        2.3.2   <span style="color: #555555;">2023-03-21</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
-<span><span class="co">#&gt;  desc          1.4.2   <span style="color: #555555;">2022-09-08</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
-<span><span class="co">#&gt;  digest        0.6.31  <span style="color: #555555;">2022-12-11</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
-<span><span class="co">#&gt;  dplyr         1.1.1   <span style="color: #555555;">2023-03-22</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
-<span><span class="co">#&gt;  evaluate      0.20    <span style="color: #555555;">2023-01-17</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
-<span><span class="co">#&gt;  fansi         1.0.4   <span style="color: #555555;">2023-01-22</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
-<span><span class="co">#&gt;  fastmap       1.1.1   <span style="color: #555555;">2023-02-24</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
-<span><span class="co">#&gt;  foreach       1.5.2   <span style="color: #555555;">2022-02-02</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
-<span><span class="co">#&gt;  fs            1.6.1   <span style="color: #555555;">2023-02-06</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
-<span><span class="co">#&gt;  generics      0.1.3   <span style="color: #555555;">2022-07-05</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
-<span><span class="co">#&gt;  glue          1.6.2   <span style="color: #555555;">2022-02-24</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
-<span><span class="co">#&gt;  hoardr        0.5.3   <span style="color: #555555;">2023-01-26</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
-<span><span class="co">#&gt;  htmltools     0.5.5   <span style="color: #555555;">2023-03-23</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
-<span><span class="co">#&gt;  httpcode      0.3.0   <span style="color: #555555;">2020-04-10</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
-<span><span class="co">#&gt;  iterators     1.0.14  <span style="color: #555555;">2022-02-05</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
-<span><span class="co">#&gt;  jquerylib     0.1.4   <span style="color: #555555;">2021-04-26</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
-<span><span class="co">#&gt;  jsonlite      1.8.4   <span style="color: #555555;">2022-12-06</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
-<span><span class="co">#&gt;  knitr         1.42    <span style="color: #555555;">2023-01-25</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
-<span><span class="co">#&gt;  lattice       0.20-45 <span style="color: #555555;">2021-09-22</span> <span style="color: #555555;">[2]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
-<span><span class="co">#&gt;  lifecycle     1.0.3   <span style="color: #555555;">2022-10-07</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
-<span><span class="co">#&gt;  magrittr      2.0.3   <span style="color: #555555;">2022-03-30</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
-<span><span class="co">#&gt;  memoise       2.0.1   <span style="color: #555555;">2021-11-26</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
-<span><span class="co">#&gt;  mgsub         1.7.3   <span style="color: #555555;">2021-07-28</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
-<span><span class="co">#&gt;  nlme          3.1-162 <span style="color: #555555;">2023-01-31</span> <span style="color: #555555;">[2]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
-<span><span class="co">#&gt;  pillar        1.9.0   <span style="color: #555555;">2023-03-22</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
-<span><span class="co">#&gt;  pkgconfig     2.0.3   <span style="color: #555555;">2019-09-22</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
-<span><span class="co">#&gt;  pkgdown       2.0.7   <span style="color: #555555;">2022-12-14</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
-<span><span class="co">#&gt;  plyr          1.8.8   <span style="color: #555555;">2022-11-11</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
-<span><span class="co">#&gt;  purrr       * 1.0.1   <span style="color: #555555;">2023-01-10</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
-<span><span class="co">#&gt;  R6            2.5.1   <span style="color: #555555;">2021-08-19</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
-<span><span class="co">#&gt;  ragg          1.2.5   <span style="color: #555555;">2023-01-12</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
-<span><span class="co">#&gt;  rappdirs      0.3.3   <span style="color: #555555;">2021-01-31</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
-<span><span class="co">#&gt;  Rcpp          1.0.10  <span style="color: #555555;">2023-01-22</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
-<span><span class="co">#&gt;  reshape       0.8.9   <span style="color: #555555;">2022-04-12</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
-<span><span class="co">#&gt;  rlang         1.1.0   <span style="color: #555555;">2023-03-14</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
-<span><span class="co">#&gt;  rmarkdown     2.21    <span style="color: #555555;">2023-03-26</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
-<span><span class="co">#&gt;  rprojroot     2.0.3   <span style="color: #555555;">2022-04-02</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
-<span><span class="co">#&gt;  RSQLite       2.3.1   <span style="color: #555555;">2023-04-03</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
-<span><span class="co">#&gt;  sass          0.4.5   <span style="color: #555555;">2023-01-24</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
-<span><span class="co">#&gt;  sessioninfo   1.2.2   <span style="color: #555555;">2021-12-06</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
-<span><span class="co">#&gt;  stringi       1.7.12  <span style="color: #555555;">2023-01-11</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
-<span><span class="co">#&gt;  stringr       1.5.0   <span style="color: #555555;">2022-12-02</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
-<span><span class="co">#&gt;  systemfonts   1.0.4   <span style="color: #555555;">2022-02-11</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
-<span><span class="co">#&gt;  taxize        0.9.100 <span style="color: #555555;">2022-04-22</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
-<span><span class="co">#&gt;  taxizedb      0.3.1   <span style="color: #555555;">2023-04-03</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
-<span><span class="co">#&gt;  textshaping   0.3.6   <span style="color: #555555;">2021-10-13</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
-<span><span class="co">#&gt;  tibble      * 3.2.1   <span style="color: #555555;">2023-03-20</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
-<span><span class="co">#&gt;  tidyr         1.3.0   <span style="color: #555555;">2023-01-24</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
-<span><span class="co">#&gt;  tidyselect    1.2.0   <span style="color: #555555;">2022-10-10</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
-<span><span class="co">#&gt;  utf8          1.2.3   <span style="color: #555555;">2023-01-31</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
-<span><span class="co">#&gt;  uuid          1.1-0   <span style="color: #555555;">2022-04-19</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
-<span><span class="co">#&gt;  vctrs         0.6.1   <span style="color: #555555;">2023-03-22</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
-<span><span class="co">#&gt;  withr         2.5.0   <span style="color: #555555;">2022-03-03</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
-<span><span class="co">#&gt;  xfun          0.38    <span style="color: #555555;">2023-03-24</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
-<span><span class="co">#&gt;  xml2          1.3.3   <span style="color: #555555;">2021-11-30</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
-<span><span class="co">#&gt;  yaml          2.3.7   <span style="color: #555555;">2023-01-23</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
-<span><span class="co">#&gt;  zoo           1.8-11  <span style="color: #555555;">2022-09-17</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
+<span><span class="co">#&gt;  <span style="color: #555555; font-style: italic;">package      </span> <span style="color: #555555; font-style: italic;">*</span> <span style="color: #555555; font-style: italic;">version</span> <span style="color: #555555; font-style: italic;">date (UTC)</span> <span style="color: #555555; font-style: italic;">lib</span> <span style="color: #555555; font-style: italic;">source</span></span></span>
+<span><span class="co">#&gt;  ape             5.7-1   <span style="color: #555555;">2023-03-13</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
+<span><span class="co">#&gt;  BiocFileCache   2.7.2   <span style="color: #555555;">2023-02-17</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">Bioconductor</span></span></span>
+<span><span class="co">#&gt;  bit             4.0.5   <span style="color: #555555;">2022-11-15</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
+<span><span class="co">#&gt;  bit64           4.0.5   <span style="color: #555555;">2020-08-30</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
+<span><span class="co">#&gt;  blob            1.2.4   <span style="color: #555555;">2023-03-17</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
+<span><span class="co">#&gt;  bold            1.2.0   <span style="color: #555555;">2021-05-11</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
+<span><span class="co">#&gt;  bslib           0.4.2   <span style="color: #555555;">2022-12-16</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
+<span><span class="co">#&gt;  bugphyzz      * 0.0.1.3 <span style="color: #555555;">2023-04-11</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">local</span></span></span>
+<span><span class="co">#&gt;  cachem          1.0.7   <span style="color: #555555;">2023-02-24</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
+<span><span class="co">#&gt;  cli             3.6.1   <span style="color: #555555;">2023-03-23</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
+<span><span class="co">#&gt;  codetools       0.2-19  <span style="color: #555555;">2023-02-01</span> <span style="color: #555555;">[2]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
+<span><span class="co">#&gt;  conditionz      0.1.0   <span style="color: #555555;">2019-04-24</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
+<span><span class="co">#&gt;  crayon          1.5.2   <span style="color: #555555;">2022-09-29</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
+<span><span class="co">#&gt;  crul            1.3     <span style="color: #555555;">2022-09-03</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
+<span><span class="co">#&gt;  curl            5.0.0   <span style="color: #555555;">2023-01-12</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
+<span><span class="co">#&gt;  data.table      1.14.8  <span style="color: #555555;">2023-02-17</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
+<span><span class="co">#&gt;  DBI             1.1.3   <span style="color: #555555;">2022-06-18</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
+<span><span class="co">#&gt;  dbplyr          2.3.2   <span style="color: #555555;">2023-03-21</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
+<span><span class="co">#&gt;  desc            1.4.2   <span style="color: #555555;">2022-09-08</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
+<span><span class="co">#&gt;  digest          0.6.31  <span style="color: #555555;">2022-12-11</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
+<span><span class="co">#&gt;  dplyr         * 1.1.1   <span style="color: #555555;">2023-03-22</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
+<span><span class="co">#&gt;  evaluate        0.20    <span style="color: #555555;">2023-01-17</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
+<span><span class="co">#&gt;  fansi           1.0.4   <span style="color: #555555;">2023-01-22</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
+<span><span class="co">#&gt;  fastmap         1.1.1   <span style="color: #555555;">2023-02-24</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
+<span><span class="co">#&gt;  filelock        1.0.2   <span style="color: #555555;">2018-10-05</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
+<span><span class="co">#&gt;  foreach         1.5.2   <span style="color: #555555;">2022-02-02</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
+<span><span class="co">#&gt;  fs              1.6.1   <span style="color: #555555;">2023-02-06</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
+<span><span class="co">#&gt;  generics        0.1.3   <span style="color: #555555;">2022-07-05</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
+<span><span class="co">#&gt;  glue            1.6.2   <span style="color: #555555;">2022-02-24</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
+<span><span class="co">#&gt;  hoardr          0.5.3   <span style="color: #555555;">2023-01-26</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
+<span><span class="co">#&gt;  htmltools       0.5.5   <span style="color: #555555;">2023-03-23</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
+<span><span class="co">#&gt;  httpcode        0.3.0   <span style="color: #555555;">2020-04-10</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
+<span><span class="co">#&gt;  httr            1.4.5   <span style="color: #555555;">2023-02-24</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
+<span><span class="co">#&gt;  iterators       1.0.14  <span style="color: #555555;">2022-02-05</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
+<span><span class="co">#&gt;  jquerylib       0.1.4   <span style="color: #555555;">2021-04-26</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
+<span><span class="co">#&gt;  jsonlite        1.8.4   <span style="color: #555555;">2022-12-06</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
+<span><span class="co">#&gt;  knitr           1.42    <span style="color: #555555;">2023-01-25</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
+<span><span class="co">#&gt;  lattice         0.21-8  <span style="color: #555555;">2023-04-05</span> <span style="color: #555555;">[2]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
+<span><span class="co">#&gt;  lifecycle       1.0.3   <span style="color: #555555;">2022-10-07</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
+<span><span class="co">#&gt;  magrittr        2.0.3   <span style="color: #555555;">2022-03-30</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
+<span><span class="co">#&gt;  memoise         2.0.1   <span style="color: #555555;">2021-11-26</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
+<span><span class="co">#&gt;  mgsub           1.7.3   <span style="color: #555555;">2021-07-28</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
+<span><span class="co">#&gt;  nlme            3.1-162 <span style="color: #555555;">2023-01-31</span> <span style="color: #555555;">[2]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
+<span><span class="co">#&gt;  pillar          1.9.0   <span style="color: #555555;">2023-03-22</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
+<span><span class="co">#&gt;  pkgconfig       2.0.3   <span style="color: #555555;">2019-09-22</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
+<span><span class="co">#&gt;  pkgdown         2.0.7   <span style="color: #555555;">2022-12-14</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
+<span><span class="co">#&gt;  plyr            1.8.8   <span style="color: #555555;">2022-11-11</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
+<span><span class="co">#&gt;  purrr         * 1.0.1   <span style="color: #555555;">2023-01-10</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
+<span><span class="co">#&gt;  R6              2.5.1   <span style="color: #555555;">2021-08-19</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
+<span><span class="co">#&gt;  ragg            1.2.5   <span style="color: #555555;">2023-01-12</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
+<span><span class="co">#&gt;  rappdirs        0.3.3   <span style="color: #555555;">2021-01-31</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
+<span><span class="co">#&gt;  Rcpp            1.0.10  <span style="color: #555555;">2023-01-22</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
+<span><span class="co">#&gt;  reshape         0.8.9   <span style="color: #555555;">2022-04-12</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
+<span><span class="co">#&gt;  rlang           1.1.0   <span style="color: #555555;">2023-03-14</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
+<span><span class="co">#&gt;  rmarkdown       2.21    <span style="color: #555555;">2023-03-26</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
+<span><span class="co">#&gt;  rprojroot       2.0.3   <span style="color: #555555;">2022-04-02</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
+<span><span class="co">#&gt;  RSQLite         2.3.1   <span style="color: #555555;">2023-04-03</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
+<span><span class="co">#&gt;  sass            0.4.5   <span style="color: #555555;">2023-01-24</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
+<span><span class="co">#&gt;  sessioninfo     1.2.2   <span style="color: #555555;">2021-12-06</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
+<span><span class="co">#&gt;  stringi         1.7.12  <span style="color: #555555;">2023-01-11</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
+<span><span class="co">#&gt;  stringr         1.5.0   <span style="color: #555555;">2022-12-02</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
+<span><span class="co">#&gt;  systemfonts     1.0.4   <span style="color: #555555;">2022-02-11</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
+<span><span class="co">#&gt;  taxize          0.9.100 <span style="color: #555555;">2022-04-22</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
+<span><span class="co">#&gt;  taxizedb        0.3.1   <span style="color: #555555;">2023-04-03</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
+<span><span class="co">#&gt;  textshaping     0.3.6   <span style="color: #555555;">2021-10-13</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
+<span><span class="co">#&gt;  tibble          3.2.1   <span style="color: #555555;">2023-03-20</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
+<span><span class="co">#&gt;  tidyr           1.3.0   <span style="color: #555555;">2023-01-24</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
+<span><span class="co">#&gt;  tidyselect      1.2.0   <span style="color: #555555;">2022-10-10</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
+<span><span class="co">#&gt;  tzdb            0.3.0   <span style="color: #555555;">2022-03-28</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
+<span><span class="co">#&gt;  utf8            1.2.3   <span style="color: #555555;">2023-01-31</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
+<span><span class="co">#&gt;  uuid            1.1-0   <span style="color: #555555;">2022-04-19</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
+<span><span class="co">#&gt;  vctrs           0.6.1   <span style="color: #555555;">2023-03-22</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
+<span><span class="co">#&gt;  vroom           1.6.1   <span style="color: #555555;">2023-01-22</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
+<span><span class="co">#&gt;  withr           2.5.0   <span style="color: #555555;">2022-03-03</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
+<span><span class="co">#&gt;  xfun            0.38    <span style="color: #555555;">2023-03-24</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
+<span><span class="co">#&gt;  xml2            1.3.3   <span style="color: #555555;">2021-11-30</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
+<span><span class="co">#&gt;  yaml            2.3.7   <span style="color: #555555;">2023-01-23</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
+<span><span class="co">#&gt;  zoo             1.8-11  <span style="color: #555555;">2022-09-17</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.0)</span></span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; <span style="color: #555555;"> [1] /usr/local/lib/R/site-library</span></span></span>
 <span><span class="co">#&gt; <span style="color: #555555;"> [2] /usr/local/lib/R/library</span></span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; <span style="color: #00BBBB; font-weight: bold;">──────────────────────────────────────────────────────────────────────────────</span></span></span></code></pre></div>
+</div>
 </div>
   </div>
 
