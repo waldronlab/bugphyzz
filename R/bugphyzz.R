@@ -29,7 +29,7 @@
 importBugphyzz <- function(version = 'devel', force_download = FALSE
 ) {
   if (version == 'devel' || grepl("^[0-9a-z]{7}$", version)) {
-    url <- 'https://github.com/waldronlab/bugphyzzExports/raw/sdgamboa/update-exports/full_dump_categorical.csv.bz2'
+    url <- 'https://github.com/waldronlab/bugphyzzExports/raw/main/full_dump_categorical.csv.bz2'
     ## update code when contente has been merged into main
     # if (version == 'devel') version <- 'main'
     # url <- paste0(
@@ -86,7 +86,7 @@ importBugphyzzNumeric <- function(
     keyword = 'all', version = 'devel', force_download = FALSE
 ) {
   if (version == 'devel' || grepl("^[0-9a-z]{7}$", version)) {
-    url <- 'https://github.com/waldronlab/bugphyzzExports/raw/sdgamboa/update-exports/full_dump_numeric.csv.bz2'
+    url <- 'https://github.com/waldronlab/bugphyzzExports/raw/main/full_dump_numeric.csv.bz2'
     ## update code when contente has been merged into main
     # if (version == 'devel') version <- 'main'
     # url <- paste0(
