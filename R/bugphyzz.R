@@ -171,3 +171,34 @@ getBugphyzzSignatures <- function(
   output <- purrr::discard(output, ~ length(.x) < min.size)
   return(output)
 }
+
+
+#' Get Bug Annotations
+#'
+#' \code{getBugAnnotations} get all physiology annotations for one or more taxa.
+#'
+#' @param x A valid NCBI ID or taxon name
+#' @param bp Import from \code{importBugphyzz}.
+#' @param tax.id.type A character string. Either 'NCBI_ID' or 'Taxon_name'.
+#'
+#' @return A list of physiologies per taxa.
+#' @export
+#'
+#' @examples
+#'
+#' x <- getBugAnnotations(
+#'     x = c('561', '562'), bp = importBugphyzz(), tax.id.type = 'NCBI_ID'
+#' )
+#' x
+#'
+getBugAnnotations <- function(x, bp = importBugphyzz(), tax.id.type) {
+  sub_bp <- bp[which(bp[[tax.id.type]] %in% x),]
+  sub_bp |>
+    { \(y) split(y, factor(y[[tax.id.type]])) }() |>
+    purrr::map(~ split(.x, .x$Attribute_group)) |>
+    purrr::map_depth(.depth = 2, ~ .x$Attribute) |>
+    purrr::map_depth(.depth = 2, ~ sub('^.*:', '', .x))
+
+}
+
+

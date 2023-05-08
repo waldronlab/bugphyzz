@@ -2,8 +2,8 @@
 
 export(check_valid_ncbi_ids)
 export(fattyAcidComposition)
+export(getBugAnnotations)
 export(getBugphyzzSignatures)
-export(getPhysiologies)
 export(getSignatures)
 export(importBugphyzz)
 export(importBugphyzzNumeric)
