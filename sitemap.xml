@@ -28,9 +28,6 @@
     <loc>https://waldronlab.io/bugphyzz/articles/descriptive_statistics.html</loc>
   </url>
   <url>
-    <loc>https://waldronlab.io/bugphyzz/articles/getPhysiologies.html</loc>
-  </url>
-  <url>
     <loc>https://waldronlab.io/bugphyzz/articles/index.html</loc>
   </url>
   <url>
@@ -109,10 +106,10 @@
     <loc>https://waldronlab.io/bugphyzz/reference/fill_NCBI.html</loc>
   </url>
   <url>
-    <loc>https://waldronlab.io/bugphyzz/reference/getBugphyzzSignatures.html</loc>
+    <loc>https://waldronlab.io/bugphyzz/reference/getBugAnnotations.html</loc>
   </url>
   <url>
-    <loc>https://waldronlab.io/bugphyzz/reference/getPhysiologies.html</loc>
+    <loc>https://waldronlab.io/bugphyzz/reference/getBugphyzzSignatures.html</loc>
   </url>
   <url>
     <loc>https://waldronlab.io/bugphyzz/reference/getSignatures.html</loc>
