@@ -1,6 +1,6 @@
 # Files description
 
-## attributes.tsv
+## [attributes.tsv](./attributes.tsv)
 
 Contains the description of the attribute values included in bugphyzz.
 
