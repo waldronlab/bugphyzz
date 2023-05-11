@@ -11,4 +11,4 @@ Columns:
 | attribute | The name of the attribute. |
 | validity | The type of the attribute, either logical for categorical values or numeric for ranges. |
 | ontology | Mapping to an ontology term (if possible). |
-| description | The meaning of the attribute value (attribute column). |
+| description | The meaning of the attribute described in tbe attribute column. |
