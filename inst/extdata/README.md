@@ -18,13 +18,11 @@ Columns:
 - Medium.
 - Low.
 
-**\* Evidence**
+**\*\* Evidence**
 - igc. Inferred from genomic context.
 - exp. Experimental (wet lab).
 - nas.
 - tas.
-- asr. Ancestral state reconstrcution (i.e., inferred from child taxa).
-- inh. Inheritance (i.e., inferred from parent taxa).
 
 ## [attributes.tsv](./attributes.tsv)
 
