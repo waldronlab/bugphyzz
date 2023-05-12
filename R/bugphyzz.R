@@ -201,4 +201,43 @@ getBugAnnotations <- function(x, bp = importBugphyzz(), tax.id.type) {
 
 }
 
+#' Which Attributes
+#'
+#' \code{whichAttr} shows which attributes are present in a dataset imported
+#' with \code{importBugphyzz}. This would be the names of the singatures
+#' created with \code{getBugphyzzSignatures}.
+#'
+#' @param bp A data.frame imported with \code{importBugphyzz}.
+#'
+#' @return A character vector.
+#' @export
+#'
+#' @examples
+#'
+#' bp <- importBugphyzz()
+#' whichAttr(bp)
+#'
+whichAttr <- function(bp) {
+  sort(unique(bp$Attribute))
+}
+
+#' Which Attribute Groups
+#'
+#' \code{whichAttrGrp} shows which attribute groups are present in a dataset
+#' imported with \code{importBugphyzz}.
+#'
+#' @param bp  A data.frame imported with \code{importBugphyzz}.
+#'
+#' @return A character vector.
+#' @export
+#'
+#' @examples
+#'
+#' bp <- importBugphyzz()
+#' whichAttrGrp(bp)
+#'
+whichAttrGrp <- function(bp) {
+  sort(unique(bp$Attribute_group))
+}
+
 
