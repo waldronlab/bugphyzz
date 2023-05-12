@@ -72,7 +72,7 @@ Columns:
 | link | Link to the csv export. |
 | source_link | Link to the source spreadsheet. |
 
-## [template.tsv](./template.tsv]
+## [template.tsv](./template.tsv)
 
 Contains the formal description of the data model in the spreadsheets imported
 by the physiologies funtion.
@@ -88,12 +88,4 @@ Columns:
 | valid_values | A regular expression with the values that are accepted. Except for the column 'Attriubte' which is a function name ('.attributes'). |
 | value_test | If 'string' the test of validity is based on the regular expresion. If '.attributes', it's based on the function .attriubtes (no exported). |
 | column_class | One of the R classes for atomic vectors. |
-
-
-
-
-
-
-
-
 
