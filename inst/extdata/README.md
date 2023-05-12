@@ -57,10 +57,12 @@ Columns:
 | source_link |  Link to the source spreadsheet on Google Docs. |
 
 
-## [links](./links.tsv)
+## [links.tsv](./links.tsv)
 
 Links for datasets in spreadsheets that are already in tidy format.
 These datsets are imported with the physiologies function (no exported).
+
+Columns:
 
 | Column name | Description |
 | --- | --- |
@@ -69,4 +71,29 @@ These datsets are imported with the physiologies function (no exported).
 | sig_type | The type of the signature. Either range for numeric or logical for categorical and binary values. |
 | link | Link to the csv export. |
 | source_link | Link to the source spreadsheet. |
+
+## [template.tsv](./template.tsv]
+
+Contains the formal description of the data model in the spreadsheets imported
+by the physiologies funtion.
+
+Columns:
+
+| Column name | Description |
+| --- | --- |
+| column_name | Name of the column in the spreadsheet. |
+| requiredness | Whether the column needs to be present in all attributes (required) or not (optional). |
+| required_column_order | Order of the column if required. |
+| attribute_types | Types of the attributes. Not R classes. Import function behavior will change based on this values. |
+| valid_values | A regular expression with the values that are accepted. Except for the column 'Attriubte' which is a function name ('.attributes'). |
+| value_test | If 'string' the test of validity is based on the regular expresion. If '.attributes', it's based on the function .attriubtes (no exported). |
+| column_class | One of the R classes for atomic vectors. |
+
+
+
+
+
+
+
+
 
