@@ -132,7 +132,7 @@ meaning of each keyword.</p></dd>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## Create signatures of categorical or binary attributes</span></span></span>
 <span class="r-in"><span><span class="va">bp</span> <span class="op">&lt;-</span> <span class="fu"><a href="importBugphyzz.html">importBugphyzz</a></span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Using data downloaded on 2023-05-10 16:49:29.</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Using data downloaded on 2023-05-12 15:59:22.</span>
 <span class="r-in"><span><span class="va">sigs</span> <span class="op">&lt;-</span> <span class="fu">sig_fun</span><span class="op">(</span><span class="va">bp</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html" class="external-link">map</a></span><span class="op">(</span><span class="va">sigs</span>, <span class="va">head</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $`aerophilicity:aerobic`</span>
@@ -240,11 +240,20 @@ meaning of each keyword.</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $`shape:u-shaped`</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "320787"  "1235754" "708087"  "388280"  "2716263" "1350429"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`width:average`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "46632"   "82076"   "1167028" "1167029" "1167030" "309905" </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`width:large`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "14"      "513050"  "221213"  "1868324" "100716"  "371606" </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`width:small`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1915863" "2599289" "1680828" "1680827" "1697135" "2945048"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## Create signatures of numeric attributes</span></span></span>
 <span class="r-in"><span><span class="va">bp_num</span> <span class="op">&lt;-</span> <span class="fu"><a href="importBugphyzzNumeric.html">importBugphyzzNumeric</a></span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Downloading, full_dump_numeric.csv.bz2.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Using data downloaded on 2023-05-10 16:49:35.</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Using data downloaded on 2023-05-12 15:59:27.</span>
 <span class="r-in"><span><span class="va">num_sigs</span> <span class="op">&lt;-</span> <span class="fu">flatten</span><span class="op">(</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html" class="external-link">map</a></span><span class="op">(</span><span class="va">bp_num</span>, <span class="va">sig_fun</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">lapply</a></span><span class="op">(</span><span class="va">num_sigs</span>, <span class="va">head</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $growth_temperature</span>
@@ -252,6 +261,9 @@ meaning of each keyword.</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $optimal_ph</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "100053"  "1008460" "101192"  "101689"  "1017"    "102862" </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $width</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1915863" "2599289" "1680828" "1680827" "1697135" "2945048"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
