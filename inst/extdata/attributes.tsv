@@ -380,7 +380,7 @@
 "Tetanus"	"logical"	"NCIT:C85185"	"A serious infectious disorder that follows wound contamination by the Gram-positive bacterium Clostridium tetani. The bacteria produce a neurotoxin called tetanospasmin, which causes muscle spasm in the jaw and other anatomic sites"
 "Toxic Shock Syndrome"	"logical"	"NCIT:C35498"	"A rare acute life-threatening systemic bacterial noncontagious illness caused by any of several related staphylococcal exotoxins. It is characterized by high fever, hypotension, rash, multi-organ dysfunction, and cutaneous desquamation during the early convalescent period. The toxins affect the host immune system, causing an exuberant and pathological host inflammatory response. Laboratory findings include leukocytosis, elevated prothrombin time, hypoalbuminemia, hypocalcemia, and pyuria"
 "Tumor"	"logical"	"NCIT:C98275"	"A benign or malignant pathologic structure in any part of the body, resulting from a neoplastic accumulation of cells."
-"reaction to black rot"	"logical"	"CO_331:0000380"	NA
+"reaction to black rot"	"logical"	"CO_331:0000380"	"The reaction of the plant to Black rot."
 "human microflora"	"logical"	NA	NA
 "human gut microbiome"	"logical"	NA	NA
 "other host associated"	"logical"	NA	NA
