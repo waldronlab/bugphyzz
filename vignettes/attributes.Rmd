@@ -34,7 +34,7 @@ datt <- datatable(
     dom = '<"top"B>lfrtip',
     buttons = list('copy', 'print'),
     iDisplayLength = 25,
-    keys = T
+    keys = TRUE
   )
 )
 datt
