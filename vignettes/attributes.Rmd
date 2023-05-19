@@ -20,6 +20,9 @@ knitr::opts_chunk$set(
 library(DT)
 ```
 
+
+Ontology terms can be searched at [OSLv3](https://www.ebi.ac.uk/ols/index).
+
 ```{r}
 fname <- system.file('extdata/attributes.tsv', package = 'bugphyzz')
 attributes <- read.table(fname, header = TRUE, sep = '\t')
