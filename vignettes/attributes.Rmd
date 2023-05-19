@@ -1,0 +1,31 @@
+---
+title: "attributes"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{attributes}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>", 
+  echo = FALSE,
+  message = FALSE
+)
+```
+
+```{r setup}
+library(DT)
+```
+
+```{r}
+fname <- system.file('extdata/attributes.tsv', package = 'bugphyzz')
+attributes <- read.table(fname, header = TRUE, sep = '\t')
+datatable(data = attributes)
+```
+
+
+
+
