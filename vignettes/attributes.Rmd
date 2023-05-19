@@ -1,5 +1,5 @@
 ---
-title: "attributes"
+title: "Attributes in bugphyzz"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{attributes}
@@ -23,7 +23,18 @@ library(DT)
 ```{r}
 fname <- system.file('extdata/attributes.tsv', package = 'bugphyzz')
 attributes <- read.table(fname, header = TRUE, sep = '\t')
-datatable(data = attributes)
+datt <- datatable(
+  data = attributes, 
+  filter = "top",
+  extensions = c("Buttons","KeyTable"), 
+  options = list(
+    dom = '<"top"B>lfrtip',
+    buttons = list('copy', 'print'),
+    iDisplayLength = 25,
+    keys = T
+  )
+)
+datt
 ```
 
 
