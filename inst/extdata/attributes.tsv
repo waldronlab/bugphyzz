@@ -1,431 +1,431 @@
-"attribute"	"validity"	"ontology"	"description"
-"aerobic"	"logical"	"MICRO:0000494"	"A prokaryotic metabolic quality where the organism grows in the presence of oxygen."
-"obligately aerobic"	"logical"	"MICRO:0000516"	"A prokaryotic metabolic quality where the organism grows in the presence of oxygen. Is incapable of anaerobic growth (growth in the absence of oxygen)."
-"microaerophilic"	"logical"	"MICRO:0000515"	"A prokaryotic metabolic quality where the organism grows in the presence of oxygen, where the oxygen concentration is less than atmospheric levels."
-"aerotolerant"	"logical"	"MICRO:0000502"	"A prokaryotic metabolic quality where the organism grows in the absence of oxygen. Can grow or live in the presence of oxygen."
-"anaerobic"	"logical"	"MICRO:0000495"	"A prokaryotic metabolic quality where the organism grows in the absence of oxygen"
-"facultatively anaerobic"	"logical"	"MICRO:0000504"	"A prokaryote which is capable of growth in the presence of oxygen or in the absence of oxygen."
-"obligately anaerobic"	"logical"	"MICRO:0000504"	"A prokaryotic metabolic quality where the organism grows in the absence of oxygen. Cannot grow or live in the presence of oxygen."
-"endospore"	"logical"	"MICRO:0000213"	"A differentiated prokaryotic cell, found in the Firmicutes, which is specialized for extreme tolerance to desiccation, radiation, and exposure to ultraviolet light. Characterized by thick cell walls."
-"bacillus"	"logical"	"MICRO:0000401"	"A prokaryotic cell, where one axis (the long axis, the length) of the cell is longer than the other axis (the short axis, the width) of the cell."
-"spirillum"	"logical"	"MICRO:0000367"	"A prokaryotic cell, where the long axis of the cell twists in a spiral."
-"elliptic"	"logical"	"PATO:0000947"	"A spheroid quality inhering in a bearer by virtue of the bearer's being oval with two axes of symmetry, as produced by a conical section."
-"branched"	"logical"	"PATO:0000402"	"A branchiness quality inhering in a bearer by virtue of the bearer's having branches"
-"cell chain"	"logical"	"MICRO:0000373"	"A multicellular relationship of prokaryotic cells where cells are attached to one another end-to-end to form chains. Forms when cell division occurs in one plane and cells become detached after cell division takes place."
-"resistance to amikacin"	"logical"	"PHIPO:0000601"	"A growth phenotype which describes the resistance of individuals or populations after exposure to amikacin. Typically, organisms are deemed resistant to a chemical if they survive at a concentration of the chemical that does not allow wild type individuals or populations to grow."
-"resistance to aztreonam"	"logical"	"PHIPO:0000553"	"A growth phenotype which describes the resistance of individuals or populations after exposure to aztreonam. Typically, organisms are deemed resistant to a chemical if they survive at a concentration of the chemical that does not allow wild type individuals or populations to grow."
-"resistant to beta-lactam"	"logical"	"OMP:0006047"	"An beta-lactam compound resistance phenotype where an organism or cell is resistant to one or more beta-lactam compounds"
-"resistance to capreomycin"	"logical"	"PHIPO:0000600"	"A growth phenotype which describes the resistance of individuals or populations after exposure to capreomycin. Typically, organisms are deemed resistant to a chemical if they survive at a concentration of the chemical that does not allow wild type individuals or populations to grow."
-"carbapenem-resistant Acinetobacter"	"logical"	"ARO:3004311"	"Any strain of Acinetobacter spp. that has tested either Intermediate or Resistant to at least one of the following carbapenem-class antibiotics by standard testing using approved breakpoints: imipenem, meropenem, doripenem."
-"resistance to cefepime"	"logical"	"PHIPO:0000631"	"A growth phenotype which describes the resistance of individuals or populations after exposure to cefepime. Typically, organisms are deemed resistant to a chemical if they survive at a concentration of the chemical that does not allow wild type individuals or populations to grow."
-"resistance to cefoxitin"	"logical"	"PHIPO:0000668"	"A growth phenotype which describes the resistance of individuals or populations after exposure to cefoxitin. Typically, organisms are deemed resistant to a chemical if they survive at a concentration of the chemical that does not allow wild type individuals or populations to grow."
-"resistance to chloramphenicol"	"logical"	"PHIPO:0000689"	"A growth phenotype which describes the resistance of individuals or populations after exposure to chloramphenicol. Typically, organisms are deemed resistant to a chemical if they survive at a concentration of the chemical that does not allow wild type individuals or populations to grow"
-"resistance to ciprofloxacin"	"logical"	"PHIPO:0000539"	"A growth phenotype which describes the resistance of individuals or populations after exposure to ciprofloxacin. Typically, organisms are deemed resistant to a chemical if they survive at a concentration of the chemical that does not allow wild type individuals or populations to grow"
-"resistance to clindamycin"	"logical"	"PHIPO:0000560"	"A growth phenotype which describes the resistance of individuals or populations after exposure to clindamycin. Typically, organisms are deemed resistant to a chemical if they survive at a concentration of the chemical that does not allow wild type individuals or populations to grow."
-"resistance to clindamycin"	"logical"	"PHIPO_0000560"	"A growth phenotype which describes the resistance of individuals or populations after exposure to clindamycin. Typically, organisms are deemed resistant to a chemical if they survive at a concentration of the chemical that does not allow wild type individuals or populations to grow."
-"resistance to ertapenem"	"logical"	"PHIPO:0000650"	"A growth phenotype which describes the resistance of individuals or populations after exposure to ertapenem. Typically, organisms are deemed resistant to a chemical if they survive at a concentration of the chemical that does not allow wild type individuals or populations to grow."
-"resistance to erythromycin A"	"logical"	"PHIPO:0000622"	"A growth phenotype which describes the resistance of individuals or populations after exposure to erythromycin A. Typically, organisms are deemed resistant to a chemical if they survive at a concentration of the chemical that does not allow wild type individuals or populations to grow."
-"resistance to ethambutol"	"logical"	"PHIPO:0000542"	"A growth phenotype which describes the resistance of individuals or populations after exposure to ethambutol. Typically, organisms are deemed resistant to a chemical if they survive at a concentration of the chemical that does not allow wild type individuals or populations to grow"
-"resistance to gentamicin"	"logical"	"PHIPO:0000659"	"A growth phenotype which describes the resistance of individuals or populations after exposure to gentamicin. Typically, organisms are deemed resistant to a chemical if they survive at a concentration of the chemical that does not allow wild type individuals or populations to grow."
-"resistance to imipenem"	"logical"	"PHIPO:0000643"	"A growth phenotype which describes the resistance of individuals or populations after exposure to imipenem. Typically, organisms are deemed resistant to a chemical if they survive at a concentration of the chemical that does not allow wild type individuals or populations to grow."
-"resistance to isoniazid"	"logical"	"PHIPO:0000538"	"A growth phenotype which describes the resistance of individuals or populations after exposure to isoniazid. Typically, organisms are deemed resistant to a chemical if they survive at a concentration of the chemical that does not allow wild type individuals or populations to grow."
-"resistance to kanamycin A"	"logical"	"PHIPO:0000616"	"A growth phenotype which describes the resistance of individuals or populations after exposure to kanamycin A. Typically, organisms are deemed resistant to a chemical if they survive at a concentration of the chemical that does not allow wild type individuals or populations to grow."
-"resistance to levofloxacin"	"logical"	"PHIPO:0000670"	"A growth phenotype which describes the resistance of individuals or populations after exposure to levofloxacin. Typically, organisms are deemed resistant to a chemical if they survive at a concentration of the chemical that does not allow wild type individuals or populations to grow."
-"resistance to meropenem"	"logical"	"PHIPO:0000604"	"A growth phenotype which describes the resistance of individuals or populations after exposure to meropenem. Typically, organisms are deemed resistant to a chemical if they survive at a concentration of the chemical that does not allow wild type individuals or populations to grow."
-"resistance to methicillin"	"logical"	"PHIPO:0000649"	"A growth phenotype which describes the resistance of individuals or populations after exposure to methicillin. Typically, organisms are deemed resistant to a chemical if they survive at a concentration of the chemical that does not allow wild type individuals or populations to grow."
-"resistance to ofloxacin"	"logical"	"PHIPO:0000665"	"A growth phenotype which describes the resistance of individuals or populations after exposure to ofloxacin. Typically, organisms are deemed resistant to a chemical if they survive at a concentration of the chemical that does not allow wild type individuals or populations to grow."
-"resistance to penicillin"	"logical"	"PHIPO:0000692"	"A growth phenotype which describes the resistance of individuals or populations after exposure to penicillin. Typically, organisms are deemed resistant to a chemical if they survive at a concentration of the chemical that does not allow wild type individuals or populations to grow."
-"resistance to piperacillin"	"logical"	"PHIPO:0000519"	"A growth phenotype which describes the resistance of individuals or populations after exposure to piperacillin. Typically, organisms are deemed resistant to a chemical if they survive at a concentration of the chemical that does not allow wild type individuals or populations to grow"
-"resistance to rifampicin"	"logical"	"PHIPO:0000606"	"A growth phenotype which describes the resistance of individuals or populations after exposure to rifampicin. Typically, organisms are deemed resistant to a chemical if they survive at a concentration of the chemical that does not allow wild type individuals or populations to grow."
-"resistance to streptomycin"	"logical"	"PHIPO:0000644"	"A growth phenotype which describes the resistance of individuals or populations after exposure to streptomycin. Typically, organisms are deemed resistant to a chemical if they survive at a concentration of the chemical that does not allow wild type individuals or populations to grow."
-"resistance to tetracycline"	"logical"	"PHIPO:0000555"	"A growth phenotype which describes the resistance of individuals or populations after exposure to tetracycline. Typically, organisms are deemed resistant to a chemical if they survive at a concentration of the chemical that does not allow wild type individuals or populations to grow."
-"resistance to tobramycin"	"logical"	"PHIPO:0000685"	"A growth phenotype which describes the resistance of individuals or populations after exposure to tobramycin. Typically, organisms are deemed resistant to a chemical if they survive at a concentration of the chemical that does not allow wild type individuals or populations to grow."
-"resistance to trimethoprim"	"logical"	"PHIPO:0000588"	"A growth phenotype which describes the resistance of individuals or populations after exposure to trimethoprim. Typically, organisms are deemed resistant to a chemical if they survive at a concentration of the chemical that does not allow wild type individuals or populations to grow."
-"sensitive to amikacin"	"logical"	"PHIPO:0000755"	"A growth phenotype which describes the sensitivity of individuals or populations after exposure to amikacin. Typically, organisms are deemed sensitive to a chemical if they stop growing (and may die) at a concentration of the chemical that allows wild type individuals or populations to grow."
-"sensitive to aztreonam"	"logical"	"PHIPO:0000750"	"A growth phenotype which describes the sensitivity of individuals or populations after exposure to aztreonam. Typically, organisms are deemed sensitive to a chemical if they stop growing (and may die) at a concentration of the chemical that allows wild type individuals or populations to grow."
-"not resistant to beta-lactam"	"logical"	"OMP:0006046"	"A beta-lactam compound resistance phenotype where an organism or cell is sensitive to one or more beta-lactam compounds."
-"sensitive to capreomycin"	"logical"	"PHIPO:0000853"	"A growth phenotype which describes the sensitivity of individuals or populations after exposure to capreomycin. Typically, organisms are deemed sensitive to a chemical if they stop growing (and may die) at a concentration of the chemical that allows wild type individuals or populations to grow."
-"sensitive to carbapenems"	"logical"	"PHIPO:0000819"	"A growth phenotype which describes the sensitivity of individuals or populations after exposure to carbapenems. Typically, organisms are deemed sensitive to a chemical if they stop growing (and may die) at a concentration of the chemical that allows wild type individuals or populations to grow."
-"sensitive to cefoxitin"	"logical"	"PHIPO:0000877"	"A growth phenotype which describes the sensitivity of individuals or populations after exposure to cefoxitin. Typically, organisms are deemed sensitive to a chemical if they stop growing (and may die) at a concentration of the chemical that allows wild type individuals or populations to grow."
-"sensitive to chloramphenicol"	"logical"	"PHIPO:0000726"	"A growth phenotype which describes the sensitivity of individuals or populations after exposure to chloramphenicol. Typically, organisms are deemed sensitive to a chemical if they stop growing (and may die) at a concentration of the chemical that allows wild type individuals or populations to grow."
-"sensitive to ciprofloxacin"	"logical"	"PHIPO:0000799"	"A growth phenotype which describes the sensitivity of individuals or populations after exposure to ciprofloxacin. Typically, organisms are deemed sensitive to a chemical if they stop growing (and may die) at a concentration of the chemical that allows wild type individuals or populations to grow."
-"sensitive to clindamycin"	"logical"	"PHIPO:0000889"	"A growth phenotype which describes the sensitivity of individuals or populations after exposure to clindamycin. Typically, organisms are deemed sensitive to a chemical if they stop growing (and may die) at a concentration of the chemical that allows wild type individuals or populations to grow."
-"sensitive to ertapenem"	"logical"	"PHIPO:0000860"	"A growth phenotype which describes the sensitivity of individuals or populations after exposure to ertapenem. Typically, organisms are deemed sensitive to a chemical if they stop growing (and may die) at a concentration of the chemical that allows wild type individuals or populations to grow."
-"sensitive to erythromycin A"	"logical"	"PHIPO:0000871"	"A growth phenotype which describes the sensitivity of individuals or populations after exposure to erythromycin A. Typically, organisms are deemed sensitive to a chemical if they stop growing (and may die) at a concentration of the chemical that allows wild type individuals or populations to grow."
-"sensitive to ethambutol"	"logical"	"PHIPO:0000887"	"A growth phenotype which describes the sensitivity of individuals or populations after exposure to ethambutol. Typically, organisms are deemed sensitive to a chemical if they stop growing (and may die) at a concentration of the chemical that allows wild type individuals or populations to grow."
-"sensitive to gentamicin"	"logical"	"PHIPO:0000760"	"A growth phenotype which describes the sensitivity of individuals or populations after exposure to gentamicin. Typically, organisms are deemed sensitive to a chemical if they stop growing (and may die) at a concentration of the chemical that allows wild type individuals or populations to grow."
-"sensitive to imipenem"	"logical"	"PHIPO:0000833"	"A growth phenotype which describes the sensitivity of individuals or populations after exposure to imipenem. Typically, organisms are deemed sensitive to a chemical if they stop growing (and may die) at a concentration of the chemical that allows wild type individuals or populations to grow."
-"sensitive to isoniazid"	"logical"	"PHIPO:0000817"	"A growth phenotype which describes the sensitivity of individuals or populations after exposure to isoniazid. Typically, organisms are deemed sensitive to a chemical if they stop growing (and may die) at a concentration of the chemical that allows wild type individuals or populations to grow."
-"sensitive to kanamycin A"	"logical"	"PHIPO:0000764"	"A growth phenotype which describes the sensitivity of individuals or populations after exposure to kanamycin A. Typically, organisms are deemed sensitive to a chemical if they stop growing (and may die) at a concentration of the chemical that allows wild type individuals or populations to grow."
-"sensitive to levofloxacin"	"logical"	"PHIPO:0000883"	"A growth phenotype which describes the sensitivity of individuals or populations after exposure to levofloxacin. Typically, organisms are deemed sensitive to a chemical if they stop growing (and may die) at a concentration of the chemical that allows wild type individuals or populations to grow."
-"sensitive to meropenem"	"logical"	"PHIPO:0000845"	"A growth phenotype which describes the sensitivity of individuals or populations after exposure to meropenem. Typically, organisms are deemed sensitive to a chemical if they stop growing (and may die) at a concentration of the chemical that allows wild type individuals or populations to grow."
-"sensitive to methicillin"	"logical"	"PHIPO:0000765"	"A growth phenotype which describes the sensitivity of individuals or populations after exposure to methicillin. Typically, organisms are deemed sensitive to a chemical if they stop growing (and may die) at a concentration of the chemical that allows wild type individuals or populations to grow."
-"sensitive to ofloxacin"	"logical"	"PHIPO:0000830"	"A growth phenotype which describes the sensitivity of individuals or populations after exposure to ofloxacin. Typically, organisms are deemed sensitive to a chemical if they stop growing (and may die) at a concentration of the chemical that allows wild type individuals or populations to grow."
-"sensitive to penicillin"	"logical"	"PHIPO:0000815"	"A growth phenotype which describes the sensitivity of individuals or populations after exposure to penicillin. Typically, organisms are deemed sensitive to a chemical if they stop growing (and may die) at a concentration of the chemical that allows wild type individuals or populations to grow."
-"sensitive to piperacillin"	"logical"	"PHIPO:0000842"	"A growth phenotype which describes the sensitivity of individuals or populations after exposure to piperacillin. Typically, organisms are deemed sensitive to a chemical if they stop growing (and may die) at a concentration of the chemical that allows wild type individuals or populations to grow."
-"sensitive to rifampicin"	"logical"	"PHIPO:0000836"	"A growth phenotype which describes the sensitivity of individuals or populations after exposure to rifampicin. Typically, organisms are deemed sensitive to a chemical if they stop growing (and may die) at a concentration of the chemical that allows wild type individuals or populations to grow."
-"sensitive to streptomycin"	"logical"	"PHIPO:0000779"	"A growth phenotype which describes the sensitivity of individuals or populations after exposure to streptomycin. Typically, organisms are deemed sensitive to a chemical if they stop growing (and may die) at a concentration of the chemical that allows wild type individuals or populations to grow."
-"sensitive to tetracycline"	"logical"	"PHIPO:0000882"	"A growth phenotype which describes the sensitivity of individuals or populations after exposure to tetracycline. Typically, organisms are deemed sensitive to a chemical if they stop growing (and may die) at a concentration of the chemical that allows wild type individuals or populations to grow."
-"sensitive to trimethoprim"	"logical"	"PHIPO:0000781"	"A growth phenotype which describes the sensitivity of individuals or populations after exposure to trimethoprim. Typically, organisms are deemed sensitive to a chemical if they stop growing (and may die) at a concentration of the chemical that allows wild type individuals or populations to grow."
-"waste water"	"logical"	"ENVO:00002001"	"Water that has been adversely affected in quality by anthropogenic influence"
-"terrestrial biome"	"logical"	"ENVO:00000446"	"A biome which is primarily or completely situated on a landmass"
-"water surface"	"logical"	"ENVO:01001191"	"The surface layer of a volume of water."
-"sulfur spring"	"logical"	"ENVO:00000126"	"A spring whose water contains a significant amount of dissolved derivatives of sulfur."
-"submarine"	"logical"	"ERO:0001431"	"An instrument that is designed to move across or through water and is capable of independent operation below the surface of the water."
-"specialized"	"logical"	"NCIT:C44274"	"Developed or designed for a special activity or function"
-"soil"	"logical"	"ENVO:00001998"	"Soil is an environmental material which is primarily composed of minerals, varying proportions of sand, silt, and clay, organic material such as humus, gases, liquids, and a broad range of resident micro- and macroorganisms"
-"volcanic field"	"logical"	"ENVO:00000354"	"A geothermal field which is prone to localized volcanic activity."
-"hypersaline salinity"	"logical"	"MICRO:0001293"	"Culture medium salinity quality where the salinity is greater than 5 % salts."
-"sludge"	"logical"	"ENVO:00002044"	"The residual semi-solid material left from domestic or industrial processes, or wastewater treatment processes."
-"sediment"	"logical"	"ENVO:00002007"	"Sediment is an environmental substance comprised of any particulate matter that can be transported by fluid flow and which eventually is deposited as a layer of solid particles on the bedor bottom of a body of water or other liquid."
-"sea water"	"logical"	"ENVO:00002149"	"Water which has physicochemical properties that have been determined by the processes occuring in a sea or ocean."
-"saline water"	"logical"	"ENVO:00002010"	"Water which contains a significant concentration of dissolved salts."
-"pond"	"logical"	"ENVO:00000033"	"A body of water, usually of smaller size than a lake."
-"rhizosphere"	"logical"	"ENVO:00005801"	"The narrow region of soil that is directly influenced by root secretions and associated soil microorganisms"
-"root nodule"	"logical"	"ENVO:01000164"	"Root nodules occur on the roots of plants that associate with symbiotic nitrogen-fixing bacteria"
-"not host-associated"	"logical"	NA	NA
-"multiple"	"logical"	"NCIT:C17648"	"Having, relating to, or consisting of more than one individual, element, part, or other component; manifold."
-"mud"	"logical"	"ENVO:01000001"	"A liquid or semi-liquid mixture of water and some combination of soil, silt, and clay."
-"human microbiome"	"logical"	"OHMI:0000002"	"A microbiome located in a human body"
-"marine water body"	"logical"	"ENVO:00001999"	"A significant accumulation of water which is part of a marine biome."
-"hydrothermal vent"	"logical"	"ENVO:00000215"	"A fissure in the Earths's surface from which geothermally heated water issues"
-"hot spring"	"logical"	"ENVO:00000051"	"A spring that is produced by the emergence of geothermally-heated groundwater from the Earth's crust"
-"colonization of host"	"logical"	"IDO:0000604"	"An establishment of localization in host process in which an organism establishes itself in a host."
-"fresh water"	"logical"	"ENVO:00002011"	"Water which has a low concentration of dissolved solutes, particularly that of sodium chloride."
-"groundwater"	"logical"	"ENVO:01001004"	"Underground water which is located in pore spaces found in rock or unconsolidated deposits such as soil, clay, or gravel."
-"oil field production water"	"logical"	"ENVO:00002194"	NA
-"rice paddies"	"logical"	"ENVO:00000296"	"A paddy field for the cultivation of rice"
-"ocean trench"	"logical"	"ENVO:00000275"	"Hemispheric-scale long but narrow topographic depressions of the sea floor. They are the deepest parts of the ocean floor"
-"dairy"	"logical"	"ENVO:00003862"	"A dairy is a building in which animal milk is harvested and, optionally, processed for human consumption."
-"creosote contaminated soil"	"logical"	"ENVO:00002117"	"Soil which has elevated concentrations of creosote."
-"aquatic biome"	"logical"	"ENVO:00002030"	"A biome which is determined by a water body and which has ecological climax communities adapted to life in or on water."
-"intestinal microflora"	"logical"	"NCIT:C93019"	"Bacteria and other organisms that live inside the intestines. They help digest food. Vitamins such as biotin and vitamin K are made by gut flora."
-"air"	"logical"	"ENVO:00002005"	"The mixture of gases (roughly (by molar content/volume: 78% nitrogen, 20.95% oxygen, 0.93% argon, 0.038% carbon dioxide, trace amounts of other gases, and a variable amount (average around 1%) of water vapor) that surrounds the planet Earth"
-"horse blood agar"	"logical"	"MICRO:0000096"	"A solid microbiological culture medium (a blood agar), containing horse blood"
-"10% salts"	"logical"	NA	NA
-"20% salts"	"logical"	NA	NA
-"30% salts"	"logical"	NA	NA
-"5% salts"	"logical"	NA	NA
-"5% sheep blood agar"	"logical"	NA	NA
-"asp-2"	"logical"	NA	NA
-"basal salts"	"logical"	NA	NA
-"bg11"	"logical"	"MICRO:0001348"	"A liquid, mineral-salts microbiological culture medium. Used to support the autotrophic growth of cyanobacteria."
-"c"	"logical"	NA	NA
-"casitone-yeast extract agar"	"logical"	NA	NA
-"charcoal-yeast extract"	"logical"	NA	NA
-"conway"	"logical"	NA	NA
-"defined microbiological culture medium"	"logical"	"MICRO:0000068"	"A chemically defined microbiological culture medium where all chemicals used are known. Does not contain any plant, animal, or microbiological cell extracts."
-"defined medium plus 1 mM glycine betaine"	"logical"	NA	NA
-"artificial seawater"	"logical"	"MICRO:0001715"	"An inorganic salts solution that mimics sea water."
-"fildes enrichment"	"logical"	"MICRO:0001597"	"Blood medium ingredient comprised of a peptic digest of sheep (Ovis aries) or horse (Equus caballus) blood, serves as a source of hemin and NAD (nicotinamide adenine dinucleotide). Used in the cultivation of microorganisms."
-"nutrient broth"	"logical"	"MICRO:0000082"	"An organic-rich, liquid culture medium comprised of beef extract and peptone."
-"gse"	"logical"	NA	"https://research.csiro.au/anaccmethods/wp-content/uploads/sites/337/2020/04/GSe_CSIRO_2020.pdf"
-"heart infusion agar"	"logical"	"MICRO:0000567"	"An organic-rich, solid microbiological culture medium that contains (beef) heart infusion and tryptose. Used to grow a wide range of heterotrophic microorganisms."
-"chocolate agar"	"logical"	"MICRO:0000591"	"A solid microbiological culture medium where blood has been been treated by heating in order to lyse the blood cells."
-"brackish microbiological culture medium"	"logical"	"MICRO:0000483"	"A microbiological culture medium that has a salinity of greater than 0.05 % salts and less than 3% salts."
-"lb agar"	"logical"	"MICRO:0000563"	"An organic-rich, solid microbiological culture medium containing tryptone, yeast extract, and sodium chloride. Used to cultivate Escherichia coli."
-"medium 31 agar"	"logical"	NA	NA
-"zobell marine agar"	"logical"	"MICRO:0000112"	"An organic-rich, mineral-salts, solid microbiological culture medium containing peptones and yeast extract in a base of artificial sea water. Used for the cultivation of heterotrophic marine microorganisms. Zobell Marine Agar 2216 Zobell Marine Agar 2216 is recommended for cultivation, isolation and enumeration of heterotrophic marine bacteria."
-"DSMZ Medium 1000"	"logical"	"MICRO:0001609"	"A minerals-salts, liquid culture medium comprised of sodium chloride, potassium phosphate, calcium chloride, ammonium chloride, magnesium sulfate, magnesium chloride, potassium chloride, ferric sulfate, nickel chloride, sotium selenate, sodium silicate, and trace minerals. Prepared under at atmosphere of hydrogen and carbon dioxide."
-"lb medium"	"logical"	"MICRO:0000562"	"An organic-rich, liquid microbiological culture medium containing tryptone, yeast extract, and sodium chloride. Used to cultivate Escherichia coli."
-"modified shieh agar"	"logical"	NA	NA
-"mrs agar"	"logical"	"MICRO:0000554"	"A slightly-acidic, organic-rich, solid microbiological culture medium containing peptones, egg extract, yeast extract, glucose, Tween 80, and minerals salts. Used for the cultivation of Lactobacilli."
-"mueller-hinton"	"logical"	"MICRO:0000557"	"An organic-rich, solid microbiological culture medium containing beef extract, casein hydrolysate, and starch. Used for the cultivation of Neisseria."
-"pyg medium"	"logical"	"MICRO:0000547"	"An organic-rich, liquid microbiological culture medium containing casitone and yeast extract. Used for the growth of Pseudarcicella sp"
-"sm agar"	"logical"	"MICRO:000531"	"A liquid microbiological culture medium containing gelatin, magnesium sulfate, and sodium chloride. Used for the storage and dilution of Escherichia coli bacteriophage lambda."
-"staley pyg"	"logical"	NA	NA
-"tryptic soy broth"	"logical"	"MICRO:0000113"	"An organic-rich, liquid culture medium comprised of pancreatic digest of casein (casitone), papaic digest of soybean (soy peptone), dextrose (D-glucose), sodium chloride, and dipotassium phosphate (potassium dibasic phosphate)."
-"tryptic soy agar"	"logical"	"MICRO:0000114"	"An organic-rich, solid medium containing casitone (pancreatic digest of casein), Phytone peptone (papaic digest of soybean), and sodium chloride. Used for the cultivation of aerobic heterotrophic microorganisms."
-"tryptic soy broth"	"logical"	"MICRO:0000113"	"An organic-rich, liquid culture medium comprised of pancreatic digest of casein (casitone), papaic digest of soybean (soy peptone), dextrose (D-glucose), sodium chloride, and dipotassium phosphate (potassium dibasic phosphate)."
-"gram stain negative"	"logical"	"MICRO:0000617"	"A gram stain quality where microorganisms do not stain purple with Crystal Violet used in the Gram stain, but stain red due to uptake of the counter stain (Safranin or Fuchsin). Fuchsin is also called Magenta"
-"gram stain positive"	"logical"	"MICRO:0000616"	"A gram stain quality where microorganisms stain purple with crystal violet used in the Gram stain."
-"gram stain variable"	"logical"	"MICRO:0000618"	"Microorganisms that are not definitively stained Gram positive or Gram negative; may stain variably as either Gram positive or Gram negative."
-"cell cluster"	"logical"	"MICRO:0000372"	"A multicellular relationship of prokaryotic cells where cells are attached to one another end-to-end and side-to-side to form clumps or sheets after dividing. This morphology forms as a result of cell division taking place in multiple planes."
-"paired cells"	"logical"	"MICRO:0000369"	"A multicellular relationship of prokaryotic cells where two cells are attached to one another in pairs."
-"palisade"	"logical"	"MICRO:0000941"	"A multicellular prokaryotic morphological quality where cells so that their long axes are stacked parallel to one another (like in a fence)"
-"rosettes"	"logical"	NA	NA
-"single"	"logical"	"NCIT:C48440"	"Not accompanied by another or others; exclusive of anyone or anything else"
-"tetrads"	"logical"	"MICRO:0000374"	"A multicellular prokaryotic morphological quality where cells are attached to one another in multiples of four. Forms when cell division occurs in two planes at right angles to one another."
-"unbranched"	"logical"	"PATO:0000414"	"A branchiness quality inhering in a bearer by virtue of the bearer's lacking branches."
-"V-branched filaments"	"logical"	"MICRO:0000127"	"True-branched filaments, where an apical cell divides longitudinally, from which grows obliquely two equivalent branches."
-"reverse Y-branched filaments"	"logical"	"MICRO:0000128"	"True-branched filaments, where branches arise in the intercalary (medial) cells after oblique cell division at an intercalary (medial cell)."
-"bent filament"	"logical"	"MICRO:0000389"	"A filament shape where the filament has an appearance of being bent at an angle."
-"clavate"	"logical"	"PATO:0001883"	"A concave 3-D shape quality inhering in a bearer by virtue of the bearer's gradually becoming thicker towards the end."
-"coccobacillus"	"logical"	"MICRO:0000366"	"A prokaryotic cell, being a bacillus where the long axis of the cell is only slightly longer than the short axis of the cell."
-"coccus"	"logical"	"MICRO:0000402"	"A prokaryotic cell that is spherical with no apparent long axis."
-"discoid"	"logical"	"PATO:0001874"	"A shape quality inhering in a bearer by virtue of the bearer's being cylindrical, in which the height is less than the diameter."
-"dumbbell-shaped"	"logical"	"PATO:0001876"	"A concave 3-D shape quality inhering in a bearer by virtue of the bearer's having two parts, roughly spherical and of equal size, connected by a bar."
-"filamentous"	"logical"	"PATO:0001360"	"A shape quality inhering in a bearer by virtue of the bearer's having thin filamentous extensions at its edge."
-"flat"	"logical"	"PATO:0000407"	"A quality inhering in a bearer by virtue of the bearer's having a horizontal surface without a slope, tilt, or curvature."
-"u-shaped"	"logical"	"PATO:0001879"	"A concave 3-D shape quality inhering in a bearer by virtue of the bearer's being shaped in the form of the letter U."
-"pleiomorphic cell"	"logical"	"MICRO:0000427"	"A prokaryotic cell that is irregular in shape, where the shapes of the cells are irregular and variable (pleomorphic). Cell shapes may be variable in size and shape, depending on the environmental conditions."
-"polyhedral shape"	"logical"	"OMP:0005394"	"A capsid morphology phenotype where the capsid is shaped like a polyhedron which is a solid formed by plane faces."
-"sigmoid"	"logical"	"PATO:0001878"	"A shape quality inhering in a bearer by virtue of the bearer's consisting of two curves, in opposite directions. S-shaped"
-"rectangle"	"logical"	"SIO:000518"	"A rectangle is a quadrilateral in which one pair of line segments are parallel and the other pair are perpendicular to the first pair."
-"tetrahedral"	"logical"	"ENM:9000065"	NA
-"triangle"	"logical"	"SIO:000520"	"A triangle is a polygon composed of three points and three line segments, in which each point is fully connected to another point along through the line segment."
-"vibriod cells"	"logical"	"MICRO:0000414"	"A prokaryotic cell, being a bacillus where the elongated axis of the cells is curved (but not spiral)."
-"wrinkled"	"logical"	"PATO:0001810"	"A grooved texture quality inhering in a bearer by virtue of the bearer's being marked by one or more creases in a normally smooth surface."
-"animal pathogen"	"logical"	NA	NA
-"extreme environment"	"logical"	NA	NA
-"COGEM pathogenicity rating"	"integer"	NA	NA
-"antimicrobial sensitivity"	"logical"	NA	NA
-"biofilm formation"	"logical"	"APO:0000159"	"The ability to form a layer on solid surfaces with or without other microorganisms."
-"Butyrate-Producing Bacteria"	"numeric"	"NCIT:C126417"	"Any anaerobic bacteria that metabolizes complex carbohydrates to produce butyrate. These microorganisms may form colonies in the intestines of mammals; their presence may aid the host by catabolizing undigested fiber and starch. Additionally, butyrate is metabolized by colonic epithelial cells and may protect the host against ulcerative colitis and cancer."
-"acetate producing"	"numeric"	NA	NA
-"lactate producing"	"numeric"	NA	NA
-"mutation rate per site per year"	"numeric"	NA	NA
-"mutation rate per site per generation"	"numeric"	NA	NA
-"hydrogen gas producing"	"numeric"	NA	NA
-"width"	"numeric"	"PATO:0000921"	"A 1-D extent quality which is equal to the distance from one side of an object to another side which is opposite."
-"length"	"numeric"	"PATO:0000122"	"A 1-D extent quality which is equal to the distance between two points"
-"fatty acid composition"	"logical"	NA	NA
-"human urine"	"logical"	"MCO:0000662"	"No definition provided"
-"v-formation"	"logical"	NA	NA
-"extreme environment"	"logical"	NA	NA
-"gut"	"logical"	"OHMI:0000020"	"A human being's gut microbiota contains tens of trillions of microorganisms, including at least 1000 different species of known bacteria with more than 3 million genes (150 times more than human genes). Microbiota can, in total, weigh up to 2 kg. One third of our gut microbiota is common to most people, while two thirds are specific to each one of us. In other words, the microbiota in your intestine is like an individual identity card. URL: http://www.gutmicrobiotaforhealth.com/en/about-gut-microbiota-info/"
-"rumen"	"logical"	"NCIT:C98778"	"Largest forestomach of ruminants where bacterial fermentation occurs"
-"Health associated"	"logical"	NA	NA
-"shape"	"logical"	NA	NA
-"Extreme environment"	"logical"	NA	NA
-"mrs broth"	"logical"	NA	NA
-"ZoBell marine agar"	"logical"	NA	NA
-"growth temperature"	"numeric"	NA	NA
-"oral"	"logical"	NA	NA
-"optimal ph"	"numeric"	NA	NA
-"plant pathogenity"	"numeric"	NA	NA
-"blade of grass from raritan river nj, usa"	"logical"	NA	NA
-"hot swamp from kunashir island, russia"	"logical"	NA	NA
-"30-m-tall sulfide mound in the iheya north field, japan"	"logical"	NA	NA
-"2500m depth from the sulu trough"	"logical"	NA	NA
-"5m depth in mediterranean sea"	"logical"	NA	NA
-"20-40000 year old serbian permafrost in russia, siberia, kolyma lowland"	"logical"	NA	NA
-"1940s by lilleengen"	"logical"	NA	NA
-"30-m-tall sulfide mound in the iheya north field, japan (water depth, 1,000 m)"	"logical"	NA	NA
-"tumors"	"logical"	NA	NA
-"Genome size"	"numeric"	"OMIT:0027643"	NA
-"genes"	"numeric"	"OMIT:0006994"	NA
-"environmental system"	"logical"	"ENVO:01000254"	"A system which has the disposition to environ one or more material entities."
-"host-associated"	"logical"	NA	NA
-"food product"	"logical"	"FOODON:00001002"	"Food material for humans and animals which is processed with the intention that it be consumable as a whole or added to other food products."
-"plant matter"	"logical"	"ENVO:01001121"	"Organic material which is primarily composed of plant structures, living or dead."
-"blood"	"logical"	"UBERON:0000178"	"A fluid that is composed of blood plasma and erythrocytes."
-"hydrothermal vents"	"logical"	"OMIT:0027720"	NA
-"ocean"	"logical"	"ENVO:00000015"	"A marine water body which is constitutes the majority of an astronomical body's hydrosphere."
-"saline evaporation pond"	"logical"	"ENVO:00000055"	"A shallow man-made pond designed to produce salt from sea water. The seawater is fed into large ponds and water is drawn out through natural evaporation which allows the salt to be subsequently harvested."
-"phylloplane"	"logical"	NA	NA
-"respiratory system"	"logical"	"NCIT:C12779"	"The organs involved in the exchange of carbon dioxide and oxygen including the trachea, bronchi, and lung parenchyma."
-"insect endosymbiont"	"logical"	NA	NA
-"sediment"	"logical"	NA	NA
-"root"	"logical"	"PO:0009005"	"A plant axis (PO:0025004) that lacks shoot axis nodes (PO:0005004) and usually grows indeterminately."
-"nasopharyngeal cavity"	"logical"	"EHDAA2:0004555"	NA
-"plant symbiont"	"logical"	NA	NA
-"bioremediation"	"logical"	NA	NA
-"free-living"	"logical"	NA	NA
-"secondary"	"logical"	NA	NA
-"fish"	"logical"	"NCIT:C14207"	"A grouping of jawed and jawless vertebrate animals usually having fins and a covering of scales or plates, breathing by means of gills, and living almost entirely in the water."
-"feces"	"logical"	"FMA:64183"	"Excretion in semisolid state processed by the intestine."
-"large intestine"	"logical"	"NCIT:C12379"	"A muscular tube that extends from the end of the small intestine to the anus."
-"digestive system"	"logical"	"NCIT:C12378"	"The system that includes the esophagus, stomach, small and large intestine, anus, liver, biliary tract, and pancreas."
-"sputum"	"logical"	"NCIT:C13278"	"Material containing mucus, cellular debris, microorganisms and sometimes blood or pus. It is ejected through the mouth from the lungs, bronchi, and trachea."
-"vagina"	"logical"	"NCIT:C12407"	"The female genital canal, extending from the uterus to the vulva."
-"bovine"	"logical"	"FOODON:03414374"	"The biological subfamily *Bovinae* includes a diverse group of 10 genera of medium- to large-sized ungulates, including domestic cattle, the bison, African buffalo, the water buffalo, the yak, and the four-horned and spiral-horned antelopes. The evolutionary relationship between the members of the group is obscure, and their classification into loose tribes rather than formal subgroups reflects this uncertainty. General characteristics include cloven hoofs and usually at least one of the sexes o…"
-"insecta"	"logical"	"NCBITaxon:50557"	NA
-"food material"	"logical"	"FOODON:00002403"	"Any substance that can be consumed by an organism to satisfy nutritional or other health needs, or to provide a social or organoleptic food experience"
-"foregut"	"logical"	"UBERON:0001041"	"Anterior subdivision of a digestive tract."
-"lentic water body"	"logical"	"ENVO:01000617"	"A lentic water body is a water body in which the accumulated water, in its totality, has very little to no directed flow."
-"endosymbiont"	"logical"	NA	NA
-"mine"	"logical"	"ENVO:00000076"	"An excavation in the Earth for the purpose of extracting earth materials."
-"metal"	"logical"	"NCIT:C637"	"Electropositive chemical elements characterised by ductility, malleability, luster, and conductance of heat and electricity. They can replace the hydrogen of an acid and form bases with hydroxyl radicals."
-"gastrointestinal tract"	"logical"	"FMA:71132"	NA
-"mammal"	"logical"	"OMIT:0009396"	NA
-"dairy product"	"logical"	"NCIT:C413"	"Food made from the milk of some mammals, most commonly cows, goats and sheep."
-"skin"	"logical"	"NCIT:C12470"	"An organ that constitutes the external surface of the body. It consists of the epidermis, dermis, and skin appendages."
-"cerebral spinal fluid"	"logical"	"ZFA:0001626"	"Portion of organism substance that is a clear fluid that occupies the subarachnoid space and the ventricular system around and inside the brain."
-"lotic water body"	"logical"	"ENVO:01000618"	"A lotic water body is a water body in which the accumulated water, in its totality, is flowing."
-"animal"	"logical"	"NCIT:C14182"	"A living organism that has membranous cell walls, requires oxygen and organic foods, and is capable of voluntary movement, as distinguished from a plant or mineral."
-"intertidal zone"	"logical"	"ENVO:00000316"	"The area of the foreshore and seabed that is exposed to the air at low tide and submerged at high tide, i.e., the area between tide marks."
-"circulatory system"	"logical"	"SPD:0000611"	NA
-"wetland"	"logical"	"ENVO:00000043"	"An vegetated area which overlaps a wetland ecosystem."
-"reproductive system"	"logical"	"NCIT:C12841"	"The organs and tissues involved in the production and maturation of gametes and in their union and subsequent development as offspring."
-"bird"	"logical"	"IDOMAL:0000980"	"A vertebrate animal of the class Aves."
-"chemoorganotroph"	"logical"	"MICRO:0001504"	"A prokaryote capable of carrying out the role of chemoorganotrophy, where the oxidation and reduction of chemical compounds is the energy source, and the electron donor is an organic compound."
-"heterotroph"	"logical"	"MICRO:0001450"	"A prokaryote capable of carrying out the role of heterotrophy where the carbon or energy sources are organic compounds."
-"lithotroph"	"logical"	"MICRO:0001495"	"A prokaryote capable of carrying out the role of lithotrophy, where the oxidation and reduction of inorganic chemical compounds is the energy source."
-"methylotroph"	"logical"	NA	NA
-"photoautotroph"	"logical"	"ECOCORE:00000130"	"An autotroph which is capable of transforming light into chemical energy."
-"photosynthesis"	"logical"	"NCIT:C16986"	"The process through which light energy, water, and carbon dioxide are converted to carbohydrate and oxygen in the presence of chlorophyll. Occurs in plants, algae, cyanobacteria and lichens. (BioTech Life Science Dictionary)"
-"chemoautotroph"	"logical"	"ECOCORE:00000129"	"An autotroph which is capable of obtaining energy from the bonds in a chemical compound."
-"chemolithoautotroph"	"logical"	"MICRO:0001500"	"A prokaryote capable of carrying out the role of chemolithoautotrophy, where the oxidation and reduction of chemical compounds is the energy source, the electron donor is an inorganic compound, and the carbon source is carbon dioxide."
-"phototroph"	"logical"	"MICRO:0001452"	"A prokaryote capable of carrying out the role of phototrophy, where light is the energy source."
-"chemolithotroph"	"logical"	"MICRO:0001499"	"A prokaryote capable of carrying out the role of chemolithotrophy, where the oxidation and reduction of chemical compounds is the energy source, and the electron donor is an inorganic compound."
-"chemoheterotroph"	"logical"	"ECOCORE:00000132"	"A heterotroph which is capable of obtaining energy from the bonds in a chemical compound."
-"oligotroph"	"logical"	NA	NA
-"autotroph"	"logical"	"MICRO:0001446"	"A prokaryote capable of carrying out the role of autotrophy, where carbon dioxide is the source of carbon."
-"acidophile"	"logical"	"MICRO:0001390"	"Prokaryote specialized with respect to pH, which grows optimally at moderately acidic pH values (pH 4-6)."
-"alkaliphile"	"logical"	"MICRO:0001394"	"Prokaryote specialized with respect to pH, which grows optimally at moderately alkaline pH values (pH 8-10)."
-"cellulose degradation"	"logical"	"UPa:UPA00696"	"Degradation of cellulose."
-"hydrogen sulfide gas release"	"logical"	NA	NA
-"methanogen"	"logical"	"MICRO:0000166"	"Prokaryotic metabolically differentiated cell, specialized for the production of methane. Found only in the archaeal domain of life."
-"nitrogen production"	"logical"	NA	NA
-"pah degradation"	"logical"	NA	NA
-"sulfate-reducing"	"logical"	NA	NA
-"sulfur oxidation"	"logical"	"GO:0019417"	"The chemical reactions and pathways resulting the addition of oxygen to elemental sulfur."
-"sulfur respiration"	"logical"	"MICRO:0000312"	"The process of anaerobic respiration, where elemental sulfur reduced to hydrogen sulfide."
-"ammonia oxidation"	"logical"	"GO:0019329"	"The chemical reactions and pathways by which ammonia or ammonium is converted to molecular nitrogen or another nitrogen compound, with accompanying loss of electrons."
-"biomass degradation"	"logical"	NA	NA
-"iron-reducing"	"logical"	NA	NA
-"nitrogen fixation"	"logical"	"GO:0009399"	"The process in which nitrogen is taken from its relatively inert molecular form (N2) in the atmosphere and converted into nitrogen compounds useful for other chemical processes, such as ammonia, nitrate and nitrogen dioxide."
-"stores polyhydroxybutyrate"	"logical"	NA	NA
-"carbon dioxide fixation"	"logical"	"GO:0015977"	"A metabolic process in which carbon (usually derived from carbon dioxide) is incorporated into organic compounds (usually carbohydrates)."
-"iron oxidation"	"logical"	NA	NA
-"tail"	"logical"	NA	NA
-"staphylococcus"	"logical"	"MICRO:0000378"	"A multicellular relationship of prokaryotic cells where the shape of the cells is round (forming a coccus) and the cells are attached to one another end-to-end and side-to-side to form clumps or clusters."
-"pathogenic in mammals"	"logical"	NA	NA
-"pathogenic in fish"	"logical"	NA	NA
-"disease"	"logical"	"EFO:0000408"	"A disease is a disposition to undergo pathological processes that exists in an organism because of one or more disorders in that organism."
-"sampling site"	"logical"	"EFO:0000688"	"A site from which a sample, i.e. a statistically representative of the whole, is extracted from the whole. e.g. a liver sample"
-"Acne"	"logical"	"NCIT:C27195"	"An inflammatory process of the sebaceous glands which is characterized by comedones, nodules, papules and/or pustules on the skin."
-"acrodermatitis"	"logical"	"NCIT:C84532"	"An inflammatory skin condition affecting children. It is often associated with Epstein-Barr virus infection, hepatitis B infection or cytomegalovirus infection. It is characterized by the presence of cutaneous rashes and patches on the palms and soles. The trunk is not affected."
-"polyarthritis"	"logical"	"NCIT:C26996"	"An arthritis affecting five or more separate joints"
-"heartwater"	"logical"	"OMIT:0007528"	NA
-"african tick-bite fever"	"logical"	"MONDO:0000227"	NA
-"anaplasmosis"	"logical"	"NCIT:C128425"	"An infection that is caused by Anaplasma phagocytophilum, which is transmitted to humans by infected ticks; it is characterized by fever, headache, chills, and myalgia."
-"anemia"	"logical"	"NCIT:C2869"	"A reduction in the number of red blood cells, the amount of hemoglobin, and/or the volume of packed red blood cells. Clinically, anemia represents a reduction in the oxygen-transporting capacity of a designated volume of blood, resulting from an imbalance between blood loss (through hemorrhage or hemolysis) and blood production. Signs and symptoms of anemia may include pallor of the skin and mucous membranes, shortness of breath, palpitations of the heart, soft systolic murmurs, lethargy, and fatigability"
-"anthrax"	"logical"	"NCIT:C84565"	"An infection caused by Bacillus anthracis bacteria. It may affect the lungs, gastrointestinal tract, or skin. Patients with lung infection present with fever, headaches, cough, chest pain and shortness of breath. Patients with gastrointestinal infection present with nausea, vomiting and bloody diarrhea. Patients with skin infection develop blisters and ulcers."
-"antibiotic-associated diarrhea"	"logical"	"NCIT:C128350"	"Diarrhea that is associated with current or recent antibiotic use."
-"colitis"	"logical"	"OMIT:0004401"	NA
-"Terrabacteria group"	"logical"	"NCBITaxon:1783272"	NA
-"atypical pneumonia"	"logical"	"NCIT:C128338"	"Historical term that references a form of pneumonia caused by Mycoplasma pneumoniae, Chlamydophila pneumoniae, or Legionella species."
-"bacillary angiomatosis"	"logical"	"NCIT:C3477"	"A condition that is caused by infection with Bartonella, and which is characterized by vascular proliferation, usually in immunocompromised individuals."
-"cat scratch fever"	"logical"	"EFO:0007195"	"Cat scratch disease is an infectious illness caused by the bacteria bartonella (Bartonella henselae). It is believed to be transmitted by cat scratches, bites, or exposure to cat saliva. This self-limiting infectious disease is characterized by a bump or blister at the site of the bite or scratch and swelling and pain in the lymph nodes. Other features may include fatigue, headache, achiness, and fever. Although cat-scratch disease usually subsides without treatment, antibiotic and/or antimicrobial therapy may help speed recovery."
-"trench fever"	"logical"	"EFO:0007519"	"An intermittent fever characterized by intervals of chills, fever, and splenomegaly each of which may last as long as 40 hours. It is caused by bartonella quintana and transmitted by the human louse”"
-"bacteremia"	"logical"	"NCIT_C102993"	"A laboratory test result that indicates the presence of bacteria in the blood"
-"endocarditis"	"logical"	"NCIT:C34582"	"Inflammation of the endocardium"
-"urinary tract infection"	"logical"	"NCIT:C50791"	"A bacterial infectious process affecting any part of the urinary tract, most commonly the bladder and the urethra. Symptoms include urinary urgency and frequency, burning sensation during urination, lower abdominal discomfort, and cloudy urine.”"
-"gastroenteritis"	"logical"	"NCIT:C34632"	"An inflammatory disorder that affects the upper and lower gastrointestinal tract. Most commonly, this is attributed to viruses; however bacteria, parasites or adverse reactions can also be the culprit. Symptoms include acute diarrhea and vomiting”"
-"meningoencephalitis"	"logical"	"NCIT:C34813"	"Inflammation of the meninges and brain, generally secondary to an infectious cause. Pathogens may be bacterial, viral, fungal, or protozoan."
-"abscess"	"logical"	"NCIT:C26686"	"An inflammatory process characterized by the accumulation of pus within a newly formed tissue cavity which is the result of a bacterial, fungal, or parasitic infection or the presence of a foreign body"
-"pneumonia"	"logical"	"NCIT:C3333"	"An acute, acute and chronic, or chronic inflammation focally or diffusely affecting the lung parenchyma, due to infections (viruses, fungi, mycoplasma, or bacteria), treatment (e.g. radiation), or exposure (inhalation) to chemicals. Symptoms include cough, shortness of breath, fevers, chills, chest pain, headache, sweating, and weakness."
-"Blunervirus"	"logical"	"NCBITaxon:2022856"	NA
-"kidney disease"	"logical"	"EFO:0003086"	"A disease involving the kidney"
-"bacterial leaf blight"	"logical"	"CO_320:0000173"	"The type and severity of bacterial blight symptoms on leaves caused by the bacterial pathogen Xanthomonas oryzae pv. oryzae. Symptoms: lesions usually start near the leaf tip or leaf margins or both, and extend down the outer edge(s). Young lesions are pale green to grayish green, later turning yellow to gray (dead) with time. In very susceptible varieties, lesions may extend to the entire leaf length into the leaf sheath"
-"sorghum"	"logical"	"NCBITaxon:4557"	"Hemisorghum"
-"Reaction to Leaf spot"	"logical"	"CO_331:0000386"	"The reaction of the plant to leaf spot"
-"bacterial vaginosis"	"logical"	"NCIT:C116973"	"Infection caused by bacterial overgrowth in the vagina. Most affected women are asymptomatic. When symptoms occur, they include foul-smelling vaginal discharge, vaginal itching, and burning. Risk factors include sexual activity with multiple partners and the use of vaginal douches and intrauterine devices. Up to a third of cases resolve without treatment. Antibiotic treatment is recommended when symptoms are present and for women that are pregnant at the time of infection."
-"bartonellosis"	"logical"	"EFO:0007166"	"An infectious disease produced by bacteria of the genus Bartonella"
-"black rot"	"logical"	"CO_331:0000380"	"The reaction of the plant to Black rot"
-"canker"	"logical"	"CO_357:0000487"	NA
-"blood infection"	"logical"	NA	NA
-"respiratory infection"	"logical"	NA	NA
-"bordetellosis"	"logical"	"MONDO:0037872"	"Any disease caused by infection with organisms of the genus Bordetella"
-"botulism"	"logical"	"NCIT:C84599"	"A serious bacterial infection caused by botulinum toxin which is produced by Clostridium botulinum. Patients are infected usually by ingestion of contaminated food or wound contamination. It leads to muscle paralysis which may result in respiratory failure"
-"anaplasmosis"	"logical"	"NCIT:C128425"	"An infection that is caused by Anaplasma phagocytophilum, which is transmitted to humans by infected ticks; it is characterized by fever, headache, chills, and myalgia."
-"tuberculosis"	"logical"	"NCIT:C3423"	"A chronic, recurrent infection caused by the bacterium Mycobacterium tuberculosis. Tuberculosis (TB) may affect almost any tissue or organ of the body with the lungs being the most common site of infection. The clinical stages of TB are primary or initial infection, latent or dormant infection, and recrudescent or adult-type TB. Ninety to 95% of primary TB infections may go unrecognized. Histopathologically, tissue lesions consist of granulomas which usually undergo central caseation necrosis. Local symptoms of TB vary according to the part affected; acute symptoms include hectic fever, sweats, and emaciation; serious complications include granulomatous erosion of pulmonary bronchi associated with hemoptysis. If untreated, progressive TB may be associated with a high degree of mortality. This infection is frequently observed in immunocompromised individuals with AIDS or a history of illicit IV drug use"
-"brucellosis"	"logical"	"NCIT:C84602"	"A gram negative bacterial infection caused by bacteria of the genus Brucella. Humans are infected by ingesting unpasteurized milk or meat from infected animals. Signs and symptoms include fevers, sweating, weakness, headache, muscle pain, arthritis and anemia"
-"abortion"	"logical"	"SYMP:0000197"	"Abortion is a reproductive system symptom resulting in the expulsion of a fetus of a domestic animal often due to infection at any time before completion of pregnancy."
-"plague"	"logical"	"NCIT:C85015"	"A Gram-negative bacterial infection caused by Yersinia pestis. It is usually transmitted to humans from bites of infected rodent fleas. It is manifested as a bubonic, septicemic, or pneumonic plague. In bubonic plague, the lymph nodes adjacent to the site of the skin bite are infected and enlarged. In septicemic plague, the infection spreads directly through the bloodstream. In pneumonic plague, the infection spreads to the lungs either following bubonic plague, or by inhalation of infective droplets. If untreated, it may lead to death."
-"Mycobacterial Infection"	"logical"	"NCIT:C26831"	"Infection due to organisms from the genus Mycobacteria"
-"Caries"	"logical"	"NCIT:C52593"	"The decay of a tooth, in which it becomes softened, discolored, and/or porous"
-"Periodontal disorder"	"logical"	"NCIT:C63743"	"An inflammatory process of the gingival tissues and/or periodontal membrane of the teeth, resulting in an abnormally deep gingival sulcus, possibly producing periodontal pockets and loss of alveolar bone support"
-"cell lysis"	"logical"	"OBI:0302894"	"cell lysis is a process by which cell membrane integrity of live cells is compromised and leads to cell death. Cell lysis may be achieved by means of viral action or osmotic shock."
-"Burkholderia cepacia"	"logical"	"NCBITaxon:292"	NA
-"cholera"	"logical"	"NCIT:C157812"	"An acute diarrheal illness caused by consuming water or food contaminated by the bacterium Vibrio cholerae. Adequate rehydration is key to surviving this illness."
-"chronic granulomatous disease"	"logical"	"NCIT:C26788"	"A rare genetic disorder with a predominantly X-linked recessive pattern of inheritance resulting in impaired phagocytic clearance of bacteria and fungi. It is caused by a defect in the phagocytic NADPH oxidase (phox) complex. The phagocytes can engulf pathogens but are unable to produce the microbicidal precursors needed to destroy them. Clinical signs of severe disease present in childhood with milder forms later in life. They include recurrent infection especially pneumonia, cervical lymphadenopathy and hepatosplenomegaly. The clinical course includes the appearance of granulomata in the skin and gastrointestinal or genitourinary tracts. The clinical prognosis is dependent on effectively treating and preventing infection"
-"respiratory system disease"	"logical"	"EFO:0000684"	"A non-neoplastic or neoplastic disorder that affects the respiratory system. Representative examples include pneumonia, chronic obstructive pulmonary disease, pulmonary failure, lung adenoma, lung carcinoma, and tracheal carcinoma"
-"Plant chlorosis"	"logical"	"CO_345:0000033"	NA
-"Flavobacterium psychrophilum"	"logical"	"NCBITaxon:96345"	"https://thefishsite.com/articles/rainbow-trout-fry-syndrome-rtfs-explained-1"
-"infection caused by Escherichia coli (disorder)"	"logical"	"SNOMED:71057007"	NA
-"contagious pleuropneumonia"	"logical"	"MONDO:0005716"	"A pleuropneumonia of cattle and goats caused by species of mycoplasma"
-"crown gall"	"logical"	"BTO:0000303"	"A disease that affects many species of plants and is caused by a bacterium (Agrobacterium tumefaciens) which forms tumorous enlargements just below the ground on the stem."
-"Microcystis aeruginosa"	"logical"	"NCBITaxon:1126"	NA
-"gastroenteritis"	"logical"	"NCIT:C34632"	"An inflammatory disorder that affects the upper and lower gastrointestinal tract. Most commonly, this is attributed to viruses; however bacteria, parasites or adverse reactions can also be the culprit. Symptoms include acute diarrhea and vomiting"
-"skin irritation"	"logical"	"NCIT:C50743"	"A mild inflammatory dermal tissue reaction; it can be caused by physical contact with an irritant or can be a local response to a systemic trigger."
-"cystitis"	"logical"	"NCIT:C26738"	"Inflammation of the urinary bladder"
-"diarrhea"	"logical"	"NCIT:C2987"	"Watery bowel movements"
-"septicemia"	"logical"	"NCIT:C3364"	"The presence of pathogenic microorganisms in the blood stream causing a rapidly progressing systemic reaction that may lead to shock. Symptoms include fever, chills, tachycardia, and increased respiratory rate. It is a medical emergency that requires urgent medical attention"
-"diphtheria"	"logical"	"NCIT:C34541"	"A Gram-positive bacterial infection caused by Corynebacterium diphtheriae. It usually involves the oral cavity, pharynx, and nasal cavity. Patients develop pseudomembranes in the affected areas and manifest signs and symptoms of an upper respiratory infection. The diphtheria toxin may cause myocarditis, polyneuritis, and other systemic effects."
-"dysentery"	"logical"	"EFO:1001869"	"Acute inflammation of the intestine associated with infectious diarrhea of various etiologies, generally acquired by eating contaminated food containing toxins, biological derived from bacteria or other microorganisms. Dysentery is characterized initially by watery feces then by bloody mucoid stools. It is often associated with abdominal pain; fever; and dehydration."
-"ehrlichiosis"	"logical"	"OMIT:0017306"	NA
-"encephalitis"	"logical"	"NCIT:C26760"	"An inflammatory process affecting the brain parenchyma. Causes include viral infections and less frequently bacterial infections, toxins, and immune-mediated processes."
-"infection"	"logical"	"EFO:0000544"	"The state of being infected such as from the introduction of a foreign agent such as serum, vaccine, antigenic substance or organism."
-"pyelonephritis"	"logical"	"NCIT:C34965"	"An inflammatory process affecting the kidney. The cause is most often bacterial, but may also be fungal in nature. Signs and symptoms may include fever, chills, flank pain, painful and frequent urination, cloudy or bloody urine, and confusion"
-"typhus"	"logical"	"EFO:0009117"	"A group of infectious diseases that include epidemic typhus, scrub typhus and murine typhus"
-"meningitis"	"logical"	"NCIT:C26828"	"A disorder characterized by acute inflammation of the meninges of the brain and/or spinal cord"
-"erysipelas"	"logical"	"EFO:1001462"	"An infection of the upper layers of the skin caused by species of streptococcus. Erysipelas results in a fiery red rash with raised edges that can easily be distinguished from the skin around it. The affected skin may be warm to the touch"
-"Foodborne Illness"	"logical"	"NCIT:C128351"	"Any disorder that results from the consumption of food contaminated with an infectious agent or toxin"
-"typhoid"	"logical"	"Orphanet:99745"	"Typhoid or typhoid fever is a reportable, fecal-oral, potentially fatal infectious disease, caused by the bacteria Salmonella typhi and characterized by a non-focal fever."
-"Furunculosis"	"logical"	"NCIT:C34629"	"A skin condition that is characterized by recurring furuncles, lesions primarily caused by staphylococcus aureus infection of the hair follicles and surrounding skin. Furunculosis occurs more frequently in persons with immune systems disorders than in the general population"
-"Gangrene"	"logical"	"NCIT:C50573"	"Death of tissue, usually in considerable mass and generally associated with loss of vascular (nutritive) supply and followed by bacterial invasion and putrefaction."
-"ulcer"	"logical"	"NCIT:C3426"	"A circumscribed inflammatory and often suppurating lesion on the skin or an internal mucous surface resulting in necrosis of tissue."
-"duodenal lesions"	"logical"	"MP:0002580"	"focal pathological changes characterized by alteration in the size, shape and organization of the cellular components of the duodenum epithelium tissue"
-"Gastroenteritis"	"logical"	"NCIT:C34632"	"An inflammatory disorder that affects the upper and lower gastrointestinal tract. Most commonly, this is attributed to viruses; however bacteria, parasites or adverse reactions can also be the culprit. Symptoms include acute diarrhea and vomiting."
-"Glanders"	"logical"	"NCIT:C34638"	"A condition resulting from infection by Burkholderia mallei, which mainly affects horses."
-"Haemophilus"	"logical"	"NCIT:C76324"	"A genus of Gram-negative, pleomorphic, coccobacilli bacteria belonging to the Proteobacteria phylum."
-"Gonorrhea"	"logical"	"NCIT:C92950"	"A common sexually transmitted bacterial infection caused by Neisseria gonorrhoeae. It is transmitted through vaginal, oral, or anal intercourse. Infected individuals may be asymptomatic. Symptoms in males include burning sensation during urination, discharge from the penis, and painful swelling of the testes. Symptoms in females include painful urination, vaginal discharge, and vaginal bleeding between periods. If untreated, the infection may lead to pelvic inflammatory disease."
-"human granulocytic anaplasmosis"	"logical"	"EFO:0000777"	"A tick-borne, infectious disease caused by Anaplasma phagocytophilum, an obligate intracellular bacterium that is typically transmitted to humans by ticks of the Ixodes ricinus species complex"
-"Conjunctivitis"	"logical"	"NCIT:C34504"	"Inflammation of the conjunctiva of the eye"
-"Infertility"	"logical"	"NCIT:C3836"	"Inability to conceive for at least one year after trying and having unprotected sex. Causes of female infertility include endometriosis, fallopian tubes obstruction, and polycystic ovary syndrome. Causes of male infertility include abnormal sperm production or function, blockage of the epididymis, blockage of the ejaculatory ducts, hypospadias, exposure to pesticides, and health related issues"
-"Inflammation"	"logical"	"NCIT:C3137"	"A finding of a localized protective response resulting from injury or destruction of tissues. Inflammation serves to destroy, dilute, or wall off both the injurious agent and the injured tissue. In the acute phase, inflammation is characterized by the signs of pain, heat, redness, swelling, and loss of function. Histologically, inflammation involves a complex series of events, including dilatation of arterioles, capillaries, and venules, with increased permeability and blood flow; exudation of fluids, including plasma proteins; and leukocyte migration into the site of inflammation"
-"toxin"	"logical"	"XCO:0000240"	"A protein or conjugated protein produced by some higher plants, certain animals, and pathogenic bacteria, that is highly poisonous for other living organisms"
-"legionnaire's disease"	"logical"	"EFO:0007343"	"A pneumonia caused by Legionella pneumophila and other Legionella species, which is characterized by fever, cough, progressive respiratory distress, and which is often accompanied by extrapulmonary manifestations."
-"leprosy"	"logical"	"EFO:0001054"	"Leprosy is a chronic infectious disease affecting primarily the skin and peripheral nervous system"
-"Lyme Disease"	"logical"	"EFO:0008510"	"Lyme disease (named after the towns in the USA where the disease was first identified) is a bacterial infection caused by Borrelia burgdorferi."
-"mastitis"	"logical"	"NCIT:C53662"	"Inflammation of breast tissue during lactation or postpartum due to an obstructed duct or infection."
-"Arthritis"	"logical"	"NCIT:C2883"	"An inflammatory process affecting a joint. Causes include infection, autoimmune processes, degenerative processes, and trauma. Signs and symptoms may include swelling around the affected joint and pain"
-"melioidosis"	"logical"	"NCIT:C128336"	"An infection that is caused by Burkholderia pseudomallei, which is found in soil and water; symptoms vary widely, but most commonly include fever, cough, pneumonia, arthralgia, myalgia, and skin ulceration."
-"Tuberculosis"	"logical"	"NCIT:C3423"	"A chronic, recurrent infection caused by the bacterium Mycobacterium tuberculosis. Tuberculosis (TB) may affect almost any tissue or organ of the body with the lungs being the most common site of infection. The clinical stages of TB are primary or initial infection, latent or dormant infection, and recrudescent or adult-type TB. Ninety to 95% of primary TB infections may go unrecognized. Histopathologically, tissue lesions consist of granulomas which usually undergo central caseation necrosis. Local symptoms of TB vary according to the part affected; acute symptoms include hectic fever, sweats, and emaciation; serious complications include granulomatous erosion of pulmonary bronchi associated with hemoptysis. If untreated, progressive TB may be associated with a high degree of mortality. This infection is frequently observed in immunocompromised individuals with AIDS or a history of illicit IV drug use"
-"fever"	"logical"	"NCIT:C3038"	"Elevation of body temperature above normal due to inflammatory or immune responses"
-"syphilis"	"logical"	"NCIT:C35055"	"A contagious bacterial infection caused by the Spirochete Treponema pallidum. It is a sexually transmitted disorder, although it can also be transmitted from the mother to the fetus in utero. Typically, it is initially manifested with a single sore which heals without treatment. If the infection is left untreated, the initial stage is followed by skin rash and mucous membrane lesions. A late stage follows, which is characterized by damage of the internal organs, including the nervous system"
-"Tetanus"	"logical"	"NCIT:C85185"	"A serious infectious disorder that follows wound contamination by the Gram-positive bacterium Clostridium tetani. The bacteria produce a neurotoxin called tetanospasmin, which causes muscle spasm in the jaw and other anatomic sites"
-"Toxic Shock Syndrome"	"logical"	"NCIT:C35498"	"A rare acute life-threatening systemic bacterial noncontagious illness caused by any of several related staphylococcal exotoxins. It is characterized by high fever, hypotension, rash, multi-organ dysfunction, and cutaneous desquamation during the early convalescent period. The toxins affect the host immune system, causing an exuberant and pathological host inflammatory response. Laboratory findings include leukocytosis, elevated prothrombin time, hypoalbuminemia, hypocalcemia, and pyuria"
-"Tumor"	"logical"	"NCIT:C98275"	"A benign or malignant pathologic structure in any part of the body, resulting from a neoplastic accumulation of cells."
-"reaction to black rot"	"logical"	"CO_331:0000380"	"The reaction of the plant to Black rot."
-"human microflora"	"logical"	NA	NA
-"human gut microbiome"	"logical"	NA	NA
-"other host associated"	"logical"	NA	NA
-"aquatic biome"	"logical"	NA	NA
-"colonization of host"	"logical"	NA	NA
-"creosote-contaminated soil"	"logical"	NA	NA
-"dairy"	"logical"	NA	NA
-"fresh water"	"logical"	NA	NA
-"hot spring"	"logical"	NA	NA
-"groundwater"	"logical"	NA	NA
-"hydrothermal vent"	"logical"	NA	NA
-"intestinal microflora"	"logical"	NA	NA
-"marine water body"	"logical"	NA	NA
-"mud"	"logical"	NA	NA
-"multiple"	"logical"	NA	NA
-"ocean trench"	"logical"	NA	NA
-"oil field production water"	"logical"	NA	NA
-"pond"	"logical"	NA	NA
-"rhizosphere"	"logical"	NA	NA
-"rice paddies"	"logical"	NA	NA
-"sea water"	"logical"	NA	NA
-"sediment"	"logical"	NA	NA
-"specialized"	"logical"	NA	NA
-"terrestrial biome"	"logical"	NA	NA
-"not host-associated"	"logical"	NA	NA
-"rumen"	"logical"	NA	NA
-"Waste and sludge water"	"logical"	NA	NA
-"blood"	"logical"	NA	NA
-"bovine"	"logical"	NA	NA
-"cerebral spinal fluid"	"logical"	NA	NA
-"circulatory system"	"logical"	NA	NA
-"creosote contaminated soil"	"logical"	NA	NA
-"digestive system"	"logical"	NA	NA
-"endosymbiont"	"logical"	NA	NA
-"environmental system"	"logical"	NA	NA
-"food product"	"logical"	NA	NA
-"foregut"	"logical"	NA	NA
-"free-living"	"logical"	NA	NA
-"host-associated"	"logical"	NA	NA
-"insect endosymbiont"	"logical"	NA	NA
-"insect"	"logical"	NA	NA
-"intertidal zone"	"logical"	NA	NA
-"lentic water body"	"logical"	NA	NA
-"lotic water body"	"logical"	NA	NA
-"mammal"	"logical"	NA	NA
-"metal"	"logical"	NA	NA
-"mine"	"logical"	NA	NA
-"plant matter"	"logical"	NA	NA
+"attribute"	"attribute_group"	"validity"	"ontology"	"description"
+"aerobic"	"aerophilicity"	"logical"	"MICRO:0000494"	"A prokaryotic metabolic quality where the organism grows in the presence of oxygen."
+"obligately aerobic"	"aerophilicity"	"logical"	"MICRO:0000516"	"A prokaryotic metabolic quality where the organism grows in the presence of oxygen. Is incapable of anaerobic growth (growth in the absence of oxygen)."
+"microaerophilic"	"aerophilicity"	"logical"	"MICRO:0000515"	"A prokaryotic metabolic quality where the organism grows in the presence of oxygen, where the oxygen concentration is less than atmospheric levels."
+"aerotolerant"	"aerophilicity"	"logical"	"MICRO:0000502"	"A prokaryotic metabolic quality where the organism grows in the absence of oxygen. Can grow or live in the presence of oxygen."
+"anaerobic"	"aerophilicity"	"logical"	"MICRO:0000495"	"A prokaryotic metabolic quality where the organism grows in the absence of oxygen"
+"facultatively anaerobic"	"aerophilicity"	"logical"	"MICRO:0000504"	"A prokaryote which is capable of growth in the presence of oxygen or in the absence of oxygen."
+"obligately anaerobic"	"aerophilicity"	"logical"	"MICRO:0000504"	"A prokaryotic metabolic quality where the organism grows in the absence of oxygen. Cannot grow or live in the presence of oxygen."
+"endospore"	"spore shape"	"logical"	"MICRO:0000213"	"A differentiated prokaryotic cell, found in the Firmicutes, which is specialized for extreme tolerance to desiccation, radiation, and exposure to ultraviolet light. Characterized by thick cell walls."
+"bacillus"	"shape;spore shape"	"logical"	"MICRO:0000401"	"A prokaryotic cell, where one axis (the long axis, the length) of the cell is longer than the other axis (the short axis, the width) of the cell."
+"spirillum"	"shape;spore shape"	"logical"	"MICRO:0000367"	"A prokaryotic cell, where the long axis of the cell twists in a spiral."
+"elliptic"	"shape;spore shape"	"logical"	"PATO:0000947"	"A spheroid quality inhering in a bearer by virtue of the bearer's being oval with two axes of symmetry, as produced by a conical section."
+"branched"	"arrangement;spore shape"	"logical"	"PATO:0000402"	"A branchiness quality inhering in a bearer by virtue of the bearer's having branches"
+"cell chain"	"arrangement;spore shape"	"logical"	"MICRO:0000373"	"A multicellular relationship of prokaryotic cells where cells are attached to one another end-to-end to form chains. Forms when cell division occurs in one plane and cells become detached after cell division takes place."
+"resistance to amikacin"	"antimicrobial resistance"	"logical"	"PHIPO:0000601"	"A growth phenotype which describes the resistance of individuals or populations after exposure to amikacin. Typically, organisms are deemed resistant to a chemical if they survive at a concentration of the chemical that does not allow wild type individuals or populations to grow."
+"resistance to aztreonam"	"antimicrobial resistance"	"logical"	"PHIPO:0000553"	"A growth phenotype which describes the resistance of individuals or populations after exposure to aztreonam. Typically, organisms are deemed resistant to a chemical if they survive at a concentration of the chemical that does not allow wild type individuals or populations to grow."
+"resistant to beta-lactam"	"antimicrobial resistance"	"logical"	"OMP:0006047"	"An beta-lactam compound resistance phenotype where an organism or cell is resistant to one or more beta-lactam compounds"
+"resistance to capreomycin"	"antimicrobial resistance"	"logical"	"PHIPO:0000600"	"A growth phenotype which describes the resistance of individuals or populations after exposure to capreomycin. Typically, organisms are deemed resistant to a chemical if they survive at a concentration of the chemical that does not allow wild type individuals or populations to grow."
+"carbapenem-resistant Acinetobacter"	"antimicrobial resistance"	"logical"	"ARO:3004311"	"Any strain of Acinetobacter spp. that has tested either Intermediate or Resistant to at least one of the following carbapenem-class antibiotics by standard testing using approved breakpoints: imipenem, meropenem, doripenem."
+"resistance to cefepime"	"antimicrobial resistance"	"logical"	"PHIPO:0000631"	"A growth phenotype which describes the resistance of individuals or populations after exposure to cefepime. Typically, organisms are deemed resistant to a chemical if they survive at a concentration of the chemical that does not allow wild type individuals or populations to grow."
+"resistance to cefoxitin"	"antimicrobial resistance"	"logical"	"PHIPO:0000668"	"A growth phenotype which describes the resistance of individuals or populations after exposure to cefoxitin. Typically, organisms are deemed resistant to a chemical if they survive at a concentration of the chemical that does not allow wild type individuals or populations to grow."
+"resistance to chloramphenicol"	"antimicrobial resistance"	"logical"	"PHIPO:0000689"	"A growth phenotype which describes the resistance of individuals or populations after exposure to chloramphenicol. Typically, organisms are deemed resistant to a chemical if they survive at a concentration of the chemical that does not allow wild type individuals or populations to grow"
+"resistance to ciprofloxacin"	"antimicrobial resistance"	"logical"	"PHIPO:0000539"	"A growth phenotype which describes the resistance of individuals or populations after exposure to ciprofloxacin. Typically, organisms are deemed resistant to a chemical if they survive at a concentration of the chemical that does not allow wild type individuals or populations to grow"
+"resistance to clindamycin"	"antimicrobial resistance"	"logical"	"PHIPO:0000560"	"A growth phenotype which describes the resistance of individuals or populations after exposure to clindamycin. Typically, organisms are deemed resistant to a chemical if they survive at a concentration of the chemical that does not allow wild type individuals or populations to grow."
+"resistance to clindamycin"	"antimicrobial resistance"	"logical"	"PHIPO_0000560"	"A growth phenotype which describes the resistance of individuals or populations after exposure to clindamycin. Typically, organisms are deemed resistant to a chemical if they survive at a concentration of the chemical that does not allow wild type individuals or populations to grow."
+"resistance to ertapenem"	"antimicrobial resistance"	"logical"	"PHIPO:0000650"	"A growth phenotype which describes the resistance of individuals or populations after exposure to ertapenem. Typically, organisms are deemed resistant to a chemical if they survive at a concentration of the chemical that does not allow wild type individuals or populations to grow."
+"resistance to erythromycin A"	"antimicrobial resistance"	"logical"	"PHIPO:0000622"	"A growth phenotype which describes the resistance of individuals or populations after exposure to erythromycin A. Typically, organisms are deemed resistant to a chemical if they survive at a concentration of the chemical that does not allow wild type individuals or populations to grow."
+"resistance to ethambutol"	"antimicrobial resistance"	"logical"	"PHIPO:0000542"	"A growth phenotype which describes the resistance of individuals or populations after exposure to ethambutol. Typically, organisms are deemed resistant to a chemical if they survive at a concentration of the chemical that does not allow wild type individuals or populations to grow"
+"resistance to gentamicin"	"antimicrobial resistance"	"logical"	"PHIPO:0000659"	"A growth phenotype which describes the resistance of individuals or populations after exposure to gentamicin. Typically, organisms are deemed resistant to a chemical if they survive at a concentration of the chemical that does not allow wild type individuals or populations to grow."
+"resistance to imipenem"	"antimicrobial resistance"	"logical"	"PHIPO:0000643"	"A growth phenotype which describes the resistance of individuals or populations after exposure to imipenem. Typically, organisms are deemed resistant to a chemical if they survive at a concentration of the chemical that does not allow wild type individuals or populations to grow."
+"resistance to isoniazid"	"antimicrobial resistance"	"logical"	"PHIPO:0000538"	"A growth phenotype which describes the resistance of individuals or populations after exposure to isoniazid. Typically, organisms are deemed resistant to a chemical if they survive at a concentration of the chemical that does not allow wild type individuals or populations to grow."
+"resistance to kanamycin A"	"antimicrobial resistance"	"logical"	"PHIPO:0000616"	"A growth phenotype which describes the resistance of individuals or populations after exposure to kanamycin A. Typically, organisms are deemed resistant to a chemical if they survive at a concentration of the chemical that does not allow wild type individuals or populations to grow."
+"resistance to levofloxacin"	"antimicrobial resistance"	"logical"	"PHIPO:0000670"	"A growth phenotype which describes the resistance of individuals or populations after exposure to levofloxacin. Typically, organisms are deemed resistant to a chemical if they survive at a concentration of the chemical that does not allow wild type individuals or populations to grow."
+"resistance to meropenem"	"antimicrobial resistance"	"logical"	"PHIPO:0000604"	"A growth phenotype which describes the resistance of individuals or populations after exposure to meropenem. Typically, organisms are deemed resistant to a chemical if they survive at a concentration of the chemical that does not allow wild type individuals or populations to grow."
+"resistance to methicillin"	"antimicrobial resistance"	"logical"	"PHIPO:0000649"	"A growth phenotype which describes the resistance of individuals or populations after exposure to methicillin. Typically, organisms are deemed resistant to a chemical if they survive at a concentration of the chemical that does not allow wild type individuals or populations to grow."
+"resistance to ofloxacin"	"antimicrobial resistance"	"logical"	"PHIPO:0000665"	"A growth phenotype which describes the resistance of individuals or populations after exposure to ofloxacin. Typically, organisms are deemed resistant to a chemical if they survive at a concentration of the chemical that does not allow wild type individuals or populations to grow."
+"resistance to penicillin"	"antimicrobial resistance"	"logical"	"PHIPO:0000692"	"A growth phenotype which describes the resistance of individuals or populations after exposure to penicillin. Typically, organisms are deemed resistant to a chemical if they survive at a concentration of the chemical that does not allow wild type individuals or populations to grow."
+"resistance to piperacillin"	"antimicrobial resistance"	"logical"	"PHIPO:0000519"	"A growth phenotype which describes the resistance of individuals or populations after exposure to piperacillin. Typically, organisms are deemed resistant to a chemical if they survive at a concentration of the chemical that does not allow wild type individuals or populations to grow"
+"resistance to rifampicin"	"antimicrobial resistance"	"logical"	"PHIPO:0000606"	"A growth phenotype which describes the resistance of individuals or populations after exposure to rifampicin. Typically, organisms are deemed resistant to a chemical if they survive at a concentration of the chemical that does not allow wild type individuals or populations to grow."
+"resistance to streptomycin"	"antimicrobial resistance"	"logical"	"PHIPO:0000644"	"A growth phenotype which describes the resistance of individuals or populations after exposure to streptomycin. Typically, organisms are deemed resistant to a chemical if they survive at a concentration of the chemical that does not allow wild type individuals or populations to grow."
+"resistance to tetracycline"	"antimicrobial resistance"	"logical"	"PHIPO:0000555"	"A growth phenotype which describes the resistance of individuals or populations after exposure to tetracycline. Typically, organisms are deemed resistant to a chemical if they survive at a concentration of the chemical that does not allow wild type individuals or populations to grow."
+"resistance to tobramycin"	"antimicrobial resistance"	"logical"	"PHIPO:0000685"	"A growth phenotype which describes the resistance of individuals or populations after exposure to tobramycin. Typically, organisms are deemed resistant to a chemical if they survive at a concentration of the chemical that does not allow wild type individuals or populations to grow."
+"resistance to trimethoprim"	"antimicrobial resistance"	"logical"	"PHIPO:0000588"	"A growth phenotype which describes the resistance of individuals or populations after exposure to trimethoprim. Typically, organisms are deemed resistant to a chemical if they survive at a concentration of the chemical that does not allow wild type individuals or populations to grow."
+"sensitive to amikacin"	"antimicrobial resistance"	"logical"	"PHIPO:0000755"	"A growth phenotype which describes the sensitivity of individuals or populations after exposure to amikacin. Typically, organisms are deemed sensitive to a chemical if they stop growing (and may die) at a concentration of the chemical that allows wild type individuals or populations to grow."
+"sensitive to aztreonam"	"antimicrobial resistance"	"logical"	"PHIPO:0000750"	"A growth phenotype which describes the sensitivity of individuals or populations after exposure to aztreonam. Typically, organisms are deemed sensitive to a chemical if they stop growing (and may die) at a concentration of the chemical that allows wild type individuals or populations to grow."
+"not resistant to beta-lactam"	"antimicrobial resistance"	"logical"	"OMP:0006046"	"A beta-lactam compound resistance phenotype where an organism or cell is sensitive to one or more beta-lactam compounds."
+"sensitive to capreomycin"	"antimicrobial resistance"	"logical"	"PHIPO:0000853"	"A growth phenotype which describes the sensitivity of individuals or populations after exposure to capreomycin. Typically, organisms are deemed sensitive to a chemical if they stop growing (and may die) at a concentration of the chemical that allows wild type individuals or populations to grow."
+"sensitive to carbapenems"	"antimicrobial resistance"	"logical"	"PHIPO:0000819"	"A growth phenotype which describes the sensitivity of individuals or populations after exposure to carbapenems. Typically, organisms are deemed sensitive to a chemical if they stop growing (and may die) at a concentration of the chemical that allows wild type individuals or populations to grow."
+"sensitive to cefoxitin"	"antimicrobial resistance"	"logical"	"PHIPO:0000877"	"A growth phenotype which describes the sensitivity of individuals or populations after exposure to cefoxitin. Typically, organisms are deemed sensitive to a chemical if they stop growing (and may die) at a concentration of the chemical that allows wild type individuals or populations to grow."
+"sensitive to chloramphenicol"	"antimicrobial resistance"	"logical"	"PHIPO:0000726"	"A growth phenotype which describes the sensitivity of individuals or populations after exposure to chloramphenicol. Typically, organisms are deemed sensitive to a chemical if they stop growing (and may die) at a concentration of the chemical that allows wild type individuals or populations to grow."
+"sensitive to ciprofloxacin"	"antimicrobial resistance"	"logical"	"PHIPO:0000799"	"A growth phenotype which describes the sensitivity of individuals or populations after exposure to ciprofloxacin. Typically, organisms are deemed sensitive to a chemical if they stop growing (and may die) at a concentration of the chemical that allows wild type individuals or populations to grow."
+"sensitive to clindamycin"	"antimicrobial resistance"	"logical"	"PHIPO:0000889"	"A growth phenotype which describes the sensitivity of individuals or populations after exposure to clindamycin. Typically, organisms are deemed sensitive to a chemical if they stop growing (and may die) at a concentration of the chemical that allows wild type individuals or populations to grow."
+"sensitive to ertapenem"	"antimicrobial resistance"	"logical"	"PHIPO:0000860"	"A growth phenotype which describes the sensitivity of individuals or populations after exposure to ertapenem. Typically, organisms are deemed sensitive to a chemical if they stop growing (and may die) at a concentration of the chemical that allows wild type individuals or populations to grow."
+"sensitive to erythromycin A"	"antimicrobial resistance"	"logical"	"PHIPO:0000871"	"A growth phenotype which describes the sensitivity of individuals or populations after exposure to erythromycin A. Typically, organisms are deemed sensitive to a chemical if they stop growing (and may die) at a concentration of the chemical that allows wild type individuals or populations to grow."
+"sensitive to ethambutol"	"antimicrobial resistance"	"logical"	"PHIPO:0000887"	"A growth phenotype which describes the sensitivity of individuals or populations after exposure to ethambutol. Typically, organisms are deemed sensitive to a chemical if they stop growing (and may die) at a concentration of the chemical that allows wild type individuals or populations to grow."
+"sensitive to gentamicin"	"antimicrobial resistance"	"logical"	"PHIPO:0000760"	"A growth phenotype which describes the sensitivity of individuals or populations after exposure to gentamicin. Typically, organisms are deemed sensitive to a chemical if they stop growing (and may die) at a concentration of the chemical that allows wild type individuals or populations to grow."
+"sensitive to imipenem"	"antimicrobial resistance"	"logical"	"PHIPO:0000833"	"A growth phenotype which describes the sensitivity of individuals or populations after exposure to imipenem. Typically, organisms are deemed sensitive to a chemical if they stop growing (and may die) at a concentration of the chemical that allows wild type individuals or populations to grow."
+"sensitive to isoniazid"	"antimicrobial resistance"	"logical"	"PHIPO:0000817"	"A growth phenotype which describes the sensitivity of individuals or populations after exposure to isoniazid. Typically, organisms are deemed sensitive to a chemical if they stop growing (and may die) at a concentration of the chemical that allows wild type individuals or populations to grow."
+"sensitive to kanamycin A"	"antimicrobial resistance"	"logical"	"PHIPO:0000764"	"A growth phenotype which describes the sensitivity of individuals or populations after exposure to kanamycin A. Typically, organisms are deemed sensitive to a chemical if they stop growing (and may die) at a concentration of the chemical that allows wild type individuals or populations to grow."
+"sensitive to levofloxacin"	"antimicrobial resistance"	"logical"	"PHIPO:0000883"	"A growth phenotype which describes the sensitivity of individuals or populations after exposure to levofloxacin. Typically, organisms are deemed sensitive to a chemical if they stop growing (and may die) at a concentration of the chemical that allows wild type individuals or populations to grow."
+"sensitive to meropenem"	"antimicrobial resistance"	"logical"	"PHIPO:0000845"	"A growth phenotype which describes the sensitivity of individuals or populations after exposure to meropenem. Typically, organisms are deemed sensitive to a chemical if they stop growing (and may die) at a concentration of the chemical that allows wild type individuals or populations to grow."
+"sensitive to methicillin"	"antimicrobial resistance"	"logical"	"PHIPO:0000765"	"A growth phenotype which describes the sensitivity of individuals or populations after exposure to methicillin. Typically, organisms are deemed sensitive to a chemical if they stop growing (and may die) at a concentration of the chemical that allows wild type individuals or populations to grow."
+"sensitive to ofloxacin"	"antimicrobial resistance"	"logical"	"PHIPO:0000830"	"A growth phenotype which describes the sensitivity of individuals or populations after exposure to ofloxacin. Typically, organisms are deemed sensitive to a chemical if they stop growing (and may die) at a concentration of the chemical that allows wild type individuals or populations to grow."
+"sensitive to penicillin"	"antimicrobial resistance"	"logical"	"PHIPO:0000815"	"A growth phenotype which describes the sensitivity of individuals or populations after exposure to penicillin. Typically, organisms are deemed sensitive to a chemical if they stop growing (and may die) at a concentration of the chemical that allows wild type individuals or populations to grow."
+"sensitive to piperacillin"	"antimicrobial resistance"	"logical"	"PHIPO:0000842"	"A growth phenotype which describes the sensitivity of individuals or populations after exposure to piperacillin. Typically, organisms are deemed sensitive to a chemical if they stop growing (and may die) at a concentration of the chemical that allows wild type individuals or populations to grow."
+"sensitive to rifampicin"	"antimicrobial resistance"	"logical"	"PHIPO:0000836"	"A growth phenotype which describes the sensitivity of individuals or populations after exposure to rifampicin. Typically, organisms are deemed sensitive to a chemical if they stop growing (and may die) at a concentration of the chemical that allows wild type individuals or populations to grow."
+"sensitive to streptomycin"	"antimicrobial resistance"	"logical"	"PHIPO:0000779"	"A growth phenotype which describes the sensitivity of individuals or populations after exposure to streptomycin. Typically, organisms are deemed sensitive to a chemical if they stop growing (and may die) at a concentration of the chemical that allows wild type individuals or populations to grow."
+"sensitive to tetracycline"	"antimicrobial resistance"	"logical"	"PHIPO:0000882"	"A growth phenotype which describes the sensitivity of individuals or populations after exposure to tetracycline. Typically, organisms are deemed sensitive to a chemical if they stop growing (and may die) at a concentration of the chemical that allows wild type individuals or populations to grow."
+"sensitive to trimethoprim"	"antimicrobial resistance"	"logical"	"PHIPO:0000781"	"A growth phenotype which describes the sensitivity of individuals or populations after exposure to trimethoprim. Typically, organisms are deemed sensitive to a chemical if they stop growing (and may die) at a concentration of the chemical that allows wild type individuals or populations to grow."
+"waste water"	"habitat;isolation site"	"logical"	"ENVO:00002001"	"Water that has been adversely affected in quality by anthropogenic influence"
+"terrestrial biome"	"habitat"	"logical"	"ENVO:00000446"	"A biome which is primarily or completely situated on a landmass"
+"water surface"	"habitat"	"logical"	"ENVO:01001191"	"The surface layer of a volume of water."
+"sulfur spring"	"habitat;isolation site"	"logical"	"ENVO:00000126"	"A spring whose water contains a significant amount of dissolved derivatives of sulfur."
+"submarine"	"habitat"	"logical"	"ERO:0001431"	"An instrument that is designed to move across or through water and is capable of independent operation below the surface of the water."
+"specialized"	"habitat"	"logical"	"NCIT:C44274"	"Developed or designed for a special activity or function"
+"soil"	"habitat;isolation site"	"logical"	"ENVO:00001998"	"Soil is an environmental material which is primarily composed of minerals, varying proportions of sand, silt, and clay, organic material such as humus, gases, liquids, and a broad range of resident micro- and macroorganisms"
+"volcanic field"	"habitat"	"logical"	"ENVO:00000354"	"A geothermal field which is prone to localized volcanic activity."
+"hypersaline salinity"	"habitat"	"logical"	"MICRO:0001293"	"Culture medium salinity quality where the salinity is greater than 5 % salts."
+"sludge"	"habitat;isolation site"	"logical"	"ENVO:00002044"	"The residual semi-solid material left from domestic or industrial processes, or wastewater treatment processes."
+"sediment"	"habitat;isolation site"	"logical"	"ENVO:00002007"	"Sediment is an environmental substance comprised of any particulate matter that can be transported by fluid flow and which eventually is deposited as a layer of solid particles on the bedor bottom of a body of water or other liquid."
+"sea water"	"habitat;isolation site"	"logical"	"ENVO:00002149"	"Water which has physicochemical properties that have been determined by the processes occuring in a sea or ocean."
+"saline water"	"isolation site"	"logical"	"ENVO:00002010"	"Water which contains a significant concentration of dissolved salts."
+"pond"	"habitat;isolation site"	"logical"	"ENVO:00000033"	"A body of water, usually of smaller size than a lake."
+"rhizosphere"	"habitat;isolation site"	"logical"	"ENVO:00005801"	"The narrow region of soil that is directly influenced by root secretions and associated soil microorganisms"
+"root nodule"	"habitat"	"logical"	"ENVO:01000164"	"Root nodules occur on the roots of plants that associate with symbiotic nitrogen-fixing bacteria"
+"not host-associated"	"habitat"	"logical"	NA	NA
+"multiple"	"habitat"	"logical"	"NCIT:C17648"	"Having, relating to, or consisting of more than one individual, element, part, or other component; manifold."
+"mud"	"habitat;isolation site"	"logical"	"ENVO:01000001"	"A liquid or semi-liquid mixture of water and some combination of soil, silt, and clay."
+"human microbiome"	"habitat"	"logical"	"OHMI:0000002"	"A microbiome located in a human body"
+"marine water body"	"habitat"	"logical"	"ENVO:00001999"	"A significant accumulation of water which is part of a marine biome."
+"hydrothermal vent"	"habitat;isolation site"	"logical"	"ENVO:00000215"	"A fissure in the Earths's surface from which geothermally heated water issues"
+"hot spring"	"habitat;isolation site"	"logical"	"ENVO:00000051"	"A spring that is produced by the emergence of geothermally-heated groundwater from the Earth's crust"
+"colonization of host"	"habitat"	"logical"	"IDO:0000604"	"An establishment of localization in host process in which an organism establishes itself in a host."
+"fresh water"	"habitat;isolation site"	"logical"	"ENVO:00002011"	"Water which has a low concentration of dissolved solutes, particularly that of sodium chloride."
+"groundwater"	"habitat;isolation site"	"logical"	"ENVO:01001004"	"Underground water which is located in pore spaces found in rock or unconsolidated deposits such as soil, clay, or gravel."
+"oil field production water"	"habitat"	"logical"	"ENVO:00002194"	NA
+"rice paddies"	"habitat;isolation site"	"logical"	"ENVO:00000296"	"A paddy field for the cultivation of rice"
+"ocean trench"	"habitat"	"logical"	"ENVO:00000275"	"Hemispheric-scale long but narrow topographic depressions of the sea floor. They are the deepest parts of the ocean floor"
+"dairy"	"habitat"	"logical"	"ENVO:00003862"	"A dairy is a building in which animal milk is harvested and, optionally, processed for human consumption."
+"creosote contaminated soil"	"habitat"	"logical"	"ENVO:00002117"	"Soil which has elevated concentrations of creosote."
+"aquatic biome"	"habitat"	"logical"	"ENVO:00002030"	"A biome which is determined by a water body and which has ecological climax communities adapted to life in or on water."
+"intestinal microflora"	"habitat"	"logical"	"NCIT:C93019"	"Bacteria and other organisms that live inside the intestines. They help digest food. Vitamins such as biotin and vitamin K are made by gut flora."
+"air"	"habitat;isolation site"	"logical"	"ENVO:00002005"	"The mixture of gases (roughly (by molar content/volume: 78% nitrogen, 20.95% oxygen, 0.93% argon, 0.038% carbon dioxide, trace amounts of other gases, and a variable amount (average around 1%) of water vapor) that surrounds the planet Earth"
+"horse blood agar"	""	"logical"	"MICRO:0000096"	"A solid microbiological culture medium (a blood agar), containing horse blood"
+"10% salts"	"growth medium"	"logical"	NA	NA
+"20% salts"	"growth medium"	"logical"	NA	NA
+"30% salts"	"growth medium"	"logical"	NA	NA
+"5% salts"	"growth medium"	"logical"	NA	NA
+"5% sheep blood agar"	"growth medium"	"logical"	NA	NA
+"asp-2"	"growth medium"	"logical"	NA	NA
+"basal salts"	""	"logical"	NA	NA
+"bg11"	"growth medium"	"logical"	"MICRO:0001348"	"A liquid, mineral-salts microbiological culture medium. Used to support the autotrophic growth of cyanobacteria."
+"c"	"growth medium"	"logical"	NA	NA
+"casitone-yeast extract agar"	"growth medium"	"logical"	NA	NA
+"charcoal-yeast extract"	"growth medium"	"logical"	NA	NA
+"conway"	"growth medium"	"logical"	NA	NA
+"defined microbiological culture medium"	"growth medium"	"logical"	"MICRO:0000068"	"A chemically defined microbiological culture medium where all chemicals used are known. Does not contain any plant, animal, or microbiological cell extracts."
+"defined medium plus 1 mM glycine betaine"	""	"logical"	NA	NA
+"artificial seawater"	"growth medium"	"logical"	"MICRO:0001715"	"An inorganic salts solution that mimics sea water."
+"fildes enrichment"	"growth medium"	"logical"	"MICRO:0001597"	"Blood medium ingredient comprised of a peptic digest of sheep (Ovis aries) or horse (Equus caballus) blood, serves as a source of hemin and NAD (nicotinamide adenine dinucleotide). Used in the cultivation of microorganisms."
+"nutrient broth"	"growth medium;metabolite utilization"	"logical"	"MICRO:0000082"	"An organic-rich, liquid culture medium comprised of beef extract and peptone."
+"gse"	"growth medium"	"logical"	NA	"https://research.csiro.au/anaccmethods/wp-content/uploads/sites/337/2020/04/GSe_CSIRO_2020.pdf"
+"heart infusion agar"	"growth medium"	"logical"	"MICRO:0000567"	"An organic-rich, solid microbiological culture medium that contains (beef) heart infusion and tryptose. Used to grow a wide range of heterotrophic microorganisms."
+"chocolate agar"	"growth medium"	"logical"	"MICRO:0000591"	"A solid microbiological culture medium where blood has been been treated by heating in order to lyse the blood cells."
+"brackish microbiological culture medium"	"growth medium"	"logical"	"MICRO:0000483"	"A microbiological culture medium that has a salinity of greater than 0.05 % salts and less than 3% salts."
+"lb agar"	"growth medium"	"logical"	"MICRO:0000563"	"An organic-rich, solid microbiological culture medium containing tryptone, yeast extract, and sodium chloride. Used to cultivate Escherichia coli."
+"medium 31 agar"	"growth medium"	"logical"	NA	NA
+"zobell marine agar"	""	"logical"	"MICRO:0000112"	"An organic-rich, mineral-salts, solid microbiological culture medium containing peptones and yeast extract in a base of artificial sea water. Used for the cultivation of heterotrophic marine microorganisms. Zobell Marine Agar 2216 Zobell Marine Agar 2216 is recommended for cultivation, isolation and enumeration of heterotrophic marine bacteria."
+"DSMZ Medium 1000"	"growth medium"	"logical"	"MICRO:0001609"	"A minerals-salts, liquid culture medium comprised of sodium chloride, potassium phosphate, calcium chloride, ammonium chloride, magnesium sulfate, magnesium chloride, potassium chloride, ferric sulfate, nickel chloride, sotium selenate, sodium silicate, and trace minerals. Prepared under at atmosphere of hydrogen and carbon dioxide."
+"lb medium"	"growth medium"	"logical"	"MICRO:0000562"	"An organic-rich, liquid microbiological culture medium containing tryptone, yeast extract, and sodium chloride. Used to cultivate Escherichia coli."
+"modified shieh agar"	"growth medium"	"logical"	NA	NA
+"mrs agar"	""	"logical"	"MICRO:0000554"	"A slightly-acidic, organic-rich, solid microbiological culture medium containing peptones, egg extract, yeast extract, glucose, Tween 80, and minerals salts. Used for the cultivation of Lactobacilli."
+"mueller-hinton"	"growth medium"	"logical"	"MICRO:0000557"	"An organic-rich, solid microbiological culture medium containing beef extract, casein hydrolysate, and starch. Used for the cultivation of Neisseria."
+"pyg medium"	"growth medium"	"logical"	"MICRO:0000547"	"An organic-rich, liquid microbiological culture medium containing casitone and yeast extract. Used for the growth of Pseudarcicella sp"
+"sm agar"	"growth medium"	"logical"	"MICRO:000531"	"A liquid microbiological culture medium containing gelatin, magnesium sulfate, and sodium chloride. Used for the storage and dilution of Escherichia coli bacteriophage lambda."
+"staley pyg"	"growth medium"	"logical"	NA	NA
+"tryptic soy broth"	"growth medium"	"logical"	"MICRO:0000113"	"An organic-rich, liquid culture medium comprised of pancreatic digest of casein (casitone), papaic digest of soybean (soy peptone), dextrose (D-glucose), sodium chloride, and dipotassium phosphate (potassium dibasic phosphate)."
+"tryptic soy agar"	"growth medium"	"logical"	"MICRO:0000114"	"An organic-rich, solid medium containing casitone (pancreatic digest of casein), Phytone peptone (papaic digest of soybean), and sodium chloride. Used for the cultivation of aerobic heterotrophic microorganisms."
+"tryptic soy broth"	"growth medium"	"logical"	"MICRO:0000113"	"An organic-rich, liquid culture medium comprised of pancreatic digest of casein (casitone), papaic digest of soybean (soy peptone), dextrose (D-glucose), sodium chloride, and dipotassium phosphate (potassium dibasic phosphate)."
+"gram stain negative"	"gram stain"	"logical"	"MICRO:0000617"	"A gram stain quality where microorganisms do not stain purple with Crystal Violet used in the Gram stain, but stain red due to uptake of the counter stain (Safranin or Fuchsin). Fuchsin is also called Magenta"
+"gram stain positive"	"gram stain"	"logical"	"MICRO:0000616"	"A gram stain quality where microorganisms stain purple with crystal violet used in the Gram stain."
+"gram stain variable"	"gram stain"	"logical"	"MICRO:0000618"	"Microorganisms that are not definitively stained Gram positive or Gram negative; may stain variably as either Gram positive or Gram negative."
+"cell cluster"	"arrangement"	"logical"	"MICRO:0000372"	"A multicellular relationship of prokaryotic cells where cells are attached to one another end-to-end and side-to-side to form clumps or sheets after dividing. This morphology forms as a result of cell division taking place in multiple planes."
+"paired cells"	"arrangement"	"logical"	"MICRO:0000369"	"A multicellular relationship of prokaryotic cells where two cells are attached to one another in pairs."
+"palisade"	"arrangement"	"logical"	"MICRO:0000941"	"A multicellular prokaryotic morphological quality where cells so that their long axes are stacked parallel to one another (like in a fence)"
+"rosettes"	"arrangement"	"logical"	NA	NA
+"single"	"arrangement"	"logical"	"NCIT:C48440"	"Not accompanied by another or others; exclusive of anyone or anything else"
+"tetrads"	"arrangement"	"logical"	"MICRO:0000374"	"A multicellular prokaryotic morphological quality where cells are attached to one another in multiples of four. Forms when cell division occurs in two planes at right angles to one another."
+"unbranched"	"arrangement"	"logical"	"PATO:0000414"	"A branchiness quality inhering in a bearer by virtue of the bearer's lacking branches."
+"V-branched filaments"	""	"logical"	"MICRO:0000127"	"True-branched filaments, where an apical cell divides longitudinally, from which grows obliquely two equivalent branches."
+"reverse Y-branched filaments"	"arrangement"	"logical"	"MICRO:0000128"	"True-branched filaments, where branches arise in the intercalary (medial) cells after oblique cell division at an intercalary (medial cell)."
+"bent filament"	"shape"	"logical"	"MICRO:0000389"	"A filament shape where the filament has an appearance of being bent at an angle."
+"clavate"	"shape"	"logical"	"PATO:0001883"	"A concave 3-D shape quality inhering in a bearer by virtue of the bearer's gradually becoming thicker towards the end."
+"coccobacillus"	"shape"	"logical"	"MICRO:0000366"	"A prokaryotic cell, being a bacillus where the long axis of the cell is only slightly longer than the short axis of the cell."
+"coccus"	"shape;spore shape"	"logical"	"MICRO:0000402"	"A prokaryotic cell that is spherical with no apparent long axis."
+"discoid"	"shape"	"logical"	"PATO:0001874"	"A shape quality inhering in a bearer by virtue of the bearer's being cylindrical, in which the height is less than the diameter."
+"dumbbell-shaped"	"shape"	"logical"	"PATO:0001876"	"A concave 3-D shape quality inhering in a bearer by virtue of the bearer's having two parts, roughly spherical and of equal size, connected by a bar."
+"filamentous"	"arrangement;shape"	"logical"	"PATO:0001360"	"A shape quality inhering in a bearer by virtue of the bearer's having thin filamentous extensions at its edge."
+"flat"	"shape"	"logical"	"PATO:0000407"	"A quality inhering in a bearer by virtue of the bearer's having a horizontal surface without a slope, tilt, or curvature."
+"u-shaped"	"shape"	"logical"	"PATO:0001879"	"A concave 3-D shape quality inhering in a bearer by virtue of the bearer's being shaped in the form of the letter U."
+"pleiomorphic cell"	"shape"	"logical"	"MICRO:0000427"	"A prokaryotic cell that is irregular in shape, where the shapes of the cells are irregular and variable (pleomorphic). Cell shapes may be variable in size and shape, depending on the environmental conditions."
+"polyhedral shape"	"shape"	"logical"	"OMP:0005394"	"A capsid morphology phenotype where the capsid is shaped like a polyhedron which is a solid formed by plane faces."
+"sigmoid"	"shape;spore shape"	"logical"	"PATO:0001878"	"A shape quality inhering in a bearer by virtue of the bearer's consisting of two curves, in opposite directions. S-shaped"
+"rectangle"	"shape"	"logical"	"SIO:000518"	"A rectangle is a quadrilateral in which one pair of line segments are parallel and the other pair are perpendicular to the first pair."
+"tetrahedral"	"shape"	"logical"	"ENM:9000065"	NA
+"triangle"	"shape"	"logical"	"SIO:000520"	"A triangle is a polygon composed of three points and three line segments, in which each point is fully connected to another point along through the line segment."
+"vibriod cells"	""	"logical"	"MICRO:0000414"	"A prokaryotic cell, being a bacillus where the elongated axis of the cells is curved (but not spiral)."
+"wrinkled"	"shape"	"logical"	"PATO:0001810"	"A grooved texture quality inhering in a bearer by virtue of the bearer's being marked by one or more creases in a normally smooth surface."
+"animal pathogen"	"animal pathogen"	"logical"	NA	NA
+"extreme environment"	""	"logical"	NA	NA
+"COGEM pathogenicity rating"	"COGEM pathogenicity rating"	"integer"	NA	NA
+"antimicrobial sensitivity"	"antimicrobial sensitivity"	"logical"	NA	NA
+"biofilm formation"	"biofilm forming"	"logical"	"APO:0000159"	"The ability to form a layer on solid surfaces with or without other microorganisms."
+"Butyrate-Producing Bacteria"	"butyrate producing"	"numeric"	"NCIT:C126417"	"Any anaerobic bacteria that metabolizes complex carbohydrates to produce butyrate. These microorganisms may form colonies in the intestines of mammals; their presence may aid the host by catabolizing undigested fiber and starch. Additionally, butyrate is metabolized by colonic epithelial cells and may protect the host against ulcerative colitis and cancer."
+"acetate producing"	"acetate producing"	"numeric"	NA	NA
+"lactate producing"	"lactate producing"	"numeric"	NA	NA
+"mutation rate per site per year"	"mutation rates per site per year"	"numeric"	NA	NA
+"mutation rate per site per generation"	"mutation rate per site per generation"	"numeric"	NA	NA
+"hydrogen gas producing"	"hydrogen gas producing"	"numeric"	NA	NA
+"width"	"width"	"numeric"	"PATO:0000921"	"A 1-D extent quality which is equal to the distance from one side of an object to another side which is opposite."
+"length"	"length"	"numeric"	"PATO:0000122"	"A 1-D extent quality which is equal to the distance between two points"
+"fatty acid composition"	""	"logical"	NA	NA
+"human urine"	"habitat;isolation site"	"logical"	"MCO:0000662"	"No definition provided"
+"v-formation"	"arrangement"	"logical"	NA	NA
+"extreme environment"	""	"logical"	NA	NA
+"gut"	""	"logical"	"OHMI:0000020"	"A human being's gut microbiota contains tens of trillions of microorganisms, including at least 1000 different species of known bacteria with more than 3 million genes (150 times more than human genes). Microbiota can, in total, weigh up to 2 kg. One third of our gut microbiota is common to most people, while two thirds are specific to each one of us. In other words, the microbiota in your intestine is like an individual identity card. URL: http://www.gutmicrobiotaforhealth.com/en/about-gut-microbiota-info/"
+"rumen"	"habitat;isolation site"	"logical"	"NCIT:C98778"	"Largest forestomach of ruminants where bacterial fermentation occurs"
+"Health associated"	"health associated"	"logical"	NA	NA
+"shape"	""	"logical"	NA	NA
+"Extreme environment"	"extreme environment"	"logical"	NA	NA
+"mrs broth"	"growth medium"	"logical"	NA	NA
+"ZoBell marine agar"	"growth medium"	"logical"	NA	NA
+"growth temperature"	"growth temperature"	"numeric"	NA	NA
+"oral"	"habitat"	"logical"	NA	NA
+"optimal ph"	"optimal ph"	"numeric"	NA	NA
+"plant pathogenity"	"plant pathogenicity"	"numeric"	NA	NA
+"blade of grass from raritan river nj, usa"	"isolation site"	"logical"	NA	NA
+"hot swamp from kunashir island, russia"	"isolation site"	"logical"	NA	NA
+"30-m-tall sulfide mound in the iheya north field, japan"	"isolation site"	"logical"	NA	NA
+"2500m depth from the sulu trough"	"isolation site"	"logical"	NA	NA
+"5m depth in mediterranean sea"	"isolation site"	"logical"	NA	NA
+"20-40000 year old serbian permafrost in russia, siberia, kolyma lowland"	"isolation site"	"logical"	NA	NA
+"1940s by lilleengen"	"isolation site"	"logical"	NA	NA
+"30-m-tall sulfide mound in the iheya north field, japan (water depth, 1,000 m)"	""	"logical"	NA	NA
+"tumors"	""	"logical"	NA	NA
+"Genome size"	"genome size"	"numeric"	"OMIT:0027643"	NA
+"genes"	"coding genes"	"numeric"	"OMIT:0006994"	NA
+"environmental system"	"habitat"	"logical"	"ENVO:01000254"	"A system which has the disposition to environ one or more material entities."
+"host-associated"	"habitat"	"logical"	NA	NA
+"food product"	"habitat;isolation site"	"logical"	"FOODON:00001002"	"Food material for humans and animals which is processed with the intention that it be consumable as a whole or added to other food products."
+"plant matter"	"habitat"	"logical"	"ENVO:01001121"	"Organic material which is primarily composed of plant structures, living or dead."
+"blood"	"habitat;isolation site"	"logical"	"UBERON:0000178"	"A fluid that is composed of blood plasma and erythrocytes."
+"hydrothermal vents"	"habitat;isolation site"	"logical"	"OMIT:0027720"	NA
+"ocean"	""	"logical"	"ENVO:00000015"	"A marine water body which is constitutes the majority of an astronomical body's hydrosphere."
+"saline evaporation pond"	"habitat"	"logical"	"ENVO:00000055"	"A shallow man-made pond designed to produce salt from sea water. The seawater is fed into large ponds and water is drawn out through natural evaporation which allows the salt to be subsequently harvested."
+"phylloplane"	"habitat"	"logical"	NA	NA
+"respiratory system"	"habitat"	"logical"	"NCIT:C12779"	"The organs involved in the exchange of carbon dioxide and oxygen including the trachea, bronchi, and lung parenchyma."
+"insect endosymbiont"	"habitat"	"logical"	NA	NA
+"sediment"	"habitat;isolation site"	"logical"	NA	NA
+"root"	"habitat"	"logical"	"PO:0009005"	"A plant axis (PO:0025004) that lacks shoot axis nodes (PO:0005004) and usually grows indeterminately."
+"nasopharyngeal cavity"	"habitat"	"logical"	"EHDAA2:0004555"	NA
+"plant symbiont"	""	"logical"	NA	NA
+"bioremediation"	"habitat"	"logical"	NA	NA
+"free-living"	"habitat"	"logical"	NA	NA
+"secondary"	"habitat"	"logical"	NA	NA
+"fish"	"habitat;isolation site"	"logical"	"NCIT:C14207"	"A grouping of jawed and jawless vertebrate animals usually having fins and a covering of scales or plates, breathing by means of gills, and living almost entirely in the water."
+"feces"	"habitat;isolation site"	"logical"	"FMA:64183"	"Excretion in semisolid state processed by the intestine."
+"large intestine"	"habitat"	"logical"	"NCIT:C12379"	"A muscular tube that extends from the end of the small intestine to the anus."
+"digestive system"	"habitat"	"logical"	"NCIT:C12378"	"The system that includes the esophagus, stomach, small and large intestine, anus, liver, biliary tract, and pancreas."
+"sputum"	"habitat;isolation site"	"logical"	"NCIT:C13278"	"Material containing mucus, cellular debris, microorganisms and sometimes blood or pus. It is ejected through the mouth from the lungs, bronchi, and trachea."
+"vagina"	"habitat;isolation site"	"logical"	"NCIT:C12407"	"The female genital canal, extending from the uterus to the vulva."
+"bovine"	"isolation site"	"logical"	"FOODON:03414374"	"The biological subfamily *Bovinae* includes a diverse group of 10 genera of medium- to large-sized ungulates, including domestic cattle, the bison, African buffalo, the water buffalo, the yak, and the four-horned and spiral-horned antelopes. The evolutionary relationship between the members of the group is obscure, and their classification into loose tribes rather than formal subgroups reflects this uncertainty. General characteristics include cloven hoofs and usually at least one of the sexes o…"
+"insecta"	""	"logical"	"NCBITaxon:50557"	NA
+"food material"	""	"logical"	"FOODON:00002403"	"Any substance that can be consumed by an organism to satisfy nutritional or other health needs, or to provide a social or organoleptic food experience"
+"foregut"	"habitat"	"logical"	"UBERON:0001041"	"Anterior subdivision of a digestive tract."
+"lentic water body"	"habitat"	"logical"	"ENVO:01000617"	"A lentic water body is a water body in which the accumulated water, in its totality, has very little to no directed flow."
+"endosymbiont"	"habitat"	"logical"	NA	NA
+"mine"	"habitat"	"logical"	"ENVO:00000076"	"An excavation in the Earth for the purpose of extracting earth materials."
+"metal"	"habitat"	"logical"	"NCIT:C637"	"Electropositive chemical elements characterised by ductility, malleability, luster, and conductance of heat and electricity. They can replace the hydrogen of an acid and form bases with hydroxyl radicals."
+"gastrointestinal tract"	"habitat"	"logical"	"FMA:71132"	NA
+"mammal"	"habitat"	"logical"	"OMIT:0009396"	NA
+"dairy product"	"isolation site"	"logical"	"NCIT:C413"	"Food made from the milk of some mammals, most commonly cows, goats and sheep."
+"skin"	"isolation site"	"logical"	"NCIT:C12470"	"An organ that constitutes the external surface of the body. It consists of the epidermis, dermis, and skin appendages."
+"cerebral spinal fluid"	"habitat"	"logical"	"ZFA:0001626"	"Portion of organism substance that is a clear fluid that occupies the subarachnoid space and the ventricular system around and inside the brain."
+"lotic water body"	"habitat"	"logical"	"ENVO:01000618"	"A lotic water body is a water body in which the accumulated water, in its totality, is flowing."
+"animal"	"habitat;isolation site"	"logical"	"NCIT:C14182"	"A living organism that has membranous cell walls, requires oxygen and organic foods, and is capable of voluntary movement, as distinguished from a plant or mineral."
+"intertidal zone"	"habitat"	"logical"	"ENVO:00000316"	"The area of the foreshore and seabed that is exposed to the air at low tide and submerged at high tide, i.e., the area between tide marks."
+"circulatory system"	"habitat"	"logical"	"SPD:0000611"	NA
+"wetland"	"habitat"	"logical"	"ENVO:00000043"	"An vegetated area which overlaps a wetland ecosystem."
+"reproductive system"	""	"logical"	"NCIT:C12841"	"The organs and tissues involved in the production and maturation of gametes and in their union and subsequent development as offspring."
+"bird"	""	"logical"	"IDOMAL:0000980"	"A vertebrate animal of the class Aves."
+"chemoorganotroph"	""	"logical"	"MICRO:0001504"	"A prokaryote capable of carrying out the role of chemoorganotrophy, where the oxidation and reduction of chemical compounds is the energy source, and the electron donor is an organic compound."
+"heterotroph"	""	"logical"	"MICRO:0001450"	"A prokaryote capable of carrying out the role of heterotrophy where the carbon or energy sources are organic compounds."
+"lithotroph"	""	"logical"	"MICRO:0001495"	"A prokaryote capable of carrying out the role of lithotrophy, where the oxidation and reduction of inorganic chemical compounds is the energy source."
+"methylotroph"	""	"logical"	NA	NA
+"photoautotroph"	""	"logical"	"ECOCORE:00000130"	"An autotroph which is capable of transforming light into chemical energy."
+"photosynthesis"	""	"logical"	"NCIT:C16986"	"The process through which light energy, water, and carbon dioxide are converted to carbohydrate and oxygen in the presence of chlorophyll. Occurs in plants, algae, cyanobacteria and lichens. (BioTech Life Science Dictionary)"
+"chemoautotroph"	""	"logical"	"ECOCORE:00000129"	"An autotroph which is capable of obtaining energy from the bonds in a chemical compound."
+"chemolithoautotroph"	""	"logical"	"MICRO:0001500"	"A prokaryote capable of carrying out the role of chemolithoautotrophy, where the oxidation and reduction of chemical compounds is the energy source, the electron donor is an inorganic compound, and the carbon source is carbon dioxide."
+"phototroph"	""	"logical"	"MICRO:0001452"	"A prokaryote capable of carrying out the role of phototrophy, where light is the energy source."
+"chemolithotroph"	""	"logical"	"MICRO:0001499"	"A prokaryote capable of carrying out the role of chemolithotrophy, where the oxidation and reduction of chemical compounds is the energy source, and the electron donor is an inorganic compound."
+"chemoheterotroph"	""	"logical"	"ECOCORE:00000132"	"A heterotroph which is capable of obtaining energy from the bonds in a chemical compound."
+"oligotroph"	""	"logical"	NA	NA
+"autotroph"	""	"logical"	"MICRO:0001446"	"A prokaryote capable of carrying out the role of autotrophy, where carbon dioxide is the source of carbon."
+"acidophile"	""	"logical"	"MICRO:0001390"	"Prokaryote specialized with respect to pH, which grows optimally at moderately acidic pH values (pH 4-6)."
+"alkaliphile"	""	"logical"	"MICRO:0001394"	"Prokaryote specialized with respect to pH, which grows optimally at moderately alkaline pH values (pH 8-10)."
+"cellulose degradation"	""	"logical"	"UPa:UPA00696"	"Degradation of cellulose."
+"hydrogen sulfide gas release"	""	"logical"	NA	NA
+"methanogen"	""	"logical"	"MICRO:0000166"	"Prokaryotic metabolically differentiated cell, specialized for the production of methane. Found only in the archaeal domain of life."
+"nitrogen production"	""	"logical"	NA	NA
+"pah degradation"	""	"logical"	NA	NA
+"sulfate-reducing"	""	"logical"	NA	NA
+"sulfur oxidation"	""	"logical"	"GO:0019417"	"The chemical reactions and pathways resulting the addition of oxygen to elemental sulfur."
+"sulfur respiration"	""	"logical"	"MICRO:0000312"	"The process of anaerobic respiration, where elemental sulfur reduced to hydrogen sulfide."
+"ammonia oxidation"	""	"logical"	"GO:0019329"	"The chemical reactions and pathways by which ammonia or ammonium is converted to molecular nitrogen or another nitrogen compound, with accompanying loss of electrons."
+"biomass degradation"	""	"logical"	NA	NA
+"iron-reducing"	""	"logical"	NA	NA
+"nitrogen fixation"	""	"logical"	"GO:0009399"	"The process in which nitrogen is taken from its relatively inert molecular form (N2) in the atmosphere and converted into nitrogen compounds useful for other chemical processes, such as ammonia, nitrate and nitrogen dioxide."
+"stores polyhydroxybutyrate"	""	"logical"	NA	NA
+"carbon dioxide fixation"	""	"logical"	"GO:0015977"	"A metabolic process in which carbon (usually derived from carbon dioxide) is incorporated into organic compounds (usually carbohydrates)."
+"iron oxidation"	""	"logical"	NA	NA
+"tail"	"shape"	"logical"	NA	NA
+"staphylococcus"	"shape"	"logical"	"MICRO:0000378"	"A multicellular relationship of prokaryotic cells where the shape of the cells is round (forming a coccus) and the cells are attached to one another end-to-end and side-to-side to form clumps or clusters."
+"pathogenic in mammals"	""	"logical"	NA	NA
+"pathogenic in fish"	""	"logical"	NA	NA
+"disease"	""	"logical"	"EFO:0000408"	"A disease is a disposition to undergo pathological processes that exists in an organism because of one or more disorders in that organism."
+"sampling site"	""	"logical"	"EFO:0000688"	"A site from which a sample, i.e. a statistically representative of the whole, is extracted from the whole. e.g. a liver sample"
+"Acne"	"disease association"	"logical"	"NCIT:C27195"	"An inflammatory process of the sebaceous glands which is characterized by comedones, nodules, papules and/or pustules on the skin."
+"acrodermatitis"	"disease association"	"logical"	"NCIT:C84532"	"An inflammatory skin condition affecting children. It is often associated with Epstein-Barr virus infection, hepatitis B infection or cytomegalovirus infection. It is characterized by the presence of cutaneous rashes and patches on the palms and soles. The trunk is not affected."
+"polyarthritis"	"disease association"	"logical"	"NCIT:C26996"	"An arthritis affecting five or more separate joints"
+"heartwater"	"disease association"	"logical"	"OMIT:0007528"	NA
+"african tick-bite fever"	"disease association"	"logical"	"MONDO:0000227"	NA
+"anaplasmosis"	"disease association"	"logical"	"NCIT:C128425"	"An infection that is caused by Anaplasma phagocytophilum, which is transmitted to humans by infected ticks; it is characterized by fever, headache, chills, and myalgia."
+"anemia"	"disease association"	"logical"	"NCIT:C2869"	"A reduction in the number of red blood cells, the amount of hemoglobin, and/or the volume of packed red blood cells. Clinically, anemia represents a reduction in the oxygen-transporting capacity of a designated volume of blood, resulting from an imbalance between blood loss (through hemorrhage or hemolysis) and blood production. Signs and symptoms of anemia may include pallor of the skin and mucous membranes, shortness of breath, palpitations of the heart, soft systolic murmurs, lethargy, and fatigability"
+"anthrax"	"disease association"	"logical"	"NCIT:C84565"	"An infection caused by Bacillus anthracis bacteria. It may affect the lungs, gastrointestinal tract, or skin. Patients with lung infection present with fever, headaches, cough, chest pain and shortness of breath. Patients with gastrointestinal infection present with nausea, vomiting and bloody diarrhea. Patients with skin infection develop blisters and ulcers."
+"antibiotic-associated diarrhea"	""	"logical"	"NCIT:C128350"	"Diarrhea that is associated with current or recent antibiotic use."
+"colitis"	"disease association"	"logical"	"OMIT:0004401"	NA
+"Terrabacteria group"	"disease association"	"logical"	"NCBITaxon:1783272"	NA
+"atypical pneumonia"	"disease association"	"logical"	"NCIT:C128338"	"Historical term that references a form of pneumonia caused by Mycoplasma pneumoniae, Chlamydophila pneumoniae, or Legionella species."
+"bacillary angiomatosis"	"disease association"	"logical"	"NCIT:C3477"	"A condition that is caused by infection with Bartonella, and which is characterized by vascular proliferation, usually in immunocompromised individuals."
+"cat scratch fever"	"disease association"	"logical"	"EFO_0007195"	"Cat scratch disease is an infectious illness caused by the bacteria bartonella (Bartonella henselae). It is believed to be transmitted by cat scratches, bites, or exposure to cat saliva. This self-limiting infectious disease is characterized by a bump or blister at the site of the bite or scratch and swelling and pain in the lymph nodes. Other features may include fatigue, headache, achiness, and fever. Although cat-scratch disease usually subsides without treatment, antibiotic and/or antimicrobial therapy may help speed recovery."
+"trench fever"	"disease association"	"logical"	"EFO_0007519"	"An intermittent fever characterized by intervals of chills, fever, and splenomegaly each of which may last as long as 40 hours. It is caused by bartonella quintana and transmitted by the human louse”"
+"bacteremia"	"disease association"	"logical"	"NCIT_C102993"	"A laboratory test result that indicates the presence of bacteria in the blood"
+"endocarditis"	"disease association;isolation site"	"logical"	"NCIT:C34582"	"Inflammation of the endocardium"
+"urinary tract infection"	"disease association;isolation site"	"logical"	"NCIT:C50791"	"A bacterial infectious process affecting any part of the urinary tract, most commonly the bladder and the urethra. Symptoms include urinary urgency and frequency, burning sensation during urination, lower abdominal discomfort, and cloudy urine.”"
+"gastroenteritis"	"disease association"	"logical"	"NCIT:C34632"	"An inflammatory disorder that affects the upper and lower gastrointestinal tract. Most commonly, this is attributed to viruses; however bacteria, parasites or adverse reactions can also be the culprit. Symptoms include acute diarrhea and vomiting”"
+"meningoencephalitis"	"disease association"	"logical"	"NCIT:C34813"	"Inflammation of the meninges and brain, generally secondary to an infectious cause. Pathogens may be bacterial, viral, fungal, or protozoan."
+"abscess"	"disease association;isolation site"	"logical"	"NCIT:C26686"	"An inflammatory process characterized by the accumulation of pus within a newly formed tissue cavity which is the result of a bacterial, fungal, or parasitic infection or the presence of a foreign body"
+"pneumonia"	"disease association"	"logical"	"NCIT:C3333"	"An acute, acute and chronic, or chronic inflammation focally or diffusely affecting the lung parenchyma, due to infections (viruses, fungi, mycoplasma, or bacteria), treatment (e.g. radiation), or exposure (inhalation) to chemicals. Symptoms include cough, shortness of breath, fevers, chills, chest pain, headache, sweating, and weakness."
+"Blunervirus"	"disease association"	"logical"	"NCBITaxon:2022856"	NA
+"kidney disease"	"disease association"	"logical"	"EFO:0003086"	"A disease involving the kidney"
+"bacterial leaf blight"	"disease association"	"logical"	"CO_320:0000173"	"The type and severity of bacterial blight symptoms on leaves caused by the bacterial pathogen Xanthomonas oryzae pv. oryzae. Symptoms: lesions usually start near the leaf tip or leaf margins or both, and extend down the outer edge(s). Young lesions are pale green to grayish green, later turning yellow to gray (dead) with time. In very susceptible varieties, lesions may extend to the entire leaf length into the leaf sheath"
+"sorghum"	"disease association"	"logical"	"NCBITaxon:4557"	"Hemisorghum"
+"Reaction to Leaf spot"	"disease association"	"logical"	"CO_331:0000386"	"The reaction of the plant to leaf spot"
+"bacterial vaginosis"	"disease association"	"logical"	"NCIT:C116973"	"Infection caused by bacterial overgrowth in the vagina. Most affected women are asymptomatic. When symptoms occur, they include foul-smelling vaginal discharge, vaginal itching, and burning. Risk factors include sexual activity with multiple partners and the use of vaginal douches and intrauterine devices. Up to a third of cases resolve without treatment. Antibiotic treatment is recommended when symptoms are present and for women that are pregnant at the time of infection."
+"bartonellosis"	"disease association"	"logical"	"EFO:0007166"	"An infectious disease produced by bacteria of the genus Bartonella"
+"black rot"	""	"logical"	"CO_331:0000380"	"The reaction of the plant to Black rot"
+"canker"	"disease association"	"logical"	"CO_357:0000487"	NA
+"blood infection"	"disease association"	"logical"	NA	NA
+"respiratory infection"	"disease association"	"logical"	NA	NA
+"bordetellosis"	"disease association"	"logical"	"MONDO:0037872"	"Any disease caused by infection with organisms of the genus Bordetella"
+"botulism"	"disease association"	"logical"	"NCIT:C84599"	"A serious bacterial infection caused by botulinum toxin which is produced by Clostridium botulinum. Patients are infected usually by ingestion of contaminated food or wound contamination. It leads to muscle paralysis which may result in respiratory failure"
+"anaplasmosis"	"disease association"	"logical"	"NCIT:C128425"	"An infection that is caused by Anaplasma phagocytophilum, which is transmitted to humans by infected ticks; it is characterized by fever, headache, chills, and myalgia."
+"tuberculosis"	"disease association"	"logical"	"NCIT:C3423"	"A chronic, recurrent infection caused by the bacterium Mycobacterium tuberculosis. Tuberculosis (TB) may affect almost any tissue or organ of the body with the lungs being the most common site of infection. The clinical stages of TB are primary or initial infection, latent or dormant infection, and recrudescent or adult-type TB. Ninety to 95% of primary TB infections may go unrecognized. Histopathologically, tissue lesions consist of granulomas which usually undergo central caseation necrosis. Local symptoms of TB vary according to the part affected; acute symptoms include hectic fever, sweats, and emaciation; serious complications include granulomatous erosion of pulmonary bronchi associated with hemoptysis. If untreated, progressive TB may be associated with a high degree of mortality. This infection is frequently observed in immunocompromised individuals with AIDS or a history of illicit IV drug use"
+"brucellosis"	"disease association"	"logical"	"NCIT:C84602"	"A gram negative bacterial infection caused by bacteria of the genus Brucella. Humans are infected by ingesting unpasteurized milk or meat from infected animals. Signs and symptoms include fevers, sweating, weakness, headache, muscle pain, arthritis and anemia"
+"abortion"	"disease association"	"logical"	"SYMP:0000197"	"Abortion is a reproductive system symptom resulting in the expulsion of a fetus of a domestic animal often due to infection at any time before completion of pregnancy."
+"plague"	"disease association"	"logical"	"NCIT:C85015"	"A Gram-negative bacterial infection caused by Yersinia pestis. It is usually transmitted to humans from bites of infected rodent fleas. It is manifested as a bubonic, septicemic, or pneumonic plague. In bubonic plague, the lymph nodes adjacent to the site of the skin bite are infected and enlarged. In septicemic plague, the infection spreads directly through the bloodstream. In pneumonic plague, the infection spreads to the lungs either following bubonic plague, or by inhalation of infective droplets. If untreated, it may lead to death."
+"Mycobacterial Infection"	"disease association"	"logical"	"NCIT:C26831"	"Infection due to organisms from the genus Mycobacteria"
+"Caries"	"disease association"	"logical"	"NCIT:C52593"	"The decay of a tooth, in which it becomes softened, discolored, and/or porous"
+"Periodontal disorder"	"disease association"	"logical"	"NCIT:C63743"	"An inflammatory process of the gingival tissues and/or periodontal membrane of the teeth, resulting in an abnormally deep gingival sulcus, possibly producing periodontal pockets and loss of alveolar bone support"
+"cell lysis"	"disease association"	"logical"	"OBI:0302894"	"cell lysis is a process by which cell membrane integrity of live cells is compromised and leads to cell death. Cell lysis may be achieved by means of viral action or osmotic shock."
+"Burkholderia cepacia"	"disease association"	"logical"	"NCBITaxon:292"	NA
+"cholera"	"disease association"	"logical"	"NCIT:C157812"	"An acute diarrheal illness caused by consuming water or food contaminated by the bacterium Vibrio cholerae. Adequate rehydration is key to surviving this illness."
+"chronic granulomatous disease"	"disease association"	"logical"	"NCIT:C26788"	"A rare genetic disorder with a predominantly X-linked recessive pattern of inheritance resulting in impaired phagocytic clearance of bacteria and fungi. It is caused by a defect in the phagocytic NADPH oxidase (phox) complex. The phagocytes can engulf pathogens but are unable to produce the microbicidal precursors needed to destroy them. Clinical signs of severe disease present in childhood with milder forms later in life. They include recurrent infection especially pneumonia, cervical lymphadenopathy and hepatosplenomegaly. The clinical course includes the appearance of granulomata in the skin and gastrointestinal or genitourinary tracts. The clinical prognosis is dependent on effectively treating and preventing infection"
+"respiratory system disease"	"disease association"	"logical"	"EFO:0000684"	"A non-neoplastic or neoplastic disorder that affects the respiratory system. Representative examples include pneumonia, chronic obstructive pulmonary disease, pulmonary failure, lung adenoma, lung carcinoma, and tracheal carcinoma"
+"Plant chlorosis"	"disease association"	"logical"	"CO_345:0000033"	NA
+"Flavobacterium psychrophilum"	"disease association"	"logical"	"NCBITaxon:96345"	"https://thefishsite.com/articles/rainbow-trout-fry-syndrome-rtfs-explained-1"
+"infection caused by Escherichia coli (disorder)"	""	"logical"	"SNOMED:71057007"	NA
+"contagious pleuropneumonia"	"disease association"	"logical"	"MONDO:0005716"	"A pleuropneumonia of cattle and goats caused by species of mycoplasma"
+"crown gall"	"disease association"	"logical"	"BTO:0000303"	"A disease that affects many species of plants and is caused by a bacterium (Agrobacterium tumefaciens) which forms tumorous enlargements just below the ground on the stem."
+"Microcystis aeruginosa"	"disease association;isolation site"	"logical"	"NCBITaxon:1126"	NA
+"gastroenteritis"	"disease association"	"logical"	"NCIT:C34632"	"An inflammatory disorder that affects the upper and lower gastrointestinal tract. Most commonly, this is attributed to viruses; however bacteria, parasites or adverse reactions can also be the culprit. Symptoms include acute diarrhea and vomiting"
+"skin irritation"	"disease association"	"logical"	"NCIT:C50743"	"A mild inflammatory dermal tissue reaction; it can be caused by physical contact with an irritant or can be a local response to a systemic trigger."
+"cystitis"	"disease association"	"logical"	"NCIT:C26738"	"Inflammation of the urinary bladder"
+"diarrhea"	"disease association"	"logical"	"NCIT:C2987"	"Watery bowel movements"
+"septicemia"	"disease association"	"logical"	"NCIT:C3364"	"The presence of pathogenic microorganisms in the blood stream causing a rapidly progressing systemic reaction that may lead to shock. Symptoms include fever, chills, tachycardia, and increased respiratory rate. It is a medical emergency that requires urgent medical attention"
+"diphtheria"	"disease association"	"logical"	"NCIT:C34541"	"A Gram-positive bacterial infection caused by Corynebacterium diphtheriae. It usually involves the oral cavity, pharynx, and nasal cavity. Patients develop pseudomembranes in the affected areas and manifest signs and symptoms of an upper respiratory infection. The diphtheria toxin may cause myocarditis, polyneuritis, and other systemic effects."
+"dysentery"	"disease association"	"logical"	"EFO:1001869"	"Acute inflammation of the intestine associated with infectious diarrhea of various etiologies, generally acquired by eating contaminated food containing toxins, biological derived from bacteria or other microorganisms. Dysentery is characterized initially by watery feces then by bloody mucoid stools. It is often associated with abdominal pain; fever; and dehydration."
+"ehrlichiosis"	"disease association"	"logical"	"OMIT:0017306"	NA
+"encephalitis"	"disease association"	"logical"	"NCIT:C26760"	"An inflammatory process affecting the brain parenchyma. Causes include viral infections and less frequently bacterial infections, toxins, and immune-mediated processes."
+"infection"	"disease association"	"logical"	"EFO:0000544"	"The state of being infected such as from the introduction of a foreign agent such as serum, vaccine, antigenic substance or organism."
+"pyelonephritis"	"disease association;isolation site"	"logical"	"NCIT:C34965"	"An inflammatory process affecting the kidney. The cause is most often bacterial, but may also be fungal in nature. Signs and symptoms may include fever, chills, flank pain, painful and frequent urination, cloudy or bloody urine, and confusion"
+"typhus"	"disease association"	"logical"	"EFO:0009117"	"A group of infectious diseases that include epidemic typhus, scrub typhus and murine typhus"
+"meningitis"	"disease association"	"logical"	"NCIT:C26828"	"A disorder characterized by acute inflammation of the meninges of the brain and/or spinal cord"
+"erysipelas"	"disease association"	"logical"	"EFO:1001462"	"An infection of the upper layers of the skin caused by species of streptococcus. Erysipelas results in a fiery red rash with raised edges that can easily be distinguished from the skin around it. The affected skin may be warm to the touch"
+"Foodborne Illness"	"disease association"	"logical"	"NCIT:C128351"	"Any disorder that results from the consumption of food contaminated with an infectious agent or toxin"
+"typhoid"	"disease association"	"logical"	"Orphanet:99745"	"Typhoid or typhoid fever is a reportable, fecal-oral, potentially fatal infectious disease, caused by the bacteria Salmonella typhi and characterized by a non-focal fever."
+"Furunculosis"	"disease association"	"logical"	"NCIT:C34629"	"A skin condition that is characterized by recurring furuncles, lesions primarily caused by staphylococcus aureus infection of the hair follicles and surrounding skin. Furunculosis occurs more frequently in persons with immune systems disorders than in the general population"
+"Gangrene"	"disease association"	"logical"	"NCIT:C50573"	"Death of tissue, usually in considerable mass and generally associated with loss of vascular (nutritive) supply and followed by bacterial invasion and putrefaction."
+"ulcer"	"disease association"	"logical"	"NCIT:C3426"	"A circumscribed inflammatory and often suppurating lesion on the skin or an internal mucous surface resulting in necrosis of tissue."
+"duodenal lesions"	"disease association"	"logical"	"MP:0002580"	"focal pathological changes characterized by alteration in the size, shape and organization of the cellular components of the duodenum epithelium tissue"
+"Gastroenteritis"	"disease association"	"logical"	"NCIT:C34632"	"An inflammatory disorder that affects the upper and lower gastrointestinal tract. Most commonly, this is attributed to viruses; however bacteria, parasites or adverse reactions can also be the culprit. Symptoms include acute diarrhea and vomiting."
+"Glanders"	"disease association"	"logical"	"NCIT:C34638"	"A condition resulting from infection by Burkholderia mallei, which mainly affects horses."
+"Haemophilus"	"disease association"	"logical"	"NCIT:C76324"	"A genus of Gram-negative, pleomorphic, coccobacilli bacteria belonging to the Proteobacteria phylum."
+"Gonorrhea"	"disease association"	"logical"	"NCIT:C92950"	"A common sexually transmitted bacterial infection caused by Neisseria gonorrhoeae. It is transmitted through vaginal, oral, or anal intercourse. Infected individuals may be asymptomatic. Symptoms in males include burning sensation during urination, discharge from the penis, and painful swelling of the testes. Symptoms in females include painful urination, vaginal discharge, and vaginal bleeding between periods. If untreated, the infection may lead to pelvic inflammatory disease."
+"human granulocytic anaplasmosis"	"disease association"	"logical"	"EFO:0000777"	"A tick-borne, infectious disease caused by Anaplasma phagocytophilum, an obligate intracellular bacterium that is typically transmitted to humans by ticks of the Ixodes ricinus species complex"
+"Conjunctivitis"	"disease association"	"logical"	"NCIT:C34504"	"Inflammation of the conjunctiva of the eye"
+"Infertility"	"disease association"	"logical"	"NCIT:C3836"	"Inability to conceive for at least one year after trying and having unprotected sex. Causes of female infertility include endometriosis, fallopian tubes obstruction, and polycystic ovary syndrome. Causes of male infertility include abnormal sperm production or function, blockage of the epididymis, blockage of the ejaculatory ducts, hypospadias, exposure to pesticides, and health related issues"
+"Inflammation"	"disease association"	"logical"	"NCIT:C3137"	"A finding of a localized protective response resulting from injury or destruction of tissues. Inflammation serves to destroy, dilute, or wall off both the injurious agent and the injured tissue. In the acute phase, inflammation is characterized by the signs of pain, heat, redness, swelling, and loss of function. Histologically, inflammation involves a complex series of events, including dilatation of arterioles, capillaries, and venules, with increased permeability and blood flow; exudation of fluids, including plasma proteins; and leukocyte migration into the site of inflammation"
+"toxin"	"disease association"	"logical"	"XCO:0000240"	"A protein or conjugated protein produced by some higher plants, certain animals, and pathogenic bacteria, that is highly poisonous for other living organisms"
+"legionnaire's disease"	"disease association"	"logical"	"EFO:0007343"	"A pneumonia caused by Legionella pneumophila and other Legionella species, which is characterized by fever, cough, progressive respiratory distress, and which is often accompanied by extrapulmonary manifestations."
+"leprosy"	"disease association"	"logical"	"EFO:0001054"	"Leprosy is a chronic infectious disease affecting primarily the skin and peripheral nervous system"
+"Lyme Disease"	"disease association"	"logical"	"EFO:0008510"	"Lyme disease (named after the towns in the USA where the disease was first identified) is a bacterial infection caused by Borrelia burgdorferi."
+"mastitis"	"disease association"	"logical"	"NCIT:C53662"	"Inflammation of breast tissue during lactation or postpartum due to an obstructed duct or infection."
+"Arthritis"	"disease association"	"logical"	"NCIT:C2883"	"An inflammatory process affecting a joint. Causes include infection, autoimmune processes, degenerative processes, and trauma. Signs and symptoms may include swelling around the affected joint and pain"
+"melioidosis"	"disease association"	"logical"	"NCIT:C128336"	"An infection that is caused by Burkholderia pseudomallei, which is found in soil and water; symptoms vary widely, but most commonly include fever, cough, pneumonia, arthralgia, myalgia, and skin ulceration."
+"Tuberculosis"	"disease association"	"logical"	"NCIT:C3423"	"A chronic, recurrent infection caused by the bacterium Mycobacterium tuberculosis. Tuberculosis (TB) may affect almost any tissue or organ of the body with the lungs being the most common site of infection. The clinical stages of TB are primary or initial infection, latent or dormant infection, and recrudescent or adult-type TB. Ninety to 95% of primary TB infections may go unrecognized. Histopathologically, tissue lesions consist of granulomas which usually undergo central caseation necrosis. Local symptoms of TB vary according to the part affected; acute symptoms include hectic fever, sweats, and emaciation; serious complications include granulomatous erosion of pulmonary bronchi associated with hemoptysis. If untreated, progressive TB may be associated with a high degree of mortality. This infection is frequently observed in immunocompromised individuals with AIDS or a history of illicit IV drug use"
+"fever"	"disease association"	"logical"	"NCIT:C3038"	"Elevation of body temperature above normal due to inflammatory or immune responses"
+"syphilis"	"disease association"	"logical"	"NCIT:C35055"	"A contagious bacterial infection caused by the Spirochete Treponema pallidum. It is a sexually transmitted disorder, although it can also be transmitted from the mother to the fetus in utero. Typically, it is initially manifested with a single sore which heals without treatment. If the infection is left untreated, the initial stage is followed by skin rash and mucous membrane lesions. A late stage follows, which is characterized by damage of the internal organs, including the nervous system"
+"Tetanus"	"disease association"	"logical"	"NCIT:C85185"	"A serious infectious disorder that follows wound contamination by the Gram-positive bacterium Clostridium tetani. The bacteria produce a neurotoxin called tetanospasmin, which causes muscle spasm in the jaw and other anatomic sites"
+"Toxic Shock Syndrome"	"disease association"	"logical"	"NCIT:C35498"	"A rare acute life-threatening systemic bacterial noncontagious illness caused by any of several related staphylococcal exotoxins. It is characterized by high fever, hypotension, rash, multi-organ dysfunction, and cutaneous desquamation during the early convalescent period. The toxins affect the host immune system, causing an exuberant and pathological host inflammatory response. Laboratory findings include leukocytosis, elevated prothrombin time, hypoalbuminemia, hypocalcemia, and pyuria"
+"Tumor"	"disease association"	"logical"	"NCIT:C98275"	"A benign or malignant pathologic structure in any part of the body, resulting from a neoplastic accumulation of cells."
+"reaction to black rot"	"disease association"	"logical"	"CO_331:0000380"	NA
+"human microflora"	"habitat"	"logical"	NA	NA
+"human gut microbiome"	"habitat"	"logical"	NA	NA
+"other host associated"	"habitat"	"logical"	NA	NA
+"aquatic biome"	"habitat"	"logical"	NA	NA
+"colonization of host"	"habitat"	"logical"	NA	NA
+"creosote-contaminated soil"	"habitat;isolation site"	"logical"	NA	NA
+"dairy"	"habitat"	"logical"	NA	NA
+"fresh water"	"habitat;isolation site"	"logical"	NA	NA
+"hot spring"	"habitat;isolation site"	"logical"	NA	NA
+"groundwater"	"habitat;isolation site"	"logical"	NA	NA
+"hydrothermal vent"	"habitat;isolation site"	"logical"	NA	NA
+"intestinal microflora"	"habitat"	"logical"	NA	NA
+"marine water body"	"habitat"	"logical"	NA	NA
+"mud"	"habitat;isolation site"	"logical"	NA	NA
+"multiple"	"habitat"	"logical"	NA	NA
+"ocean trench"	"habitat"	"logical"	NA	NA
+"oil field production water"	"habitat"	"logical"	NA	NA
+"pond"	"habitat;isolation site"	"logical"	NA	NA
+"rhizosphere"	"habitat;isolation site"	"logical"	NA	NA
+"rice paddies"	"habitat;isolation site"	"logical"	NA	NA
+"sea water"	"habitat;isolation site"	"logical"	NA	NA
+"sediment"	"habitat;isolation site"	"logical"	NA	NA
+"specialized"	"habitat"	"logical"	NA	NA
+"terrestrial biome"	"habitat"	"logical"	NA	NA
+"not host-associated"	"habitat"	"logical"	NA	NA
+"rumen"	"habitat;isolation site"	"logical"	NA	NA
+"Waste and sludge water"	"habitat"	"logical"	NA	NA
+"blood"	"habitat;isolation site"	"logical"	NA	NA
+"bovine"	"isolation site"	"logical"	NA	NA
+"cerebral spinal fluid"	"habitat"	"logical"	NA	NA
+"circulatory system"	"habitat"	"logical"	NA	NA
+"creosote contaminated soil"	"habitat"	"logical"	NA	NA
+"digestive system"	"habitat"	"logical"	NA	NA
+"endosymbiont"	"habitat"	"logical"	NA	NA
+"environmental system"	"habitat"	"logical"	NA	NA
+"food product"	"habitat;isolation site"	"logical"	NA	NA
+"foregut"	"habitat"	"logical"	NA	NA
+"free-living"	"habitat"	"logical"	NA	NA
+"host-associated"	"habitat"	"logical"	NA	NA
+"insect endosymbiont"	"habitat"	"logical"	NA	NA
+"insect"	"habitat"	"logical"	NA	NA
+"intertidal zone"	"habitat"	"logical"	NA	NA
+"lentic water body"	"habitat"	"logical"	NA	NA
+"lotic water body"	"habitat"	"logical"	NA	NA
+"mammal"	"habitat"	"logical"	NA	NA
+"metal"	"habitat"	"logical"	NA	NA
+"mine"	"habitat"	"logical"	NA	NA
+"plant matter"	"habitat"	"logical"	NA	NA
