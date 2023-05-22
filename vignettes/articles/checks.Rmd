@@ -102,7 +102,7 @@ invalid_values |>
   # head(100) |> 
   unique() |> 
   select(-col, -n_rows) |> 
-  filter(dataset == 'isolation site') |> 
+  filter(dataset != 'isolation site') |> 
   DT::datatable(
     filter = 'top',
     extensions = c("Buttons","KeyTable"),
