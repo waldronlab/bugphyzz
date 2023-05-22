@@ -59,7 +59,10 @@ if (!is.null(err1)) {
 file.
 
 ```{r, message=FALSE}
-err2 <- bugphyzz:::.checkColumnValuesList(phys, table = TRUE)
+phys2 <-  phys |> 
+  map(~ dplyr::filter(.x, Attribute_source != 'https://bacdive.dsmz.de/')) |> 
+  discard(~!nrow(.x))
+err2 <- bugphyzz:::.checkColumnValuesList(phys2, table = TRUE)
 ```
 
 ## Uncatalogued columns
