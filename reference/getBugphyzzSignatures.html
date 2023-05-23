@@ -135,11 +135,14 @@ meaning of each keyword.</p></dd>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## Create signatures of categorical or binary attributes</span></span></span>
 <span class="r-in"><span><span class="va">bp</span> <span class="op">&lt;-</span> <span class="fu"><a href="importBugphyzz.html">importBugphyzz</a></span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Using data downloaded on 2023-05-22 12:36:47.</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Using data downloaded on 2023-05-23 20:28:13.</span>
 <span class="r-in"><span><span class="va">sigs</span> <span class="op">&lt;-</span> <span class="fu">sig_fun</span><span class="op">(</span><span class="va">bp</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html" class="external-link">map</a></span><span class="op">(</span><span class="va">sigs</span>, <span class="va">head</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $`aerophilicity:aerobic`</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1001240" "1002"    "1002227" "100225"  "1002672" "1003091"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`aerophilicity:aerotolerant`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1454184" "1506"    "1656"    "1806172" "2798940" "2848170"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $`aerophilicity:anaerobic`</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "100133"  "100174"  "1002795" "1004583" "1005740" "1006155"</span>
@@ -193,40 +196,43 @@ meaning of each keyword.</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1002672" "1004836" "1005703" "1007104" "1007105" "101385" </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $`shape:bent_filament`</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "183670"  "1653847" "543065"  "2906761" "2709661" "2906760"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "2798940" "2848170" "2798939" "2798941" "2798938" "2798937"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $`shape:clavate`</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "217069"  "217068"  "1936185" "1908690" "1914237" "2774151"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "2798940" "2848170" "2798939" "2798941" "2798938" "2798937"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $`shape:coccobacillus`</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "2559573" "1775544" "2750670" "430914"  "643678"  "453847" </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "2798940" "2848170" "2798939" "2798941" "2798938" "2798937"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $`shape:coccus`</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "100379"  "1008460" "102116"  "102684"  "1042877" "1071886"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $`shape:discoid`</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "33865"   "2315"    "1530341" "1530342" "1530343" "1530344"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "2798940" "2848170" "2798939" "2798941" "2798938" "2798937"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $`shape:dumbbell-shaped`</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "187491"  "391287"  "2161676" "2766981" "1917485" "2614809"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "187491"  "391287"  "2798940" "2848170" "2798939" "2798941"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $`shape:elliptic`</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "2816475" "588898"  "2741724" "392421"  "370323"  "370324" </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "2798940" "2848170" "2798939" "2798941" "2798938" "2798937"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $`shape:filamentous`</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "103690" "106370" "1108"   "298653" "298654" "648999"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $`shape:flat`</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "293091"  "329270"  "2216978" "268735"  "2511997" "2487750"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "2798940" "2848170" "2798939" "2798941" "2798938" "2798937"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $`shape:pleiomorphic_cell`</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1167032" "242697"  "437163"  "2878391" "767519"  "1045331"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "2798940" "2848170" "2798939" "2798941" "2798938" "2798937"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $`shape:polyhedral_shape`</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "2093422" "2093421" "2093423" "2093424" "2093418" "2093420"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "2798940" "2848170" "2798939" "2798941" "2798938" "2798937"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`shape:rectangle`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "2798940" "2848170" "2798939" "2798941" "2798938" "2798937"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $`shape:sigmoid`</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "682550"  "53245"   "698827"  "617000"  "1424506"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "2798940" "2848170" "2798939" "2798941" "2798938" "2798937"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $`shape:spirillum`</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "100053"  "1172190" "1193012" "1193013" "1218600" "123841" </span>
@@ -237,11 +243,17 @@ meaning of each keyword.</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $`shape:tail`</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1055352" "1073330" "1078086" "114687"  "1169025" "1172179"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`shape:tetrahedral`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "2798940" "2848170" "2798939" "2798941" "2798938" "2798937"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $`shape:triangle`</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "489138"  "1193105" "489913"  "489911"  "489912"  "1073081"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "2798940" "2848170" "2798939" "2798941" "2798938" "2798937"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $`shape:u-shaped`</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "320787"  "1235754" "708087"  "388280"  "2716263" "1350429"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "2798940" "2848170" "2798939" "2798941" "2798938" "2798937"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`shape:wrinkled`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "2798940" "2848170" "2798939" "2798941" "2798938" "2798937"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $`width:average`</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "46632"   "82076"   "1167028" "1167029" "1167030" "309905" </span>
@@ -250,13 +262,13 @@ meaning of each keyword.</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "14"      "513050"  "221213"  "1868324" "100716"  "371606" </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $`width:small`</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1915863" "2599289" "1680828" "1680827" "1697135" "2945048"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "2798940" "2848170" "2798939" "2798941" "2798938" "2798937"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## Create signatures of numeric attributes</span></span></span>
 <span class="r-in"><span><span class="va">bp_num</span> <span class="op">&lt;-</span> <span class="fu"><a href="importBugphyzzNumeric.html">importBugphyzzNumeric</a></span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Downloading, full_dump_numeric.csv.bz2.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Using data downloaded on 2023-05-22 12:36:52.</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Using data downloaded on 2023-05-23 20:28:42.</span>
 <span class="r-in"><span><span class="va">num_sigs</span> <span class="op">&lt;-</span> <span class="fu">flatten</span><span class="op">(</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html" class="external-link">map</a></span><span class="op">(</span><span class="va">bp_num</span>, <span class="va">sig_fun</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">lapply</a></span><span class="op">(</span><span class="va">num_sigs</span>, <span class="va">head</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $growth_temperature</span>
@@ -266,7 +278,7 @@ meaning of each keyword.</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "100053"  "1008460" "101192"  "101689"  "1017"    "102862" </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $width</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1915863" "2599289" "1680828" "1680827" "1697135" "2945048"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "2798940" "2848170" "2798939" "2798941" "2798938" "2798937"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
