@@ -240,4 +240,20 @@ whichAttrGrp <- function(bp) {
   sort(unique(bp$Attribute_group))
 }
 
-
+#' Display taxonomic ranks
+#'
+#' \code{taxRanks} display the names of the taxonomic ranks used in bugphyzz.
+#'
+#' @return A character vector
+#' @export
+#'
+#' @examples
+#'
+#' taxRanks()
+#'
+taxRanks <- function() {
+  c(
+    'strain', 'species', 'genus', 'family', 'order', 'class',
+    'phylum', 'domain'
+  )
+}
