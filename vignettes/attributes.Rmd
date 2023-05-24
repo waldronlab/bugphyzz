@@ -1,6 +1,8 @@
 ---
-title: "Attributes in bugphyzz"
-output: rmarkdown::html_vignette
+title: "Data about attributes and sources"
+output: 
+  rmarkdown::html_vignette:
+    toc: true
 vignette: >
   %\VignetteIndexEntry{attributes}
   %\VignetteEngine{knitr::rmarkdown}
@@ -11,21 +13,25 @@ vignette: >
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>", 
-  echo = FALSE,
   message = FALSE
 )
 ```
 
-```{r setup}
+```{r setup, echo = FALSE}
 library(DT)
 ```
 
+## Attributes
 
-Ontology terms can be searched at [OSLv3](https://www.ebi.ac.uk/ols/index).
+Ontology terms can be searched at [OSLv3](https://www.ebi.ac.uk/ols/index) and
+[OSLv4](https://www.ebi.ac.uk/ols4).
 
-```{r}
+```{r, echo = FALSE}
 fname <- system.file('extdata/attributes.tsv', package = 'bugphyzz')
 attributes <- read.table(fname, header = TRUE, sep = '\t')
+colnames(attributes) <- c(
+  'Attribute', 'Attribute group', 'Validity', 'Ontoloty', 'Description'
+)
 datt <- datatable(
   data = attributes, 
   filter = "top",
@@ -34,12 +40,48 @@ datt <- datatable(
     dom = '<"top"B>lfrtip',
     buttons = list('copy', 'print'),
     iDisplayLength = 25,
-    keys = TRUE
+    keys = TRUE,
+    scrollX = TRUE,
+    autoWidth = FALSE 
   )
 )
 datt
 ```
 
+## Sources
 
+```{r, echo = FALSE}
+fname2 <- system.file(
+  'extdata/attribute_sources.tsv', 
+  package = 'bugphyzz', mustWork = TRUE
+)
+src <- read.table(
+  fname2, header = TRUE, sep = '\t', quote = ""
+)
+
+colnames(src) <- c(
+  'Source (short)', 'Confidence in curation', 'Evidence', 'Full source'
+)
+src_dt <- datatable(
+  data = src, 
+  filter = "top",
+  extensions = c("Buttons","KeyTable"), 
+  options = list(
+    dom = '<"top"B>lfrtip',
+    buttons = list('copy', 'print'),
+    iDisplayLength = 25,
+    keys = TRUE,
+    scrollX = TRUE,
+    autoWidth = FALSE 
+  )
+)
+src_dt
+```
+
+## Session info
+
+```{r, echo=FALSE}
+sessioninfo::session_info()
+```
 
 
