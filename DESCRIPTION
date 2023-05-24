@@ -9,20 +9,14 @@ Authors@R:
            comment = c(ORCID = "YOUR-ORCID-ID"))
 Description: What the package does (one paragraph).
 License: MIT + file LICENSE
-Suggests: 
-    DT,
-    forcats,
-    ggplot2,
-    knitr,
-    rmarkdown,
-    sessioninfo,
-    testthat
 Config/testthat/edition: 3
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.2.3
 VignetteBuilder: knitr
+Depends: 
+    R (>= 4.2)
 Imports: 
     dplyr,
     utils,
@@ -41,7 +35,13 @@ Imports:
     taxizedb,
     BiocFileCache,
     tools
-Depends: 
-    R (>= 4.2)
+Suggests: 
+    DT,
+    forcats,
+    ggplot2,
+    knitr,
+    rmarkdown,
+    sessioninfo,
+    testthat
 URL: https://github.com/waldronlab/bugphyzz
 BugReports: https://github.com/waldronlab/bugphyzz/issues

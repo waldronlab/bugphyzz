@@ -1,0 +1,45 @@
+---
+title: "Attributes in bugphyzz"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{attributes}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>", 
+  echo = FALSE,
+  message = FALSE
+)
+```
+
+```{r setup}
+library(DT)
+```
+
+
+Ontology terms can be searched at [OSLv3](https://www.ebi.ac.uk/ols/index).
+
+```{r}
+fname <- system.file('extdata/attributes.tsv', package = 'bugphyzz')
+attributes <- read.table(fname, header = TRUE, sep = '\t')
+datt <- datatable(
+  data = attributes, 
+  filter = "top",
+  extensions = c("Buttons","KeyTable"), 
+  options = list(
+    dom = '<"top"B>lfrtip',
+    buttons = list('copy', 'print'),
+    iDisplayLength = 25,
+    keys = TRUE
+  )
+)
+datt
+```
+
+
+
+

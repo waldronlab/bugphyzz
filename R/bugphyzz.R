@@ -29,7 +29,7 @@
 importBugphyzz <- function(version = 'devel', force_download = FALSE
 ) {
   if (version == 'devel' || grepl("^[0-9a-z]{7}$", version)) {
-    url <- 'https://github.com/waldronlab/bugphyzzExports/raw/sdgamboa/update-exports/full_dump_categorical.csv.bz2'
+    url <- 'https://github.com/waldronlab/bugphyzzExports/raw/main/full_dump_categorical.csv.bz2'
     ## update code when contente has been merged into main
     # if (version == 'devel') version <- 'main'
     # url <- paste0(
@@ -86,7 +86,7 @@ importBugphyzzNumeric <- function(
     keyword = 'all', version = 'devel', force_download = FALSE
 ) {
   if (version == 'devel' || grepl("^[0-9a-z]{7}$", version)) {
-    url <- 'https://github.com/waldronlab/bugphyzzExports/raw/sdgamboa/update-exports/full_dump_numeric.csv.bz2'
+    url <- 'https://github.com/waldronlab/bugphyzzExports/raw/main/full_dump_numeric.csv.bz2'
     ## update code when contente has been merged into main
     # if (version == 'devel') version <- 'main'
     # url <- paste0(
@@ -170,4 +170,90 @@ getBugphyzzSignatures <- function(
   output <- lapply(output, function(x) unique(x[[tax.id.type]]))
   output <- purrr::discard(output, ~ length(.x) < min.size)
   return(output)
+}
+
+
+#' Get Bug Annotations
+#'
+#' \code{getBugAnnotations} get all physiology annotations for one or more taxa.
+#'
+#' @param x A valid NCBI ID or taxon name
+#' @param bp Import from \code{importBugphyzz}.
+#' @param tax.id.type A character string. Either 'NCBI_ID' or 'Taxon_name'.
+#'
+#' @return A list of physiologies per taxa.
+#' @export
+#'
+#' @examples
+#'
+#' x <- getBugAnnotations(
+#'     x = c('561', '562'), bp = importBugphyzz(), tax.id.type = 'NCBI_ID'
+#' )
+#' x
+#'
+getBugAnnotations <- function(x, bp = importBugphyzz(), tax.id.type) {
+  sub_bp <- bp[which(bp[[tax.id.type]] %in% x),]
+  sub_bp |>
+    { \(y) split(y, factor(y[[tax.id.type]])) }() |>
+    purrr::map(~ split(.x, .x$Attribute_group)) |>
+    purrr::map_depth(.depth = 2, ~ .x$Attribute) |>
+    purrr::map_depth(.depth = 2, ~ sub('^.*:', '', .x))
+
+}
+
+#' Which Attributes
+#'
+#' \code{whichAttr} shows which attributes are present in a dataset imported
+#' with \code{importBugphyzz}. This would be the names of the singatures
+#' created with \code{getBugphyzzSignatures}.
+#'
+#' @param bp A data.frame imported with \code{importBugphyzz}.
+#'
+#' @return A character vector.
+#' @export
+#'
+#' @examples
+#'
+#' bp <- importBugphyzz()
+#' whichAttr(bp)
+#'
+whichAttr <- function(bp) {
+  sort(unique(bp$Attribute))
+}
+
+#' Which Attribute Groups
+#'
+#' \code{whichAttrGrp} shows which attribute groups are present in a dataset
+#' imported with \code{importBugphyzz}.
+#'
+#' @param bp  A data.frame imported with \code{importBugphyzz}.
+#'
+#' @return A character vector.
+#' @export
+#'
+#' @examples
+#'
+#' bp <- importBugphyzz()
+#' whichAttrGrp(bp)
+#'
+whichAttrGrp <- function(bp) {
+  sort(unique(bp$Attribute_group))
+}
+
+#' Display taxonomic ranks
+#'
+#' \code{taxRanks} display the names of the taxonomic ranks used in bugphyzz.
+#'
+#' @return A character vector
+#' @export
+#'
+#' @examples
+#'
+#' taxRanks()
+#'
+taxRanks <- function() {
+  c(
+    'strain', 'species', 'genus', 'family', 'order', 'class',
+    'phylum', 'domain'
+  )
 }
