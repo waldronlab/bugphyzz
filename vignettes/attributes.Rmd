@@ -13,12 +13,32 @@ vignette: >
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>", 
-  message = FALSE
+  message = FALSE,
+  warning = FALSE
 )
 ```
 
 ```{r setup, echo = FALSE}
 library(DT)
+library(bugphyzz)
+library(dplyr)
+```
+
+```{r, echo=FALSE}
+bp <- importBugphyzz(version = 'devel')
+bp <- bp |> 
+  filter(
+    !Evidence %in% c('asr', 'inh')
+  )
+x <- bp |> 
+  select(Attribute_source, Attribute_group, Attribute) |> 
+  filter(!grepl(';', Attribute_source)) |> 
+  count(Attribute_source, Attribute_group) |> 
+  mutate(new_col = paste0(Attribute_group, ' (', n, ')')) |> 
+  select(-Attribute_group, -n) |> 
+  group_by(Attribute_source) |> 
+  summarise(Attribute_group = paste(sort(new_col), collapse = '; ')) |> 
+  ungroup()
 ```
 
 ## Attributes
@@ -59,8 +79,21 @@ src <- read.table(
   fname2, header = TRUE, sep = '\t', quote = ""
 )
 
+src <- left_join(x, src, by = 'Attribute_source') |> 
+  relocate(
+    Attribute_source, Confidence_in_curation, Evidence,
+    Attribute_group, full_source
+  ) |> 
+  mutate(
+    Confidence_in_curation = factor(
+      Confidence_in_curation, levels = c('high', 'medium', 'low')
+    )
+  ) |> 
+  arrange(Confidence_in_curation, Evidence, Attribute_source)
+  
 colnames(src) <- c(
-  'Source (short)', 'Confidence in curation', 'Evidence', 'Full source'
+  'Source (short)', 'Confidence in curation', 'Evidence', 'Attribute_group',
+  'Full source'
 )
 src_dt <- datatable(
   data = src, 
@@ -76,6 +109,7 @@ src_dt <- datatable(
   )
 )
 src_dt
+## Add attribute groups and number of annotations in parenthesis
 ```
 
 ## Session info
