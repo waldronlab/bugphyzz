@@ -14,17 +14,18 @@ knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>", 
   message = FALSE,
-  warning = FALSE
+  warning = FALSE,
+  echo = FALSE
 )
 ```
 
-```{r setup, echo = FALSE}
+```{r setup}
 library(DT)
 library(bugphyzz)
 library(dplyr)
 ```
 
-```{r, echo=FALSE}
+```{r}
 bp <- importBugphyzz(version = 'devel')
 bp <- bp |> 
   filter(
@@ -42,7 +43,7 @@ x <- bp |>
 Ontology terms can be searched at [OSLv3](https://www.ebi.ac.uk/ols/index) and
 [OSLv4](https://www.ebi.ac.uk/ols4).
 
-```{r, echo = FALSE}
+```{r}
 regex <- paste0(
   '(', paste(unique(x$Attribute_group), collapse = '|'), ');*'
 )
@@ -78,7 +79,7 @@ datt
 
 ## Sources
 
-```{r, echo = FALSE}
+```{r}
 x <- x |> 
   select(-Attribute_group, -n) |> 
   group_by(Attribute_source) |> 
@@ -141,7 +142,7 @@ src_dt
 
 ## Session info
 
-```{r, echo=FALSE}
+```{r}
 sessioninfo::session_info()
 ```
 
