@@ -34,11 +34,7 @@ x <- bp |>
   select(Attribute_source, Attribute_group, Attribute) |> 
   filter(!grepl(';', Attribute_source)) |> 
   count(Attribute_source, Attribute_group) |> 
-  mutate(new_col = paste0(Attribute_group, ' (', n, ')')) |> 
-  select(-Attribute_group, -n) |> 
-  group_by(Attribute_source) |> 
-  summarise(Attribute_group = paste(sort(new_col), collapse = '; ')) |> 
-  ungroup()
+  mutate(new_col = paste0(Attribute_group, ' (', n, ')'))
 ```
 
 ## Attributes
@@ -47,8 +43,13 @@ Ontology terms can be searched at [OSLv3](https://www.ebi.ac.uk/ols/index) and
 [OSLv4](https://www.ebi.ac.uk/ols4).
 
 ```{r, echo = FALSE}
+regex <- paste0(
+  '(', paste(unique(x$Attribute_group), collapse = '|'), ');*'
+)
 fname <- system.file('extdata/attributes.tsv', package = 'bugphyzz')
-attributes <- read.table(fname, header = TRUE, sep = '\t')
+attributes <- read.table(fname, header = TRUE, sep = '\t') |> 
+  filter(grepl(regex, attribute_group))
+
 colnames(attributes) <- c(
   'Attribute', 'Attribute group', 'Validity', 'Ontoloty', 'Description'
 )
@@ -78,6 +79,11 @@ datt
 ## Sources
 
 ```{r, echo = FALSE}
+x <- x |> 
+  select(-Attribute_group, -n) |> 
+  group_by(Attribute_source) |> 
+  summarise(Attribute_group = paste(sort(new_col), collapse = '; ')) |> 
+  ungroup()
 fname2 <- system.file(
   'extdata/attribute_sources.tsv', 
   package = 'bugphyzz', mustWork = TRUE
@@ -105,7 +111,7 @@ colnames(src) <- c(
 
 caption2 <- paste0(
   'Table 2. Sources of attribute annotations in bugphyzz. ',
-  '* exp = experimental evidence, igc = inferred from genomic context, ',
+  '* Evidence codes: exp = experimental evidence, igc = inferred from genomic context, ',
   'tas = traceable author statement, nas = non-traceable author statement; ',
   'more information at http://geneontology.org/docs/guide-go-evidence-codes/. ',
   '** The number in parenthesis indacates the number of annotations per',
