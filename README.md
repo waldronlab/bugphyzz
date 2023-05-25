@@ -6,10 +6,6 @@ We curated informatiob like Gram stain, optimal temperature, fermenation, respir
 
 Here, you can find installation instructions, examples of making signatures, bugphyzz analysis link and how to add your own curation to the database.
 
-## Ontologies
-
-Ontologies were based on OSLv3: https://www.ebi.ac.uk/ols/index
-
 ## Installation
 
 You can install the development version of bugphyzz with:

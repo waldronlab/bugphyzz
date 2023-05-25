@@ -39,6 +39,7 @@ Suggests:
     DT,
     forcats,
     ggplot2,
+    htmltools,
     knitr,
     rmarkdown,
     sessioninfo,
