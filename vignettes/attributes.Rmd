@@ -1,5 +1,5 @@
 ---
-title: "Data about attributes and sources"
+title: "Data about Attributes and Sources"
 output: 
   rmarkdown::html_vignette:
     toc: true
@@ -52,14 +52,21 @@ attributes <- read.table(fname, header = TRUE, sep = '\t')
 colnames(attributes) <- c(
   'Attribute', 'Attribute group', 'Validity', 'Ontoloty', 'Description'
 )
+caption1 <- paste0(
+  'Table 1. Attributes that could be found in bugphyzz.'
+)
 datt <- datatable(
   data = attributes, 
   filter = "top",
   extensions = c("Buttons","KeyTable"), 
+  caption = htmltools::tags$caption(
+    style = 'caption-side: top; text-align: left;',
+    caption1
+  ),
   options = list(
     dom = '<"top"B>lfrtip',
     buttons = list('copy', 'print'),
-    iDisplayLength = 25,
+    iDisplayLength = 10,
     keys = TRUE,
     scrollX = TRUE,
     autoWidth = FALSE 
@@ -92,24 +99,38 @@ src <- left_join(x, src, by = 'Attribute_source') |>
   arrange(Confidence_in_curation, Evidence, Attribute_source)
   
 colnames(src) <- c(
-  'Source (short)', 'Confidence in curation', 'Evidence', 'Attribute_group',
+  'Source (short)', 'Confidence in curation', 'Evidence*', 'Attribute group**',
   'Full source'
 )
+
+caption2 <- paste0(
+  'Table 2. Sources of attribute annotations in bugphyzz. ',
+  '* exp = experimental evidence, igc = inferred from genomic context, ',
+  'tas = traceable author statement, nas = non-traceable author statement; ',
+  'more information at http://geneontology.org/docs/guide-go-evidence-codes/. ',
+  '** The number in parenthesis indacates the number of annotations per',
+  ' attribute group.'
+)
+
 src_dt <- datatable(
   data = src, 
   filter = "top",
   extensions = c("Buttons","KeyTable"), 
+  # caption = caption2,
+  caption = htmltools::tags$caption(
+    style = 'caption-side: top; text-align: left;',
+    caption2
+  ),
   options = list(
     dom = '<"top"B>lfrtip',
     buttons = list('copy', 'print'),
-    iDisplayLength = 25,
+    iDisplayLength = 10,
     keys = TRUE,
-    scrollX = TRUE,
-    autoWidth = FALSE 
+    # scrollX = TRUE,
+    autoWidth = TRUE
   )
 )
 src_dt
-## Add attribute groups and number of annotations in parenthesis
 ```
 
 ## Session info
