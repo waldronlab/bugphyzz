@@ -90,80 +90,17 @@
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h2>
 <p>You can install the development version of bugphyzz with:</p>
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># install.packages("devtools")</span></span>
-<span><span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"waldronlab/bugphyzz"</span><span class="op">)</span></span></code></pre></div>
+<p>```r if (!require(“BiocManager”, quietly = TRUE)) install.packages(“BiocManager”)</p>
+</div>
+<div class="section level2">
+<h2 id="devel-version">Devel version<a class="anchor" aria-label="anchor" href="#devel-version"></a>
+</h2>
+<p>BiocManager::install(“waldronlab/bugphyzz”) ```r</p>
 </div>
 <div class="section level2">
 <h2 id="some-examples-of-how-to-create-signatures">Some examples of how to create signatures<a class="anchor" aria-label="anchor" href="#some-examples-of-how-to-create-signatures"></a>
 </h2>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/message.html" class="external-link">suppressMessages</a></span><span class="op">(</span><span class="op">{</span></span>
-<span>    <span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/waldronlab/bugphyzz" class="external-link">bugphyzz</a></span><span class="op">)</span></span>
-<span>    <span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://purrr.tidyverse.org/" class="external-link">purrr</a></span><span class="op">)</span></span>
-<span>    <span class="va">aer</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/physiologies.html">physiologies</a></span><span class="op">(</span><span class="st">'aerophilicity'</span><span class="op">)</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span></span>
-<span>    <span class="va">ph</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/physiologies.html">physiologies</a></span><span class="op">(</span><span class="st">'optimal ph'</span><span class="op">)</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span></span>
-<span><span class="op">}</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co">## Example 1</span></span>
-<span><span class="co">## Create a signature of genera with experimental evidence at a </span></span>
-<span><span class="co">## Frequency of always using the NCBI taxids. Minimumn of 10 microbes per</span></span>
-<span><span class="co">## signature</span></span>
-<span><span class="va">aer_sig</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/makeSignatures.html">makeSignatures</a></span><span class="op">(</span></span>
-<span>    <span class="va">aer</span>, tax.id.type <span class="op">=</span> <span class="st">'NCBI_ID'</span>, tax.level <span class="op">=</span> <span class="st">'genus'</span>, </span>
-<span>    Frequency <span class="op">=</span> <span class="st">'always'</span>, Evidence <span class="op">=</span> <span class="st">'exp'</span>, min.size <span class="op">=</span> <span class="fl">10</span></span>
-<span><span class="op">)</span></span>
-<span><span class="co">#&gt; Warning: Dropping 3648 rows with FALSE values.</span></span>
-<span><span class="co">#&gt; Creating signature for categorical attributes.</span></span>
-<span></span>
-<span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html" class="external-link">map_int</a></span><span class="op">(</span><span class="va">aer_sig</span>, <span class="va">length</span><span class="op">)</span></span>
-<span><span class="co">#&gt;                 aerobic               anaerobic facultatively anaerobic </span></span>
-<span><span class="co">#&gt;                     574                     294                     174 </span></span>
-<span><span class="co">#&gt;         microaerophilic      obligately aerobic    obligately anaerobic </span></span>
-<span><span class="co">#&gt;                      17                      52                     104</span></span>
-<span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html" class="external-link">map</a></span><span class="op">(</span><span class="va">aer_sig</span>, <span class="op">~</span> <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">.x</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="co">#&gt; $aerobic</span></span>
-<span><span class="co">#&gt; [1]  291967 1078830</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; $anaerobic</span></span>
-<span><span class="co">#&gt; [1] 1427378   33951</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; $`facultatively anaerobic`</span></span>
-<span><span class="co">#&gt; [1]  2147 12914</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; $microaerophilic</span></span>
-<span><span class="co">#&gt; [1] 46352 12960</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; $`obligately aerobic`</span></span>
-<span><span class="co">#&gt; [1] 442869    434</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; $`obligately anaerobic`</span></span>
-<span><span class="co">#&gt; [1] 258514  31980</span></span>
-<span></span>
-<span></span>
-<span><span class="co">## Example 2</span></span>
-<span><span class="co">## Create a signature of acidiphilic species using the Taxon names</span></span>
-<span><span class="va">acid_sig</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/makeSignatures.html">makeSignatures</a></span><span class="op">(</span></span>
-<span>    df <span class="op">=</span> <span class="va">ph</span>, tax.id.type <span class="op">=</span> <span class="st">'Taxon_name'</span>, tax.level <span class="op">=</span> <span class="st">'species'</span>,</span>
-<span>    max <span class="op">=</span> <span class="fl">4</span></span>
-<span><span class="op">)</span></span>
-<span><span class="co">#&gt; Creating signature for continuous attribute.</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">acid_sig</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] "Leptospirillum ferriphilum"     "Sulfobacillus acidophilus"     </span></span>
-<span><span class="co">#&gt; [3] "Acidithiobacillus ferrivorans"  "Acidithiobacillus ferrooxidans"</span></span>
-<span><span class="co">#&gt; [5] "Acidimicrobium ferrooxidans"    "Thermoplasma volcanium"</span></span>
-<span></span>
-<span><span class="co">## Create a signature of Alkaliphilic species using the Taxon names</span></span>
-<span><span class="va">basic_sig</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/makeSignatures.html">makeSignatures</a></span><span class="op">(</span></span>
-<span>    df <span class="op">=</span> <span class="va">ph</span>, tax.id.type <span class="op">=</span> <span class="st">'Taxon_name'</span>, tax.level <span class="op">=</span> <span class="st">'species'</span>, </span>
-<span>    min <span class="op">=</span> <span class="fl">8</span></span>
-<span><span class="op">)</span></span>
-<span><span class="co">#&gt; Creating signature for continuous attribute.</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">basic_sig</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] "Arhodomonas aquaeolei"        "Glaciecola nitratireducens"  </span></span>
-<span><span class="co">#&gt; [3] "Pseudomonas coronafaciens"    "Sodalis glossinidius"        </span></span>
-<span><span class="co">#&gt; [5] "Photorhabdus luminescens"     "Hyphomicrobium nitrativorans"</span></span></code></pre></div>
-<p><sup>Created on 2022-09-01 with <a href="https://reprex.tidyverse.org" class="external-link">reprex v2.0.2</a></sup></p>
+<p>*** Need to update code for examples ***</p>
 </div>
 <div class="section level2">
 <h2 id="bugphyzzanalyses">bugphyzzAnalyses<a class="anchor" aria-label="anchor" href="#bugphyzzanalyses"></a>
