@@ -17,7 +17,7 @@ if (!require("BiocManager", quietly = TRUE))
 
 ## Devel version
 BiocManager::install("waldronlab/bugphyzz")
-```r
+```
 
 ## Some examples of how to create signatures 
 
