@@ -37,3 +37,9 @@ If using Google Sheets, publish a csv file to web:
 
  4. Add Google Doc "publish to web" link and add in [Link](https://github.com/waldronlab/bugphyzz/blob/main/inst/extdata/links.tsv)
  5. Add Google Doc link to [Source Link](https://github.com/waldronlab/bugphyzz/blob/main/inst/extdata/source_links.tsv)
+
+
+## Bugphyzz worklfow
+
+![Bugphyzz workflow](vignettes/Drawing.png)
+
