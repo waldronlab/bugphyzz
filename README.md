@@ -41,5 +41,5 @@ If using Google Sheets, publish a csv file to web:
 
 ## Bugphyzz worklfow
 
-![Bugphyzz workflow](vignettes/Drawing.png)
+![Bugphyzz workflow](vignettes/Drawing.svg)
 

@@ -15,6 +15,6 @@ knitr::opts_chunk$set(
 ```
 
 
-![Bugphyzz workflow](Drawing.png)
+![Bugphyzz workflow](Drawing.svg)
 
 
