@@ -135,32 +135,23 @@ meaning of each keyword.</p></dd>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## Create signatures of categorical or binary attributes</span></span></span>
 <span class="r-in"><span><span class="va">bp</span> <span class="op">&lt;-</span> <span class="fu"><a href="importBugphyzz.html">importBugphyzz</a></span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Using data downloaded on 2023-05-31 03:51:32.</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Using data downloaded on 2023-06-02 20:34:07.</span>
 <span class="r-in"><span><span class="va">sigs</span> <span class="op">&lt;-</span> <span class="fu">sig_fun</span><span class="op">(</span><span class="va">bp</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html" class="external-link">map</a></span><span class="op">(</span><span class="va">sigs</span>, <span class="va">head</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $`acetate_producing:acetate_producing`</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "105825" "105826" "105829" "105830" "105831" "105832"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $`aerophilicity:aerobic`</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1001240" "1002"    "1002227" "100225"  "1002672" "1003091"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1000562" "1001240" "100177"  "1002"    "1002227" "100225" </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $`aerophilicity:aerotolerant`</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1454184" "1506"    "1656"    "1806172" "2798940" "2848170"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $`aerophilicity:anaerobic`</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "100133"  "100174"  "1002795" "1004583" "1005740" "1006155"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1000568" "1000569" "100133"  "100174"  "1002795" "1004583"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $`aerophilicity:facultatively_anaerobic`</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1017095" "102684"  "1028752" "1031538" "1034471" "1036133"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $`aerophilicity:microaerophilic`</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1000562" "100177"  "1017"    "1031542" "104608"  "1050107"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $`aerophilicity:obligately_aerobic`</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1002689" "1002691" "1003110" "100379"  "1007087" "1007089"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $`aerophilicity:obligately_anaerobic`</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1000568" "1000569" "1008305" "1008460" "101192"  "102134" </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $`arrangement:branched`</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "2798940" "2848170" "2798939" "2798941" "2798938" "2798937"</span>
@@ -310,7 +301,7 @@ meaning of each keyword.</p></dd>
 <span class="r-in"><span><span class="co">## Create signatures of numeric attributes</span></span></span>
 <span class="r-in"><span><span class="va">bp_num</span> <span class="op">&lt;-</span> <span class="fu"><a href="importBugphyzzNumeric.html">importBugphyzzNumeric</a></span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Downloading, full_dump_numeric.csv.bz2.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Using data downloaded on 2023-05-31 03:52:10.</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Using data downloaded on 2023-06-02 20:34:46.</span>
 <span class="r-in"><span><span class="va">num_sigs</span> <span class="op">&lt;-</span> <span class="fu">flatten</span><span class="op">(</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html" class="external-link">map</a></span><span class="op">(</span><span class="va">bp_num</span>, <span class="va">sig_fun</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">lapply</a></span><span class="op">(</span><span class="va">num_sigs</span>, <span class="va">head</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $growth_temperature</span>

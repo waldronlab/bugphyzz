@@ -93,65 +93,62 @@ created with <code>getBugphyzzSignatures</code>.</p>
     <h2>Examples</h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">bp</span> <span class="op">&lt;-</span> <span class="fu"><a href="importBugphyzz.html">importBugphyzz</a></span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Using data downloaded on 2023-05-31 03:51:32.</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Using data downloaded on 2023-06-02 20:34:07.</span>
 <span class="r-in"><span><span class="fu">whichAttr</span><span class="op">(</span><span class="va">bp</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [1] "acetate_producing:acetate_producing"     </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [2] "aerophilicity:aerobic"                   </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [3] "aerophilicity:aerotolerant"              </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [4] "aerophilicity:anaerobic"                 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [5] "aerophilicity:facultatively_anaerobic"   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [6] "aerophilicity:microaerophilic"           </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [7] "aerophilicity:obligately_aerobic"        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [8] "aerophilicity:obligately_anaerobic"      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [9] "arrangement:branched"                    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [10] "arrangement:cell_chain"                  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [11] "arrangement:cell_cluster"                </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [12] "arrangement:filamentous"                 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [13] "arrangement:paired_cells"                </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [14] "arrangement:palisade"                    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [15] "arrangement:reverse_Y-branched_filaments"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [16] "arrangement:rosettes"                    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [17] "arrangement:single"                      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [18] "arrangement:tetrads"                     </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [19] "arrangement:unbranched"                  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [20] "arrangement:v-formation"                 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [21] "biofilm_forming:biofilm_formation"       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [22] "gram_stain:gram_stain_negative"          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [23] "gram_stain:gram_stain_positive"          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [24] "gram_stain:gram_stain_variable"          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [25] "growth_temperature:hyperthermophile"     </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [26] "growth_temperature:mesophile"            </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [27] "growth_temperature:psychrophile"         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [28] "growth_temperature:thermophile"          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [29] "optimal_ph:acidic"                       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [30] "optimal_ph:alkaline"                     </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [31] "optimal_ph:neutral"                      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [32] "optimal_ph:very_alkaline"                </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [33] "shape:bacillus"                          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [34] "shape:bent_filament"                     </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [35] "shape:clavate"                           </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [36] "shape:coccobacillus"                     </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [37] "shape:coccus"                            </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [38] "shape:discoid"                           </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [39] "shape:dumbbell-shaped"                   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [40] "shape:elliptic"                          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [41] "shape:filamentous"                       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [42] "shape:flat"                              </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [43] "shape:pleiomorphic_cell"                 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [44] "shape:polyhedral_shape"                  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [45] "shape:rectangle"                         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [46] "shape:sigmoid"                           </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [47] "shape:spirillum"                         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [48] "shape:staphylococcus"                    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [49] "shape:tail"                              </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [50] "shape:tetrahedral"                       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [51] "shape:triangle"                          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [52] "shape:u-shaped"                          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [53] "shape:wrinkled"                          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [54] "width:average"                           </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [55] "width:large"                             </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [56] "width:small"                             </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [57] "width:very_large"                        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [6] "arrangement:branched"                    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [7] "arrangement:cell_chain"                  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [8] "arrangement:cell_cluster"                </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [9] "arrangement:filamentous"                 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [10] "arrangement:paired_cells"                </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [11] "arrangement:palisade"                    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [12] "arrangement:reverse_Y-branched_filaments"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [13] "arrangement:rosettes"                    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [14] "arrangement:single"                      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [15] "arrangement:tetrads"                     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [16] "arrangement:unbranched"                  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [17] "arrangement:v-formation"                 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [18] "biofilm_forming:biofilm_formation"       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [19] "gram_stain:gram_stain_negative"          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [20] "gram_stain:gram_stain_positive"          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [21] "gram_stain:gram_stain_variable"          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [22] "growth_temperature:hyperthermophile"     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [23] "growth_temperature:mesophile"            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [24] "growth_temperature:psychrophile"         </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [25] "growth_temperature:thermophile"          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [26] "optimal_ph:acidic"                       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [27] "optimal_ph:alkaline"                     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [28] "optimal_ph:neutral"                      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [29] "optimal_ph:very_alkaline"                </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [30] "shape:bacillus"                          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [31] "shape:bent_filament"                     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [32] "shape:clavate"                           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [33] "shape:coccobacillus"                     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [34] "shape:coccus"                            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [35] "shape:discoid"                           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [36] "shape:dumbbell-shaped"                   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [37] "shape:elliptic"                          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [38] "shape:filamentous"                       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [39] "shape:flat"                              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [40] "shape:pleiomorphic_cell"                 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [41] "shape:polyhedral_shape"                  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [42] "shape:rectangle"                         </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [43] "shape:sigmoid"                           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [44] "shape:spirillum"                         </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [45] "shape:staphylococcus"                    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [46] "shape:tail"                              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [47] "shape:tetrahedral"                       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [48] "shape:triangle"                          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [49] "shape:u-shaped"                          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [50] "shape:wrinkled"                          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [51] "width:average"                           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [52] "width:large"                             </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [53] "width:small"                             </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [54] "width:very_large"                        </span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>

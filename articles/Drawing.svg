@@ -27,15 +27,15 @@
      inkscape:pagecheckerboard="0"
      inkscape:document-units="mm"
      showgrid="false"
-     inkscape:zoom="0.54895922"
-     inkscape:cx="417.15303"
-     inkscape:cy="500.03714"
+     inkscape:zoom="1.5526911"
+     inkscape:cx="402.20491"
+     inkscape:cy="546.47056"
      inkscape:window-width="1920"
-     inkscape:window-height="935"
+     inkscape:window-height="939"
      inkscape:window-x="0"
      inkscape:window-y="44"
      inkscape:window-maximized="1"
-     inkscape:current-layer="layer1"
+     inkscape:current-layer="g16387"
      inkscape:showpageshadow="2"
      inkscape:deskcolor="#d1d1d1" />
   <defs
@@ -395,23 +395,18 @@
          xml:space="preserve"
          style="font-style:normal;font-weight:normal;font-size:4.23333px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
          x="76.380661"
-         y="187.99222"
+         y="190.14717"
          id="text7230"><tspan
            sodipodi:role="line"
            style="font-size:4.23333px;text-align:center;text-anchor:middle;stroke-width:0.264583"
            x="76.380661"
-           y="187.99222"
+           y="190.14717"
            id="tspan7232">Import into R</tspan><tspan
            sodipodi:role="line"
            style="font-size:4.23333px;text-align:center;text-anchor:middle;stroke-width:0.264583"
            x="76.380661"
-           y="193.28387"
-           id="tspan7986">bugphyzz::importBugphyzz</tspan><tspan
-           sodipodi:role="line"
-           style="font-size:4.23333px;text-align:center;text-anchor:middle;stroke-width:0.264583"
-           x="76.380661"
-           y="198.57555"
-           id="tspan16294">bugphyzz::importBugphyzzNumeric</tspan></text>
+           y="195.43883"
+           id="tspan16294">bugphyzz::importBugphyzz</tspan></text>
     </g>
     <g
        id="g16446"
@@ -484,18 +479,13 @@
            xml:space="preserve"
            style="font-style:normal;font-weight:normal;font-size:4.23333px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
            x="80.118553"
-           y="225.65042"
+           y="228.58601"
            id="text7246"><tspan
              sodipodi:role="line"
              style="font-size:4.23333px;text-align:center;text-anchor:middle;stroke-width:0.264583"
              x="80.118553"
-             y="225.65042"
-             id="tspan7248">data wrangling</tspan><tspan
-             sodipodi:role="line"
-             style="font-size:4.23333px;text-align:center;text-anchor:middle;stroke-width:0.264583"
-             x="80.118553"
-             y="230.94208"
-             id="tspan16410">(user specific)</tspan></text>
+             y="228.58601"
+             id="tspan16410">Optional filtering</tspan></text>
       </g>
     </g>
     <g
@@ -518,34 +508,7 @@
            id="tspan7250"
            style="font-size:4.23333px;text-align:center;text-anchor:middle;stroke-width:0.264583"
            x="78.571213"
-           y="261.87555">MSEA</tspan></text>
-    </g>
-    <g
-       id="g16460"
-       transform="translate(-17.539503,26.714018)">
-      <rect
-         style="opacity:0.99;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.264583;stroke-dasharray:none"
-         id="rect16454"
-         width="36.519489"
-         height="14.663173"
-         x="7.9230022"
-         y="211.12892" />
-      <text
-         xml:space="preserve"
-         style="font-style:normal;font-weight:normal;font-size:4.23333px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
-         x="11.339277"
-         y="217.44464"
-         id="text16450"><tspan
-           sodipodi:role="line"
-           id="tspan16448"
-           style="font-size:4.23333px;stroke-width:0.264583"
-           x="11.339277"
-           y="217.44464">data analysis</tspan><tspan
-           sodipodi:role="line"
-           style="font-size:4.23333px;stroke-width:0.264583"
-           x="11.339277"
-           y="222.7363"
-           id="tspan16452">(user specific)</tspan></text>
+           y="261.87555">BSEA</tspan></text>
     </g>
     <g
        id="g16635"
@@ -739,11 +702,6 @@
        style="fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
        d="M 98.286139,186.35008 H 148.44522"
        id="path19373"
-       sodipodi:nodetypes="cc" />
-    <path
-       style="fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       d="M 60.029657,245.64812 H 27.006821"
-       id="path19525"
        sodipodi:nodetypes="cc" />
     <path
        style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1"
