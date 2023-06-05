@@ -10,7 +10,6 @@
 #' values or not. Default is TRUE, i.e., FALSE values are not included.
 #'
 #' @return List of signatures
-#' @export
 #'
 #' @examples
 #'
@@ -73,7 +72,6 @@ makeSignatures <- function(
 #' values or not. Default is TRUE, i.e., FALSE values are not included.
 #'
 #' @return A list of signatures (taxa)
-#' @export
 #'
 getSignatures <- function(
     df, tax.id.type, tax.level = 'mixed',
