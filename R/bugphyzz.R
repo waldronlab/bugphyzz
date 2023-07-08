@@ -257,3 +257,17 @@ taxRanks <- function() {
     'phylum', 'domain'
   )
 }
+
+#' Valid ranks
+#'
+#' \code{validRanks} returns valid ranks.
+#'
+#' @return A character vector.
+#' @export
+#'
+validRanks <- function() {
+  c(
+    "superkingdom", "phylum", "class", "order", "family", "genus",
+    "species", "strain"
+  )
+}
