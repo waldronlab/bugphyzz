@@ -1,12 +1,11 @@
 
 #' Import physiologies
 #'
-#' \code{physiologies} imports physiologies from Google spreadsheets.
+#' \code{physiologies} imports physiologies from Google spreadsheets and
+#' bacdive dump file.
 #'
 #' @param keyword One or more values in a character vector. The values can
 #' be checked with the \code{showPhys} function.
-#' @param remove_false if TRUE, remove all attributes with FALSE values.
-#' Default is FALSE (no filtering).
 #' @param full_source If TRUE, full source is provided. If FALSE, a
 #' shortened name of the source.
 #'
@@ -19,18 +18,16 @@
 #' aer <- physiologies('aerophilicity')
 #'
 #'
-physiologies <- function(
-    keyword = 'all', remove_false = FALSE, full_source = TRUE
-) {
-  message('Importing physiology data. This might take a while...')
+physiologies <- function(keyword = 'all', full_source = TRUE) {
   keyword <- unique(sort(keyword))
   valid_keywords <- showPhys()
 
   if ('all' %in% keyword) {
     if (length(keyword) > 1)
-      message("Found 'all' among the keywords. Importing all physiologies.")
+      warning("Found 'all' among the keywords. Importing all physiologies.")
     keyword <- valid_keywords
   }
+
   lgl_vct <- keyword %in% valid_keywords
   if (any(!lgl_vct)) {
     invalid_keywords <- keyword[!lgl_vct]
@@ -40,6 +37,7 @@ physiologies <- function(
       call. = FALSE
     )
   }
+
 
   cond1 <- any(keyword %in% showPhys('spreadsheets'))
   cond2 <- any(keyword %in% showPhys('bacdive'))
@@ -70,6 +68,7 @@ physiologies <- function(
       message('Finished ', keyword[i], '.')
     }
   }
+
   physiologies <- lapply(physiologies, function(df) {
     df <- df |>
       purrr::modify_if(.p = is.character, ~ stringr::str_squish(.x)) |>
@@ -79,13 +78,12 @@ physiologies <- function(
         ~ stringr::str_squish(stringr::str_to_lower(.x))
       ) |>
       dplyr::distinct()
-    if (remove_false && 'Attribute_value' %in% colnames(df)) {
-      df <- dplyr::filter(df, !Attribute_value == FALSE)
-    }
+
     if (full_source) {
       df$Attribute_source <- df$full_source
     }
     df$full_source <- NULL
+
     df <- .reorderColumns(
       df = df,
       name = unique(df$Attribute_group),
@@ -93,6 +91,7 @@ physiologies <- function(
     )
     as.data.frame(df[, vapply(df, \(y) !all(is.na(y)), logical(1))])
   })
+
   return(physiologies)
 }
 
@@ -123,14 +122,11 @@ physiologies <- function(
         grepl('>', .data$Attribute_value) ~ paste0(.data$Attribute_value, '-'),
         !grepl("\\-", .data$Attribute_value) ~ paste0(.data$Attribute_value, '-', .data$Attribute_value),
         grepl("^\\-", .data$Attribute_value) ~ paste0("minusInf", .data$Attribute_value),
-        # grepl("^-", .data$Attribute_value) ~ paste0("0", .data$Attribute_value),
         grepl("\\-$", .data$Attribute_value) ~ paste0(.data$Attribute_value, "Inf"),
         TRUE ~ .data$Attribute_value
       ),
       Attribute_value = sub('(<|>)', '', .data$Attribute_value),
       Attribute_value = dplyr::case_when(
-        ## For some reason this does not work int he case_when call above. ??
-        # grepl("^-", .data$Attribute_value) ~ paste0("0", .data$Attribute_value),
         grepl("^\\-", .data$Attribute_value) ~ paste0("minusInf", .data$Attribute_value),
         grepl("\\-$", .data$Attribute_value) ~ paste0(.data$Attribute_value, "Inf"),
         TRUE ~ .data$Attribute_value
@@ -213,38 +209,58 @@ showPhys <- function(which_names = 'all') {
   dplyr::left_join(df, data, by = 'Attribute_source')
 }
 
+## This function imports the spreadsheets in extdata/links.tsv
 .importSpreadsheets <- function(keyword) {
+
   parent_col_names <- c('Parent_name', 'Parent_NCBI_ID', 'Parent_rank')
   fname <- system.file('extdata/links.tsv', package = 'bugphyzz')
   links <- utils::read.table(fname, header = TRUE, sep = '\t')
   links <- links[links[['physiology']] %in% keyword,]
   spreadsheets <- vector('list', nrow(links))
+
   for (i in seq_along(spreadsheets)) {
+
     phys_name <- links[i, 'physiology', drop = FALSE][[1]]
     attr_type <- links[i, 'sig_type', drop = FALSE][[1]]
     names(spreadsheets)[i] <- phys_name
     url <- links[i, 'link', drop = FALSE][[1]]
-    df <- unique(utils::read.csv(url))
+    df <- dplyr::distinct(utils::read.csv(url))
     df[['Attribute_type']] <- attr_type
     df[['Attribute_group']] <- phys_name
     df[['NCBI_ID']] <- as.character(df[['NCBI_ID']])
     df <- df[!is.na(df[['Attribute_value']]),]
-    # df <- .addSourceInfo(df)
+
+    df <- df |>
+      dplyr::group_by(.data$NCBI_ID) |>
+      dplyr::mutate(
+        Taxon_name = paste(unique(.data$Taxon_name), collapse = '; ')
+      ) |>
+      dplyr::ungroup() |>
+      dplyr::distinct()
+
     if (unique(df[['Attribute_type']]) == 'numeric') {
       df <- .numericToRange(df)
     } else if (unique(df[['Attribute_type']] == 'range')) {
       df <- .modifyRange(df)
+    } else if (unique(df[['Attribute_type']] == 'logical')) {
+      df <- dplyr::filter(df, .data$Attribute_value == TRUE)
     }
+
     if (all(parent_col_names %in% colnames(df))) {
       df$Parent_NCBI_ID <- stringr::str_squish(as.character(df$Parent_NCBI_ID))
     } else {
-        rp <- ranks_parents # ranks_parents is a data.frame internal object in bugphyzz
-        rp$NCBI_ID <- as.character(rp$NCBI_ID)
-        rp$Parent_NCBI_ID <- as.character(rp$Parent_NCBI_ID)
+        ## ranks_parents is a data.frame internal object in bugphyzz
+        rp <- purrr::modify_at(
+          .x = ranks_parents,
+          .at = c('NCBI_ID', 'Parent_NCBI_ID'),
+          .f = as.character
+        )
         df <- dplyr::left_join(df, rp, by = "NCBI_ID")
     }
+
     spreadsheets[[i]] <- df
   }
+
   return(spreadsheets)
 }
 

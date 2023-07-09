@@ -4,14 +4,11 @@
 \alias{physiologies}
 \title{Import physiologies}
 \usage{
-physiologies(keyword = "all", remove_false = FALSE, full_source = TRUE)
+physiologies(keyword = "all", full_source = TRUE)
 }
 \arguments{
 \item{keyword}{One or more values in a character vector. The values can
 be checked with the \code{showPhys} function.}
-
-\item{remove_false}{if TRUE, remove all attributes with FALSE values.
-Default is FALSE (no filtering).}
 
 \item{full_source}{If TRUE, full source is provided. If FALSE, a
 shortened name of the source.}
@@ -20,7 +17,8 @@ shortened name of the source.}
 A list of data frames.
 }
 \description{
-\code{physiologies} imports physiologies from Google spreadsheets.
+\code{physiologies} imports physiologies from Google spreadsheets and
+bacdive dump file.
 }
 \examples{
 
