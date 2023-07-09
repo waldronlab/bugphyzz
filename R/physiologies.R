@@ -230,13 +230,13 @@ showPhys <- function(which_names = 'all') {
     df[['NCBI_ID']] <- as.character(df[['NCBI_ID']])
     df <- df[!is.na(df[['Attribute_value']]),]
 
-    df <- df |>
-      dplyr::group_by(.data$NCBI_ID) |>
-      dplyr::mutate(
-        Taxon_name = paste(unique(.data$Taxon_name), collapse = '; ')
-      ) |>
-      dplyr::ungroup() |>
-      dplyr::distinct()
+    # df <- df |>
+    #   dplyr::group_by(.data$NCBI_ID) |>
+    #   dplyr::mutate(
+    #     Taxon_name = paste(unique(.data$Taxon_name), collapse = '; ')
+    #   ) |>
+    #   dplyr::ungroup() |>
+    #   dplyr::distinct()
 
     if (unique(df[['Attribute_type']]) == 'numeric') {
       df <- .numericToRange(df)
