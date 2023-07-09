@@ -182,7 +182,7 @@ length	length	numeric	PATO:0000122	A 1-D extent quality which is equal to the di
 fatty acid composition		logical	NA	NA
 human urine	habitat;isolation site	logical	MCO:0000662	No definition provided
 v-formation	arrangement	logical	NA	NA
-extreme environment		logical	NA	NA
+extreme environment	extreme environemnt	logical	NA	NA
 gut		logical	OHMI:0000020	A human being's gut microbiota contains tens of trillions of microorganisms, including at least 1000 different species of known bacteria with more than 3 million genes (150 times more than human genes). Microbiota can, in total, weigh up to 2 kg. One third of our gut microbiota is common to most people, while two thirds are specific to each one of us. In other words, the microbiota in your intestine is like an individual identity card. URL: http://www.gutmicrobiotaforhealth.com/en/about-gut-microbiota-info/
 rumen	habitat;isolation site	logical	NCIT:C98778	Largest forestomach of ruminants where bacterial fermentation occurs
 Health associated	health associated	logical	NA	NA
