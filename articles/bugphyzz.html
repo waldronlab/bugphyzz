@@ -120,17 +120,17 @@ insert Zenodo link here &lt;&lt;&lt;</strong>.</p>
 <span><span class="co">#&gt; Registered S3 method overwritten by 'httr':</span></span>
 <span><span class="co">#&gt;   method           from  </span></span>
 <span><span class="co">#&gt;   print.cache_info hoardr</span></span>
-<span><span class="co">#&gt; Using data downloaded on 2023-07-09 06:16:02.</span></span>
+<span><span class="co">#&gt; Using data downloaded on 2023-07-09 21:20:19.</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">bp</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 6 × 12</span></span></span>
-<span><span class="co">#&gt;   NCBI_ID Taxon_name         Rank  Attribute Attribute_source Evidence Frequency</span></span>
-<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>              <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> 105825  Butyrate-producin… spec… acetate_… Barcenilla_2000  exp      usually  </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> 105826  Butyrate-producin… spec… acetate_… Barcenilla_2000  exp      usually  </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> 105829  Butyrate-producin… spec… acetate_… Barcenilla_2000  exp      usually  </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> 105830  Butyrate-producin… spec… acetate_… Barcenilla_2000  exp      usually  </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> 105831  Butyrate-producin… spec… acetate_… Barcenilla_2000  exp      usually  </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span> 105832  Butyrate-producin… spec… acetate_… Barcenilla_2000  exp      usually  </span></span>
+<span><span class="co">#&gt;   NCBI_ID Taxon_name     Rank  Attribute     Attribute_source Evidence Frequency</span></span>
+<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> 10      Cellvibrio     genus aerophilicit… Bergey's Manual  exp      always   </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> 1000999 Acidipila      genus aerophilicit… Bergey's Manual  exp      always   </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> 100132  Sporobacterium genus aerophilicit… Bergey's Manual  exp      always   </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> 100175  Papillibacter  genus aerophilicit… Bergey's Manual  exp      always   </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> 1004300 Hydrotalea     genus aerophilicit… Bergey's Manual  exp      always   </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span> 1007    Saprospira     genus aerophilicit… Bergey's Manual  exp      always   </span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># ℹ 5 more variables: Attribute_type &lt;chr&gt;, Attribute_group &lt;chr&gt;,</span></span></span>
 <span><span class="co">#&gt; <span style="color: #949494;">#   Confidence_in_curation &lt;chr&gt;, Score &lt;dbl&gt;, Attribute_value &lt;lgl&gt;</span></span></span></code></pre></div>
 <div class="section level3">
@@ -138,21 +138,19 @@ insert Zenodo link here &lt;&lt;&lt;</strong>.</p>
 </h3>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/unique.html" class="external-link">unique</a></span><span class="op">(</span><span class="va">bp</span><span class="op">$</span><span class="va">Attribute_group</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] "acetate producing"  "aerophilicity"      "arrangement"       </span></span>
-<span><span class="co">#&gt; [4] "biofilm forming"    "gram stain"         "shape"             </span></span>
-<span><span class="co">#&gt; [7] "growth temperature" "optimal ph"         "width"</span></span></code></pre></div>
+<span><span class="co">#&gt; [1] "aerophilicity"      "gram stain"         "growth temperature"</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="explore-which-attribute-signatures-are-available">Explore which attribute signatures are available<a class="anchor" aria-label="anchor" href="#explore-which-attribute-signatures-are-available"></a>
 </h3>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/unique.html" class="external-link">unique</a></span><span class="op">(</span><span class="va">bp</span><span class="op">$</span><span class="va">Attribute</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] "acetate_producing:acetate_producing"  </span></span>
-<span><span class="co">#&gt; [2] "aerophilicity:aerobic"                </span></span>
-<span><span class="co">#&gt; [3] "aerophilicity:anaerobic"              </span></span>
-<span><span class="co">#&gt; [4] "aerophilicity:facultatively_anaerobic"</span></span>
-<span><span class="co">#&gt; [5] "aerophilicity:aerotolerant"           </span></span>
-<span><span class="co">#&gt; [6] "arrangement:single"</span></span></code></pre></div>
+<span><span class="co">#&gt; [1] "aerophilicity:aerobic"                </span></span>
+<span><span class="co">#&gt; [2] "aerophilicity:anaerobic"              </span></span>
+<span><span class="co">#&gt; [3] "aerophilicity:facultatively_anaerobic"</span></span>
+<span><span class="co">#&gt; [4] "aerophilicity:aerotolerant"           </span></span>
+<span><span class="co">#&gt; [5] "gram_stain:gram_stain_negative"       </span></span>
+<span><span class="co">#&gt; [6] "gram_stain:gram_stain_positive"</span></span></code></pre></div>
 </div>
 </div>
 <div class="section level2">
@@ -172,7 +170,7 @@ aerophilicity<a class="anchor" aria-label="anchor" href="#create-signatures-of-t
 <span><span class="co">#&gt; [1] "1000562" "1001240" "100177"  "1002"    "1002227" "100225" </span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $`aerophilicity:aerotolerant`</span></span>
-<span><span class="co">#&gt; [1] "1454184" "1506"    "1656"    "1806172" "2798940" "2848170"</span></span>
+<span><span class="co">#&gt; [1] "1454184" "1506"    "1656"    "1806172" "100"     "184075" </span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $`aerophilicity:anaerobic`</span></span>
 <span><span class="co">#&gt; [1] "1000568" "1000569" "100133"  "100174"  "1002795" "1004583"</span></span>
@@ -191,23 +189,20 @@ temperature<a class="anchor" aria-label="anchor" href="#create-signatures-of-tax
 <span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html" class="external-link">map</a></span><span class="op">(</span><span class="va">sigs2</span>, <span class="va">head</span><span class="op">)</span></span>
 <span><span class="co">#&gt; $`growth_temperature:hyperthermophile`</span></span>
-<span><span class="co">#&gt; [1] "Archaeoglobus"              "Ferroglobus"               </span></span>
-<span><span class="co">#&gt; [3] "Geoglobus"                  "Candidatus Methanoliparum" </span></span>
-<span><span class="co">#&gt; [5] "Candidatus Methanolliviera" "Methanothermobacter"       </span></span>
+<span><span class="co">#&gt; [1] "Thermobrachium"     "Caldicoprobacter"   "Caldinitratiruptor"</span></span>
+<span><span class="co">#&gt; [4] "Thermaerobacter"    "Thermoanaerobacter" "Carboxydothermus"  </span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $`growth_temperature:mesophile`</span></span>
-<span><span class="co">#&gt; [1] "Candidatus Poseidonia"      "Candidatus Thalassarchaeum"</span></span>
-<span><span class="co">#&gt; [3] "Candidatus Haladaptoplasma" "Candidatus Haloplasma"     </span></span>
-<span><span class="co">#&gt; [5] NA                           "Candidatus Saliniplasma"   </span></span>
+<span><span class="co">#&gt; [1] "Ancylobacter" "Xanthobacter" "Labrys"       "Starkeya"     "Azorhizobium"</span></span>
+<span><span class="co">#&gt; [6] "Pseudolabrys"</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $`growth_temperature:psychrophile`</span></span>
-<span><span class="co">#&gt; [1] "Natronobiforma"     "Methanogenium"      "Methanococcoides"  </span></span>
-<span><span class="co">#&gt; [4] "Acidicapsa"         "Acidisarcina"       "Alloacidobacterium"</span></span>
+<span><span class="co">#&gt; [1] "Aquabacter"        "Thalassocella"     "Phyllobacterium"  </span></span>
+<span><span class="co">#&gt; [4] "Nitratireductor"   "Paramesorhizobium" "Tianweitania"     </span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $`growth_temperature:thermophile`</span></span>
-<span><span class="co">#&gt; [1] "Candidatus Baldrarchaeum"  "Candidatus Borrarchaeum"  </span></span>
-<span><span class="co">#&gt; [3] "Candidatus Hermodarchaeum" "Candidatus Hodarchaeum"   </span></span>
-<span><span class="co">#&gt; [5] NA                          "Candidatus Sifarchaeum"</span></span></code></pre></div>
+<span><span class="co">#&gt; [1] "Tepidamorphus"   "Oceanicella"     "Albidovulum"     "Piezobacter"    </span></span>
+<span><span class="co">#&gt; [5] "Meinhardsimonia" "Rubritepida"</span></span></code></pre></div>
 </div>
 </div>
 <div class="section level2">
@@ -219,7 +214,7 @@ categorical labels above (hyperthermophile, thermophile, psychrophile,
 mesophile). Let’s get the numeric values:</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">gt_num</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/importBugphyzzNumeric.html">importBugphyzzNumeric</a></span><span class="op">(</span>version <span class="op">=</span> <span class="st">'devel'</span>, force_download <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span></span>
-<span><span class="co">#&gt; Using data downloaded on 2023-07-09 06:16:33.</span></span>
+<span><span class="co">#&gt; Using data downloaded on 2023-07-09 21:20:29.</span></span>
 <span><span class="va">df</span> <span class="op">&lt;-</span> <span class="va">gt_num</span><span class="op">[</span><span class="va">gt_num</span><span class="op">$</span><span class="va">Attribute_value_min</span> <span class="op">&gt;</span> <span class="fl">0</span> <span class="op">&amp;</span> <span class="va">gt_num</span><span class="op">$</span><span class="va">Attribute_value_max</span> <span class="op">&lt;</span> <span class="fl">25</span>,<span class="op">]</span></span>
 <span><span class="va">sigs3</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/getBugphyzzSignatures.html">getBugphyzzSignatures</a></span><span class="op">(</span></span>
 <span>  df <span class="op">=</span> <span class="va">gt_num</span>, tax.id.type <span class="op">=</span> <span class="st">'NCBI_ID'</span>, tax.level <span class="op">=</span> <span class="st">'species'</span></span>
