@@ -4,26 +4,25 @@
 \alias{physiologies}
 \title{Import physiologies}
 \usage{
-physiologies(keyword = "all", full_source = TRUE)
+physiologies(keyword = "all", full_source = FALSE)
 }
 \arguments{
-\item{keyword}{One or more values in a character vector. The values can
-be checked with the \code{showPhys} function.}
-
 \item{full_source}{If TRUE, full source is provided. If FALSE, a
-shortened name of the source.}
+shortened name of the source is provided. Default if FALSE.}
+
+\item{Character}{vector with one or more keywords. Valid keyboard
+values can be checked with \code{showPhys}.}
 }
 \value{
-A list of data frames.
+A list of data.frames.
 }
 \description{
-\code{physiologies} imports physiologies from Google spreadsheets and
-bacdive dump file.
+\code{physiologies} imports data about physiologies and other traits
+stored in Google spreadsheets and the main bacdive file.
 }
 \examples{
 
 phys <- physiologies('all')
 aer <- physiologies('aerophilicity')
-
 
 }

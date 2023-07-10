@@ -1,15 +1,16 @@
 
 #' Import physiologies
 #'
-#' \code{physiologies} imports physiologies from Google spreadsheets and
-#' bacdive dump file.
+#' \code{physiologies} imports data about physiologies and other traits
+#' stored in Google spreadsheets and the main bacdive file.
 #'
-#' @param keyword One or more values in a character vector. The values can
-#' be checked with the \code{showPhys} function.
+#' @param Character vector with one or more keywords. Valid keyboard
+#' values can be checked with \code{showPhys}.
 #' @param full_source If TRUE, full source is provided. If FALSE, a
-#' shortened name of the source.
+#' shortened name of the source is provided. Default if FALSE.
 #'
-#' @return A list of data frames.
+#' @return A list of data.frames.
+#'
 #' @export
 #'
 #' @examples
@@ -17,27 +18,31 @@
 #' phys <- physiologies('all')
 #' aer <- physiologies('aerophilicity')
 #'
-#'
-physiologies <- function(keyword = 'all', full_source = TRUE) {
+physiologies <- function(keyword = 'all', full_source = FALSE) {
+
   keyword <- unique(sort(keyword))
-  valid_keywords <- showPhys()
-
-  if ('all' %in% keyword) {
-    if (length(keyword) > 1)
-      warning("Found 'all' among the keywords. Importing all physiologies.")
-    keyword <- valid_keywords
-  }
-
+  valid_keywords <- c('all', showPhys())
+  
   lgl_vct <- keyword %in% valid_keywords
   if (any(!lgl_vct)) {
     invalid_keywords <- keyword[!lgl_vct]
     stop(
       "Invalid keyword(s): ", paste0(invalid_keywords, collapse = ', '), '.',
-      " Check valid keywords with showPhys() or use 'all'.",
+      " Check valid keywords with showPhys() or use 'all' to import all",
+      " physiologies.",
       call. = FALSE
     )
   }
 
+  if ('all' %in% keyword) {
+    if (length(keyword) > 1)
+      stop(
+        "Found 'all' among the keywords. Are you sure that you want to ",
+        "import all of the physiologies? If so, use 'all' alone.",
+        call. = FALSE
+      )
+    keyword <- valid_keywords
+  }
 
   cond1 <- any(keyword %in% showPhys('spreadsheets'))
   cond2 <- any(keyword %in% showPhys('bacdive'))
@@ -89,7 +94,9 @@ physiologies <- function(keyword = 'all', full_source = TRUE) {
       name = unique(df$Attribute_group),
       attr_type = unique(df$Attribute_type)
     )
-    as.data.frame(df[, vapply(df, \(y) !all(is.na(y)), logical(1))])
+
+    df <- as.data.frame(df[, vapply(df, \(y) !all(is.na(y)), logical(1))])
+    dplyr::distinct(df)
   })
 
   return(physiologies)
@@ -229,14 +236,6 @@ showPhys <- function(which_names = 'all') {
     df[['Attribute_group']] <- phys_name
     df[['NCBI_ID']] <- as.character(df[['NCBI_ID']])
     df <- df[!is.na(df[['Attribute_value']]),]
-
-    # df <- df |>
-    #   dplyr::group_by(.data$NCBI_ID) |>
-    #   dplyr::mutate(
-    #     Taxon_name = paste(unique(.data$Taxon_name), collapse = '; ')
-    #   ) |>
-    #   dplyr::ungroup() |>
-    #   dplyr::distinct()
 
     if (unique(df[['Attribute_type']]) == 'numeric') {
       df <- .numericToRange(df)
