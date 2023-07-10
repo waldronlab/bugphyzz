@@ -21,18 +21,7 @@
 physiologies <- function(keyword = 'all', full_source = FALSE) {
 
   keyword <- unique(sort(keyword))
-  valid_keywords <- c('all', showPhys())
-  
-  lgl_vct <- keyword %in% valid_keywords
-  if (any(!lgl_vct)) {
-    invalid_keywords <- keyword[!lgl_vct]
-    stop(
-      "Invalid keyword(s): ", paste0(invalid_keywords, collapse = ', '), '.',
-      " Check valid keywords with showPhys() or use 'all' to import all",
-      " physiologies.",
-      call. = FALSE
-    )
-  }
+  valid_keywords <- showPhys()
 
   if ('all' %in% keyword) {
     if (length(keyword) > 1)
@@ -42,6 +31,17 @@ physiologies <- function(keyword = 'all', full_source = FALSE) {
         call. = FALSE
       )
     keyword <- valid_keywords
+  }
+
+  lgl_vct <- keyword %in% valid_keywords
+  if (any(!lgl_vct) ) {
+    invalid_keywords <- keyword[!lgl_vct]
+    stop(
+      "Invalid keyword(s): ", paste0(invalid_keywords, collapse = ', '), '.',
+      " Check valid keywords with showPhys() or use 'all' to import all",
+      " physiologies.",
+      call. = FALSE
+    )
   }
 
   cond1 <- any(keyword %in% showPhys('spreadsheets'))
