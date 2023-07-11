@@ -29,7 +29,7 @@
 importBugphyzz <- function(version = 'devel', force_download = FALSE
 ) {
   if (version == 'devel' || grepl("^[0-9a-z]{7}$", version)) {
-    url <- 'https://github.com/waldronlab/bugphyzzExports/raw/main/full_dump_categorical.csv.bz2'
+    url <- 'https://github.com/waldronlab/bugphyzzExports/raw/main/full_dump.csv.bz2'
     ## update code when contente has been merged into main
     # if (version == 'devel') version <- 'main'
     # url <- paste0(
@@ -39,7 +39,7 @@ importBugphyzz <- function(version = 'devel', force_download = FALSE
 
   }
   rpath <- .getResource(
-    rname = 'full_dump_categorical.csv.bz2', url = url, verbose = TRUE,
+    rname = 'full_dump.csv.bz2', url = url, verbose = TRUE,
     force = force_download
   )
   ## TODO Add skip = 1 to the vroom call when header is added to the file
