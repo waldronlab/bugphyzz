@@ -37,7 +37,7 @@ library(purrr)
 ```
 
 ```{r import data}
-bp <- importBugphyzz(version = 'devel', force_download = FALSE)
+bp <- importBugphyzz(version = 'devel', force_download = TRUE)
 head(bp)
 ```
 
