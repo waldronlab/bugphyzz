@@ -42,11 +42,22 @@ importBugphyzz <- function(version = 'devel', force_download = FALSE
     rname = 'full_dump.csv.bz2', url = url, verbose = TRUE,
     force = force_download
   )
-  ## TODO Add skip = 1 to the vroom call when header is added to the file
+  ## TODO Add skip = 1 to the vroom call when header is added to the full dump file exported in bugphyzzExports
   bp <- vroom::vroom(
     file = rpath, show_col_types = FALSE, delim = ',', progress = FALSE,
-    col_types = vroom::cols(NCBI_ID = vroom::col_character())
-  )
+    col_types = vroom::cols(
+      NCBI_ID = vroom::col_character(),
+      Attribute_source = vroom::col_character(),
+      Confidence_in_curation = vroom::col_character(),
+      Strain = vroom::col_character(),
+      BacDive_ID = vroom::col_character(),
+      Type_strain = vroom::col_character(),
+      PATRIC_ID = vroom::col_character(),
+      Note = vroom::col_character(),
+      Unit = vroom::col_character()
+    )
+  ) |>
+    dplyr::filter(Frequency != 'never')
   return(bp)
 }
 

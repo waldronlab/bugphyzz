@@ -26,7 +26,7 @@ library(dplyr)
 ```
 
 ```{r}
-bp <- importBugphyzz(version = 'devel')
+bp <- importBugphyzz(version = 'devel', force_download = TRUE)
 bp <- bp |> 
   filter(
     !Evidence %in% c('asr', 'inh')
