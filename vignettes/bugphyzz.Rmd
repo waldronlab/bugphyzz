@@ -80,7 +80,7 @@ values. An example is growth temperature, which we obtained as categorical label
 above (hyperthermophile, thermophile, psychrophile, mesophile). Let's get
 the numeric values:
 
-```{r}
+```{r, eval=FALSE, echo=FALSE, include=FALSE}
 gt_num <- importBugphyzzNumeric(version = 'devel', force_download = FALSE)[[1]]
 df <- gt_num[gt_num$Attribute_value_min > 0 & gt_num$Attribute_value_max < 25,]
 sigs3 <- getBugphyzzSignatures(
