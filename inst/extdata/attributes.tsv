@@ -456,3 +456,7 @@
 "biosafety level 1"	"biosafety level"	"logical"	NA	NA
 "biosafety level 2"	"biosafety level"	"logical"	NA	NA
 "biosafety level 3"	"biosafety level"	"logical"	NA	NA
+"COGEM pathogenicity rating 1"	"COGEM pathogenicity rating"	"logical"	NA	NA
+"COGEM pathogenicity rating 2"	"COGEM pathogenicity rating"	"logical"	NA	NA
+"COGEM pathogenicity rating 3"	"COGEM pathogenicity rating"	"logical"	NA	NA
+"COGEM pathogenicity rating 4"	"COGEM pathogenicity rating"	"logical"	NA	NA
