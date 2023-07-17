@@ -242,7 +242,7 @@ showPhys <- function(which_names = 'all') {
     } else if (unique(df[['Attribute_type']] == 'range')) {
       df <- .modifyRange(df)
     } else if (unique(df[['Attribute_type']] == 'logical')) {
-      df <- dplyr::filter(df, .data$Attribute_value == TRUE)
+      df <- dplyr::filter(df, .data$Attribute_value == TRUE | .data$Attribute_value == FALSE)
     }
 
     if (all(parent_col_names %in% colnames(df))) {
