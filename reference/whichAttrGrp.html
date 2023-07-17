@@ -91,27 +91,40 @@ imported with <code>importBugphyzz</code>.</p>
     <h2>Examples</h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">bp</span> <span class="op">&lt;-</span> <span class="fu"><a href="importBugphyzz.html">importBugphyzz</a></span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Using data downloaded on 2023-07-17 14:21:22.</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>The following named parsers don't match the column names: BacDive_ID, Type_strain, PATRIC_ID</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Using data downloaded on 2023-07-17 18:53:43.</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>The following named parsers don't match the column names: PATRIC_ID</span>
 <span class="r-in"><span><span class="fu">whichAttrGrp</span><span class="op">(</span><span class="va">bp</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [1] "COGEM pathogenicity rating"           </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [2] "acetate producing"                    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [3] "antimicrobial sensitivity"            </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [4] "arrangement"                          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [5] "biofilm forming"                      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [6] "butyrate producing"                   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [7] "coding genes"                         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [8] "disease association"                  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [9] "extreme environment"                  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [10] "genome size"                          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [11] "health associated"                    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [12] "hydrogen gas producing"               </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [13] "lactate producing"                    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [14] "mutation rate per site per generation"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [15] "optimal ph"                           </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [16] "plant pathogenicity"                  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [17] "sphingolipid producing"               </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [18] "spore shape"                          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [3] "aerophilicity"                        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [4] "animal pathogen"                      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [5] "antimicrobial sensitivity"            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [6] "arrangement"                          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [7] "biofilm forming"                      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [8] "biosafety level"                      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [9] "butyrate producing"                   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [10] "coding genes"                         </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [11] "disease association"                  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [12] "extreme environment"                  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [13] "genome size"                          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [14] "gram stain"                           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [15] "growth medium"                        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [16] "growth temperature"                   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [17] "health associated"                    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [18] "hemolysis"                            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [19] "hydrogen gas producing"               </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [20] "lactate producing"                    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [21] "length"                               </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [22] "motility"                             </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [23] "mutation rate per site per generation"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [24] "optimal ph"                           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [25] "pathogenicity human"                  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [26] "plant pathogenicity"                  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [27] "shape"                                </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [28] "sphingolipid producing"               </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [29] "spore formation"                      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [30] "spore shape"                          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [31] "width"                                </span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>

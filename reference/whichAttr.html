@@ -93,76 +93,211 @@ created with <code>getBugphyzzSignatures</code>.</p>
     <h2>Examples</h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">bp</span> <span class="op">&lt;-</span> <span class="fu"><a href="importBugphyzz.html">importBugphyzz</a></span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Using data downloaded on 2023-07-17 14:21:22.</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>The following named parsers don't match the column names: BacDive_ID, Type_strain, PATRIC_ID</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Using data downloaded on 2023-07-17 18:53:43.</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>The following named parsers don't match the column names: PATRIC_ID</span>
 <span class="r-in"><span><span class="fu">whichAttr</span><span class="op">(</span><span class="va">bp</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   [1] "Acne"                            "Arthritis"                      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   [3] "Blunervirus"                     "Burkholderia cepacia"           </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   [5] "Butyrate-Producing Bacteria"     "COGEM pathogenicity rating 1"   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   [7] "COGEM pathogenicity rating 2"    "COGEM pathogenicity rating 3"   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   [9] "Caries"                          "Conjunctivitis"                 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [11] "Extreme environment"             "Flavobacterium psychrophilum"   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [13] "Foodborne Illness"               "Furunculosis"                   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [15] "Gangrene"                        "Gastroenteritis"                </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [17] "Glanders"                        "Gonorrhea"                      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [19] "Haemophilus"                     "Health associated"              </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [21] "Infertility"                     "Inflammation"                   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [23] "Lyme Disease"                    "Microcystis aeruginosa"         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [25] "Mycobacterial Infection"         "Periodontal disorder"           </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [27] "Plant chlorosis"                 "Reaction to Leaf spot"          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [29] "Sphingolipid producing"          "Terrabacteria group"            </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [31] "Toxic Shock Syndrome"            "Tuberculosis"                   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [33] "Tumor"                           "abortion"                       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [35] "abscess"                         "acetate producing"              </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [37] "acidic"                          "acrodermatitis"                 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [39] "african tick-bite fever"         "alkaline"                       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [41] "anaplasmosis"                    "anemia"                         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [43] "anthrax"                         "antimicrobial sensitivity"      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [45] "atypical pneumonia"              "average"                        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [47] "bacillary angiomatosis"          "bacillus"                       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [49] "bacteremia"                      "bacterial leaf blight"          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [51] "bacterial vaginosis"             "bartonellosis"                  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [53] "biofilm formation"               "blood infection"                </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [55] "bordetellosis"                   "botulism"                       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [57] "branched"                        "brucellosis"                    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [59] "canker"                          "cat scratch fever"              </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [61] "cell chain"                      "cell cluster"                   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [63] "cell lysis"                      "cholera"                        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [65] "chronic granulomatous disease"   "coccus"                         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [67] "colitis"                         "crown gall"                     </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [69] "cystitis"                        "diarrhea"                       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [71] "diphtheria"                      "duodenal lesions"               </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [73] "dysentery"                       "ehrlichiosis"                   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [75] "elliptic"                        "encephalitis"                   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [77] "endocarditis"                    "endospore"                      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [79] "erysipelas"                      "fast"                           </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [81] "fever"                           "filamentous"                    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [83] "gastroenteritis"                 "heartwater"                     </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [85] "human granulocytic anaplasmosis" "hydrogen gas producing"         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [87] "infection"                       "kidney disease"                 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [89] "lactate producing"               "large"                          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [91] "legionnaire's disease"           "leprosy"                        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [93] "mastitis"                        "medium"                         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [95] "melioidosis"                     "meningitis"                     </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [97] "meningoencephalitis"             "neutral"                        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [99] "paired cells"                    "palisade"                       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [101] "plague"                          "plant pathogenity"              </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [103] "pneumonia"                       "polyarthritis"                  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [105] "pyelonephritis"                  "reaction to black rot"          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [107] "respiratory infection"           "respiratory system disease"     </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [109] "reverse Y-branched filaments"    "rosettes"                       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [111] "septicemia"                      "sigmoid"                        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [113] "single"                          "skin irritation"                </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [115] "slow"                            "small"                          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [117] "sorghum"                         "spirillum"                      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [119] "syphilis"                        "tetrads"                        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [121] "toxin"                           "trench fever"                   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [123] "tuberculosis"                    "tumors"                         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [125] "typhoid"                         "typhus"                         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [127] "ulcer"                           "unbranched"                     </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [129] "urinary tract infection"         "v-formation"                    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [131] "very alkaline"                   "very large"                     </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [133] "very small"                     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   [1] "10% salts"                              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   [2] "20% salts"                              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   [3] "30% salts"                              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   [4] "5% salts"                               </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   [5] "5% sheep blood agar"                    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   [6] "Acne"                                   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   [7] "Arthritis"                              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   [8] "Blunervirus"                            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   [9] "Burkholderia cepacia"                   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [10] "Butyrate-Producing Bacteria"            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [11] "CAMP test"                              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [12] "COGEM pathogenicity rating 1"           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [13] "COGEM pathogenicity rating 2"           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [14] "COGEM pathogenicity rating 3"           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [15] "Caries"                                 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [16] "Conjunctivitis"                         </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [17] "DSMZ Medium 1000"                       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [18] "Extreme environment"                    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [19] "Flavobacterium psychrophilum"           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [20] "Foodborne Illness"                      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [21] "Furunculosis"                           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [22] "Gangrene"                               </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [23] "Gastroenteritis"                        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [24] "Glanders"                               </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [25] "Gonorrhea"                              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [26] "Haemophilus"                            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [27] "Health associated"                      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [28] "Infertility"                            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [29] "Inflammation"                           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [30] "Lyme Disease"                           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [31] "Microcystis aeruginosa"                 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [32] "Mycobacterial Infection"                </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [33] "Periodontal disorder"                   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [34] "Plant chlorosis"                        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [35] "Reaction to Leaf spot"                  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [36] "Sphingolipid producing"                 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [37] "Terrabacteria group"                    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [38] "Toxic Shock Syndrome"                   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [39] "Tuberculosis"                           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [40] "Tumor"                                  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [41] "ZoBell marine agar"                     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [42] "abortion"                               </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [43] "abscess"                                </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [44] "acetate producing"                      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [45] "acidic"                                 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [46] "acrodermatitis"                         </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [47] "aerobic"                                </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [48] "aerotolerant"                           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [49] "african tick-bite fever"                </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [50] "alkaline"                               </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [51] "alpha"                                  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [52] "anaerobic"                              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [53] "anaplasmosis"                           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [54] "anemia"                                 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [55] "animal pathogen"                        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [56] "anthrax"                                </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [57] "antimicrobial sensitivity"              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [58] "artificial seawater"                    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [59] "asp-2"                                  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [60] "atypical pneumonia"                     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [61] "average"                                </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [62] "bacillary angiomatosis"                 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [63] "bacillus"                               </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [64] "bacteremia"                             </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [65] "bacterial leaf blight"                  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [66] "bacterial vaginosis"                    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [67] "bartonellosis"                          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [68] "bent filament"                          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [69] "beta"                                   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [70] "bg11"                                   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [71] "biofilm formation"                      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [72] "biosafety level 1"                      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [73] "biosafety level 2"                      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [74] "biosafety level 3"                      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [75] "blood infection"                        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [76] "bordetellosis"                          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [77] "botulism"                               </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [78] "brackish microbiological culture medium"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [79] "branched"                               </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [80] "brucellosis"                            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [81] "c"                                      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [82] "canker"                                 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [83] "casitone-yeast extract agar"            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [84] "cat scratch fever"                      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [85] "cell chain"                             </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [86] "cell cluster"                           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [87] "cell lysis"                             </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [88] "charcoal-yeast extract"                 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [89] "chocolate agar"                         </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [90] "cholera"                                </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [91] "chronic granulomatous disease"          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [92] "clavate"                                </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [93] "coccobacillus"                          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [94] "coccus"                                 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [95] "colitis"                                </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [96] "conway"                                 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [97] "crown gall"                             </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [98] "cystitis"                               </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [99] "defined microbiological culture medium" </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [100] "diarrhea"                               </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [101] "diphtheria"                             </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [102] "discoid"                                </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [103] "dumbbell-shaped"                        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [104] "duodenal lesions"                       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [105] "dysentery"                              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [106] "ehrlichiosis"                           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [107] "elliptic"                               </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [108] "encephalitis"                           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [109] "endocarditis"                           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [110] "endospore"                              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [111] "erysipelas"                             </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [112] "facultatively anaerobic"                </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [113] "fast"                                   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [114] "fever"                                  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [115] "filamentous"                            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [116] "fildes enrichment"                      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [117] "flat"                                   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [118] "gamma"                                  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [119] "gastroenteritis"                        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [120] "gram stain negative"                    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [121] "gram stain positive"                    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [122] "gram stain variable"                    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [123] "gse"                                    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [124] "heart infusion agar"                    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [125] "heartwater"                             </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [126] "human granulocytic anaplasmosis"        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [127] "hydrogen gas producing"                 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [128] "hyperthermophile"                       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [129] "infection"                              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [130] "kidney disease"                         </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [131] "lactate producing"                      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [132] "large"                                  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [133] "lb agar"                                </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [134] "lb medium"                              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [135] "legionnaire's disease"                  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [136] "leprosy"                                </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [137] "mastitis"                               </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [138] "medium"                                 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [139] "medium 31 agar"                         </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [140] "melioidosis"                            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [141] "meningitis"                             </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [142] "meningoencephalitis"                    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [143] "mesophile"                              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [144] "modified shieh agar"                    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [145] "motility"                               </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [146] "mrs broth"                              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [147] "mueller-hinton"                         </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [148] "neutral"                                </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [149] "nutrient broth"                         </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [150] "paired cells"                           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [151] "palisade"                               </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [152] "pathogenicity human"                    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [153] "plague"                                 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [154] "plant pathogenity"                      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [155] "pleiomorphic cell"                      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [156] "pneumonia"                              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [157] "polyarthritis"                          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [158] "polyhedral shape"                       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [159] "psychrophile"                           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [160] "pyelonephritis"                         </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [161] "pyg medium"                             </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [162] "reaction to black rot"                  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [163] "rectangle"                              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [164] "respiratory infection"                  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [165] "respiratory system disease"             </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [166] "reverse Y-branched filaments"           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [167] "rosettes"                               </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [168] "septicemia"                             </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [169] "sigmoid"                                </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [170] "single"                                 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [171] "skin irritation"                        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [172] "slow"                                   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [173] "sm agar"                                </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [174] "small"                                  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [175] "sorghum"                                </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [176] "spirillum"                              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [177] "spore formation"                        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [178] "staley pyg"                             </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [179] "staphylococcus"                         </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [180] "syphilis"                               </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [181] "tail"                                   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [182] "tetrads"                                </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [183] "tetrahedral"                            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [184] "thermophile"                            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [185] "toxin"                                  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [186] "trench fever"                           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [187] "triangle"                               </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [188] "tryptic soy agar"                       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [189] "tryptic soy broth"                      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [190] "tuberculosis"                           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [191] "tumors"                                 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [192] "typhoid"                                </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [193] "typhus"                                 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [194] "u-shaped"                               </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [195] "ulcer"                                  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [196] "unbranched"                             </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [197] "urinary tract infection"                </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [198] "v-formation"                            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [199] "very alkaline"                          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [200] "very large"                             </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [201] "very small"                             </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [202] "wrinkled"                               </span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>

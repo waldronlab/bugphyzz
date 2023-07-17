@@ -120,12 +120,11 @@ insert Zenodo link here &lt;&lt;&lt;</strong>.</p>
 <span><span class="co">#&gt; Registered S3 method overwritten by 'httr':</span></span>
 <span><span class="co">#&gt;   method           from  </span></span>
 <span><span class="co">#&gt;   print.cache_info hoardr</span></span>
-<span><span class="co">#&gt; Replacing previous version downloaded on 2023-07-17 14:25:04.</span></span>
-<span><span class="co">#&gt; Using data downloaded on 2023-07-17 14:27:44.</span></span>
-<span><span class="co">#&gt; Warning: The following named parsers don't match the column names: BacDive_ID,</span></span>
-<span><span class="co">#&gt; Type_strain, PATRIC_ID</span></span>
+<span><span class="co">#&gt; Replacing previous version downloaded on 2023-07-17 18:57:46.</span></span>
+<span><span class="co">#&gt; Using data downloaded on 2023-07-17 19:00:34.</span></span>
+<span><span class="co">#&gt; Warning: The following named parsers don't match the column names: PATRIC_ID</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">bp</span><span class="op">)</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 6 × 20</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 6 × 22</span></span></span>
 <span><span class="co">#&gt;   NCBI_ID Attribute   Score Evidence Taxon_name Attribute_value Attribute_source</span></span>
 <span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span>           <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>           </span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> 207244  acetate pr…     1 asr      Anaerosti… TRUE            <span style="color: #BB0000;">NA</span>              </span></span>
@@ -134,42 +133,56 @@ insert Zenodo link here &lt;&lt;&lt;</strong>.</p>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> 2025494 acetate pr…     1 inh      Anaerosti… TRUE            <span style="color: #BB0000;">NA</span>              </span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> 2738446 acetate pr…     1 inh      Anaerosti… TRUE            <span style="color: #BB0000;">NA</span>              </span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span> 2838461 acetate pr…     1 inh      Candidatu… TRUE            <span style="color: #BB0000;">NA</span>              </span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 13 more variables: Frequency &lt;chr&gt;, Confidence_in_curation &lt;chr&gt;,</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 15 more variables: Frequency &lt;chr&gt;, Confidence_in_curation &lt;chr&gt;,</span></span></span>
 <span><span class="co">#&gt; <span style="color: #949494;">#   Strain &lt;chr&gt;, Attribute_type &lt;chr&gt;, Attribute_group &lt;chr&gt;, Rank &lt;chr&gt;,</span></span></span>
 <span><span class="co">#&gt; <span style="color: #949494;">#   Parent_name &lt;lgl&gt;, Parent_NCBI_ID &lt;lgl&gt;, Parent_rank &lt;lgl&gt;,</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;">#   Genome_ID &lt;lgl&gt;, Accession_ID &lt;lgl&gt;, Note &lt;chr&gt;, Unit &lt;chr&gt;</span></span></span></code></pre></div>
+<span><span class="co">#&gt; <span style="color: #949494;">#   BacDive_ID &lt;chr&gt;, Type_strain &lt;chr&gt;, Genome_ID &lt;lgl&gt;, Accession_ID &lt;lgl&gt;,</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;">#   Note &lt;chr&gt;, Unit &lt;chr&gt;</span></span></span></code></pre></div>
 <div class="section level3">
 <h3 id="explore-wich-attribute-groups-are-available">Explore wich attribute groups are available<a class="anchor" aria-label="anchor" href="#explore-wich-attribute-groups-are-available"></a>
 </h3>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/unique.html" class="external-link">unique</a></span><span class="op">(</span><span class="va">bp</span><span class="op">$</span><span class="va">Attribute_group</span><span class="op">)</span></span>
 <span><span class="co">#&gt;  [1] "acetate producing"                    </span></span>
-<span><span class="co">#&gt;  [2] "antimicrobial sensitivity"            </span></span>
-<span><span class="co">#&gt;  [3] "arrangement"                          </span></span>
-<span><span class="co">#&gt;  [4] "biofilm forming"                      </span></span>
-<span><span class="co">#&gt;  [5] "butyrate producing"                   </span></span>
-<span><span class="co">#&gt;  [6] "COGEM pathogenicity rating"           </span></span>
-<span><span class="co">#&gt;  [7] "disease association"                  </span></span>
-<span><span class="co">#&gt;  [8] "extreme environment"                  </span></span>
-<span><span class="co">#&gt;  [9] "health associated"                    </span></span>
-<span><span class="co">#&gt; [10] "hydrogen gas producing"               </span></span>
-<span><span class="co">#&gt; [11] "lactate producing"                    </span></span>
-<span><span class="co">#&gt; [12] "plant pathogenicity"                  </span></span>
-<span><span class="co">#&gt; [13] "sphingolipid producing"               </span></span>
-<span><span class="co">#&gt; [14] "spore shape"                          </span></span>
-<span><span class="co">#&gt; [15] "coding genes"                         </span></span>
-<span><span class="co">#&gt; [16] "genome size"                          </span></span>
-<span><span class="co">#&gt; [17] "mutation rate per site per generation"</span></span>
-<span><span class="co">#&gt; [18] "optimal ph"</span></span></code></pre></div>
+<span><span class="co">#&gt;  [2] "aerophilicity"                        </span></span>
+<span><span class="co">#&gt;  [3] "animal pathogen"                      </span></span>
+<span><span class="co">#&gt;  [4] "antimicrobial sensitivity"            </span></span>
+<span><span class="co">#&gt;  [5] "arrangement"                          </span></span>
+<span><span class="co">#&gt;  [6] "biofilm forming"                      </span></span>
+<span><span class="co">#&gt;  [7] "biosafety level"                      </span></span>
+<span><span class="co">#&gt;  [8] "butyrate producing"                   </span></span>
+<span><span class="co">#&gt;  [9] "COGEM pathogenicity rating"           </span></span>
+<span><span class="co">#&gt; [10] "disease association"                  </span></span>
+<span><span class="co">#&gt; [11] "extreme environment"                  </span></span>
+<span><span class="co">#&gt; [12] "gram stain"                           </span></span>
+<span><span class="co">#&gt; [13] "growth medium"                        </span></span>
+<span><span class="co">#&gt; [14] "health associated"                    </span></span>
+<span><span class="co">#&gt; [15] "hemolysis"                            </span></span>
+<span><span class="co">#&gt; [16] "hydrogen gas producing"               </span></span>
+<span><span class="co">#&gt; [17] "lactate producing"                    </span></span>
+<span><span class="co">#&gt; [18] "motility"                             </span></span>
+<span><span class="co">#&gt; [19] "pathogenicity human"                  </span></span>
+<span><span class="co">#&gt; [20] "plant pathogenicity"                  </span></span>
+<span><span class="co">#&gt; [21] "shape"                                </span></span>
+<span><span class="co">#&gt; [22] "sphingolipid producing"               </span></span>
+<span><span class="co">#&gt; [23] "spore formation"                      </span></span>
+<span><span class="co">#&gt; [24] "spore shape"                          </span></span>
+<span><span class="co">#&gt; [25] "coding genes"                         </span></span>
+<span><span class="co">#&gt; [26] "genome size"                          </span></span>
+<span><span class="co">#&gt; [27] "growth temperature"                   </span></span>
+<span><span class="co">#&gt; [28] "length"                               </span></span>
+<span><span class="co">#&gt; [29] "mutation rate per site per generation"</span></span>
+<span><span class="co">#&gt; [30] "optimal ph"                           </span></span>
+<span><span class="co">#&gt; [31] "width"</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="explore-which-attribute-signatures-are-available">Explore which attribute signatures are available<a class="anchor" aria-label="anchor" href="#explore-which-attribute-signatures-are-available"></a>
 </h3>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/unique.html" class="external-link">unique</a></span><span class="op">(</span><span class="va">bp</span><span class="op">$</span><span class="va">Attribute</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] "acetate producing"         "antimicrobial sensitivity"</span></span>
-<span><span class="co">#&gt; [3] "paired cells"              "single"                   </span></span>
-<span><span class="co">#&gt; [5] "branched"                  "cell cluster"</span></span></code></pre></div>
+<span><span class="co">#&gt; [1] "acetate producing"       "aerobic"                </span></span>
+<span><span class="co">#&gt; [3] "aerotolerant"            "anaerobic"              </span></span>
+<span><span class="co">#&gt; [5] "facultatively anaerobic" "animal pathogen"</span></span></code></pre></div>
 </div>
 </div>
 <div class="section level2">
@@ -185,7 +198,17 @@ aerophilicity<a class="anchor" aria-label="anchor" href="#create-signatures-of-t
 <span>  df <span class="op">=</span> <span class="va">aer</span>, tax.id.type <span class="op">=</span> <span class="st">'NCBI_ID'</span>, tax.level <span class="op">=</span> <span class="st">'species'</span>, min.size <span class="op">=</span> <span class="fl">10</span></span>
 <span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html" class="external-link">map</a></span><span class="op">(</span><span class="va">sigs1</span>, <span class="va">head</span><span class="op">)</span></span>
-<span><span class="co">#&gt; named list()</span></span></code></pre></div>
+<span><span class="co">#&gt; $aerobic</span></span>
+<span><span class="co">#&gt; [1] "100"     "1282440" "1745854" "184075"  "1937790" "2579970"</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $aerotolerant</span></span>
+<span><span class="co">#&gt; [1] "1454184" "1806172" "1398745" "1433543" "1508390" "1522315"</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $anaerobic</span></span>
+<span><span class="co">#&gt; [1] "225625"  "2528964" "2607286" "47492"   "60216"   "640133" </span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $`facultatively anaerobic`</span></span>
+<span><span class="co">#&gt; [1] "1233475" "217067"  "400769"  "425677"  "1123952" "2584524"</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="create-signatures-of-taxa-names-at-the-genus-level-for-growth-temperature">Create signatures of taxa names at the genus level for growth
@@ -197,7 +220,22 @@ temperature<a class="anchor" aria-label="anchor" href="#create-signatures-of-tax
 <span>  df <span class="op">=</span> <span class="va">gt</span>, tax.id.type <span class="op">=</span> <span class="st">'Taxon_name'</span>, tax.level <span class="op">=</span> <span class="st">'genus'</span>, min.size <span class="op">=</span> <span class="fl">10</span></span>
 <span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html" class="external-link">map</a></span><span class="op">(</span><span class="va">sigs2</span>, <span class="va">head</span><span class="op">)</span></span>
-<span><span class="co">#&gt; named list()</span></span></code></pre></div>
+<span><span class="co">#&gt; $hyperthermophile</span></span>
+<span><span class="co">#&gt; [1] "Burkholderia"                "Candidatus Protistobacter"  </span></span>
+<span><span class="co">#&gt; [3] "Candidatus Vallotia"         "Caenibaculum"               </span></span>
+<span><span class="co">#&gt; [5] "Candidatus Xiphinematincola" "Zeimonas"                   </span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $mesophile</span></span>
+<span><span class="co">#&gt; [1] "Ancylobacter" "Xanthobacter" "Labrys"       "Aquabacter"   "Starkeya"    </span></span>
+<span><span class="co">#&gt; [6] "Azorhizobium"</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $psychrophile</span></span>
+<span><span class="co">#&gt; [1] "Xanthobacter"      "Labrys"            "Aquabacter"       </span></span>
+<span><span class="co">#&gt; [4] "Methylobacterium"  "Microvirga"        "Psychroglaciecola"</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $thermophile</span></span>
+<span><span class="co">#&gt; [1] "Chelatococcus"         "Tepidamorphus"         "Mabikibacter"         </span></span>
+<span><span class="co">#&gt; [4] "Propylenella"          "Rhabdaerophilum"       "Candidatus Lariskella"</span></span></code></pre></div>
 </div>
 </div>
 <div class="section level2">
