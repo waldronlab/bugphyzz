@@ -135,52 +135,396 @@ meaning of each keyword.</p></dd>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## Create signatures of categorical or binary attributes</span></span></span>
 <span class="r-in"><span><span class="va">bp</span> <span class="op">&lt;-</span> <span class="fu"><a href="importBugphyzz.html">importBugphyzz</a></span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Using data downloaded on 2023-07-10 20:22:05.</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Using data downloaded on 2023-07-17 14:21:22.</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>The following named parsers don't match the column names: BacDive_ID, Type_strain, PATRIC_ID</span>
 <span class="r-in"><span><span class="va">sigs</span> <span class="op">&lt;-</span> <span class="fu">sig_fun</span><span class="op">(</span><span class="va">bp</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html" class="external-link">map</a></span><span class="op">(</span><span class="va">sigs</span>, <span class="va">head</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $`aerophilicity:aerobic`</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1000562" "1001240" "100177"  "1002"    "1002227" "100225" </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $Acne</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1574624" "1747"    "2559073" "2605781" "33010"   "33011"  </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $`aerophilicity:aerotolerant`</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1454184" "1506"    "1656"    "1806172" "100"     "184075" </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $Arthritis</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "731"     "102684"  "102886"  "1071886" "1080071" "1080072"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $`aerophilicity:anaerobic`</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1000568" "1000569" "100133"  "100174"  "1002795" "1004583"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $Blunervirus</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1177982" "187868"  "32040"   "78229"   "80868"   "80869"  </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $`aerophilicity:facultatively_anaerobic`</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1017095" "102684"  "1028752" "1031538" "1034471" "1036133"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`Burkholderia cepacia`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "101571"  "1074049" "1074050" "1074051" "1090375" "1090379"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $`gram_stain:gram_stain_negative`</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "100053"  "1002672" "1002689" "1002691" "1002795" "1003091"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`Butyrate-Producing Bacteria`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "105841"  "1229621" "2025494" "2738446" "2838461" "2838462"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $`gram_stain:gram_stain_positive`</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1001240" "100225"  "1003110" "100379"  "1004261" "100469" </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`COGEM pathogenicity rating 1`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1002233" "1318743" "1443937" "1457016" "1457020" "1460968"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $`gram_stain:gram_stain_variable`</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1052014" "1294267" "129985"  "135193"  "135826"  "137993" </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`COGEM pathogenicity rating 2`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1002233" "1318743" "1443937" "1457016" "1457020" "1460968"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $`growth_temperature:hyperthermophile`</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1006005" "1008460" "1045764" "105851"  "108007"  "108150" </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`COGEM pathogenicity rating 3`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "120576"  "120577"  "1218315" "1462582" "1963359" "215590" </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $`growth_temperature:mesophile`</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "100"     "100053"  "1000562" "1001"    "100133"  "100174" </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $Caries</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1293823" "1329411" "1333651" "1454229" "1505727" "158787" </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $`growth_temperature:psychrophile`</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1001240" "1002691" "1002795" "1003092" "1004305" "1005925"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $Conjunctivitis</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "171286" "171287" "171288" "2100"   "2118"   "2120"  </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $`growth_temperature:thermophile`</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1003997" "1006576" "1016997" "106262"  "1076937" "108819" </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`Extreme environment`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "120576"  "120577"  "1218315" "1462582" "1963359" "215590" </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`Flavobacterium psychrophilum`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1038845" "1069983" "1101402" "1114861" "1114867" "1114870"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`Foodborne Illness`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "28901"   "54736"   "101332"  "1033734" "1069116" "1071718"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $Furunculosis</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1006623" "105751"  "1114880" "1543375" "1917144" "1917145"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $Gangrene</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "100174"  "1054297" "1121298" "113231"  "113232"  "113233" </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $Gastroenteritis</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "168471"  "1499973" "208962"  "223381"  "2562891" "2608867"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $Glanders</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "101571"  "1074049" "1074050" "1074051" "1090375" "1090379"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $Gonorrhea</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1107316" "1470200" "1815583" "1853276" "1853278" "1906581"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`Health associated`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1078480" "123834"  "1461579" "197575"  "249188"  "2582921"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $Infertility</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1031542" "119231"  "1244531" "1448857" "1655500" "1780362"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $Inflammation</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "120576"  "120577"  "1218315" "1462582" "1963359" "215590" </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`Lyme Disease`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "100177"  "1196056" "1245910" "139"     "1674146" "1964448"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`Microcystis aeruginosa`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1081880" "1081884" "109615"  "1126"    "1224627" "1224629"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`Mycobacterial Infection`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1069220" "1069221" "1798"    "110505"  "1138383" "120959" </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`Periodontal disorder`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1285782" "138851"  "156"     "158"     "162"     "163"    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`Reaction to Leaf spot`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1321368" "1720302" "1843580" "1843581" "1885674" "1985254"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`Sphingolipid producing`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1045317" "1069987" "1104779" "1123978" "1141887" "1141888"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`Terrabacteria group`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1273132" "1968796" "2020335" "2884028" "309868"  "34020"  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`Toxic Shock Syndrome`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1276936" "1280"    "1281"    "1282"    "1284"    "1285"   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $Tuberculosis</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1069220" "1069221" "1798"    "110505"  "1138383" "120959" </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $Tumor</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1176649" "1183401" "1183410" "1183412" "1183413" "147266" </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $abortion</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "120576"  "120577"  "1218315" "1462582" "1963359" "215590" </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $abscess</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "133448"  "1563222" "1585982" "1639133" "1748967" "1914243"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`acetate producing`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "105841"  "1229621" "2025494" "2738446" "2838461" "2838462"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $acidic</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1035271" "1076926" "1079800" "1120045" "1132659" "1132695"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $acrodermatitis</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "100177"  "1196056" "1245910" "1674146" "1964448" "2714833"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`african tick-bite fever`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1055029" "1068590" "1085403" "1090944" "109232"  "1104448"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $alkaline</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "121290"  "2665159" "48292"   "51670"   "51783"   "53398"  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $anaplasmosis</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "142058"  "1562740" "1699625" "1779476" "186733"  "1937801"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $anemia</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "112247"  "114882"  "1179777" "1312741" "1331996" "136241" </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $anthrax</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "101332"  "1033734" "1069116" "1071718" "1081598" "108527" </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`antimicrobial sensitivity`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1004279" "1085774" "1165689" "1208188" "1209948" "1209954"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $average</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "110"     "186280"  "225625"  "2528964" "2607286" "280"    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`bacillary angiomatosis`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1002233" "111504"  "1318743" "1443937" "1457016" "1457020"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $bacillus</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "338584"  "138336"  "1470358" "1550231" "1550233" "1564162"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $bacteremia</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1542390" "2007306" "2016517" "2249302" "2599927" "28110"  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`bacterial leaf blight`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1177982" "187868"  "32040"   "78229"   "80867"   "80868"  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $bartonellosis</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1002233" "111504"  "1318743" "1443937" "1457016" "1457020"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`biofilm formation`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1513892" "200617"  "2897386" "2897784" "356849"  "356850" </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`blood infection`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1255683" "128780"  "1450134" "148630"  "1685415" "2045214"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $bordetellosis</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "103855"  "123899"  "1331258" "1416810" "1649130" "1649133"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $botulism</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "100174"  "1054297" "1121298" "113231"  "113232"  "113233" </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $branched</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1003091" "1003092" "1010610" "107400"  "1141884" "1176176"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $brucellosis</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "120576"  "120577"  "1218315" "1462582" "1963359" "215590" </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $canker</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1321368" "1720302" "1843580" "1843581" "1885674" "1985254"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`cat scratch fever`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1002233" "111504"  "1318743" "1443937" "1457016" "1457020"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`cell chain`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1462582" "1963359" "215590"  "2448455" "2479765" "255457" </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`cell cluster`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1034"    "1035"    "151414"  "211460"  "2712852" "290"    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`cell lysis`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1007099" "101564"  "104087"  "1055468" "1055469" "1076620"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $cholera</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1004316" "1004322" "1004326" "104609"  "1046128" "1074311"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $coccus</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1230528" "1479025" "253184"  "2593663" "316335"  "552903" </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $colitis</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1499973" "208962"  "223381"  "2562891" "2608867" "2762229"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`crown gall`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1848972" "2934936" "3025782" "78527"   "887144" </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $cystitis</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1499973" "208962"  "223381"  "2562891" "2608867" "2762229"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $diarrhea</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1071719" "1108595" "1382803" "1778675" "1903179" "2073169"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $diphtheria</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1032851" "1050174" "1072256" "108486"  "1121358" "1190508"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`duodenal lesions`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "104628" "104629" "123841" "135569" "135960" "137778"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $dysentery</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "621"     "622"     "623"     "624"     "1813821" "171286" </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ehrlichiosis</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1242993" "1699626" "170541"  "1779482" "179101"  "1926499"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $elliptic</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "338584"  "1070425" "2575442" "2696284" "28444"   "295585" </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $encephalitis</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "102862"  "1574161" "183417"  "184072"  "1973495" "1987580"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $endocarditis</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1276936" "1280"    "1281"    "1284"    "1285"    "1286"   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $endospore</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1654476" "2780383" "84725"   "1001240" "1259145" "1259150"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $erysipelas</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1514105" "1648"    "225084"  "2485784" "2683713" "2683714"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $fast</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1114980" "1963034" "2133"    "2134"    "2136"    "2137"   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $fever</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "120576"  "120577"  "1218315" "1462582" "1963359" "215590" </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $filamentous</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "103733"  "103734"  "1049182" "1051531" "1105145" "1280637"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $gastroenteritis</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "28901"   "54736"   "1081880" "1081884" "109615"  "1126"   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $heartwater</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1242993" "1699626" "170541"  "1779482" "179101"  "1926499"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`human granulocytic anaplasmosis`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "142058"  "1562740" "1699625" "1779476" "186733"  "1937801"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`hydrogen gas producing`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "105841"  "1229621" "2025494" "2738446" "2838461" "2838462"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $infection</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "120576"  "120577"  "1218315" "1462582" "1963359" "215590" </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`lactate producing`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "105841"  "1229621" "2025494" "2738446" "2838461" "2838462"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $large</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "110"     "186280"  "225625"  "2528964" "2607286" "280"    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`legionnaire's disease`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1002363" "1034382" "1034384" "1034385" "1034400" "1090087"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $leprosy</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "100053"  "1137606" "1193500" "172"     "173"     "174"    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $mastitis</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1276936" "1280"    "1281"    "1284"    "1285"    "1286"   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $medium</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1249558" "1380046" "1679497" "2010972" "2035993" "2055137"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $melioidosis</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "101571"  "1074049" "1074050" "1074051" "1090375" "1090379"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $meningitis</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "102684"  "102886"  "1071886" "1080071" "1080072" "1111760"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $meningoencephalitis</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "133448"  "1563222" "1585982" "1639133" "1748967" "1914243"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $neutral</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1034"    "151414"  "211460"  "2712852" "290"     "324687" </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`paired cells`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "266121" "921"    "144191" "200476" "269069" "29427" </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $palisade</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1031"    "111769"  "111770"  "111773"  "2735563" "2799668"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $plague</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1288385" "1341643" "1604335" "2339259" "2607663" "263819" </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`plant pathogenity`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1183401" "1183410" "1183412" "1183413" "1585697" "160699" </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $pneumonia</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "101571"  "1074049" "1074050" "1074051" "1090375" "1090379"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $pyelonephritis</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "102862"  "1574161" "183417"  "184072"  "1973495" "1987580"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`reaction to black rot`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1321368" "1720302" "1843580" "1843581" "1885674" "1985254"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`respiratory infection`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "103855"  "123899"  "1331258" "1416810" "1649130" "1649133"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`respiratory system disease`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1255683" "128780"  "1450134" "148630"  "1685415" "2045214"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`reverse Y-branched filaments`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "72174"   "517722"  "1634516" "1365628" "2708343" "2837491"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $rosettes</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "106334" "331308" "426"    "428"    "107636" "136993"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $septicemia</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1071719" "1108595" "1382803" "1778675" "1903179" "2073169"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $single</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "266121"  "921"     "1324945" "1811518" "2781738" "469547" </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`skin irritation`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1081880" "1081884" "109615"  "1126"    "1224627" "1224629"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $slow</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1173585" "1446476" "1685378" "1685379" "1715692" "2583820"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $small</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "2054173" "426622"  "101530"  "101533"  "108080"  "223232" </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sorghum</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1177982" "187868"  "32040"   "78229"   "80867"   "80868"  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $syphilis</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1285782" "138851"  "156"     "160"     "162"     "163"    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $tetrads</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "2589815" "57000"   "57001"   "57002"   "57003"   "1288392"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $toxin</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1130819" "1145276" "1173107" "1293441" "1368476" "1421"   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`trench fever`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1002233" "111504"  "1318743" "1443937" "1457016" "1457020"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $tuberculosis</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1069220" "1069221" "1798"    "110505"  "1138383" "120959" </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $tumors</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "104628" "104629" "123841" "135569" "135960" "137778"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $typhus</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1055029" "1068590" "1085403" "1090944" "109232"  "1104448"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ulcer</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1078480" "123834"  "1461579" "197575"  "249188"  "2582921"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $unbranched</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1217274" "1395890" "2565365" "260084"  "347481"  "76891"  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`urinary tract infection`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "102862"  "1574161" "183417"  "184072"  "1973495" "1987580"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`v-formation`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "120213"  "120298"  "1588641" "2056433" "1365628" "2708343"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`very alkaline`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "2570355" "2606218" "2836868" "406020"  "92246"   "932"    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`very large`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1003091" "1003092" "1010610" "107400"  "1141884" "114616" </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`very small`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "884215"  "1048758" "428411"  "428412"  "9"       "114186" </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## Create signatures of numeric attributes</span></span></span>
 <span class="r-in"><span><span class="va">bp_num</span> <span class="op">&lt;-</span> <span class="fu"><a href="importBugphyzzNumeric.html">importBugphyzzNumeric</a></span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Downloading, full_dump_numeric.csv.bz2.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Using data downloaded on 2023-07-10 20:22:16.</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>download failed</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span>   web resource path: ‘https://github.com/waldronlab/bugphyzzExports/raw/main/full_dump_numeric.csv.bz2’</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span>   local file path: ‘/github/home/.cache/R/bugphyzz/f17743c66b4_full_dump_numeric.csv.bz2’</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span>   reason: Not Found (HTTP 404).</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>bfcadd() failed; resource removed</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span>   rid: BFC2</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span>   fpath: ‘https://github.com/waldronlab/bugphyzzExports/raw/main/full_dump_numeric.csv.bz2’</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span>   reason: download failed</span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in .util_download(x, rid[i], proxy, config, "bfcadd()", ...):</span> bfcadd() failed; see warnings()</span>
 <span class="r-in"><span><span class="va">num_sigs</span> <span class="op">&lt;-</span> <span class="fu">flatten</span><span class="op">(</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html" class="external-link">map</a></span><span class="op">(</span><span class="va">bp_num</span>, <span class="va">sig_fun</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in eval(expr, envir, enclos):</span> object 'bp_num' not found</span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">lapply</a></span><span class="op">(</span><span class="va">num_sigs</span>, <span class="va">head</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $growth_temperature</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "100"     "100053"  "1000562" "1001"    "1001240" "100133" </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in eval(expr, envir, enclos):</span> object 'num_sigs' not found</span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
