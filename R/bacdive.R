@@ -1,21 +1,11 @@
 
-## Main function for importing BacDive
-.getBacDive <- function(verbose = FALSE ) {
-  bacdive_data <- .importBacDiveExcel(verbose = verbose)
-  colnames(bacdive_data) <- .changeBDColNames(colnames(bacdive_data))
-  .getTidyBD(bacdive_data)
-}
+# Get BacDive -------------------------------------------------------------
 
 ## Helper function for .getBacDive
-.importBacDiveExcel <- function(verbose = TRUE) {
-  if (verbose)
-    message('Importing BacDive...')
-  url <- 'https://docs.google.com/spreadsheets/d/1smQTi1IKt4wSGTrGTW25I6u47M5txZkq/export?format=csv'
-  bacdive_data <- .cleanBD(utils::read.csv(url))
-  bacdive_data
-}
-
-## Helper function for .getBacDive
+## This function removes the X columns, which were added because of errors
+## in the data. Since the rows filled in those X columns have pontentially
+## altered the data in the other fields, those rows will be removed along
+## with the X columns.
 .cleanBD <- function(df) {
   x_cols <- colnames(df)[grep('X', colnames(df))]
   output <- vector('list', length(x_cols))
@@ -27,6 +17,17 @@
 }
 
 ## Helper function for .getBacDive
+## This imports the current BacDive data on the spreadsheets
+.importBacDiveExcel <- function(verbose = FALSE) {
+  if (verbose)
+    message('Importing BacDive...')
+  url <- 'https://docs.google.com/spreadsheets/d/1smQTi1IKt4wSGTrGTW25I6u47M5txZkq/export?format=csv'
+  bacdive_data <- .cleanBD(utils::read.csv(url))
+  bacdive_data
+}
+
+## Helper function for .getBacDive
+## Function to change headers to the same ones used in bugphyzz
 .changeBDColNames <- function(x) {
   dplyr::case_when(
     x == 'bacdive_id' ~ 'BacDive_ID',
@@ -47,13 +48,12 @@
 .getTidyBD <- function(bacdive_data) {
   bacdive_data |>
     tidyr::pivot_longer(
-      cols = .data$gram_stain:tidyr::last_col(),
+      cols = .data$gram_stain:tidyr::last_col(), # Attributes start in the gram_stain column
       names_to = 'Attribute', values_to = 'Attribute_value'
     ) |>
     dplyr::filter(.data$Attribute_value != '') |>
     dplyr::mutate(Attribute = gsub('_', ' ', .data$Attribute)) |>
     dplyr::mutate(
-      ## TODO Matching of attribute to those in the spreadsheets goes here
       Attribute = dplyr::case_when(
         .data$Attribute == 'oxygen tolerance' ~ 'aerophilicity',
         .data$Attribute == 'cell shape' ~ 'shape',
@@ -65,8 +65,29 @@
     dplyr::distinct()
 }
 
+## Main function for importing BacDive
+.getBacDive <- function(verbose = FALSE ) {
+  bacdive_data <- .importBacDiveExcel(verbose = verbose)
+  colnames(bacdive_data) <- .changeBDColNames(colnames(bacdive_data))
+  .getTidyBD(bacdive_data)
+}
+
+# Reshape BacDive ---------------------------------------------------------
+
+## Helper function for .reshapeBacDive
+## Categorical to logical
+## This should only apply to logical attributes
+.catToLog <- function(df) {
+  df[['Attribute_group']] <- df[['Attribute']]
+  df[['Attribute']] <- df[['Attribute_value']]
+  df[['Attribute_value']] <- TRUE
+  df[['Attribute_type']] <- 'logical'
+  return(df)
+}
+
 ## Function for getting a list of data.frames (one per attribute)
 ## This function works over several datasets.
+## Since each dataset is different, the code below is long.
 .reshapeBacDive <- function(df) {
 
   df[['Attribute_source']] <- 'BacDive'
@@ -85,6 +106,7 @@
   }
 
   ## aerophilicity
+  ## This is only to match the data in the bugphyzz spreadsheet
   aer <- split_df[['aerophilicity']]
   aer$Attribute <- dplyr::case_when(
     aer$Attribute == 'aerobe' ~ 'aerobic',
@@ -121,6 +143,7 @@
   split_df[['biosafety level comment']] <- NULL
 
   ## colony color
+  ## This one must be removed
   split_df[['colony color']] <- NULL
 
   ## cultivation medium used - growth medium
@@ -206,15 +229,8 @@
     )
 
   ## incubation period
+  ## This one must be removed
   split_df[['incubation period']] <- NULL
-  # ip <- split_df[['incubation period']]
-  # ip[['Unit']] <- 'days'
-  # ip[['Attribute_value']] <- ip[['Attribute_value']] |>
-  #   stringr::str_remove(' .*day.*$') |>
-  #   stringr::str_squish()
-  # ip[['Attribute_group']] <- 'incubation period'
-  # ip[['Attribute_type']] <- 'range'
-  # split_df[['incubation period']] <- ip
 
   ## motility
   split_df[['motility']] <- split_df[['motility']] |>
@@ -236,7 +252,6 @@
   pat[['Attribute_group']] <- 'pathogenicity human'
   pat[['Attribute_type']] <- 'logical'
   split_df[['pathogenicity human']] <- pat
-
 
   ## metabolite production
   mp <- split_df[['metabolite production']]
@@ -314,12 +329,3 @@
 
   return(split_df)
 }
-
-.catToLog <- function(df) {
-  df[['Attribute_group']] <- df[['Attribute']]
-  df[['Attribute']] <- df[['Attribute_value']]
-  df[['Attribute_value']] <- TRUE
-  df[['Attribute_type']] <- 'logical'
-  return(df)
-}
-

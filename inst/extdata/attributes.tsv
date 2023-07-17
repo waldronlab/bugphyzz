@@ -101,21 +101,21 @@
 "aquatic biome"	"habitat"	"logical"	"ENVO:00002030"	"A biome which is determined by a water body and which has ecological climax communities adapted to life in or on water."
 "intestinal microflora"	"habitat"	"logical"	"NCIT:C93019"	"Bacteria and other organisms that live inside the intestines. They help digest food. Vitamins such as biotin and vitamin K are made by gut flora."
 "air"	"habitat;isolation site"	"logical"	"ENVO:00002005"	"The mixture of gases (roughly (by molar content/volume: 78% nitrogen, 20.95% oxygen, 0.93% argon, 0.038% carbon dioxide, trace amounts of other gases, and a variable amount (average around 1%) of water vapor) that surrounds the planet Earth"
-"horse blood agar"	""	"logical"	"MICRO:0000096"	"A solid microbiological culture medium (a blood agar), containing horse blood"
+"horse blood agar"	NA	"logical"	"MICRO:0000096"	"A solid microbiological culture medium (a blood agar), containing horse blood"
 "10% salts"	"growth medium"	"logical"	NA	NA
 "20% salts"	"growth medium"	"logical"	NA	NA
 "30% salts"	"growth medium"	"logical"	NA	NA
 "5% salts"	"growth medium"	"logical"	NA	NA
 "5% sheep blood agar"	"growth medium"	"logical"	NA	NA
 "asp-2"	"growth medium"	"logical"	NA	NA
-"basal salts"	""	"logical"	NA	NA
+"basal salts"	NA	"logical"	NA	NA
 "bg11"	"growth medium"	"logical"	"MICRO:0001348"	"A liquid, mineral-salts microbiological culture medium. Used to support the autotrophic growth of cyanobacteria."
 "c"	"growth medium"	"logical"	NA	NA
 "casitone-yeast extract agar"	"growth medium"	"logical"	NA	NA
 "charcoal-yeast extract"	"growth medium"	"logical"	NA	NA
 "conway"	"growth medium"	"logical"	NA	NA
 "defined microbiological culture medium"	"growth medium"	"logical"	"MICRO:0000068"	"A chemically defined microbiological culture medium where all chemicals used are known. Does not contain any plant, animal, or microbiological cell extracts."
-"defined medium plus 1 mM glycine betaine"	""	"logical"	NA	NA
+"defined medium plus 1 mM glycine betaine"	NA	"logical"	NA	NA
 "artificial seawater"	"growth medium"	"logical"	"MICRO:0001715"	"An inorganic salts solution that mimics sea water."
 "fildes enrichment"	"growth medium"	"logical"	"MICRO:0001597"	"Blood medium ingredient comprised of a peptic digest of sheep (Ovis aries) or horse (Equus caballus) blood, serves as a source of hemin and NAD (nicotinamide adenine dinucleotide). Used in the cultivation of microorganisms."
 "nutrient broth"	"growth medium;metabolite utilization"	"logical"	"MICRO:0000082"	"An organic-rich, liquid culture medium comprised of beef extract and peptone."
@@ -125,11 +125,11 @@
 "brackish microbiological culture medium"	"growth medium"	"logical"	"MICRO:0000483"	"A microbiological culture medium that has a salinity of greater than 0.05 % salts and less than 3% salts."
 "lb agar"	"growth medium"	"logical"	"MICRO:0000563"	"An organic-rich, solid microbiological culture medium containing tryptone, yeast extract, and sodium chloride. Used to cultivate Escherichia coli."
 "medium 31 agar"	"growth medium"	"logical"	NA	NA
-"zobell marine agar"	""	"logical"	"MICRO:0000112"	"An organic-rich, mineral-salts, solid microbiological culture medium containing peptones and yeast extract in a base of artificial sea water. Used for the cultivation of heterotrophic marine microorganisms. Zobell Marine Agar 2216 Zobell Marine Agar 2216 is recommended for cultivation, isolation and enumeration of heterotrophic marine bacteria."
+"zobell marine agar"	NA	"logical"	"MICRO:0000112"	"An organic-rich, mineral-salts, solid microbiological culture medium containing peptones and yeast extract in a base of artificial sea water. Used for the cultivation of heterotrophic marine microorganisms. Zobell Marine Agar 2216 Zobell Marine Agar 2216 is recommended for cultivation, isolation and enumeration of heterotrophic marine bacteria."
 "DSMZ Medium 1000"	"growth medium"	"logical"	"MICRO:0001609"	"A minerals-salts, liquid culture medium comprised of sodium chloride, potassium phosphate, calcium chloride, ammonium chloride, magnesium sulfate, magnesium chloride, potassium chloride, ferric sulfate, nickel chloride, sotium selenate, sodium silicate, and trace minerals. Prepared under at atmosphere of hydrogen and carbon dioxide."
 "lb medium"	"growth medium"	"logical"	"MICRO:0000562"	"An organic-rich, liquid microbiological culture medium containing tryptone, yeast extract, and sodium chloride. Used to cultivate Escherichia coli."
 "modified shieh agar"	"growth medium"	"logical"	NA	NA
-"mrs agar"	""	"logical"	"MICRO:0000554"	"A slightly-acidic, organic-rich, solid microbiological culture medium containing peptones, egg extract, yeast extract, glucose, Tween 80, and minerals salts. Used for the cultivation of Lactobacilli."
+"mrs agar"	NA	"logical"	"MICRO:0000554"	"A slightly-acidic, organic-rich, solid microbiological culture medium containing peptones, egg extract, yeast extract, glucose, Tween 80, and minerals salts. Used for the cultivation of Lactobacilli."
 "mueller-hinton"	"growth medium"	"logical"	"MICRO:0000557"	"An organic-rich, solid microbiological culture medium containing beef extract, casein hydrolysate, and starch. Used for the cultivation of Neisseria."
 "pyg medium"	"growth medium"	"logical"	"MICRO:0000547"	"An organic-rich, liquid microbiological culture medium containing casitone and yeast extract. Used for the growth of Pseudarcicella sp"
 "sm agar"	"growth medium"	"logical"	"MICRO:000531"	"A liquid microbiological culture medium containing gelatin, magnesium sulfate, and sodium chloride. Used for the storage and dilution of Escherichia coli bacteriophage lambda."
@@ -147,7 +147,7 @@
 "single"	"arrangement"	"logical"	"NCIT:C48440"	"Not accompanied by another or others; exclusive of anyone or anything else"
 "tetrads"	"arrangement"	"logical"	"MICRO:0000374"	"A multicellular prokaryotic morphological quality where cells are attached to one another in multiples of four. Forms when cell division occurs in two planes at right angles to one another."
 "unbranched"	"arrangement"	"logical"	"PATO:0000414"	"A branchiness quality inhering in a bearer by virtue of the bearer's lacking branches."
-"V-branched filaments"	""	"logical"	"MICRO:0000127"	"True-branched filaments, where an apical cell divides longitudinally, from which grows obliquely two equivalent branches."
+"V-branched filaments"	NA	"logical"	"MICRO:0000127"	"True-branched filaments, where an apical cell divides longitudinally, from which grows obliquely two equivalent branches."
 "reverse Y-branched filaments"	"arrangement"	"logical"	"MICRO:0000128"	"True-branched filaments, where branches arise in the intercalary (medial) cells after oblique cell division at an intercalary (medial cell)."
 "bent filament"	"shape"	"logical"	"MICRO:0000389"	"A filament shape where the filament has an appearance of being bent at an angle."
 "clavate"	"shape"	"logical"	"PATO:0001883"	"A concave 3-D shape quality inhering in a bearer by virtue of the bearer's gradually becoming thicker towards the end."
@@ -164,10 +164,10 @@
 "rectangle"	"shape"	"logical"	"SIO:000518"	"A rectangle is a quadrilateral in which one pair of line segments are parallel and the other pair are perpendicular to the first pair."
 "tetrahedral"	"shape"	"logical"	"ENM:9000065"	NA
 "triangle"	"shape"	"logical"	"SIO:000520"	"A triangle is a polygon composed of three points and three line segments, in which each point is fully connected to another point along through the line segment."
-"vibriod cells"	""	"logical"	"MICRO:0000414"	"A prokaryotic cell, being a bacillus where the elongated axis of the cells is curved (but not spiral)."
+"vibriod cells"	NA	"logical"	"MICRO:0000414"	"A prokaryotic cell, being a bacillus where the elongated axis of the cells is curved (but not spiral)."
 "wrinkled"	"shape"	"logical"	"PATO:0001810"	"A grooved texture quality inhering in a bearer by virtue of the bearer's being marked by one or more creases in a normally smooth surface."
 "animal pathogen"	"animal pathogen"	"logical"	NA	NA
-"extreme environment"	""	"logical"	NA	NA
+"extreme environment"	NA	"logical"	NA	NA
 "COGEM pathogenicity rating"	"COGEM pathogenicity rating"	"integer"	NA	NA
 "antimicrobial sensitivity"	"antimicrobial sensitivity"	"logical"	NA	NA
 "biofilm formation"	"biofilm forming"	"logical"	"APO:0000159"	"The ability to form a layer on solid surfaces with or without other microorganisms."
@@ -179,14 +179,14 @@
 "hydrogen gas producing"	"hydrogen gas producing"	"numeric"	NA	NA
 "width"	"width"	"numeric"	"PATO:0000921"	"A 1-D extent quality which is equal to the distance from one side of an object to another side which is opposite."
 "length"	"length"	"numeric"	"PATO:0000122"	"A 1-D extent quality which is equal to the distance between two points"
-"fatty acid composition"	""	"logical"	NA	NA
+"fatty acid composition"	NA	"logical"	NA	NA
 "human urine"	"habitat;isolation site"	"logical"	"MCO:0000662"	"No definition provided"
 "v-formation"	"arrangement"	"logical"	NA	NA
-"extreme environment"	""	"logical"	NA	NA
-"gut"	""	"logical"	"OHMI:0000020"	"A human being's gut microbiota contains tens of trillions of microorganisms, including at least 1000 different species of known bacteria with more than 3 million genes (150 times more than human genes). Microbiota can, in total, weigh up to 2 kg. One third of our gut microbiota is common to most people, while two thirds are specific to each one of us. In other words, the microbiota in your intestine is like an individual identity card. URL: http://www.gutmicrobiotaforhealth.com/en/about-gut-microbiota-info/"
+"extreme environment"	"extreme environemnt"	"logical"	NA	NA
+"gut"	NA	"logical"	"OHMI:0000020"	"A human being's gut microbiota contains tens of trillions of microorganisms, including at least 1000 different species of known bacteria with more than 3 million genes (150 times more than human genes). Microbiota can, in total, weigh up to 2 kg. One third of our gut microbiota is common to most people, while two thirds are specific to each one of us. In other words, the microbiota in your intestine is like an individual identity card. URL: http://www.gutmicrobiotaforhealth.com/en/about-gut-microbiota-info/"
 "rumen"	"habitat;isolation site"	"logical"	"NCIT:C98778"	"Largest forestomach of ruminants where bacterial fermentation occurs"
 "Health associated"	"health associated"	"logical"	NA	NA
-"shape"	""	"logical"	NA	NA
+"shape"	NA	"logical"	NA	NA
 "Extreme environment"	"extreme environment"	"logical"	NA	NA
 "mrs broth"	"growth medium"	"logical"	NA	NA
 "ZoBell marine agar"	"growth medium"	"logical"	NA	NA
@@ -201,8 +201,8 @@
 "5m depth in mediterranean sea"	"isolation site"	"logical"	NA	NA
 "20-40000 year old serbian permafrost in russia, siberia, kolyma lowland"	"isolation site"	"logical"	NA	NA
 "1940s by lilleengen"	"isolation site"	"logical"	NA	NA
-"30-m-tall sulfide mound in the iheya north field, japan (water depth, 1,000 m)"	""	"logical"	NA	NA
-"tumors"	""	"logical"	NA	NA
+"30-m-tall sulfide mound in the iheya north field, japan (water depth, 1,000 m)"	NA	"logical"	NA	NA
+"tumors"	NA	"logical"	NA	NA
 "Genome size"	"genome size"	"numeric"	"OMIT:0027643"	NA
 "genes"	"coding genes"	"numeric"	"OMIT:0006994"	NA
 "environmental system"	"habitat"	"logical"	"ENVO:01000254"	"A system which has the disposition to environ one or more material entities."
@@ -211,7 +211,7 @@
 "plant matter"	"habitat"	"logical"	"ENVO:01001121"	"Organic material which is primarily composed of plant structures, living or dead."
 "blood"	"habitat;isolation site"	"logical"	"UBERON:0000178"	"A fluid that is composed of blood plasma and erythrocytes."
 "hydrothermal vents"	"habitat;isolation site"	"logical"	"OMIT:0027720"	NA
-"ocean"	""	"logical"	"ENVO:00000015"	"A marine water body which is constitutes the majority of an astronomical body's hydrosphere."
+"ocean"	NA	"logical"	"ENVO:00000015"	"A marine water body which is constitutes the majority of an astronomical body's hydrosphere."
 "saline evaporation pond"	"habitat"	"logical"	"ENVO:00000055"	"A shallow man-made pond designed to produce salt from sea water. The seawater is fed into large ponds and water is drawn out through natural evaporation which allows the salt to be subsequently harvested."
 "phylloplane"	"habitat"	"logical"	NA	NA
 "respiratory system"	"habitat"	"logical"	"NCIT:C12779"	"The organs involved in the exchange of carbon dioxide and oxygen including the trachea, bronchi, and lung parenchyma."
@@ -219,7 +219,7 @@
 "sediment"	"habitat;isolation site"	"logical"	NA	NA
 "root"	"habitat"	"logical"	"PO:0009005"	"A plant axis (PO:0025004) that lacks shoot axis nodes (PO:0005004) and usually grows indeterminately."
 "nasopharyngeal cavity"	"habitat"	"logical"	"EHDAA2:0004555"	NA
-"plant symbiont"	""	"logical"	NA	NA
+"plant symbiont"	NA	"logical"	NA	NA
 "bioremediation"	"habitat"	"logical"	NA	NA
 "free-living"	"habitat"	"logical"	NA	NA
 "secondary"	"habitat"	"logical"	NA	NA
@@ -230,8 +230,8 @@
 "sputum"	"habitat;isolation site"	"logical"	"NCIT:C13278"	"Material containing mucus, cellular debris, microorganisms and sometimes blood or pus. It is ejected through the mouth from the lungs, bronchi, and trachea."
 "vagina"	"habitat;isolation site"	"logical"	"NCIT:C12407"	"The female genital canal, extending from the uterus to the vulva."
 "bovine"	"isolation site"	"logical"	"FOODON:03414374"	"The biological subfamily *Bovinae* includes a diverse group of 10 genera of medium- to large-sized ungulates, including domestic cattle, the bison, African buffalo, the water buffalo, the yak, and the four-horned and spiral-horned antelopes. The evolutionary relationship between the members of the group is obscure, and their classification into loose tribes rather than formal subgroups reflects this uncertainty. General characteristics include cloven hoofs and usually at least one of the sexes o…"
-"insecta"	""	"logical"	"NCBITaxon:50557"	NA
-"food material"	""	"logical"	"FOODON:00002403"	"Any substance that can be consumed by an organism to satisfy nutritional or other health needs, or to provide a social or organoleptic food experience"
+"insecta"	NA	"logical"	"NCBITaxon:50557"	NA
+"food material"	NA	"logical"	"FOODON:00002403"	"Any substance that can be consumed by an organism to satisfy nutritional or other health needs, or to provide a social or organoleptic food experience"
 "foregut"	"habitat"	"logical"	"UBERON:0001041"	"Anterior subdivision of a digestive tract."
 "lentic water body"	"habitat"	"logical"	"ENVO:01000617"	"A lentic water body is a water body in which the accumulated water, in its totality, has very little to no directed flow."
 "endosymbiont"	"habitat"	"logical"	NA	NA
@@ -247,44 +247,44 @@
 "intertidal zone"	"habitat"	"logical"	"ENVO:00000316"	"The area of the foreshore and seabed that is exposed to the air at low tide and submerged at high tide, i.e., the area between tide marks."
 "circulatory system"	"habitat"	"logical"	"SPD:0000611"	NA
 "wetland"	"habitat"	"logical"	"ENVO:00000043"	"An vegetated area which overlaps a wetland ecosystem."
-"reproductive system"	""	"logical"	"NCIT:C12841"	"The organs and tissues involved in the production and maturation of gametes and in their union and subsequent development as offspring."
-"bird"	""	"logical"	"IDOMAL:0000980"	"A vertebrate animal of the class Aves."
-"chemoorganotroph"	""	"logical"	"MICRO:0001504"	"A prokaryote capable of carrying out the role of chemoorganotrophy, where the oxidation and reduction of chemical compounds is the energy source, and the electron donor is an organic compound."
-"heterotroph"	""	"logical"	"MICRO:0001450"	"A prokaryote capable of carrying out the role of heterotrophy where the carbon or energy sources are organic compounds."
-"lithotroph"	""	"logical"	"MICRO:0001495"	"A prokaryote capable of carrying out the role of lithotrophy, where the oxidation and reduction of inorganic chemical compounds is the energy source."
-"methylotroph"	""	"logical"	NA	NA
-"photoautotroph"	""	"logical"	"ECOCORE:00000130"	"An autotroph which is capable of transforming light into chemical energy."
-"photosynthesis"	""	"logical"	"NCIT:C16986"	"The process through which light energy, water, and carbon dioxide are converted to carbohydrate and oxygen in the presence of chlorophyll. Occurs in plants, algae, cyanobacteria and lichens. (BioTech Life Science Dictionary)"
-"chemoautotroph"	""	"logical"	"ECOCORE:00000129"	"An autotroph which is capable of obtaining energy from the bonds in a chemical compound."
-"chemolithoautotroph"	""	"logical"	"MICRO:0001500"	"A prokaryote capable of carrying out the role of chemolithoautotrophy, where the oxidation and reduction of chemical compounds is the energy source, the electron donor is an inorganic compound, and the carbon source is carbon dioxide."
-"phototroph"	""	"logical"	"MICRO:0001452"	"A prokaryote capable of carrying out the role of phototrophy, where light is the energy source."
-"chemolithotroph"	""	"logical"	"MICRO:0001499"	"A prokaryote capable of carrying out the role of chemolithotrophy, where the oxidation and reduction of chemical compounds is the energy source, and the electron donor is an inorganic compound."
-"chemoheterotroph"	""	"logical"	"ECOCORE:00000132"	"A heterotroph which is capable of obtaining energy from the bonds in a chemical compound."
-"oligotroph"	""	"logical"	NA	NA
-"autotroph"	""	"logical"	"MICRO:0001446"	"A prokaryote capable of carrying out the role of autotrophy, where carbon dioxide is the source of carbon."
-"acidophile"	""	"logical"	"MICRO:0001390"	"Prokaryote specialized with respect to pH, which grows optimally at moderately acidic pH values (pH 4-6)."
-"alkaliphile"	""	"logical"	"MICRO:0001394"	"Prokaryote specialized with respect to pH, which grows optimally at moderately alkaline pH values (pH 8-10)."
-"cellulose degradation"	""	"logical"	"UPa:UPA00696"	"Degradation of cellulose."
-"hydrogen sulfide gas release"	""	"logical"	NA	NA
-"methanogen"	""	"logical"	"MICRO:0000166"	"Prokaryotic metabolically differentiated cell, specialized for the production of methane. Found only in the archaeal domain of life."
-"nitrogen production"	""	"logical"	NA	NA
-"pah degradation"	""	"logical"	NA	NA
-"sulfate-reducing"	""	"logical"	NA	NA
-"sulfur oxidation"	""	"logical"	"GO:0019417"	"The chemical reactions and pathways resulting the addition of oxygen to elemental sulfur."
-"sulfur respiration"	""	"logical"	"MICRO:0000312"	"The process of anaerobic respiration, where elemental sulfur reduced to hydrogen sulfide."
-"ammonia oxidation"	""	"logical"	"GO:0019329"	"The chemical reactions and pathways by which ammonia or ammonium is converted to molecular nitrogen or another nitrogen compound, with accompanying loss of electrons."
-"biomass degradation"	""	"logical"	NA	NA
-"iron-reducing"	""	"logical"	NA	NA
-"nitrogen fixation"	""	"logical"	"GO:0009399"	"The process in which nitrogen is taken from its relatively inert molecular form (N2) in the atmosphere and converted into nitrogen compounds useful for other chemical processes, such as ammonia, nitrate and nitrogen dioxide."
-"stores polyhydroxybutyrate"	""	"logical"	NA	NA
-"carbon dioxide fixation"	""	"logical"	"GO:0015977"	"A metabolic process in which carbon (usually derived from carbon dioxide) is incorporated into organic compounds (usually carbohydrates)."
-"iron oxidation"	""	"logical"	NA	NA
+"reproductive system"	NA	"logical"	"NCIT:C12841"	"The organs and tissues involved in the production and maturation of gametes and in their union and subsequent development as offspring."
+"bird"	NA	"logical"	"IDOMAL:0000980"	"A vertebrate animal of the class Aves."
+"chemoorganotroph"	NA	"logical"	"MICRO:0001504"	"A prokaryote capable of carrying out the role of chemoorganotrophy, where the oxidation and reduction of chemical compounds is the energy source, and the electron donor is an organic compound."
+"heterotroph"	NA	"logical"	"MICRO:0001450"	"A prokaryote capable of carrying out the role of heterotrophy where the carbon or energy sources are organic compounds."
+"lithotroph"	NA	"logical"	"MICRO:0001495"	"A prokaryote capable of carrying out the role of lithotrophy, where the oxidation and reduction of inorganic chemical compounds is the energy source."
+"methylotroph"	NA	"logical"	NA	NA
+"photoautotroph"	NA	"logical"	"ECOCORE:00000130"	"An autotroph which is capable of transforming light into chemical energy."
+"photosynthesis"	NA	"logical"	"NCIT:C16986"	"The process through which light energy, water, and carbon dioxide are converted to carbohydrate and oxygen in the presence of chlorophyll. Occurs in plants, algae, cyanobacteria and lichens. (BioTech Life Science Dictionary)"
+"chemoautotroph"	NA	"logical"	"ECOCORE:00000129"	"An autotroph which is capable of obtaining energy from the bonds in a chemical compound."
+"chemolithoautotroph"	NA	"logical"	"MICRO:0001500"	"A prokaryote capable of carrying out the role of chemolithoautotrophy, where the oxidation and reduction of chemical compounds is the energy source, the electron donor is an inorganic compound, and the carbon source is carbon dioxide."
+"phototroph"	NA	"logical"	"MICRO:0001452"	"A prokaryote capable of carrying out the role of phototrophy, where light is the energy source."
+"chemolithotroph"	NA	"logical"	"MICRO:0001499"	"A prokaryote capable of carrying out the role of chemolithotrophy, where the oxidation and reduction of chemical compounds is the energy source, and the electron donor is an inorganic compound."
+"chemoheterotroph"	NA	"logical"	"ECOCORE:00000132"	"A heterotroph which is capable of obtaining energy from the bonds in a chemical compound."
+"oligotroph"	NA	"logical"	NA	NA
+"autotroph"	NA	"logical"	"MICRO:0001446"	"A prokaryote capable of carrying out the role of autotrophy, where carbon dioxide is the source of carbon."
+"acidophile"	NA	"logical"	"MICRO:0001390"	"Prokaryote specialized with respect to pH, which grows optimally at moderately acidic pH values (pH 4-6)."
+"alkaliphile"	NA	"logical"	"MICRO:0001394"	"Prokaryote specialized with respect to pH, which grows optimally at moderately alkaline pH values (pH 8-10)."
+"cellulose degradation"	NA	"logical"	"UPa:UPA00696"	"Degradation of cellulose."
+"hydrogen sulfide gas release"	NA	"logical"	NA	NA
+"methanogen"	NA	"logical"	"MICRO:0000166"	"Prokaryotic metabolically differentiated cell, specialized for the production of methane. Found only in the archaeal domain of life."
+"nitrogen production"	NA	"logical"	NA	NA
+"pah degradation"	NA	"logical"	NA	NA
+"sulfate-reducing"	NA	"logical"	NA	NA
+"sulfur oxidation"	NA	"logical"	"GO:0019417"	"The chemical reactions and pathways resulting the addition of oxygen to elemental sulfur."
+"sulfur respiration"	NA	"logical"	"MICRO:0000312"	"The process of anaerobic respiration, where elemental sulfur reduced to hydrogen sulfide."
+"ammonia oxidation"	NA	"logical"	"GO:0019329"	"The chemical reactions and pathways by which ammonia or ammonium is converted to molecular nitrogen or another nitrogen compound, with accompanying loss of electrons."
+"biomass degradation"	NA	"logical"	NA	NA
+"iron-reducing"	NA	"logical"	NA	NA
+"nitrogen fixation"	NA	"logical"	"GO:0009399"	"The process in which nitrogen is taken from its relatively inert molecular form (N2) in the atmosphere and converted into nitrogen compounds useful for other chemical processes, such as ammonia, nitrate and nitrogen dioxide."
+"stores polyhydroxybutyrate"	NA	"logical"	NA	NA
+"carbon dioxide fixation"	NA	"logical"	"GO:0015977"	"A metabolic process in which carbon (usually derived from carbon dioxide) is incorporated into organic compounds (usually carbohydrates)."
+"iron oxidation"	NA	"logical"	NA	NA
 "tail"	"shape"	"logical"	NA	NA
 "staphylococcus"	"shape"	"logical"	"MICRO:0000378"	"A multicellular relationship of prokaryotic cells where the shape of the cells is round (forming a coccus) and the cells are attached to one another end-to-end and side-to-side to form clumps or clusters."
-"pathogenic in mammals"	""	"logical"	NA	NA
-"pathogenic in fish"	""	"logical"	NA	NA
-"disease"	""	"logical"	"EFO:0000408"	"A disease is a disposition to undergo pathological processes that exists in an organism because of one or more disorders in that organism."
-"sampling site"	""	"logical"	"EFO:0000688"	"A site from which a sample, i.e. a statistically representative of the whole, is extracted from the whole. e.g. a liver sample"
+"pathogenic in mammals"	NA	"logical"	NA	NA
+"pathogenic in fish"	NA	"logical"	NA	NA
+"disease"	NA	"logical"	"EFO:0000408"	"A disease is a disposition to undergo pathological processes that exists in an organism because of one or more disorders in that organism."
+"sampling site"	NA	"logical"	"EFO:0000688"	"A site from which a sample, i.e. a statistically representative of the whole, is extracted from the whole. e.g. a liver sample"
 "Acne"	"disease association"	"logical"	"NCIT:C27195"	"An inflammatory process of the sebaceous glands which is characterized by comedones, nodules, papules and/or pustules on the skin."
 "acrodermatitis"	"disease association"	"logical"	"NCIT:C84532"	"An inflammatory skin condition affecting children. It is often associated with Epstein-Barr virus infection, hepatitis B infection or cytomegalovirus infection. It is characterized by the presence of cutaneous rashes and patches on the palms and soles. The trunk is not affected."
 "polyarthritis"	"disease association"	"logical"	"NCIT:C26996"	"An arthritis affecting five or more separate joints"
@@ -293,7 +293,7 @@
 "anaplasmosis"	"disease association"	"logical"	"NCIT:C128425"	"An infection that is caused by Anaplasma phagocytophilum, which is transmitted to humans by infected ticks; it is characterized by fever, headache, chills, and myalgia."
 "anemia"	"disease association"	"logical"	"NCIT:C2869"	"A reduction in the number of red blood cells, the amount of hemoglobin, and/or the volume of packed red blood cells. Clinically, anemia represents a reduction in the oxygen-transporting capacity of a designated volume of blood, resulting from an imbalance between blood loss (through hemorrhage or hemolysis) and blood production. Signs and symptoms of anemia may include pallor of the skin and mucous membranes, shortness of breath, palpitations of the heart, soft systolic murmurs, lethargy, and fatigability"
 "anthrax"	"disease association"	"logical"	"NCIT:C84565"	"An infection caused by Bacillus anthracis bacteria. It may affect the lungs, gastrointestinal tract, or skin. Patients with lung infection present with fever, headaches, cough, chest pain and shortness of breath. Patients with gastrointestinal infection present with nausea, vomiting and bloody diarrhea. Patients with skin infection develop blisters and ulcers."
-"antibiotic-associated diarrhea"	""	"logical"	"NCIT:C128350"	"Diarrhea that is associated with current or recent antibiotic use."
+"antibiotic-associated diarrhea"	NA	"logical"	"NCIT:C128350"	"Diarrhea that is associated with current or recent antibiotic use."
 "colitis"	"disease association"	"logical"	"OMIT:0004401"	NA
 "Terrabacteria group"	"disease association"	"logical"	"NCBITaxon:1783272"	NA
 "atypical pneumonia"	"disease association"	"logical"	"NCIT:C128338"	"Historical term that references a form of pneumonia caused by Mycoplasma pneumoniae, Chlamydophila pneumoniae, or Legionella species."
@@ -314,7 +314,7 @@
 "Reaction to Leaf spot"	"disease association"	"logical"	"CO_331:0000386"	"The reaction of the plant to leaf spot"
 "bacterial vaginosis"	"disease association"	"logical"	"NCIT:C116973"	"Infection caused by bacterial overgrowth in the vagina. Most affected women are asymptomatic. When symptoms occur, they include foul-smelling vaginal discharge, vaginal itching, and burning. Risk factors include sexual activity with multiple partners and the use of vaginal douches and intrauterine devices. Up to a third of cases resolve without treatment. Antibiotic treatment is recommended when symptoms are present and for women that are pregnant at the time of infection."
 "bartonellosis"	"disease association"	"logical"	"EFO:0007166"	"An infectious disease produced by bacteria of the genus Bartonella"
-"black rot"	""	"logical"	"CO_331:0000380"	"The reaction of the plant to Black rot"
+"black rot"	NA	"logical"	"CO_331:0000380"	"The reaction of the plant to Black rot"
 "canker"	"disease association"	"logical"	"CO_357:0000487"	NA
 "blood infection"	"disease association"	"logical"	NA	NA
 "respiratory infection"	"disease association"	"logical"	NA	NA
@@ -335,7 +335,7 @@
 "respiratory system disease"	"disease association"	"logical"	"EFO:0000684"	"A non-neoplastic or neoplastic disorder that affects the respiratory system. Representative examples include pneumonia, chronic obstructive pulmonary disease, pulmonary failure, lung adenoma, lung carcinoma, and tracheal carcinoma"
 "Plant chlorosis"	"disease association"	"logical"	"CO_345:0000033"	NA
 "Flavobacterium psychrophilum"	"disease association"	"logical"	"NCBITaxon:96345"	"https://thefishsite.com/articles/rainbow-trout-fry-syndrome-rtfs-explained-1"
-"infection caused by Escherichia coli (disorder)"	""	"logical"	"SNOMED:71057007"	NA
+"infection caused by Escherichia coli (disorder)"	NA	"logical"	"SNOMED:71057007"	NA
 "contagious pleuropneumonia"	"disease association"	"logical"	"MONDO:0005716"	"A pleuropneumonia of cattle and goats caused by species of mycoplasma"
 "crown gall"	"disease association"	"logical"	"BTO:0000303"	"A disease that affects many species of plants and is caused by a bacterium (Agrobacterium tumefaciens) which forms tumorous enlargements just below the ground on the stem."
 "Microcystis aeruginosa"	"disease association;isolation site"	"logical"	"NCBITaxon:1126"	NA
@@ -429,3 +429,34 @@
 "metal"	"habitat"	"logical"	NA	NA
 "mine"	"habitat"	"logical"	NA	NA
 "plant matter"	"habitat"	"logical"	NA	NA
+"acidic"	"optimal ph"	"logical"	NA	NA
+"neutral"	"optimal ph"	"logical"	NA	NA
+"alkaline"	"optimal ph"	"logical"	NA	NA
+"very alkaline"	"optimal ph"	"logical"	NA	NA
+"psychrophile"	"growth temperature"	"logical"	NA	NA
+"mesophile"	"growth temperature"	"logical"	NA	NA
+"thermophile"	"growth temperature"	"logical"	NA	NA
+"hyperthermophile"	"growth temperature"	"logical"	NA	NA
+"small"	"width;length;genome size;coding genes"	"logical"	NA	NA
+"average"	"width;length;genome size;coding genes"	"logical"	NA	NA
+"large"	"width;length;genome size;coding genes"	"logical"	NA	NA
+"very large"	"width;length;genome size;coding genes"	"logical"	NA	NA
+"very small"	"coding genes"	"logical"	NA	NA
+"slow"	"mutation rate per site per generation"	"logical"	NA	NA
+"medium"	"mutation rate per site per generation"	"logical"	NA	NA
+"fast"	"mutation rate per site per generation"	"logical"	NA	NA
+"spore formation"	"spore formation"	"logical"	NA	NA
+"Sphingolipid producing"	"sphingolipid producing"	"logical"	NA	NA
+"pathogenicity human"	"pathogenicity human"	"logical"	NA	NA
+"motility"	"motility"	"logical"	NA	NA
+"gamma"	"hemolysis"	"logical"	NA	NA
+"beta"	"hemolysis"	"logical"	NA	NA
+"alpha"	"hemolysis"	"logical"	NA	NA
+"CAMP test"	"hemolysis"	"logical"	NA	NA
+"biosafety level 1"	"biosafety level"	"logical"	NA	NA
+"biosafety level 2"	"biosafety level"	"logical"	NA	NA
+"biosafety level 3"	"biosafety level"	"logical"	NA	NA
+"COGEM pathogenicity rating 1"	"COGEM pathogenicity rating"	"logical"	NA	NA
+"COGEM pathogenicity rating 2"	"COGEM pathogenicity rating"	"logical"	NA	NA
+"COGEM pathogenicity rating 3"	"COGEM pathogenicity rating"	"logical"	NA	NA
+"COGEM pathogenicity rating 4"	"COGEM pathogenicity rating"	"logical"	NA	NA
