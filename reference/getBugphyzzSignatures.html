@@ -135,7 +135,7 @@ meaning of each keyword.</p></dd>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## Create signatures of categorical or binary attributes</span></span></span>
 <span class="r-in"><span><span class="va">bp</span> <span class="op">&lt;-</span> <span class="fu"><a href="importBugphyzz.html">importBugphyzz</a></span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Using data downloaded on 2023-07-17 18:53:43.</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Using data downloaded on 2023-07-17 21:04:51.</span>
 <span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>The following named parsers don't match the column names: PATRIC_ID</span>
 <span class="r-in"><span><span class="va">sigs</span> <span class="op">&lt;-</span> <span class="fu">sig_fun</span><span class="op">(</span><span class="va">bp</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html" class="external-link">map</a></span><span class="op">(</span><span class="va">sigs</span>, <span class="va">head</span><span class="op">)</span></span></span>
@@ -154,7 +154,7 @@ meaning of each keyword.</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $`Burkholderia cepacia`</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "101571"  "1074049" "1074050" "1074051" "1090375" "1090379"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $`Butyrate-Producing Bacteria`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`Butyrate-Producing Bacteria--TRUE`</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "105841"  "1229621" "2025494" "2738446" "2838461" "2838462"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $`CAMP test`</span>
@@ -178,8 +178,11 @@ meaning of each keyword.</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $`DSMZ Medium 1000`</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "304736" "309806" "380763" "460873" "436114" "171121"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $`Extreme environment`</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "120576"  "120577"  "1218315" "1462582" "1963359" "215590" </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`Extreme environment--FALSE`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1002233" "1318743" "1443937" "1457016" "1457020" "1460968"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`Extreme environment--TRUE`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "120577"  "1218315" "1462582" "1963359" "215590"  "236"    </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $`Flavobacterium psychrophilum`</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1038845" "1069983" "1101402" "1114861" "1114867" "1114870"</span>
@@ -202,7 +205,10 @@ meaning of each keyword.</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $Gonorrhea</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1107316" "1470200" "1815583" "1853276" "1853278" "1906581"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $`Health associated`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`Health associated--FALSE`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1499973" "208962"  "223381"  "2562891" "2608867" "2762229"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`Health associated--TRUE`</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1078480" "123834"  "1461579" "197575"  "249188"  "2582921"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $Infertility</span>
@@ -226,7 +232,7 @@ meaning of each keyword.</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $`Reaction to Leaf spot`</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1321368" "1720302" "1843580" "1843581" "1885674" "1985254"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $`Sphingolipid producing`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`Sphingolipid producing--TRUE`</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1045317" "1069987" "1104779" "1123978" "1141887" "1141888"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $`Terrabacteria group`</span>
@@ -250,7 +256,7 @@ meaning of each keyword.</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $abscess</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "133448"  "1563222" "1585982" "1639133" "1748967" "1914243"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $`acetate producing`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`acetate producing--TRUE`</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "105841"  "1229621" "2025494" "2738446" "2838461" "2838462"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $acidic</span>
@@ -283,13 +289,19 @@ meaning of each keyword.</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $anemia</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "112247"  "114882"  "1179777" "1312741" "1331996" "136241" </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $`animal pathogen`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`animal pathogen--FALSE`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1002233" "1318743" "1443937" "1457016" "1457020" "1468418"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`animal pathogen--TRUE`</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1002233" "1318743" "1443937" "1457016" "1457020" "1460968"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $anthrax</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "101332"  "1033734" "1069116" "1071718" "1081598" "108527" </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $`antimicrobial sensitivity`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`antimicrobial sensitivity--FALSE`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1035271" "1076926" "1079800" "1120045" "1132659" "1132695"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`antimicrobial sensitivity--TRUE`</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1004279" "1085774" "1165689" "1208188" "1209948" "1209954"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $`artificial seawater`</span>
@@ -325,7 +337,10 @@ meaning of each keyword.</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $bg11</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1610755" "2026365" "2301641" "2546353" "2546354" "2546355"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $`biofilm formation`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`biofilm formation--FALSE`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1002233" "111504"  "1318743" "1443937" "1457016" "1457020"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`biofilm formation--TRUE`</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1513892" "200617"  "2897386" "2897784" "356849"  "356850" </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $`biosafety level 1`</span>
@@ -487,7 +502,10 @@ meaning of each keyword.</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $`human granulocytic anaplasmosis`</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "142058"  "1562740" "1699625" "1779476" "186733"  "1937801"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $`hydrogen gas producing`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`hydrogen gas producing--FALSE`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1851427" "1851428" "2838576" "2838577" "2838578" "2838579"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`hydrogen gas producing--TRUE`</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "105841"  "1229621" "2025494" "2738446" "2838461" "2838462"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $hyperthermophile</span>
@@ -496,7 +514,7 @@ meaning of each keyword.</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $infection</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "120576"  "120577"  "1218315" "1462582" "1963359" "215590" </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $`lactate producing`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`lactate producing--TRUE`</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "105841"  "1229621" "2025494" "2738446" "2838461" "2838462"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $large</span>
@@ -535,8 +553,11 @@ meaning of each keyword.</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $`modified shieh agar`</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1017018" "1150112" "1159016" "1183151" "1323422" "1511731"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $motility</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "100"     "1282440" "1745854" "177413"  "184075"  "1937790"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`motility--FALSE`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "100"     "1282440" "1745854" "177413"  "184075"  "223389" </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`motility--TRUE`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "100"     "1282440" "184075"  "1937790" "2579970" "2579975"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $`mrs broth`</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "104955"  "1450649" "148604"  "1613"    "1632"    "1633"   </span>
@@ -556,13 +577,16 @@ meaning of each keyword.</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $palisade</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1031"    "111769"  "111770"  "111773"  "2735563" "2799668"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $`pathogenicity human`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`pathogenicity human--TRUE`</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1002233" "111504"  "1318743" "1443937" "1457016" "1457020"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $plague</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1288385" "1341643" "1604335" "2339259" "2607663" "263819" </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $`plant pathogenity`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`plant pathogenity--FALSE`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1002233" "1318743" "1443937" "1457016" "1457020" "1460968"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`plant pathogenity--TRUE`</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1183401" "1183410" "1183412" "1183413" "1585697" "160699" </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $`pleiomorphic cell`</span>
@@ -622,8 +646,11 @@ meaning of each keyword.</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $spirillum</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "100"     "1282440" "1745854" "177413"  "184075"  "1937790"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $`spore formation`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`spore formation--FALSE`</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "100"     "1282440" "1745854" "177413"  "184075"  "1937790"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`spore formation--TRUE`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1069"    "1202716" "2498452" "1063"    "1608950" "2584941"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $`staley pyg`</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1055231" "1161202" "1896145" "196588"  "198312"  "2182384"</span>
@@ -700,7 +727,7 @@ meaning of each keyword.</p></dd>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Downloading, full_dump_numeric.csv.bz2.</span>
 <span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>download failed</span>
 <span class="r-wrn co"><span class="r-pr">#&gt;</span>   web resource path: ‘https://github.com/waldronlab/bugphyzzExports/raw/main/full_dump_numeric.csv.bz2’</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span>   local file path: ‘/github/home/.cache/R/bugphyzz/f1879ccf7b_full_dump_numeric.csv.bz2’</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span>   local file path: ‘/github/home/.cache/R/bugphyzz/f17336feddb_full_dump_numeric.csv.bz2’</span>
 <span class="r-wrn co"><span class="r-pr">#&gt;</span>   reason: Not Found (HTTP 404).</span>
 <span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>bfcadd() failed; resource removed</span>
 <span class="r-wrn co"><span class="r-pr">#&gt;</span>   rid: BFC2</span>
