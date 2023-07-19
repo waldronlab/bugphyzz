@@ -168,7 +168,6 @@ getBugphyzzSignatures <- function(
     min.size = 5
 ) {
   valid_ranks <- validRanks()
-
   if (tax.level == 'mixed') {
     tax.level <- valid_ranks
   }
@@ -190,7 +189,6 @@ getBugphyzzSignatures <- function(
     )
   dfs <- split(df, factor(df$Attribute))
   dfs <- lapply(dfs, function(x) unique(x[, c(tax.id.type, 'Rank')]))
-  return(dfs)
   dfs <- purrr::discard(dfs, ~ nrow(.x) < min.size)
   sig_ranks <- purrr::map(dfs, ~ {
     v <- unique(.x$Rank)
