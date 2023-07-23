@@ -96,6 +96,11 @@ physiologies <- function(keyword = 'all', full_source = FALSE) {
     )
 
     df <- as.data.frame(df[, vapply(df, \(y) !all(is.na(y)), logical(1))])
+
+    if (unique(df$Attribute_group) == 'aerophilicity') {
+      df <- .homogenizeAerophilicityAttributeNames(df)
+    }
+
     dplyr::distinct(df)
   })
 
@@ -277,3 +282,24 @@ showPhys <- function(which_names = 'all') {
   df[['Attribute_value']] <- NULL
   return(df)
 }
+
+#' Homogenize attribute names of aerophilicity (helper for physiologies)
+#'
+#' \code{.homogenizeAerophilicityAttribbuteNames} makes all levels in the
+#' aerophilicity dataset at the same level in the GO tree.
+#'
+#' @param df A data.frame.
+#'
+#' @return A data.frame.
+#'
+.homogenizeAerophilicityAttributeNames <- function(df) {
+  df |> dplyr::mutate(
+    Attribute = dplyr::case_when(
+      .data$Attribute == 'obligately anaerobic' ~ 'anaerobic',
+      .data$Attribute == 'microaerophilic' ~ 'aerobic',
+      .data$Attribute == 'obligately aerobic' ~ 'aerobic',
+      TRUE ~ .data$Attribute
+    )
+  )
+}
+
