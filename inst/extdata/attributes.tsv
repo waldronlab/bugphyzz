@@ -442,9 +442,10 @@
 "large"	"width;length;genome size;coding genes"	"logical"	NA	NA
 "very large"	"width;length;genome size;coding genes"	"logical"	NA	NA
 "very small"	"coding genes"	"logical"	NA	NA
-"slow"	"mutation rate per site per generation"	"logical"	NA	NA
-"medium"	"mutation rate per site per generation"	"logical"	NA	NA
-"fast"	"mutation rate per site per generation"	"logical"	NA	NA
+"slow"	"mutation rate per site per generation;mutation rate per site per year"	"logical"	NA	NA
+"medium"	"mutation rate per site per generation;mutation rate per site per year"	"logical"	NA	NA
+"fast"	"mutation rate per site per generation;mutation rate per site per year"	"logical"	NA	NA
+"medium fast"	"mutation rate per site per year;"	"logical"	NA	NA
 "spore formation"	"spore formation"	"logical"	NA	NA
 "Sphingolipid producing"	"sphingolipid producing"	"logical"	NA	NA
 "pathogenicity human"	"pathogenicity human"	"logical"	NA	NA
