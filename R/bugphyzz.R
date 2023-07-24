@@ -49,15 +49,23 @@ importBugphyzz <- function(version = 'devel', force_download = FALSE
       NCBI_ID = vroom::col_character(),
       Attribute_source = vroom::col_character(),
       Confidence_in_curation = vroom::col_character(),
-      Strain = vroom::col_character(),
+      # Strain = vroom::col_character(),
       BacDive_ID = vroom::col_character(),
       Type_strain = vroom::col_character(),
-      PATRIC_ID = vroom::col_character(),
+      # PATRIC_ID = vroom::col_character(),
       Note = vroom::col_character(),
       Unit = vroom::col_character()
     )
   ) |>
-    dplyr::filter(Frequency != 'never')
+    dplyr::filter(Frequency != 'never') |>
+    dplyr::relocate(
+      .data$NCBI_ID, .data$Taxon_name, .data$Rank,
+      .data$Attribute, .data$Attribute_group, .data$Attribute_source,
+      .data$Evidence, .data$Frequency, .data$Score,
+      .data$Unit, .data$Attribute_range, .data$Note
+    ) |>
+    purrr::discard(~ all(is.na(.x))) |>
+    dplyr::distinct()
   return(bp)
 }
 
