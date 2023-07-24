@@ -120,23 +120,21 @@ insert Zenodo link here &lt;&lt;&lt;</strong>.</p>
 <span><span class="co">#&gt; Registered S3 method overwritten by 'httr':</span></span>
 <span><span class="co">#&gt;   method           from  </span></span>
 <span><span class="co">#&gt;   print.cache_info hoardr</span></span>
-<span><span class="co">#&gt; Replacing previous version downloaded on 2023-07-24 13:39:38.</span></span>
-<span><span class="co">#&gt; Using data downloaded on 2023-07-24 13:43:10.</span></span>
-<span><span class="co">#&gt; Warning: The following named parsers don't match the column names: Strain,</span></span>
-<span><span class="co">#&gt; PATRIC_ID</span></span>
+<span><span class="co">#&gt; Replacing previous version downloaded on 2023-07-24 18:20:43.</span></span>
+<span><span class="co">#&gt; Using data downloaded on 2023-07-24 18:24:22.</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">bp</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 6 × 16</span></span></span>
-<span><span class="co">#&gt;   NCBI_ID Attribute         Score Evidence Taxon_name Attribute_source Frequency</span></span>
-<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>             <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> 207244  acetate producin…     1 asr      Anaerosti… <span style="color: #BB0000;">NA</span>               always   </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> 105841  acetate producin…     1 asr      Anaerosti… <span style="color: #BB0000;">NA</span>               always   </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> 1229621 acetate producin…     1 inh      Anaerosti… <span style="color: #BB0000;">NA</span>               always   </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> 2025494 acetate producin…     1 inh      Anaerosti… <span style="color: #BB0000;">NA</span>               always   </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> 2738446 acetate producin…     1 inh      Anaerosti… <span style="color: #BB0000;">NA</span>               always   </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span> 2838461 acetate producin…     1 inh      Candidatu… <span style="color: #BB0000;">NA</span>               always   </span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 9 more variables: Confidence_in_curation &lt;chr&gt;, Attribute_type &lt;chr&gt;,</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;">#   Attribute_group &lt;chr&gt;, Rank &lt;chr&gt;, BacDive_ID &lt;chr&gt;, Type_strain &lt;chr&gt;,</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;">#   Note &lt;chr&gt;, Unit &lt;chr&gt;, Attribute_range &lt;chr&gt;</span></span></span></code></pre></div>
+<span><span class="co">#&gt;   NCBI_ID Taxon_name   Rank  Attribute Attribute_group Attribute_source Evidence</span></span>
+<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>           <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> 207244  Anaerostipes genus acetate … acetate produc… <span style="color: #BB0000;">NA</span>               asr     </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> 105841  Anaerostipe… spec… acetate … acetate produc… <span style="color: #BB0000;">NA</span>               asr     </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> 1229621 Anaerostipe… spec… acetate … acetate produc… <span style="color: #BB0000;">NA</span>               inh     </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> 2025494 Anaerostipe… spec… acetate … acetate produc… <span style="color: #BB0000;">NA</span>               inh     </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> 2738446 Anaerostipe… spec… acetate … acetate produc… <span style="color: #BB0000;">NA</span>               inh     </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span> 2838461 Candidatus … spec… acetate … acetate produc… <span style="color: #BB0000;">NA</span>               inh     </span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 9 more variables: Frequency &lt;chr&gt;, Score &lt;dbl&gt;, Unit &lt;chr&gt;,</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;">#   Attribute_range &lt;chr&gt;, Note &lt;chr&gt;, Confidence_in_curation &lt;chr&gt;,</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;">#   Attribute_type &lt;chr&gt;, BacDive_ID &lt;chr&gt;, Type_strain &lt;chr&gt;</span></span></span></code></pre></div>
 <div class="section level3">
 <h3 id="explore-wich-attribute-groups-are-available">Explore wich attribute groups are available<a class="anchor" aria-label="anchor" href="#explore-wich-attribute-groups-are-available"></a>
 </h3>
@@ -236,7 +234,7 @@ ph<a class="anchor" aria-label="anchor" href="#create-signatures-of-taxa-names-a
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $`bp:optimal ph|very alkaline (&gt;9.76)|s`</span></span>
 <span><span class="co">#&gt; [1] "Maritimibacter alexandrii"     "Maritimibacter harenae"       </span></span>
-<span><span class="co">#&gt; [3] "Maritimibacter dapengensis"    "Thiomicrospira microaerophila"</span></span>
+<span><span class="co">#&gt; [3] "Maritimibacter sp. DP4N28-5"   "Thiomicrospira microaerophila"</span></span>
 <span><span class="co">#&gt; [5] "Thiomicrospira sibirica"       "Thiomicrospira thyasirae"</span></span></code></pre></div>
 </div>
 </div>
@@ -250,11 +248,11 @@ ph<a class="anchor" aria-label="anchor" href="#create-signatures-of-taxa-names-a
 <span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">lapply</a></span><span class="op">(</span><span class="va">sigs3</span>, <span class="va">head</span><span class="op">)</span></span>
 <span><span class="co">#&gt; $`bp:motility|motility--FALSE|pcofgst`</span></span>
-<span><span class="co">#&gt; [1] "Pseudomonadota"         "Alphaproteobacteria"    "Hyphomicrobiales"      </span></span>
+<span><span class="co">#&gt; [1] "Proteobacteria"         "Alphaproteobacteria"    "Hyphomicrobiales"      </span></span>
 <span><span class="co">#&gt; [4] "Xanthobacteraceae"      "Ancylobacter"           "Ancylobacter aquaticus"</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $`bp:motility|motility--TRUE|pcofgst`</span></span>
-<span><span class="co">#&gt; [1] "Pseudomonadota"         "Alphaproteobacteria"    "Hyphomicrobiales"      </span></span>
+<span><span class="co">#&gt; [1] "Proteobacteria"         "Alphaproteobacteria"    "Hyphomicrobiales"      </span></span>
 <span><span class="co">#&gt; [4] "Xanthobacteraceae"      "Ancylobacter"           "Ancylobacter aquaticus"</span></span></code></pre></div>
 </div>
 <div class="section level2">
@@ -291,15 +289,15 @@ ph<a class="anchor" aria-label="anchor" href="#create-signatures-of-taxa-names-a
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $`bp:optimal ph|very alkaline (&gt;9.76)|s`</span></span>
 <span><span class="co">#&gt; [1] "Maritimibacter alexandrii"     "Maritimibacter harenae"       </span></span>
-<span><span class="co">#&gt; [3] "Maritimibacter dapengensis"    "Thiomicrospira microaerophila"</span></span>
+<span><span class="co">#&gt; [3] "Maritimibacter sp. DP4N28-5"   "Thiomicrospira microaerophila"</span></span>
 <span><span class="co">#&gt; [5] "Thiomicrospira sibirica"       "Thiomicrospira thyasirae"     </span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $`bp:motility|motility--FALSE|pcofgst`</span></span>
-<span><span class="co">#&gt; [1] "Pseudomonadota"         "Alphaproteobacteria"    "Hyphomicrobiales"      </span></span>
+<span><span class="co">#&gt; [1] "Proteobacteria"         "Alphaproteobacteria"    "Hyphomicrobiales"      </span></span>
 <span><span class="co">#&gt; [4] "Xanthobacteraceae"      "Ancylobacter"           "Ancylobacter aquaticus"</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $`bp:motility|motility--TRUE|pcofgst`</span></span>
-<span><span class="co">#&gt; [1] "Pseudomonadota"         "Alphaproteobacteria"    "Hyphomicrobiales"      </span></span>
+<span><span class="co">#&gt; [1] "Proteobacteria"         "Alphaproteobacteria"    "Hyphomicrobiales"      </span></span>
 <span><span class="co">#&gt; [4] "Xanthobacteraceae"      "Ancylobacter"           "Ancylobacter aquaticus"</span></span></code></pre></div>
 <div class="section level3">
 <h3 id="session-information">Session information:<a class="anchor" aria-label="anchor" href="#session-information"></a>

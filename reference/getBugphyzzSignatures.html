@@ -135,8 +135,7 @@ meaning of each keyword.</p></dd>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## Create signatures of categorical or binary attributes</span></span></span>
 <span class="r-in"><span><span class="va">bp</span> <span class="op">&lt;-</span> <span class="fu"><a href="importBugphyzz.html">importBugphyzz</a></span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Using data downloaded on 2023-07-24 13:34:40.</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>The following named parsers don't match the column names: Strain, PATRIC_ID</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Using data downloaded on 2023-07-24 18:15:49.</span>
 <span class="r-in"><span><span class="va">sigs</span> <span class="op">&lt;-</span> <span class="fu">sig_fun</span><span class="op">(</span><span class="va">bp</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html" class="external-link">map</a></span><span class="op">(</span><span class="va">sigs</span>, <span class="va">head</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $`bp:COGEM pathogenicity rating|COGEM pathogenicity rating 1|s`</span>
@@ -152,7 +151,7 @@ meaning of each keyword.</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "105841"  "1229621" "2025494" "2738446" "2838461" "2838462"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $`bp:aerophilicity|aerobic|s`</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "100"     "1282440" "1745854" "184075"  "1937790" "2579970"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "100"     "1282440" "1745854" "1937790" "2579970" "2579975"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $`bp:aerophilicity|aerotolerant|s`</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1454184" "1806172" "1398745" "1433543" "1508390" "1522315"</span>
@@ -215,10 +214,10 @@ meaning of each keyword.</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1002233" "111504"  "1318743" "1443937" "1457016" "1457020"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $`bp:biofilm forming|biofilm formation--TRUE|s`</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1513892" "200617"  "2897386" "2897784" "356849"  "356850" </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1513892" "200617"  "2897386" "356849"  "356850"  "475937" </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $`bp:biosafety level|biosafety level 1|s`</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "100"     "1282440" "1745854" "177413"  "184075"  "1937790"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "100"     "1282440" "1745854" "177413"  "1937790" "223389" </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $`bp:biosafety level|biosafety level 2|s`</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1002233" "111504"  "1318743" "1443937" "1457016" "1457020"</span>
@@ -373,9 +372,6 @@ meaning of each keyword.</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $`bp:disease association|colitis|s`</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1499973" "208962"  "223381"  "2562891" "2608867" "2762229"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $`bp:disease association|crown gall|s`</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1848972" "2934936" "3025782" "78527"   "887144" </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $`bp:disease association|cystitis|s`</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1499973" "208962"  "223381"  "2562891" "2608867" "2762229"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
@@ -419,7 +415,7 @@ meaning of each keyword.</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "120576"  "120577"  "1218315" "1462582" "1963359" "215590" </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $`bp:disease association|legionnaire's disease|s`</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1002363" "1034382" "1034384" "1034385" "1034400" "1090087"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1002363" "1034382" "1034384" "1034385" "1090087" "1225476"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $`bp:disease association|leprosy|s`</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "100053"  "1137606" "1193500" "172"     "173"     "174"    </span>
@@ -494,7 +490,7 @@ meaning of each keyword.</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "120577"  "1218315" "1462582" "1963359" "215590"  "236"    </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $`bp:genome size|average (&gt;=490886, &lt;998123 base pair)|s`</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1779491" "1845000" "3038074" "955"     "77038"   "180837" </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1779491" "1845000" "955"     "77038"   "180837"  "116598" </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $`bp:genome size|large (&gt;=998124, &lt;6997434 base pair)|s`</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "110"     "186280"  "225625"  "2528964" "2607286" "280"    </span>
@@ -506,7 +502,7 @@ meaning of each keyword.</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1003091" "1003092" "1010610" "107400"  "1141884" "114616" </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $`bp:gram stain|gram stain negative|s`</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "100"     "1282440" "1745854" "177413"  "184075"  "1937790"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "100"     "1282440" "1745854" "177413"  "1937790" "223389" </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $`bp:gram stain|gram stain positive|s`</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1123952" "2584524" "1215923" "1429082" "2742145" "2775868"</span>
@@ -542,7 +538,7 @@ meaning of each keyword.</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1055231" "1161202" "1896145" "196588"  "198312"  "2182384"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $`bp:growth medium|charcoal-yeast extract|s`</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1002363" "1034382" "1034384" "1034385" "1034400" "1090087"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1002363" "1034382" "1034384" "1034385" "1090087" "1225476"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $`bp:growth medium|chocolate agar|s`</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "84590"   "1107316" "1470200" "1815583" "1853276" "1853278"</span>
@@ -572,7 +568,7 @@ meaning of each keyword.</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "104955"  "1450649" "148604"  "1613"    "1632"    "1633"   </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $`bp:growth medium|mueller-hinton|s`</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1002363" "1034382" "1034384" "1034385" "1034400" "1090087"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1002363" "1034382" "1034384" "1034385" "1090087" "1225476"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $`bp:growth medium|nutrient broth|s`</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "2820300" "185008"  "43305"   "45851"   "332656"  "1160721"</span>
@@ -596,7 +592,7 @@ meaning of each keyword.</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1074049" "1074050" "1074051" "1090375" "1090379" "1090471"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $`bp:growth temperature|mesophile (&gt;=25, &lt;45 Celcius)|s`</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "100"     "1282440" "1745854" "177413"  "184075"  "1937790"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "100"     "1282440" "1745854" "177413"  "1937790" "223389" </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $`bp:growth temperature|psychrophile (&lt;24.9 Celcius)|s`</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "225625"  "2528964" "2607286" "640133"  "376174"  "2496029"</span>
@@ -638,13 +634,13 @@ meaning of each keyword.</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1662188" "44938"   "81840"   "1027767" "1239297" "140"    </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $`bp:length|small (&lt;3.8 µm)|s`</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "100"     "1282440" "1745854" "177413"  "184075"  "1937790"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "100"     "1282440" "1745854" "177413"  "1937790" "223389" </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $`bp:motility|motility--FALSE|s`</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "100"     "1282440" "1745854" "177413"  "184075"  "223389" </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "100"     "1282440" "1745854" "177413"  "223389"  "223390" </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $`bp:motility|motility--TRUE|s`</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "100"     "1282440" "184075"  "1937790" "2579970" "2579975"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "100"     "1282440" "1937790" "2579970" "2579975" "2597768"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $`bp:mutation rate per site per generation|fast (&gt;17)|s`</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1114980" "1963034" "2133"    "2134"    "2136"    "2137"   </span>
@@ -660,6 +656,9 @@ meaning of each keyword.</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $`bp:mutation rate per site per year|medium (&gt;=7.6, &lt;20)|s`</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "621"     "623"     "1813821" "1288385" "1341643" "1604335"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`bp:mutation rate per site per year|medium fast (&gt;=21, &lt;54.2)|s`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "106648"  "106649"  "106654"  "108980"  "108981"  "1096779"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $`bp:mutation rate per site per year|slow (&lt;7.5)|s`</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "101571"  "1074049" "1074050" "1074051" "1090375" "1090379"</span>
@@ -686,22 +685,22 @@ meaning of each keyword.</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1183401" "1183410" "1183412" "1183413" "1585697" "160699" </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $`bp:shape|bacillus|s`</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "100"     "1282440" "1745854" "177413"  "184075"  "1937790"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "100"     "1282440" "1745854" "177413"  "1937790" "223389" </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $`bp:shape|bent filament|s`</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1653847" "183670"  "1163621" "1193627" "1193628" "1520894"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $`bp:shape|clavate|s`</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1333996" "1653830" "2292256" "29453"   "2982576" "943830" </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1333996" "1653830" "2292256" "29453"   "943830"  "1454233"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $`bp:shape|coccobacillus|s`</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1017184" "1576911" "659006"  "1348468" "1494448" "1743235"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $`bp:shape|coccus|s`</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "100"     "1282440" "1745854" "177413"  "184075"  "1937790"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "100"     "1282440" "1745854" "177413"  "1937790" "223389" </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $`bp:shape|discoid|s`</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1002363" "1034382" "1034384" "1034385" "1034400" "1090087"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1002363" "1034382" "1034384" "1034385" "1090087" "1225476"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $`bp:shape|dumbbell-shaped|s`</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "391287"  "1246864" "1342299" "1342301" "1342302" "1499314"</span>
@@ -722,7 +721,7 @@ meaning of each keyword.</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1640152" "488938"  "488939"  "53245"   "617000"  "682550" </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $`bp:shape|spirillum|s`</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "100"     "1282440" "1745854" "177413"  "184075"  "1937790"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "100"     "1282440" "1745854" "177413"  "1937790" "223389" </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $`bp:shape|staphylococcus|s`</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1246"    "1251"    "1406906" "1511761" "178001"  "1981069"</span>
@@ -743,7 +742,7 @@ meaning of each keyword.</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1045317" "1069987" "1104779" "1123978" "1141887" "1141888"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $`bp:spore formation|spore formation--FALSE|s`</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "100"     "1282440" "1745854" "177413"  "184075"  "1937790"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "100"     "1282440" "1745854" "177413"  "1937790" "223389" </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $`bp:spore formation|spore formation--TRUE|s`</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1069"    "1202716" "2498452" "1063"    "1608950" "2584941"</span>
@@ -770,7 +769,7 @@ meaning of each keyword.</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "100133"  "1079748" "1118237" "118322"  "1334044" "158786" </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $`bp:width|small (&lt;0.9 µm)|s`</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "100"     "1282440" "1745854" "177413"  "184075"  "1937790"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "100"     "1282440" "1745854" "177413"  "1937790" "223389" </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $`bp:width|very large (&gt;13 µm)|s`</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1662188" "44938"   "81840"   "1425478" "1499410" "2161724"</span>
@@ -781,7 +780,7 @@ meaning of each keyword.</p></dd>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Downloading, full_dump_numeric.csv.bz2.</span>
 <span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>download failed</span>
 <span class="r-wrn co"><span class="r-pr">#&gt;</span>   web resource path: ‘https://github.com/waldronlab/bugphyzzExports/raw/main/full_dump_numeric.csv.bz2’</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span>   local file path: ‘/github/home/.cache/R/bugphyzz/16361bec6313_full_dump_numeric.csv.bz2’</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span>   local file path: ‘/github/home/.cache/R/bugphyzz/1636676afbd9_full_dump_numeric.csv.bz2’</span>
 <span class="r-wrn co"><span class="r-pr">#&gt;</span>   reason: Not Found (HTTP 404).</span>
 <span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>bfcadd() failed; resource removed</span>
 <span class="r-wrn co"><span class="r-pr">#&gt;</span>   rid: BFC2</span>
