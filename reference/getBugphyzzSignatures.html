@@ -135,7 +135,7 @@ meaning of each keyword.</p></dd>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## Create signatures of categorical or binary attributes</span></span></span>
 <span class="r-in"><span><span class="va">bp</span> <span class="op">&lt;-</span> <span class="fu"><a href="importBugphyzz.html">importBugphyzz</a></span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Using data downloaded on 2023-07-24 18:15:49.</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Using data downloaded on 2023-07-26 17:35:36.</span>
 <span class="r-in"><span><span class="va">sigs</span> <span class="op">&lt;-</span> <span class="fu">sig_fun</span><span class="op">(</span><span class="va">bp</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html" class="external-link">map</a></span><span class="op">(</span><span class="va">sigs</span>, <span class="va">head</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $`bp:COGEM pathogenicity rating|COGEM pathogenicity rating 1|s`</span>
@@ -167,6 +167,99 @@ meaning of each keyword.</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $`bp:animal pathogen|animal pathogen--TRUE|s`</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1002233" "1318743" "1443937" "1457016" "1457020" "1460968"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`bp:antimicrobial resistance|carbapenem-resistant Acinetobacter|s`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "106648"  "106649"  "106654"  "108980"  "108981"  "1096779"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`bp:antimicrobial resistance|not resistant to beta-lactam|s`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "102684"  "102886"  "1071886" "1080071" "1080072" "1111760"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`bp:antimicrobial resistance|resistance to erythromycin A|s`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1276936" "1280"    "1281"    "1282"    "1283"    "1284"   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`bp:antimicrobial resistance|resistance to isoniazid|s`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "110505"  "1138383" "120959"  "122367"  "1260918" "1273442"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`bp:antimicrobial resistance|resistance to levofloxacin|s`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1007099" "101564"  "104087"  "1055468" "1055469" "1076620"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`bp:antimicrobial resistance|resistance to methicillin|s`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1276936" "1280"    "1281"    "1282"    "1283"    "1284"   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`bp:antimicrobial resistance|resistance to penicillin|s`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1276936" "1280"    "1281"    "1282"    "1283"    "1284"   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`bp:antimicrobial resistance|resistance to streptomycin|s`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "110505"  "1138383" "120959"  "122367"  "1260918" "1273442"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`bp:antimicrobial resistance|resistance to tetracycline|s`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "102684"  "102886"  "1071886" "1080071" "1080072" "1111760"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`bp:antimicrobial resistance|resistance to trimethoprim|s`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "102684"  "102886"  "1071886" "1080071" "1080072" "1111760"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`bp:antimicrobial resistance|resistant to beta-lactam|s`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "102684"  "102886"  "1071886" "1080071" "1080072" "1111760"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`bp:antimicrobial resistance|sensitive to amikacin|s`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1134687" "1463165" "1641362" "2026240" "2042302" "2058152"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`bp:antimicrobial resistance|sensitive to capreomycin|s`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "110505"  "1138383" "120959"  "122367"  "1260918" "1273442"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`bp:antimicrobial resistance|sensitive to carbapenems|s`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "106648"  "106649"  "106654"  "108980"  "108981"  "1096779"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`bp:antimicrobial resistance|sensitive to chloramphenicol|s`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "102684"  "102886"  "1071886" "1080071" "1080072" "1111760"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`bp:antimicrobial resistance|sensitive to ciprofloxacin|s`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1276936" "1280"    "1281"    "1282"    "1283"    "1284"   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`bp:antimicrobial resistance|sensitive to clindamycin|s`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1276936" "1280"    "1281"    "1282"    "1283"    "1284"   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`bp:antimicrobial resistance|sensitive to ertapenem|s`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1134687" "1463165" "1641362" "2026240" "2042302" "2058152"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`bp:antimicrobial resistance|sensitive to erythromycin A|s`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1276936" "1280"    "1281"    "1282"    "1283"    "1284"   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`bp:antimicrobial resistance|sensitive to ethambutol|s`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "110505"  "1138383" "120959"  "122367"  "1260918" "1273442"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`bp:antimicrobial resistance|sensitive to gentamicin|s`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1276936" "1280"    "1281"    "1282"    "1283"    "1284"   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`bp:antimicrobial resistance|sensitive to isoniazid|s`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "110505"  "1138383" "120959"  "122367"  "1260918" "1273442"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`bp:antimicrobial resistance|sensitive to kanamycin A|s`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "110505"  "1138383" "120959"  "122367"  "1260918" "1273442"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`bp:antimicrobial resistance|sensitive to levofloxacin|s`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1007099" "101564"  "104087"  "1055468" "1055469" "1076620"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`bp:antimicrobial resistance|sensitive to meropenem|s`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1134687" "1463165" "1641362" "2026240" "2042302" "2058152"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`bp:antimicrobial resistance|sensitive to methicillin|s`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1276936" "1280"    "1281"    "1282"    "1283"    "1284"   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`bp:antimicrobial resistance|sensitive to ofloxacin|s`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "110505"  "1138383" "120959"  "122367"  "1260918" "1273442"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`bp:antimicrobial resistance|sensitive to rifampicin|s`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "110505"  "1138383" "120959"  "122367"  "1260918" "1273442"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`bp:antimicrobial resistance|sensitive to streptomycin|s`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "110505"  "1138383" "120959"  "122367"  "1260918" "1273442"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`bp:antimicrobial resistance|sensitive to tetracycline|s`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1276936" "1280"    "1281"    "1282"    "1283"    "1284"   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`bp:antimicrobial resistance|sensitive to trimethoprim|s`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1276936" "1280"    "1281"    "1282"    "1283"    "1284"   </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $`bp:antimicrobial sensitivity|antimicrobial sensitivity--FALSE|s`</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1035271" "1076926" "1079800" "1120045" "1132659" "1132695"</span>
@@ -780,7 +873,7 @@ meaning of each keyword.</p></dd>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Downloading, full_dump_numeric.csv.bz2.</span>
 <span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>download failed</span>
 <span class="r-wrn co"><span class="r-pr">#&gt;</span>   web resource path: ‘https://github.com/waldronlab/bugphyzzExports/raw/main/full_dump_numeric.csv.bz2’</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span>   local file path: ‘/github/home/.cache/R/bugphyzz/1636676afbd9_full_dump_numeric.csv.bz2’</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span>   local file path: ‘/github/home/.cache/R/bugphyzz/163413f8e0b0_full_dump_numeric.csv.bz2’</span>
 <span class="r-wrn co"><span class="r-pr">#&gt;</span>   reason: Not Found (HTTP 404).</span>
 <span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>bfcadd() failed; resource removed</span>
 <span class="r-wrn co"><span class="r-pr">#&gt;</span>   rid: BFC2</span>
