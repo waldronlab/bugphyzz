@@ -1,28 +1,26 @@
 
-#' Import physiologies
+#' Physiologies
 #'
-#' \code{physiologies} imports data about physiologies and other traits
-#' stored in Google spreadsheets and the main bacdive file.
+#' \code{physiologies} imports data from the
+#' Google spreadsheets (https://drive.google.com/drive/folders/1i2UAolVWAYa7UnETNnCs0BDWjKPp3ev5).
 #'
-#' @param Character vector with one or more keywords. Valid keyboard
-#' values can be checked with \code{showPhys}.
-#' @param full_source If TRUE, full source is provided. If FALSE, a
+#' @param Character Character vector with one or more valid keywords.
+#' Valid keyboard can be checked with \code{showPhys}.
+#' @param full_source If TRUE, the full source is provided. If FALSE, a
 #' shortened name of the source is provided. Default if FALSE.
 #'
-#' @return A list of data.frames.
+#' @return A list of data.frames in tidy format.
 #'
 #' @export
 #'
 #' @examples
 #'
-#' phys <- physiologies('all')
-#' aer <- physiologies('aerophilicity')
+#' phys <- physiologies('all') # a list
+#' df <- physiologies('aerophilicity')[[1]] # a data.frame
 #'
 physiologies <- function(keyword = 'all', full_source = FALSE) {
-
   keyword <- unique(sort(keyword))
   valid_keywords <- showPhys()
-
   if ('all' %in% keyword) {
     if (length(keyword) > 1)
       stop(
@@ -32,7 +30,6 @@ physiologies <- function(keyword = 'all', full_source = FALSE) {
       )
     keyword <- valid_keywords
   }
-
   lgl_vct <- keyword %in% valid_keywords
   if (any(!lgl_vct) ) {
     invalid_keywords <- keyword[!lgl_vct]
@@ -159,23 +156,24 @@ physiologies <- function(keyword = 'all', full_source = FALSE) {
     dplyr::distinct()
 }
 
-#' List of available physiologies
+#' Show list of available physiologies
 #'
-#' \code{showPhys} prints the names of the available datasets provided by
-#' the \code{\link{physiologies}} function.
+#' \code{showPhys} prints the names of the available physiologies that can be
+#' imported with the \code{\link{physiologies}} function.
 #'
 #' @param which_names A character string. Options: 'all' (default),
 #' 'spreadsheets', 'bacdive'.
 #'
-#' @return A character vector with the names of the physiologies datasets.
+#' @return A character vector with the names of the physiologies.
 #' @export
 #'
 #' @examples
 #' showPhys()
 #' showPhys('bacdive')
 #' showPhys('spreadsheets')
+#'
 showPhys <- function(which_names = 'all') {
-  fname <- system.file('extdata/links.tsv', package = 'bugphyzz')
+  fname <- system.file('extdata', 'links.tsv', package = 'bugphyzz')
   links <- utils::read.table(fname, header = TRUE, sep = '\t')
   spreadsheet_phys <- links[['physiology']]
   if (which_names == 'all')
@@ -223,15 +221,12 @@ showPhys <- function(which_names = 'all') {
 
 ## This function imports the spreadsheets in extdata/links.tsv
 .importSpreadsheets <- function(keyword) {
-
   parent_col_names <- c('Parent_name', 'Parent_NCBI_ID', 'Parent_rank')
-  fname <- system.file('extdata/links.tsv', package = 'bugphyzz')
+  fname <- system.file('extdata', 'links.tsv', package = 'bugphyzz')
   links <- utils::read.table(fname, header = TRUE, sep = '\t')
   links <- links[links[['physiology']] %in% keyword,]
   spreadsheets <- vector('list', nrow(links))
-
   for (i in seq_along(spreadsheets)) {
-
     phys_name <- links[i, 'physiology', drop = FALSE][[1]]
     attr_type <- links[i, 'sig_type', drop = FALSE][[1]]
     names(spreadsheets)[i] <- phys_name

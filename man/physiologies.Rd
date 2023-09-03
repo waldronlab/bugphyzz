@@ -2,27 +2,27 @@
 % Please edit documentation in R/physiologies.R
 \name{physiologies}
 \alias{physiologies}
-\title{Import physiologies}
+\title{Physiologies}
 \usage{
 physiologies(keyword = "all", full_source = FALSE)
 }
 \arguments{
-\item{full_source}{If TRUE, full source is provided. If FALSE, a
+\item{full_source}{If TRUE, the full source is provided. If FALSE, a
 shortened name of the source is provided. Default if FALSE.}
 
-\item{Character}{vector with one or more keywords. Valid keyboard
-values can be checked with \code{showPhys}.}
+\item{Character}{Character vector with one or more valid keywords.
+Valid keyboard can be checked with \code{showPhys}.}
 }
 \value{
-A list of data.frames.
+A list of data.frames in tidy format.
 }
 \description{
-\code{physiologies} imports data about physiologies and other traits
-stored in Google spreadsheets and the main bacdive file.
+\code{physiologies} imports data from the
+Google spreadsheets (https://drive.google.com/drive/folders/1i2UAolVWAYa7UnETNnCs0BDWjKPp3ev5).
 }
 \examples{
 
-phys <- physiologies('all')
-aer <- physiologies('aerophilicity')
+phys <- physiologies('all') # a list
+df <- physiologies('aerophilicity')[[1]] # a data.frame
 
 }
