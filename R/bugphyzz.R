@@ -219,7 +219,7 @@ getBugphyzzSignatures <- function(
   })
   sig_ranks <- purrr::map_chr(sig_ranks, ~ paste0(.x, collapse = ''))
   sigs <- purrr::map(dfs, ~ unique(.x[[tax.id.type]]))
-  names(sigs) <- paste0('bp:', names(sigs), '|', sig_ranks)
+  names(sigs) <- paste0('bp:', names(sigs), '|', sig_ranks, recycle0 = TRUE)
   return(sigs)
 }
 
