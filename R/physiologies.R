@@ -248,7 +248,7 @@ showPhys <- function(which_names = 'all') {
     if (all(parent_col_names %in% colnames(df))) {
       df$Parent_NCBI_ID <- stringr::str_squish(as.character(df$Parent_NCBI_ID))
     } else {
-        ## ranks_parents is a data.frame internal object in bugphyzz
+        ## ranks_parents is an internal object (data.frame) in bugphyzz
         rp <- purrr::modify_at(
           .x = ranks_parents,
           .at = c('NCBI_ID', 'Parent_NCBI_ID'),
