@@ -21,9 +21,12 @@
 .importBacDiveExcel <- function(verbose = FALSE) {
   if (verbose)
     message('Importing BacDive...')
-  url <- 'https://docs.google.com/spreadsheets/d/1smQTi1IKt4wSGTrGTW25I6u47M5txZkq/export?format=csv'
-  bacdive_data <- .cleanBD(utils::read.csv(url))
-  bacdive_data
+  # url <- 'https://docs.google.com/spreadsheets/d/1smQTi1IKt4wSGTrGTW25I6u47M5txZkq/export?format=csv'
+  url <- 'https://docs.google.com/spreadsheets/d/1P4Ic6-N9GVXcX1CdfoamFt6eozfHqt-sxfIRTBvYHWk/export?format=csv'
+  # bacdive_data <- .cleanBD(utils::read.csv(url))
+  bacdive <- utils::read.csv(url)
+  colnames(bacdive) <- tolower(colnames(bacdive))
+  return(bacdive)
 }
 
 ## Helper function for .getBacDive
