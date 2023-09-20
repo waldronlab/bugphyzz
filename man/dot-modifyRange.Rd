@@ -2,7 +2,7 @@
 % Please edit documentation in R/physiologies.R
 \name{.modifyRange}
 \alias{.modifyRange}
-\title{Import range}
+\title{Modify attributes of type range}
 \usage{
 .modifyRange(df)
 }
@@ -14,6 +14,5 @@ A data.frame.
 }
 \description{
 \code{.modifyRange} imports a dataset labeled with "range" in
-\code{curationLinks}.
 }
 \keyword{internal}

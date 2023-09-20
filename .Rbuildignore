@@ -12,3 +12,4 @@
 ^jupyter_notebooks$
 ^vignettes/articles$
 ^protraits_data$
+^misc$

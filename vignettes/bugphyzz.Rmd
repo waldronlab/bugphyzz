@@ -14,137 +14,84 @@ knitr::opts_chunk$set(
 )
 ```
 
+# Introduction
 
-## Introduction
+The `bugphyzz` package provides access to an electronic resource of 
+harmonized microbial annotations from different sources. The resource can
+also be accessed by direct download at **>>> insert Zenodo link here <<<**.
 
-This document shows the main functions and operations that can be used
-to work with the bugphyzz datasets, such as seeing all physiologies, 
-look at specific physiologies, and make signature sets. _bugphyzz_ is a collection of physiological features about bacteria. We are curating the databases through 3 main methods: webscraping, bulk download from online databases, and manual curation from literature. Mainly this database will be used to analyze microbiome data.
-
-## Definitions
-
-### Always present
-
-* **NCBI ID**: National Center for Bioinfomatic numeric ID to link to specific taxa.
-* **Taxon name**: a human readable organismal name that can delinate which level taxa the annotation is describing.
-* **Attribute**: a value for a physiology, that is mapped to an ontology whenever possible. These are defined in the `attribute` column of [inst/extdata/attributes.tsv](https://github.com/waldronlab/bugphyzz/blob/main/inst/extdata/attributes.tsv
- **Physiology**: a microbial characteristic that can be measured or observed, that should be mapped to an ontology wherever possible. These are defined in [inst/extdata/links.tsv](https://github.com/waldronlab/bugphyzz/blob/main/inst/extdata/links.tsv).
-* **Attribute value**: a value describing a physiology. Allowable values are defined by the `validity` column of [inst/extdata/attributes.tsv](https://github.com/waldronlab/bugphyzz/blob/main/inst/extdata/attributes.tsv). For categorical attributes (such as "obligately aerobic"), values can be "TRUE" and "FALSE", for example. For numeric attributes, these can be numeric values.
-* **Attribute source**: a citeable domain which the annotation was obtained. A source can be another database or primary literature.
-* **Frequency**: Describes how often the attritbute (phenotype) occurs: Rarely, Sometimes, Usually, Always, or Unknown. If the source makes the attribute unclear how often it occurs, then an unknown is given.
-* **Evidence codes**: As the Gene Ontology defines different forms of evidence a source was obtained the annotation. 
-    - EXP: Experimental data, the attribute was obtained through labortory confirmations, and ideally more than once.
-    - IGC: Computational predicted through means of metagenomic analysis, or more broadly, genome analysis.
-    - ASR: Anstrestal State Reconstruction, was predicted using ASR computional techniques to predicted up and down the taxonmic tree of taxa that has a value.
-* **Note**: Any additional information that does not fit in any fixed column. The information here is variable.
-* **Parent name**: The parent of descendant given in Taxon name column. Values can includes names or NA.
-* **Species name**: The species name, or descendant of parent, given in the Taxon name column. Values can includes names or NA.
-* **Unit**: defines unit of attribute value, like µm.
-* **Rank**: The taxonomic rank of the annotation. Values can includes names or NA.
-* **Parent Rank**: The taxonmic rank of the parent of the annotation. Values can includes names or NA.
-
-### Sometimes present
-
-* **MIDAS ID**: Located in the Habitat attribute. Any annotation from the MIDAS database is assigned an ID number. We provided that ID here.
-* **Genome ID**: From NCBI, another type of numeric ID, that links to a specific sequenced genome. Not all taxa have a NCBI ID, and might only have a Genome ID
-* **Accession ID**: The accession number is a unique identifier assigned to a record in sequence databases such as GenBank. Several NCBI databases use the format `[alphabetical prefix][series of digits]`. A change in the record in some databases (e.g. GenBank) is tracked by an integer extension of the accession number, an Accession.
-
-## bugphyzzAnalyses
-
-Some analyses using data provided by this package can be found at https://waldronlab.io/bugphyzzAnalyses/
-
-## How to add a new attribute in GitHub to the BugPhyzz database
-
-Curation steps:
- 1. Add attributes of physiology to Attributes using ontology terms
- 2. Add reference(s) to Confidence in Curation
-
-If using Google Sheets, publish a csv file to web:
- 4. Add Google Doc "publish to web" link and add in "Link" https://github.com/waldronlab/bugphyzz/blob/main/inst/extdata/links.tsv 
- 5. Add Google Doc link to "Source Link" https://github.com/waldronlab/bugphyzz/blob/main/inst/extdata/source_links.tsv
-
-Steps in the `bugphyzz` package:
- 1. _Samuel fill in_
-
-## Loading datasets in R
+# Import bugphyzz
 
 ```{r, message=FALSE, eval=FALSE}
 if (!require("BiocManager", quietly = TRUE))
     install.packages("BiocManager")
 
+## Devel version
 BiocManager::install("waldronlab/bugphyzz")
 ```
 
-```{r setup, message=FALSE}
+```{r load package, message=FALSE}
 library(bugphyzz)
+library(dplyr)
 library(purrr)
-library(tibble)
 ```
 
-The main function for importing datasets is the `physiologies` function, which
-has a single argument, `keyword`, and returns a list of data.frames.
-The `keyword` argument accepts a character vector specifying the name(s) 
-of the dataset(s) that will be imported.
-
-A datset with categorical attribute values:
-
-```{r, message=FALSE}
-aer <- as_tibble(physiologies("aerophilicity")[[1]])
-aer
+```{r import data}
+bp <- importBugphyzz(version = 'devel', force_download = TRUE)
+head(bp)
 ```
 
-A dataset with numeric attribute values:
+## Explore wich attribute groups are available
 
 ```{r}
-ph <- as_tibble(physiologies('optimal ph')[[1]])
-ph
+unique(bp$Attribute_group)
 ```
 
-The `physiologiesList` function can be used to display which datasets are
-available through the `physiologies` function before importing them:
+## Explore which attribute signatures are available
 
 ```{r}
-showPhys()
+head(unique(bp$Attribute))
 ```
 
-You can use the `keyword = "all"` to import all of the datasets:
+# Creating signatures
 
-```{r, message=FALSE, eval=FALSE}
-## Import all of the datasets available through the physiologies function
-phys <- map(physiologies(keyword = "all"), as_tibble)
-```
-
-A separate function is provided to import the fatty acid compositions dataset,
-`fattyAcidComposition`. This function takes no arguments and returns a single
-data.frame object:
+## Create signatures of taxids at the genus level for aerophilicity
 
 ```{r}
-fac <- as_tibble(fattyAcidComposition())
-fac
-```
-
-## Some examples of how to create signatures
-
-A signature of attributes with character values:
-
-```{r, message=FALSE}
-aer_sig <- makeSignatures(
-    keyword = 'aerophilicity', tax.id.type = 'NCBI_ID', tax.level = 'genus', 
-    Frequency = 'always', Evidence = 'exp', min.size = 10
+aer <- bp[which(bp$Attribute_group == 'aerophilicity'),]
+sigs1 <- getBugphyzzSignatures(
+  df = aer, tax.id.type = 'NCBI_ID', tax.level = 'genus', min.size = 10
 )
-
-map(aer_sig, head)
+map(sigs1, head)
 ```
 
-A signature of an attribute with numeric values (acidic bacteria):
+## Create signatures of taxa names at the species level for optimal ph 
+```{r}
+op <- bp[bp$Attribute_group == 'optimal ph', ]
+sigs2 <- getBugphyzzSignatures(
+  df = op, tax.id.type = 'Taxon_name', tax.level = 'species', min.size = 10
+)
+map(sigs2, head)
+```
+
+
+# Other examples
 
 ```{r}
-acid_sig <- makeSignatures(
-    keyword = 'optimal ph', tax.id.type = 'Taxon_name', tax.level = 'species',
-    max = 4
+mot <- bp[bp$Attribute_group == 'motility',]
+sigs3 <- getBugphyzzSignatures(
+  df = mot, tax.id.type = 'Taxon_name', tax.level = 'mixed'
 )
-map(acid_sig, head)
+lapply(sigs3, head)
 ```
+
+# Merge examples above
+
+```{r}
+sigs <- c(sigs1, sigs2, sigs3)
+lapply(sigs, head)
+```
+
 
 ## Session information:
 

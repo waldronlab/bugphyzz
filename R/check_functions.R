@@ -768,7 +768,9 @@ utils::globalVariables(c("."))
     lgl_vct_1 <- df$requiredness == "required"
     lgl_vct_2 <- grepl(attr_type, df$attribute_types)
     df <- df[lgl_vct_1 & lgl_vct_2,]
-    df[order(df[["required_column_order"]]), "column_name"]
+    df[order(df[["required_column_order"]]), , drop = FALSE]
+    output <- df[['column_name']]
+    return(output)
 }
 
 #' Generate a template for a bugphyzz dataset
@@ -846,16 +848,17 @@ utils::globalVariables(c("."))
 #' \code{\link{.checkColumnValuesList}}
 #'
 .appendLinks <- function(x) {
-    select_cols <- c("physiology", "source_link")
-    phys_links <- curationLinks() %>%
-        dplyr::select(tidyselect::all_of(select_cols))
-    custom_links <- customLinks() %>%
-        dplyr::select(tidyselect::all_of((select_cols)))
-    links <- dplyr::bind_rows(phys_links, custom_links)
-    x %>%
-        dplyr::left_join(links, by = c("dataset" = "physiology"))
+  fname1 <- system.file('extdata/links.tsv', package = 'bugphyzz')
+  links <- read.table(fname1, header = TRUE, sep = '\t')
+  select_cols <- c("physiology", "source_link")
+  phys_links <- links %>%
+    dplyr::select(tidyselect::all_of(select_cols))
+  custom_links <- customLinks() %>%
+    dplyr::select(tidyselect::all_of((select_cols)))
+  links <- dplyr::bind_rows(phys_links, custom_links)
+  x %>%
+    dplyr::left_join(links, by = c("dataset" = "physiology"))
 }
-
 
 #' Error list to table
 #'

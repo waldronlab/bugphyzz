@@ -1,6 +1,6 @@
 Package: bugphyzz
 Title: Access to microbial physiologies in high throughput
-Version: 0.0.1.3
+Version: 0.0.1.4
 Authors@R: 
     person(given = "First",
            family = "Last",
@@ -9,20 +9,14 @@ Authors@R:
            comment = c(ORCID = "YOUR-ORCID-ID"))
 Description: What the package does (one paragraph).
 License: MIT + file LICENSE
-Suggests: 
-    DT,
-    forcats,
-    ggplot2,
-    knitr,
-    rmarkdown,
-    sessioninfo,
-    testthat
 Config/testthat/edition: 3
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.2.3
 VignetteBuilder: knitr
+Depends: 
+    R (>= 4.2)
 Imports: 
     dplyr,
     utils,
@@ -38,8 +32,17 @@ Imports:
     mgsub,
     methods,
     tidytext,
-    taxizedb
-Depends: 
-    R (>= 4.2)
+    taxizedb,
+    BiocFileCache,
+    tools
+Suggests: 
+    DT,
+    forcats,
+    ggplot2,
+    htmltools,
+    knitr,
+    rmarkdown,
+    sessioninfo,
+    testthat
 URL: https://github.com/waldronlab/bugphyzz
 BugReports: https://github.com/waldronlab/bugphyzz/issues

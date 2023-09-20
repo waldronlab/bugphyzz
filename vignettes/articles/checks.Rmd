@@ -59,7 +59,10 @@ if (!is.null(err1)) {
 file.
 
 ```{r, message=FALSE}
-err2 <- bugphyzz:::.checkColumnValuesList(phys, table = TRUE)
+phys2 <-  phys |> 
+  map(~ dplyr::filter(.x, Attribute_source != 'https://bacdive.dsmz.de/')) |> 
+  discard(~!nrow(.x))
+err2 <- bugphyzz:::.checkColumnValuesList(phys2, table = TRUE)
 ```
 
 ## Uncatalogued columns
@@ -96,8 +99,22 @@ invalid_values <- dplyr::filter(err2, error_type == 'Invalid values') |>
   tidyr::unnest(cols = c(invalid_values, invalid_pos)) |> 
   select(-error_type, -invalid_pos)
 invalid_values |> 
-  head(100) |> 
-  DT::datatable(options = list(pageLength = 100, scrollY = TRUE))
+  # head(100) |> 
+  unique() |> 
+  select(-col, -n_rows) |> 
+  filter(dataset != 'isolation site') |> 
+  DT::datatable(
+    filter = 'top',
+    extensions = c("Buttons","KeyTable"),
+    options = list(
+      dom = '<"top"B>lfrtip',
+      buttons = list('copy', 'print'),
+      iDisplayLength = 25,
+      keys = TRUE,
+      pageLength = 100, 
+      scrollY = TRUE
+    )
+  )
 ```
 
 
@@ -126,7 +143,7 @@ Roughly, taxize behaves like https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwta
 while taxizedb behaves like https://www.ncbi.nlm.nih.gov/taxonomy/.
 
 
-```{r, message=FALSE, warning=FALSE}
+```{r, message=FALSE, warning=FALSE, eval=FALSE}
 id_err <- lapply(phys, check_valid_ncbi_ids) %>% 
   purrr::discard(is.null) %>%
   bind_rows(.id = 'dataset')
@@ -141,7 +158,7 @@ id_err_tbl <- dplyr::left_join(
 dim(id_err_tbl)
 ```
 
-```{r, message=FALSE, warning=FALSE}
+```{r, message=FALSE, warning=FALSE, eval=FALSE}
 DT::datatable(id_err_tbl)
 ```
 

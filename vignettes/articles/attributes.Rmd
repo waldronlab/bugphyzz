@@ -1,0 +1,149 @@
+---
+title: "Data about Attributes and Sources"
+output: 
+  rmarkdown::html_vignette:
+    toc: true
+vignette: >
+  %\VignetteIndexEntry{attributes}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>", 
+  message = FALSE,
+  warning = FALSE,
+  echo = FALSE
+)
+```
+
+```{r setup}
+library(DT)
+library(bugphyzz)
+library(dplyr)
+```
+
+```{r}
+bp <- importBugphyzz(version = 'devel', force_download = TRUE)
+bp <- bp |> 
+  filter(
+    !Evidence %in% c('asr', 'inh')
+  )
+x <- bp |> 
+  select(Attribute_source, Attribute_group, Attribute) |> 
+  filter(!grepl(';', Attribute_source)) |> 
+  count(Attribute_source, Attribute_group) |> 
+  mutate(new_col = paste0(Attribute_group, ' (', n, ')'))
+```
+
+## Attributes
+
+Ontology terms can be searched at [OSLv3](https://www.ebi.ac.uk/ols/index) and
+[OSLv4](https://www.ebi.ac.uk/ols4).
+
+```{r}
+regex <- paste0(
+  '(', paste(unique(x$Attribute_group), collapse = '|'), ');*'
+)
+fname <- system.file('extdata/attributes.tsv', package = 'bugphyzz')
+attributes <- read.table(fname, header = TRUE, sep = '\t') |> 
+  filter(grepl(regex, attribute_group))
+
+colnames(attributes) <- c(
+  'Attribute', 'Attribute group', 'Validity', 'Ontoloty', 'Description'
+)
+caption1 <- paste0(
+  'Table 1. Attributes that could be found in bugphyzz.'
+)
+datt <- datatable(
+  data = attributes, 
+  filter = "top",
+  extensions = c("Buttons","KeyTable"), 
+  caption = htmltools::tags$caption(
+    style = 'caption-side: top; text-align: left;',
+    caption1
+  ),
+  options = list(
+    dom = '<"top"B>lfrtip',
+    buttons = list('copy', 'print'),
+    iDisplayLength = 10,
+    keys = TRUE,
+    scrollX = TRUE,
+    autoWidth = FALSE 
+  )
+)
+datt
+```
+
+## Sources
+
+```{r}
+x <- x |> 
+  select(-Attribute_group, -n) |> 
+  group_by(Attribute_source) |> 
+  summarise(Attribute_group = paste(sort(new_col), collapse = '; ')) |> 
+  ungroup()
+fname2 <- system.file(
+  'extdata/attribute_sources.tsv', 
+  package = 'bugphyzz', mustWork = TRUE
+)
+src <- read.table(
+  fname2, header = TRUE, sep = '\t', quote = ""
+)
+
+src <- left_join(x, src, by = 'Attribute_source') |> 
+  relocate(
+    Attribute_source, Confidence_in_curation, Evidence,
+    Attribute_group, full_source
+  ) |> 
+  mutate(
+    Confidence_in_curation = factor(
+      Confidence_in_curation, levels = c('high', 'medium', 'low')
+    )
+  ) |> 
+  arrange(Confidence_in_curation, Evidence, Attribute_source)
+  
+colnames(src) <- c(
+  'Source (short)', 'Confidence in curation', 'Evidence*', 'Attribute group**',
+  'Full source'
+)
+
+caption2 <- paste0(
+  'Table 2. Sources of attribute annotations in bugphyzz. ',
+  '* Evidence codes: exp = experimental evidence, igc = inferred from genomic context, ',
+  'tas = traceable author statement, nas = non-traceable author statement; ',
+  'more information at http://geneontology.org/docs/guide-go-evidence-codes/. ',
+  '** The number in parenthesis indacates the number of annotations per',
+  ' attribute group.'
+)
+
+src_dt <- datatable(
+  data = src, 
+  filter = "top",
+  extensions = c("Buttons","KeyTable"), 
+  # caption = caption2,
+  caption = htmltools::tags$caption(
+    style = 'caption-side: top; text-align: left;',
+    caption2
+  ),
+  options = list(
+    dom = '<"top"B>lfrtip',
+    buttons = list('copy', 'print'),
+    iDisplayLength = 10,
+    keys = TRUE,
+    # scrollX = TRUE,
+    autoWidth = TRUE
+  )
+)
+src_dt
+```
+
+## Session info
+
+```{r}
+sessioninfo::session_info()
+```
+
+

@@ -7,45 +7,47 @@ library(dplyr)
 library(magrittr)
 
 phys <- physiologies()
-phys[["fatty acid composition"]] <- fattyAcidComposition()
-phys <- discard(phys, ~ !"Evidence" %in% colnames(.x))
-
 
 # ranks and parents -------------------------------------------------------
-ncbi_ids <- phys %>%
-    ## as.integer helps to remove invalid NCBI IDs
-    purrr::map(~ as.integer(.x[["NCBI_ID"]])) %>%
-    purrr::flatten_int() %>%
-    unique() %>%
-    .[!is.na(.)] %>%
-    sort(decreasing = TRUE)
+ncbi_ids <- phys |>
+  map( ~ pull(.x, NCBI_ID)) |>
+  flatten_chr() |>
+  unique() |>
+  {\(y) y[!is.na(y)]}() |>
+  {\(y) y[y != 'unknown']}() |>
+  sort(decreasing = TRUE)
 
+## This might change to taxize instead (might be slower)
 taxonomies <- taxizedb::classification(ncbi_ids, db = "ncbi")
 
+## >>>>>>>> this is not part of the output <<<<<<<<<<<<<<<
 ## Check that names correspond to the right output
 name_value <- names(taxonomies) == map_chr(
-    taxonomies, ~ tryCatch(tail(.x$id, 1), error = function(e) NA)
+  taxonomies, ~ tryCatch(tail(.x$id, 1), error = function(e) NA)
 )
 invalid_taxonomy_ids <- name_value[is.na(name_value)]
 sum(name_value, na.rm = TRUE) / length(name_value) * 100
 ## In the lines above, most names correspond to the right output
+## >>>>>>>> this is not part of the output <<<<<<<<<<<<<<<
 
 taxonomies <- taxonomies[!is.na(taxonomies)]
-
 valid_ranks <- c(
-    "superkingdom", "kingdom", "phylum", "class", "order", "family", "genus",
-    "species", "strain"
+  "superkingdom", "phylum", "class", "order", "family", "genus",
+  "species", "strain"
 )
+
+taxonomies <- map(taxonomies, ~ filter(.x, rank %in% valid_ranks))
+taxonomies <- discard(taxonomies, ~ nrow(.x) <= 2)
 
 ## Get parents
 parents <- taxonomies %>%
   map( ~ {
-  .x %>%
-    head(-1) %>%
-    filter(rank %in% valid_ranks) %>%
-    tail(1) %>%
-    set_colnames(paste0("Parent_", names(.)))
-}) %>%
+    .x %>%
+      head(-1) %>%
+      filter(rank %in% valid_ranks) %>%
+      tail(1) %>%
+      set_colnames(paste0("Parent_", names(.)))
+  }) %>%
   bind_rows(.id = "NCBI_ID")
 
 ## Get ranks
@@ -55,7 +57,6 @@ ranks <- taxonomies %>%
   set_colnames(c("NCBI_ID", "Rank"))
 
 ranks_parents <- full_join(ranks, parents, by = "NCBI_ID") %>%
-  mutate(NCBI_ID = as.integer(NCBI_ID)) %>%
   relocate("Parent_rank", .after = "Parent_id") %>%
   rename(Parent_NCBI_ID = Parent_id)
 
@@ -65,7 +66,6 @@ tax_regex <- valid_ranks %>%
   c("query") %>%
   paste0(., collapse = "|") %>%
   paste0("^(", ., ")(_id)*$")
-
 
 attr(taxonomies, "class") <- "classification"
 taxonomy_table <- cbind(taxonomies)
@@ -82,13 +82,18 @@ taxonomyAnnotations <- taxonomy_table %>%
 ranks_parents <- purrr::modify_if(
   ranks_parents,
   .p = grepl("NCBI_ID", colnames(ranks_parents)),
-  .f =  ~ as.integer(.x)
+  .f =  ~ as.character(.x)
 )
+
+# BacDive -----------------------------------------------------------------
+bacdive <- bugphyzz:::.getBacDive() |>
+  bugphyzz:::.reshapeBacDive()
+bacdive_phys_names <- names(bacdive)
 
 ## Save data -------------------------------------------------------------
 usethis::use_data(
   ranks_parents,
   taxonomyAnnotations,
+  bacdive_phys_names,
   overwrite = TRUE, internal = TRUE
 )
-
