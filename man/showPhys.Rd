@@ -2,7 +2,7 @@
 % Please edit documentation in R/physiologies.R
 \name{showPhys}
 \alias{showPhys}
-\title{List of available physiologies}
+\title{Show list of available physiologies}
 \usage{
 showPhys(which_names = "all")
 }
@@ -11,14 +11,15 @@ showPhys(which_names = "all")
 'spreadsheets', 'bacdive'.}
 }
 \value{
-A character vector with the names of the physiologies datasets.
+A character vector with the names of the physiologies.
 }
 \description{
-\code{showPhys} prints the names of the available datasets provided by
-the \code{\link{physiologies}} function.
+\code{showPhys} prints the names of the available physiologies that can be
+imported with the \code{\link{physiologies}} function.
 }
 \examples{
 showPhys()
 showPhys('bacdive')
 showPhys('spreadsheets')
+
 }

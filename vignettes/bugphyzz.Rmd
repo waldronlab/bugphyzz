@@ -55,39 +55,43 @@ head(unique(bp$Attribute))
 
 # Creating signatures
 
-## Create signatures of taxids at the species level for aerophilicity
+## Create signatures of taxids at the genus level for aerophilicity
 
 ```{r}
 aer <- bp[which(bp$Attribute_group == 'aerophilicity'),]
 sigs1 <- getBugphyzzSignatures(
-  df = aer, tax.id.type = 'NCBI_ID', tax.level = 'species', min.size = 10
+  df = aer, tax.id.type = 'NCBI_ID', tax.level = 'genus', min.size = 10
 )
 map(sigs1, head)
 ```
 
-## Create signatures of taxa names at the genus level for growth temperature
+## Create signatures of taxa names at the species level for optimal ph 
 ```{r}
-gt <- bp[bp$Attribute_group == 'growth temperature', ]
+op <- bp[bp$Attribute_group == 'optimal ph', ]
 sigs2 <- getBugphyzzSignatures(
-  df = gt, tax.id.type = 'Taxon_name', tax.level = 'genus', min.size = 10
+  df = op, tax.id.type = 'Taxon_name', tax.level = 'species', min.size = 10
 )
 map(sigs2, head)
 ```
-# Numeric attributes
 
-Some attributes can be obtained with predefined labels or with numeric
-values. An example is growth temperature, which we obtained as categorical labels
-above (hyperthermophile, thermophile, psychrophile, mesophile). Let's get
-the numeric values:
 
-```{r, eval=FALSE, echo=FALSE, include=FALSE}
-gt_num <- importBugphyzzNumeric(version = 'devel', force_download = FALSE)[[1]]
-df <- gt_num[gt_num$Attribute_value_min > 0 & gt_num$Attribute_value_max < 25,]
+# Other examples
+
+```{r}
+mot <- bp[bp$Attribute_group == 'motility',]
 sigs3 <- getBugphyzzSignatures(
-  df = gt_num, tax.id.type = 'NCBI_ID', tax.level = 'species'
-)[[1]]
-head(sigs3)
+  df = mot, tax.id.type = 'Taxon_name', tax.level = 'mixed'
+)
+lapply(sigs3, head)
 ```
+
+# Merge examples above
+
+```{r}
+sigs <- c(sigs1, sigs2, sigs3)
+lapply(sigs, head)
+```
+
 
 ## Session information:
 

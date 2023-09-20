@@ -9,7 +9,7 @@ getBugphyzzSignatures(
   tax.id.type = "NCBI_ID",
   tax.level = "mixed",
   evidence = c("asr", "inh", "exp", "tas", "nas", "igc"),
-  frequency = c("unknown", "always", "usually", "sometimes"),
+  frequency = c("unknown", "rarely", "always", "usually", "sometimes"),
   min.size = 5
 )
 }

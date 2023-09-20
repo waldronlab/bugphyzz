@@ -42,14 +42,13 @@ importBugphyzz <- function(version = 'devel', force_download = FALSE
     rname = 'full_dump.csv.bz2', url = url, verbose = TRUE,
     force = force_download
   )
-  ## TODO Add skip = 1 to the vroom call when header is added to the full dump file exported in bugphyzzExports
   bp <- vroom::vroom(
     file = rpath, show_col_types = FALSE, delim = ',', progress = FALSE,
+    skip = 1, # skip header
     col_types = vroom::cols(
       NCBI_ID = vroom::col_character(),
       Attribute_source = vroom::col_character(),
       Confidence_in_curation = vroom::col_character(),
-      Strain = vroom::col_character(),
       BacDive_ID = vroom::col_character(),
       Type_strain = vroom::col_character(),
       PATRIC_ID = vroom::col_character(),
@@ -57,7 +56,15 @@ importBugphyzz <- function(version = 'devel', force_download = FALSE
       Unit = vroom::col_character()
     )
   ) |>
-    dplyr::filter(Frequency != 'never')
+    dplyr::filter(Frequency != 'never') |>
+    dplyr::relocate(
+      .data$NCBI_ID, .data$Taxon_name, .data$Rank,
+      .data$Attribute, .data$Attribute_group, .data$Attribute_source,
+      .data$Evidence, .data$Frequency, .data$Score,
+      .data$Unit, .data$Attribute_range, .data$Note
+    ) |>
+    purrr::discard(~ all(is.na(.x))) |>
+    dplyr::distinct()
   return(bp)
 }
 
@@ -164,25 +171,57 @@ importBugphyzzNumeric <- function(
 getBugphyzzSignatures <- function(
     df, tax.id.type = 'NCBI_ID', tax.level = 'mixed',
     evidence = c('asr', 'inh', 'exp', 'tas', 'nas', 'igc'),
-    frequency = c('unknown', 'always', 'usually', 'sometimes'),
+    frequency = c('unknown', 'rarely', 'always', 'usually', 'sometimes'),
     min.size = 5
 ) {
-  valid_ranks <- c(
-    'superkingdom', 'phylum', 'class', 'order', 'family', 'genus', 'species',
-    'strain'
-  )
+  valid_ranks <- validRanks()
   if (tax.level == 'mixed') {
     tax.level <- valid_ranks
   }
   df <- df[which(df$Rank %in% tax.level),]
   df <- df[which(df$Evidence %in% evidence), ]
   df <- df[which(df$Frequency %in% frequency),]
-  output <- split(df, factor(df$Attribute))
-  output <- lapply(output, function(x) unique(x[[tax.id.type]]))
-  output <- purrr::discard(output, ~ length(.x) < min.size)
-  return(output)
+  df$Attribute <- paste0(df$Attribute_group,'|', df$Attribute)
+  df <- df |>
+    dplyr::mutate(
+      Attribute_range = ifelse(
+        test = is.na(Attribute_range),
+        yes = 'REMOVETHIS',
+        no = Attribute_range)
+    ) |>
+    dplyr::mutate(
+      Attribute = sub(
+        ' REMOVETHIS$', '', paste0(Attribute, ' ', Attribute_range)
+      )
+    )
+  dfs <- split(df, factor(df$Attribute))
+  dfs <- lapply(dfs, function(x) unique(x[, c(tax.id.type, 'Rank')]))
+  dfs <- purrr::discard(dfs, ~ nrow(.x) < min.size)
+  sig_ranks <- purrr::map(dfs, ~ {
+    v <- unique(.x$Rank)
+    v <- factor(
+      x = v, levels = c('domain', 'phylum', 'class', 'order', 'family', 'genus', 'species', 'strain'),
+      ordered = TRUE
+    )
+    v <- sort(v)
+    v <- as.character(v)
+    dplyr::case_when(
+      v == 'domain' ~ 'd',
+      v == 'phylum' ~ 'p',
+      v == 'class' ~ 'c',
+      v == 'order' ~ 'o',
+      v == 'family' ~ 'f',
+      v == 'genus' ~ 'g',
+      v == 'species' ~ 's',
+      v == 'strain' ~ 't',
+      TRUE ~ v
+    )
+  })
+  sig_ranks <- purrr::map_chr(sig_ranks, ~ paste0(.x, collapse = ''))
+  sigs <- purrr::map(dfs, ~ unique(.x[[tax.id.type]]))
+  names(sigs) <- paste0('bp:', names(sigs), '|', sig_ranks, recycle0 = TRUE)
+  return(sigs)
 }
-
 
 #' Get Bug Annotations
 #'
@@ -278,7 +317,7 @@ taxRanks <- function() {
 #'
 validRanks <- function() {
   c(
-    "superkingdom", "phylum", "class", "order", "family", "genus",
+    "domain", "phylum", "class", "order", "family", "genus",
     "species", "strain"
   )
 }
