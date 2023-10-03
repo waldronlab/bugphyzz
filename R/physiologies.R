@@ -228,7 +228,7 @@ showPhys <- function(which_names = 'all') {
   spreadsheets <- vector('list', nrow(links))
   for (i in seq_along(spreadsheets)) {
     phys_name <- links[i, 'physiology', drop = FALSE][[1]]
-    attr_type <- links[i, 'data_type', drop = FALSE][[1]]
+    attr_type <- links[i, 'attribute_type', drop = FALSE][[1]]
     names(spreadsheets)[i] <- phys_name
     url <- links[i, 'link', drop = FALSE][[1]]
     df <- dplyr::distinct(utils::read.csv(url))
