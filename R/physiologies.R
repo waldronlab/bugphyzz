@@ -241,7 +241,7 @@ showPhys <- function(which_names = 'all') {
       df <- .numericToRange(df)
     } else if (unique(df[['Attribute_type']] == 'range')) {
       df <- .modifyRange(df)
-    } else if (unique(df[['Attribute_type']] == 'discrete')) {
+    } else if (unique(df[['Attribute_type']] %in% .DISCRETE_TYPES)) { # .DISCRETE_TYPES is a variable expoted by this package
       df <- dplyr::filter(df, .data$Attribute_value == TRUE | .data$Attribute_value == FALSE)
     }
 

@@ -98,14 +98,22 @@
 
   ## Attributes that must be changed from character to logical (simplest fix)
   attr_names <- c(
-    'aerophilicity', 'country',
-    'cultivation medium used', 'geographic location', 'isolation site',
-    'shape'
+    'aerophilicity', 
+    'shape',
+    'country',
+    'cultivation medium used', 
+    'geographic location', 
+    'isolation site'
     ## colony color (delete)
   )
 
   for (i in seq_along(attr_names)) {
     split_df[[attr_names[i]]] <- .catToLog(split_df[[attr_names[i]]])
+    if (attr_names[i] %in% c('aerophilicity', 'shape')) {
+        split_df[[attr_names[i]]]$Attribute_type <- 'multistate-intersection'
+    } else {
+        split_df[[attr_names[i]]]$Attribute_type <- 'multistate-union'
+    }
   }
 
   ## aerophilicity
