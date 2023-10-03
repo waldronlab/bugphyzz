@@ -7,7 +7,7 @@
 .requiredColumns(attr_type)
 }
 \arguments{
-\item{attr_type}{Attribute type. A character string. Options: logical,
+\item{attr_type}{Attribute type. A character string. Options: discrete,
 numeric, character, range.}
 }
 \value{

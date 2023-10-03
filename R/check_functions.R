@@ -746,7 +746,7 @@ utils::globalVariables(c("."))
 #' \code{.requiredColumns} prints the names and order of the columns that must
 #' be present in all of the bugphyzz data sets.
 #'
-#' @param attr_type Attribute type. A character string. Options: logical,
+#' @param attr_type Attribute type. A character string. Options: discrete,
 #' numeric, character, range.
 #'
 #' @return A character vector with mandatory column names (required columns).
