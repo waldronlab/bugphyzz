@@ -31,3 +31,8 @@ fill_NCBI <- function(data)
   df <- unique(df)
   return(df)
 }
+
+.DISCRETE_TYPES <- c(
+    'multistate-intersection', 'multistate-union', 'binary'
+)
+
