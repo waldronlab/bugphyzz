@@ -1,0 +1,32 @@
+Attribute_group	Attribute	lower	upper	unit
+coding genes	very small	NA	473	NA
+coding genes	small	474	600	NA
+coding genes	average	601	6000	NA
+coding genes	very large	60001	NA	NA
+genome size	small	NA	490885	bp
+genome size	average	490886	998123	bp
+genome size	large	998124	6997434	bp
+genome size	very large	6997435	NA	bp
+growth temperature	psychrophile	NA	24.9	C
+growth temperature	mesophile	25	45	C
+growth temperature	thermophile	46	60	C
+growth temperature	hyperthermophile	61	NA	C
+length	small	NA	3.8	μm
+length	average	3.9	22	μm
+length	large	23	60	μm
+length	very large	61	NA	μm
+mutation rate per site per generation	slow	NA	2.92	NA
+mutation rate per site per generation	medium	2.93	16	NA
+mutation rate per site per generation	fast	17	NA	NA
+mutation rate per site per year	slow	NA	7.5	NA
+mutation rate per site per year	medium	7.6	20	NA
+mutation rate per site per year	medium fast	21	54.2	NA
+mutation rate per site per year	fast	54.3	NA	NA
+optimal ph	acidic	NA	6	NA
+optimal ph	neutral	6	8	NA
+optimal ph	alkaline	8	9.76	NA
+optimal ph	very alkaline	9.76	NA	NA
+width	small	NA	0.9	μm
+width	average	0.91	3.5	μm
+width	large	3.51	12	μm
+width	very large	13	NA	μm
