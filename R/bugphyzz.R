@@ -170,13 +170,14 @@ getBugphyzzSignatures <- function(
   sig_ranks <- purrr::map(dfs, ~ {
     v <- unique(.x$Rank)
     v <- factor(
-      x = v, levels = c('domain', 'phylum', 'class', 'order', 'family', 'genus', 'species', 'strain'),
+      x = v, levels = c('domain', 'kingdom', 'phylum', 'class', 'order', 'family', 'genus', 'species', 'strain'),
       ordered = TRUE
     )
     v <- sort(v)
     v <- as.character(v)
     dplyr::case_when(
       v == 'domain' ~ 'd',
+      v == 'kingdom' ~ 'k',
       v == 'phylum' ~ 'p',
       v == 'class' ~ 'c',
       v == 'order' ~ 'o',
@@ -189,7 +190,7 @@ getBugphyzzSignatures <- function(
   })
   sig_ranks <- purrr::map_chr(sig_ranks, ~ paste0(.x, collapse = ''))
   sigs <- purrr::map(dfs, ~ unique(.x[[tax.id.type]]))
-  names(sigs) <- paste0('bp:', names(sigs), '|', sig_ranks, recycle0 = TRUE)
+  names(sigs) <- paste0('bugphyzz:', names(sigs), '|', sig_ranks, recycle0 = TRUE)
   return(sigs)
 }
 
@@ -287,11 +288,10 @@ taxRanks <- function() {
 #'
 validRanks <- function() {
   c(
-    "domain", "phylum", "class", "order", "family", "genus",
+    "kingdom", "phylum", "class", "order", "family", "genus",
     "species", "strain"
   )
 }
-
 
 .thresholds <- function() {
   fpath <- file.path('extdata', 'thresholds.tsv')
