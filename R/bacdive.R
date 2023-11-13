@@ -84,7 +84,7 @@
   df[['Attribute_group']] <- df[['Attribute']]
   df[['Attribute']] <- df[['Attribute_value']]
   df[['Attribute_value']] <- TRUE
-  df[['Attribute_type']] <- 'logical'
+  df[['Attribute_type']] <- 'discrete'
   return(df)
 }
 
@@ -98,14 +98,22 @@
 
   ## Attributes that must be changed from character to logical (simplest fix)
   attr_names <- c(
-    'aerophilicity', 'country',
-    'cultivation medium used', 'geographic location', 'isolation site',
-    'shape'
+    'aerophilicity', 
+    'shape',
+    'country',
+    'cultivation medium used', 
+    'geographic location', 
+    'isolation site'
     ## colony color (delete)
   )
 
   for (i in seq_along(attr_names)) {
     split_df[[attr_names[i]]] <- .catToLog(split_df[[attr_names[i]]])
+    if (attr_names[i] %in% c('aerophilicity', 'shape')) {
+        split_df[[attr_names[i]]]$Attribute_type <- 'multistate-intersection'
+    } else {
+        split_df[[attr_names[i]]]$Attribute_type <- 'multistate-union'
+    }
   }
 
   ## aerophilicity
@@ -131,7 +139,7 @@
   split_df[['animal pathogen']][['Attribute_value']] <- x_
   split_df[['animal pathogen']][['Attribute_group']] <- 'animal pathogen'
   split_df[['animal pathogen']][['Attribute']] <- 'animal pathogen'
-  split_df[['animal pathogen']][['Attribute_type']] <- 'logical'
+  split_df[['animal pathogen']][['Attribute_type']] <- 'binary'
 
   ## biosafety level
   y <- split_df[['biosafety level comment']][, c('BacDive_ID', 'Attribute_value')]
@@ -141,7 +149,7 @@
   x[['Attribute']] <- x[['Attribute_value']]
   x[['Attribute_value']] <- TRUE
   x[['Attribute_group']] <- 'biosafety level'
-  x[['Attribute_type']] <- 'logical'
+  x[['Attribute_type']] <- 'multistate-intersection'
   split_df[['biosafety level']] <- x
   split_df[['biosafety level comment']] <- NULL
 
@@ -180,7 +188,7 @@
   gs[['Attribute']] <- paste(gs[['Attribute']], gs[['Attribute_value']])
   gs[['Attribute_value']] <- TRUE
   gs[['Attribute_group']] <- 'gram stain'
-  gs[['Attribute_type']] <- 'logical'
+  gs[['Attribute_type']] <- 'multistate-intersection'
   split_df[['gram stain']] <- gs
 
   ## halophily
@@ -228,7 +236,7 @@
       Attribute = .data$Attribute_value,
       Attribute_value = TRUE,
       Attribute_group = 'hemolysis',
-      Attribute_type = 'logical'
+      Attribute_type = 'multistate-intersection'
     )
 
   ## incubation period
@@ -244,7 +252,7 @@
       )
     )
   split_df[['motility']][['Attribute_group']] <- 'motility'
-  split_df[['motility']][['Attribute_type']] <- 'logical'
+  split_df[['motility']][['Attribute_type']] <- 'binary'
 
   ## pathogenicity human
   pat <- split_df[['pathogenicity human']]
@@ -253,7 +261,7 @@
   pat[['Attribute_value']] <- ifelse(grepl('^yes', pat[['Attribute_value']]), TRUE, NA)
   pat <- pat[!is.na(pat[['Attribute_value']]),]
   pat[['Attribute_group']] <- 'pathogenicity human'
-  pat[['Attribute_type']] <- 'logical'
+  pat[['Attribute_type']] <- 'binary'
   split_df[['pathogenicity human']] <- pat
 
   ## metabolite production
@@ -268,7 +276,7 @@
   mp[['Attribute_value']] <- ifelse(y == 'yes', TRUE , FALSE)
   mp[['Attribute']] <- sub(' (yes|no)$', '', mp[['Attribute']])
   mp[['Attribute_group']] <- 'metabolite utilization'
-  mp[['Attribute_type']] <- 'logical'
+  mp[['Attribute_type']] <- 'multistate-intersection'
   split_df[['metabolite production']] <- mp
 
   ## metabolite utilization
@@ -296,7 +304,7 @@
     tidyr::unnest(.data$Attribute_value) |>
     dplyr::mutate(Attribute_value = as.logical(.data$Attribute_value))
   mu[['Attribute_group']] <- 'metabolite utilization'
-  mu[['Attribute_type']] <- 'logical'
+  mu[['Attribute_type']] <- 'multistate-intersection'
   split_df[['metabolite utilization']] <- mu
 
   ## spore formation
@@ -308,7 +316,7 @@
         .data[['Attribute_value']] == 'no' ~ FALSE
       ),
       Attribute_group = 'spore formation',
-      Attribute_type = 'logical'
+      Attribute_type = 'binary'
     ) |>
     dplyr::filter(!is.na(.data$Attribute_value))
   split_df[['spore formation']] <- sf
