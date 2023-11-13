@@ -26,46 +26,16 @@
 #' lapply(gt_sigs, function(x) head(x))
 #'
 #'
-importBugphyzz <- function(version = 'devel', force_download = FALSE
-) {
-  if (version == 'devel' || grepl("^[0-9a-z]{7}$", version)) {
-    url <- 'https://github.com/waldronlab/bugphyzzExports/raw/main/full_dump.csv.bz2'
-    ## update code when contente has been merged into main
-    # if (version == 'devel') version <- 'main'
-    # url <- paste0(
-    #   'https://raw.githubusercontent.com/waldronlab/bugphyzzExports/', version,
-    #   '/full_dump_categorical.csv.bz2'
-    # )
-
-  }
+importBugphyzz <- function(version = 'devel', force_download = FALSE) {
+  if (version == 'devel')
+    url <- 'https://github.com/waldronlab/bugphyzzExports/raw/sdgamboa/update-workflow/bugphyzz_export_2023-11-12.tsv'
   rpath <- .getResource(
-    rname = 'full_dump.csv.bz2', url = url, verbose = TRUE,
+    rname = 'bugphyzz_export.tsv', url = url, verbose = TRUE,
     force = force_download
   )
-  bp <- vroom::vroom(
-    file = rpath, show_col_types = FALSE, delim = ',', progress = FALSE,
-    skip = 1, # skip header
-    col_types = vroom::cols(
-      NCBI_ID = vroom::col_character(),
-      Attribute_source = vroom::col_character(),
-      Confidence_in_curation = vroom::col_character(),
-      BacDive_ID = vroom::col_character(),
-      Type_strain = vroom::col_character(),
-      PATRIC_ID = vroom::col_character(),
-      Note = vroom::col_character(),
-      Unit = vroom::col_character()
-    )
-  ) |>
-    dplyr::filter(Frequency != 'never') |>
-    dplyr::relocate(
-      .data$NCBI_ID, .data$Taxon_name, .data$Rank,
-      .data$Attribute, .data$Attribute_group, .data$Attribute_source,
-      .data$Evidence, .data$Frequency, .data$Score,
-      .data$Unit, .data$Attribute_range, .data$Note
-    ) |>
-    purrr::discard(~ all(is.na(.x))) |>
-    dplyr::distinct()
-  return(bp)
+  thr <- .thresholds()
+  dat <- utils::read.table(rpath, header = TRUE, sep = '\t')
+  dplyr::left_join(dat, thr, by = c('Attribute_group', 'Attribute'))
 }
 
 #' Import bugphyzz (numeric/continuous data)
@@ -170,7 +140,7 @@ importBugphyzzNumeric <- function(
 #'
 getBugphyzzSignatures <- function(
     df, tax.id.type = 'NCBI_ID', tax.level = 'mixed',
-    evidence = c('asr', 'inh', 'exp', 'tas', 'nas', 'igc'),
+    evidence = c('asr', 'inh', 'tax', 'inh2', 'exp', 'tas', 'nas', 'igc'),
     frequency = c('unknown', 'rarely', 'always', 'usually', 'sometimes'),
     min.size = 5
 ) {
@@ -321,3 +291,24 @@ validRanks <- function() {
     "species", "strain"
   )
 }
+
+
+.thresholds <- function() {
+  fpath <- file.path('extdata', 'thresholds.tsv')
+  fname <- system.file(fpath, package = 'bugphyzz', mustWork = TRUE)
+  utils::read.table(fname, header = TRUE, sep = '\t') |>
+    dplyr::mutate(
+      range = dplyr::case_when(
+        is.na(.data$lower) ~ paste0('<=', .data$upper),
+        is.na(.data$upper) ~ paste0('>=', .data$lower),
+        TRUE ~ paste0(.data$lower, '-', .data$upper)
+      ),
+      unit = ifelse(is.na(.data$unit), '', .data$unit)
+    ) |>
+    dplyr::mutate(Attribute_range = paste0(range, unit)) |>
+    dplyr::select(
+      .data$Attribute_group, .data$Attribute, .data$Attribute_range
+    )
+}
+
+

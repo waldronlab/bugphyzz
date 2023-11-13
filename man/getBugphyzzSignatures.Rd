@@ -8,7 +8,7 @@ getBugphyzzSignatures(
   df,
   tax.id.type = "NCBI_ID",
   tax.level = "mixed",
-  evidence = c("asr", "inh", "exp", "tas", "nas", "igc"),
+  evidence = c("asr", "inh", "tax", "inh2", "exp", "tas", "nas", "igc"),
   frequency = c("unknown", "rarely", "always", "usually", "sometimes"),
   min.size = 5
 )
