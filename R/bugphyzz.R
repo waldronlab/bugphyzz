@@ -35,8 +35,8 @@ importBugphyzz <- function(version = 'devel', force_download = FALSE) {
   )
   thr <- .thresholds()
   dat <- utils::read.table(rpath, header = TRUE, sep = '\t') |>
-    dplyr::mutate(Attribute_source = ifelse(grepl('Asnicar F, Berry SE, Valdes AM, et al. Microbiome connections with host metabolism and habitual diet from 1,098 deeply phenotyped individuals. Nat Med. 2021;27(2):321-332. doi:10.1038/s41591-020-01183-1\\d', .data$Attribute_source), 'Asnicar_2021', .data$Attribute_source)) |>
-    dplyr::mutate(Evidence = ifelse(grepl('Asnicar F, Berry SE, Valdes AM, et al. Microbiome connections with host metabolism and habitual diet from 1,098 deeply phenotyped individuals. Nat Med. 2021;27(2):321-332. doi:10.1038/s41591-020-01183-1\\d', .data$Attribute_source), 'igc', .data$Evidence))
+    dplyr::mutate(Evidence = ifelse(grepl('Asnicar.*s41591-020-01183.*', .data$Attribute_source), 'igc', .data$Evidence)) |>
+    dplyr::mutate(Attribute_source = ifelse(grepl('Asnicar.*s41591-020-01183.*', .data$Attribute_source), 'Asnicar_2021', .data$Attribute_source))
   dplyr::left_join(dat, thr, by = c('Attribute_group', 'Attribute'))
 }
 
