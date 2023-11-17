@@ -36,7 +36,14 @@ importBugphyzz <- function(version = 'devel', force_download = FALSE) {
   thr <- .thresholds()
   dat <- utils::read.table(rpath, header = TRUE, sep = '\t') |>
     dplyr::mutate(Evidence = ifelse(grepl('Asnicar.*s41591-020-01183.*', .data$Attribute_source), 'igc', .data$Evidence)) |>
-    dplyr::mutate(Attribute_source = ifelse(grepl('Asnicar.*s41591-020-01183.*', .data$Attribute_source), 'Asnicar_2021', .data$Attribute_source))
+    dplyr::mutate(Attribute_source = ifelse(grepl('Asnicar.*s41591-020-01183.*', .data$Attribute_source), 'Asnicar_2021', .data$Attribute_source)) |>
+    dplyr::mutate(Frequency = dplyr::case_when(
+      .data$Score == 1 ~ 'always',
+      .data$Score >= 0.9 & .data$Score < 1 ~ 'usually',
+      .data$Score >= 0.5 & .data$Score < 0.9 ~ 'sometimes',
+      .data$Score > 0 & .data$Score < 0.5 ~ 'rarely',
+      .data$Score == 0  ~ 'never'
+    ))
   dplyr::left_join(dat, thr, by = c('Attribute_group', 'Attribute'))
 }
 
