@@ -43,7 +43,11 @@ importBugphyzz <- function(version = 'devel', force_download = FALSE) {
       .data$Score >= 0.5 & .data$Score < 0.9 ~ 'sometimes',
       .data$Score > 0 & .data$Score < 0.5 ~ 'rarely',
       .data$Score == 0  ~ 'never'
-    ))
+    )) |>
+    dplyr::mutate(
+      Attribute_source = ifelse(.data$Evidence == 'inh', NA, .data$Attribute_source)
+    )
+
   dplyr::left_join(dat, thr, by = c('Attribute_group', 'Attribute'))
 }
 
