@@ -171,12 +171,16 @@ getBugphyzzSignatures <- function(
         test = is.na(Attribute_range),
         yes = 'REMOVETHIS',
         no = Attribute_range)
-    ) |>
-    dplyr::mutate(
+    )
+
+  if ('Attribute_range' %in% colnames(df)) {
+    df <- dplyr::mutate(
       Attribute = sub(
         ' REMOVETHIS$', '', paste0(Attribute, ' ', Attribute_range)
       )
     )
+  }
+
   dfs <- split(df, factor(df$Attribute))
   dfs <- lapply(dfs, function(x) unique(x[, c(tax.id.type, 'Rank')]))
   dfs <- purrr::discard(dfs, ~ nrow(.x) < min.size)
