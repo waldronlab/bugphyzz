@@ -165,20 +165,20 @@ getBugphyzzSignatures <- function(
   df <- df[which(df$Evidence %in% evidence), ]
   df <- df[which(df$Frequency %in% frequency),]
   df$Attribute <- paste0(df$Attribute_group,'|', df$Attribute)
-  df <- df |>
-    dplyr::mutate(
-      Attribute_range = ifelse(
-        test = is.na(Attribute_range),
-        yes = 'REMOVETHIS',
-        no = Attribute_range)
-    )
 
   if ('Attribute_range' %in% colnames(df)) {
-    df <- dplyr::mutate(
-      Attribute = sub(
-        ' REMOVETHIS$', '', paste0(Attribute, ' ', Attribute_range)
+    df <- df |>
+      dplyr::mutate(
+        Attribute_range = ifelse(
+          test = is.na(Attribute_range),
+          yes = 'REMOVETHIS',
+          no = Attribute_range)
+      ) |>
+      dplyr::mutate(
+        Attribute = sub(
+          ' REMOVETHIS$', '', paste0(Attribute, ' ', Attribute_range)
+        )
       )
-    )
   }
 
   dfs <- split(df, factor(df$Attribute))
