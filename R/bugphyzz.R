@@ -28,7 +28,7 @@
 #'
 importBugphyzz <- function(version = 'devel', force_download = FALSE) {
   if (version == 'devel')
-    url <- 'https://github.com/waldronlab/bugphyzzExports/raw/sdgamboa/update-workflow/bugphyzz_export_2023-11-12.tsv'
+    url <- 'https://github.com/waldronlab/bugphyzzExports/raw/sdgamboa/update-workflow/bugphyzz_export.tsv'
   rpath <- .getResource(
     rname = 'bugphyzz_export.tsv', url = url, verbose = TRUE,
     force = force_download
