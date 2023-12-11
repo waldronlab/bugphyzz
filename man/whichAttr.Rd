@@ -14,8 +14,8 @@ A character vector.
 }
 \description{
 \code{whichAttr} shows which attributes are present in a dataset imported
-with \code{importBugphyzz}. This would be the names of the singatures
-created with \code{getBugphyzzSignatures}.
+with \code{importBugphyzz}. Signatures created with
+\code{getBugphyzzSignatures} would take these names.
 }
 \examples{
 

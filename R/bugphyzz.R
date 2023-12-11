@@ -28,71 +28,27 @@
 #'
 importBugphyzz <- function(version = 'devel', force_download = FALSE) {
   if (version == 'devel')
-    url <- 'https://github.com/waldronlab/bugphyzzExports/raw/sdgamboa/update-workflow/bugphyzz_export_2023-11-12.tsv'
+    url <- 'https://github.com/waldronlab/bugphyzzExports/raw/sdgamboa/update-workflow/bugphyzz_export.tsv'
   rpath <- .getResource(
     rname = 'bugphyzz_export.tsv', url = url, verbose = TRUE,
     force = force_download
   )
   thr <- .thresholds()
-  dat <- utils::read.table(rpath, header = TRUE, sep = '\t')
+  dat <- utils::read.table(rpath, header = TRUE, sep = '\t') |>
+    dplyr::mutate(Evidence = ifelse(grepl('Asnicar.*s41591-020-01183.*', .data$Attribute_source), 'igc', .data$Evidence)) |>
+    dplyr::mutate(Attribute_source = ifelse(grepl('Asnicar.*s41591-020-01183.*', .data$Attribute_source), 'Asnicar_2021', .data$Attribute_source)) |>
+    dplyr::mutate(Score = round(.data$Score, digits = 3)) |>
+    dplyr::mutate(Frequency = dplyr::case_when(
+      .data$Score == 1 ~ 'always',
+      .data$Score >= 0.9 & .data$Score < 1 ~ 'usually',
+      .data$Score >= 0.5 & .data$Score < 0.9 ~ 'sometimes',
+      .data$Score > 0 & .data$Score < 0.5 ~ 'rarely',
+      .data$Score == 0  ~ 'never'
+    )) |>
+    dplyr::mutate(
+      Attribute_source = ifelse(.data$Evidence == 'inh', NA, .data$Attribute_source)
+    )
   dplyr::left_join(dat, thr, by = c('Attribute_group', 'Attribute'))
-}
-
-#' Import bugphyzz (numeric/continuous data)
-#'
-#' \code{importBugphyzzNumeric} imports a list of data.frames containing
-#' numeric attributes. In this case, the attributes are in separate
-#' data.frames because they can have different units or scales
-#' (e.g. Celsius degrees, ph, etc.)
-#'
-#' @param version Character string. The version to download. Default is 'devel'
-#' (current file on the GitHub repo waldronlab/bugphyzzExports).
-#' @param force_download Logical value. Force a fresh download of the data or
-#' use the one stored in the cache (if available). Default is FALSE.
-#'
-#' @return A list of data.frames.
-#' @export
-#'
-#' @examples
-#'
-#' bp_num <- importBugphyzzNumeric()
-#'
-#' ## Check available numeric attributes
-#' names(bp_num)
-#'
-#' ## Select growth temperature
-#' gt <- bp_num[['growth temperature']]
-#'
-#' ## Get taxa that grows better betwen 0 and 25 Celsius degrees
-#' sub_gt <- gt[which(gt$Attribute_value_min >= 0 & gt$Attribute_value_max <= 25),]
-#'
-#' ## Creat signature at the genus level
-#' sigs <- getBugphyzzSignatures(sub_gt, tax.id.type = 'Taxon_name', tax.level = 'genus')
-#' head(sigs[[1]])
-#'
-importBugphyzzNumeric <- function(
-    keyword = 'all', version = 'devel', force_download = FALSE
-) {
-  if (version == 'devel' || grepl("^[0-9a-z]{7}$", version)) {
-    url <- 'https://github.com/waldronlab/bugphyzzExports/raw/main/full_dump_numeric.csv.bz2'
-    ## update code when contente has been merged into main
-    # if (version == 'devel') version <- 'main'
-    # url <- paste0(
-    #   'https://raw.githubusercontent.com/waldronlab/bugphyzzExports/', version,
-    #   '/full_dump_numeric.csv.bz2'
-    # )
-  }
-  rpath <- .getResource(
-    rname = 'full_dump_numeric.csv.bz2', url = url, verbose = TRUE,
-    force = force_download
-  )
-  ## TODO Add skip = 1 to the vroom call when header is added to the file
-  bp <- vroom::vroom(
-    file = rpath, show_col_types = FALSE, delim = ',', progress = FALSE,
-    col_types = vroom::cols(NCBI_ID = vroom::col_character())
-  )
-  output <- split(bp, factor(bp$Attribute_group))
-  return(output)
 }
 
 #' Get bugphyzz signatures
@@ -144,7 +100,10 @@ getBugphyzzSignatures <- function(
     frequency = c('unknown', 'rarely', 'always', 'usually', 'sometimes'),
     min.size = 5
 ) {
-  valid_ranks <- validRanks()
+  valid_ranks <-   c(
+    "kingdom", "phylum", "class", "order", "family", "genus",
+    "species", "strain"
+  )
   if (tax.level == 'mixed') {
     tax.level <- valid_ranks
   }
@@ -152,18 +111,22 @@ getBugphyzzSignatures <- function(
   df <- df[which(df$Evidence %in% evidence), ]
   df <- df[which(df$Frequency %in% frequency),]
   df$Attribute <- paste0(df$Attribute_group,'|', df$Attribute)
-  df <- df |>
-    dplyr::mutate(
-      Attribute_range = ifelse(
-        test = is.na(Attribute_range),
-        yes = 'REMOVETHIS',
-        no = Attribute_range)
-    ) |>
-    dplyr::mutate(
-      Attribute = sub(
-        ' REMOVETHIS$', '', paste0(Attribute, ' ', Attribute_range)
+
+  if ('Attribute_range' %in% colnames(df)) {
+    df <- df |>
+      dplyr::mutate(
+        Attribute_range = ifelse(
+          test = is.na(Attribute_range),
+          yes = 'REMOVETHIS',
+          no = Attribute_range)
+      ) |>
+      dplyr::mutate(
+        Attribute = sub(
+          ' REMOVETHIS$', '', paste0(Attribute, ' ', Attribute_range)
+        )
       )
-    )
+  }
+
   dfs <- split(df, factor(df$Attribute))
   dfs <- lapply(dfs, function(x) unique(x[, c(tax.id.type, 'Rank')]))
   dfs <- purrr::discard(dfs, ~ nrow(.x) < min.size)
@@ -225,8 +188,8 @@ getBugAnnotations <- function(x, bp = importBugphyzz(), tax.id.type) {
 #' Which Attributes
 #'
 #' \code{whichAttr} shows which attributes are present in a dataset imported
-#' with \code{importBugphyzz}. This would be the names of the singatures
-#' created with \code{getBugphyzzSignatures}.
+#' with \code{importBugphyzz}. Signatures created with
+#' \code{getBugphyzzSignatures} would take these names.
 #'
 #' @param bp A data.frame imported with \code{importBugphyzz}.
 #'
@@ -261,38 +224,6 @@ whichAttrGrp <- function(bp) {
   sort(unique(bp$Attribute_group))
 }
 
-#' Display taxonomic ranks
-#'
-#' \code{taxRanks} display the names of the taxonomic ranks used in bugphyzz.
-#'
-#' @return A character vector
-#' @export
-#'
-#' @examples
-#'
-#' taxRanks()
-#'
-taxRanks <- function() {
-  c(
-    'strain', 'species', 'genus', 'family', 'order', 'class',
-    'phylum', 'domain'
-  )
-}
-
-#' Valid ranks
-#'
-#' \code{validRanks} returns valid ranks.
-#'
-#' @return A character vector.
-#' @export
-#'
-validRanks <- function() {
-  c(
-    "kingdom", "phylum", "class", "order", "family", "genus",
-    "species", "strain"
-  )
-}
-
 .thresholds <- function() {
   fpath <- file.path('extdata', 'thresholds.tsv')
   fname <- system.file(fpath, package = 'bugphyzz', mustWork = TRUE)
@@ -310,5 +241,3 @@ validRanks <- function() {
       .data$Attribute_group, .data$Attribute, .data$Attribute_range
     )
 }
-
-

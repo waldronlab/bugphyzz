@@ -98,11 +98,11 @@
 
   ## Attributes that must be changed from character to logical (simplest fix)
   attr_names <- c(
-    'aerophilicity', 
+    'aerophilicity',
     'shape',
     'country',
-    'cultivation medium used', 
-    'geographic location', 
+    'cultivation medium used',
+    'geographic location',
     'isolation site'
     ## colony color (delete)
   )
@@ -116,7 +116,7 @@
     }
   }
 
-  ## aerophilicity
+  ## aerophilicity ####
   ## This is only to match the data in the bugphyzz spreadsheet
   aer <- split_df[['aerophilicity']]
   aer$Attribute <- dplyr::case_when(
@@ -130,7 +130,7 @@
   )
   split_df[['aerophilicity']] <- aer
 
-  ## animal pathogen
+  ## animal pathogen ####
   pos <- names(split_df) == 'animal pathongen'
   names(split_df)[pos] <- 'animal pathogen'
   x_ <- split_df[['animal pathogen']][['Attribute_value']]
@@ -141,7 +141,7 @@
   split_df[['animal pathogen']][['Attribute']] <- 'animal pathogen'
   split_df[['animal pathogen']][['Attribute_type']] <- 'binary'
 
-  ## biosafety level
+  ## biosafety level ####
   y <- split_df[['biosafety level comment']][, c('BacDive_ID', 'Attribute_value')]
   colnames(y)[2] <- 'Note'
   x <- dplyr::left_join(split_df[['biosafety level']], y, by = 'BacDive_ID')
@@ -153,16 +153,16 @@
   split_df[['biosafety level']] <- x
   split_df[['biosafety level comment']] <- NULL
 
-  ## colony color
+  ## colony color ####
   ## This one must be removed
   split_df[['colony color']] <- NULL
 
-  ## cultivation medium used - growth medium
+  ## cultivation medium used - growth medium ####
   pos <- names(split_df) == 'cultivation medium used'
   names(split_df)[pos] <- 'growth medium'
   split_df[['growth medium']][['Attribute_group']] <- 'growth medium'
 
-  ## growth temperature
+  ## growth temperature ####
   ## culture temperature
   ## culture temperature growth
   ## culture temperature range (ignore)
@@ -183,7 +183,7 @@
   split_df[['culture temperature']] <- NULL
   split_df[['culture temperature growth']] <- NULL
 
-  ## gram stain
+  ## gram stain ####
   gs <- split_df[['gram stain']]
   gs[['Attribute']] <- paste(gs[['Attribute']], gs[['Attribute_value']])
   gs[['Attribute_value']] <- TRUE
@@ -191,7 +191,7 @@
   gs[['Attribute_type']] <- 'multistate-intersection'
   split_df[['gram stain']] <- gs
 
-  ## halophily
+  ## halophily ####
   valid_terms <- c(
     'NaCl', 'KCl', 'MgCl2', 'MgCl2x6H2O', 'Na\\+', 'MgSO4x7H2O', 'Na2SO4',
     'Sea salts', 'Chromium \\(Cr6\\+\\)'
@@ -224,7 +224,7 @@
     dplyr::filter(!grepl('[0-9]', .data$Unit)) |>
     dplyr::distinct()
 
-  ## hemolysis
+  ## hemolysis ####
   split_df[['hemolysis']] <- split_df[['hemolysis']] |>
     dplyr::mutate(
       Attribute_value = strsplit(.data$Attribute_value, ';|/')
@@ -243,7 +243,7 @@
   ## This one must be removed
   split_df[['incubation period']] <- NULL
 
-  ## motility
+  ## motility ####
   split_df[['motility']] <- split_df[['motility']] |>
     dplyr::mutate(
       Attribute_value = dplyr::case_when(
@@ -254,7 +254,7 @@
   split_df[['motility']][['Attribute_group']] <- 'motility'
   split_df[['motility']][['Attribute_type']] <- 'binary'
 
-  ## pathogenicity human
+  ## pathogenicity human ####
   pat <- split_df[['pathogenicity human']]
   pat[['Note']] <- stringr::str_extract(pat[['Attribute_value']], 'in single cases')
   pat[['Note']] <- ifelse(is.na(pat[['Note']]), "", pat[['Note']])
@@ -264,7 +264,7 @@
   pat[['Attribute_type']] <- 'binary'
   split_df[['pathogenicity human']] <- pat
 
-  ## metabolite production
+  ## metabolite production ####
   mp <- split_df[['metabolite production']]
   mp <- mp |>
     dplyr::mutate(Attribute_value = strsplit(.data$Attribute_value, ';')) |>
@@ -279,7 +279,7 @@
   mp[['Attribute_type']] <- 'multistate-intersection'
   split_df[['metabolite production']] <- mp
 
-  ## metabolite utilization
+  ## metabolite utilization ####
   pos <- names(split_df) == 'metabolite utiilization'
   names(split_df)[pos] <- 'metabolite utilization'
   mu <- split_df[['metabolite utilization']]
@@ -307,7 +307,7 @@
   mu[['Attribute_type']] <- 'multistate-intersection'
   split_df[['metabolite utilization']] <- mu
 
-  ## spore formation
+  ## spore formation ####
   sf <- split_df[['spore formation']]
   sf <- sf |>
     dplyr::mutate(

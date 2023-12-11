@@ -7,11 +7,13 @@
 physiologies(keyword = "all", full_source = FALSE)
 }
 \arguments{
-\item{full_source}{If TRUE, the full source is provided. If FALSE, a
-shortened name of the source is provided. Default if FALSE.}
+\item{keyword}{Character vector with one or more valid keywords.
+Valid keyboards can be checked with \code{showPhys}. If 'all', all
+physiologies are imported.}
 
-\item{Character}{Character vector with one or more valid keywords.
-Valid keyboard can be checked with \code{showPhys}.}
+\item{full_source}{Logical. If \code{TRUE}, the Attribute_source column will
+contain full source information. If \code{FALSE}, the Attribute_source column will
+contain shortened versions of the sources. Default is \code{FALSE}.}
 }
 \value{
 A list of data.frames in tidy format.
@@ -21,8 +23,7 @@ A list of data.frames in tidy format.
 Google spreadsheets (https://drive.google.com/drive/folders/1i2UAolVWAYa7UnETNnCs0BDWjKPp3ev5).
 }
 \examples{
-
-phys <- physiologies('all') # a list
-df <- physiologies('aerophilicity')[[1]] # a data.frame
+l <- physiologies('all')
+df <- physiologies('aerophilicity')[[1]]
 
 }
