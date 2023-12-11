@@ -100,7 +100,10 @@ getBugphyzzSignatures <- function(
     frequency = c('unknown', 'rarely', 'always', 'usually', 'sometimes'),
     min.size = 5
 ) {
-  valid_ranks <- validRanks()
+  valid_ranks <-   c(
+    "kingdom", "phylum", "class", "order", "family", "genus",
+    "species", "strain"
+  )
   if (tax.level == 'mixed') {
     tax.level <- valid_ranks
   }
@@ -185,8 +188,8 @@ getBugAnnotations <- function(x, bp = importBugphyzz(), tax.id.type) {
 #' Which Attributes
 #'
 #' \code{whichAttr} shows which attributes are present in a dataset imported
-#' with \code{importBugphyzz}. This would be the names of the singatures
-#' created with \code{getBugphyzzSignatures}.
+#' with \code{importBugphyzz}. Signatures created with
+#' \code{getBugphyzzSignatures} would take these names.
 #'
 #' @param bp A data.frame imported with \code{importBugphyzz}.
 #'
@@ -221,38 +224,6 @@ whichAttrGrp <- function(bp) {
   sort(unique(bp$Attribute_group))
 }
 
-#' Display taxonomic ranks
-#'
-#' \code{taxRanks} display the names of the taxonomic ranks used in bugphyzz.
-#'
-#' @return A character vector
-#' @export
-#'
-#' @examples
-#'
-#' taxRanks()
-#'
-taxRanks <- function() {
-  c(
-    'strain', 'species', 'genus', 'family', 'order', 'class',
-    'phylum', 'domain'
-  )
-}
-
-#' Valid ranks
-#'
-#' \code{validRanks} returns valid ranks.
-#'
-#' @return A character vector.
-#' @export
-#'
-validRanks <- function() {
-  c(
-    "kingdom", "phylum", "class", "order", "family", "genus",
-    "species", "strain"
-  )
-}
-
 .thresholds <- function() {
   fpath <- file.path('extdata', 'thresholds.tsv')
   fname <- system.file(fpath, package = 'bugphyzz', mustWork = TRUE)
@@ -270,5 +241,3 @@ validRanks <- function() {
       .data$Attribute_group, .data$Attribute, .data$Attribute_range
     )
 }
-
-
