@@ -51,63 +51,6 @@ importBugphyzz <- function(version = 'devel', force_download = FALSE) {
   dplyr::left_join(dat, thr, by = c('Attribute_group', 'Attribute'))
 }
 
-#' Import bugphyzz (numeric/continuous data)
-#'
-#' \code{importBugphyzzNumeric} imports a list of data.frames containing
-#' numeric attributes. In this case, the attributes are in separate
-#' data.frames because they can have different units or scales
-#' (e.g. Celsius degrees, ph, etc.)
-#'
-#' @param version Character string. The version to download. Default is 'devel'
-#' (current file on the GitHub repo waldronlab/bugphyzzExports).
-#' @param force_download Logical value. Force a fresh download of the data or
-#' use the one stored in the cache (if available). Default is FALSE.
-#'
-#' @return A list of data.frames.
-#' @export
-#'
-#' @examples
-#'
-#' bp_num <- importBugphyzzNumeric()
-#'
-#' ## Check available numeric attributes
-#' names(bp_num)
-#'
-#' ## Select growth temperature
-#' gt <- bp_num[['growth temperature']]
-#'
-#' ## Get taxa that grows better betwen 0 and 25 Celsius degrees
-#' sub_gt <- gt[which(gt$Attribute_value_min >= 0 & gt$Attribute_value_max <= 25),]
-#'
-#' ## Creat signature at the genus level
-#' sigs <- getBugphyzzSignatures(sub_gt, tax.id.type = 'Taxon_name', tax.level = 'genus')
-#' head(sigs[[1]])
-#'
-importBugphyzzNumeric <- function(
-    keyword = 'all', version = 'devel', force_download = FALSE
-) {
-  if (version == 'devel' || grepl("^[0-9a-z]{7}$", version)) {
-    url <- 'https://github.com/waldronlab/bugphyzzExports/raw/main/full_dump_numeric.csv.bz2'
-    ## update code when contente has been merged into main
-    # if (version == 'devel') version <- 'main'
-    # url <- paste0(
-    #   'https://raw.githubusercontent.com/waldronlab/bugphyzzExports/', version,
-    #   '/full_dump_numeric.csv.bz2'
-    # )
-  }
-  rpath <- .getResource(
-    rname = 'full_dump_numeric.csv.bz2', url = url, verbose = TRUE,
-    force = force_download
-  )
-  ## TODO Add skip = 1 to the vroom call when header is added to the file
-  bp <- vroom::vroom(
-    file = rpath, show_col_types = FALSE, delim = ',', progress = FALSE,
-    col_types = vroom::cols(NCBI_ID = vroom::col_character())
-  )
-  output <- split(bp, factor(bp$Attribute_group))
-  return(output)
-}
-
 #' Get bugphyzz signatures
 #'
 #' \code{getBugphyzzSignatures} convert a data.frame imported with bugphyzz
