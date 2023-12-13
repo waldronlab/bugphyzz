@@ -3,7 +3,7 @@
 #' \code{fattyAcidComposition} returns a data frame with data about the
 #' fatty acid composition of microbes.
 #'
-#' @return A tidy data frame of fattyAcidComposition from customlinks.tsv
+#' @return A tidy data frame of fattyAcidComposition from spreadsheets_customlinks.tsv
 #'
 #' @importFrom dplyr filter
 #' @importFrom dplyr pull
@@ -58,7 +58,7 @@ fattyAcidComposition <- function(){
 #' bugphyzz:::customLinks(keyword = "all")
 customLinks <- function(keyword = "all"){
     fname <-
-        system.file("extdata/customlinks.tsv", package = "bugphyzz")
+        system.file("extdata/spreadsheets_customlinks.tsv", package = "bugphyzz")
     links <- utils::read.table(fname, sep = '\t', header = TRUE)
     ifelse(keyword[1] == "all", links, links <-
                       links[links$physiology %in% keyword,])

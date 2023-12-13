@@ -102,7 +102,7 @@ physiologies <- function(keyword = 'all', full_source = FALSE) {
 #' showPhys('spreadsheets')
 #'
 showPhys <- function(which_names = 'all') {
-  fname <- system.file('extdata', 'links.tsv', package = 'bugphyzz')
+  fname <- system.file('extdata', 'spreadsheets_links.tsv', package = 'bugphyzz')
   links <- utils::read.table(fname, header = TRUE, sep = '\t')
   spreadsheet_phys <- links[['physiology']]
   if (which_names == 'all')
@@ -147,7 +147,7 @@ showPhys <- function(which_names = 'all') {
 ## Helper function for physiologies
 .importSpreadsheets <- function(keyword) {
   parent_col_names <- c('Parent_name', 'Parent_NCBI_ID', 'Parent_rank')
-  fname <- system.file('extdata', 'links.tsv', package = 'bugphyzz')
+  fname <- system.file('extdata', 'spreadsheets_links.tsv', package = 'bugphyzz')
   links <- utils::read.table(fname, header = TRUE, sep = '\t')
   links <- links[links[['physiology']] %in% keyword,]
   spreadsheets <- vector('list', nrow(links))
