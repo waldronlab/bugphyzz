@@ -89,3 +89,22 @@ Columns:
 | value_test | If 'string' the test of validity is based on the regular expresion. If '.attributes', it's based on the function .attriubtes (no exported). |
 | column_class | One of the R classes for atomic vectors. |
 
+## [thresholds.tsv](./thresholds.tsv)
+
+Tresholds for converting numeric/range data to categorical.
+
+Columns:
+
+| Column name | Description |
+| ----------- | ----------- |
+| Attribute_group | Physiology. Name of the spreadsheet. |
+| Attribute | The actual attribute used. |
+| lower | lower threshold. |
+| uppwer | upper threshold. |
+| unit | units used for numeric data. |
+
+
+
+
+
+
