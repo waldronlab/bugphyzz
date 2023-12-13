@@ -1,24 +1,76 @@
-## code to prepare `sysdata.rda` dataset goes here
 
 library(taxizedb)
 library(bugphyzz)
 library(purrr)
 library(dplyr)
 library(magrittr)
+library(stringr)
 
 phys <- physiologies()
 
-# ranks and parents -------------------------------------------------------
 ncbi_ids <- phys |>
   map( ~ pull(.x, NCBI_ID)) |>
   flatten_chr() |>
   unique() |>
+  str_squish() |>
+  str_to_lower() |>
   {\(y) y[!is.na(y)]}() |>
   {\(y) y[y != 'unknown']}() |>
   sort(decreasing = TRUE)
 
-## This might change to taxize instead (might be slower)
+parent_ids <- getParentID(ncbi_ids)
+
+
 taxonomies <- taxizedb::classification(ncbi_ids, db = "ncbi")
+taxonomies <- discard(taxonomies, ~ all(is.na(.x))) # disc+arded taxids migth need to be updated
+
+## Check names and taxid match
+all(names(taxonomies) == map_chr(taxonomies, ~ as.character(tail(.x$id, 1))))
+
+table(taxizedb::taxid2rank(names(taxonomies), db = 'ncbi'))
+
+
+getParentID <- function(taxid) {
+  below_sp <- c(
+    'biotype', 'isolate', 'serotype', 'strain', 'subspecies'
+  )
+  rank <- taxizedb::taxid2rank(taxid, db = 'ncbi')
+  parent_rank <- dplyr::case_when(
+    rank %in% below_sp ~ 'species',
+    rank == 'species' ~ 'genus',
+    rank == 'genus' ~ 'family',
+    TRUE ~ NA
+  )
+  remove_pos <- which(is.na(rank) | is.na(parent_rank))
+  taxid <- taxid[-remove_pos]
+  rank <- rank[-remove_pos]
+  parent_rank <- parent_rank[-remove_pos]
+  parent_id <- map2(.x = taxid, .y = parent_rank, ~ {
+    taxizedb::taxa_at(x = .x, rank = .y, db = 'ncbi', verbose = FALSE)
+  })
+  data.frame(
+    taxid = taxid,
+    rank = rank,
+    parent_it = parent_id,
+    parent_rank = parent_rank
+  )
+}
+
+
+
+taxizedb::taxa_at(x = '562', rank = 'family', db = 'ncbi', verbose = FALSE)
+
+x = getParentID(names(taxonomies))
+
+table(x, useNA = 'always')
+
+
+x = map(taxonomies, ~ {
+  count(.x, rank)
+}) |>
+  bind_rows()
+
+
 
 ## >>>>>>>> this is not part of the output <<<<<<<<<<<<<<<
 ## Check that names correspond to the right output

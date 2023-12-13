@@ -208,7 +208,7 @@ utils::globalVariables(c("."))
 #' Check column values
 #'
 #' \code{.checkColumnValues} checks if a single column in a data frame contains
-#' valid values according to the extdata/template.tsv file.
+#' valid values according to the extdata/curation_template.tsv file.
 #'
 #' @param col A character string indicating the name of the column.
 #' @param dat A data frame imported through the bugphyzz functions.
@@ -662,13 +662,13 @@ utils::globalVariables(c("."))
         msg <- paste0(
             ">>> Uncatalogued column. The column ", col, " of the dataset ",
             dat_name, " cannot be checked because it's not included in the",
-            " template file. Please add it to extdata/template.tsv"
+            " template file. Please add it to extdata/curation_template.tsv"
         )
     } else {
         msg <- paste0(
             ">>> Uncatalogued column. The column ", col,
             " cannot be checked because it's not included in the template",
-            " file. Please add it to extdata/template.tsv."
+            " file. Please add it to extdata/curation_template.tsv."
         )
     }
     .stop_custom(subclass = "uncatalogued_column", message = msg,
@@ -763,7 +763,7 @@ utils::globalVariables(c("."))
 #' }
 #'
 .requiredColumns <- function(attr_type) {
-    fname <- system.file("extdata/template.tsv", package = "bugphyzz")
+    fname <- system.file("extdata/curation_template.tsv", package = "bugphyzz")
     df <- utils::read.table(fname, sep = "\t", header = TRUE)
     lgl_vct_1 <- df$requiredness == "required"
     lgl_vct_2 <- grepl(attr_type, df$attribute_types)
@@ -777,13 +777,13 @@ utils::globalVariables(c("."))
 #'
 #' \code{.template} is a helper function for the
 #' \code{\link{.checkColumnValues}} function. \code{.template} generates a
-#' subset of the extdata/template.tsv file based on the columns present in a
+#' subset of the extdata/curation_template.tsv file based on the columns present in a
 #' given bugphyzz dataset.
 #'
 #' A bugphyzz dataset contains a number of mandatory columns (referred to as
 #' required columns; see \code{\link{.requiredColumns}}), but optionally, it can
 #' contain other columns. The purpose of \code{template} is to create a subset
-#' of the extdata/template.tsv file containing only the columns specific for a
+#' of the extdata/curation_template.tsv file containing only the columns specific for a
 #' given bugphyzz dataset.
 #'
 #' @importFrom utils read.table
@@ -800,7 +800,7 @@ utils::globalVariables(c("."))
 #' @keywords internal
 #'
 .template <- function(dataset) {
-    template_tsv <- system.file("extdata/template.tsv", package = "bugphyzz")
+    template_tsv <- system.file("extdata/curation_template.tsv", package = "bugphyzz")
     template <- utils::read.table(
         file = template_tsv, sep = "\t", check.names = FALSE, header = TRUE,
         allowEscapes = TRUE )
@@ -848,7 +848,7 @@ utils::globalVariables(c("."))
 #' \code{\link{.checkColumnValuesList}}
 #'
 .appendLinks <- function(x) {
-  fname1 <- system.file('extdata/spreadsheets_links.tsv', package = 'bugphyzz')
+  fname1 <- system.file('extdata/spreadsheet_links.tsv', package = 'bugphyzz')
   links <- read.table(fname1, header = TRUE, sep = '\t')
   select_cols <- c("physiology", "source_link")
   phys_links <- links %>%
