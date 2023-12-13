@@ -2,28 +2,11 @@
 # Get BacDive -------------------------------------------------------------
 
 ## Helper function for .getBacDive
-## This function removes the X columns, which were added because of errors
-## in the data. Since the rows filled in those X columns have pontentially
-## altered the data in the other fields, those rows will be removed along
-## with the X columns.
-.cleanBD <- function(df) {
-  x_cols <- colnames(df)[grep('X', colnames(df))]
-  output <- vector('list', length(x_cols))
-  for (i in seq_along(x_cols)) {
-    output[[i]] <- which(df[[x_cols[i]]] != '')
-  }
-  row_numbers <- sort(unique(unlist(output)))
-  df[-row_numbers, !colnames(df) %in% x_cols]
-}
-
-## Helper function for .getBacDive
 ## This imports the current BacDive data on the spreadsheets
 .importBacDiveExcel <- function(verbose = FALSE) {
   if (verbose)
     message('Importing BacDive...')
-  # url <- 'https://docs.google.com/spreadsheets/d/1smQTi1IKt4wSGTrGTW25I6u47M5txZkq/export?format=csv'
-  url <- 'https://docs.google.com/spreadsheets/d/1P4Ic6-N9GVXcX1CdfoamFt6eozfHqt-sxfIRTBvYHWk/export?format=csv'
-  # bacdive_data <- .cleanBD(utils::read.csv(url))
+  url <- 'https://docs.google.com/spreadsheets/d/1smQTi1IKt4wSGTrGTW25I6u47M5txZkq/export?format=csv'
   bacdive <- utils::read.csv(url)
   colnames(bacdive) <- tolower(colnames(bacdive))
   return(bacdive)
