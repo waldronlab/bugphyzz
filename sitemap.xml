@@ -76,12 +76,6 @@
     <loc>https://waldronlab.io/bugphyzz/reference/dot-errorHandler.html</loc>
   </url>
   <url>
-    <loc>https://waldronlab.io/bugphyzz/reference/dot-homogenizeAerophilicityAttributeNames.html</loc>
-  </url>
-  <url>
-    <loc>https://waldronlab.io/bugphyzz/reference/dot-modifyRange.html</loc>
-  </url>
-  <url>
     <loc>https://waldronlab.io/bugphyzz/reference/dot-requiredColumns.html</loc>
   </url>
   <url>
@@ -109,9 +103,6 @@
     <loc>https://waldronlab.io/bugphyzz/reference/fattyAcidComposition.html</loc>
   </url>
   <url>
-    <loc>https://waldronlab.io/bugphyzz/reference/fill_NCBI.html</loc>
-  </url>
-  <url>
     <loc>https://waldronlab.io/bugphyzz/reference/getBugAnnotations.html</loc>
   </url>
   <url>
@@ -121,9 +112,6 @@
     <loc>https://waldronlab.io/bugphyzz/reference/importBugphyzz.html</loc>
   </url>
   <url>
-    <loc>https://waldronlab.io/bugphyzz/reference/importBugphyzzNumeric.html</loc>
-  </url>
-  <url>
     <loc>https://waldronlab.io/bugphyzz/reference/index.html</loc>
   </url>
   <url>
@@ -131,12 +119,6 @@
   </url>
   <url>
     <loc>https://waldronlab.io/bugphyzz/reference/showPhys.html</loc>
-  </url>
-  <url>
-    <loc>https://waldronlab.io/bugphyzz/reference/taxRanks.html</loc>
-  </url>
-  <url>
-    <loc>https://waldronlab.io/bugphyzz/reference/validRanks.html</loc>
   </url>
   <url>
     <loc>https://waldronlab.io/bugphyzz/reference/whichAttr.html</loc>
