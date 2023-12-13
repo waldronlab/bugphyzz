@@ -40,7 +40,7 @@ Columns:
 | attribute_group | The group(s) where an attribute name could be found. |
 | description | The meaning of the attribute described in the 'attribute' column. |
 
-## [custmolinks.tsv](./customlinks.tsv)
+## [spreadsheet_custmolinks.tsv](./spreadsheet_customlinks.tsv)
 
 Links for datasets in spreadsheets that are not in tidy format and need to be
 converted to tidy format. These datasets are not imported through the 
@@ -57,7 +57,7 @@ Columns:
 | source_link |  Link to the source spreadsheet on Google Docs. |
 
 
-## [links.tsv](./links.tsv)
+## [spreadsheet_links.tsv](./spreadsheet_links.tsv)
 
 Links for datasets in spreadsheets that are already in tidy format.
 These datsets are imported with the physiologies function (no exported).
@@ -72,7 +72,7 @@ Columns:
 | link | Link to the csv export. |
 | source_link | Link to the source spreadsheet. |
 
-## [template.tsv](./template.tsv)
+## [curation_template.tsv](./curation_template.tsv)
 
 Contains the formal description of the data model in the spreadsheets imported
 by the physiologies funtion.
@@ -88,4 +88,23 @@ Columns:
 | valid_values | A regular expression with the values that are accepted. Except for the column 'Attriubte' which is a function name ('.attributes'). |
 | value_test | If 'string' the test of validity is based on the regular expresion. If '.attributes', it's based on the function .attriubtes (no exported). |
 | column_class | One of the R classes for atomic vectors. |
+
+## [thresholds.tsv](./thresholds.tsv)
+
+Tresholds for converting numeric/range data to categorical.
+
+Columns:
+
+| Column name | Description |
+| ----------- | ----------- |
+| Attribute_group | Physiology. Name of the spreadsheet. |
+| Attribute | The actual attribute used. |
+| lower | lower threshold. |
+| uppwer | upper threshold. |
+| unit | units used for numeric data. |
+
+
+
+
+
 

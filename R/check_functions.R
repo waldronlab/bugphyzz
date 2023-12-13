@@ -848,7 +848,7 @@ utils::globalVariables(c("."))
 #' \code{\link{.checkColumnValuesList}}
 #'
 .appendLinks <- function(x) {
-  fname1 <- system.file('extdata/links.tsv', package = 'bugphyzz')
+  fname1 <- system.file('extdata/spreadsheets_links.tsv', package = 'bugphyzz')
   links <- read.table(fname1, header = TRUE, sep = '\t')
   select_cols <- c("physiology", "source_link")
   phys_links <- links %>%
