@@ -1,8 +1,12 @@
 
-# Get BacDive -------------------------------------------------------------
+## Main function for importing BacDive
+.getBacDive <- function(verbose = FALSE ) {
+  bacdive_data <- .importBacDiveExcel(verbose = verbose)
+  colnames(bacdive_data) <- .changeBDColNames(colnames(bacdive_data))
+  .getTidyBD(bacdive_data)
+}
 
 ## Helper function for .getBacDive
-## This imports the current BacDive data on the spreadsheets
 .importBacDiveExcel <- function(verbose = FALSE) {
   if (verbose)
     message('Importing BacDive...')
@@ -13,7 +17,6 @@
 }
 
 ## Helper function for .getBacDive
-## Function to change headers to the same ones used in bugphyzz
 .changeBDColNames <- function(x) {
   dplyr::case_when(
     x == 'bacdive_id' ~ 'BacDive_ID',
@@ -51,29 +54,8 @@
     dplyr::distinct()
 }
 
-## Main function for importing BacDive
-.getBacDive <- function(verbose = FALSE ) {
-  bacdive_data <- .importBacDiveExcel(verbose = verbose)
-  colnames(bacdive_data) <- .changeBDColNames(colnames(bacdive_data))
-  .getTidyBD(bacdive_data)
-}
-
-# Reshape BacDive ---------------------------------------------------------
-
-## Helper function for .reshapeBacDive
-## Categorical to logical
-## This should only apply to logical attributes
-.catToLog <- function(df) {
-  df[['Attribute_group']] <- df[['Attribute']]
-  df[['Attribute']] <- df[['Attribute_value']]
-  df[['Attribute_value']] <- TRUE
-  df[['Attribute_type']] <- 'discrete'
-  return(df)
-}
-
 ## Function for getting a list of data.frames (one per attribute)
-## This function works over several datasets.
-## Since each dataset is different, the code below is long.
+## in tidy format from BacDive
 .reshapeBacDive <- function(df) {
 
   df[['Attribute_source']] <- 'BacDive'
@@ -322,4 +304,13 @@
   })
 
   return(split_df)
+}
+
+## Helper function for .reshapeBacDive
+.catToLog <- function(df) {
+  df[['Attribute_group']] <- df[['Attribute']]
+  df[['Attribute']] <- df[['Attribute_value']]
+  df[['Attribute_value']] <- TRUE
+  df[['Attribute_type']] <- 'discrete'
+  return(df)
 }
