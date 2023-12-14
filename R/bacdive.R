@@ -311,6 +311,6 @@
   df[['Attribute_group']] <- df[['Attribute']]
   df[['Attribute']] <- df[['Attribute_value']]
   df[['Attribute_value']] <- TRUE
-  df[['Attribute_type']] <- 'discrete'
+  df[['Attribute_type']] <- 'discrete' # TODO Maybe remove this line? I don't think this is being used
   return(df)
 }

@@ -170,7 +170,7 @@ showPhys <- function(which_names = 'all') {
       df <- .numericToRange(df)
     } else if (unique(df[['Attribute_type']] == 'range')) {
       df <- .modifyRange(df)
-    } else if (unique(df[['Attribute_type']] %in% .DISCRETE_ATTRIBUTE_TYPES)) {
+    } else if (unique(df[['Attribute_type']] %in% .DISCRETE_ATTRIBUTE_TYPES())) {
       df <- dplyr::filter(df, .data$Attribute_value == TRUE | .data$Attribute_value == FALSE)
     }
 
@@ -249,9 +249,11 @@ showPhys <- function(which_names = 'all') {
 }
 
 ## helper function for .importSpreadsheets
-.DISCRETE_ATTRIBUTE_TYPES <- c(
-  'multistate-intersection', 'multistate-union', 'binary'
-)
+.DISCRETE_ATTRIBUTE_TYPES <- function() {
+  fname <- system.file('extdata', 'spreadsheet_links.tsv', package = 'bugphyzz')
+  dat <- read.table(file = fname, header = TRUE, sep = '\t')
+  unique(dat[dat$trait_type == 'discrete',]$attribute_type)
+}
 
 ## Helper function for physiologies
 .addSourceInfo <- function(dat) {
