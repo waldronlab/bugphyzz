@@ -1,89 +1,86 @@
-## code to prepare `sysdata.rda` dataset goes here
 
 library(taxizedb)
 library(bugphyzz)
 library(purrr)
 library(dplyr)
 library(magrittr)
+library(stringr)
 
-phys <- physiologies()
+getParentRank <- function(x) {
+  ranks <- taxizedb::taxid2rank(x, db = 'ncbi', verbose = FALSE)
+  lowest_ranks <- c(
+    'biotype', 'isolate', 'serogroup', 'serotype', 'strain', 'subspecies'
+  )
+  dplyr::case_when(
+    ranks %in% lowest_ranks ~ 'species',
+    ranks == 'species' ~ 'genus',
+    ranks == 'genus' ~ 'family',
+    TRUE ~ NA
+  )
+}
 
-# ranks and parents -------------------------------------------------------
-ncbi_ids <- phys |>
-  map( ~ pull(.x, NCBI_ID)) |>
-  flatten_chr() |>
-  unique() |>
-  {\(y) y[!is.na(y)]}() |>
-  {\(y) y[y != 'unknown']}() |>
-  sort(decreasing = TRUE)
-
-## This might change to taxize instead (might be slower)
-taxonomies <- taxizedb::classification(ncbi_ids, db = "ncbi")
-
-## >>>>>>>> this is not part of the output <<<<<<<<<<<<<<<
-## Check that names correspond to the right output
-name_value <- names(taxonomies) == map_chr(
-  taxonomies, ~ tryCatch(tail(.x$id, 1), error = function(e) NA)
-)
-invalid_taxonomy_ids <- name_value[is.na(name_value)]
-sum(name_value, na.rm = TRUE) / length(name_value) * 100
-## In the lines above, most names correspond to the right output
-## >>>>>>>> this is not part of the output <<<<<<<<<<<<<<<
-
-taxonomies <- taxonomies[!is.na(taxonomies)]
-valid_ranks <- c(
+tax_ranks <- c(
   "superkingdom", "phylum", "class", "order", "family", "genus",
   "species", "strain"
 )
 
-taxonomies <- map(taxonomies, ~ filter(.x, rank %in% valid_ranks))
-taxonomies <- discard(taxonomies, ~ nrow(.x) <= 2)
+phys <- physiologies()
 
-## Get parents
-parents <- taxonomies %>%
-  map( ~ {
-    .x %>%
-      head(-1) %>%
-      filter(rank %in% valid_ranks) %>%
-      tail(1) %>%
-      set_colnames(paste0("Parent_", names(.)))
-  }) %>%
-  bind_rows(.id = "NCBI_ID")
+ncbi_ids <- phys |>
+  map( ~ pull(.x, NCBI_ID)) |>
+  flatten_chr() |>
+  unique() |>
+  str_squish() |>
+  str_to_lower() |>
+  {\(y) y[y != 'unknown']}() |>
+  {\(y) y[!is.na(y)]}() |>
+  sort(decreasing = TRUE)
 
-## Get ranks
-ranks <- taxonomies %>%
-  map_chr(~ tail(.x$rank, 1)) %>%
-  as_tibble(rownames = "NCBI_ID") %>%
-  set_colnames(c("NCBI_ID", "Rank"))
+tim <- system.time({
+  taxonomies <- taxizedb::classification(ncbi_ids, db = "ncbi")
+  lgl_vct <- !map_lgl(taxonomies, ~ all(is.na(.x)))
+  taxonomies <- taxonomies[lgl_vct]
+  ncbi_ids <- ncbi_ids[lgl_vct]
+})
+print(tim)
 
-ranks_parents <- full_join(ranks, parents, by = "NCBI_ID") %>%
-  relocate("Parent_rank", .after = "Parent_id") %>%
-  rename(Parent_NCBI_ID = Parent_id)
+## Check names and taxid match
+all(names(taxonomies) == map_chr(taxonomies, ~ as.character(tail(.x$id, 1))))
 
+parents_ranks <- getParentRank(ncbi_ids)
+lgl_vct <- !is.na(parents_ranks)
+ncbi_ids <- ncbi_ids[lgl_vct]
+parents_ranks <- parents_ranks[lgl_vct]
+taxonomies <- taxonomies[lgl_vct]
 
-# full taxonomy annotations -----------------------------------------------
-tax_regex <- valid_ranks %>%
-  c("query") %>%
-  paste0(., collapse = "|") %>%
-  paste0("^(", ., ")(_id)*$")
+parent_ids <- map2(taxonomies, parents_ranks,  ~{
+  parent_rank <- .x |>
+    filter(rank %in% tax_ranks) |>
+    pull(rank) |>
+    {\(y) y[-length(y)]}() |> ## Need to remove the current rank
+    tail(1)
+  parent_id <- .x |>
+    filter(rank %in% tax_ranks) |>
+    pull(id) |>
+    {\(y) y[-length(y)]}() |> ## Need to remove the current rank
+    tail(1)
+  names(parent_id) <- parent_rank
+  ifelse(names(parent_id) == .y, parent_id, NA)
+})
 
-attr(taxonomies, "class") <- "classification"
-taxonomy_table <- cbind(taxonomies)
+lgl_vct <- !is.na(parent_ids)
+ncbi_ids <- ncbi_ids[lgl_vct]
+parent_ids <- parent_ids[lgl_vct]
 
-taxonomyAnnotations <- taxonomy_table %>%
-  dplyr::select_at(grep(tax_regex, colnames(taxonomy_table), value = TRUE)) %>%
-  dplyr::rename(NCBI_ID = query) %>%
-  dplyr::left_join(ranks, by = "NCBI_ID") %>%
-  dplyr::relocate("NCBI_ID", "Rank") %>%
-  dplyr::rename(rank = Rank) %>%
-  dplyr::distinct() %>%
-  magrittr::set_colnames(paste0("bugphyzz_", colnames(.)))
-
-ranks_parents <- purrr::modify_if(
-  ranks_parents,
-  .p = grepl("NCBI_ID", colnames(ranks_parents)),
-  .f =  ~ as.character(.x)
+ranks_parents <- data.frame(
+  NCBI_ID = ncbi_ids,
+  # Taxon_name = taxizedb::taxid2name(ncbi_ids, db = 'ncbi'),
+  Rank = taxizedb::taxid2rank(ncbi_ids, db = 'ncbi'),
+  Parent_NCBI_ID = unlist(parent_ids),
+  Parent_name = taxizedb::taxid2name(unlist(parent_ids), db = 'ncbi'),
+  Parent_rank = taxizedb::taxid2rank(unlist(parent_ids), db = 'ncbi')
 )
+rownames(ranks_parents) <- NULL
 
 # BacDive -----------------------------------------------------------------
 bacdive <- bugphyzz:::.getBacDive() |>
@@ -93,7 +90,6 @@ bacdive_phys_names <- names(bacdive)
 ## Save data -------------------------------------------------------------
 usethis::use_data(
   ranks_parents,
-  taxonomyAnnotations,
   bacdive_phys_names,
   overwrite = TRUE, internal = TRUE
 )
