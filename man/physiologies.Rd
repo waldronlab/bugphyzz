@@ -2,7 +2,7 @@
 % Please edit documentation in R/physiologies.R
 \name{physiologies}
 \alias{physiologies}
-\title{Physiologies}
+\title{Import phsiologies}
 \usage{
 physiologies(keyword = "all", full_source = FALSE)
 }
@@ -20,7 +20,11 @@ A list of data.frames in tidy format.
 }
 \description{
 \code{physiologies} imports data from the
-Google spreadsheets (https://drive.google.com/drive/folders/1i2UAolVWAYa7UnETNnCs0BDWjKPp3ev5).
+Google spreadsheets at https://drive.google.com/drive/folders/1i2UAolVWAYa7UnETNnCs0BDWjKPp3ev5.
+This function (and its internal functions) do minimal changes to the
+imported data. These changes are only meant to match data coming from
+different sources, and attaching information needed for further processing,
+such as source and attribute type.
 }
 \examples{
 l <- physiologies('all')

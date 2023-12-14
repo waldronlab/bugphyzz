@@ -25,7 +25,7 @@ found.
 }
 \description{
 \code{.checkColumnValues} checks if a single column in a data frame contains
-valid values according to the extdata/template.tsv file.
+valid values according to the extdata/curation_template.tsv file.
 }
 \examples{
 

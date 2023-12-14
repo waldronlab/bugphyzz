@@ -7,7 +7,7 @@
 fattyAcidComposition()
 }
 \value{
-A tidy data frame of fattyAcidComposition from spreadsheets_customlinks.tsv
+A tidy data frame of fattyAcidComposition from spreadsheet_customlinks.tsv
 }
 \description{
 \code{fattyAcidComposition} returns a data frame with data about the
