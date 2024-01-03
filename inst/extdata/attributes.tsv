@@ -383,7 +383,7 @@
 "reaction to black rot"	"disease association"	"logical"	"CO_331:0000380"	NA
 "human microflora"	"habitat"	"logical"	NA	NA
 "human gut microbiome"	"habitat"	"logical"	NA	NA
-"other host associated"	"habitat"	"logical"	NA	NA
+"host associated"	"habitat"	"logical"	NA	NA
 "aquatic biome"	"habitat"	"logical"	NA	NA
 "colonization of host"	"habitat"	"logical"	NA	NA
 "creosote-contaminated soil"	"habitat;isolation site"	"logical"	NA	NA
