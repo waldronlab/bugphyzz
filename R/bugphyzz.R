@@ -14,39 +14,154 @@
 #' @examples
 #'
 #' bp <- importBugphyzz()
-#'
-#' ## Check available groups of attributes
-#' unique(bp$Attribute_group)
-#'
-#' ## Filter only for growth temperature
-#' gt <- bp[which(bp$Attribute_group == 'growth temperature'), ]
-#'
-#' ## Create signatures with taxids at the species level
-#' gt_sigs <- getBugphyzzSignatures(gt, tax.id.type = 'NCBI_ID', tax.level = 'species')]
-#' lapply(gt_sigs, function(x) head(x))
-#'
+#' names(bp)
 #'
 importBugphyzz <- function(version = 'devel', force_download = FALSE) {
-  if (version == 'devel')
-    url <- 'https://github.com/waldronlab/bugphyzzExports/raw/sdgamboa/update-workflow/bugphyzz_export.tsv'
-  rpath <- .getResource(
-    rname = 'bugphyzz_export.tsv', url = url, verbose = TRUE,
-    force = force_download
+  types <- c("multistate", "binary", "numeric")
+  urls <- paste0(
+    "https://github.com/waldronlab/bugphyzzExports/raw/sdgamboa/phylo/bugphyzz_",
+    types,
+    ".csv"
   )
-  thr <- .thresholds()
-  dat <- utils::read.table(rpath, header = TRUE, sep = '\t') |>
-    dplyr::mutate(Score = round(.data$Score, digits = 3)) |>
-    dplyr::mutate(Frequency = dplyr::case_when(
-      .data$Score == 1 ~ 'always',
-      .data$Score >= 0.9 & .data$Score < 1 ~ 'usually',
-      .data$Score >= 0.5 & .data$Score < 0.9 ~ 'sometimes',
-      .data$Score > 0 & .data$Score < 0.5 ~ 'rarely',
-      .data$Score == 0  ~ 'never'
-    )) |>
-    dplyr::mutate(
-      Attribute_source = ifelse(.data$Evidence == 'inh', NA, .data$Attribute_source)
+  names(urls) <- types
+  if (version == 'devel') {
+    output <- vector("list", length(urls))
+    for (i in seq_along(output)) {
+      message("Importing ", names(urls)[i], " data...")
+      names(output)[i] <- names(urls)[i]
+      rpath <- .getResource(
+        rname = paste0("bugphyzz_", names(urls)[i], ".tsv"),
+        url = urls[i], verbose = TRUE, force = force_download
+      )
+      output[[i]] <- utils::read.csv(rpath, header = TRUE, skip = 1)
+    }
+  }
+
+  output <- lapply(output, function(x) split(x, x$Attribute_group))
+  output <- purrr::list_flatten(output)
+  names(output) <- purrr::map_chr(output, ~ unique(.x$Attribute_group))
+  return(output)
+}
+
+
+#' Make bugs signatures
+#'
+#' \code{makeSignatures} Creates signatures for a list of bugphyzz
+#' data.frames imported with \code{importBugphyzz}
+#'
+#' @param dat A data.frame.
+#' @param tax_id_type A character string. Valid options: NCBI_ID, Taxon_name.
+#' @param tax_level A character vector. Taxonomic rank. Valid options:
+#' kingdom, phylum, class, order, family, genus, species, strain.
+#' They can be combined. "mixed" is equivalent to select all valid ranks.
+#' @param evidence A character vector. Valid options: exp, igc, nas, tas, tax, asr.
+#' They can be combined. Default is all.
+#' @param frequency A character vector. Valid options: always, usually,
+#' sometimes, rarely, unknown. They can be combiend. Default value is all but
+#' rarely.
+#' @param min_size Minimun number of bugs in a signature. Default is 10.
+#' @param min Minimum value inclusive. Only for numeric attributes. Default is NULL.
+#' @param max Maximum value inclusive. Only for numeric attributes. Default is NULL.
+#'
+#' @return A list of character vector with the IDs of the bugs.
+#' @export
+#'
+#' @examples
+#'
+#' bp <- importBugphyzz()
+#' sigs <- lapply(bp, makeSignatures)
+#' sigs <- purrr::list_flatten(sigs)
+#'
+makeSignatures <- function(
+    dat, tax_id_type = "NCBI_ID",
+    tax_level = "mixed",
+    evidence = c("exp", "igc", "tas", "nas", "tax", "asr"),
+    frequency = c("always", "usually", "sometimes", "unknown"),
+    min_size = 10, min = NULL, max = NULL
+) {
+  attr_type <- unique(dat$Attribute_type)
+  if (tax_level == "mixed") {
+    tax_level <- c(
+      "kingdom", "phylum", "class", "order", "family", "genus", "species",
+      "strain"
     )
-  dplyr::left_join(dat, thr, by = c('Attribute_group', 'Attribute'))
+  }
+  dat <- dat |>
+    dplyr::filter(Rank %in% tax_level) |>
+    dplyr::filter(.data$Evidence %in% evidence) |>
+    dplyr::filter(.data$Frequency %in% frequency)
+  if (!nrow(dat)) {
+    warning(
+      "Not enough data for creating signatures. Try different filtering options",
+      call. = FALSE
+    )
+    return(NULL)
+  }
+  if (attr_type %in% c("multistate-intersection", "binary")) {
+    s <- .makeSignaturesDiscrete(dat = dat, tax_id_type = tax_id_type)
+  } else if (attr_type %in% c("range", "numeric")) {
+    s <- .makeSignaturesNumeric(
+      dat = dat, tax_id_type = tax_id_type, min = min, max = max
+    )
+  }
+  output <- purrr::keep(s, ~ length(.x) >= min_size)
+  if (!length(output)) {
+    warning(
+      "Not enough data for creating signatures. Try different filtering options",
+      call. = FALSE
+    )
+  }
+  return(output)
+}
+
+.makeSignaturesDiscrete <- function(dat, tax_id_type = "NCBI_ID") {
+  dat |>
+    dplyr::mutate(
+      Attribute = paste0("bugphyzz:", .data$Attribute, "|", .data$Attribute_value)
+    ) |>
+    {\(y) split(y, y$Attribute)}() |>
+    lapply(function(x) unique(x[[tax_id_type]]))
+}
+
+.makeSignaturesNumeric <- function(
+    dat, tax_id_type = "NCBI_ID", min = NULL, max = NULL
+) {
+  if (!is.null(min) || !is.null(max)) {
+    if (is.null(min)) {
+      message("Minimum unespecified. Using ", min(dat$Attribute_value), ".")
+      min <- min(dat$Attribute_value)
+    }
+    if (is.null(max)) {
+      message("Maximum unespecified. Using ", max(dat$Attribute_value), ".")
+      max <- max(dat$Attribute_value)
+    }
+    dat <- dat |>
+      dplyr::filter(
+        .data$Attribute_value >= min & .data$Attribute_value <= max
+      ) |>
+      dplyr::mutate(
+        Attribute = paste0("bugphyzz:", .data$Attribute, "| >=", min, " & <=", max)
+      )
+  } else {
+    thr <- .thresholds() |>
+      dplyr::filter(.data$Attribute_group == unique(dat$Attribute_group))
+    attr_name <- thr$Attribute
+    min_values <- thr$lower
+    max_values <- thr$upper
+    dat$tmp_col <- NA
+    for (i in seq_along(attr_name)) {
+      if (is.na(min_values[i]))
+        min_values[i] <- min(dat$Attribute_value) - 0.01
+      if (is.na(max_values[i]))
+        max_values[i] <- max(dat$Attribute_value)
+      pos <- which(dat$Attribute_value > min_values[i] & dat$Attribute_value <= max_values[i])
+      dat$tmp_col[pos] <- attr_name[i]
+      dat$Attribute[pos] <- paste0("bugphyzz:", dat$Attribute[pos], "|", attr_name[i], "| > ", round(min_values[i], 2), " & <= ", max_values[i])
+    }
+  }
+  dat |>
+    {\(y) split(y, y$Attribute)}() |>
+    lapply(function(x) unique(x[[tax_id_type]]))
 }
 
 #' Get bugphyzz signatures
@@ -235,7 +350,7 @@ whichAttrGrp <- function(bp) {
       unit = ifelse(is.na(.data$unit), '', .data$unit)
     ) |>
     dplyr::mutate(Attribute_range = paste0(range, unit)) |>
-    dplyr::select(
+    dplyr::relocate(
       .data$Attribute_group, .data$Attribute, .data$Attribute_range
     )
 }

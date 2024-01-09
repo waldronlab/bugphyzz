@@ -23,16 +23,6 @@ attributes with categorical and binary (boolean) attributes.
 \examples{
 
 bp <- importBugphyzz()
-
-## Check available groups of attributes
-unique(bp$Attribute_group)
-
-## Filter only for growth temperature
-gt <- bp[which(bp$Attribute_group == 'growth temperature'), ]
-
-## Create signatures with taxids at the species level
-gt_sigs <- getBugphyzzSignatures(gt, tax.id.type = 'NCBI_ID', tax.level = 'species')]
-lapply(gt_sigs, function(x) head(x))
-
+names(bp)
 
 }
