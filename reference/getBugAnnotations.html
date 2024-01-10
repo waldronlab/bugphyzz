@@ -99,108 +99,18 @@
 <span class="r-in"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu">getBugAnnotations</span><span class="op">(</span></span></span>
 <span class="r-in"><span>    x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">'561'</span>, <span class="st">'562'</span><span class="op">)</span>, bp <span class="op">=</span> <span class="fu"><a href="importBugphyzz.html">importBugphyzz</a></span><span class="op">(</span><span class="op">)</span>, tax.id.type <span class="op">=</span> <span class="st">'NCBI_ID'</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Downloading, bugphyzz_export.tsv.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Using data downloaded on 2024-01-04 05:32:02.</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Importing multistate data...</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Downloading, bugphyzz_multistate.tsv.</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Using data downloaded on 2024-01-10 03:11:32.</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Importing binary data...</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Downloading, bugphyzz_binary.tsv.</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Using data downloaded on 2024-01-10 03:11:42.</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Importing numeric data...</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Downloading, bugphyzz_numeric.tsv.</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Using data downloaded on 2024-01-10 03:11:46.</span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in bp[which(bp[[tax.id.type]] %in% x), ]:</span> incorrect number of dimensions</span>
 <span class="r-in"><span><span class="va">x</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $`561`</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $`561`$aerophilicity</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "aerobic"                 "facultatively anaerobic"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $`561`$arrangement</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "paired cells" "single"      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $`561`$`biosafety level`</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "biosafety level 2"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $`561`$`coding genes`</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "average"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $`561`$`genome size`</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "large"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $`561`$`gram stain`</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "gram stain negative"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $`561`$`growth temperature`</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "mesophile"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $`561`$length</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "small"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $`561`$shape</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "bacillus"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $`561`$`spore shape`</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "endospore"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $`561`$width</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "average"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $`562`</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $`562`$`COGEM pathogenicity rating`</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "COGEM pathogenicity rating 2"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $`562`$aerophilicity</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "aerobic"                 "facultatively anaerobic"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $`562`$`animal pathogen`</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "animal pathogen--FALSE"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $`562`$arrangement</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "paired cells"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $`562`$`biosafety level`</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "biosafety level 1" "biosafety level 2"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $`562`$`coding genes`</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "average"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $`562`$`extreme environment`</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "Extreme environment--TRUE"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $`562`$`genome size`</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "large"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $`562`$`gram stain`</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "gram stain negative"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $`562`$`growth temperature`</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "mesophile"    "psychrophile"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $`562`$habitat</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "digestive system--TRUE"    "feces--TRUE"              </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3] "host-associated--TRUE"     "human microbiome--TRUE"   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [5] "not host-associated--TRUE"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $`562`$`health associated`</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "Health associated--FALSE"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $`562`$length</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "small"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $`562`$`mutation rate per site per generation`</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "slow"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $`562`$`mutation rate per site per year`</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "slow"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $`562`$`optimal ph`</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "neutral"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $`562`$`plant pathogenicity`</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "plant pathogenity--FALSE"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $`562`$shape</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "bacillus"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $`562`$`spore shape`</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "endospore"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $`562`$width</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "average"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in eval(expr, envir, enclos):</span> object 'x' not found</span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
