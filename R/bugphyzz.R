@@ -1,4 +1,4 @@
-#' Import bugphyzz (categorical and binary)
+#' Import bugphyzz
 #'
 #' \code{importBugphyzz} imports bugphyzz as a single data.frame. It includes
 #' attributes with categorical and binary (boolean) attributes.

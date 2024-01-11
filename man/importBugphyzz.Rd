@@ -2,7 +2,7 @@
 % Please edit documentation in R/bugphyzz.R
 \name{importBugphyzz}
 \alias{importBugphyzz}
-\title{Import bugphyzz (categorical and binary)}
+\title{Import bugphyzz}
 \usage{
 importBugphyzz(version = "devel", force_download = FALSE, v = 0.5)
 }
