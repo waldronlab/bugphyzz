@@ -103,10 +103,7 @@
     <loc>https://waldronlab.io/bugphyzz/reference/fattyAcidComposition.html</loc>
   </url>
   <url>
-    <loc>https://waldronlab.io/bugphyzz/reference/getBugAnnotations.html</loc>
-  </url>
-  <url>
-    <loc>https://waldronlab.io/bugphyzz/reference/getBugphyzzSignatures.html</loc>
+    <loc>https://waldronlab.io/bugphyzz/reference/getTaxonSignatures.html</loc>
   </url>
   <url>
     <loc>https://waldronlab.io/bugphyzz/reference/importBugphyzz.html</loc>
@@ -122,11 +119,5 @@
   </url>
   <url>
     <loc>https://waldronlab.io/bugphyzz/reference/showPhys.html</loc>
-  </url>
-  <url>
-    <loc>https://waldronlab.io/bugphyzz/reference/whichAttr.html</loc>
-  </url>
-  <url>
-    <loc>https://waldronlab.io/bugphyzz/reference/whichAttrGrp.html</loc>
   </url>
 </urlset>
