@@ -36,13 +36,14 @@ importBugphyzz <- function(version = 'devel', force_download = FALSE) {
       output[[i]] <- utils::read.csv(rpath, header = TRUE, skip = 1)
     }
   }
-
   output <- lapply(output, function(x) split(x, x$Attribute_group))
   output <- purrr::list_flatten(output)
   names(output) <- purrr::map_chr(output, ~ unique(.x$Attribute_group))
+
+
+
   return(output)
 }
-
 
 #' Make bugs signatures
 #'
@@ -80,7 +81,7 @@ makeSignatures <- function(
     min_size = 10, min = NULL, max = NULL
 ) {
   attr_type <- unique(dat$Attribute_type)
-  if (tax_level == "mixed") {
+  if ("mixed" %in% tax_level) {
     tax_level <- c(
       "kingdom", "phylum", "class", "order", "family", "genus", "species",
       "strain"
@@ -114,13 +115,50 @@ makeSignatures <- function(
   return(output)
 }
 
+#' Get Taxon Signatures
+#'
+#' \code{getTaxonSignatures} get the names of all of the signatures for a taxon.
+#'
+#' @param tax A valid NCBI ID or taxon name. If taxon name is used, the
+#' tax_id_type = "Taxon_name" must also be used.
+#' @param bp Import from \code{importBugphyzz}.
+#' @param ... Arguments passed to \code{makeSignatures}.
+#'
+#' @return A character vector with the names of the signatures for a taxon.
+#' @export
+#'
+#' @examples
+#' taxid <- "562"
+#' bp <- importBugphyzz()
+#' sig_names_1 <- getTaxonSignatures("562", bp)
+#' sig_names_2 <- getTaxonSignatures("Escherichia coli", bp, tax_id_type = "Taxon_name")
+#'
+getTaxonSignatures <- function(tax, bp, ...) {
+  sigs <- purrr::map(bp, makeSignatures, ...)
+  sigs <- purrr::list_flatten(sigs, name_spec = "{inner}")
+  pos <- which(purrr::map_lgl(sigs, ~ tax %in% .x))
+  output <- names(sigs)[pos]
+  return(output)
+}
+
+# Non exported functions ----------------------------------------------------
 .makeSignaturesDiscrete <- function(dat, tax_id_type = "NCBI_ID") {
-  dat |>
-    dplyr::mutate(
-      Attribute = paste0("bugphyzz:", .data$Attribute, "|", .data$Attribute_value)
-    ) |>
-    {\(y) split(y, y$Attribute)}() |>
-    lapply(function(x) unique(x[[tax_id_type]]))
+  if (all(dat$Attribute_group != dat$Attribute)) {
+    output <- dat |>
+      dplyr::mutate(
+        Attribute = paste0("bugphyzz:", .data$Attribute_group, "|", .data$Attribute, "|", .data$Attribute_value)
+      ) |>
+      {\(y) split(y, y$Attribute)}() |>
+      lapply(function(x) unique(x[[tax_id_type]]))
+  } else {
+    output <- dat |>
+      dplyr::mutate(
+        Attribute = paste0("bugphyzz:", .data$Attribute, "|", .data$Attribute_value)
+      ) |>
+      {\(y) split(y, y$Attribute)}() |>
+      lapply(function(x) unique(x[[tax_id_type]]))
+  }
+  return(output)
 }
 
 .makeSignaturesNumeric <- function(
@@ -164,49 +202,32 @@ makeSignatures <- function(
     lapply(function(x) unique(x[[tax_id_type]]))
 }
 
-#' Get bugphyzz signatures
-#'
-#' \code{getBugphyzzSignatures} convert a data.frame imported with bugphyzz
-#' to signatures.
-#'
-#' @param df A data.frame
-#' @param tax.id.type A character string. NCBI_ID or Taxon_name.
-#' @param tax.level A character string indicating taxonomic level.
-#' Valid options: domain, phylum, class,
-#' order, family, genus, species, strain.
-#' @param evidence A character string indicating type of evidence.
-#' Valid option: asr, inh, exp, igc, nas, tas. See details for meaning of
-#' each keyword.
-#' @param frequency A cahracter string indicating frequency.
-#' Valid options: unknown, sometimes, usually, always. See details for
-#' meaning of each keyword.
-#' @param min.size An integer. Minimum number of elements in a signature.
-#'
-#' @return Named list of signatures.
-#' @export
-#'
-#' @examples
-#'
-#' ## load purrr package (for managing lists)
-#' library(purrr)
-#'
-#' ## Create helper function
-#' sig_fun <- function(x) {
-#'   getBugphyzzSignatures(
-#'   df = x, tax.id.type = 'NCBI_ID', tax.level = 'species'
-#'   )
-#' }
-#'
-#' ## Create signatures of categorical or binary attributes
-#' bp <- importBugphyzz()
-#' sigs <- sig_fun(bp)
-#' map(sigs, head)
-#'
-#' ## Create signatures of numeric attributes
-#' bp_num <- importBugphyzzNumeric()
-#' num_sigs <- flatten(map(bp_num, sig_fun))
-#' lapply(num_sigs, head)
-#'
+.thresholds <- function() {
+  fpath <- file.path('extdata', 'thresholds.tsv')
+  fname <- system.file(fpath, package = 'bugphyzz', mustWork = TRUE)
+  utils::read.table(fname, header = TRUE, sep = '\t') |>
+    dplyr::mutate(
+      range = dplyr::case_when(
+        is.na(.data$lower) ~ paste0('<=', .data$upper),
+        is.na(.data$upper) ~ paste0('>=', .data$lower),
+        TRUE ~ paste0(.data$lower, '-', .data$upper)
+      ),
+      unit = ifelse(is.na(.data$unit), '', .data$unit)
+    ) |>
+    dplyr::mutate(Attribute_range = paste0(range, unit)) |>
+    dplyr::relocate(
+      .data$Attribute_group, .data$Attribute, .data$Attribute_range
+    )
+}
+
+
+.validationData <- function() {
+
+}
+
+
+# Functions what will no longer be used -----------------------------------
+## This functiosn will be removed soon
 getBugphyzzSignatures <- function(
     df, tax.id.type = 'NCBI_ID', tax.level = 'mixed',
     evidence = c('asr', 'inh', 'tax', 'inh2', 'exp', 'tas', 'nas', 'igc'),
@@ -270,87 +291,11 @@ getBugphyzzSignatures <- function(
   return(sigs)
 }
 
-#' Get Bug Annotations
-#'
-#' \code{getBugAnnotations} get all physiology annotations for one or more taxa.
-#'
-#' @param x A valid NCBI ID or taxon name
-#' @param bp Import from \code{importBugphyzz}.
-#' @param tax.id.type A character string. Either 'NCBI_ID' or 'Taxon_name'.
-#'
-#' @return A list of physiologies per taxa.
-#' @export
-#'
-#' @examples
-#'
-#' x <- getBugAnnotations(
-#'     x = c('561', '562'), bp = importBugphyzz(), tax.id.type = 'NCBI_ID'
-#' )
-#' x
-#'
-getBugAnnotations <- function(x, bp = importBugphyzz(), tax.id.type) {
-  sub_bp <- bp[which(bp[[tax.id.type]] %in% x),]
-  sub_bp |>
-    { \(y) split(y, factor(y[[tax.id.type]])) }() |>
-    purrr::map(~ split(.x, .x$Attribute_group)) |>
-    purrr::map_depth(.depth = 2, ~ .x$Attribute) |>
-    purrr::map_depth(.depth = 2, ~ sub('^.*:', '', .x))
-
-}
-
-#' Which Attributes
-#'
-#' \code{whichAttr} shows which attributes are present in a dataset imported
-#' with \code{importBugphyzz}. Signatures created with
-#' \code{getBugphyzzSignatures} would take these names.
-#'
-#' @param bp A data.frame imported with \code{importBugphyzz}.
-#'
-#' @return A character vector.
-#' @export
-#'
-#' @examples
-#'
-#' bp <- importBugphyzz()
-#' whichAttr(bp)
-#'
-whichAttr <- function(bp) {
-  sort(unique(bp$Attribute))
-}
-
-#' Which Attribute Groups
-#'
-#' \code{whichAttrGrp} shows which attribute groups are present in a dataset
-#' imported with \code{importBugphyzz}.
-#'
-#' @param bp  A data.frame imported with \code{importBugphyzz}.
-#'
-#' @return A character vector.
-#' @export
-#'
-#' @examples
-#'
-#' bp <- importBugphyzz()
-#' whichAttrGrp(bp)
-#'
 whichAttrGrp <- function(bp) {
   sort(unique(bp$Attribute_group))
 }
 
-.thresholds <- function() {
-  fpath <- file.path('extdata', 'thresholds.tsv')
-  fname <- system.file(fpath, package = 'bugphyzz', mustWork = TRUE)
-  utils::read.table(fname, header = TRUE, sep = '\t') |>
-    dplyr::mutate(
-      range = dplyr::case_when(
-        is.na(.data$lower) ~ paste0('<=', .data$upper),
-        is.na(.data$upper) ~ paste0('>=', .data$lower),
-        TRUE ~ paste0(.data$lower, '-', .data$upper)
-      ),
-      unit = ifelse(is.na(.data$unit), '', .data$unit)
-    ) |>
-    dplyr::mutate(Attribute_range = paste0(range, unit)) |>
-    dplyr::relocate(
-      .data$Attribute_group, .data$Attribute, .data$Attribute_range
-    )
+whichAttr <- function(bp) {
+  sort(unique(bp$Attribute))
 }
+
