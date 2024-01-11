@@ -7,6 +7,7 @@
 #' (current file on the GitHub repo waldronlab/bugphyzzExports).
 #' @param force_download Logical value. Force a fresh download of the data or
 #' use the one stored in the cache (if available). Default is FALSE.
+#' @param v Validation value. Deafult 0.5.
 #'
 #' @return A data.frame.
 #' @export
@@ -16,7 +17,7 @@
 #' bp <- importBugphyzz()
 #' names(bp)
 #'
-importBugphyzz <- function(version = 'devel', force_download = FALSE) {
+importBugphyzz <- function(version = 'devel', force_download = FALSE, v = 0.5) {
   types <- c("multistate", "binary", "numeric")
   urls <- paste0(
     "https://github.com/waldronlab/bugphyzzExports/raw/sdgamboa/phylo/bugphyzz_",
@@ -39,9 +40,23 @@ importBugphyzz <- function(version = 'devel', force_download = FALSE) {
   output <- lapply(output, function(x) split(x, x$Attribute_group))
   output <- purrr::list_flatten(output)
   names(output) <- purrr::map_chr(output, ~ unique(.x$Attribute_group))
+  val <- .validationData() |>
+    dplyr::select(.data$physiology, .data$attribute, .data$value)
 
-
-
+  output <- purrr::map(output, ~ {
+    attr_type <- unique(.x$Attribute_type)
+    if (attr_type == "binary") {
+      o <- dplyr::left_join(.x, val, by = c("Attribute" = "attribute"))
+    } else if (attr_type == "multistate-intersection") {
+      o <- dplyr::left_join(.x, val, by = c("Attribute" = "physiology", "Attribute_value" = "attribute"))
+    } else if (attr_type == "range"){
+      o <- dplyr::left_join(.x, val, by = c("Attribute" = "attribute"))
+    }
+    o |>
+      dplyr::filter(
+       !(.data$value < v & .data$Evidence == "asr")
+      )
+  })
   return(output)
 }
 
@@ -220,9 +235,17 @@ getTaxonSignatures <- function(tax, bp, ...) {
     )
 }
 
-
 .validationData <- function() {
-
+  url <-  "https://raw.githubusercontent.com/waldronlab/taxPProValidation/main/validation_summary.tsv"
+  utils::read.table(
+    file = url, header = TRUE, sep = "\t", row.names = NULL
+  ) |>
+    dplyr::mutate(
+      value = dplyr::case_when(
+        !is.na(mcc_mean) & is.na(r2_mean) ~ mcc_mean,
+        is.na(mcc_mean) & !is.na(r2_mean) ~ r2_mean
+      )
+    )
 }
 
 
