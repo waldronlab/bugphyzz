@@ -8,7 +8,7 @@ importBugphyzz(
   version = "devel",
   force_download = FALSE,
   v = 0.5,
-  remove_asr = TRUE
+  remove_asr = FALSE
 )
 }
 \arguments{

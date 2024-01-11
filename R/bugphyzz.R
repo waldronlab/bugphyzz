@@ -18,7 +18,7 @@
 #' bp <- importBugphyzz()
 #' names(bp)
 #'
-importBugphyzz <- function(version = 'devel', force_download = FALSE, v = 0.5, remove_asr = TRUE) {
+importBugphyzz <- function(version = 'devel', force_download = FALSE, v = 0.5, remove_asr = FALSE) {
   types <- c("multistate", "binary", "numeric")
   urls <- paste0(
     "https://github.com/waldronlab/bugphyzzExports/raw/sdgamboa/phylo/bugphyzz_",
