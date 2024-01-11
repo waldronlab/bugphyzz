@@ -48,16 +48,22 @@ importBugphyzz <- function(version = 'devel', force_download = FALSE, v = 0.5, r
   output <- purrr::map(output, ~ {
     attr_type <- unique(.x$Attribute_type)
     if (attr_type == "binary") {
-      o <- dplyr::left_join(.x, val, by = c("Attribute" = "attribute"))
+      val <- dplyr::select(val, Attribute = .data$attribute, .data$value)
+      o <- dplyr::left_join(.x, val, by = "Attribute" )
     } else if (attr_type == "multistate-intersection") {
-      o <- dplyr::left_join(.x, val, by = c("Attribute" = "physiology", "Attribute_value" = "attribute"))
-    } else if (attr_type == "range"){
-      o <- dplyr::left_join(.x, val, by = c("Attribute" = "attribute"))
+      val <- dplyr::select(val, Attribute = .data$physiology, Attribute_value = .data$attribute, .data$value)
+      o <- dplyr::left_join(.x, val, by = c("Attribute", "Attribute_value"))
+    } else if (attr_type == "range") {
+      val <- dplyr::select(val, Attribute = .data$attribute, .data$value)
+      o <- dplyr::left_join(.x, val, by = "Attribute") |>
+        dplyr::rename(NSTI = .data$nsti)
     }
     o |>
       dplyr::filter(
        !(.data$value < v & .data$Evidence == "asr")
-      )
+      ) |>
+      dplyr::mutate(value = ifelse(.data$Evidence != "asr", NA, value)) |>
+      dplyr::rename(Validation = .data$value)
   })
 
   if (remove_asr) {
