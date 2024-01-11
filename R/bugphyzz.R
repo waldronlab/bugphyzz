@@ -42,8 +42,8 @@ importBugphyzz <- function(version = 'devel', force_download = FALSE, v = 0.5, r
   output <- purrr::list_flatten(output)
   names(output) <- purrr::map_chr(output, ~ unique(.x$Attribute_group))
   val <- .validationData() |>
-    dplyr::select(.data$physiology, .data$attribute, .data$value) |>
-    dplyr::filter(.data$rank == "all")
+    dplyr::filter(.data$rank == "all") |>
+    dplyr::select(.data$physiology, .data$attribute, .data$value)
 
   output <- purrr::map(output, ~ {
     attr_type <- unique(.x$Attribute_type)
