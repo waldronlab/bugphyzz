@@ -7,7 +7,8 @@
 #' (current file on the GitHub repo waldronlab/bugphyzzExports).
 #' @param force_download Logical value. Force a fresh download of the data or
 #' use the one stored in the cache (if available). Default is FALSE.
-#' @param v Validation value. Deafult 0.5.
+#' @param v Validation value. Default 0.5.
+#' @param remove_asr Logical. Default is TRUE.
 #'
 #' @return A data.frame.
 #' @export
@@ -17,7 +18,7 @@
 #' bp <- importBugphyzz()
 #' names(bp)
 #'
-importBugphyzz <- function(version = 'devel', force_download = FALSE, v = 0.5) {
+importBugphyzz <- function(version = 'devel', force_download = FALSE, v = 0.5, remove_asr = TRUE) {
   types <- c("multistate", "binary", "numeric")
   urls <- paste0(
     "https://github.com/waldronlab/bugphyzzExports/raw/sdgamboa/phylo/bugphyzz_",
@@ -41,7 +42,8 @@ importBugphyzz <- function(version = 'devel', force_download = FALSE, v = 0.5) {
   output <- purrr::list_flatten(output)
   names(output) <- purrr::map_chr(output, ~ unique(.x$Attribute_group))
   val <- .validationData() |>
-    dplyr::select(.data$physiology, .data$attribute, .data$value)
+    dplyr::select(.data$physiology, .data$attribute, .data$value) |>
+    dplyr::filter(.data$rank == "all")
 
   output <- purrr::map(output, ~ {
     attr_type <- unique(.x$Attribute_type)
@@ -57,6 +59,10 @@ importBugphyzz <- function(version = 'devel', force_download = FALSE, v = 0.5) {
        !(.data$value < v & .data$Evidence == "asr")
       )
   })
+
+  if (remove_asr) {
+    output <- purrr::map(output, ~ dplyr::filter(.x, .data$Evidence != "asr"))
+  }
   return(output)
 }
 

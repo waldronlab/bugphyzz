@@ -4,7 +4,12 @@
 \alias{importBugphyzz}
 \title{Import bugphyzz}
 \usage{
-importBugphyzz(version = "devel", force_download = FALSE, v = 0.5)
+importBugphyzz(
+  version = "devel",
+  force_download = FALSE,
+  v = 0.5,
+  remove_asr = TRUE
+)
 }
 \arguments{
 \item{version}{Character string. The version to download. Default is 'devel'
@@ -13,7 +18,9 @@ importBugphyzz(version = "devel", force_download = FALSE, v = 0.5)
 \item{force_download}{Logical value. Force a fresh download of the data or
 use the one stored in the cache (if available). Default is FALSE.}
 
-\item{v}{Validation value. Deafult 0.5.}
+\item{v}{Validation value. Default 0.5.}
+
+\item{remove_asr}{Logical. Default is TRUE.}
 }
 \value{
 A data.frame.
