@@ -111,40 +111,24 @@ use the one stored in the cache (if available). Default is FALSE.</p></dd>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">bp</span> <span class="op">&lt;-</span> <span class="fu">importBugphyzz</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Importing multistate data...</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Using data downloaded on 2024-01-11 19:47:53.</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Using data downloaded on 2024-01-16 07:03:49.</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Importing binary data...</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Using data downloaded on 2024-01-11 19:48:03.</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Using data downloaded on 2024-01-16 07:03:58.</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Importing numeric data...</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Using data downloaded on 2024-01-11 19:48:07.</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Using data downloaded on 2024-01-16 07:04:01.</span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">bp</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] "COGEM pathogenicity rating"           </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [2] "aerophilicity"                        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [3] "arrangement"                          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [4] "biosafety level"                      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [5] "gram stain"                           </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [6] "hemolysis"                            </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [7] "shape"                                </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [8] "spore shape"                          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [9] "animal pathogen"                      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [10] "antimicrobial sensitivity"            </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [11] "biofilm forming"                      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [12] "extreme environment"                  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [13] "habitat"                              </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [14] "health associated"                    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [15] "host-associated"                      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [16] "hydrogen gas producing"               </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [17] "lactate producing"                    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [18] "motility"                             </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [19] "plant pathogenicity"                  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [20] "spore formation"                      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [21] "coding genes"                         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [22] "genome size"                          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [23] "growth temperature"                   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [24] "length"                               </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [25] "mutation rate per site per generation"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [26] "mutation rate per site per year"      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [27] "optimal ph"                           </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [28] "width"                                </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] "COGEM pathogenicity rating" "aerophilicity"             </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [3] "arrangement"                "biosafety level"           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [5] "gram stain"                 "hemolysis"                 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [7] "shape"                      "spore shape"               </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [9] "animal pathogen"            "antimicrobial resistance"  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [11] "antimicrobial sensitivity"  "disease association"       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [13] "extreme environment"        "habitat"                   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [15] "host-associated"            "motility"                  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [17] "plant pathogenicity"        "spore formation"           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [19] "coding genes"               "genome size"               </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [21] "growth temperature"         "length"                    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [23] "optimal ph"                 "width"                     </span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
