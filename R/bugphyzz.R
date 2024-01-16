@@ -168,6 +168,27 @@ getTaxonSignatures <- function(tax, bp, ...) {
   return(output)
 }
 
+
+
+#' Import validation data
+#'
+#' \code{importValidation} impots the result of the 10-fold cross-validation.
+#'
+#' @return A data.frame.
+#' @export
+#'
+#' @examples
+#'
+#' val <- importValidation()
+#'
+importVal <- function() {
+  url <- "https://raw.githubusercontent.com/waldronlab/taxPProValidation/main/validation_summary.tsv"
+  readr::read_tsv(url, show_col_types = FALSE) |>
+    dplyr::filter(.data$rank == "all")
+}
+
+
+
 # Non exported functions ----------------------------------------------------
 .makeSignaturesDiscrete <- function(dat, tax_id_type = "NCBI_ID") {
   if (all(dat$Attribute_group != dat$Attribute)) {
