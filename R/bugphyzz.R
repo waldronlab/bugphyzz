@@ -9,6 +9,7 @@
 #' use the one stored in the cache (if available). Default is FALSE.
 #' @param v Validation value. Default 0.5.
 #' @param remove_asr Logical. Default is TRUE.
+#' @param exclude_rarely Default is TRUE.
 #'
 #' @return A data.frame.
 #' @export
@@ -18,7 +19,10 @@
 #' bp <- importBugphyzz()
 #' names(bp)
 #'
-importBugphyzz <- function(version = 'devel', force_download = FALSE, v = 0.5, remove_asr = FALSE) {
+importBugphyzz <- function(
+    version = 'devel', force_download = FALSE, v = 0.5, exclude_rarely = TRUE
+
+) {
   types <- c("multistate", "binary", "numeric")
   urls <- paste0(
     "https://github.com/waldronlab/bugphyzzExports/raw/main/bugphyzz_",
@@ -38,9 +42,9 @@ importBugphyzz <- function(version = 'devel', force_download = FALSE, v = 0.5, r
       output[[i]] <- utils::read.csv(rpath, header = TRUE, skip = 1)
     }
   }
-  output <- lapply(output, function(x) split(x, x$Attribute_group))
+  output <- lapply(output, function(x) split(x, x$Attribute))
   output <- purrr::list_flatten(output)
-  names(output) <- purrr::map_chr(output, ~ unique(.x$Attribute_group))
+  names(output) <- purrr::map_chr(output, ~ unique(.x$Attribute))
   val <- .validationData() |>
     dplyr::filter(.data$rank == "all") |>
     dplyr::select(.data$physiology, .data$attribute, .data$value)
@@ -50,10 +54,10 @@ importBugphyzz <- function(version = 'devel', force_download = FALSE, v = 0.5, r
     if (attr_type == "binary") {
       val <- dplyr::select(val, Attribute = .data$attribute, .data$value)
       o <- dplyr::left_join(.x, val, by = "Attribute" )
-    } else if (attr_type == "multistate-intersection") {
+    } else if (attr_type == "multistate-intersection" || attr_type == "multistate-union") {
       val <- dplyr::select(val, Attribute = .data$physiology, Attribute_value = .data$attribute, .data$value)
       o <- dplyr::left_join(.x, val, by = c("Attribute", "Attribute_value"))
-    } else if (attr_type == "range") {
+    } else if (attr_type == "numeric") {
       val <- dplyr::select(val, Attribute = .data$attribute, .data$value)
       o <- dplyr::left_join(.x, val, by = "Attribute") |>
         dplyr::rename(NSTI = .data$nsti)
@@ -66,8 +70,8 @@ importBugphyzz <- function(version = 'devel', force_download = FALSE, v = 0.5, r
       dplyr::rename(Validation = .data$value)
   })
 
-  if (remove_asr) {
-    output <- purrr::map(output, ~ dplyr::filter(.x, .data$Evidence != "asr"))
+  if (exclude_rarely) {
+    output <- purrr::map(output, ~ dplyr::filter(.x, .data$Evidence != "rarely"))
   }
   return(output)
 }
@@ -125,7 +129,7 @@ makeSignatures <- function(
     )
     return(NULL)
   }
-  if (attr_type %in% c("multistate-intersection", "binary")) {
+  if (attr_type %in% c("multistate-intersection", "binary", "multistate-union")) {
     s <- .makeSignaturesDiscrete(dat = dat, tax_id_type = tax_id_type)
   } else if (attr_type %in% c("range", "numeric")) {
     s <- .makeSignaturesNumeric(
@@ -170,22 +174,28 @@ getTaxonSignatures <- function(tax, bp, ...) {
 
 # Non exported functions ----------------------------------------------------
 .makeSignaturesDiscrete <- function(dat, tax_id_type = "NCBI_ID") {
-  if (all(dat$Attribute_group != dat$Attribute)) {
-    output <- dat |>
-      dplyr::mutate(
-        Attribute = paste0("bugphyzz:", .data$Attribute_group, "|", .data$Attribute, "|", .data$Attribute_value)
+  dat |>
+    dplyr::mutate(
+      Attribute = paste0("bugphyzz:", .data$Attribute, "|", .data$Attribute_value)
       ) |>
-      {\(y) split(y, y$Attribute)}() |>
-      lapply(function(x) unique(x[[tax_id_type]]))
-  } else {
-    output <- dat |>
-      dplyr::mutate(
-        Attribute = paste0("bugphyzz:", .data$Attribute, "|", .data$Attribute_value)
-      ) |>
-      {\(y) split(y, y$Attribute)}() |>
-      lapply(function(x) unique(x[[tax_id_type]]))
-  }
-  return(output)
+    {\(y) split(y, y$Attribute)}() |>
+    lapply(function(x) unique(x[[tax_id_type]]))
+  # if (all(dat$Attribute_group != dat$Attribute)) {
+  #   output <- dat |>
+  #     dplyr::mutate(
+  #       Attribute = paste0("bugphyzz:", .data$Attribute_group, "|", .data$Attribute, "|", .data$Attribute_value)
+  #     ) |>
+  #     {\(y) split(y, y$Attribute)}() |>
+  #     lapply(function(x) unique(x[[tax_id_type]]))
+  # } else {
+  #   output <- dat |>
+  #     dplyr::mutate(
+  #       Attribute = paste0("bugphyzz:", .data$Attribute, "|", .data$Attribute_value)
+  #     ) |>
+  #     {\(y) split(y, y$Attribute)}() |>
+  #     lapply(function(x) unique(x[[tax_id_type]]))
+  # }
+  # return(output)
 }
 
 .makeSignaturesNumeric <- function(
@@ -209,7 +219,7 @@ getTaxonSignatures <- function(tax, bp, ...) {
       )
   } else {
     thr <- .thresholds() |>
-      dplyr::filter(.data$Attribute_group == unique(dat$Attribute_group))
+      dplyr::filter(.data$Attribute_group == unique(dat$Attribute))
     attr_name <- thr$Attribute
     min_values <- thr$lower
     max_values <- thr$upper

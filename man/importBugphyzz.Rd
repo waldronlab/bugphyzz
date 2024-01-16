@@ -8,7 +8,7 @@ importBugphyzz(
   version = "devel",
   force_download = FALSE,
   v = 0.5,
-  remove_asr = FALSE
+  exclude_rarely = TRUE
 )
 }
 \arguments{
@@ -19,6 +19,8 @@ importBugphyzz(
 use the one stored in the cache (if available). Default is FALSE.}
 
 \item{v}{Validation value. Default 0.5.}
+
+\item{exclude_rarely}{Default is TRUE.}
 
 \item{remove_asr}{Logical. Default is TRUE.}
 }
