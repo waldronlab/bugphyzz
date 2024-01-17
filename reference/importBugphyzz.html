@@ -75,7 +75,7 @@ attributes with categorical and binary (boolean) attributes.</p>
 <span>  version <span class="op">=</span> <span class="st">"devel"</span>,</span>
 <span>  force_download <span class="op">=</span> <span class="cn">FALSE</span>,</span>
 <span>  v <span class="op">=</span> <span class="fl">0.5</span>,</span>
-<span>  remove_asr <span class="op">=</span> <span class="cn">FALSE</span></span>
+<span>  exclude_rarely <span class="op">=</span> <span class="cn">TRUE</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
 
@@ -95,6 +95,10 @@ use the one stored in the cache (if available). Default is FALSE.</p></dd>
 <dd><p>Validation value. Default 0.5.</p></dd>
 
 
+<dt>exclude_rarely</dt>
+<dd><p>Default is TRUE.</p></dd>
+
+
 <dt>remove_asr</dt>
 <dd><p>Logical. Default is TRUE.</p></dd>
 
@@ -111,24 +115,44 @@ use the one stored in the cache (if available). Default is FALSE.</p></dd>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">bp</span> <span class="op">&lt;-</span> <span class="fu">importBugphyzz</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Importing multistate data...</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Using data downloaded on 2024-01-16 07:03:49.</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Using data downloaded on 2024-01-17 03:07:06.</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Importing binary data...</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Using data downloaded on 2024-01-16 07:03:58.</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Using data downloaded on 2024-01-17 03:07:18.</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Importing numeric data...</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Using data downloaded on 2024-01-16 07:04:01.</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Using data downloaded on 2024-01-17 03:07:21.</span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">bp</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] "COGEM pathogenicity rating" "aerophilicity"             </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [3] "arrangement"                "biosafety level"           </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [5] "gram stain"                 "hemolysis"                 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [7] "shape"                      "spore shape"               </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [9] "animal pathogen"            "antimicrobial resistance"  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [11] "antimicrobial sensitivity"  "disease association"       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [13] "extreme environment"        "habitat"                   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [15] "host-associated"            "motility"                  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [17] "plant pathogenicity"        "spore formation"           </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [19] "coding genes"               "genome size"               </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [21] "growth temperature"         "length"                    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [23] "optimal ph"                 "width"                     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] "COGEM pathogenicity rating"           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [2] "aerophilicity"                        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [3] "antimicrobial resistance"             </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [4] "arrangement"                          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [5] "biosafety level"                      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [6] "disease association"                  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [7] "gram stain"                           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [8] "habitat"                              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [9] "hemolysis"                            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [10] "shape"                                </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [11] "spore shape"                          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [12] "Butyrate-Producing Bacteria"          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [13] "Extreme environment"                  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [14] "Health associated"                    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [15] "Sphingolipid producing"               </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [16] "animal pathogen"                      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [17] "antimicrobial sensitivity"            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [18] "biofilm formation"                    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [19] "host-associated"                      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [20] "hydrogen gas producing"               </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [21] "lactate producing"                    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [22] "motility"                             </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [23] "plant pathogenity"                    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [24] "spore formation"                      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [25] "coding genes"                         </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [26] "genome size"                          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [27] "growth temperature"                   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [28] "length"                               </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [29] "mutation rate per site per generation"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [30] "mutation rate per site per year"      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [31] "optimal ph"                           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [32] "width"                                </span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
