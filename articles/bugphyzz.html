@@ -121,11 +121,11 @@ insert Zenodo link here &lt;&lt;&lt;</strong>.</p>
 <span><span class="co">#&gt; Registered S3 method overwritten by 'httr':</span></span>
 <span><span class="co">#&gt;   method           from  </span></span>
 <span><span class="co">#&gt;   print.cache_info hoardr</span></span>
-<span><span class="co">#&gt; Using data downloaded on 2024-01-17 03:07:06.</span></span>
+<span><span class="co">#&gt; Using data downloaded on 2024-01-17 06:37:00.</span></span>
 <span><span class="co">#&gt; Importing binary data...</span></span>
-<span><span class="co">#&gt; Using data downloaded on 2024-01-17 03:07:18.</span></span>
+<span><span class="co">#&gt; Using data downloaded on 2024-01-17 06:37:15.</span></span>
 <span><span class="co">#&gt; Importing numeric data...</span></span>
-<span><span class="co">#&gt; Using data downloaded on 2024-01-17 03:07:21.</span></span>
+<span><span class="co">#&gt; Using data downloaded on 2024-01-17 06:37:19.</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html" class="external-link">map</a></span><span class="op">(</span><span class="va">bp</span>, <span class="va">head</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt; $aerophilicity</span></span>
 <span><span class="co">#&gt;   NCBI_ID Taxon_name  Rank     Attribute Attribute_value Evidence Frequency</span></span>
@@ -352,9 +352,9 @@ temperature<a class="anchor" aria-label="anchor" href="#create-signatures-of-tax
 <span><span class="co">#&gt; [5] "Sporobacterium olearium"         "Borreliella lusitaniae"         </span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $`bugphyzz:growth temperature|psychrophile| &gt; -10.01 &amp; &lt;= 25`</span></span>
-<span><span class="co">#&gt; [1] "Cryobacterium roopkundense"    "Hugenholtzia roseola"         </span></span>
-<span><span class="co">#&gt; [3] "Halopseudomonas formosensis"   "Occallatibacter savannae"     </span></span>
-<span><span class="co">#&gt; [5] "Pectinatus sottacetonis"       "Methylobacterium thuringiense"</span></span>
+<span><span class="co">#&gt; [1] "Cryobacterium roopkundense"  "Hugenholtzia roseola"       </span></span>
+<span><span class="co">#&gt; [3] "Halopseudomonas formosensis" "Occallatibacter riparius"   </span></span>
+<span><span class="co">#&gt; [5] "Occallatibacter savannae"    "Pectinatus sottacetonis"    </span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $`bugphyzz:growth temperature|thermophile| &gt; 45 &amp; &lt;= 60`</span></span>
 <span><span class="co">#&gt; [1] "Alicyclobacillus cellulosilyticus" "Defluviitoga tunisiensis"         </span></span>
@@ -371,9 +371,9 @@ temperature<a class="anchor" aria-label="anchor" href="#create-signatures-of-tax
 <span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html" class="external-link">map</a></span><span class="op">(</span><span class="va">gt_sigs_mix</span>, <span class="va">head</span><span class="op">)</span></span>
 <span><span class="co">#&gt; $`bugphyzz:growth temperature| &gt;=0 &amp; &lt;=25`</span></span>
-<span><span class="co">#&gt; [1] "Cryobacterium roopkundense"    "Hugenholtzia roseola"         </span></span>
-<span><span class="co">#&gt; [3] "Halopseudomonas formosensis"   "Occallatibacter savannae"     </span></span>
-<span><span class="co">#&gt; [5] "Pectinatus sottacetonis"       "Methylobacterium thuringiense"</span></span></code></pre></div>
+<span><span class="co">#&gt; [1] "Cryobacterium roopkundense"  "Hugenholtzia roseola"       </span></span>
+<span><span class="co">#&gt; [3] "Halopseudomonas formosensis" "Occallatibacter riparius"   </span></span>
+<span><span class="co">#&gt; [5] "Occallatibacter savannae"    "Pectinatus sottacetonis"</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="create-signatures-for-a-binary-attribute">Create signatures for a binary attribute<a class="anchor" aria-label="anchor" href="#create-signatures-for-a-binary-attribute"></a>
