@@ -30,13 +30,13 @@ library(purrr)
 bp <- importBugphyzz(version = 'devel')
 x <- map(bp, ~ {
   .x |> 
-    select(Attribute_group, Attribute, Attribute_source) |> 
-    count(Attribute_group, Attribute, Attribute_source, name = "N_annotations") |> 
+    select(Attribute, Attribute_source) |> 
+    count(Attribute, Attribute_source, name = "N_annotations") |> 
     distinct()
 }) |> 
   bind_rows() |> 
   filter(!is.na(Attribute_source)) |> # Attribute source with NAs means it was obtained through ASR or TAX
-  relocate(Attribute_source, Attribute_group, Attribute, N_annotations)
+  relocate(Attribute_source, Attribute, N_annotations)
 ```
 
 ## Attributes
@@ -46,7 +46,7 @@ Ontology terms can be searched at [OSLv3](https://www.ebi.ac.uk/ols/index) and
 
 ```{r}
 regex <- paste0(
-  '(', paste(unique(x$Attribute_group), collapse = '|'), ');*'
+  '(', paste(unique(x$Attribute), collapse = '|'), ');*'
 )
 fname <- system.file('extdata/attributes.tsv', package = 'bugphyzz')
 attributes <- read.table(fname, header = TRUE, sep = '\t') |> 
