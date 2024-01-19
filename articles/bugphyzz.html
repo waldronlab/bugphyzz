@@ -121,11 +121,11 @@ insert Zenodo link here &lt;&lt;&lt;</strong>.</p>
 <span><span class="co">#&gt; Registered S3 method overwritten by 'httr':</span></span>
 <span><span class="co">#&gt;   method           from  </span></span>
 <span><span class="co">#&gt;   print.cache_info hoardr</span></span>
-<span><span class="co">#&gt; Using data downloaded on 2024-01-19 01:29:48.</span></span>
+<span><span class="co">#&gt; Using data downloaded on 2024-01-19 04:58:10.</span></span>
 <span><span class="co">#&gt; Importing binary data...</span></span>
-<span><span class="co">#&gt; Using data downloaded on 2024-01-19 01:30:00.</span></span>
+<span><span class="co">#&gt; Using data downloaded on 2024-01-19 04:58:21.</span></span>
 <span><span class="co">#&gt; Importing numeric data...</span></span>
-<span><span class="co">#&gt; Using data downloaded on 2024-01-19 01:30:02.</span></span>
+<span><span class="co">#&gt; Using data downloaded on 2024-01-19 04:58:24.</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html" class="external-link">map</a></span><span class="op">(</span><span class="va">bp</span>, <span class="va">head</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt; $aerophilicity</span></span>
 <span><span class="co">#&gt;   NCBI_ID               Taxon_name    Rank     Attribute Attribute_value</span></span>
@@ -159,7 +159,7 @@ insert Zenodo link here &lt;&lt;&lt;</strong>.</p>
 <span><span class="co">#&gt; 5     573                  Klebsiella pneumoniae species</span></span>
 <span><span class="co">#&gt; 6     573                  Klebsiella pneumoniae species</span></span>
 <span><span class="co">#&gt;                  Attribute                    Attribute_value Evidence</span></span>
-<span><span class="co">#&gt; 1 antimicrobial resistance carbapenem-resistant Acinetobacter      tax</span></span>
+<span><span class="co">#&gt; 1 antimicrobial resistance carbapenem-resistant acinetobacter      tax</span></span>
 <span><span class="co">#&gt; 2 antimicrobial resistance       not resistant to beta-lactam      tax</span></span>
 <span><span class="co">#&gt; 3 antimicrobial resistance             resistance to amikacin      tax</span></span>
 <span><span class="co">#&gt; 4 antimicrobial resistance             resistance to amikacin      tax</span></span>
@@ -227,34 +227,27 @@ insert Zenodo link here &lt;&lt;&lt;</strong>.</p>
 <span><span class="co">#&gt; 6 multistate-intersection       0.56</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $`cogem pathogenicity rating`</span></span>
-<span><span class="co">#&gt;   NCBI_ID                                   Taxon_name    Rank</span></span>
-<span><span class="co">#&gt; 1  100053                        Leptospira alexanderi species</span></span>
-<span><span class="co">#&gt; 2 1003110                         Micromonospora maris species</span></span>
-<span><span class="co">#&gt; 3  100901 Wolbachia endosymbiont of Onchocerca ochengi species</span></span>
-<span><span class="co">#&gt; 4    1015                         Bergeyella zoohelcum species</span></span>
-<span><span class="co">#&gt; 5    1017                    Capnocytophaga gingivalis species</span></span>
-<span><span class="co">#&gt; 6    1018                      Capnocytophaga ochracea species</span></span>
-<span><span class="co">#&gt;                    Attribute              Attribute_value Evidence Frequency</span></span>
-<span><span class="co">#&gt; 1 cogem pathogenicity rating COGEM pathogenicity rating 2      nas    always</span></span>
-<span><span class="co">#&gt; 2 cogem pathogenicity rating COGEM pathogenicity rating 1      nas    always</span></span>
-<span><span class="co">#&gt; 3 cogem pathogenicity rating COGEM pathogenicity rating 1      nas    always</span></span>
-<span><span class="co">#&gt; 4 cogem pathogenicity rating COGEM pathogenicity rating 2      nas    always</span></span>
-<span><span class="co">#&gt; 5 cogem pathogenicity rating COGEM pathogenicity rating 2      nas    always</span></span>
-<span><span class="co">#&gt; 6 cogem pathogenicity rating COGEM pathogenicity rating 2      nas    always</span></span>
-<span><span class="co">#&gt;   Score      Attribute_source Confidence_in_curation          Attribute_type</span></span>
-<span><span class="co">#&gt; 1     1 The Microbe Directory                    low multistate-intersection</span></span>
-<span><span class="co">#&gt; 2     1 The Microbe Directory                    low multistate-intersection</span></span>
-<span><span class="co">#&gt; 3     1 The Microbe Directory                    low multistate-intersection</span></span>
-<span><span class="co">#&gt; 4     1 The Microbe Directory                    low multistate-intersection</span></span>
-<span><span class="co">#&gt; 5     1 The Microbe Directory                    low multistate-intersection</span></span>
-<span><span class="co">#&gt; 6     1 The Microbe Directory                    low multistate-intersection</span></span>
-<span><span class="co">#&gt;   Validation</span></span>
-<span><span class="co">#&gt; 1         NA</span></span>
-<span><span class="co">#&gt; 2         NA</span></span>
-<span><span class="co">#&gt; 3         NA</span></span>
-<span><span class="co">#&gt; 4         NA</span></span>
-<span><span class="co">#&gt; 5         NA</span></span>
-<span><span class="co">#&gt; 6         NA</span></span>
+<span><span class="co">#&gt;   NCBI_ID      Taxon_name  Rank                  Attribute</span></span>
+<span><span class="co">#&gt; 1   48381     Thermothrix genus cogem pathogenicity rating</span></span>
+<span><span class="co">#&gt; 2     816     Bacteroides genus cogem pathogenicity rating</span></span>
+<span><span class="co">#&gt; 3     237  Flavobacterium genus cogem pathogenicity rating</span></span>
+<span><span class="co">#&gt; 4  192992 Thermoleophilum genus cogem pathogenicity rating</span></span>
+<span><span class="co">#&gt; 5    1883    Streptomyces genus cogem pathogenicity rating</span></span>
+<span><span class="co">#&gt; 6     187   Aquaspirillum genus cogem pathogenicity rating</span></span>
+<span><span class="co">#&gt;                Attribute_value Evidence Frequency     Score Attribute_source</span></span>
+<span><span class="co">#&gt; 1 cogem pathogenicity rating 1      asr sometimes 0.8193441             &lt;NA&gt;</span></span>
+<span><span class="co">#&gt; 2 cogem pathogenicity rating 1      asr sometimes 0.8098569             &lt;NA&gt;</span></span>
+<span><span class="co">#&gt; 3 cogem pathogenicity rating 1      asr sometimes 0.8098569             &lt;NA&gt;</span></span>
+<span><span class="co">#&gt; 4 cogem pathogenicity rating 1      asr sometimes 0.8893757             &lt;NA&gt;</span></span>
+<span><span class="co">#&gt; 5 cogem pathogenicity rating 1      asr sometimes 0.8893757             &lt;NA&gt;</span></span>
+<span><span class="co">#&gt; 6 cogem pathogenicity rating 1      asr   usually 0.9985335             &lt;NA&gt;</span></span>
+<span><span class="co">#&gt;   Confidence_in_curation          Attribute_type Validation</span></span>
+<span><span class="co">#&gt; 1                   &lt;NA&gt; multistate-intersection       0.74</span></span>
+<span><span class="co">#&gt; 2                   &lt;NA&gt; multistate-intersection       0.74</span></span>
+<span><span class="co">#&gt; 3                   &lt;NA&gt; multistate-intersection       0.74</span></span>
+<span><span class="co">#&gt; 4                   &lt;NA&gt; multistate-intersection       0.74</span></span>
+<span><span class="co">#&gt; 5                   &lt;NA&gt; multistate-intersection       0.74</span></span>
+<span><span class="co">#&gt; 6                   &lt;NA&gt; multistate-intersection       0.74</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $`disease association`</span></span>
 <span><span class="co">#&gt;   NCBI_ID                             Taxon_name   Rank           Attribute</span></span>
@@ -270,7 +263,7 @@ insert Zenodo link here &lt;&lt;&lt;</strong>.</p>
 <span><span class="co">#&gt; 3        abortion      nas    always     1           BacMap</span></span>
 <span><span class="co">#&gt; 4        abortion      nas    always     1           BacMap</span></span>
 <span><span class="co">#&gt; 5         abscess      nas    always     1           BacMap</span></span>
-<span><span class="co">#&gt; 6            Acne      nas    always     1           BacMap</span></span>
+<span><span class="co">#&gt; 6            acne      nas    always     1           BacMap</span></span>
 <span><span class="co">#&gt;   Confidence_in_curation   Attribute_type Validation</span></span>
 <span><span class="co">#&gt; 1                    low multistate-union         NA</span></span>
 <span><span class="co">#&gt; 2                    low multistate-union         NA</span></span>
@@ -304,7 +297,7 @@ insert Zenodo link here &lt;&lt;&lt;</strong>.</p>
 <span><span class="co">#&gt; [19] "hydrogen gas producing"               </span></span>
 <span><span class="co">#&gt; [20] "lactate producing"                    </span></span>
 <span><span class="co">#&gt; [21] "motility"                             </span></span>
-<span><span class="co">#&gt; [22] "plant pathogenity"                    </span></span>
+<span><span class="co">#&gt; [22] "plant pathogenicity"                  </span></span>
 <span><span class="co">#&gt; [23] "sphingolipid producing"               </span></span>
 <span><span class="co">#&gt; [24] "spore formation"                      </span></span>
 <span><span class="co">#&gt; [25] "coding genes"                         </span></span>
@@ -404,7 +397,7 @@ temperature<a class="anchor" aria-label="anchor" href="#create-signatures-of-tax
 <code class="sourceCode R"><span><span class="va">sigs</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html" class="external-link">map</a></span><span class="op">(</span><span class="va">bp</span>, <span class="va">makeSignatures</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://purrr.tidyverse.org/reference/list_flatten.html" class="external-link">list_flatten</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">sigs</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] 124</span></span></code></pre></div>
+<span><span class="co">#&gt; [1] 125</span></span></code></pre></div>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html" class="external-link">map</a></span><span class="op">(</span><span class="va">sigs</span>, <span class="va">head</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt; $`aerophilicity_bugphyzz:aerophilicity|aerobic`</span></span>
