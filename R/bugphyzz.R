@@ -39,7 +39,8 @@ importBugphyzz <- function(
         rname = paste0("bugphyzz_", names(urls)[i], ".tsv"),
         url = urls[i], verbose = TRUE, force = force_download
       )
-      output[[i]] <- utils::read.csv(rpath, header = TRUE, skip = 1)
+      output[[i]] <- utils::read.csv(rpath, header = TRUE, skip = 1) |>
+        dplyr::mutate(Attribute = tolower(.data$Attribute))
     }
   }
   output <- lapply(output, function(x) split(x, x$Attribute))
@@ -71,7 +72,7 @@ importBugphyzz <- function(
   })
 
   if (exclude_rarely) {
-    output <- purrr::map(output, ~ dplyr::filter(.x, .data$Evidence != "rarely"))
+    output <- purrr::map(output, ~ dplyr::filter(.x, .data$Frequency != "rarely"))
   }
   return(output)
 }
