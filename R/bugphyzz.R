@@ -45,10 +45,24 @@ importBugphyzz <- function(
   }
   output <- lapply(output, function(x) split(x, x$Attribute))
   output <- purrr::list_flatten(output)
+
+  ## TODO correct plant pathogenicity name earlier in the workflow or
+  ## better yet, directly in the curation
+  pos <- which(names(output) == "plant pathogenity")
+  names(output)[pos] <- "plant pathogenicity"
+  output <- purrr::map(output, ~ {
+    .x |>
+      dplyr::mutate(
+        Attribute = ifelse(.data$Attribute == "plant pathogenity", "plant pathogenicity", .data$Attribute)
+      )
+  })
+
   names(output) <- purrr::map_chr(output, ~ unique(.x$Attribute))
   val <- .validationData() |>
     dplyr::filter(.data$rank == "all") |>
-    dplyr::select(.data$physiology, .data$attribute, .data$value)
+    dplyr::select(.data$physiology, .data$attribute, .data$value) |>
+    dplyr::mutate(physiology = tolower(.data$physiology)) |>
+    dplyr::mutate(attribute = tolower(.data$attribute))
 
   output <- purrr::map(output, ~ {
     attr_type <- unique(.x$Attribute_type)
@@ -57,7 +71,7 @@ importBugphyzz <- function(
       o <- dplyr::left_join(.x, val, by = "Attribute" )
     } else if (attr_type == "multistate-intersection" || attr_type == "multistate-union") {
       val <- dplyr::select(val, Attribute = .data$physiology, Attribute_value = .data$attribute, .data$value)
-      o <- dplyr::left_join(.x, val, by = c("Attribute", "Attribute_value"))
+      o <- dplyr::left_join(mutate(.x, Attribute_value = tolower(.data$Attribute_value)) , val, by = c("Attribute", "Attribute_value"))
     } else if (attr_type == "numeric") {
       val <- dplyr::select(val, Attribute = .data$attribute, .data$value)
       o <- dplyr::left_join(.x, val, by = "Attribute") |>
