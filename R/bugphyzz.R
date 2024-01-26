@@ -40,8 +40,7 @@ importBugphyzz <- function(
         url = urls[i], verbose = TRUE, force = force_download
       )
       output[[i]] <- utils::read.csv(rpath, header = TRUE, skip = 1) |>
-        dplyr::mutate(Attribute = tolower(.data$Attribute)) |>
-        dplyr::select(-Attribute_type)
+        dplyr::mutate(Attribute = tolower(.data$Attribute))
     }
   }
   output <- lapply(output, function(x) split(x, x$Attribute))
