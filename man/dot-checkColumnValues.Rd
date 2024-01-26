@@ -48,9 +48,9 @@ err <- tryCatch(
 Other check functions: 
 \code{\link{.checkColumnValuesDF}()},
 \code{\link{.checkColumnValuesList}()},
+\code{\link{.checkRequiredColumns}()},
 \code{\link{.checkRequiredColumnsDF}()},
-\code{\link{.checkRequiredColumnsList}()},
-\code{\link{.checkRequiredColumns}()}
+\code{\link{.checkRequiredColumnsList}()}
 }
 \concept{check functions}
 \keyword{internal}

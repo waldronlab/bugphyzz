@@ -40,9 +40,9 @@ err
 \code{\link{.checkRequiredColumnsList}}
 
 Other check functions: 
+\code{\link{.checkColumnValues}()},
 \code{\link{.checkColumnValuesDF}()},
 \code{\link{.checkColumnValuesList}()},
-\code{\link{.checkColumnValues}()},
 \code{\link{.checkRequiredColumnsDF}()},
 \code{\link{.checkRequiredColumnsList}()}
 }
