@@ -53,7 +53,11 @@ importBugphyzz <- function(
   output <- purrr::map(output, ~ {
     .x |>
       dplyr::mutate(
-        Attribute = ifelse(.data$Attribute == "plant pathogenity", "plant pathogenicity", .data$Attribute)
+        Attribute = ifelse(
+          .data$Attribute == "plant pathogenity",
+          "plant pathogenicity",
+          .data$Attribute
+        )
       )
   })
 
@@ -187,27 +191,6 @@ getTaxonSignatures <- function(tax, bp, ...) {
   return(output)
 }
 
-
-
-#' Import validation data
-#'
-#' \code{importValidation} impots the result of the 10-fold cross-validation.
-#'
-#' @return A data.frame.
-#' @export
-#'
-#' @examples
-#'
-#' val <- importValidation()
-#'
-importVal <- function() {
-  url <- "https://raw.githubusercontent.com/waldronlab/taxPProValidation/main/validation_summary.tsv"
-  readr::read_tsv(url, show_col_types = FALSE) |>
-    dplyr::filter(.data$rank == "all")
-}
-
-
-
 # Non exported functions ----------------------------------------------------
 .makeSignaturesDiscrete <- function(dat, tax_id_type = "NCBI_ID") {
   dat |>
@@ -216,22 +199,6 @@ importVal <- function() {
       ) |>
     {\(y) split(y, y$Attribute)}() |>
     lapply(function(x) unique(x[[tax_id_type]]))
-  # if (all(dat$Attribute_group != dat$Attribute)) {
-  #   output <- dat |>
-  #     dplyr::mutate(
-  #       Attribute = paste0("bugphyzz:", .data$Attribute_group, "|", .data$Attribute, "|", .data$Attribute_value)
-  #     ) |>
-  #     {\(y) split(y, y$Attribute)}() |>
-  #     lapply(function(x) unique(x[[tax_id_type]]))
-  # } else {
-  #   output <- dat |>
-  #     dplyr::mutate(
-  #       Attribute = paste0("bugphyzz:", .data$Attribute, "|", .data$Attribute_value)
-  #     ) |>
-  #     {\(y) split(y, y$Attribute)}() |>
-  #     lapply(function(x) unique(x[[tax_id_type]]))
-  # }
-  # return(output)
 }
 
 .makeSignaturesNumeric <- function(
