@@ -83,7 +83,7 @@
 "pond"	"habitat;isolation site"	"logical"	"ENVO:00000033"	"A body of water, usually of smaller size than a lake."
 "rhizosphere"	"habitat;isolation site"	"logical"	"ENVO:00005801"	"The narrow region of soil that is directly influenced by root secretions and associated soil microorganisms"
 "root nodule"	"habitat"	"logical"	"ENVO:01000164"	"Root nodules occur on the roots of plants that associate with symbiotic nitrogen-fixing bacteria"
-"not host-associated"	"habitat"	"logical"	NA	NA
+"not host-associated"	"host-associated"	"logical"	NA	NA
 "multiple"	"habitat"	"logical"	"NCIT:C17648"	"Having, relating to, or consisting of more than one individual, element, part, or other component; manifold."
 "mud"	"habitat;isolation site"	"logical"	"ENVO:01000001"	"A liquid or semi-liquid mixture of water and some combination of soil, silt, and clay."
 "human microbiome"	"habitat"	"logical"	"OHMI:0000002"	"A microbiome located in a human body"
@@ -206,7 +206,7 @@
 "Genome size"	"genome size"	"numeric"	"OMIT:0027643"	NA
 "genes"	"coding genes"	"numeric"	"OMIT:0006994"	NA
 "environmental system"	"habitat"	"logical"	"ENVO:01000254"	"A system which has the disposition to environ one or more material entities."
-"host-associated"	"habitat"	"logical"	NA	NA
+"host-associated"	"host-associated"	"logical"	NA	NA
 "food product"	"habitat;isolation site"	"logical"	"FOODON:00001002"	"Food material for humans and animals which is processed with the intention that it be consumable as a whole or added to other food products."
 "plant matter"	"habitat"	"logical"	"ENVO:01001121"	"Organic material which is primarily composed of plant structures, living or dead."
 "blood"	"habitat;isolation site"	"logical"	"UBERON:0000178"	"A fluid that is composed of blood plasma and erythrocytes."
@@ -383,7 +383,7 @@
 "reaction to black rot"	"disease association"	"logical"	"CO_331:0000380"	NA
 "human microflora"	"habitat"	"logical"	NA	NA
 "human gut microbiome"	"habitat"	"logical"	NA	NA
-"other host associated"	"habitat"	"logical"	NA	NA
+"host-associated"	"habitat"	"logical"	NA	NA
 "aquatic biome"	"habitat"	"logical"	NA	NA
 "colonization of host"	"habitat"	"logical"	NA	NA
 "creosote-contaminated soil"	"habitat;isolation site"	"logical"	NA	NA

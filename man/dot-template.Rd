@@ -17,14 +17,14 @@ dataset.
 \description{
 \code{.template} is a helper function for the
 \code{\link{.checkColumnValues}} function. \code{.template} generates a
-subset of the extdata/template.tsv file based on the columns present in a
+subset of the extdata/curation_template.tsv file based on the columns present in a
 given bugphyzz dataset.
 }
 \details{
 A bugphyzz dataset contains a number of mandatory columns (referred to as
 required columns; see \code{\link{.requiredColumns}}), but optionally, it can
 contain other columns. The purpose of \code{template} is to create a subset
-of the extdata/template.tsv file containing only the columns specific for a
+of the extdata/curation_template.tsv file containing only the columns specific for a
 given bugphyzz dataset.
 }
 \seealso{

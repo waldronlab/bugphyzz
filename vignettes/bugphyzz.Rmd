@@ -22,7 +22,7 @@ also be accessed by direct download at **>>> insert Zenodo link here <<<**.
 
 # Import bugphyzz
 
-```{r, message=FALSE, eval=FALSE}
+```{r, eval=FALSE}
 if (!require("BiocManager", quietly = TRUE))
     install.packages("BiocManager")
 
@@ -37,61 +37,69 @@ library(purrr)
 ```
 
 ```{r import data}
-bp <- importBugphyzz(version = 'devel', force_download = TRUE)
-head(bp)
+bp <- importBugphyzz(version = 'devel')
+head(map(bp, head))
 ```
 
 ## Explore wich attribute groups are available
 
 ```{r}
-unique(bp$Attribute_group)
+names(bp)
 ```
 
-## Explore which attribute signatures are available
-
-```{r}
-head(unique(bp$Attribute))
-```
-
-# Creating signatures
+# Create signatures
 
 ## Create signatures of taxids at the genus level for aerophilicity
 
 ```{r}
-aer <- bp[which(bp$Attribute_group == 'aerophilicity'),]
-sigs1 <- getBugphyzzSignatures(
-  df = aer, tax.id.type = 'NCBI_ID', tax.level = 'genus', min.size = 10
+aer_sigs_g <- makeSignatures(
+  dat = bp[["aerophilicity"]], tax_id_type = "NCBI_ID", tax_level = "genus"
 )
-map(sigs1, head)
+map(aer_sigs_g, head)
 ```
 
-## Create signatures of taxa names at the species level for optimal ph 
-```{r}
-op <- bp[bp$Attribute_group == 'optimal ph', ]
-sigs2 <- getBugphyzzSignatures(
-  df = op, tax.id.type = 'Taxon_name', tax.level = 'species', min.size = 10
-)
-map(sigs2, head)
-```
-
-
-# Other examples
+## Create signatures of taxa names at the species level for growth temperature
 
 ```{r}
-mot <- bp[bp$Attribute_group == 'motility',]
-sigs3 <- getBugphyzzSignatures(
-  df = mot, tax.id.type = 'Taxon_name', tax.level = 'mixed'
+gt_sigs_sp <- makeSignatures(
+  dat = bp[["growth temperature"]], tax_id_type = "Taxon_name",
+  tax_level = 'species'
 )
-lapply(sigs3, head)
+map(gt_sigs_sp, head)
 ```
 
-# Merge examples above
+## Create signatures with custom threshold for numeric attributes
 
 ```{r}
-sigs <- c(sigs1, sigs2, sigs3)
-lapply(sigs, head)
+gt_sigs_mix <- makeSignatures(
+  dat = bp[["growth temperature"]], tax_id_type = "Taxon_name",
+  tax_level = "mixed", min = 0, max = 25
+)
+map(gt_sigs_mix, head)
 ```
 
+## Create signatures for a binary attribute
+
+```{r}
+ap_sigs_mix <- makeSignatures(
+  dat = bp[["animal pathogen"]], tax_id_type = "NCBI_ID",
+  tax_level = "mixed", evidence = c("exp", "igc", "nas", "tas")
+)
+map(ap_sigs_mix, head)
+```
+
+## Make signatures for all datasets with a single function call
+
+```{r}
+sigs <- map(bp, makeSignatures) |> 
+  list_flatten()
+length(sigs)
+```
+
+
+```{r}
+head(map(sigs, head))
+```
 
 ## Session information:
 

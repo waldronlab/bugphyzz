@@ -40,11 +40,11 @@ list_of_errors
 \code{\link{.checkColumnValuesList}}
 
 Other check functions: 
-\code{\link{.checkColumnValuesDF}()},
 \code{\link{.checkColumnValues}()},
+\code{\link{.checkColumnValuesDF}()},
+\code{\link{.checkRequiredColumns}()},
 \code{\link{.checkRequiredColumnsDF}()},
-\code{\link{.checkRequiredColumnsList}()},
-\code{\link{.checkRequiredColumns}()}
+\code{\link{.checkRequiredColumnsList}()}
 }
 \concept{check functions}
 \keyword{internal}

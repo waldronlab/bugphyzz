@@ -45,11 +45,11 @@ list_of_erros$length
 \code{\link{.checkRequiredColumnsList}}
 
 Other check functions: 
+\code{\link{.checkColumnValues}()},
 \code{\link{.checkColumnValuesDF}()},
 \code{\link{.checkColumnValuesList}()},
-\code{\link{.checkColumnValues}()},
-\code{\link{.checkRequiredColumnsDF}()},
-\code{\link{.checkRequiredColumns}()}
+\code{\link{.checkRequiredColumns}()},
+\code{\link{.checkRequiredColumnsDF}()}
 }
 \concept{check functions}
 \keyword{internal}

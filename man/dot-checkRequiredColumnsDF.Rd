@@ -45,11 +45,11 @@ err <- bugphyzz:::.checkRequiredColumnsDF(x[[1]])
 \code{\link{.checkRequiredColumnsList}}
 
 Other check functions: 
+\code{\link{.checkColumnValues}()},
 \code{\link{.checkColumnValuesDF}()},
 \code{\link{.checkColumnValuesList}()},
-\code{\link{.checkColumnValues}()},
-\code{\link{.checkRequiredColumnsList}()},
-\code{\link{.checkRequiredColumns}()}
+\code{\link{.checkRequiredColumns}()},
+\code{\link{.checkRequiredColumnsList}()}
 }
 \concept{check functions}
 \keyword{internal}

@@ -23,19 +23,20 @@ knitr::opts_chunk$set(
 library(DT)
 library(bugphyzz)
 library(dplyr)
+library(purrr)
 ```
 
 ```{r}
-bp <- importBugphyzz(version = 'devel', force_download = TRUE)
-bp <- bp |> 
-  filter(
-    !Evidence %in% c('asr', 'inh')
-  )
-x <- bp |> 
-  select(Attribute_source, Attribute_group, Attribute) |> 
-  filter(!grepl(';', Attribute_source)) |> 
-  count(Attribute_source, Attribute_group) |> 
-  mutate(new_col = paste0(Attribute_group, ' (', n, ')'))
+bp <- importBugphyzz(version = 'devel')
+x <- map(bp, ~ {
+  .x |> 
+    select(Attribute, Attribute_source) |> 
+    count(Attribute, Attribute_source, name = "N_annotations") |> 
+    distinct()
+}) |> 
+  bind_rows() |> 
+  filter(!is.na(Attribute_source)) |> # Attribute source with NAs means it was obtained through ASR or TAX
+  relocate(Attribute_source, Attribute, N_annotations)
 ```
 
 ## Attributes
@@ -45,7 +46,7 @@ Ontology terms can be searched at [OSLv3](https://www.ebi.ac.uk/ols/index) and
 
 ```{r}
 regex <- paste0(
-  '(', paste(unique(x$Attribute_group), collapse = '|'), ');*'
+  '(', paste(unique(x$Attribute), collapse = '|'), ');*'
 )
 fname <- system.file('extdata/attributes.tsv', package = 'bugphyzz')
 attributes <- read.table(fname, header = TRUE, sep = '\t') |> 
@@ -80,11 +81,6 @@ datt
 ## Sources
 
 ```{r}
-x <- x |> 
-  select(-Attribute_group, -n) |> 
-  group_by(Attribute_source) |> 
-  summarise(Attribute_group = paste(sort(new_col), collapse = '; ')) |> 
-  ungroup()
 fname2 <- system.file(
   'extdata/attribute_sources.tsv', 
   package = 'bugphyzz', mustWork = TRUE
@@ -93,23 +89,9 @@ src <- read.table(
   fname2, header = TRUE, sep = '\t', quote = ""
 )
 
-src <- left_join(x, src, by = 'Attribute_source') |> 
-  relocate(
-    Attribute_source, Confidence_in_curation, Evidence,
-    Attribute_group, full_source
-  ) |> 
-  mutate(
-    Confidence_in_curation = factor(
-      Confidence_in_curation, levels = c('high', 'medium', 'low')
-    )
-  ) |> 
-  arrange(Confidence_in_curation, Evidence, Attribute_source)
+xsrc <- left_join(x, src, by = 'Attribute_source') |> 
+  rename(Full_source = full_source)
   
-colnames(src) <- c(
-  'Source (short)', 'Confidence in curation', 'Evidence*', 'Attribute group**',
-  'Full source'
-)
-
 caption2 <- paste0(
   'Table 2. Sources of attribute annotations in bugphyzz. ',
   '* Evidence codes: exp = experimental evidence, igc = inferred from genomic context, ',
@@ -120,7 +102,7 @@ caption2 <- paste0(
 )
 
 src_dt <- datatable(
-  data = src, 
+  data = xsrc, 
   filter = "top",
   extensions = c("Buttons","KeyTable"), 
   # caption = caption2,

@@ -1,8 +1,12 @@
 
-#' Physiologies
+#' Import phsiologies
 #'
 #' \code{physiologies} imports data from the
-#' Google spreadsheets (https://drive.google.com/drive/folders/1i2UAolVWAYa7UnETNnCs0BDWjKPp3ev5).
+#' Google spreadsheets at https://drive.google.com/drive/folders/1i2UAolVWAYa7UnETNnCs0BDWjKPp3ev5.
+#' This function (and its internal functions) do minimal changes to the
+#' imported data. These changes are only meant to match data coming from
+#' different sources, and attaching information needed for further processing,
+#' such as source and attribute type.
 #'
 #' @param keyword Character vector with one or more valid keywords.
 #' Valid keyboards can be checked with \code{showPhys}. If 'all', all
@@ -27,7 +31,7 @@ physiologies <- function(keyword = 'all', full_source = FALSE) {
   if (cond1 && cond2) {
     spreadsheets <- .importSpreadsheets(keyword = keyword)
     spreadsheets <- spreadsheets[names(spreadsheets) %in% keyword]
-    bacdive <- .reshapeBacDive(.getBacDive(verbose = FALSE)) ## This functions are in a different file
+    bacdive <- .reshapeBacDive(.getBacDive(verbose = FALSE))
     bacdive <- bacdive[names(bacdive) %in% keyword]
     physiologies <- vector('list', length(keyword))
     for (i in seq_along(keyword)) {
@@ -62,7 +66,7 @@ physiologies <- function(keyword = 'all', full_source = FALSE) {
       dplyr::distinct()
 
     if (full_source) {
-      df$Attribute_source <- df$full_source ## added with .addSourceInfo
+      df$Attribute_source <- df$full_source
     }
     df$full_source <- NULL
 
@@ -74,7 +78,7 @@ physiologies <- function(keyword = 'all', full_source = FALSE) {
 
     df <- as.data.frame(df[, vapply(df, \(y) !all(is.na(y)), logical(1))])
 
-    ## TODO this code should be somewhere else
+    ## TODO this code could be somewhere else
     if (unique(df$Attribute_group) == 'aerophilicity') {
       df <- .homogenizeAerophilicityAttributeNames(df)
     }
@@ -166,7 +170,7 @@ showPhys <- function(which_names = 'all') {
       df <- .numericToRange(df)
     } else if (unique(df[['Attribute_type']] == 'range')) {
       df <- .modifyRange(df)
-    } else if (unique(df[['Attribute_type']] %in% .DISCRETE_ATTRIBUTE_TYPES)) {
+    } else if (unique(df[['Attribute_type']] %in% .DISCRETE_ATTRIBUTE_TYPES())) {
       df <- dplyr::filter(df, .data$Attribute_value == TRUE | .data$Attribute_value == FALSE)
     }
 
@@ -245,9 +249,11 @@ showPhys <- function(which_names = 'all') {
 }
 
 ## helper function for .importSpreadsheets
-.DISCRETE_ATTRIBUTE_TYPES <- c(
-  'multistate-intersection', 'multistate-union', 'binary'
-)
+.DISCRETE_ATTRIBUTE_TYPES <- function() {
+  fname <- system.file('extdata', 'spreadsheet_links.tsv', package = 'bugphyzz')
+  dat <- read.table(file = fname, header = TRUE, sep = '\t')
+  unique(dat[dat$trait_type == 'discrete',]$attribute_type)
+}
 
 ## Helper function for physiologies
 .addSourceInfo <- function(dat) {

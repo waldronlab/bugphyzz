@@ -2,9 +2,14 @@
 % Please edit documentation in R/bugphyzz.R
 \name{importBugphyzz}
 \alias{importBugphyzz}
-\title{Import bugphyzz (categorical and binary)}
+\title{Import bugphyzz}
 \usage{
-importBugphyzz(version = "devel", force_download = FALSE)
+importBugphyzz(
+  version = "devel",
+  force_download = FALSE,
+  v = 0.5,
+  exclude_rarely = TRUE
+)
 }
 \arguments{
 \item{version}{Character string. The version to download. Default is 'devel'
@@ -12,6 +17,12 @@ importBugphyzz(version = "devel", force_download = FALSE)
 
 \item{force_download}{Logical value. Force a fresh download of the data or
 use the one stored in the cache (if available). Default is FALSE.}
+
+\item{v}{Validation value. Default 0.5.}
+
+\item{exclude_rarely}{Default is TRUE.}
+
+\item{remove_asr}{Logical. Default is TRUE.}
 }
 \value{
 A data.frame.
@@ -23,16 +34,6 @@ attributes with categorical and binary (boolean) attributes.
 \examples{
 
 bp <- importBugphyzz()
-
-## Check available groups of attributes
-unique(bp$Attribute_group)
-
-## Filter only for growth temperature
-gt <- bp[which(bp$Attribute_group == 'growth temperature'), ]
-
-## Create signatures with taxids at the species level
-gt_sigs <- getBugphyzzSignatures(gt, tax.id.type = 'NCBI_ID', tax.level = 'species')]
-lapply(gt_sigs, function(x) head(x))
-
+names(bp)
 
 }
