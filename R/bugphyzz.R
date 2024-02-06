@@ -53,7 +53,11 @@ importBugphyzz <- function(
   output <- purrr::map(output, ~ {
     .x |>
       dplyr::mutate(
-        Attribute = ifelse(.data$Attribute == "plant pathogenity", "plant pathogenicity", .data$Attribute)
+        Attribute = ifelse(
+          .data$Attribute == "plant pathogenity",
+          "plant pathogenicity",
+          .data$Attribute
+        )
       )
   })
 
@@ -187,27 +191,6 @@ getTaxonSignatures <- function(tax, bp, ...) {
   return(output)
 }
 
-
-
-#' Import validation data
-#'
-#' \code{importValidation} impots the result of the 10-fold cross-validation.
-#'
-#' @return A data.frame.
-#' @export
-#'
-#' @examples
-#'
-#' val <- importValidation()
-#'
-importVal <- function() {
-  url <- "https://raw.githubusercontent.com/waldronlab/taxPProValidation/main/validation_summary.tsv"
-  readr::read_tsv(url, show_col_types = FALSE) |>
-    dplyr::filter(.data$rank == "all")
-}
-
-
-
 # Non exported functions ----------------------------------------------------
 .makeSignaturesDiscrete <- function(dat, tax_id_type = "NCBI_ID") {
   dat |>
@@ -216,22 +199,6 @@ importVal <- function() {
       ) |>
     {\(y) split(y, y$Attribute)}() |>
     lapply(function(x) unique(x[[tax_id_type]]))
-  # if (all(dat$Attribute_group != dat$Attribute)) {
-  #   output <- dat |>
-  #     dplyr::mutate(
-  #       Attribute = paste0("bugphyzz:", .data$Attribute_group, "|", .data$Attribute, "|", .data$Attribute_value)
-  #     ) |>
-  #     {\(y) split(y, y$Attribute)}() |>
-  #     lapply(function(x) unique(x[[tax_id_type]]))
-  # } else {
-  #   output <- dat |>
-  #     dplyr::mutate(
-  #       Attribute = paste0("bugphyzz:", .data$Attribute, "|", .data$Attribute_value)
-  #     ) |>
-  #     {\(y) split(y, y$Attribute)}() |>
-  #     lapply(function(x) unique(x[[tax_id_type]]))
-  # }
-  # return(output)
 }
 
 .makeSignaturesNumeric <- function(
@@ -305,78 +272,3 @@ importVal <- function() {
       )
     )
 }
-
-
-# Functions what will no longer be used -----------------------------------
-## This functiosn will be removed soon
-getBugphyzzSignatures <- function(
-    df, tax.id.type = 'NCBI_ID', tax.level = 'mixed',
-    evidence = c('asr', 'inh', 'tax', 'inh2', 'exp', 'tas', 'nas', 'igc'),
-    frequency = c('unknown', 'rarely', 'always', 'usually', 'sometimes'),
-    min.size = 5
-) {
-  valid_ranks <-   c(
-    "kingdom", "phylum", "class", "order", "family", "genus",
-    "species", "strain"
-  )
-  if (tax.level == 'mixed') {
-    tax.level <- valid_ranks
-  }
-  df <- df[which(df$Rank %in% tax.level),]
-  df <- df[which(df$Evidence %in% evidence), ]
-  df <- df[which(df$Frequency %in% frequency),]
-  df$Attribute <- paste0(df$Attribute_group,'|', df$Attribute)
-
-  if ('Attribute_range' %in% colnames(df)) {
-    df <- df |>
-      dplyr::mutate(
-        Attribute_range = ifelse(
-          test = is.na(Attribute_range),
-          yes = 'REMOVETHIS',
-          no = Attribute_range)
-      ) |>
-      dplyr::mutate(
-        Attribute = sub(
-          ' REMOVETHIS$', '', paste0(Attribute, ' ', Attribute_range)
-        )
-      )
-  }
-
-  dfs <- split(df, factor(df$Attribute))
-  dfs <- lapply(dfs, function(x) unique(x[, c(tax.id.type, 'Rank')]))
-  dfs <- purrr::discard(dfs, ~ nrow(.x) < min.size)
-  sig_ranks <- purrr::map(dfs, ~ {
-    v <- unique(.x$Rank)
-    v <- factor(
-      x = v, levels = c('domain', 'kingdom', 'phylum', 'class', 'order', 'family', 'genus', 'species', 'strain'),
-      ordered = TRUE
-    )
-    v <- sort(v)
-    v <- as.character(v)
-    dplyr::case_when(
-      v == 'domain' ~ 'd',
-      v == 'kingdom' ~ 'k',
-      v == 'phylum' ~ 'p',
-      v == 'class' ~ 'c',
-      v == 'order' ~ 'o',
-      v == 'family' ~ 'f',
-      v == 'genus' ~ 'g',
-      v == 'species' ~ 's',
-      v == 'strain' ~ 't',
-      TRUE ~ v
-    )
-  })
-  sig_ranks <- purrr::map_chr(sig_ranks, ~ paste0(.x, collapse = ''))
-  sigs <- purrr::map(dfs, ~ unique(.x[[tax.id.type]]))
-  names(sigs) <- paste0('bugphyzz:', names(sigs), '|', sig_ranks, recycle0 = TRUE)
-  return(sigs)
-}
-
-whichAttrGrp <- function(bp) {
-  sort(unique(bp$Attribute_group))
-}
-
-whichAttr <- function(bp) {
-  sort(unique(bp$Attribute))
-}
-
