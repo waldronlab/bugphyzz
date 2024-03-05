@@ -1,17 +1,17 @@
 #' Import bugphyzz
 #'
-#' \code{importBugphyzz} imports bugphyzz as a single data.frame. It includes
-#' attributes with categorical and binary (boolean) attributes.
+#' \code{importBugphyzz} imports bugphyzz annotations as a list of
+#' data.frames (1 per physiology/Attribute)
 #'
-#' @param version Character string. The version to download. Default is 'devel'
+#' @param version Character string. Default is 'devel'
 #' (current file on the GitHub repo waldronlab/bugphyzzExports).
 #' @param force_download Logical value. Force a fresh download of the data or
 #' use the one stored in the cache (if available). Default is FALSE.
 #' @param v Validation value. Default 0.5.
-#' @param remove_asr Logical. Default is TRUE.
-#' @param exclude_rarely Default is TRUE.
+#' @param exclude_rarely Default is TRUE. Exclude values with
+#' Frequency == FALSE.
 #'
-#' @return A data.frame.
+#' @return A list of data frames.
 #' @export
 #'
 #' @examples
@@ -95,7 +95,7 @@ importBugphyzz <- function(
   return(output)
 }
 
-#' Make bugs signatures
+#' Make signatures
 #'
 #' \code{makeSignatures} Creates signatures for a list of bugphyzz
 #' data.frames imported with \code{importBugphyzz}
