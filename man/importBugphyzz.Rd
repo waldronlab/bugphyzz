@@ -12,7 +12,7 @@ importBugphyzz(
 )
 }
 \arguments{
-\item{version}{Character string. The version to download. Default is 'devel'
+\item{version}{Character string. Default is 'devel'
 (current file on the GitHub repo waldronlab/bugphyzzExports).}
 
 \item{force_download}{Logical value. Force a fresh download of the data or
@@ -20,16 +20,15 @@ use the one stored in the cache (if available). Default is FALSE.}
 
 \item{v}{Validation value. Default 0.5.}
 
-\item{exclude_rarely}{Default is TRUE.}
-
-\item{remove_asr}{Logical. Default is TRUE.}
+\item{exclude_rarely}{Default is TRUE. Exclude values with
+Frequency == FALSE.}
 }
 \value{
-A data.frame.
+A list of data frames.
 }
 \description{
-\code{importBugphyzz} imports bugphyzz as a single data.frame. It includes
-attributes with categorical and binary (boolean) attributes.
+\code{importBugphyzz} imports bugphyzz annotations as a list of
+data.frames (1 per physiology/Attribute)
 }
 \examples{
 

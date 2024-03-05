@@ -2,7 +2,7 @@
 % Please edit documentation in R/bugphyzz.R
 \name{makeSignatures}
 \alias{makeSignatures}
-\title{Make bugs signatures}
+\title{Make signatures}
 \usage{
 makeSignatures(
   dat,
