@@ -1,6 +1,10 @@
 ---
 title: "bugphyzz"
-output: rmarkdown::html_vignette
+subtitle: "A harmonized data resource and software for enrichment analysis of microbial physiologies"
+output:
+  rmarkdown::html_vignette:
+    fig_caption: true
+    toc: true
 vignette: >
   %\VignetteIndexEntry{bugphyzz}
   %\VignetteEngine{knitr::rmarkdown}
@@ -14,13 +18,84 @@ knitr::opts_chunk$set(
 )
 ```
 
-# Introduction
+## Introduction
 
-The `bugphyzz` package provides access to an electronic resource of 
-harmonized microbial annotations from different sources. The resource can
-also be accessed by direct download at **>>> insert Zenodo link here <<<**.
+[Bugphyzz](https://github.com/waldronlab/bugphyzzExports)
+is an electronic resource that provides harmonized microbial annotations from
+different sources. These annotations can be used to create microbial signatures
+based on shared attributes and taxonomy. This R package, which shares the same
+name, can be used to access such resource directly in R.
 
-# Import bugphyzz
+## Data schema
+
+Annotations in bugphyzz represent the link between a taxon (Bacteria/Archaea)
+and an attribute (see the data schema and description below).
+
+<center>
+
+![**Data schema**](bugphyzz_data_schema.png){height="300px" width="600px"}
+
+</center>
+
+Below, the description of the elements in the data schema.
+
+**Taxon-related**
+
+Taxonomic data was harmonized based on the NCBI taxonomy:
+
+1. _NCBI ID_. An integer. The NCBI taxonomy ID (taxid) associated with the
+taxon.
+2. _Rank_. A character string describing the taxonomy rank. Valid values:
+superkingdom, kingdom, phylum, class, order, family, genus, species, strain.
+3. _Taxon name_. A character string describing the scientific name of the taxon.
+
+**Attribute-related**
+
+Attribute data was harmonized using a controlled vocabulary,
+which was based on available ontology terms.
+Attributes, ontology terms, and ontology libraries used can be found [here]().
+
+4. _Attribute_. A character string describing the name of a trait that can be
+observed or measured.
+5. _Attribute value_. The values that an attribute could take. Either a
+character string, a boolean, or a number.
+6. _Attribute type_. A character string describing the data type.
+    * numeric. Attributes that can take numeric values. For example, attribute:
+    growth temperature; attribute value: 25 C.
+    * binary. Attributes that can take booleans. For example,
+    attribute: butyrate-producing; attribute value: TRUE.
+    * multistate-intersection. A set of related binary attributes. For example,
+    habitat.
+    * multistate-union. Attribute that can take three or more values. These
+    values are always character strings. For example, attribute: aerophilicity;
+    attribute values: aerobic, anaerobic, or facultatively anaerobic.
+
+**Attribute value-related**
+
+Metadata associated with the attribute values:
+
+7. _Attribute source_. The source of the information.
+8. _Evidence_. The type of evidence that supports an annotation. Valid options:
+    * EXP = experiment.
+    * IGC = inferred from genomic context.
+    * TAS = traceable author statement.
+    * NAS = non-traceable author statement.
+    * IBD = inferred from biological aspect of descendant.
+    * ASR = ancestral state reconstruction.
+    
+9. _Frequency and Score_. 
+
+**Attribute source-related**
+
+10. _Confidence in curation_. A character string describing the confidence
+value of a source based on three criteria: 1) it has a source, 2) it has valid
+references, and 3) the curation was peer-reviewed.
+Valid options: high, medium, or low, used when a source satisfied three, two,
+or one or less of these criteria.
+
+## Installation
+
+The bugphyzz package can be installed with:
 
 ```{r, eval=FALSE}
 if (!require("BiocManager", quietly = TRUE))
@@ -30,26 +105,38 @@ if (!require("BiocManager", quietly = TRUE))
 BiocManager::install("waldronlab/bugphyzz")
 ```
 
+## Import bugphyzz
+
+Load bugphyzz and other packages:
+
 ```{r load package, message=FALSE}
 library(bugphyzz)
 library(dplyr)
 library(purrr)
 ```
 
-```{r import data}
-bp <- importBugphyzz(version = 'devel')
-head(map(bp, head))
-```
+bugphyzz is imported with the `importBugphyzz` function as a list of
+tidy data.frames, each of them corresponding to an attribute
+(or group of attributes in the case of multistate-union).
 
-## Explore wich attribute groups are available
+Import bugphyzz and explore available attributes with `names`:
 
-```{r}
+```{r import data, message=FALSE}
+bp <- importBugphyzz()
 names(bp)
 ```
 
-# Create signatures
+Let's take a glimpse at one of the data.frames:
 
-## Create signatures of taxids at the genus level for aerophilicity
+```{r a glimpse}
+glimpse(bp$aerophilicity, width = 50)
+```
+
+Compare the column names with the data schema described above.
+
+## Creating signatures
+
+Create signatures of taxids at the genus level for aerophilicity
 
 ```{r}
 aer_sigs_g <- makeSignatures(
@@ -58,7 +145,7 @@ aer_sigs_g <- makeSignatures(
 map(aer_sigs_g, head)
 ```
 
-## Create signatures of taxa names at the species level for growth temperature
+Create signatures of taxa names at the species level for growth temperature
 
 ```{r}
 gt_sigs_sp <- makeSignatures(
@@ -68,7 +155,7 @@ gt_sigs_sp <- makeSignatures(
 map(gt_sigs_sp, head)
 ```
 
-## Create signatures with custom threshold for numeric attributes
+Create signatures with custom threshold for numeric attributes
 
 ```{r}
 gt_sigs_mix <- makeSignatures(
@@ -78,7 +165,7 @@ gt_sigs_mix <- makeSignatures(
 map(gt_sigs_mix, head)
 ```
 
-## Create signatures for a binary attribute
+Create signatures for a binary attribute
 
 ```{r}
 ap_sigs_mix <- makeSignatures(
@@ -88,7 +175,7 @@ ap_sigs_mix <- makeSignatures(
 map(ap_sigs_mix, head)
 ```
 
-## Make signatures for all datasets with a single function call
+Make signatures for all datasets with a single function call
 
 ```{r}
 sigs <- map(bp, makeSignatures) |> 
@@ -96,10 +183,11 @@ sigs <- map(bp, makeSignatures) |>
 length(sigs)
 ```
 
-
 ```{r}
 head(map(sigs, head))
 ```
+
+## Run an enrichment analysis
 
 ## Session information:
 

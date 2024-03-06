@@ -8,16 +8,26 @@ experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](h
 status](https://www.r-pkg.org/badges/version/bugphyzz)](https://CRAN.R-project.org/package=bugphyzz)
 <!-- badges: end -->
  
-`bugphyzz` is a collection of bacterial physiological features to be used as a resource for physiological discovery and producing signatures. We are continuously curating `bugphyzz` databases through 3 main methods: webscraping, bulk download from online databases, and manual curation from literature. Mainly this database was concieved for analyzing microbiome data using physiological information. `Bugphyzz` can allow a user to look at specific physiologies, and create signature sets with specific bugs. The uniform structure of the data is what allows for the latter to manifest.
+`bugphyzz` is a collection of bacterial physiological features to be used as a
+resource for physiological discovery and producing signatures.
+We are continuously curating `bugphyzz` databases through 3 main methods:
+webscraping, bulk download from online databases, and manual curation from
+literature. Mainly this database was concieved for analyzing microbiome data
+using physiological information. `Bugphyzz` can allow a user to look at
+specific physiologies, and create signature sets with specific bugs. The
+uniform structure of the data is what allows for the latter to manifest.
 
-We curated attributes like Gram stain, optimal temperature, fermentation, respiration, size, shape, colony arrangement, and 27 more physiologies. `bugphyzz` is now accessible via direct download or through our [R package](https://github.com/waldronlab/bugphyzz/edit/main/README.md#installation).
+We curated attributes like Gram stain, optimal temperature, fermentation,
+respiration, size, shape, colony arrangement, and 27 more physiologies.
+`bugphyzz` is now accessible via direct download or through our
+[R package](https://github.com/waldronlab/bugphyzz/edit/main/README.md#installation).
 
-Here, you can find installation instructions, examples of creting signatures, `bugphyzz` [analyses](https://github.com/waldronlab/bugphyzz/edit/main/README.md#bugphyzzanalyses) and how to add your own curation to the database.
+Here, you can find installation instructions, examples of creating signatures,
+`bugphyzz`[analyses](https://github.com/waldronlab/bugphyzz/edit/main/README.md#bugphyzzanalyses) and how to add your own curation to the database.
 
 ## Installation
 
 You can install the development version of bugphyzz with:
-
 
 ```r
 if (!require("BiocManager", quietly = TRUE))
@@ -26,11 +36,6 @@ if (!require("BiocManager", quietly = TRUE))
 ## Devel version
 BiocManager::install("waldronlab/bugphyzz")
 ```
-
-## Some examples of how to create signatures 
-
-*** Need to update code for examples ***
-
 
 ## bugphyzzAnalyses
 
@@ -58,4 +63,3 @@ If using Google Sheets, publish a csv file to web:
 ## Bugphyzz worklfow
 
 ![Bugphyzz workflow](vignettes/Drawing.svg)
-
