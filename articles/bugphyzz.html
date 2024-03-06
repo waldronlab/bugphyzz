@@ -85,6 +85,9 @@
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>bugphyzz</h1>
+            <h3 data-toc-skip class="subtitle">A harmonized data
+resource and software for enrichment analysis of microbial
+physiologies</h3>
             
       
       <small class="dont-index">Source: <a href="https://github.com/waldronlab/bugphyzz/blob/HEAD/vignettes/bugphyzz.Rmd" class="external-link"><code>vignettes/bugphyzz.Rmd</code></a></small>
@@ -97,178 +100,124 @@
 <div class="section level2">
 <h2 id="introduction">Introduction<a class="anchor" aria-label="anchor" href="#introduction"></a>
 </h2>
-<p>The <code>bugphyzz</code> package provides access to an electronic
-resource of harmonized microbial annotations from different sources. The
-resource can also be accessed by direct download at <strong>&gt;&gt;&gt;
-insert Zenodo link here &lt;&lt;&lt;</strong>.</p>
+<p><a href="https://github.com/waldronlab/bugphyzzExports" class="external-link">Bugphyzz</a>
+is an electronic resource that provides harmonized microbial annotations
+from different sources. These annotations can be used to create
+microbial signatures based on shared attributes and taxonomy. This R
+package, which shares the same name, can be used to access such resource
+directly in R.</p>
 </div>
 <div class="section level2">
-<h2 id="import-bugphyzz">Import bugphyzz<a class="anchor" aria-label="anchor" href="#import-bugphyzz"></a>
+<h2 id="data-schema">Data schema<a class="anchor" aria-label="anchor" href="#data-schema"></a>
 </h2>
+<p>Annotations in bugphyzz represent the link between a taxon
+(Bacteria/Archaea) and an attribute (see the data schema and description
+below).</p>
+<center>
+<div class="float">
+<img src="bugphyzz_data_schema.png" width="600" height="300" alt="Data schema"><div class="figcaption"><strong>Data schema</strong></div>
+</div>
+</center>
+<p>Below, the description of the elements in the data schema.</p>
+<p><strong>Taxon-related</strong></p>
+<p>Taxonomic data was harmonized based on the NCBI taxonomy:</p>
+<ol style="list-style-type: decimal">
+<li>
+<em>NCBI ID</em>. An integer. The NCBI taxonomy ID (taxid)
+associated with the taxon.</li>
+<li>
+<em>Rank</em>. A character string describing the taxonomy rank.
+Valid values: superkingdom, kingdom, phylum, class, order, family,
+genus, species, strain.</li>
+<li>
+<em>Taxon name</em>. A character string describing the scientific
+name of the taxon.</li>
+</ol>
+<p><strong>Attribute-related</strong></p>
+<p>Attribute data was harmonized using a controlled vocabulary, which
+was based on available ontology terms. Attributes, ontology terms, and
+ontology libraries used can be found <a href="">here</a>.</p>
+<ol start="4" style="list-style-type: decimal">
+<li>
+<em>Attribute</em>. A character string describing the name of a
+trait that can be observed or measured.</li>
+<li>
+<em>Attribute value</em>. The values that an attribute could take.
+Either a character string, a boolean, or a number.</li>
+<li>
+<em>Attribute type</em>. A character string describing the data
+type.
+<ul>
+<li>numeric. Attributes that can take numeric values. For example,
+attribute: growth temperature; attribute value: 25 C.</li>
+<li>binary. Attributes that can take booleans. For example, attribute:
+butyrate-producing; attribute value: TRUE.</li>
+<li>multistate-intersection. A set of related binary attributes. For
+example, habitat.</li>
+<li>multistate-union. Attribute that can take three or more values.
+These values are always character strings. For example, attribute:
+aerophilicity; attribute values: aerobic, anaerobic, or facultatively
+anaerobic.</li>
+</ul>
+</li>
+</ol>
+<p><strong>Attribute value-related</strong></p>
+<p>Metadata associated with the attribute values:</p>
+<ol start="7" style="list-style-type: decimal">
+<li>
+<em>Attribute source</em>. The source of the information.</li>
+<li>
+<em>Evidence</em>. The type of evidence that supports an annotation.
+Valid options:
+<ul>
+<li>EXP = experiment.</li>
+<li>IGC = inferred from genomic context.</li>
+<li>TAS = traceable author statement.</li>
+<li>NAS = non-traceable author statement.</li>
+<li>IBD = inferred from biological aspect of descendant.</li>
+<li>ASR = ancestral state reconstruction.</li>
+</ul>
+</li>
+<li>
+<em>Frequency and Score</em>.</li>
+</ol>
+<p><strong>Attribute source-related</strong></p>
+<ol start="10" style="list-style-type: decimal">
+<li>
+<em>Confidence in curation</em>. A character string describing the
+confidence value of a source based on three criteria: 1) it has a
+source, 2) it has valid references, and 3) the curation was
+peer-reviewed. Valid options: high, medium, or low, used when a source
+satisfied three, two, or one or less of these criteria.</li>
+</ol>
+</div>
+<div class="section level2">
+<h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
+</h2>
+<p>The bugphyzz package can be installed with:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">require</a></span><span class="op">(</span><span class="st"><a href="https://bioconductor.github.io/BiocManager/" class="external-link">"BiocManager"</a></span>, quietly <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span>
 <span>    <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"BiocManager"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co">## Devel version</span></span>
 <span><span class="fu">BiocManager</span><span class="fu">::</span><span class="fu"><a href="https://bioconductor.github.io/BiocManager/reference/install.html" class="external-link">install</a></span><span class="op">(</span><span class="st">"waldronlab/bugphyzz"</span><span class="op">)</span></span></code></pre></div>
+</div>
+<div class="section level2">
+<h2 id="import-bugphyzz">Import bugphyzz<a class="anchor" aria-label="anchor" href="#import-bugphyzz"></a>
+</h2>
+<p>Load bugphyzz and other packages:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/waldronlab/bugphyzz" class="external-link">bugphyzz</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://purrr.tidyverse.org/" class="external-link">purrr</a></span><span class="op">)</span></span></code></pre></div>
+<p>bugphyzz is imported with the <code>importBugphyzz</code> function as
+a list of tidy data.frames, each of them corresponding to an attribute
+(or group of attributes in the case of multistate-union).</p>
+<p>Import bugphyzz and explore available attributes with
+<code>names</code>:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">bp</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/importBugphyzz.html">importBugphyzz</a></span><span class="op">(</span>version <span class="op">=</span> <span class="st">'devel'</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Importing multistate data...</span></span>
-<span><span class="co">#&gt; Registered S3 method overwritten by 'httr':</span></span>
-<span><span class="co">#&gt;   method           from  </span></span>
-<span><span class="co">#&gt;   print.cache_info hoardr</span></span>
-<span><span class="co">#&gt; Using data downloaded on 2024-03-05 20:15:48.</span></span>
-<span><span class="co">#&gt; Importing binary data...</span></span>
-<span><span class="co">#&gt; Using data downloaded on 2024-03-05 20:16:10.</span></span>
-<span><span class="co">#&gt; Importing numeric data...</span></span>
-<span><span class="co">#&gt; Using data downloaded on 2024-03-05 20:16:13.</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html" class="external-link">map</a></span><span class="op">(</span><span class="va">bp</span>, <span class="va">head</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="co">#&gt; $aerophilicity</span></span>
-<span><span class="co">#&gt;   NCBI_ID          Taxon_name  Rank     Attribute Attribute_value Evidence</span></span>
-<span><span class="co">#&gt; 1 1042312       Armatimonadia class aerophilicity         aerobic      asr</span></span>
-<span><span class="co">#&gt; 2  117743      Flavobacteriia class aerophilicity       anaerobic      asr</span></span>
-<span><span class="co">#&gt; 3  117747    Sphingobacteriia class aerophilicity         aerobic      asr</span></span>
-<span><span class="co">#&gt; 4  118001      Chrysiogenetes class aerophilicity       anaerobic      asr</span></span>
-<span><span class="co">#&gt; 5    1236 Gammaproteobacteria class aerophilicity         aerobic      asr</span></span>
-<span><span class="co">#&gt; 6 1313211       Lentisphaeria class aerophilicity       anaerobic      asr</span></span>
-<span><span class="co">#&gt;   Frequency     Score Attribute_source Confidence_in_curation</span></span>
-<span><span class="co">#&gt; 1 sometimes 0.8781203             &lt;NA&gt;                   &lt;NA&gt;</span></span>
-<span><span class="co">#&gt; 2 sometimes 0.6912862             &lt;NA&gt;                   &lt;NA&gt;</span></span>
-<span><span class="co">#&gt; 3   usually 0.9999358             &lt;NA&gt;                   &lt;NA&gt;</span></span>
-<span><span class="co">#&gt; 4   usually 0.9992895             &lt;NA&gt;                   &lt;NA&gt;</span></span>
-<span><span class="co">#&gt; 5   usually 0.9998504             &lt;NA&gt;                   &lt;NA&gt;</span></span>
-<span><span class="co">#&gt; 6 sometimes 0.8679874             &lt;NA&gt;                   &lt;NA&gt;</span></span>
-<span><span class="co">#&gt;            Attribute_type Validation</span></span>
-<span><span class="co">#&gt; 1 multistate-intersection       0.73</span></span>
-<span><span class="co">#&gt; 2 multistate-intersection       0.88</span></span>
-<span><span class="co">#&gt; 3 multistate-intersection       0.73</span></span>
-<span><span class="co">#&gt; 4 multistate-intersection       0.88</span></span>
-<span><span class="co">#&gt; 5 multistate-intersection       0.73</span></span>
-<span><span class="co">#&gt; 6 multistate-intersection       0.88</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; $`antimicrobial resistance`</span></span>
-<span><span class="co">#&gt;   NCBI_ID                             Taxon_name    Rank</span></span>
-<span><span class="co">#&gt; 1    1733 uncultured bacterium 'eubacterium sp.' species</span></span>
-<span><span class="co">#&gt; 2    1773             Mycobacterium tuberculosis species</span></span>
-<span><span class="co">#&gt; 3     573                  Klebsiella pneumoniae species</span></span>
-<span><span class="co">#&gt; 4 1334054        Mycobacterium tuberculosis TRS8  strain</span></span>
-<span><span class="co">#&gt; 5 1334056       Mycobacterium tuberculosis TRS10  strain</span></span>
-<span><span class="co">#&gt; 6 1334058       Mycobacterium tuberculosis TRS12  strain</span></span>
-<span><span class="co">#&gt;                  Attribute       Attribute_value Evidence Frequency     Score</span></span>
-<span><span class="co">#&gt; 1 antimicrobial resistance sensitive to amikacin      tax   usually 0.9211957</span></span>
-<span><span class="co">#&gt; 2 antimicrobial resistance sensitive to amikacin      tax sometimes 0.7046632</span></span>
-<span><span class="co">#&gt; 3 antimicrobial resistance sensitive to amikacin      tax sometimes 0.6923077</span></span>
-<span><span class="co">#&gt; 4 antimicrobial resistance sensitive to amikacin      igc    always 1.0000000</span></span>
-<span><span class="co">#&gt; 5 antimicrobial resistance sensitive to amikacin      igc    always 1.0000000</span></span>
-<span><span class="co">#&gt; 6 antimicrobial resistance sensitive to amikacin      igc    always 1.0000000</span></span>
-<span><span class="co">#&gt;   Attribute_source Confidence_in_curation   Attribute_type Validation</span></span>
-<span><span class="co">#&gt; 1             &lt;NA&gt;                   &lt;NA&gt; multistate-union         NA</span></span>
-<span><span class="co">#&gt; 2             &lt;NA&gt;                   &lt;NA&gt; multistate-union         NA</span></span>
-<span><span class="co">#&gt; 3             &lt;NA&gt;                   &lt;NA&gt; multistate-union         NA</span></span>
-<span><span class="co">#&gt; 4           PATRIC                 medium multistate-union         NA</span></span>
-<span><span class="co">#&gt; 5           PATRIC                 medium multistate-union         NA</span></span>
-<span><span class="co">#&gt; 6           PATRIC                 medium multistate-union         NA</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; $arrangement</span></span>
-<span><span class="co">#&gt;   NCBI_ID        Taxon_name   Rank   Attribute Attribute_value Evidence</span></span>
-<span><span class="co">#&gt; 1   74712       Frankiaceae family arrangement     filamentous      asr</span></span>
-<span><span class="co">#&gt; 2    1854           Frankia  genus arrangement     filamentous      asr</span></span>
-<span><span class="co">#&gt; 3    2063     Kitasatospora  genus arrangement     filamentous      asr</span></span>
-<span><span class="co">#&gt; 4  228398 Streptacidiphilus  genus arrangement     filamentous      asr</span></span>
-<span><span class="co">#&gt; 5  264147          Millisia  genus arrangement     filamentous      asr</span></span>
-<span><span class="co">#&gt; 6 2767320        Aldersonia  genus arrangement     filamentous      asr</span></span>
-<span><span class="co">#&gt;   Frequency     Score Attribute_source Confidence_in_curation</span></span>
-<span><span class="co">#&gt; 1 sometimes 0.8737815             &lt;NA&gt;                   &lt;NA&gt;</span></span>
-<span><span class="co">#&gt; 2   usually 0.9951122             &lt;NA&gt;                   &lt;NA&gt;</span></span>
-<span><span class="co">#&gt; 3   usually 0.9996213             &lt;NA&gt;                   &lt;NA&gt;</span></span>
-<span><span class="co">#&gt; 4   usually 0.9983532             &lt;NA&gt;                   &lt;NA&gt;</span></span>
-<span><span class="co">#&gt; 5 sometimes 0.7999493             &lt;NA&gt;                   &lt;NA&gt;</span></span>
-<span><span class="co">#&gt; 6 sometimes 0.6759307             &lt;NA&gt;                   &lt;NA&gt;</span></span>
-<span><span class="co">#&gt;            Attribute_type Validation</span></span>
-<span><span class="co">#&gt; 1 multistate-intersection       0.68</span></span>
-<span><span class="co">#&gt; 2 multistate-intersection       0.68</span></span>
-<span><span class="co">#&gt; 3 multistate-intersection       0.68</span></span>
-<span><span class="co">#&gt; 4 multistate-intersection       0.68</span></span>
-<span><span class="co">#&gt; 5 multistate-intersection       0.68</span></span>
-<span><span class="co">#&gt; 6 multistate-intersection       0.68</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; $`biosafety level`</span></span>
-<span><span class="co">#&gt;   NCBI_ID          Taxon_name  Rank       Attribute   Attribute_value Evidence</span></span>
-<span><span class="co">#&gt; 1 1042312       Armatimonadia class biosafety level biosafety level 1      asr</span></span>
-<span><span class="co">#&gt; 2  117743      Flavobacteriia class biosafety level biosafety level 1      asr</span></span>
-<span><span class="co">#&gt; 3  117747    Sphingobacteriia class biosafety level biosafety level 1      asr</span></span>
-<span><span class="co">#&gt; 4  118001      Chrysiogenetes class biosafety level biosafety level 1      asr</span></span>
-<span><span class="co">#&gt; 5    1236 Gammaproteobacteria class biosafety level biosafety level 1      asr</span></span>
-<span><span class="co">#&gt; 6 1313211       Lentisphaeria class biosafety level biosafety level 1      asr</span></span>
-<span><span class="co">#&gt;   Frequency     Score Attribute_source Confidence_in_curation</span></span>
-<span><span class="co">#&gt; 1   usually 0.9952964             &lt;NA&gt;                   &lt;NA&gt;</span></span>
-<span><span class="co">#&gt; 2   usually 0.9999984             &lt;NA&gt;                   &lt;NA&gt;</span></span>
-<span><span class="co">#&gt; 3   usually 0.9999902             &lt;NA&gt;                   &lt;NA&gt;</span></span>
-<span><span class="co">#&gt; 4   usually 0.9998825             &lt;NA&gt;                   &lt;NA&gt;</span></span>
-<span><span class="co">#&gt; 5   usually 0.9999644             &lt;NA&gt;                   &lt;NA&gt;</span></span>
-<span><span class="co">#&gt; 6   usually 0.9971305             &lt;NA&gt;                   &lt;NA&gt;</span></span>
-<span><span class="co">#&gt;            Attribute_type Validation</span></span>
-<span><span class="co">#&gt; 1 multistate-intersection       0.56</span></span>
-<span><span class="co">#&gt; 2 multistate-intersection       0.56</span></span>
-<span><span class="co">#&gt; 3 multistate-intersection       0.56</span></span>
-<span><span class="co">#&gt; 4 multistate-intersection       0.56</span></span>
-<span><span class="co">#&gt; 5 multistate-intersection       0.56</span></span>
-<span><span class="co">#&gt; 6 multistate-intersection       0.56</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; $`cogem pathogenicity rating`</span></span>
-<span><span class="co">#&gt;   NCBI_ID          Taxon_name  Rank                  Attribute</span></span>
-<span><span class="co">#&gt; 1 1042312       Armatimonadia class cogem pathogenicity rating</span></span>
-<span><span class="co">#&gt; 2  117743      Flavobacteriia class cogem pathogenicity rating</span></span>
-<span><span class="co">#&gt; 3  117747    Sphingobacteriia class cogem pathogenicity rating</span></span>
-<span><span class="co">#&gt; 4  118001      Chrysiogenetes class cogem pathogenicity rating</span></span>
-<span><span class="co">#&gt; 5    1236 Gammaproteobacteria class cogem pathogenicity rating</span></span>
-<span><span class="co">#&gt; 6 1313211       Lentisphaeria class cogem pathogenicity rating</span></span>
-<span><span class="co">#&gt;                Attribute_value Evidence Frequency     Score Attribute_source</span></span>
-<span><span class="co">#&gt; 1 cogem pathogenicity rating 1      asr sometimes 0.7538371             &lt;NA&gt;</span></span>
-<span><span class="co">#&gt; 2 cogem pathogenicity rating 1      asr sometimes 0.8098583             &lt;NA&gt;</span></span>
-<span><span class="co">#&gt; 3 cogem pathogenicity rating 2      asr sometimes 0.8980618             &lt;NA&gt;</span></span>
-<span><span class="co">#&gt; 4 cogem pathogenicity rating 1      asr sometimes 0.7721479             &lt;NA&gt;</span></span>
-<span><span class="co">#&gt; 5 cogem pathogenicity rating 1      asr   usually 0.9962192             &lt;NA&gt;</span></span>
-<span><span class="co">#&gt; 6 cogem pathogenicity rating 1      asr sometimes 0.5860475             &lt;NA&gt;</span></span>
-<span><span class="co">#&gt;   Confidence_in_curation          Attribute_type Validation</span></span>
-<span><span class="co">#&gt; 1                   &lt;NA&gt; multistate-intersection       0.74</span></span>
-<span><span class="co">#&gt; 2                   &lt;NA&gt; multistate-intersection       0.74</span></span>
-<span><span class="co">#&gt; 3                   &lt;NA&gt; multistate-intersection       0.76</span></span>
-<span><span class="co">#&gt; 4                   &lt;NA&gt; multistate-intersection       0.74</span></span>
-<span><span class="co">#&gt; 5                   &lt;NA&gt; multistate-intersection       0.74</span></span>
-<span><span class="co">#&gt; 6                   &lt;NA&gt; multistate-intersection       0.74</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; $`disease association`</span></span>
-<span><span class="co">#&gt;   NCBI_ID                             Taxon_name   Rank           Attribute</span></span>
-<span><span class="co">#&gt; 1  204722                     Brucella suis 1330 strain disease association</span></span>
-<span><span class="co">#&gt; 2  360106 Campylobacter fetus subsp. fetus 82-40 strain disease association</span></span>
-<span><span class="co">#&gt; 3  430066                   Brucella abortus S19 strain disease association</span></span>
-<span><span class="co">#&gt; 4  470137               Brucella suis ATCC 23445 strain disease association</span></span>
-<span><span class="co">#&gt; 5  290338        Citrobacter koseri ATCC BAA-895 strain disease association</span></span>
-<span><span class="co">#&gt; 6  267747          Cutibacterium acnes KPA171202 strain disease association</span></span>
-<span><span class="co">#&gt;   Attribute_value Evidence Frequency Score Attribute_source</span></span>
-<span><span class="co">#&gt; 1        abortion      nas    always     1           BacMap</span></span>
-<span><span class="co">#&gt; 2        abortion      nas    always     1           BacMap</span></span>
-<span><span class="co">#&gt; 3        abortion      nas    always     1           BacMap</span></span>
-<span><span class="co">#&gt; 4        abortion      nas    always     1           BacMap</span></span>
-<span><span class="co">#&gt; 5         abscess      nas    always     1           BacMap</span></span>
-<span><span class="co">#&gt; 6            acne      nas    always     1           BacMap</span></span>
-<span><span class="co">#&gt;   Confidence_in_curation   Attribute_type Validation</span></span>
-<span><span class="co">#&gt; 1                    low multistate-union         NA</span></span>
-<span><span class="co">#&gt; 2                    low multistate-union         NA</span></span>
-<span><span class="co">#&gt; 3                    low multistate-union         NA</span></span>
-<span><span class="co">#&gt; 4                    low multistate-union         NA</span></span>
-<span><span class="co">#&gt; 5                    low multistate-union         NA</span></span>
-<span><span class="co">#&gt; 6                    low multistate-union         NA</span></span></code></pre></div>
-<div class="section level3">
-<h3 id="explore-wich-attribute-groups-are-available">Explore wich attribute groups are available<a class="anchor" aria-label="anchor" href="#explore-wich-attribute-groups-are-available"></a>
-</h3>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">bp</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="va">bp</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/importBugphyzz.html">importBugphyzz</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">bp</span><span class="op">)</span></span>
 <span><span class="co">#&gt;  [1] "aerophilicity"                        </span></span>
 <span><span class="co">#&gt;  [2] "antimicrobial resistance"             </span></span>
 <span><span class="co">#&gt;  [3] "arrangement"                          </span></span>
@@ -301,15 +250,29 @@ insert Zenodo link here &lt;&lt;&lt;</strong>.</p>
 <span><span class="co">#&gt; [30] "mutation rate per site per year"      </span></span>
 <span><span class="co">#&gt; [31] "optimal ph"                           </span></span>
 <span><span class="co">#&gt; [32] "width"</span></span></code></pre></div>
-</div>
+<p>Let’s take a glimpse at one of the data.frames:</p>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="va">bp</span><span class="op">$</span><span class="va">aerophilicity</span>, width <span class="op">=</span> <span class="fl">50</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Rows: 27,284</span></span>
+<span><span class="co">#&gt; Columns: 12</span></span>
+<span><span class="co">#&gt; $ NCBI_ID                <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 1042312, 117743, …</span></span>
+<span><span class="co">#&gt; $ Taxon_name             <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "Armatimonadia", …</span></span>
+<span><span class="co">#&gt; $ Rank                   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "class", "class",…</span></span>
+<span><span class="co">#&gt; $ Attribute              <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "aerophilicity", …</span></span>
+<span><span class="co">#&gt; $ Attribute_value        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "aerobic", "anaer…</span></span>
+<span><span class="co">#&gt; $ Evidence               <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "asr", "asr", "as…</span></span>
+<span><span class="co">#&gt; $ Frequency              <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "sometimes", "som…</span></span>
+<span><span class="co">#&gt; $ Score                  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 0.8781203, 0.6912…</span></span>
+<span><span class="co">#&gt; $ Attribute_source       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> NA, NA, NA, NA, N…</span></span>
+<span><span class="co">#&gt; $ Confidence_in_curation <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> NA, NA, NA, NA, N…</span></span>
+<span><span class="co">#&gt; $ Attribute_type         <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "multistate-inter…</span></span>
+<span><span class="co">#&gt; $ Validation             <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 0.73, 0.88, 0.73,…</span></span></code></pre></div>
+<p>Compare the column names with the data schema described above.</p>
 </div>
 <div class="section level2">
-<h2 id="create-signatures">Create signatures<a class="anchor" aria-label="anchor" href="#create-signatures"></a>
+<h2 id="creating-signatures">Creating signatures<a class="anchor" aria-label="anchor" href="#creating-signatures"></a>
 </h2>
-<div class="section level3">
-<h3 id="create-signatures-of-taxids-at-the-genus-level-for-aerophilicity">Create signatures of taxids at the genus level for
-aerophilicity<a class="anchor" aria-label="anchor" href="#create-signatures-of-taxids-at-the-genus-level-for-aerophilicity"></a>
-</h3>
+<p>Create signatures of taxids at the genus level for aerophilicity</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">aer_sigs_g</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/makeSignatures.html">makeSignatures</a></span><span class="op">(</span></span>
 <span>  dat <span class="op">=</span> <span class="va">bp</span><span class="op">[[</span><span class="st">"aerophilicity"</span><span class="op">]</span><span class="op">]</span>, tax_id_type <span class="op">=</span> <span class="st">"NCBI_ID"</span>, tax_level <span class="op">=</span> <span class="st">"genus"</span></span>
@@ -323,11 +286,8 @@ aerophilicity<a class="anchor" aria-label="anchor" href="#create-signatures-of-t
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $`bugphyzz:aerophilicity|facultatively anaerobic`</span></span>
 <span><span class="co">#&gt; [1]    1016 1036132 1069494 1078829  111142  111500</span></span></code></pre></div>
-</div>
-<div class="section level3">
-<h3 id="create-signatures-of-taxa-names-at-the-species-level-for-growth-temperature">Create signatures of taxa names at the species level for growth
-temperature<a class="anchor" aria-label="anchor" href="#create-signatures-of-taxa-names-at-the-species-level-for-growth-temperature"></a>
-</h3>
+<p>Create signatures of taxa names at the species level for growth
+temperature</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">gt_sigs_sp</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/makeSignatures.html">makeSignatures</a></span><span class="op">(</span></span>
 <span>  dat <span class="op">=</span> <span class="va">bp</span><span class="op">[[</span><span class="st">"growth temperature"</span><span class="op">]</span><span class="op">]</span>, tax_id_type <span class="op">=</span> <span class="st">"Taxon_name"</span>,</span>
@@ -353,10 +313,7 @@ temperature<a class="anchor" aria-label="anchor" href="#create-signatures-of-tax
 <span><span class="co">#&gt; [1] "Alicyclobacillus cellulosilyticus" "Defluviitoga tunisiensis"         </span></span>
 <span><span class="co">#&gt; [3] "Fervidobacterium thailandense"     "Polycladomyces subterraneus"      </span></span>
 <span><span class="co">#&gt; [5] "Desulfofalx alkaliphila"           "Marinitoga camini"</span></span></code></pre></div>
-</div>
-<div class="section level3">
-<h3 id="create-signatures-with-custom-threshold-for-numeric-attributes">Create signatures with custom threshold for numeric attributes<a class="anchor" aria-label="anchor" href="#create-signatures-with-custom-threshold-for-numeric-attributes"></a>
-</h3>
+<p>Create signatures with custom threshold for numeric attributes</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">gt_sigs_mix</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/makeSignatures.html">makeSignatures</a></span><span class="op">(</span></span>
 <span>  dat <span class="op">=</span> <span class="va">bp</span><span class="op">[[</span><span class="st">"growth temperature"</span><span class="op">]</span><span class="op">]</span>, tax_id_type <span class="op">=</span> <span class="st">"Taxon_name"</span>,</span>
@@ -367,10 +324,7 @@ temperature<a class="anchor" aria-label="anchor" href="#create-signatures-of-tax
 <span><span class="co">#&gt; [1] "Cryobacterium roopkundense"  "Hugenholtzia roseola"       </span></span>
 <span><span class="co">#&gt; [3] "Halopseudomonas formosensis" "Occallatibacter riparius"   </span></span>
 <span><span class="co">#&gt; [5] "Occallatibacter savannae"    "Pectinatus sottacetonis"</span></span></code></pre></div>
-</div>
-<div class="section level3">
-<h3 id="create-signatures-for-a-binary-attribute">Create signatures for a binary attribute<a class="anchor" aria-label="anchor" href="#create-signatures-for-a-binary-attribute"></a>
-</h3>
+<p>Create signatures for a binary attribute</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">ap_sigs_mix</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/makeSignatures.html">makeSignatures</a></span><span class="op">(</span></span>
 <span>  dat <span class="op">=</span> <span class="va">bp</span><span class="op">[[</span><span class="st">"animal pathogen"</span><span class="op">]</span><span class="op">]</span>, tax_id_type <span class="op">=</span> <span class="st">"NCBI_ID"</span>,</span>
@@ -382,10 +336,7 @@ temperature<a class="anchor" aria-label="anchor" href="#create-signatures-of-tax
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $`bugphyzz:animal pathogen|TRUE`</span></span>
 <span><span class="co">#&gt; [1] 100053 100901   1015   1017   1018   1019</span></span></code></pre></div>
-</div>
-<div class="section level3">
-<h3 id="make-signatures-for-all-datasets-with-a-single-function-call">Make signatures for all datasets with a single function call<a class="anchor" aria-label="anchor" href="#make-signatures-for-all-datasets-with-a-single-function-call"></a>
-</h3>
+<p>Make signatures for all datasets with a single function call</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">sigs</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html" class="external-link">map</a></span><span class="op">(</span><span class="va">bp</span>, <span class="va">makeSignatures</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://purrr.tidyverse.org/reference/list_flatten.html" class="external-link">list_flatten</a></span><span class="op">(</span><span class="op">)</span></span>
@@ -411,9 +362,13 @@ temperature<a class="anchor" aria-label="anchor" href="#create-signatures-of-tax
 <span><span class="co">#&gt; $`antimicrobial resistance_bugphyzz:antimicrobial resistance|sensitive to ethambutol`</span></span>
 <span><span class="co">#&gt; [1]    1733    1773 1334054 1334056 1334058 1334062</span></span></code></pre></div>
 </div>
-<div class="section level3">
-<h3 id="session-information">Session information:<a class="anchor" aria-label="anchor" href="#session-information"></a>
-</h3>
+<div class="section level2">
+<h2 id="run-an-enrichment-analysis">Run an enrichment analysis<a class="anchor" aria-label="anchor" href="#run-an-enrichment-analysis"></a>
+</h2>
+</div>
+<div class="section level2">
+<h2 id="session-information">Session information:<a class="anchor" aria-label="anchor" href="#session-information"></a>
+</h2>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">sessioninfo</span><span class="fu">::</span><span class="fu"><a href="https://r-lib.github.io/sessioninfo/reference/session_info.html" class="external-link">session_info</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #00BBBB; font-weight: bold;">─ Session info ───────────────────────────────────────────────────────────────</span></span></span>
@@ -426,7 +381,7 @@ temperature<a class="anchor" aria-label="anchor" href="#create-signatures-of-tax
 <span><span class="co">#&gt;  collate  en_US.UTF-8</span></span>
 <span><span class="co">#&gt;  ctype    en_US.UTF-8</span></span>
 <span><span class="co">#&gt;  tz       Etc/UTC</span></span>
-<span><span class="co">#&gt;  date     2024-03-05</span></span>
+<span><span class="co">#&gt;  date     2024-03-06</span></span>
 <span><span class="co">#&gt;  pandoc   3.1.1 @ /usr/local/bin/ (via rmarkdown)</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; <span style="color: #00BBBB; font-weight: bold;">─ Packages ───────────────────────────────────────────────────────────────────</span></span></span>
@@ -438,7 +393,7 @@ temperature<a class="anchor" aria-label="anchor" href="#create-signatures-of-tax
 <span><span class="co">#&gt;  blob            1.2.4   <span style="color: #555555;">2023-03-17</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM (R 4.3.0)</span></span></span>
 <span><span class="co">#&gt;  bold            1.3.0   <span style="color: #555555;">2023-05-02</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM (R 4.3.0)</span></span></span>
 <span><span class="co">#&gt;  bslib           0.6.1   <span style="color: #555555;">2023-11-28</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM (R 4.3.0)</span></span></span>
-<span><span class="co">#&gt;  bugphyzz      * 0.0.1.4 <span style="color: #555555;">2024-03-05</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">local</span></span></span>
+<span><span class="co">#&gt;  bugphyzz      * 0.0.1.4 <span style="color: #555555;">2024-03-06</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">local</span></span></span>
 <span><span class="co">#&gt;  cachem          1.0.8   <span style="color: #555555;">2023-05-01</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM (R 4.3.0)</span></span></span>
 <span><span class="co">#&gt;  cli             3.6.2   <span style="color: #555555;">2023-12-11</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM (R 4.3.0)</span></span></span>
 <span><span class="co">#&gt;  codetools       0.2-19  <span style="color: #555555;">2023-02-01</span> <span style="color: #555555;">[2]</span> <span style="color: #555555;">CRAN (R 4.3.2)</span></span></span>
@@ -508,7 +463,6 @@ temperature<a class="anchor" aria-label="anchor" href="#create-signatures-of-tax
 <span><span class="co">#&gt; <span style="color: #555555;"> [2] /usr/local/lib/R/library</span></span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; <span style="color: #00BBBB; font-weight: bold;">──────────────────────────────────────────────────────────────────────────────</span></span></span></code></pre></div>
-</div>
 </div>
   </div>
 
