@@ -21,10 +21,9 @@ knitr::opts_chunk$set(
 ## Introduction
 
 [Bugphyzz](https://github.com/waldronlab/bugphyzzExports)
-is an electronic resource that provides harmonized microbial annotations from
-different sources. These annotations can be used to create microbial signatures
-based on shared attributes and taxonomy. This R package, which shares the same
-name, can be used to access such resource directly in R.
+is an electronic resource of harmonized microbial annotations from
+different sources. These annotations can be used to create signatures of
+microbes sharing attributes, and used for bug set enrichment analysis.
 
 ## Data schema
 
@@ -37,13 +36,11 @@ and an attribute (see the data schema and description below).
 
 </center>
 
-Below, the description of the elements in the data schema.
-
 **Taxon-related**
 
-Taxonomic data was harmonized based on the NCBI taxonomy:
+Taxonomic data was harmonized according to the NCBI taxonomy:
 
-1. _NCBI ID_. An integer. The NCBI taxonomy ID (taxid) associated with the
+1. _NCBI ID_. An integer. The NCBI taxonomy ID (taxid) associated with a 
 taxon.
 2. _Rank_. A character string describing the taxonomy rank. Valid values:
 superkingdom, kingdom, phylum, class, order, family, genus, species, strain.
@@ -51,15 +48,13 @@ superkingdom, kingdom, phylum, class, order, family, genus, species, strain.
 
 **Attribute-related**
 
-Attribute data was harmonized using a controlled vocabulary,
-which was based on available ontology terms.
-Attributes, ontology terms, and ontology libraries used can be found [here]().
+Attribute data was harmonized with a controlled vocabulary based on
+available ontology terms. Attributes, ontology terms, and ontology libraries
+can be found [here]().
 
 4. _Attribute_. A character string describing the name of a trait that can be
 observed or measured.
-5. _Attribute value_. The values that an attribute could take. Either a
-character string, a boolean, or a number.
-6. _Attribute type_. A character string describing the data type.
+5. _Attribute type_. A character string describing the data type.
     * numeric. Attributes that can take numeric values. For example, attribute:
     growth temperature; attribute value: 25 C.
     * binary. Attributes that can take booleans. For example,
@@ -69,6 +64,8 @@ character string, a boolean, or a number.
     * multistate-union. Attribute that can take three or more values. These
     values are always character strings. For example, attribute: aerophilicity;
     attribute values: aerobic, anaerobic, or facultatively anaerobic.
+6. *Attribute value*. The values that an attribute could take. Either a
+character string, a boolean, or a number.
 
 **Attribute value-related**
 
@@ -83,7 +80,14 @@ Metadata associated with the attribute values:
     * IBD = inferred from biological aspect of descendant.
     * ASR = ancestral state reconstruction.
     
-9. _Frequency and Score_. 
+9. _Support values_.
+    * Frequency and Score. Confidence that a given taxon exhibits a trait based
+    on the curator’s knowledge or results of ASR or IBD.
+    * Validation. Score of the 10-fold cross-validation analysis.
+    Matthews correlation coefficient (MCC) for discrete attributes and 
+    R-squared for numeric attributes. Default values is 0.5 and above.
+    * NSTI. Nearest sequence taxon index as described in PICRUSt2 or the
+    castor package. Relevant for numeric values only.
 
 **Attribute source-related**
 
@@ -117,7 +121,8 @@ library(purrr)
 
 bugphyzz is imported with the `importBugphyzz` function as a list of
 tidy data.frames, each of them corresponding to an attribute
-(or group of attributes in the case of multistate-union).
+or group of related attributes in the case of the multistate-union type
+(check the data schema description above).
 
 Import bugphyzz and explore available attributes with `names`:
 
@@ -136,16 +141,27 @@ Compare the column names with the data schema described above.
 
 ## Creating signatures
 
-Create signatures of taxids at the genus level for aerophilicity
+After the attributes have been imported, we can use the `makeSignatures`
+function to create a list of signatures. `makeSignatures` accepts a few
+arguments for filtering such as evidence, frequency, and minimum and maximum
+values for numeric attributes. If a more refined filtering is required,
+a user could use regular data manipulation functions on the data.frame of
+interest (e.g., `dplyr::filter`).
+
+Some examples:
+
++ Create signatures of taxon names at the genus level for the aerophilicity
+attribute (discrete):
 
 ```{r}
 aer_sigs_g <- makeSignatures(
-  dat = bp[["aerophilicity"]], tax_id_type = "NCBI_ID", tax_level = "genus"
+  dat = bp[["aerophilicity"]], tax_id_type = "Taxon_name", tax_level = "genus"
 )
 map(aer_sigs_g, head)
 ```
 
-Create signatures of taxa names at the species level for growth temperature
++ Create signatures of taxon names at the species level for the growth
+temperature attribute (numeric):
 
 ```{r}
 gt_sigs_sp <- makeSignatures(
@@ -155,7 +171,8 @@ gt_sigs_sp <- makeSignatures(
 map(gt_sigs_sp, head)
 ```
 
-Create signatures with custom threshold for numeric attributes
++ Create signatures with a custom threshold for the growth temperature
+attribute (numeric):
 
 ```{r}
 gt_sigs_mix <- makeSignatures(
@@ -165,7 +182,7 @@ gt_sigs_mix <- makeSignatures(
 map(gt_sigs_mix, head)
 ```
 
-Create signatures for a binary attribute
++ Create signatures for the animal pathogen attribute (boolean):
 
 ```{r}
 ap_sigs_mix <- makeSignatures(
@@ -175,7 +192,7 @@ ap_sigs_mix <- makeSignatures(
 map(ap_sigs_mix, head)
 ```
 
-Make signatures for all datasets with a single function call
++ Make signatures for all of the data.frames:
 
 ```{r}
 sigs <- map(bp, makeSignatures) |> 
@@ -189,6 +206,75 @@ head(map(sigs, head))
 
 ## Run an enrichment analysis
 
+Bugphyzz signatures can be used for running enrichment analysis with
+existing tools developed in R. For example, using EnrichmenBrowser.
+
+Here is an example of how to run an enrichment analysis using GSEA and
+a benchmark dataset.
+
+Load packages:
+
+```{r, message=FALSE}
+library(EnrichmentBrowser)
+library(MicrobiomeBenchmarkData)
+library(mia)
+```
+
+Load benchmark data:
+
+```{r, warning=FALSE}
+dat_name <- 'HMP_2012_16S_gingival_V35'
+tse <- getBenchmarkData(dat_name, dryrun = FALSE)[[1]]
+tse_genus <- splitByRanks(tse)$genus
+min_n_samples <- round(ncol(tse_genus) * 0.2)
+tse_subset <- tse_genus[rowSums(assay(tse_genus) >= 1) >= min_n_samples,]
+tse_subset
+```
+
+Differential abundance (DA) analysis:
+
+```{r}
+tse_subset$GROUP <- ifelse(
+  tse_subset$body_subsite == 'subgingival_plaque', 0, 1
+)
+edger <- deAna(
+    expr = tse_subset, de.method = 'edgeR', padj.method = 'fdr', 
+    filter.by.expr = FALSE, 
+)
+
+dat <- data.frame(colData(edger))
+design <- stats::model.matrix(~ GROUP, data = dat)
+assay(edger) <- limma::voom(
+  counts = assay(edger), design = design, plot = FALSE
+)$E
+```
+
+Enrichment analysis using GSEA:
+
+```{r, message=FALSE}
+gsea <- sbea(
+  method = 'gsea', se = edger, gs = aer_sigs_g, perm = 1000,
+  alpha = 0.1 
+)
+gsea_tbl <- as.data.frame(gsea$res.tbl) |> 
+  mutate(
+    GENE.SET = ifelse(PVAL < 0.05, paste0(GENE.SET, ' *'), GENE.SET),
+    PVAL = round(PVAL, 3),
+  ) |> 
+  dplyr::rename(BUG.SET = GENE.SET)
+knitr::kable(gsea_tbl)
+```
+
+## Get taxon signatures 
+
+Finally, a user could get all of the signature names to which a given taxon
+belongs to. Only taxids should be used.
+
+An example using _Escherichia coli_ (taxid: 562):
+
+```{r}
+getTaxonSignatures(tax = "562", bp = bp)
+```
 ## Session information:
 
 ```{r}

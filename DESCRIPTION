@@ -43,6 +43,11 @@ Suggests:
     knitr,
     rmarkdown,
     sessioninfo,
-    testthat
+    testthat,
+    EnrichmentBrowser,
+    MicrobiomeBenchmarkData,
+    mia,
+    stats,
+    limma
 URL: https://github.com/waldronlab/bugphyzz
 BugReports: https://github.com/waldronlab/bugphyzz/issues
