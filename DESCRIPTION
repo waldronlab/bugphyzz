@@ -48,6 +48,7 @@ Suggests:
     MicrobiomeBenchmarkData,
     mia,
     stats,
-    limma
+    limma,
+    readr
 URL: https://github.com/waldronlab/bugphyzz
 BugReports: https://github.com/waldronlab/bugphyzz/issues

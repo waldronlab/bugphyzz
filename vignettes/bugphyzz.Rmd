@@ -23,12 +23,12 @@ knitr::opts_chunk$set(
 [Bugphyzz](https://github.com/waldronlab/bugphyzzExports)
 is an electronic resource of harmonized microbial annotations from
 different sources. These annotations can be used to create signatures of
-microbes sharing attributes, and used for bug set enrichment analysis.
+microbes sharing attributes and used for bug set enrichment analysis.
 
 ## Data schema
 
 Annotations in bugphyzz represent the link between a taxon (Bacteria/Archaea)
-and an attribute (see the data schema and description below).
+and an attribute as described in the data schema below.
 
 <center>
 
@@ -50,7 +50,7 @@ superkingdom, kingdom, phylum, class, order, family, genus, species, strain.
 
 Attribute data was harmonized with a controlled vocabulary based on
 available ontology terms. Attributes, ontology terms, and ontology libraries
-can be found [here]().
+can be found in the 'Attribute and sources' vignette.
 
 4. _Attribute_. A character string describing the name of a trait that can be
 observed or measured.

@@ -1,5 +1,5 @@
 ---
-title: "Data about Attributes and Sources"
+title: "Sources and Attributes"
 output: 
   rmarkdown::html_vignette:
     toc: true
@@ -26,12 +26,43 @@ library(dplyr)
 library(purrr)
 ```
 
-```{r}
-bp <- importBugphyzz(version = 'devel')
+## Sources
+
+```{r, echo=FALSE}
+sources_fname <- system.file(
+  "extdata", "attribute_sources.tsv", package = "bugphyzz", mustWork = TRUE
+)
+sources <- readr::read_tsv(sources_fname, show_col_types = FALSE) |> 
+  dplyr::rename(
+    Source = Attribute_source,
+    `Confidence in curation` = Confidence_in_curation,
+    `Full source` = full_source
+  )
+```
+
+The `r nrow(sources)` sources of annotations in bugphyzz:
+
+```{r, echo=FALSE}
+DT::datatable(
+  data = sources, rownames = FALSE,
+  options = list(iDisplayLength = nrow(sources), scrollX = TRUE) 
+)
+```
+
+## Attributes
+
+Definition of attributes and attribute values.
+Ontology terms can be searched at [OSLv3](https://www.ebi.ac.uk/ols/index) and
+[OSLv4](https://www.ebi.ac.uk/ols4).
+
+```{r, echo = FALSE}
+## Import bugphyzz and summmarize number of annotations per attribute
+## and source.
+bp <- importBugphyzz()
 x <- map(bp, ~ {
   .x |> 
     select(Attribute, Attribute_source) |> 
-    count(Attribute, Attribute_source, name = "N_annotations") |> 
+    dplyr::count(Attribute, Attribute_source, name = "N_annotations") |> 
     distinct()
 }) |> 
   bind_rows() |> 
@@ -39,10 +70,6 @@ x <- map(bp, ~ {
   relocate(Attribute_source, Attribute, N_annotations)
 ```
 
-## Attributes
-
-Ontology terms can be searched at [OSLv3](https://www.ebi.ac.uk/ols/index) and
-[OSLv4](https://www.ebi.ac.uk/ols4).
 
 ```{r}
 regex <- paste0(
@@ -51,34 +78,16 @@ regex <- paste0(
 fname <- system.file('extdata/attributes.tsv', package = 'bugphyzz')
 attributes <- read.table(fname, header = TRUE, sep = '\t') |> 
   filter(grepl(regex, attribute_group))
-
 colnames(attributes) <- c(
   'Attribute', 'Attribute group', 'Validity', 'Ontoloty', 'Description'
 )
-caption1 <- paste0(
-  'Table 1. Attributes that could be found in bugphyzz.'
+DT::datatable(
+  data = attributes,
+  options = list(scrollX = TRUE)
 )
-datt <- datatable(
-  data = attributes, 
-  filter = "top",
-  extensions = c("Buttons","KeyTable"), 
-  caption = htmltools::tags$caption(
-    style = 'caption-side: top; text-align: left;',
-    caption1
-  ),
-  options = list(
-    dom = '<"top"B>lfrtip',
-    buttons = list('copy', 'print'),
-    iDisplayLength = 10,
-    keys = TRUE,
-    scrollX = TRUE,
-    autoWidth = FALSE 
-  )
-)
-datt
 ```
 
-## Sources
+## Sources x Attributes
 
 ```{r}
 fname2 <- system.file(
@@ -88,38 +97,17 @@ fname2 <- system.file(
 src <- read.table(
   fname2, header = TRUE, sep = '\t', quote = ""
 )
-
-xsrc <- left_join(x, src, by = 'Attribute_source') |> 
-  rename(Full_source = full_source)
-  
-caption2 <- paste0(
-  'Table 2. Sources of attribute annotations in bugphyzz. ',
-  '* Evidence codes: exp = experimental evidence, igc = inferred from genomic context, ',
-  'tas = traceable author statement, nas = non-traceable author statement; ',
-  'more information at http://geneontology.org/docs/guide-go-evidence-codes/. ',
-  '** The number in parenthesis indacates the number of annotations per',
-  ' attribute group.'
-)
-
-src_dt <- datatable(
-  data = xsrc, 
-  filter = "top",
-  extensions = c("Buttons","KeyTable"), 
-  # caption = caption2,
-  caption = htmltools::tags$caption(
-    style = 'caption-side: top; text-align: left;',
-    caption2
-  ),
-  options = list(
-    dom = '<"top"B>lfrtip',
-    buttons = list('copy', 'print'),
-    iDisplayLength = 10,
-    keys = TRUE,
-    # scrollX = TRUE,
-    autoWidth = TRUE
+xsrc <- dplyr::left_join(x, src, by = 'Attribute_source') |> 
+  dplyr::rename(
+    `Full source` = full_source,
+    `Confidence in curation` = Confidence_in_curation,
+    `Number of annotations` = N_annotations,
+    Source = Attribute_source
   )
-)
-src_dt
+DT::datatable(
+  data = xsrc,
+  options = list(scrollX = TRUE)
+)  
 ```
 
 ## Session info
