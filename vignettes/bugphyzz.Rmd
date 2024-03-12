@@ -85,7 +85,7 @@ Metadata associated with the attribute values:
     on the curator’s knowledge or results of ASR or IBD.
     * Validation. Score of the [10-fold cross-validation analysis](https://github.com/waldronlab/taxPProValidation).
     Matthews correlation coefficient (MCC) for discrete attributes and 
-    R-squared for numeric attributes. Default values is 0.5 and above.
+    R-squared for numeric attributes. Default threshold value is 0.5 and above.
     * NSTI. Nearest sequence taxon index as described in
     [PICRUSt](https://doi.org/10.1038/nbt.2676) or the
     [castor](https://cran.r-project.org/web/packages/castor/index.html) package.
@@ -97,7 +97,7 @@ Metadata associated with the attribute values:
 value of a source based on three criteria: 1) it has a source, 2) it has valid
 references, and 3) the curation was peer-reviewed.
 Valid options: high, medium, or low, used when a source satisfied three, two,
-or one or less of these criteria.
+or one of these criteria.
 
 **More information**
 
@@ -161,7 +161,7 @@ glimpse(bp$aerophilicity, width = 50)
 
 Compare the column names with the data schema described above.
 
-## Creating signatures
+## Create signatures
 
 After the attributes have been imported, we can use the `makeSignatures`
 function to create a list of signatures. `makeSignatures` accepts a few
