@@ -184,7 +184,7 @@ based on the curator’s knowledge or results of ASR or IBD.</li>
 <li>Validation. Score of the <a href="https://github.com/waldronlab/taxPProValidation" class="external-link">10-fold
 cross-validation analysis</a>. Matthews correlation coefficient (MCC)
 for discrete attributes and R-squared for numeric attributes. Default
-values is 0.5 and above.</li>
+threshold value is 0.5 and above.</li>
 <li>NSTI. Nearest sequence taxon index as described in <a href="https://doi.org/10.1038/nbt.2676" class="external-link">PICRUSt</a> or the <a href="https://cran.r-project.org/web/packages/castor/index.html" class="external-link">castor</a>
 package. Relevant for numeric values only.</li>
 </ul>
@@ -197,7 +197,7 @@ package. Relevant for numeric values only.</li>
 confidence value of a source based on three criteria: 1) it has a
 source, 2) it has valid references, and 3) the curation was
 peer-reviewed. Valid options: high, medium, or low, used when a source
-satisfied three, two, or one or less of these criteria.</li>
+satisfied three, two, or one of these criteria.</li>
 </ol>
 <p><strong>More information</strong></p>
 <ul>
@@ -296,7 +296,7 @@ or group of related attributes in the case of the multistate-union type
 <p>Compare the column names with the data schema described above.</p>
 </div>
 <div class="section level2">
-<h2 id="creating-signatures">Creating signatures<a class="anchor" aria-label="anchor" href="#creating-signatures"></a>
+<h2 id="create-signatures">Create signatures<a class="anchor" aria-label="anchor" href="#create-signatures"></a>
 </h2>
 <p>After the attributes have been imported, we can use the
 <code>makeSignatures</code> function to create a list of signatures.
@@ -615,7 +615,7 @@ taxon belongs to. Only taxids should be used.</p>
 <span><span class="co">#&gt;  DelayedArray               0.28.0      <span style="color: #555555;">2023-10-24</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">Bioconductor</span></span></span>
 <span><span class="co">#&gt;  DelayedMatrixStats         1.24.0      <span style="color: #555555;">2023-10-24</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">Bioconductor</span></span></span>
 <span><span class="co">#&gt;  desc                       1.4.3       <span style="color: #555555;">2023-12-10</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM (R 4.3.0)</span></span></span>
-<span><span class="co">#&gt;  digest                     0.6.34      <span style="color: #555555;">2024-01-11</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM (R 4.3.0)</span></span></span>
+<span><span class="co">#&gt;  digest                     0.6.35      <span style="color: #555555;">2024-03-11</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM (R 4.3.0)</span></span></span>
 <span><span class="co">#&gt;  DirichletMultinomial       1.44.0      <span style="color: #555555;">2023-10-24</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">Bioconductor</span></span></span>
 <span><span class="co">#&gt;  dplyr                    * 1.1.4       <span style="color: #555555;">2023-11-17</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM (R 4.3.0)</span></span></span>
 <span><span class="co">#&gt;  edgeR                      4.0.16      <span style="color: #555555;">2024-02-18</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">Bioconductor 3.18 (R 4.3.2)</span></span></span>
@@ -707,7 +707,7 @@ taxon belongs to. Only taxids should be used.</p>
 <span><span class="co">#&gt;  textshaping                0.3.7       <span style="color: #555555;">2023-10-09</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM (R 4.3.0)</span></span></span>
 <span><span class="co">#&gt;  tibble                     3.2.1       <span style="color: #555555;">2023-03-20</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM (R 4.3.0)</span></span></span>
 <span><span class="co">#&gt;  tidyr                      1.3.1       <span style="color: #555555;">2024-01-24</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM (R 4.3.0)</span></span></span>
-<span><span class="co">#&gt;  tidyselect                 1.2.0       <span style="color: #555555;">2022-10-10</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM (R 4.3.0)</span></span></span>
+<span><span class="co">#&gt;  tidyselect                 1.2.1       <span style="color: #555555;">2024-03-11</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM (R 4.3.0)</span></span></span>
 <span><span class="co">#&gt;  tidytree                   0.4.6       <span style="color: #555555;">2023-12-12</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM (R 4.3.0)</span></span></span>
 <span><span class="co">#&gt;  treeio                     1.26.0      <span style="color: #555555;">2023-10-24</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">Bioconductor</span></span></span>
 <span><span class="co">#&gt;  TreeSummarizedExperiment * 2.10.0      <span style="color: #555555;">2023-10-24</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">Bioconductor</span></span></span>
