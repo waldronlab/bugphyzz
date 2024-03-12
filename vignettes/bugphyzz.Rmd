@@ -83,7 +83,7 @@ Metadata associated with the attribute values:
 9. _Support values_.
     * Frequency and Score. Confidence that a given taxon exhibits a trait based
     on the curator’s knowledge or results of ASR or IBD.
-    * Validation. Score of the 10-fold cross-validation analysis.
+    * Validation. Score of the [10-fold cross-validation analysis](https://github.com/waldronlab/taxPProValidation).
     Matthews correlation coefficient (MCC) for discrete attributes and 
     R-squared for numeric attributes. Default values is 0.5 and above.
     * NSTI. Nearest sequence taxon index as described in
@@ -99,11 +99,25 @@ references, and 3) the curation was peer-reviewed.
 Valid options: high, medium, or low, used when a source satisfied three, two,
 or one or less of these criteria.
 
-More information about the sources and attributes can be found here:
+**More information**
+
++ Description of **sources** and **attributes** can be found here:
 https://waldronlab.io/bugphyzz/articles/attributes.html
 
-More information about ontology evidence codes (8) can be found here:
++ Description of ontology **evidence** codes (8) can be found here:
 https://geneontology.org/docs/guide-go-evidence-codes/
+
++ Description of **frequency** keywords and scores is based on:
+https://grammarist.com/grammar/adverbs-of-frequency/
+
++ IBD and ASR were performed with taxPPro:
+https://github.com/waldronlab/taxPPro
+
+## Analysis and Stats
+
+This vignette only covers the main use of bugphyzz. Detailed analysis and
+stats of the bugphyzz annotations can be found here:
+https://github.com/waldronlab/bugphyzzAnalyses
 
 ## Installation
 

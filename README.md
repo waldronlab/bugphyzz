@@ -1,4 +1,4 @@
-# `bugphyzz` | bacterial physiologies
+# bugphyzz
 
 <!-- badges: start -->
 
@@ -37,17 +37,9 @@ if (!require("BiocManager", quietly = TRUE))
 BiocManager::install("waldronlab/bugphyzz")
 ```
 
-## bugphyzzAnalyses
+## Analysis using bugphyzz
 
 Example analyses using data from this package can be found at https://waldronlab.io/bugphyzzAnalyses/
-
-## Reference for Gene ontology evidence codes
-
-http://geneontology.org/docs/guide-go-evidence-codes/
-
-## Reference for frequency keywords
-
-https://grammarist.com/grammar/adverbs-of-frequency/
 
 ## How to add a new attribute in GitHub to the bugphyzz database
 Curation steps:
