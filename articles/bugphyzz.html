@@ -88,7 +88,13 @@
             <h3 data-toc-skip class="subtitle">A harmonized data
 resource and software for enrichment analysis of microbial
 physiologies</h3>
-            
+                        <h4 data-toc-skip class="author">Samuel
+Gamboa</h4>
+                  <a class="author_email" href="mailto:#"></a><a href="mailto:Samuel.Gamboa.Tuz@gmail.com" class="email">Samuel.Gamboa.Tuz@gmail.com</a>
+      
+                              <h4 data-toc-skip class="author">Levi
+Waldron</h4>
+                        
       
       <small class="dont-index">Source: <a href="https://github.com/waldronlab/bugphyzz/blob/HEAD/vignettes/bugphyzz.Rmd" class="external-link"><code>vignettes/bugphyzz.Rmd</code></a></small>
       <div class="hidden name"><code>bugphyzz.Rmd</code></div>
@@ -100,126 +106,125 @@ physiologies</h3>
 <div class="section level2">
 <h2 id="introduction">Introduction<a class="anchor" aria-label="anchor" href="#introduction"></a>
 </h2>
-<p><a href="https://github.com/waldronlab/bugphyzzExports" class="external-link">Bugphyzz</a>
-is an electronic resource of harmonized microbial annotations from
-different sources. These annotations can be used to create signatures of
-microbes sharing attributes and used for bug set enrichment
-analysis.</p>
+<p><a href="https://github.com/waldronlab/bugphyzzExports" class="external-link">bugphyzz</a>
+is an electronic database of standardized microbial annotations. It
+facilitates the creation of microbial signatures based on shared
+attributes, which are utilized for bug set enrichment analysis.</p>
 </div>
 <div class="section level2">
 <h2 id="data-schema">Data schema<a class="anchor" aria-label="anchor" href="#data-schema"></a>
 </h2>
 <p>Annotations in bugphyzz represent the link between a taxon
-(Bacteria/Archaea) and an attribute as described in the data schema
-below.</p>
+(Bacteria/Archaea) and an attribute, as outlined in the data schema
+provided below.</p>
 <center>
 <div class="float">
-<img src="bugphyzz_data_schema.png" width="600" height="300" alt="Data schema"><div class="figcaption"><strong>Data schema</strong></div>
+<img src="bugphyzz_data_schema.png" style="width:100.0%" alt="Data schema"><div class="figcaption"><strong>Data schema</strong></div>
 </div>
 </center>
 <p><strong>Taxon-related</strong></p>
-<p>Taxonomic data was harmonized according to the NCBI taxonomy:</p>
+<p>Taxonomic data in bugphyzz is standardized according to the NCBI
+taxonomy:</p>
 <ol style="list-style-type: decimal">
 <li>
-<em>NCBI ID</em>. An integer. The NCBI taxonomy ID (taxid)
-associated with a taxon.</li>
+<em>NCBI ID</em>: An integer representing the NCBI taxonomy ID
+(taxid) associated with a taxon.</li>
 <li>
-<em>Rank</em>. A character string describing the taxonomy rank.
-Valid values: superkingdom, kingdom, phylum, class, order, family,
-genus, species, strain.</li>
+<em>Rank</em>: A character string indicating the taxonomy rank,
+including superkingdom, kingdom, phylum, class, order, family, genus,
+species, or strain.</li>
 <li>
-<em>Taxon name</em>. A character string describing the scientific
-name of the taxon.</li>
+<em>Taxon name</em>: A character string denoting the scientific name
+of the taxon.</li>
 </ol>
 <p><strong>Attribute-related</strong></p>
-<p>Attribute data was harmonized with a controlled vocabulary based on
-available ontology terms. Attributes, ontology terms, and ontology
-libraries can be found in the ‘Attribute and sources’ vignette.</p>
+<p>Attribute data is harmonized with a controlled vocabulary based on
+available ontology terms. Details of attributes, ontology terms, and
+ontology libraries can be found in the ‘Attribute and sources’
+vignette.</p>
 <ol start="4" style="list-style-type: decimal">
 <li>
-<em>Attribute</em>. A character string describing the name of a
+<em>Attribute</em>: A character string describing the name of a
 trait that can be observed or measured.</li>
 <li>
-<em>Attribute type</em>. A character string describing the data
-type.
+<em>Attribute type</em>: A character string indicating the data
+type:
 <ul>
-<li>numeric. Attributes that can take numeric values. For example,
-attribute: growth temperature; attribute value: 25 C.</li>
-<li>binary. Attributes that can take booleans. For example, attribute:
-butyrate-producing; attribute value: TRUE.</li>
-<li>multistate-intersection. A set of related binary attributes. For
-example, habitat.</li>
-<li>multistate-union. Attribute that can take three or more values.
-These values are always character strings. For example, attribute:
-aerophilicity; attribute values: aerobic, anaerobic, or facultatively
-anaerobic.</li>
+<li>numeric: Attributes with numeric values (e.g., growth temperature:
+25°C).</li>
+<li>binary: Attributes with boolean values (e.g., butyrate-producing:
+TRUE).</li>
+<li>multistate-intersection: A set of related binary attributes (e.g.,
+habitat).</li>
+<li>multistate-union: Attributes with three or more values represented
+as character strings (e.g., aerophilicity: aerobic, anaerobic, or
+facultatively anaerobic).</li>
 </ul>
 </li>
 <li>
-<em>Attribute value</em>. The values that an attribute could take.
-Either a character string, a boolean, or a number.</li>
+<em>Attribute value</em>: The possible values that an attribute
+could take, represented as character strings, booleans, or numbers.</li>
 </ol>
 <p><strong>Attribute value-related</strong></p>
-<p>Metadata associated with the attribute values:</p>
+<p>Metadata associated with attribute values:</p>
 <ol start="7" style="list-style-type: decimal">
 <li>
-<em>Attribute source</em>. The source of the information.</li>
+<em>Attribute source</em>: The source of the information.</li>
 <li>
-<em>Evidence</em>. The type of evidence that supports an annotation.
-Valid options:
+<em>Evidence</em>: The type of evidence supporting an annotation,
+including:
 <ul>
-<li>EXP = experiment.</li>
-<li>IGC = inferred from genomic context.</li>
-<li>TAS = traceable author statement.</li>
-<li>NAS = non-traceable author statement.</li>
-<li>IBD = inferred from biological aspect of descendant.</li>
-<li>ASR = ancestral state reconstruction.</li>
+<li>EXP: Experiment</li>
+<li>IGC: Inferred from genomic context</li>
+<li>TAS: Traceable author statement</li>
+<li>NAS: Non-traceable author statement</li>
+<li>IBD: Inferred from biological aspect of descendant</li>
+<li>ASR: Ancestral state reconstruction</li>
 </ul>
 </li>
 <li>
-<em>Support values</em>.
+<em>Support values</em>:
 <ul>
-<li>Frequency and Score. Confidence that a given taxon exhibits a trait
+<li>Frequency and Score: Confidence that a given taxon exhibits a trait
 based on the curator’s knowledge or results of ASR or IBD.</li>
-<li>Validation. Score of the <a href="https://github.com/waldronlab/taxPProValidation" class="external-link">10-fold
+<li>Validation: Score from the <a href="https://github.com/waldronlab/taxPProValidation" class="external-link">10-fold
 cross-validation analysis</a>. Matthews correlation coefficient (MCC)
 for discrete attributes and R-squared for numeric attributes. Default
 threshold value is 0.5 and above.</li>
-<li>NSTI. Nearest sequence taxon index as described in <a href="https://doi.org/10.1038/nbt.2676" class="external-link">PICRUSt</a> or the <a href="https://cran.r-project.org/web/packages/castor/index.html" class="external-link">castor</a>
-package. Relevant for numeric values only.</li>
+<li>NSTI: Nearest sequence taxon index from <a href="https://doi.org/10.1038/nbt.2676" class="external-link">PICRUSt</a> or the <a href="https://cran.r-project.org/web/packages/castor/index.html" class="external-link">castor
+package</a>. Relevant for numeric values only.</li>
 </ul>
 </li>
 </ol>
 <p><strong>Attribute source-related</strong></p>
 <ol start="10" style="list-style-type: decimal">
 <li>
-<em>Confidence in curation</em>. A character string describing the
-confidence value of a source based on three criteria: 1) it has a
-source, 2) it has valid references, and 3) the curation was
-peer-reviewed. Valid options: high, medium, or low, used when a source
-satisfied three, two, or one of these criteria.</li>
+<em>Confidence in curation</em>: A character string indicating the
+confidence value of a source based on three criteria: 1) presence of a
+source, 2) valid references, and 3) peer-reviewed curation. Valid
+options include high, medium, or low, corresponding to satisfaction of
+three, two, or one of these criteria.</li>
 </ol>
-<p><strong>More information</strong></p>
+<p><strong>Additional information</strong></p>
 <ul>
 <li><p>Description of <strong>sources</strong> and
-<strong>attributes</strong> can be found here: <a href="https://waldronlab.io/bugphyzz/articles/attributes.html" class="uri">https://waldronlab.io/bugphyzz/articles/attributes.html</a></p></li>
-<li><p>Description of ontology <strong>evidence</strong> codes (8) can
-be found here: <a href="https://geneontology.org/docs/guide-go-evidence-codes/" class="external-link uri">https://geneontology.org/docs/guide-go-evidence-codes/</a></p></li>
-<li><p>Description of <strong>frequency</strong> keywords and scores is
-based on: <a href="https://grammarist.com/grammar/adverbs-of-frequency/" class="external-link uri">https://grammarist.com/grammar/adverbs-of-frequency/</a></p></li>
+<strong>attributes</strong>: <a href="https://waldronlab.io/bugphyzz/articles/attributes.html" class="uri">https://waldronlab.io/bugphyzz/articles/attributes.html</a></p></li>
+<li><p>Description of ontology <strong>evidence</strong> codes: <a href="https://geneontology.org/docs/guide-go-evidence-codes/" class="external-link uri">https://geneontology.org/docs/guide-go-evidence-codes/</a></p></li>
+<li><p>Description of <strong>frequency</strong> keywords and scores
+were based on: <a href="https://grammarist.com/grammar/adverbs-of-frequency/" class="external-link uri">https://grammarist.com/grammar/adverbs-of-frequency/</a></p></li>
 <li><p>IBD and ASR were performed with taxPPro: <a href="https://github.com/waldronlab/taxPPro" class="external-link uri">https://github.com/waldronlab/taxPPro</a></p></li>
 </ul>
 </div>
 <div class="section level2">
 <h2 id="analysis-and-stats">Analysis and Stats<a class="anchor" aria-label="anchor" href="#analysis-and-stats"></a>
 </h2>
-<p>This vignette only covers the main use of bugphyzz. Detailed analysis
-and stats of the bugphyzz annotations can be found here: <a href="https://github.com/waldronlab/bugphyzzAnalyses" class="external-link uri">https://github.com/waldronlab/bugphyzzAnalyses</a></p>
+<p>This vignette serves as an introduction to the basic functionalities
+of bugphyzz. For a more in-depth analysis and detailed statistics
+utilizing bugphyzz annotations, please visit: <a href="https://github.com/waldronlab/bugphyzzAnalyses" class="external-link uri">https://github.com/waldronlab/bugphyzzAnalyses</a></p>
 </div>
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h2>
-<p>The bugphyzz package can be installed with:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">require</a></span><span class="op">(</span><span class="st"><a href="https://bioconductor.github.io/BiocManager/" class="external-link">"BiocManager"</a></span>, quietly <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span>
 <span>    <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"BiocManager"</span><span class="op">)</span></span>
@@ -228,19 +233,21 @@ and stats of the bugphyzz annotations can be found here: <a href="https://github
 <span><span class="fu">BiocManager</span><span class="fu">::</span><span class="fu"><a href="https://bioconductor.github.io/BiocManager/reference/install.html" class="external-link">install</a></span><span class="op">(</span><span class="st">"waldronlab/bugphyzz"</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
-<h2 id="import-bugphyzz">Import bugphyzz<a class="anchor" aria-label="anchor" href="#import-bugphyzz"></a>
+<h2 id="import-bugphyzz-data">Import bugphyzz data<a class="anchor" aria-label="anchor" href="#import-bugphyzz-data"></a>
 </h2>
-<p>Load bugphyzz and other packages:</p>
+<p>Load the bugphyzz package and additional packages for data
+manipulation:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/waldronlab/bugphyzz" class="external-link">bugphyzz</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://purrr.tidyverse.org/" class="external-link">purrr</a></span><span class="op">)</span></span></code></pre></div>
-<p>bugphyzz is imported with the <code>importBugphyzz</code> function as
-a list of tidy data.frames, each of them corresponding to an attribute
-or group of related attributes in the case of the multistate-union type
-(check the data schema description above).</p>
-<p>Import bugphyzz and explore available attributes with
-<code>names</code>:</p>
+<p>bugphyzz data is imported using the <code>importBugphyzz</code>
+function, resulting in a list of tidy data frames. Each data frame
+corresponds to an attribute or a group of related attributes. This is
+particularly evident in the case of the multistate-union type described
+in the data schema above, where related attributes are grouped together
+in a single data frame. Available attribute names can be inspected with
+the <code>names</code> function:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">bp</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/importBugphyzz.html">importBugphyzz</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">bp</span><span class="op">)</span></span>
@@ -276,7 +283,7 @@ or group of related attributes in the case of the multistate-union type
 <span><span class="co">#&gt; [30] "mutation rate per site per year"      </span></span>
 <span><span class="co">#&gt; [31] "optimal ph"                           </span></span>
 <span><span class="co">#&gt; [32] "width"</span></span></code></pre></div>
-<p>Let’s take a glimpse at one of the data.frames:</p>
+<p>Let’s take a glimpse at one of the data frames:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="va">bp</span><span class="op">$</span><span class="va">aerophilicity</span>, width <span class="op">=</span> <span class="fl">50</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Rows: 27,284</span></span>
@@ -296,16 +303,19 @@ or group of related attributes in the case of the multistate-union type
 <p>Compare the column names with the data schema described above.</p>
 </div>
 <div class="section level2">
-<h2 id="create-signatures">Create signatures<a class="anchor" aria-label="anchor" href="#create-signatures"></a>
+<h2 id="create-microbial-signatures">Create microbial signatures<a class="anchor" aria-label="anchor" href="#create-microbial-signatures"></a>
 </h2>
-<p>After the attributes have been imported, we can use the
-<code>makeSignatures</code> function to create a list of signatures.
-<code>makeSignatures</code> accepts a few arguments for filtering such
-as evidence, frequency, and minimum and maximum values for numeric
-attributes. If a more refined filtering is required, a user could use
-regular data manipulation functions on the data.frame of interest (e.g.,
-<code><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">dplyr::filter</a></code>).</p>
-<p>Some examples:</p>
+<p>bugphyzz’s primary function is to facilitate the creation of
+microbial signatures, which are essentially lists of microbes sharing
+specific taxonomy ranks and attribute values. Once the data frames
+containing attribute information are imported, the
+<code>makeSignatures</code> function can be employed to generate these
+signatures. <code>makeSignatures</code> offers various filtering
+options, including evidence, frequency, and minimum and maximum values
+for numeric attributes. For more precise filtering requirements, users
+can leverage standard data manipulation functions on the relevant data
+frame, such as <code><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">dplyr::filter</a></code>.</p>
+<p>Examples:</p>
 <ul>
 <li>Create signatures of taxon names at the genus level for the
 aerophilicity attribute (discrete):</li>
@@ -384,7 +394,7 @@ attribute (numeric):</li>
 <span><span class="co">#&gt; $`bugphyzz:animal pathogen|TRUE`</span></span>
 <span><span class="co">#&gt; [1] 100053 100901   1015   1017   1018   1019</span></span></code></pre></div>
 <ul>
-<li>Make signatures for all of the data.frames:</li>
+<li>Create signatures for all of the bugphyzz data frames:</li>
 </ul>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">sigs</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html" class="external-link">map</a></span><span class="op">(</span><span class="va">bp</span>, <span class="va">makeSignatures</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
@@ -412,18 +422,27 @@ attribute (numeric):</li>
 <span><span class="co">#&gt; [1]    1733    1773 1334054 1334056 1334058 1334062</span></span></code></pre></div>
 </div>
 <div class="section level2">
-<h2 id="run-an-enrichment-analysis">Run an enrichment analysis<a class="anchor" aria-label="anchor" href="#run-an-enrichment-analysis"></a>
+<h2 id="run-a-bug-set-enrichment-analysis">Run a bug set enrichment analysis<a class="anchor" aria-label="anchor" href="#run-a-bug-set-enrichment-analysis"></a>
 </h2>
-<p>Bugphyzz signatures can be used for running enrichment analysis with
-existing tools developed in R. For example, using EnrichmenBrowser.</p>
-<p>Here is an example of how to run an enrichment analysis using GSEA
-and a benchmark dataset.</p>
-<p>Load packages:</p>
+<p>Bugphyzz signatures are suitable for conducting bug set enrichment
+analysis using existing tools available in R. In this example, we will
+perform a set enrichment analysis using a dataset with a known
+biological ground truth.</p>
+<p>The dataset originates from the Human Microbiome Project (2012) and
+compares subgingival and supragingival plaque. This data will be
+imported using the <a href="https://bioconductor.org/packages/release/data/experiment/html/MicrobiomeBenchmarkData.html" class="external-link">MicrobiomeBenchmarkData
+package</a>. For the implementation of the enrichment analysis, we will
+utilize the Gene Set Enrichment Analysis (GSEA) method available in the
+<a href="https://bioconductor.org/packages/release/bioc/html/EnrichmentBrowser.html" class="external-link">EnrichmentBrowser
+package</a>. The expected outcome is an enrichment of aerobic taxa in
+the supragingival plaque (positive enrichment score) and anaerobic taxa
+in the subgingival plaque (negative enrichment score).</p>
+<p>Load necessary packages:</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">EnrichmentBrowser</span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/waldronlab/MicrobiomeBenchmarkData" class="external-link">MicrobiomeBenchmarkData</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/microbiome/mia" class="external-link">mia</a></span><span class="op">)</span></span></code></pre></div>
-<p>Load benchmark data:</p>
+<p>Import benchmark data:</p>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">dat_name</span> <span class="op">&lt;-</span> <span class="st">'HMP_2012_16S_gingival_V35'</span></span>
 <span><span class="va">tse</span> <span class="op">&lt;-</span> <span class="fu"><a href="http://waldronlab.io/MicrobiomeBenchmarkData/reference/getBenchmarkData.html" class="external-link">getBenchmarkData</a></span><span class="op">(</span><span class="va">dat_name</span>, dryrun <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span></span>
@@ -451,7 +470,8 @@ and a benchmark dataset.</p>
 <span><span class="co">#&gt; rowTree: 1 phylo tree(s) (45364 leaves)</span></span>
 <span><span class="co">#&gt; colLinks: NULL</span></span>
 <span><span class="co">#&gt; colTree: NULL</span></span></code></pre></div>
-<p>Differential abundance (DA) analysis:</p>
+<p>Perform differential abundance (DA) analysis to get sets of
+microbes:</p>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">tse_subset</span><span class="op">$</span><span class="va">GROUP</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html" class="external-link">ifelse</a></span><span class="op">(</span></span>
 <span>  <span class="va">tse_subset</span><span class="op">$</span><span class="va">body_subsite</span> <span class="op">==</span> <span class="st">'subgingival_plaque'</span>, <span class="fl">0</span>, <span class="fl">1</span></span>
@@ -466,7 +486,7 @@ and a benchmark dataset.</p>
 <span><span class="fu"><a href="https://rdrr.io/pkg/SummarizedExperiment/man/SummarizedExperiment-class.html" class="external-link">assay</a></span><span class="op">(</span><span class="va">edger</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu">limma</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/limma/man/voom.html" class="external-link">voom</a></span><span class="op">(</span></span>
 <span>  counts <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/SummarizedExperiment/man/SummarizedExperiment-class.html" class="external-link">assay</a></span><span class="op">(</span><span class="va">edger</span><span class="op">)</span>, design <span class="op">=</span> <span class="va">design</span>, plot <span class="op">=</span> <span class="cn">FALSE</span></span>
 <span><span class="op">)</span><span class="op">$</span><span class="va">E</span></span></code></pre></div>
-<p>Enrichment analysis using GSEA:</p>
+<p>Perform GSEA and display the results:</p>
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">gsea</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/EnrichmentBrowser/man/sbea.html" class="external-link">sbea</a></span><span class="op">(</span></span>
 <span>  method <span class="op">=</span> <span class="st">'gsea'</span>, se <span class="op">=</span> <span class="va">edger</span>, gs <span class="op">=</span> <span class="va">aer_sigs_g</span>, perm <span class="op">=</span> <span class="fl">1000</span>,</span>
@@ -515,11 +535,14 @@ and a benchmark dataset.</p>
 </table>
 </div>
 <div class="section level2">
-<h2 id="get-taxon-signatures">Get taxon signatures<a class="anchor" aria-label="anchor" href="#get-taxon-signatures"></a>
+<h2 id="get-signatures-associated-with-a-specific-microbe">Get signatures associated with a specific microbe<a class="anchor" aria-label="anchor" href="#get-signatures-associated-with-a-specific-microbe"></a>
 </h2>
-<p>Finally, a user could get all of the signature names to which a given
-taxon belongs to. Only taxids should be used.</p>
-<p>An example using <em>Escherichia coli</em> (taxid: 562).</p>
+<p>To retrieve all signature names associated with a specific taxon,
+users can utilize the <code>getTaxonSignatures</code> function. It’s
+important to note that only taxids should be used as input for this
+function.</p>
+<p>Let’s see an example using <em>Escherichia coli</em> (taxid:
+562).</p>
 <p>Get taxid for <em>E. coli</em> using taxize:</p>
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">taxid</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">as.character</a></span><span class="op">(</span><span class="fu">taxize</span><span class="fu">::</span><span class="fu"><a href="https://docs.ropensci.org/taxize/reference/get_uid.html" class="external-link">get_uid</a></span><span class="op">(</span><span class="st">"Escherichia coli"</span><span class="op">)</span><span class="op">)</span></span>
@@ -532,7 +555,7 @@ taxon belongs to. Only taxids should be used.</p>
 <span><span class="co">#&gt; • Not Found: <span style="color: #00BB00;">0</span></span></span>
 <span><span class="va">taxid</span></span>
 <span><span class="co">#&gt; [1] "562"</span></span></code></pre></div>
-<p>Get all signature names related to the <em>E. coli</em> taxid:</p>
+<p>Get all signature names associated to the <em>E. coli</em> taxid:</p>
 <div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/getTaxonSignatures.html">getTaxonSignatures</a></span><span class="op">(</span>tax <span class="op">=</span> <span class="va">taxid</span>, bp <span class="op">=</span> <span class="va">bp</span><span class="op">)</span></span>
 <span><span class="co">#&gt;  [1] "bugphyzz:aerophilicity|aerobic"                                       </span></span>
@@ -572,7 +595,7 @@ taxon belongs to. Only taxids should be used.</p>
 <span><span class="co">#&gt;  collate  en_US.UTF-8</span></span>
 <span><span class="co">#&gt;  ctype    en_US.UTF-8</span></span>
 <span><span class="co">#&gt;  tz       Etc/UTC</span></span>
-<span><span class="co">#&gt;  date     2024-03-12</span></span>
+<span><span class="co">#&gt;  date     2024-03-13</span></span>
 <span><span class="co">#&gt;  pandoc   3.1.1 @ /usr/local/bin/ (via rmarkdown)</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; <span style="color: #00BBBB; font-weight: bold;">─ Packages ───────────────────────────────────────────────────────────────────</span></span></span>
@@ -586,9 +609,11 @@ taxon belongs to. Only taxids should be used.</p>
 <span><span class="co">#&gt;  Biobase                  * 2.62.0      <span style="color: #555555;">2023-10-24</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">Bioconductor</span></span></span>
 <span><span class="co">#&gt;  BiocFileCache              2.10.1      <span style="color: #555555;">2023-10-26</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">Bioconductor</span></span></span>
 <span><span class="co">#&gt;  BiocGenerics             * 0.48.1      <span style="color: #555555;">2023-11-01</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">Bioconductor</span></span></span>
+<span><span class="co">#&gt;  BiocManager                1.30.22     <span style="color: #555555;">2023-08-08</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.3.2)</span></span></span>
 <span><span class="co">#&gt;  BiocNeighbors              1.20.2      <span style="color: #555555;">2024-01-07</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">Bioconductor 3.18 (R 4.3.2)</span></span></span>
 <span><span class="co">#&gt;  BiocParallel               1.36.0      <span style="color: #555555;">2023-10-24</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">Bioconductor</span></span></span>
 <span><span class="co">#&gt;  BiocSingular               1.18.0      <span style="color: #555555;">2023-10-24</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">Bioconductor</span></span></span>
+<span><span class="co">#&gt;  BiocStyle                * 2.30.0      <span style="color: #555555;">2023-10-24</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">Bioconductor</span></span></span>
 <span><span class="co">#&gt;  Biostrings               * 2.70.2      <span style="color: #555555;">2024-01-28</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">Bioconductor 3.18 (R 4.3.2)</span></span></span>
 <span><span class="co">#&gt;  bit                        4.0.5       <span style="color: #555555;">2022-11-15</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM (R 4.3.0)</span></span></span>
 <span><span class="co">#&gt;  bit64                      4.0.5       <span style="color: #555555;">2020-08-30</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM (R 4.3.0)</span></span></span>
@@ -596,8 +621,9 @@ taxon belongs to. Only taxids should be used.</p>
 <span><span class="co">#&gt;  blob                       1.2.4       <span style="color: #555555;">2023-03-17</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM (R 4.3.0)</span></span></span>
 <span><span class="co">#&gt;  bluster                    1.12.0      <span style="color: #555555;">2023-10-24</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">Bioconductor</span></span></span>
 <span><span class="co">#&gt;  bold                       1.3.0       <span style="color: #555555;">2023-05-02</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM (R 4.3.0)</span></span></span>
+<span><span class="co">#&gt;  bookdown                   0.38        <span style="color: #555555;">2024-03-04</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM (R 4.3.0)</span></span></span>
 <span><span class="co">#&gt;  bslib                      0.6.1       <span style="color: #555555;">2023-11-28</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM (R 4.3.0)</span></span></span>
-<span><span class="co">#&gt;  bugphyzz                 * 0.0.1.4     <span style="color: #555555;">2024-03-12</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">local</span></span></span>
+<span><span class="co">#&gt;  bugphyzz                 * 0.0.1.4     <span style="color: #555555;">2024-03-13</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">local</span></span></span>
 <span><span class="co">#&gt;  cachem                     1.0.8       <span style="color: #555555;">2023-05-01</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM (R 4.3.0)</span></span></span>
 <span><span class="co">#&gt;  cli                        3.6.2       <span style="color: #555555;">2023-12-11</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM (R 4.3.0)</span></span></span>
 <span><span class="co">#&gt;  cluster                    2.1.4       <span style="color: #555555;">2022-08-22</span> <span style="color: #555555;">[2]</span> <span style="color: #555555;">CRAN (R 4.3.2)</span></span></span>
@@ -642,7 +668,7 @@ taxon belongs to. Only taxids should be used.</p>
 <span><span class="co">#&gt;  htmltools                  0.5.7       <span style="color: #555555;">2023-11-03</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM (R 4.3.0)</span></span></span>
 <span><span class="co">#&gt;  httpcode                   0.3.0       <span style="color: #555555;">2020-04-10</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM (R 4.3.0)</span></span></span>
 <span><span class="co">#&gt;  httr                       1.4.7       <span style="color: #555555;">2023-08-15</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM (R 4.3.0)</span></span></span>
-<span><span class="co">#&gt;  igraph                     2.0.2       <span style="color: #555555;">2024-02-17</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM (R 4.3.0)</span></span></span>
+<span><span class="co">#&gt;  igraph                     2.0.3       <span style="color: #555555;">2024-03-13</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM (R 4.3.2)</span></span></span>
 <span><span class="co">#&gt;  IRanges                  * 2.36.0      <span style="color: #555555;">2023-10-24</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">Bioconductor</span></span></span>
 <span><span class="co">#&gt;  irlba                      2.3.5.1     <span style="color: #555555;">2022-10-03</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM (R 4.3.0)</span></span></span>
 <span><span class="co">#&gt;  iterators                  1.0.14      <span style="color: #555555;">2022-02-05</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM (R 4.3.0)</span></span></span>
