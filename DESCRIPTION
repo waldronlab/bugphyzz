@@ -49,6 +49,7 @@ Suggests:
     mia,
     stats,
     limma,
-    readr
+    readr,
+    BiocStyle
 URL: https://github.com/waldronlab/bugphyzz
 BugReports: https://github.com/waldronlab/bugphyzz/issues

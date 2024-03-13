@@ -1,8 +1,12 @@
 ---
 title: "bugphyzz"
 subtitle: "A harmonized data resource and software for enrichment analysis of microbial physiologies"
-output:
-  rmarkdown::html_vignette:
+author:
+  - name: "Samuel Gamboa"
+    email: "Samuel.Gamboa.Tuz@gmail.com"
+  - name: "Levi Waldron"
+output: 
+  BiocStyle::html_document:
     fig_caption: true
     toc: true
 vignette: >
@@ -18,110 +22,102 @@ knitr::opts_chunk$set(
 )
 ```
 
-## Introduction
+# Introduction
 
-[Bugphyzz](https://github.com/waldronlab/bugphyzzExports)
-is an electronic resource of harmonized microbial annotations from
-different sources. These annotations can be used to create signatures of
-microbes sharing attributes and used for bug set enrichment analysis.
+[bugphyzz](https://github.com/waldronlab/bugphyzzExports)
+is an electronic database of standardized microbial annotations.
+It facilitates the creation of microbial signatures based on shared attributes,
+which are utilized for bug set enrichment analysis.
 
-## Data schema
+# Data schema
 
 Annotations in bugphyzz represent the link between a taxon (Bacteria/Archaea)
-and an attribute as described in the data schema below.
+and an attribute, as outlined in the data schema provided below.
 
 <center>
 
-![**Data schema**](bugphyzz_data_schema.png){height="300px" width="600px"}
+![**Data schema**](bugphyzz_data_schema.png){width="100%"}
 
 </center>
 
 **Taxon-related**
 
-Taxonomic data was harmonized according to the NCBI taxonomy:
+Taxonomic data in bugphyzz is standardized according to the NCBI taxonomy:
 
-1. _NCBI ID_. An integer. The NCBI taxonomy ID (taxid) associated with a 
-taxon.
-2. _Rank_. A character string describing the taxonomy rank. Valid values:
-superkingdom, kingdom, phylum, class, order, family, genus, species, strain.
-3. _Taxon name_. A character string describing the scientific name of the taxon.
+1. _NCBI ID_: An integer representing the NCBI taxonomy ID (taxid) associated
+with a taxon.
+2. _Rank_: A character string indicating the taxonomy rank,
+including superkingdom, kingdom, phylum, class, order, family, genus, species,
+or strain.
+3. _Taxon name_: A character string denoting the scientific name of the taxon.
 
 **Attribute-related**
 
-Attribute data was harmonized with a controlled vocabulary based on
-available ontology terms. Attributes, ontology terms, and ontology libraries
+Attribute data is harmonized with a controlled vocabulary based on available
+ontology terms. Details of attributes, ontology terms, and ontology libraries
 can be found in the 'Attribute and sources' vignette.
 
-4. _Attribute_. A character string describing the name of a trait that can be
+4. _Attribute_: A character string describing the name of a trait that can be
 observed or measured.
-5. _Attribute type_. A character string describing the data type.
-    * numeric. Attributes that can take numeric values. For example, attribute:
-    growth temperature; attribute value: 25 C.
-    * binary. Attributes that can take booleans. For example,
-    attribute: butyrate-producing; attribute value: TRUE.
-    * multistate-intersection. A set of related binary attributes. For example,
-    habitat.
-    * multistate-union. Attribute that can take three or more values. These
-    values are always character strings. For example, attribute: aerophilicity;
-    attribute values: aerobic, anaerobic, or facultatively anaerobic.
-6. *Attribute value*. The values that an attribute could take. Either a
-character string, a boolean, or a number.
+5. _Attribute type_: A character string indicating the data type:
+    * numeric: Attributes with numeric values (e.g., growth temperature: 25°C).
+    * binary: Attributes with boolean values (e.g., butyrate-producing: TRUE).
+    * multistate-intersection: A set of related binary attributes (e.g., habitat).
+    * multistate-union: Attributes with three or more values represented as
+    character strings (e.g., aerophilicity: aerobic, anaerobic,
+    or facultatively anaerobic).
+6. _Attribute value_: The possible values that an attribute could take,
+represented as character strings, booleans, or numbers.
 
 **Attribute value-related**
 
-Metadata associated with the attribute values:
+Metadata associated with attribute values:
 
-7. _Attribute source_. The source of the information.
-8. _Evidence_. The type of evidence that supports an annotation. Valid options:
-    * EXP = experiment.
-    * IGC = inferred from genomic context.
-    * TAS = traceable author statement.
-    * NAS = non-traceable author statement.
-    * IBD = inferred from biological aspect of descendant.
-    * ASR = ancestral state reconstruction.
-    
-9. _Support values_.
-    * Frequency and Score. Confidence that a given taxon exhibits a trait based
-    on the curator’s knowledge or results of ASR or IBD.
-    * Validation. Score of the [10-fold cross-validation analysis](https://github.com/waldronlab/taxPProValidation).
-    Matthews correlation coefficient (MCC) for discrete attributes and 
+7. _Attribute source_: The source of the information.
+8. _Evidence_: The type of evidence supporting an annotation, including:
+    * EXP: Experiment
+    * IGC: Inferred from genomic context
+    * TAS: Traceable author statement
+    * NAS: Non-traceable author statement
+    * IBD: Inferred from biological aspect of descendant
+    * ASR: Ancestral state reconstruction
+
+9. _Support values_:
+    * Frequency and Score: Confidence that a given taxon exhibits a trait
+    based on the curator’s knowledge or results of ASR or IBD.
+    * Validation: Score from the [10-fold cross-validation analysis](https://github.com/waldronlab/taxPProValidation).
+    Matthews correlation coefficient (MCC) for discrete attributes and
     R-squared for numeric attributes. Default threshold value is 0.5 and above.
-    * NSTI. Nearest sequence taxon index as described in
-    [PICRUSt](https://doi.org/10.1038/nbt.2676) or the
-    [castor](https://cran.r-project.org/web/packages/castor/index.html) package.
+    * NSTI: Nearest sequence taxon index from [PICRUSt](https://doi.org/10.1038/nbt.2676)
+    or the [castor package](https://cran.r-project.org/web/packages/castor/index.html).
     Relevant for numeric values only.
 
 **Attribute source-related**
 
-10. _Confidence in curation_. A character string describing the confidence
-value of a source based on three criteria: 1) it has a source, 2) it has valid
-references, and 3) the curation was peer-reviewed.
-Valid options: high, medium, or low, used when a source satisfied three, two,
-or one of these criteria.
+10. _Confidence in curation_: A character string indicating the confidence
+value of a source based on three criteria: 1) presence of a source, 2) valid
+references, and 3) peer-reviewed curation.
+Valid options include high, medium, or low, corresponding to satisfaction of
+three, two, or one of these criteria.
 
-**More information**
+**Additional information**
 
-+ Description of **sources** and **attributes** can be found here:
-https://waldronlab.io/bugphyzz/articles/attributes.html
++ Description of **sources** and **attributes**: https://waldronlab.io/bugphyzz/articles/attributes.html
 
-+ Description of ontology **evidence** codes (8) can be found here:
-https://geneontology.org/docs/guide-go-evidence-codes/
++ Description of ontology **evidence** codes: https://geneontology.org/docs/guide-go-evidence-codes/
 
-+ Description of **frequency** keywords and scores is based on:
-https://grammarist.com/grammar/adverbs-of-frequency/
++ Description of **frequency** keywords and scores were based on: https://grammarist.com/grammar/adverbs-of-frequency/
 
-+ IBD and ASR were performed with taxPPro:
-https://github.com/waldronlab/taxPPro
++ IBD and ASR were performed with taxPPro: https://github.com/waldronlab/taxPPro
 
-## Analysis and Stats
+# Analysis and Stats
 
-This vignette only covers the main use of bugphyzz. Detailed analysis and
-stats of the bugphyzz annotations can be found here:
+This vignette serves as an introduction to the basic functionalities of
+bugphyzz. For a more in-depth analysis and detailed statistics
+utilizing bugphyzz annotations, please visit:
 https://github.com/waldronlab/bugphyzzAnalyses
 
-## Installation
-
-The bugphyzz package can be installed with:
+# Installation
 
 ```{r, eval=FALSE}
 if (!require("BiocManager", quietly = TRUE))
@@ -131,9 +127,9 @@ if (!require("BiocManager", quietly = TRUE))
 BiocManager::install("waldronlab/bugphyzz")
 ```
 
-## Import bugphyzz
+# Import bugphyzz data
 
-Load bugphyzz and other packages:
+Load the bugphyzz package and additional packages for data manipulation:
 
 ```{r load package, message=FALSE}
 library(bugphyzz)
@@ -141,19 +137,19 @@ library(dplyr)
 library(purrr)
 ```
 
-bugphyzz is imported with the `importBugphyzz` function as a list of
-tidy data.frames, each of them corresponding to an attribute
-or group of related attributes in the case of the multistate-union type
-(check the data schema description above).
-
-Import bugphyzz and explore available attributes with `names`:
+bugphyzz data is imported using the `importBugphyzz` function,
+resulting in a list of tidy data frames. Each data frame corresponds to an
+attribute or a group of related attributes. This is particularly evident in
+the case of the multistate-union type described in the data schema above,
+where related attributes are grouped together in a single data frame. Available
+attribute names can be inspected with the `names` function:
 
 ```{r import data, message=FALSE}
 bp <- importBugphyzz()
 names(bp)
 ```
 
-Let's take a glimpse at one of the data.frames:
+Let's take a glimpse at one of the data frames:
 
 ```{r a glimpse}
 glimpse(bp$aerophilicity, width = 50)
@@ -161,16 +157,19 @@ glimpse(bp$aerophilicity, width = 50)
 
 Compare the column names with the data schema described above.
 
-## Create signatures
+# Create microbial signatures
 
-After the attributes have been imported, we can use the `makeSignatures`
-function to create a list of signatures. `makeSignatures` accepts a few
-arguments for filtering such as evidence, frequency, and minimum and maximum
-values for numeric attributes. If a more refined filtering is required,
-a user could use regular data manipulation functions on the data.frame of
-interest (e.g., `dplyr::filter`).
+bugphyzz's primary function is to facilitate the creation of microbial
+signatures, which are essentially lists of microbes sharing specific taxonomy
+ranks and attribute values. Once the data frames containing attribute
+information are imported, the `makeSignatures` function can be employed to
+generate these signatures. `makeSignatures` offers various filtering options,
+including evidence, frequency, and minimum and maximum values for numeric
+attributes. For more precise filtering requirements, users can leverage
+standard data manipulation functions on the relevant data frame,
+such as `dplyr::filter`.
 
-Some examples:
+Examples:
 
 + Create signatures of taxon names at the genus level for the aerophilicity
 attribute (discrete):
@@ -214,7 +213,7 @@ ap_sigs_mix <- makeSignatures(
 map(ap_sigs_mix, head)
 ```
 
-+ Make signatures for all of the data.frames:
++ Create signatures for all of the bugphyzz data frames:
 
 ```{r}
 sigs <- map(bp, makeSignatures) |> 
@@ -226,15 +225,24 @@ length(sigs)
 head(map(sigs, head))
 ```
 
-## Run an enrichment analysis
+# Run a bug set enrichment analysis
 
-Bugphyzz signatures can be used for running enrichment analysis with
-existing tools developed in R. For example, using EnrichmenBrowser.
+Bugphyzz signatures are suitable for conducting bug set enrichment analysis
+using existing tools available in R. In this example, we will perform a set enrichment analysis using a dataset
+with a known biological ground truth.
 
-Here is an example of how to run an enrichment analysis using GSEA and
-a benchmark dataset.
+The dataset originates from the Human Microbiome Project (2012) and compares
+subgingival and supragingival plaque.
+This data will be imported using the [MicrobiomeBenchmarkData package](https://bioconductor.org/packages/release/data/experiment/html/MicrobiomeBenchmarkData.html).
+For the implementation of the enrichment analysis, we will utilize the
+Gene Set Enrichment Analysis (GSEA) method available in the
+[EnrichmentBrowser package](https://bioconductor.org/packages/release/bioc/html/EnrichmentBrowser.html).
+The expected outcome is an enrichment of aerobic taxa in the supragingival
+plaque (positive enrichment score) and anaerobic taxa in the subgingival plaque
+(negative enrichment score).
 
-Load packages:
+
+Load necessary packages:
 
 ```{r, message=FALSE}
 library(EnrichmentBrowser)
@@ -242,7 +250,7 @@ library(MicrobiomeBenchmarkData)
 library(mia)
 ```
 
-Load benchmark data:
+Import benchmark data:
 
 ```{r, warning=FALSE}
 dat_name <- 'HMP_2012_16S_gingival_V35'
@@ -253,7 +261,7 @@ tse_subset <- tse_genus[rowSums(assay(tse_genus) >= 1) >= min_n_samples,]
 tse_subset
 ```
 
-Differential abundance (DA) analysis:
+Perform differential abundance (DA) analysis to get sets of microbes:
 
 ```{r}
 tse_subset$GROUP <- ifelse(
@@ -271,7 +279,7 @@ assay(edger) <- limma::voom(
 )$E
 ```
 
-Enrichment analysis using GSEA:
+Perform GSEA and display the results:
 
 ```{r, message=FALSE}
 gsea <- sbea(
@@ -287,12 +295,14 @@ gsea_tbl <- as.data.frame(gsea$res.tbl) |>
 knitr::kable(gsea_tbl)
 ```
 
-## Get taxon signatures 
+# Get signatures associated with a specific microbe
 
-Finally, a user could get all of the signature names to which a given taxon
-belongs to. Only taxids should be used.
+To retrieve all signature names associated with a specific taxon,
+users can utilize the `getTaxonSignatures` function.
+It's important to note that only taxids should be used as input for this
+function.
 
-An example using _Escherichia coli_ (taxid: 562).
+Let's see an example using _Escherichia coli_ (taxid: 562).
 
 Get taxid for _E. coli_ using taxize:
 
@@ -301,12 +311,13 @@ taxid <- as.character(taxize::get_uid("Escherichia coli"))
 taxid
 ```
 
-Get all signature names related to the _E. coli_ taxid:
+Get all signature names associated to the _E. coli_ taxid:
 
 ```{r}
 getTaxonSignatures(tax = taxid, bp = bp)
 ```
-## Session information:
+
+# Session information:
 
 ```{r}
 sessioninfo::session_info()
