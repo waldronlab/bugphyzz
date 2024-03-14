@@ -1,13 +1,5 @@
 # bugphyzz
 
-<!-- badges: start -->
-
-[![Lifecycle:
-experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
-[![CRAN
-status](https://www.r-pkg.org/badges/version/bugphyzz)](https://CRAN.R-project.org/package=bugphyzz)
-<!-- badges: end -->
- 
 `bugphyzz` is a collection of bacterial physiological features to be used as a
 resource for physiological discovery and producing signatures.
 We are continuously curating `bugphyzz` databases through 3 main methods:
