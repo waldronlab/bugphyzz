@@ -15,6 +15,21 @@ Authors@R:
             family = "Waldron",
             role = c("aut"),
             comment = c(ORCID = "0000-0003-2725-0694")
+        ),
+        person(
+            given = "Kelly",
+            family = "Eckenrode",
+            role = c("aut")
+        ),
+        person(
+            given = "Jonathan",
+            family = "Ye",
+            role = c("aut")
+        ),
+        person(
+            given = "Jennifer",
+            family = "Wokaty",
+            role = c("aut")
         )
     )
 Description: bugphyzz is an electronic database of standardized microbial
