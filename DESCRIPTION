@@ -1,13 +1,24 @@
 Package: bugphyzz
-Title: Access to microbial physiologies in high throughput
+Title: A harmonized data resource and software for enrichment analysis of microbial physiologies
 Version: 0.0.1.4
 Authors@R: 
-    person(given = "First",
-           family = "Last",
-           role = c("aut", "cre"),
-           email = "first.last@example.com",
-           comment = c(ORCID = "YOUR-ORCID-ID"))
-Description: What the package does (one paragraph).
+    c(
+        person(
+            given = "Samuel",
+            family = "Gamboa",
+            role = c("aut", "cre"),
+            email = "Samuel.Gamboa.Tuz@gmail.com",
+            comment = c(ORCID = "0000-0002-6863-7943")
+        ),
+        person(
+            given = "Levi",
+            family = "Waldron",
+            role = c("aut"),
+            comment = c(ORCID = "0000-0003-2725-0694")
+    )
+Description: bugphyzz is an electronic database of standardized microbial
+annotations. It facilitates the creation of microbial signatures based on
+shared attributes, which are utilized for bug set enrichment analysis.
 License: MIT + file LICENSE
 Config/testthat/edition: 3
 Encoding: UTF-8
