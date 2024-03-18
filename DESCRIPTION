@@ -1,14 +1,44 @@
 Package: bugphyzz
-Title: Access to microbial physiologies in high throughput
+Title: A harmonized data resource and software for enrichment analysis of microbial physiologies
 Version: 0.0.1.4
 Authors@R: 
-    person(given = "First",
-           family = "Last",
-           role = c("aut", "cre"),
-           email = "first.last@example.com",
-           comment = c(ORCID = "YOUR-ORCID-ID"))
-Description: What the package does (one paragraph).
-License: MIT + file LICENSE
+    c(
+        person(
+            given = "Samuel",
+            family = "Gamboa",
+            role = c("aut", "cre"),
+            email = "Samuel.Gamboa.Tuz@gmail.com",
+            comment = c(ORCID = "0000-0002-6863-7943")
+        ),
+        person(
+            given = "Levi",
+            family = "Waldron",
+            role = c("aut"),
+            comment = c(ORCID = "0000-0003-2725-0694")
+        ),
+        person(
+            given = "Kelly",
+            family = "Eckenrode",
+            role = c("aut")
+        ),
+        person(
+            given = "Jonathan",
+            family = "Ye",
+            role = c("aut")
+        ),
+        person(
+            given = "Jennifer",
+            family = "Wokaty",
+            role = c("aut")
+        )
+    )
+Description: bugphyzz is an electronic database of standardized microbial
+  annotations. It facilitates the creation of microbial signatures based on
+  shared attributes, which are utilized for bug set enrichment analysis.
+biocViews:
+    MicrobiomeData,
+    ReproducibleResearch
+License: Artistic-2.0
 Config/testthat/edition: 3
 Encoding: UTF-8
 LazyData: true
@@ -16,7 +46,7 @@ Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.1
 VignetteBuilder: knitr
 Depends: 
-    R (>= 4.2)
+    R (>= 4.3)
 Imports: 
     dplyr,
     utils,
@@ -43,6 +73,13 @@ Suggests:
     knitr,
     rmarkdown,
     sessioninfo,
-    testthat
+    testthat,
+    EnrichmentBrowser,
+    MicrobiomeBenchmarkData,
+    mia,
+    stats,
+    limma,
+    readr,
+    BiocStyle
 URL: https://github.com/waldronlab/bugphyzz
 BugReports: https://github.com/waldronlab/bugphyzz/issues

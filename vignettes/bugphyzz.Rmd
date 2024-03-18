@@ -1,6 +1,14 @@
 ---
 title: "bugphyzz"
-output: rmarkdown::html_vignette
+subtitle: "A harmonized data resource and software for enrichment analysis of microbial physiologies"
+author:
+  - name: "Samuel Gamboa"
+    email: "Samuel.Gamboa.Tuz@gmail.com"
+  - name: "Levi Waldron"
+output: 
+  BiocStyle::html_document:
+    fig_caption: true
+    toc: true
 vignette: >
   %\VignetteIndexEntry{bugphyzz}
   %\VignetteEngine{knitr::rmarkdown}
@@ -16,11 +24,100 @@ knitr::opts_chunk$set(
 
 # Introduction
 
-The `bugphyzz` package provides access to an electronic resource of 
-harmonized microbial annotations from different sources. The resource can
-also be accessed by direct download at **>>> insert Zenodo link here <<<**.
+[bugphyzz](https://github.com/waldronlab/bugphyzzExports)
+is an electronic database of standardized microbial annotations.
+It facilitates the creation of microbial signatures based on shared attributes,
+which are utilized for bug set enrichment analysis.
 
-# Import bugphyzz
+# Data schema
+
+Annotations in bugphyzz represent the link between a taxon (Bacteria/Archaea)
+and an attribute, as outlined in the data schema provided below.
+
+<center>
+
+![**Data schema**](bugphyzz_data_schema.png){width="100%"}
+
+</center>
+
+**Taxon-related**
+
+Taxonomic data in bugphyzz is standardized according to the NCBI taxonomy:
+
+1. _NCBI ID_: An integer representing the NCBI taxonomy ID (taxid) associated
+with a taxon.
+2. _Rank_: A character string indicating the taxonomy rank,
+including superkingdom, kingdom, phylum, class, order, family, genus, species,
+or strain.
+3. _Taxon name_: A character string denoting the scientific name of the taxon.
+
+**Attribute-related**
+
+Attribute data is harmonized with a controlled vocabulary based on available
+ontology terms. Details of attributes, ontology terms, and ontology libraries
+can be found in the 'Attribute and sources' vignette.
+
+4. _Attribute_: A character string describing the name of a trait that can be
+observed or measured.
+5. _Attribute type_: A character string indicating the data type:
+    * numeric: Attributes with numeric values (e.g., growth temperature: 25°C).
+    * binary: Attributes with boolean values (e.g., butyrate-producing: TRUE).
+    * multistate-intersection: A set of related binary attributes (e.g., habitat).
+    * multistate-union: Attributes with three or more values represented as
+    character strings (e.g., aerophilicity: aerobic, anaerobic,
+    or facultatively anaerobic).
+6. _Attribute value_: The possible values that an attribute could take,
+represented as character strings, booleans, or numbers.
+
+**Attribute value-related**
+
+Metadata associated with attribute values:
+
+7. _Attribute source_: The source of the information.
+8. _Evidence_: The type of evidence supporting an annotation, including:
+    * EXP: Experiment
+    * IGC: Inferred from genomic context
+    * TAS: Traceable author statement
+    * NAS: Non-traceable author statement
+    * IBD: Inferred from biological aspect of descendant
+    * ASR: Ancestral state reconstruction
+
+9. _Support values_:
+    * Frequency and Score: Confidence that a given taxon exhibits a trait
+    based on the curator’s knowledge or results of ASR or IBD.
+    * Validation: Score from the [10-fold cross-validation analysis](https://github.com/waldronlab/taxPProValidation).
+    Matthews correlation coefficient (MCC) for discrete attributes and
+    R-squared for numeric attributes. Default threshold value is 0.5 and above.
+    * NSTI: Nearest sequence taxon index from [PICRUSt](https://doi.org/10.1038/nbt.2676)
+    or the [castor package](https://cran.r-project.org/web/packages/castor/index.html).
+    Relevant for numeric values only.
+
+**Attribute source-related**
+
+10. _Confidence in curation_: A character string indicating the confidence
+value of a source based on three criteria: 1) presence of a source, 2) valid
+references, and 3) peer-reviewed curation.
+Valid options include high, medium, or low, corresponding to satisfaction of
+three, two, or one of these criteria.
+
+**Additional information**
+
++ Description of **sources** and **attributes**: https://waldronlab.io/bugphyzz/articles/attributes.html
+
++ Description of ontology **evidence** codes: https://geneontology.org/docs/guide-go-evidence-codes/
+
++ Description of **frequency** keywords and scores were based on: https://grammarist.com/grammar/adverbs-of-frequency/
+
++ IBD and ASR were performed with taxPPro: https://github.com/waldronlab/taxPPro
+
+# Analysis and Stats
+
+This vignette serves as an introduction to the basic functionalities of
+bugphyzz. For a more in-depth analysis and detailed statistics
+utilizing bugphyzz annotations, please visit:
+https://github.com/waldronlab/bugphyzzAnalyses
+
+# Installation
 
 ```{r, eval=FALSE}
 if (!require("BiocManager", quietly = TRUE))
@@ -30,35 +127,62 @@ if (!require("BiocManager", quietly = TRUE))
 BiocManager::install("waldronlab/bugphyzz")
 ```
 
+# Import bugphyzz data
+
+Load the bugphyzz package and additional packages for data manipulation:
+
 ```{r load package, message=FALSE}
 library(bugphyzz)
 library(dplyr)
 library(purrr)
 ```
 
-```{r import data}
-bp <- importBugphyzz(version = 'devel')
-head(map(bp, head))
-```
+bugphyzz data is imported using the `importBugphyzz` function,
+resulting in a list of tidy data frames. Each data frame corresponds to an
+attribute or a group of related attributes. This is particularly evident in
+the case of the multistate-union type described in the data schema above,
+where related attributes are grouped together in a single data frame. Available
+attribute names can be inspected with the `names` function:
 
-## Explore wich attribute groups are available
-
-```{r}
+```{r import data, message=FALSE}
+bp <- importBugphyzz()
 names(bp)
 ```
 
-# Create signatures
+Let's take a glimpse at one of the data frames:
 
-## Create signatures of taxids at the genus level for aerophilicity
+```{r a glimpse}
+glimpse(bp$aerophilicity, width = 50)
+```
+
+Compare the column names with the data schema described above.
+
+# Create microbial signatures
+
+bugphyzz's primary function is to facilitate the creation of microbial
+signatures, which are essentially lists of microbes sharing specific taxonomy
+ranks and attribute values. Once the data frames containing attribute
+information are imported, the `makeSignatures` function can be employed to
+generate these signatures. `makeSignatures` offers various filtering options,
+including evidence, frequency, and minimum and maximum values for numeric
+attributes. For more precise filtering requirements, users can leverage
+standard data manipulation functions on the relevant data frame,
+such as `dplyr::filter`.
+
+Examples:
+
++ Create signatures of taxon names at the genus level for the aerophilicity
+attribute (discrete):
 
 ```{r}
 aer_sigs_g <- makeSignatures(
-  dat = bp[["aerophilicity"]], tax_id_type = "NCBI_ID", tax_level = "genus"
+  dat = bp[["aerophilicity"]], tax_id_type = "Taxon_name", tax_level = "genus"
 )
 map(aer_sigs_g, head)
 ```
 
-## Create signatures of taxa names at the species level for growth temperature
++ Create signatures of taxon names at the species level for the growth
+temperature attribute (numeric):
 
 ```{r}
 gt_sigs_sp <- makeSignatures(
@@ -68,7 +192,8 @@ gt_sigs_sp <- makeSignatures(
 map(gt_sigs_sp, head)
 ```
 
-## Create signatures with custom threshold for numeric attributes
++ Create signatures with a custom threshold for the growth temperature
+attribute (numeric):
 
 ```{r}
 gt_sigs_mix <- makeSignatures(
@@ -78,7 +203,7 @@ gt_sigs_mix <- makeSignatures(
 map(gt_sigs_mix, head)
 ```
 
-## Create signatures for a binary attribute
++ Create signatures for the animal pathogen attribute (boolean):
 
 ```{r}
 ap_sigs_mix <- makeSignatures(
@@ -88,7 +213,7 @@ ap_sigs_mix <- makeSignatures(
 map(ap_sigs_mix, head)
 ```
 
-## Make signatures for all datasets with a single function call
++ Create signatures for all of the bugphyzz data frames:
 
 ```{r}
 sigs <- map(bp, makeSignatures) |> 
@@ -96,12 +221,103 @@ sigs <- map(bp, makeSignatures) |>
 length(sigs)
 ```
 
-
 ```{r}
 head(map(sigs, head))
 ```
 
-## Session information:
+# Run a bug set enrichment analysis
+
+Bugphyzz signatures are suitable for conducting bug set enrichment analysis
+using existing tools available in R. In this example, we will perform a set enrichment analysis using a dataset
+with a known biological ground truth.
+
+The dataset originates from the Human Microbiome Project (2012) and compares
+subgingival and supragingival plaque.
+This data will be imported using the [MicrobiomeBenchmarkData package](https://bioconductor.org/packages/release/data/experiment/html/MicrobiomeBenchmarkData.html).
+For the implementation of the enrichment analysis, we will utilize the
+Gene Set Enrichment Analysis (GSEA) method available in the
+[EnrichmentBrowser package](https://bioconductor.org/packages/release/bioc/html/EnrichmentBrowser.html).
+The expected outcome is an enrichment of aerobic taxa in the supragingival
+plaque (positive enrichment score) and anaerobic taxa in the subgingival plaque
+(negative enrichment score).
+
+
+Load necessary packages:
+
+```{r, message=FALSE}
+library(EnrichmentBrowser)
+library(MicrobiomeBenchmarkData)
+library(mia)
+```
+
+Import benchmark data:
+
+```{r, warning=FALSE}
+dat_name <- 'HMP_2012_16S_gingival_V35'
+tse <- getBenchmarkData(dat_name, dryrun = FALSE)[[1]]
+tse_genus <- splitByRanks(tse)$genus
+min_n_samples <- round(ncol(tse_genus) * 0.2)
+tse_subset <- tse_genus[rowSums(assay(tse_genus) >= 1) >= min_n_samples,]
+tse_subset
+```
+
+Perform differential abundance (DA) analysis to get sets of microbes:
+
+```{r}
+tse_subset$GROUP <- ifelse(
+  tse_subset$body_subsite == 'subgingival_plaque', 0, 1
+)
+edger <- deAna(
+    expr = tse_subset, de.method = 'edgeR', padj.method = 'fdr', 
+    filter.by.expr = FALSE, 
+)
+
+dat <- data.frame(colData(edger))
+design <- stats::model.matrix(~ GROUP, data = dat)
+assay(edger) <- limma::voom(
+  counts = assay(edger), design = design, plot = FALSE
+)$E
+```
+
+Perform GSEA and display the results:
+
+```{r, message=FALSE}
+gsea <- sbea(
+  method = 'gsea', se = edger, gs = aer_sigs_g, perm = 1000,
+  alpha = 0.1 
+)
+gsea_tbl <- as.data.frame(gsea$res.tbl) |> 
+  mutate(
+    GENE.SET = ifelse(PVAL < 0.05, paste0(GENE.SET, ' *'), GENE.SET),
+    PVAL = round(PVAL, 3),
+  ) |> 
+  dplyr::rename(BUG.SET = GENE.SET)
+knitr::kable(gsea_tbl)
+```
+
+# Get signatures associated with a specific microbe
+
+To retrieve all signature names associated with a specific taxon,
+users can utilize the `getTaxonSignatures` function.
+It's important to note that only taxids should be used as input for this
+function.
+
+Let's see an example using _Escherichia coli_ (taxid: 562).
+
+Get taxid for _E. coli_ using taxize:
+
+```{r, message=FALSE}
+taxid <- as.character(taxize::get_uid("Escherichia coli"))
+taxid
+```
+
+Get all signature names associated to the _E. coli_ taxid:
+
+```{r}
+getTaxonSignatures(tax = taxid, bp = bp)
+```
+
+# Session information:
 
 ```{r}
 sessioninfo::session_info()

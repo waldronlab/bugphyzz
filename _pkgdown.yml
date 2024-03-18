@@ -1,1 +1,4 @@
+home:
+  sidebar:
+    structure: [links, license, citation, authors, dev]
 url: https://waldronlab.io/bugphyzz/
