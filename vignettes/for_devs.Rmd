@@ -1,10 +1,8 @@
 ---
-title: "For developers, contributors, and curators"
-output: rmarkdown::html_vignette
-vignette: >
-  %\VignetteIndexEntry{'For developers, contributors, and curators'}
-  %\VignetteEngine{knitr::rmarkdown}
-  %\VignetteEncoding{UTF-8}
+title: "For curators: adding a new dataset to bugphyzz"
+output:
+  rmarkdown::html_document:
+    toc: true
 ---
 
 ```{r, include = FALSE}
@@ -14,25 +12,90 @@ knitr::opts_chunk$set(
 )
 ```
 
-# Introduction
+## 1. Identify the “Attribute type” of the data
 
-This vignette is intended as a guide for those interested in contributing
-to the bugphyzz project.
+The initial task entails determining the suitable data type for the new dataset.
+Four distinct data types are considered: binary, multistate-union,
+multistate-intersect, and numeric.
+These data types influence the output of various functions within the
+bugphyzz workflow. Comprehensive information regarding these data types
+is outlined in the [data schema](https://waldronlab.io/bugphyzz/articles/bugphyzz.html#data-schema).
+Upon determining the appropriate data type,
+it must be incorporated into the dataset as a variable (next step).
 
-# How is the data formatted in bugphyzz?
+## 2. Create a Google spreadsheet
 
-In bugphyzz, the data is stored and provided in tabular format. 
-Each row represents a link between a taxon and an attribute annotation
-(see description in main vignette). TODO: add link to the description of the
-columns.
+Create a CSV file to upload to Google Drive, where the attribute data is stored.
+This CSV file will ultimately be imported into R through the
+`bugphyz::importBugphyzz` function as a tidy data.frame, i.e.,
+each column will be a variable and each row will be an observation/annotation.
+The tidy data.frame will follow the [data schema](https://waldronlab.io/bugphyzz/articles/bugphyzz.html#data-schema).
 
-# Adding data
+Some examples:
 
-Data can be added in two main ways 1) curated spreadsheets, 2) importing and
-parsing data with code (e.g., using and API).
+**The data requires manual curation**.
+In some cases a computer-readable format doesn't exist or it's not
+readily available for direct download. For example, the information must be
+captured from a figure. In this case, the data should be directly captured
+into a Google spreadsheet in the [Google drive](https://drive.google.com/drive/folders/1i2UAolVWAYa7UnETNnCs0BDWjKPp3ev5)
 
-Independently of the option choses, the data must be in the format established
-in the [attributes.tsv]() file.
+**The data comes from a direct download**.
+Sometimes the data is in computer-readable format and can be downloaded
+directly. However, some data manipulation might be required, like cleaning
+the data, standardizing attributes, etc. In this cases, a script should be
+used for down
+
+
+
+
+
+scrip used to manipulate the data to the [bugphyzzWrangling repo]().
+* If the data comes from API, the best option would be to create and R client
+to access the data then save it as CSv document.
+
+### The data must be downloaded through an API
+
+
+
+
+
+
+
+
+
+
+## 3. Generate a csv file  in the right format that can be uploaded to the
+
+google drive {LINK}.
+    * Manual curation.Create a spreadsheet directly on google drive (Eg. sphingolipid).
+    * Bulk download. Create script and save it in bugphyzzWrangling. Upload the output to the drive. (E.g. Madin et al).
+    * API. Best opinion would be to  create and R package client to download and format the data. Upload the output to the drive. (E.g. BacDive with R)
+    
+## 4. Add Information about Attrubute and source
+
+    * Attribute
+    * Source
+    * Thresholds.
+    
+## 5. Add/Modify code in packages as necessary to import the new data in the right format through the physiologies function.
+
+    * This could include the link to the spreadsheet.
+    * Create helper functions to import a spreadsheet in a different format and shape it like the data model.
+    * Run Sysdata to generate updated NCBI IDs
+    
+## 6. Run 10-fold validation
+
+## 7. Run bugphyzzExports.
+
+
+
+
+
+
+
+
+
+
 
 ## Curated spreadsheets
 
