@@ -25,9 +25,9 @@ knitr::opts_chunk$set(
 # Introduction
 
 [bugphyzz](https://github.com/waldronlab/bugphyzzExports)
-is an electronic database of standardized microbial annotations.
-It facilitates the creation of microbial signatures based on shared attributes,
-which are utilized for bug set enrichment analysis.
+is an electronic database of standardized microbial annotations that allows:
+1. annotation of microbial taxa from multiple sources, and
+2. creation of microbial signatures based on shared attributes for bug set enrichment analysis.
 
 # Data schema
 
@@ -53,9 +53,9 @@ or strain.
 
 **Attribute-related**
 
-Attribute data is harmonized with a controlled vocabulary based on available
+Attribute data is harmonized using 
 ontology terms. Details of attributes, ontology terms, and ontology libraries
-can be found in the 'Attribute and sources' vignette.
+can be found in the [Attribute and sources](articles/attributes.html) article.
 
 4. _Attribute_: A character string describing the name of a trait that can be
 observed or measured.
@@ -123,8 +123,7 @@ https://github.com/waldronlab/bugphyzzAnalyses
 if (!require("BiocManager", quietly = TRUE))
     install.packages("BiocManager")
 
-## Devel version
-BiocManager::install("waldronlab/bugphyzz")
+BiocManager::install("bugphyzz")
 ```
 
 # Import bugphyzz data
@@ -254,8 +253,8 @@ Import benchmark data:
 
 ```{r, warning=FALSE}
 dat_name <- 'HMP_2012_16S_gingival_V35'
-tse <- getBenchmarkData(dat_name, dryrun = FALSE)[[1]]
-tse_genus <- splitByRanks(tse)$genus
+tse <- MicrobiomeBenchmarkData::getBenchmarkData(dat_name, dryrun = FALSE)[[1]]
+tse_genus <- mia::splitByRanks(tse)$genus
 min_n_samples <- round(ncol(tse_genus) * 0.2)
 tse_subset <- tse_genus[rowSums(assay(tse_genus) >= 1) >= min_n_samples,]
 tse_subset
@@ -267,7 +266,7 @@ Perform differential abundance (DA) analysis to get sets of microbes:
 tse_subset$GROUP <- ifelse(
   tse_subset$body_subsite == 'subgingival_plaque', 0, 1
 )
-edger <- deAna(
+edger <- EnrichmentBrowser::deAna(
     expr = tse_subset, de.method = 'edgeR', padj.method = 'fdr', 
     filter.by.expr = FALSE, 
 )
@@ -282,7 +281,7 @@ assay(edger) <- limma::voom(
 Perform GSEA and display the results:
 
 ```{r, message=FALSE}
-gsea <- sbea(
+gsea <- EnrichmentBrowser::sbea(
   method = 'gsea', se = edger, gs = aer_sigs_g, perm = 1000,
   alpha = 0.1 
 )
