@@ -5,7 +5,7 @@ author:
   - name: "Samuel Gamboa"
     email: "Samuel.Gamboa.Tuz@gmail.com"
   - name: "Levi Waldron"
-  - email: "levi.waldron@sph.cuny.edu"
+    email: "levi.waldron@sph.cuny.edu"
 output: 
   BiocStyle::html_document:
     fig_caption: true
