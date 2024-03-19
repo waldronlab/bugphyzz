@@ -1,6 +1,6 @@
 Package: bugphyzz
 Title: A harmonized data resource and software for enrichment analysis of microbial physiologies
-Version: 0.0.1.5
+Version: 0.0.1.6
 Authors@R: 
     c(
         person(
@@ -14,6 +14,7 @@ Authors@R:
             given = "Levi",
             family = "Waldron",
             role = c("aut"),
+            email = "levi.waldron@sph.cuny.edu",
             comment = c(ORCID = "0000-0003-2725-0694")
         ),
         person(
