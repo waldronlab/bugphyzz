@@ -217,7 +217,7 @@ map(ap_sigs_mix, head)
 
 ```{r}
 sigs <- map(bp, makeSignatures) |> 
-  list_flatten()
+  list_flatten(name_spec = "{inner}")
 length(sigs)
 ```
 
