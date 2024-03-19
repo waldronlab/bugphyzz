@@ -853,7 +853,7 @@ utils::globalVariables(c("."))
   select_cols <- c("physiology", "source_link")
   phys_links <- links %>%
     dplyr::select(tidyselect::all_of(select_cols))
-  custom_links <- customLinks() %>%
+  custom_links <- .customLinks() %>%
     dplyr::select(tidyselect::all_of((select_cols)))
   links <- dplyr::bind_rows(phys_links, custom_links)
   x %>%
