@@ -317,7 +317,7 @@ Get all signature names associated to the _E. coli_ taxid:
 getTaxonSignatures(tax = taxid, bp = bp)
 ```
 
-# Session information:
+# Session information
 
 ```{r}
 sessioninfo::session_info()
