@@ -35,7 +35,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">bugphyzz</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.1.7</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.1.8</span>
       </span>
     </div>
 
@@ -59,9 +59,6 @@
     </li>
     <li>
       <a href="articles/checks.html">Curation Checks</a>
-    </li>
-    <li>
-      <a href="articles/workflow.html">Bugphyzz workflow</a>
     </li>
   </ul>
 </li>
@@ -89,42 +86,21 @@
 <div class="page-header"><h1 id="bugphyzz">bugphyzz<a class="anchor" aria-label="anchor" href="#bugphyzz"></a>
 </h1></div>
 <p><code>bugphyzz</code> is a collection of bacterial physiological features to be used as a resource for physiological discovery and producing signatures. We are continuously curating <code>bugphyzz</code> databases through 3 main methods: webscraping, bulk download from online databases, and manual curation from literature. Mainly this database was concieved for analyzing microbiome data using physiological information. <code>Bugphyzz</code> can allow a user to look at specific physiologies, and create signature sets with specific bugs. The uniform structure of the data is what allows for the latter to manifest.</p>
-<p>We curated attributes like Gram stain, optimal temperature, fermentation, respiration, size, shape, colony arrangement, and 27 more physiologies. <code>bugphyzz</code> is now accessible via direct download or through our <a href="https://github.com/waldronlab/bugphyzz/edit/main/README.md#installation" class="external-link">R package</a>.</p>
-<p>Here, you can find installation instructions, examples of creating signatures, <code>bugphyzz</code><a href="https://github.com/waldronlab/bugphyzz/edit/main/README.md#bugphyzzanalyses" class="external-link">analyses</a> and how to add your own curation to the database.</p>
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h2>
-<p>You can install the development version of bugphyzz with:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">require</a></span><span class="op">(</span><span class="st"><a href="https://bioconductor.github.io/BiocManager/" class="external-link">"BiocManager"</a></span>, quietly <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span>
 <span>    <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"BiocManager"</span><span class="op">)</span></span>
 <span></span>
+<span><span class="co">##Release version</span></span>
+<span><span class="fu">BiocManager</span><span class="fu">::</span><span class="fu"><a href="https://bioconductor.github.io/BiocManager/reference/install.html" class="external-link">install</a></span><span class="op">(</span><span class="st">"bugphyzz"</span><span class="op">)</span></span>
+<span></span>
 <span><span class="co">## Devel version</span></span>
 <span><span class="fu">BiocManager</span><span class="fu">::</span><span class="fu"><a href="https://bioconductor.github.io/BiocManager/reference/install.html" class="external-link">install</a></span><span class="op">(</span><span class="st">"waldronlab/bugphyzz"</span><span class="op">)</span></span></code></pre></div>
-</div>
-<div class="section level2">
-<h2 id="analysis-using-bugphyzz">Analysis using bugphyzz<a class="anchor" aria-label="anchor" href="#analysis-using-bugphyzz"></a>
-</h2>
-<p>Example analyses using data from this package can be found at <a href="https://waldronlab.io/bugphyzzAnalyses/" class="uri">https://waldronlab.io/bugphyzzAnalyses/</a></p>
-</div>
-<div class="section level2">
-<h2 id="how-to-add-a-new-attribute-in-github-to-the-bugphyzz-database">How to add a new attribute in GitHub to the bugphyzz database<a class="anchor" aria-label="anchor" href="#how-to-add-a-new-attribute-in-github-to-the-bugphyzz-database"></a>
-</h2>
-<p>Curation steps: 1. Add attributes of physiology to <a href="https://github.com/waldronlab/bugphyzz/blob/main/inst/extdata/attributes.tsv" class="external-link">Attributes</a> using ontology terms 2. Add reference(s) to <a href="https://github.com/waldronlab/bugphyzz/blob/main/inst/extdata/confidence_in_curation.tsv" class="external-link">Confidence in Curation</a></p>
-<p>If using Google Sheets, publish a csv file to web:</p>
-<ol start="4" style="list-style-type: decimal">
-<li>Add Google Doc “publish to web” link and add in <a href="https://github.com/waldronlab/bugphyzz/blob/main/inst/extdata/links.tsv" class="external-link">Link</a>
-</li>
-<li>Add Google Doc link to <a href="https://github.com/waldronlab/bugphyzz/blob/main/inst/extdata/source_links.tsv" class="external-link">Source Link</a>
-</li>
-</ol>
-</div>
-<div class="section level2">
-<h2 id="bugphyzz-worklfow">Bugphyzz worklfow<a class="anchor" aria-label="anchor" href="#bugphyzz-worklfow"></a>
-</h2>
-<div class="float">
-<img src="articles/Drawing.svg" alt="Bugphyzz workflow"><div class="figcaption">Bugphyzz workflow</div>
-</div>
+<p>After installation, check vignettes with:</p>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu">browseVigenttes</span><span class="op">(</span><span class="st">"bugphyzz"</span><span class="op">)</span></span></code></pre></div>
 </div>
 </div>
   </div>
