@@ -9,41 +9,21 @@ using physiological information. `Bugphyzz` can allow a user to look at
 specific physiologies, and create signature sets with specific bugs. The
 uniform structure of the data is what allows for the latter to manifest.
 
-We curated attributes like Gram stain, optimal temperature, fermentation,
-respiration, size, shape, colony arrangement, and 27 more physiologies.
-`bugphyzz` is now accessible via direct download or through our
-[R package](https://github.com/waldronlab/bugphyzz/edit/main/README.md#installation).
-
-Here, you can find installation instructions, examples of creating signatures,
-`bugphyzz`[analyses](https://github.com/waldronlab/bugphyzz/edit/main/README.md#bugphyzzanalyses) and how to add your own curation to the database.
-
 ## Installation
-
-You can install the development version of bugphyzz with:
 
 ```r
 if (!require("BiocManager", quietly = TRUE))
     install.packages("BiocManager")
 
+##Release version
+BiocManager::install("bugphyzz")
+
 ## Devel version
 BiocManager::install("waldronlab/bugphyzz")
 ```
 
-## Analysis using bugphyzz
+After installation, check vignettes with:
 
-Example analyses using data from this package can be found at https://waldronlab.io/bugphyzzAnalyses/
-
-## How to add a new attribute in GitHub to the bugphyzz database
-Curation steps:
- 1. Add attributes of physiology to [Attributes](https://github.com/waldronlab/bugphyzz/blob/main/inst/extdata/attributes.tsv) using ontology terms
- 2. Add reference(s) to [Confidence in Curation](https://github.com/waldronlab/bugphyzz/blob/main/inst/extdata/confidence_in_curation.tsv)
-
-If using Google Sheets, publish a csv file to web:
-
- 4. Add Google Doc "publish to web" link and add in [Link](https://github.com/waldronlab/bugphyzz/blob/main/inst/extdata/links.tsv)
- 5. Add Google Doc link to [Source Link](https://github.com/waldronlab/bugphyzz/blob/main/inst/extdata/source_links.tsv)
-
-
-## Bugphyzz worklfow
-
-![Bugphyzz workflow](vignettes/Drawing.svg)
+```r
+browseVigenttes("bugphyzz")
+```
