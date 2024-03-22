@@ -1,6 +1,6 @@
 Package: bugphyzz
 Title: A harmonized data resource and software for enrichment analysis of microbial physiologies
-Version: 0.0.1.12
+Version: 0.99.0
 Authors@R: 
     c(
         person(
@@ -35,19 +35,21 @@ Authors@R:
     )
 Description: bugphyzz is an electronic database of standardized microbial
   annotations. It facilitates the creation of microbial signatures based on
-  shared attributes, which are utilized for bug set enrichment analysis.
+  shared attributes, which are utilized for bug set enrichment analysis. The
+  data also includes annotations imputed with ancestra state
+  reconstruction methods.
 biocViews:
     MicrobiomeData,
     ReproducibleResearch
 License: Artistic-2.0
 Config/testthat/edition: 3
 Encoding: UTF-8
-LazyData: true
+LazyData: false
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.1
 VignetteBuilder: knitr
 Depends: 
-    R (>= 4.3)
+    R (>= 4.4)
 Imports: 
     dplyr,
     utils,
