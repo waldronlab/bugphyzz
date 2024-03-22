@@ -58,6 +58,7 @@ Imports:
     tidyr,
     tidyselect,
     BiocFileCache,
+    httr2,
     tools
 Suggests: 
     DT,

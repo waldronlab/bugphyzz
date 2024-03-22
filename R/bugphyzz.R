@@ -57,26 +57,10 @@ importBugphyzz <- function(
     version = 'devel', force_download = FALSE, v = 0.5, exclude_rarely = TRUE
 
 ) {
-  types <- c("multistate", "binary", "numeric")
-  urls <- paste0(
-    "https://github.com/waldronlab/bugphyzzExports/raw/main/bugphyzz_",
-    types,
-    ".csv"
-  )
-  names(urls) <- types
   if (version == 'devel') {
-    output <- vector("list", length(urls))
-    for (i in seq_along(output)) {
-      message("Importing ", names(urls)[i], " data...")
-      names(output)[i] <- names(urls)[i]
-      rpath <- .getResource(
-        rname = paste0("bugphyzz_", names(urls)[i], ".tsv"),
-        url = urls[i], verbose = TRUE, force = force_download
-      )
-      output[[i]] <- utils::read.csv(rpath, header = TRUE, skip = 1) |>
-        dplyr::mutate(Attribute = tolower(Attribute))
-    }
+    output <- .downloadDevel(force_download)
   }
+  ## TODO add release version
   output <- lapply(output, function(x) split(x, x$Attribute))
   output <- purrr::list_flatten(output)
 
@@ -311,4 +295,54 @@ getTaxonSignatures <- function(tax, bp, ...) {
         is.na(mcc_mean) & !is.na(r2_mean) ~ r2_mean
       )
     )
+}
+
+## Import the devel version of bupghyzz
+.downloadDevel <- function(force_download) {
+  types <- c("multistate", "binary", "numeric")
+  urls <- paste0(
+    "https://github.com/waldronlab/bugphyzzExports/raw/main/bugphyzz_",
+    types,
+    ".csv"
+  )
+  names(urls) <- types
+  output <- vector("list", length(urls))
+  for (i in seq_along(output)) {
+    message("Importing ", names(urls)[i], " data...")
+    names(output)[i] <- names(urls)[i]
+    rpath <- .getResource(
+      rname = paste0("bugphyzz_", names(urls)[i], ".tsv"),
+      url = urls[i], verbose = TRUE, force = force_download
+    )
+    output[[i]] <- utils::read.csv(rpath, header = TRUE, skip = 1) |>
+      dplyr::mutate(Attribute = tolower(Attribute))
+  }
+  return(output)
+}
+
+## TODO update this function when relase is ready
+.downloadZ <- function(record, force_download) {
+  base_url <- paste0("https://zenodo.org/api/records/", record)
+  req <- httr2::request(base_url)
+  res <- httr2::req_perform(req)
+  l <- httr2::resp_body_json(res)
+
+  file_names_api <- purrr::map_chr(l$files, ~ .x$links$self)
+  file_names_url <- sub("(^.*)(api/)(.*)(/content$)", "\\1\\3", file_names_api)
+
+  rpath <- .getResource(
+    rname = paste0("bugphyzz.zip"),
+    url = file_names_url, verbose = TRUE, force = force_download
+  )
+  temp_dir <- tempdir()
+  utils::unzip(zipfile = rpath, exdir = temp_dir, junkpaths = TRUE)
+  files <- list.files(temp_dir, pattern = "csv", full.names = TRUE)
+
+  output <- vector("list", length(files))
+  for (i in seq_along(output)) {
+    output[[i]] <- utils::read.csv(files[i], header = TRUE)
+    # output[[i]] <- utils::read.csv(files, header = TRUE, skip = 1)
+    # dplyr::mutate(Attribute = tolower(Attribute))
+  }
+  return(output)
 }
