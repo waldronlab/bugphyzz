@@ -31,60 +31,6 @@
     <loc>https://waldronlab.io/bugphyzz/index.html</loc>
   </url>
   <url>
-    <loc>https://waldronlab.io/bugphyzz/reference/dot-appendLinks.html</loc>
-  </url>
-  <url>
-    <loc>https://waldronlab.io/bugphyzz/reference/dot-attributes.html</loc>
-  </url>
-  <url>
-    <loc>https://waldronlab.io/bugphyzz/reference/dot-checkColumnValues.html</loc>
-  </url>
-  <url>
-    <loc>https://waldronlab.io/bugphyzz/reference/dot-checkColumnValuesDF.html</loc>
-  </url>
-  <url>
-    <loc>https://waldronlab.io/bugphyzz/reference/dot-checkColumnValuesList.html</loc>
-  </url>
-  <url>
-    <loc>https://waldronlab.io/bugphyzz/reference/dot-checkRequiredColumns.html</loc>
-  </url>
-  <url>
-    <loc>https://waldronlab.io/bugphyzz/reference/dot-checkRequiredColumnsDF.html</loc>
-  </url>
-  <url>
-    <loc>https://waldronlab.io/bugphyzz/reference/dot-checkRequiredColumnsList.html</loc>
-  </url>
-  <url>
-    <loc>https://waldronlab.io/bugphyzz/reference/dot-errListToTable.html</loc>
-  </url>
-  <url>
-    <loc>https://waldronlab.io/bugphyzz/reference/dot-errorHandler.html</loc>
-  </url>
-  <url>
-    <loc>https://waldronlab.io/bugphyzz/reference/dot-requiredColumns.html</loc>
-  </url>
-  <url>
-    <loc>https://waldronlab.io/bugphyzz/reference/dot-stop_custom.html</loc>
-  </url>
-  <url>
-    <loc>https://waldronlab.io/bugphyzz/reference/dot-stop_invalid_column_values.html</loc>
-  </url>
-  <url>
-    <loc>https://waldronlab.io/bugphyzz/reference/dot-stop_required_columns_misplaced.html</loc>
-  </url>
-  <url>
-    <loc>https://waldronlab.io/bugphyzz/reference/dot-stop_required_columns_missing.html</loc>
-  </url>
-  <url>
-    <loc>https://waldronlab.io/bugphyzz/reference/dot-stop_required_missing_row_value.html</loc>
-  </url>
-  <url>
-    <loc>https://waldronlab.io/bugphyzz/reference/dot-stop_uncatalogued_column.html</loc>
-  </url>
-  <url>
-    <loc>https://waldronlab.io/bugphyzz/reference/dot-template.html</loc>
-  </url>
-  <url>
     <loc>https://waldronlab.io/bugphyzz/reference/getTaxonSignatures.html</loc>
   </url>
   <url>
