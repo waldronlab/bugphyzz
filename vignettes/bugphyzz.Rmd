@@ -267,15 +267,15 @@ Perform differential abundance (DA) analysis to get sets of microbes:
 tse_subset$GROUP <- ifelse(
   tse_subset$body_subsite == 'subgingival_plaque', 0, 1
 )
-edger <- EnrichmentBrowser::deAna(
-    expr = tse_subset, de.method = 'edgeR', padj.method = 'fdr', 
+se <- EnrichmentBrowser::deAna(
+    expr = tse_subset, de.method = 'limma', padj.method = 'fdr', 
     filter.by.expr = FALSE, 
 )
 
-dat <- data.frame(colData(edger))
+dat <- data.frame(colData(se))
 design <- stats::model.matrix(~ GROUP, data = dat)
-assay(edger) <- limma::voom(
-  counts = assay(edger), design = design, plot = FALSE
+assay(se) <- limma::voom(
+  counts = assay(se), design = design, plot = FALSE
 )$E
 ```
 
@@ -283,7 +283,7 @@ Perform GSEA and display the results:
 
 ```{r, message=FALSE}
 gsea <- EnrichmentBrowser::sbea(
-  method = 'gsea', se = edger, gs = aer_sigs_g, perm = 1000,
+  method = 'gsea', se = se, gs = aer_sigs_g, perm = 1000,
   alpha = 0.1 
 )
 gsea_tbl <- as.data.frame(gsea$res.tbl) |> 

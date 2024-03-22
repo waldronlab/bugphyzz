@@ -298,3 +298,49 @@ showPhys <- function(which_names = 'all') {
     )
   )
 }
+
+## Required columns
+.requiredColumns <- function(attr_type) {
+  fname <- system.file("extdata/curation_template.tsv", package = "bugphyzz")
+  df <- utils::read.table(fname, sep = "\t", header = TRUE)
+  lgl_vct_1 <- df$requiredness == "required"
+  lgl_vct_2 <- grepl(attr_type, df$attribute_types)
+  df <- df[lgl_vct_1 & lgl_vct_2,]
+  df[order(df[["required_column_order"]]), , drop = FALSE]
+  output <- df[['column_name']]
+  return(output)
+}
+
+## Generate a template for a bugphyzz dataset
+.template <- function(dataset) {
+  template_tsv <- system.file("extdata/curation_template.tsv", package = "bugphyzz")
+  template <- utils::read.table(
+    file = template_tsv, sep = "\t", check.names = FALSE, header = TRUE,
+    allowEscapes = TRUE )
+  # template <- readr::read_tsv(template_tsv, show_col_types = FALSE)
+  template[template[["column_name"]] %in% colnames(dataset), ]
+}
+
+## Print valid attributes
+.attributes <- function() {
+  fname <- system.file("extdata/attributes.tsv", package = "bugphyzz")
+  df <- utils::read.table(
+    fname, sep = "\t", header = TRUE, check.names = FALSE
+  )
+  unique(df[,"attribute"])
+}
+
+## Append links to error table
+.appendLinks <- function(x) {
+  fname1 <- system.file('extdata/spreadsheet_links.tsv', package = 'bugphyzz')
+  links <- read.table(fname1, header = TRUE, sep = '\t')
+  select_cols <- c("physiology", "source_link")
+  phys_links <- links %>%
+    dplyr::select(tidyselect::all_of(select_cols))
+  custom_links <- .customLinks() %>%
+    dplyr::select(tidyselect::all_of((select_cols)))
+  links <- dplyr::bind_rows(phys_links, custom_links)
+  x %>%
+    dplyr::left_join(links, by = c("dataset" = "physiology"))
+}
+

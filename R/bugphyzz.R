@@ -101,7 +101,7 @@ importBugphyzz <- function(
       o <- dplyr::left_join(.x, val, by = "Attribute" )
     } else if (attr_type == "multistate-intersection" || attr_type == "multistate-union") {
       val <- dplyr::select(val, Attribute = .data$physiology, Attribute_value = .data$attribute, .data$value)
-      o <- dplyr::left_join(mutate(.x, Attribute_value = tolower(.data$Attribute_value)) , val, by = c("Attribute", "Attribute_value"))
+      o <- dplyr::left_join(dplyr::mutate(.x, Attribute_value = tolower(.data$Attribute_value)) , val, by = c("Attribute", "Attribute_value"))
     } else if (attr_type == "numeric") {
       val <- dplyr::select(val, Attribute = .data$attribute, .data$value)
       o <- dplyr::left_join(.x, val, by = "Attribute") |>
