@@ -1,26 +1,4 @@
-#' Check that NCBI IDs are valid
-#'
-#' \code{check_valid_ncbi_ids} checks that the NCBI IDs in a dataset from
-#' bugphyzz are valid.
-#'
-#' @param dat Dataset imported from bugphyzz.
-#'
-#' @return A dataframe with the positions and values that must be corrected,
-#' If no errors are found, the output is NULL.
-#'
-#' @importFrom magrittr %>%
-#' @importFrom taxizedb taxid2name
-#' @importFrom taxize classification
-#' @importFrom tibble tibble
-#' @importFrom dplyr bind_rows
-#' @importFrom tibble as_tibble
-#' @importFrom dplyr left_join
-#' @importFrom dplyr relocate
-#'
-#' @export
-#'
-check_valid_ncbi_ids <- function(dat) {
-
+.check_valid_ncbi_ids <- function(dat) {
   ncbi_ids <- dat[['NCBI_ID']]
   ncbi_ids <- ncbi_ids[!is.na(ncbi_ids)]
   ncbi_ids <- unique(as.character(ncbi_ids))
