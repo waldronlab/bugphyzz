@@ -37,18 +37,18 @@
 .getTidyBD <- function(bacdive_data) {
   bacdive_data |>
     tidyr::pivot_longer(
-      cols = .data$gram_stain:tidyr::last_col(), # Attributes start in the gram_stain column
+      cols = gram_stain:tidyr::last_col(), # Attributes start in the gram_stain column
       names_to = 'Attribute', values_to = 'Attribute_value'
     ) |>
-    dplyr::filter(.data$Attribute_value != '') |>
-    dplyr::mutate(Attribute = gsub('_', ' ', .data$Attribute)) |>
+    dplyr::filter(Attribute_value != '') |>
+    dplyr::mutate(Attribute = gsub('_', ' ', Attribute)) |>
     dplyr::mutate(
       Attribute = dplyr::case_when(
-        .data$Attribute == 'oxygen tolerance' ~ 'aerophilicity',
-        .data$Attribute == 'cell shape' ~ 'shape',
-        .data$Attribute == 'pathogenicity animal' ~ 'animal pathongen',
-        .data$Attribute == 'sample type' ~ 'isolation site',
-        TRUE ~ .data$Attribute
+        Attribute == 'oxygen tolerance' ~ 'aerophilicity',
+        Attribute == 'cell shape' ~ 'shape',
+        Attribute == 'pathogenicity animal' ~ 'animal pathongen',
+        Attribute == 'sample type' ~ 'isolation site',
+        TRUE ~ Attribute
       )
     ) |>
     dplyr::distinct()
@@ -163,42 +163,42 @@
   )
   regex <- paste0('(', paste0(valid_terms, collapse = '|'), ')')
   split_df[['halophily']] <- split_df[['halophily']] |>
-    dplyr::mutate(Attribute_value = strsplit(.data$Attribute_value, ';')) |>
+    dplyr::mutate(Attribute_value = strsplit(Attribute_value, ';')) |>
     tidyr::unnest(cols = 'Attribute_value') |>
-    dplyr::filter(!grepl('no growth', .data$Attribute_value)) |>
+    dplyr::filter(!grepl('no growth', Attribute_value)) |>
     dplyr::mutate(
-      Attribute_value = stringr::str_squish(.data$Attribute_value),
-      Attribute_value = sub('NaCL', 'NaCl', .data$Attribute_value),
-      Attribute_value = sub('Marine', 'Sea', .data$Attribute_value),
-      Attribute_value = sub('Salts', 'salts', .data$Attribute_value)
+      Attribute_value = stringr::str_squish(Attribute_value),
+      Attribute_value = sub('NaCL', 'NaCl', Attribute_value),
+      Attribute_value = sub('Marine', 'Sea', Attribute_value),
+      Attribute_value = sub('Salts', 'salts', Attribute_value)
     ) |>
-    dplyr::filter(grepl(regex, .data$Attribute_value)) |>
+    dplyr::filter(grepl(regex, Attribute_value)) |>
     dplyr::mutate(
-      Attribute = stringr::str_extract(.data$Attribute_value, regex),
-      Unit = .data$Attribute_value |>
+      Attribute = stringr::str_extract(Attribute_value, regex),
+      Unit = Attribute_value |>
         stringr::str_extract(' [<>]??[0-9]+\\.??[0-9]*.*') |>
         stringr::str_squish() |>
         stringr::str_remove('^.* '),
-      Attribute_value = .data$Attribute_value |>
+      Attribute_value = Attribute_value |>
         stringr::str_extract(' [<>]??[0-9]+\\.??[0-9]*.*') |>
         stringr::str_squish() |>
         stringr::str_remove(' .*$'),
       Attribute_group = 'halophily',
       Attribute_type = 'range'
     ) |>
-    dplyr::filter(!grepl('[0-9]', .data$Unit)) |>
+    dplyr::filter(!grepl('[0-9]', Unit)) |>
     dplyr::distinct()
 
   ## hemolysis ####
   split_df[['hemolysis']] <- split_df[['hemolysis']] |>
     dplyr::mutate(
-      Attribute_value = strsplit(.data$Attribute_value, ';|/')
+      Attribute_value = strsplit(Attribute_value, ';|/')
     ) |>
-    tidyr::unnest(.data$Attribute_value) |>
-    dplyr::mutate(Attribute_value = stringr::str_squish(.data$Attribute_value)) |>
-    dplyr::filter(.data$Attribute_value != '') |>
+    tidyr::unnest(Attribute_value) |>
+    dplyr::mutate(Attribute_value = stringr::str_squish(Attribute_value)) |>
+    dplyr::filter(Attribute_value != '') |>
     dplyr::mutate(
-      Attribute = .data$Attribute_value,
+      Attribute = Attribute_value,
       Attribute_value = TRUE,
       Attribute_group = 'hemolysis',
       Attribute_type = 'multistate-intersection'
@@ -212,8 +212,8 @@
   split_df[['motility']] <- split_df[['motility']] |>
     dplyr::mutate(
       Attribute_value = dplyr::case_when(
-        .data[['Attribute_value']] == 'yes' ~ TRUE,
-        .data[['Attribute_value']] == 'no' ~ FALSE
+        Attribute_value == 'yes' ~ TRUE,
+        Attribute_value == 'no' ~ FALSE
       )
     )
   split_df[['motility']][['Attribute_group']] <- 'motility'
@@ -232,8 +232,8 @@
   ## metabolite production ####
   mp <- split_df[['metabolite production']]
   mp <- mp |>
-    dplyr::mutate(Attribute_value = strsplit(.data$Attribute_value, ';')) |>
-    tidyr::unnest(.data$Attribute_value)
+    dplyr::mutate(Attribute_value = strsplit(Attribute_value, ';')) |>
+    tidyr::unnest(Attribute_value)
   x <- stringr::str_extract(mp[['Attribute_value']], '(yes|no)$')
   mp <- mp[which(!is.na(x)),]
   y <- stringr::str_extract(mp[['Attribute_value']], '(yes|no)$')
@@ -249,9 +249,9 @@
   names(split_df)[pos] <- 'metabolite utilization'
   mu <- split_df[['metabolite utilization']]
   mu <- mu |>
-    dplyr::mutate(Attribute_value = strsplit(.data$Attribute_value, ';')) |>
-    tidyr::unnest(.data$Attribute_value) |>
-    dplyr::mutate(Attribute_value = stringr::str_squish(.data$Attribute_value))
+    dplyr::mutate(Attribute_value = strsplit(Attribute_value, ';')) |>
+    tidyr::unnest(Attribute_value) |>
+    dplyr::mutate(Attribute_value = stringr::str_squish(Attribute_value))
   x <- sub('^.* (\\+|-|\\+/-) *.*$', '\\1', mu[['Attribute_value']])
   y <- ifelse(!x %in% c('+', '-', '+/-'), NA, x)
   mu <- mu[which(!is.na(y)),]
@@ -265,9 +265,9 @@
     y == '+/-' ~ 'TRUE/FALSE'
   )
   mu <- mu |>
-    dplyr::mutate(Attribute_value = strsplit(.data$Attribute_value, '/')) |>
-    tidyr::unnest(.data$Attribute_value) |>
-    dplyr::mutate(Attribute_value = as.logical(.data$Attribute_value))
+    dplyr::mutate(Attribute_value = strsplit(Attribute_value, '/')) |>
+    tidyr::unnest(Attribute_value) |>
+    dplyr::mutate(Attribute_value = as.logical(Attribute_value))
   mu[['Attribute_group']] <- 'metabolite utilization'
   mu[['Attribute_type']] <- 'multistate-intersection'
   split_df[['metabolite utilization']] <- mu
@@ -277,13 +277,13 @@
   sf <- sf |>
     dplyr::mutate(
       Attribute_value = dplyr::case_when(
-        .data[['Attribute_value']] == 'yes' ~ TRUE,
-        .data[['Attribute_value']] == 'no' ~ FALSE
+        Attribute_value == 'yes' ~ TRUE,
+        Attribute_value == 'no' ~ FALSE
       ),
       Attribute_group = 'spore formation',
       Attribute_type = 'binary'
     ) |>
-    dplyr::filter(!is.na(.data$Attribute_value))
+    dplyr::filter(!is.na(Attribute_value))
   split_df[['spore formation']] <- sf
 
   split_df <- lapply(split_df, function(x) {

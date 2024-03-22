@@ -1,5 +1,11 @@
-# utils::globalVariables(c("Rank"))
-Rank <- NULL
+utils::globalVariables(c(
+  "Rank",
+  "Attribute", "Attribute_group", "Attribute_new", "Attribute_range",
+  "Attribute_value", "Attribute_value_max", "Attribute_value_min", "Br-C10:1",
+  "Evidence", "Frequency", "NCBI_ID", "Oxo-C19:1", "Taxon_name", "Unit",
+  "attribute", "functionname", "gram_stain", "physiology", "unit", "value"
+))
+
 #' Import bugphyzz
 #'
 #' \code{importBugphyzz} imports bugphyzz annotations as a list of
@@ -68,7 +74,7 @@ importBugphyzz <- function(
         url = urls[i], verbose = TRUE, force = force_download
       )
       output[[i]] <- utils::read.csv(rpath, header = TRUE, skip = 1) |>
-        dplyr::mutate(Attribute = tolower(.data$Attribute))
+        dplyr::mutate(Attribute = tolower(Attribute))
     }
   }
   output <- lapply(output, function(x) split(x, x$Attribute))
@@ -82,43 +88,43 @@ importBugphyzz <- function(
     .x |>
       dplyr::mutate(
         Attribute = ifelse(
-          .data$Attribute == "plant pathogenity",
+          Attribute == "plant pathogenity",
           "plant pathogenicity",
-          .data$Attribute
+          Attribute
         )
       )
   })
 
   names(output) <- purrr::map_chr(output, ~ unique(.x$Attribute))
   val <- .validationData() |>
-    dplyr::filter(.data$rank == "all") |>
-    dplyr::select(.data$physiology, .data$attribute, .data$value) |>
-    dplyr::mutate(physiology = tolower(.data$physiology)) |>
-    dplyr::mutate(attribute = tolower(.data$attribute))
+    dplyr::filter(rank == "all") |>
+    dplyr::select(physiology, attribute, value) |>
+    dplyr::mutate(physiology = tolower(physiology)) |>
+    dplyr::mutate(attribute = tolower(attribute))
 
   output <- purrr::map(output, ~ {
     attr_type <- unique(.x$Attribute_type)
     if (attr_type == "binary") {
-      val <- dplyr::select(val, Attribute = .data$attribute, .data$value)
+      val <- dplyr::select(val, Attribute = attribute, value)
       o <- dplyr::left_join(.x, val, by = "Attribute" )
     } else if (attr_type == "multistate-intersection" || attr_type == "multistate-union") {
-      val <- dplyr::select(val, Attribute = .data$physiology, Attribute_value = .data$attribute, .data$value)
-      o <- dplyr::left_join(dplyr::mutate(.x, Attribute_value = tolower(.data$Attribute_value)) , val, by = c("Attribute", "Attribute_value"))
+      val <- dplyr::select(val, Attribute = physiology, Attribute_value = attribute, value)
+      o <- dplyr::left_join(dplyr::mutate(.x, Attribute_value = tolower(Attribute_value)) , val, by = c("Attribute", "Attribute_value"))
     } else if (attr_type == "numeric") {
-      val <- dplyr::select(val, Attribute = .data$attribute, .data$value)
+      val <- dplyr::select(val, Attribute = attribute, value)
       o <- dplyr::left_join(.x, val, by = "Attribute") |>
-        dplyr::rename(NSTI = .data$nsti)
+        dplyr::rename(NSTI = nsti)
     }
     o |>
       dplyr::filter(
-       !(.data$value < v & .data$Evidence == "asr")
+       !(value < v & Evidence == "asr")
       ) |>
-      dplyr::mutate(value = ifelse(.data$Evidence != "asr", NA, value)) |>
-      dplyr::rename(Validation = .data$value)
+      dplyr::mutate(value = ifelse(Evidence != "asr", NA, value)) |>
+      dplyr::rename(Validation = value)
   })
 
   if (exclude_rarely) {
-    output <- purrr::map(output, ~ dplyr::filter(.x, .data$Frequency != "rarely"))
+    output <- purrr::map(output, ~ dplyr::filter(.x, Frequency != "rarely"))
   }
   return(output)
 }
@@ -170,8 +176,8 @@ makeSignatures <- function(
   }
   dat <- dat |>
     dplyr::filter(Rank %in% tax_level) |>
-    dplyr::filter(.data$Evidence %in% evidence) |>
-    dplyr::filter(.data$Frequency %in% frequency)
+    dplyr::filter(Evidence %in% evidence) |>
+    dplyr::filter(Frequency %in% frequency)
   if (!nrow(dat)) {
     warning(
       "Not enough data for creating signatures. Try different filtering options",
@@ -229,7 +235,7 @@ getTaxonSignatures <- function(tax, bp, ...) {
 .makeSignaturesDiscrete <- function(dat, tax_id_type = "NCBI_ID") {
   dat |>
     dplyr::mutate(
-      Attribute = paste0("bugphyzz:", .data$Attribute, "|", .data$Attribute_value)
+      Attribute = paste0("bugphyzz:", Attribute, "|", Attribute_value)
       ) |>
     {\(y) split(y, y$Attribute)}() |>
     lapply(function(x) unique(x[[tax_id_type]]))
@@ -249,14 +255,14 @@ getTaxonSignatures <- function(tax, bp, ...) {
     }
     dat <- dat |>
       dplyr::filter(
-        .data$Attribute_value >= min & .data$Attribute_value <= max
+        Attribute_value >= min & Attribute_value <= max
       ) |>
       dplyr::mutate(
-        Attribute = paste0("bugphyzz:", .data$Attribute, "| >=", min, " & <=", max)
+        Attribute = paste0("bugphyzz:", Attribute, "| >=", min, " & <=", max)
       )
   } else {
     thr <- .thresholds() |>
-      dplyr::filter(.data$Attribute_group == unique(dat$Attribute))
+      dplyr::filter(Attribute_group == unique(dat$Attribute))
     attr_name <- thr$Attribute
     min_values <- thr$lower
     max_values <- thr$upper
@@ -282,15 +288,15 @@ getTaxonSignatures <- function(tax, bp, ...) {
   utils::read.table(fname, header = TRUE, sep = '\t') |>
     dplyr::mutate(
       range = dplyr::case_when(
-        is.na(.data$lower) ~ paste0('<=', .data$upper),
-        is.na(.data$upper) ~ paste0('>=', .data$lower),
-        TRUE ~ paste0(.data$lower, '-', .data$upper)
+        is.na(lower) ~ paste0('<=', upper),
+        is.na(upper) ~ paste0('>=', lower),
+        TRUE ~ paste0(lower, '-', upper)
       ),
-      unit = ifelse(is.na(.data$unit), '', .data$unit)
+      unit = ifelse(is.na(unit), '', unit)
     ) |>
     dplyr::mutate(Attribute_range = paste0(range, unit)) |>
     dplyr::relocate(
-      .data$Attribute_group, .data$Attribute, .data$Attribute_range
+      Attribute_group, Attribute, Attribute_range
     )
 }
 

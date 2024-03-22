@@ -5,15 +5,15 @@
 ## TODO Maybe a threshold should be decided to consider a FA as present or not.
 .fattyAcidComposition <- function(){
   link <- .customLinks() |>
-    dplyr::filter(.data[["functionname"]] == "fattyAcidComposition") |>
-    dplyr::pull(.data[["link"]])
+    dplyr::filter(functionname == "fattyAcidComposition") |>
+    dplyr::pull(link)
   fac_wide <- utils::read.csv(link, check.names = FALSE)
   fac_long <- fac_wide |>
     tidyr::pivot_longer(
-      cols = .data[["Br-C10:1"]]:.data[["Oxo-C19:1"]],
+      cols = `Br-C10:1`:`Oxo-C19:1`,
       names_to = "Attribute_new", values_to = "Attribute_value"
   ) |>
-    dplyr::mutate(NCBI_ID = as.character(.data[["NCBI_ID"]]))
+    dplyr::mutate(NCBI_ID = as.character(NCBI_ID))
   dplyr::left_join(fac_long, ranks_parents, by = "NCBI_ID") |>
     as.data.frame() |>
     .addSourceInfo() |>

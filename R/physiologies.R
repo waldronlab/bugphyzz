@@ -169,7 +169,7 @@ showPhys <- function(which_names = 'all') {
     } else if (unique(df[['Attribute_type']] == 'range')) {
       df <- .modifyRange(df)
     } else if (unique(df[['Attribute_type']] %in% .DISCRETE_ATTRIBUTE_TYPES())) {
-      df <- dplyr::filter(df, .data$Attribute_value == TRUE | .data$Attribute_value == FALSE)
+      df <- dplyr::filter(df, Attribute_value == TRUE | Attribute_value == FALSE)
     }
 
     if (all(parent_col_names %in% colnames(df))) {
@@ -191,10 +191,10 @@ showPhys <- function(which_names = 'all') {
 ## Helper function for .importSpreadsheets
 .numericToRange <- function(df) {
   df <- df |>
-    dplyr::group_by(.data$NCBI_ID, .data$Taxon_name) |>
+    dplyr::group_by(NCBI_ID, Taxon_name) |>
     dplyr::mutate(
-      Attribute_value_min = as.double(.data$Attribute_value),
-      Attribute_value_max = as.double(.data$Attribute_value),
+      Attribute_value_min = as.double(Attribute_value),
+      Attribute_value_max = as.double(Attribute_value),
       Attribute_type = 'range'
     ) |>
     dplyr::ungroup() |>
@@ -210,25 +210,25 @@ showPhys <- function(which_names = 'all') {
   regex2 <- paste0('^(<|>)(\\-)?', num, '$')
   regex <- paste0('(', regex1, '|', regex2, ')')
   df <- df |>
-    dplyr::filter(grepl(regex, .data$Attribute_value)) |>
+    dplyr::filter(grepl(regex, Attribute_value)) |>
     dplyr::mutate(
-      Attribute_value = sub('^(\\-)([0-9]+(\\.[0-9]+)?)', 'minus\\2', .data$Attribute_value)
+      Attribute_value = sub('^(\\-)([0-9]+(\\.[0-9]+)?)', 'minus\\2', Attribute_value)
     ) |>
     dplyr::mutate(
-      Attribute_value = gsub(' ', '', .data$Attribute_value),
+      Attribute_value = gsub(' ', '', Attribute_value),
       Attribute_value = dplyr::case_when(
-        grepl('<', .data$Attribute_value) ~ paste0('-', .data$Attribute_value),
-        grepl('>', .data$Attribute_value) ~ paste0(.data$Attribute_value, '-'),
-        !grepl("\\-", .data$Attribute_value) ~ paste0(.data$Attribute_value, '-', .data$Attribute_value),
-        grepl("^\\-", .data$Attribute_value) ~ paste0("minusInf", .data$Attribute_value),
-        grepl("\\-$", .data$Attribute_value) ~ paste0(.data$Attribute_value, "Inf"),
-        TRUE ~ .data$Attribute_value
+        grepl('<', Attribute_value) ~ paste0('-', Attribute_value),
+        grepl('>', Attribute_value) ~ paste0(Attribute_value, '-'),
+        !grepl("\\-", Attribute_value) ~ paste0(Attribute_value, '-', Attribute_value),
+        grepl("^\\-", Attribute_value) ~ paste0("minusInf", Attribute_value),
+        grepl("\\-$", Attribute_value) ~ paste0(Attribute_value, "Inf"),
+        TRUE ~ Attribute_value
       ),
-      Attribute_value = sub('(<|>)', '', .data$Attribute_value),
+      Attribute_value = sub('(<|>)', '', Attribute_value),
       Attribute_value = dplyr::case_when(
-        grepl("^\\-", .data$Attribute_value) ~ paste0("minusInf", .data$Attribute_value),
-        grepl("\\-$", .data$Attribute_value) ~ paste0(.data$Attribute_value, "Inf"),
-        TRUE ~ .data$Attribute_value
+        grepl("^\\-", Attribute_value) ~ paste0("minusInf", Attribute_value),
+        grepl("\\-$", Attribute_value) ~ paste0(Attribute_value, "Inf"),
+        TRUE ~ Attribute_value
       )
     ) |>
     tidyr::separate(
@@ -236,12 +236,12 @@ showPhys <- function(which_names = 'all') {
       into = c('Attribute_value_min', 'Attribute_value_max'), sep = '-'
     ) |>
     dplyr::mutate(
-      Attribute_value_min = sub('minus', '-', .data$Attribute_value_min),
-      Attribute_value_max = sub('minus', '-', .data$Attribute_value_min)
+      Attribute_value_min = sub('minus', '-', Attribute_value_min),
+      Attribute_value_max = sub('minus', '-', Attribute_value_min)
     ) |>
     dplyr::mutate(
-      Attribute_value_min = as.double(.data$Attribute_value_min),
-      Attribute_value_max = as.double(.data$Attribute_value_max)
+      Attribute_value_min = as.double(Attribute_value_min),
+      Attribute_value_max = as.double(Attribute_value_max)
     ) |>
     dplyr::distinct()
 }
@@ -291,10 +291,10 @@ showPhys <- function(which_names = 'all') {
 .homogenizeAerophilicityAttributeNames <- function(df) {
   df |> dplyr::mutate(
     Attribute = dplyr::case_when(
-      .data$Attribute == 'obligately anaerobic' ~ 'anaerobic',
-      .data$Attribute == 'microaerophilic' ~ 'aerobic',
-      .data$Attribute == 'obligately aerobic' ~ 'aerobic',
-      TRUE ~ .data$Attribute
+      Attribute == 'obligately anaerobic' ~ 'anaerobic',
+      Attribute == 'microaerophilic' ~ 'aerobic',
+      Attribute == 'obligately aerobic' ~ 'aerobic',
+      TRUE ~ Attribute
     )
   )
 }
