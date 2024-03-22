@@ -249,7 +249,7 @@ showPhys <- function(which_names = 'all') {
 ## helper function for .importSpreadsheets
 .DISCRETE_ATTRIBUTE_TYPES <- function() {
   fname <- system.file('extdata', 'spreadsheet_links.tsv', package = 'bugphyzz')
-  dat <- read.table(file = fname, header = TRUE, sep = '\t')
+  dat <- utils::read.table(file = fname, header = TRUE, sep = '\t')
   unique(dat[dat$trait_type == 'discrete',]$attribute_type)
 }
 
@@ -333,14 +333,14 @@ showPhys <- function(which_names = 'all') {
 ## Append links to error table
 .appendLinks <- function(x) {
   fname1 <- system.file('extdata/spreadsheet_links.tsv', package = 'bugphyzz')
-  links <- read.table(fname1, header = TRUE, sep = '\t')
+  links <- utils::read.table(fname1, header = TRUE, sep = '\t')
   select_cols <- c("physiology", "source_link")
-  phys_links <- links %>%
+  phys_links <- links |>
     dplyr::select(tidyselect::all_of(select_cols))
-  custom_links <- .customLinks() %>%
+  custom_links <- .customLinks() |>
     dplyr::select(tidyselect::all_of((select_cols)))
   links <- dplyr::bind_rows(phys_links, custom_links)
-  x %>%
+  x |>
     dplyr::left_join(links, by = c("dataset" = "physiology"))
 }
 

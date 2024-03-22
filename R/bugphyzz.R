@@ -1,3 +1,5 @@
+# utils::globalVariables(c("Rank"))
+Rank <- NULL
 #' Import bugphyzz
 #'
 #' \code{importBugphyzz} imports bugphyzz annotations as a list of

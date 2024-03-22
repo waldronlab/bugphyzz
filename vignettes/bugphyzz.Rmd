@@ -299,22 +299,19 @@ knitr::kable(gsea_tbl)
 
 To retrieve all signature names associated with a specific taxon,
 users can utilize the `getTaxonSignatures` function.
-It's important to note that only taxids should be used as input for this
-function.
 
 Let's see an example using _Escherichia coli_ (taxid: 562).
 
-Get taxid for _E. coli_ using taxize:
+Get all signature names associated to _E. coli_:
 
 ```{r, message=FALSE}
-taxid <- as.character(taxize::get_uid("Escherichia coli"))
-taxid
+getTaxonSignatures(tax = "Escherichia coli", bp = bp)
 ```
 
 Get all signature names associated to the _E. coli_ taxid:
 
 ```{r}
-getTaxonSignatures(tax = taxid, bp = bp)
+getTaxonSignatures(tax = "562", bp = bp)
 ```
 
 # Session information
