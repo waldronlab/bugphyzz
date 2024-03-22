@@ -13,7 +13,7 @@ utils::globalVariables(c(
 #' please check the bugphyzz vignette with `browseVignettes("bugphyzz")`.
 #'
 #' @param version Character string indicating the version.
-#' Options: devel, doi, GitHub hash.
+#' Options: devel or a zenodo record.
 #' @param force_download Logical value. Force a fresh download of the data or
 #' use the one stored in the cache (if available). Default is FALSE.
 #' @param v Validation value. Default 0.5 (see details).
