@@ -8,6 +8,6 @@ sigsIDs <- map(bp, ~ makeSignatures(.x, tax_id_type = "NCBI_ID")) |>
 test_that("makeSignatures works with IDs", {
   expect_true(all(map_lgl(sigsIDs, is.integer)))
 })
-test_that("makeSignatures works with IDs", {
+test_that("makeSignatures works with taxon names", {
   expect_true(all(map_lgl(sigsNames, is.character)))
 })
