@@ -12,23 +12,54 @@ importBugphyzz(
 )
 }
 \arguments{
-\item{version}{Character string. Default is 'devel'
-(current file on the GitHub repo waldronlab/bugphyzzExports).}
+\item{version}{Character string indicating the version.
+Options: devel, doi, GitHub hash.}
 
 \item{force_download}{Logical value. Force a fresh download of the data or
 use the one stored in the cache (if available). Default is FALSE.}
 
-\item{v}{Validation value. Default 0.5.}
+\item{v}{Validation value. Default 0.5 (see details).}
 
 \item{exclude_rarely}{Default is TRUE. Exclude values with
-Frequency == FALSE.}
+Frequency == FALSE (see details).}
 }
 \value{
-A list of data frames.
+A list of tidy data frames.
 }
 \description{
 \code{importBugphyzz} imports bugphyzz annotations as a list of
-data.frames (1 per physiology/Attribute)
+tidy data.frames. To learn more about the structure of the data.frames
+please check the bugphyzz vignette with \code{browseVignettes("bugphyzz")}.
+}
+\details{
+\subsection{Data structure}{
+
+The data structure of the data.frames imported with \code{importBugphyzz} are
+detailed in the main vignette. Please run \code{browseVignettes("bugphyzz")}.
+}
+
+\subsection{Validation (\code{v} argument)}{
+
+Data imported with \code{importBugphyzz} includes annotations imputed through
+ancestral state reconstruction (ASR) methods. A 10-fold cross-validation
+approach was implemented to assess the reliability of the data imputed.
+Mathew's correlation coefficient (MCC) and R-squared (R2) were used for the
+validation of discrete and numeric attributes.
+Details can be found at: https://github.com/waldronlab/taxPProValidation.
+By default, imputed annotations with a MCC or R2 value greater than 0.5 are
+imported. The minimum value can be adjusted with the \code{v} argument (only
+values between 0 and 1).
+}
+
+\subsection{Frequency (exclude_rarely argument)}{
+
+One of the variables in the bugphyzz data.frames is "Frequency", which
+can adopt values of
+"always", "usually", "sometimes", "rarely", or "never". By default
+"never" and "rarely" are excluded. "rarely" could be included with
+\code{exclude_rarely = FALSE}. To learn more about these frequency keywords
+please check the bugphyzz vignette with \code{browseVignettes("bugphyzz")}.
+}
 }
 \examples{
 

@@ -1,12 +1,9 @@
 
-#' Import phsiologies
+#' Import physiologies (for devs)
 #'
-#' \code{physiologies} imports data from the
-#' Google spreadsheets at https://drive.google.com/drive/folders/1i2UAolVWAYa7UnETNnCs0BDWjKPp3ev5.
-#' This function (and its internal functions) do minimal changes to the
-#' imported data. These changes are only meant to match data coming from
-#' different sources, and attaching information needed for further processing,
-#' such as source and attribute type.
+#' \code{physiologies} imports a list of data.frames. This data is in "raw"
+#' state before cleaning and going through the data imputation steps. It
+#' should be used by developers/curators of the package.
 #'
 #' @param keyword Character vector with one or more valid keywords.
 #' Valid keyboards can be checked with \code{showPhys}. If 'all', all
@@ -89,10 +86,11 @@ physiologies <- function(keyword = 'all', full_source = FALSE) {
   return(physiologies)
 }
 
-#' Show list of available physiologies
+#' Show list of available physiologies (for devs)
 #'
 #' \code{showPhys} prints the names of the available physiologies that can be
-#' imported with the \code{\link{physiologies}} function.
+#' imported with the \code{\link{physiologies}} function. This function
+#' should be used by developers/curators.
 #'
 #' @param which_names A character string. Options: 'all' (default),
 #' 'spreadsheets', 'bacdive'.

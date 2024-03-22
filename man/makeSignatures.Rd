@@ -21,33 +21,36 @@ makeSignatures(
 \item{tax_id_type}{A character string. Valid options: NCBI_ID, Taxon_name.}
 
 \item{tax_level}{A character vector. Taxonomic rank. Valid options:
-kingdom, phylum, class, order, family, genus, species, strain.
+superkingdom, kingdom, phylum, class, order, family, genus, species, strain.
 They can be combined. "mixed" is equivalent to select all valid ranks.}
 
 \item{evidence}{A character vector. Valid options: exp, igc, nas, tas, tax, asr.
 They can be combined. Default is all.}
 
 \item{frequency}{A character vector. Valid options: always, usually,
-sometimes, rarely, unknown. They can be combiend. Default value is all but
-rarely.}
+sometimes, rarely, unknown. They can be combined. By default, "rarely" is
+excluded.}
 
-\item{min_size}{Minimun number of bugs in a signature. Default is 10.}
+\item{min_size}{Minimum number of bugs in a signature. Default is 10.}
 
-\item{min}{Minimum value inclusive. Only for numeric attributes. Default is NULL.}
+\item{min}{Minimum value (inclusive). Only for numeric attributes.
+Default is NULL.}
 
-\item{max}{Maximum value inclusive. Only for numeric attributes. Default is NULL.}
+\item{max}{Maximum value (inclusive). Only for numeric attributes.
+Default is NULL.}
 }
 \value{
-A list of character vector with the IDs of the bugs.
+A list of character vectors with scientific names or taxids.
 }
 \description{
-\code{makeSignatures} Creates signatures for a list of bugphyzz
-data.frames imported with \code{importBugphyzz}
+\code{makeSignatures} Creates signatures for a list of bug signatures from
+a tidy data.frame imported through the \code{importBugphyzz} function. Please
+run \code{browseVignettes("bugphyz")} for detailed examples.
 }
 \examples{
 
 bp <- importBugphyzz()
-sigs <- lapply(bp, makeSignatures)
-sigs <- purrr::list_flatten(sigs)
+sigs <- purrr::map(bp, makeSignatures)
+sigs <- purrr::list_flatten(sigs, name_spec = "{inner}")
 
 }

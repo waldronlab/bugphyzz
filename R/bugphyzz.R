@@ -1,17 +1,43 @@
 #' Import bugphyzz
 #'
 #' \code{importBugphyzz} imports bugphyzz annotations as a list of
-#' data.frames (1 per physiology/Attribute)
+#' tidy data.frames. To learn more about the structure of the data.frames
+#' please check the bugphyzz vignette with `browseVignettes("bugphyzz")`.
 #'
-#' @param version Character string. Default is 'devel'
-#' (current file on the GitHub repo waldronlab/bugphyzzExports).
+#' @param version Character string indicating the version.
+#' Options: devel, doi, GitHub hash.
 #' @param force_download Logical value. Force a fresh download of the data or
 #' use the one stored in the cache (if available). Default is FALSE.
-#' @param v Validation value. Default 0.5.
+#' @param v Validation value. Default 0.5 (see details).
 #' @param exclude_rarely Default is TRUE. Exclude values with
-#' Frequency == FALSE.
+#' Frequency == FALSE (see details).
 #'
-#' @return A list of data frames.
+#' @details
+#'
+#' ## Data structure
+#' The data structure of the data.frames imported with `importBugphyzz` are
+#' detailed in the main vignette. Please run `browseVignettes("bugphyzz")`.
+#'
+#' ## Validation (`v` argument)
+#' Data imported with `importBugphyzz` includes annotations imputed through
+#' ancestral state reconstruction (ASR) methods. A 10-fold cross-validation
+#' approach was implemented to assess the reliability of the data imputed.
+#' Mathew's correlation coefficient (MCC) and R-squared (R2) were used for the
+#' validation of discrete and numeric attributes.
+#' Details can be found at: https://github.com/waldronlab/taxPProValidation.
+#' By default, imputed annotations with a MCC or R2 value greater than 0.5 are
+#' imported. The minimum value can be adjusted with the `v` argument (only
+#' values between 0 and 1).
+#'
+#' ## Frequency (exclude_rarely argument)
+#' One of the variables in the bugphyzz data.frames is "Frequency", which
+#' can adopt values of
+#' "always", "usually", "sometimes", "rarely", or "never". By default
+#' "never" and "rarely" are excluded. "rarely" could be included with
+#' `exclude_rarely = FALSE`. To learn more about these frequency keywords
+#' please check the bugphyzz vignette with `browseVignettes("bugphyzz")`.
+#'
+#' @return A list of tidy data frames.
 #' @export
 #'
 #' @examples
@@ -97,31 +123,34 @@ importBugphyzz <- function(
 
 #' Make signatures
 #'
-#' \code{makeSignatures} Creates signatures for a list of bugphyzz
-#' data.frames imported with \code{importBugphyzz}
+#' \code{makeSignatures} Creates signatures for a list of bug signatures from
+#' a tidy data.frame imported through the `importBugphyzz` function. Please
+#' run `browseVignettes("bugphyz")` for detailed examples.
 #'
 #' @param dat A data.frame.
 #' @param tax_id_type A character string. Valid options: NCBI_ID, Taxon_name.
 #' @param tax_level A character vector. Taxonomic rank. Valid options:
-#' kingdom, phylum, class, order, family, genus, species, strain.
+#' superkingdom, kingdom, phylum, class, order, family, genus, species, strain.
 #' They can be combined. "mixed" is equivalent to select all valid ranks.
 #' @param evidence A character vector. Valid options: exp, igc, nas, tas, tax, asr.
 #' They can be combined. Default is all.
 #' @param frequency A character vector. Valid options: always, usually,
-#' sometimes, rarely, unknown. They can be combiend. Default value is all but
-#' rarely.
-#' @param min_size Minimun number of bugs in a signature. Default is 10.
-#' @param min Minimum value inclusive. Only for numeric attributes. Default is NULL.
-#' @param max Maximum value inclusive. Only for numeric attributes. Default is NULL.
+#' sometimes, rarely, unknown. They can be combined. By default, "rarely" is
+#' excluded.
+#' @param min_size Minimum number of bugs in a signature. Default is 10.
+#' @param min Minimum value (inclusive). Only for numeric attributes.
+#' Default is NULL.
+#' @param max Maximum value (inclusive). Only for numeric attributes.
+#' Default is NULL.
 #'
-#' @return A list of character vector with the IDs of the bugs.
+#' @return A list of character vectors with scientific names or taxids.
 #' @export
 #'
 #' @examples
 #'
 #' bp <- importBugphyzz()
-#' sigs <- lapply(bp, makeSignatures)
-#' sigs <- purrr::list_flatten(sigs)
+#' sigs <- purrr::map(bp, makeSignatures)
+#' sigs <- purrr::list_flatten(sigs, name_spec = "{inner}")
 #'
 makeSignatures <- function(
     dat, tax_id_type = "NCBI_ID",
@@ -167,11 +196,13 @@ makeSignatures <- function(
 
 #' Get Taxon Signatures
 #'
-#' \code{getTaxonSignatures} get the names of all of the signatures for a taxon.
+#' \code{getTaxonSignatures} returns the names of all of the signatures associated
+#' with a particular taxon. More details can be found in the main
+#' bugphyzz vignette; please run `browseVignettes("bugphyzz")`.
 #'
 #' @param tax A valid NCBI ID or taxon name. If taxon name is used, the
-#' tax_id_type = "Taxon_name" must also be used.
-#' @param bp Import from \code{importBugphyzz}.
+#' argument tax_id_type = "Taxon_name" must also be used.
+#' @param bp List of data.frames imported with \code{importBugphyzz}.
 #' @param ... Arguments passed to \code{makeSignatures}.
 #'
 #' @return A character vector with the names of the signatures for a taxon.
@@ -179,9 +210,10 @@ makeSignatures <- function(
 #'
 #' @examples
 #' taxid <- "562"
+#' taxonName <- "Escherichia coli"
 #' bp <- importBugphyzz()
-#' sig_names_1 <- getTaxonSignatures("562", bp)
-#' sig_names_2 <- getTaxonSignatures("Escherichia coli", bp, tax_id_type = "Taxon_name")
+#' sig_names_1 <- getTaxonSignatures(taxid, bp)
+#' sig_names_2 <- getTaxonSignatures(taxonName, bp, tax_id_type = "Taxon_name")
 #'
 getTaxonSignatures <- function(tax, bp, ...) {
   sigs <- purrr::map(bp, makeSignatures, ...)

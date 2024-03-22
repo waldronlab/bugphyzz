@@ -2,7 +2,7 @@
 % Please edit documentation in R/physiologies.R
 \name{showPhys}
 \alias{showPhys}
-\title{Show list of available physiologies}
+\title{Show list of available physiologies (for devs)}
 \usage{
 showPhys(which_names = "all")
 }
@@ -15,7 +15,8 @@ A character vector with the names of the physiologies.
 }
 \description{
 \code{showPhys} prints the names of the available physiologies that can be
-imported with the \code{\link{physiologies}} function.
+imported with the \code{\link{physiologies}} function. This function
+should be used by developers/curators.
 }
 \examples{
 showPhys()

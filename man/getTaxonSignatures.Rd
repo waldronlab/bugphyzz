@@ -8,9 +8,9 @@ getTaxonSignatures(tax, bp, ...)
 }
 \arguments{
 \item{tax}{A valid NCBI ID or taxon name. If taxon name is used, the
-tax_id_type = "Taxon_name" must also be used.}
+argument tax_id_type = "Taxon_name" must also be used.}
 
-\item{bp}{Import from \code{importBugphyzz}.}
+\item{bp}{List of data.frames imported with \code{importBugphyzz}.}
 
 \item{...}{Arguments passed to \code{makeSignatures}.}
 }
@@ -18,12 +18,15 @@ tax_id_type = "Taxon_name" must also be used.}
 A character vector with the names of the signatures for a taxon.
 }
 \description{
-\code{getTaxonSignatures} get the names of all of the signatures for a taxon.
+\code{getTaxonSignatures} returns the names of all of the signatures associated
+with a particular taxon. More details can be found in the main
+bugphyzz vignette; please run \code{browseVignettes("bugphyzz")}.
 }
 \examples{
 taxid <- "562"
+taxonName <- "Escherichia coli"
 bp <- importBugphyzz()
-sig_names_1 <- getTaxonSignatures("562", bp)
-sig_names_2 <- getTaxonSignatures("Escherichia coli", bp, tax_id_type = "Taxon_name")
+sig_names_1 <- getTaxonSignatures(taxid, bp)
+sig_names_2 <- getTaxonSignatures(taxonName, bp, tax_id_type = "Taxon_name")
 
 }
