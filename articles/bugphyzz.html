@@ -250,30 +250,30 @@ the <code>names</code> function:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">bp</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/importBugphyzz.html">importBugphyzz</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">bp</span><span class="op">)</span></span>
-<span><span class="co">#&gt;  [1] "aerophilicity"                        </span></span>
-<span><span class="co">#&gt;  [2] "antimicrobial resistance"             </span></span>
-<span><span class="co">#&gt;  [3] "arrangement"                          </span></span>
-<span><span class="co">#&gt;  [4] "biosafety level"                      </span></span>
-<span><span class="co">#&gt;  [5] "cogem pathogenicity rating"           </span></span>
-<span><span class="co">#&gt;  [6] "disease association"                  </span></span>
-<span><span class="co">#&gt;  [7] "gram stain"                           </span></span>
-<span><span class="co">#&gt;  [8] "habitat"                              </span></span>
-<span><span class="co">#&gt;  [9] "hemolysis"                            </span></span>
-<span><span class="co">#&gt; [10] "shape"                                </span></span>
-<span><span class="co">#&gt; [11] "spore shape"                          </span></span>
-<span><span class="co">#&gt; [12] "animal pathogen"                      </span></span>
-<span><span class="co">#&gt; [13] "antimicrobial sensitivity"            </span></span>
-<span><span class="co">#&gt; [14] "biofilm formation"                    </span></span>
-<span><span class="co">#&gt; [15] "butyrate-producing bacteria"          </span></span>
-<span><span class="co">#&gt; [16] "extreme environment"                  </span></span>
-<span><span class="co">#&gt; [17] "health associated"                    </span></span>
-<span><span class="co">#&gt; [18] "host-associated"                      </span></span>
-<span><span class="co">#&gt; [19] "hydrogen gas producing"               </span></span>
-<span><span class="co">#&gt; [20] "lactate producing"                    </span></span>
-<span><span class="co">#&gt; [21] "motility"                             </span></span>
-<span><span class="co">#&gt; [22] "plant pathogenicity"                  </span></span>
-<span><span class="co">#&gt; [23] "sphingolipid producing"               </span></span>
-<span><span class="co">#&gt; [24] "spore formation"                      </span></span>
+<span><span class="co">#&gt;  [1] "animal pathogen"                      </span></span>
+<span><span class="co">#&gt;  [2] "antimicrobial sensitivity"            </span></span>
+<span><span class="co">#&gt;  [3] "biofilm formation"                    </span></span>
+<span><span class="co">#&gt;  [4] "butyrate-producing bacteria"          </span></span>
+<span><span class="co">#&gt;  [5] "extreme environment"                  </span></span>
+<span><span class="co">#&gt;  [6] "health associated"                    </span></span>
+<span><span class="co">#&gt;  [7] "host-associated"                      </span></span>
+<span><span class="co">#&gt;  [8] "hydrogen gas producing"               </span></span>
+<span><span class="co">#&gt;  [9] "lactate producing"                    </span></span>
+<span><span class="co">#&gt; [10] "motility"                             </span></span>
+<span><span class="co">#&gt; [11] "plant pathogenicity"                  </span></span>
+<span><span class="co">#&gt; [12] "sphingolipid producing"               </span></span>
+<span><span class="co">#&gt; [13] "spore formation"                      </span></span>
+<span><span class="co">#&gt; [14] "aerophilicity"                        </span></span>
+<span><span class="co">#&gt; [15] "antimicrobial resistance"             </span></span>
+<span><span class="co">#&gt; [16] "arrangement"                          </span></span>
+<span><span class="co">#&gt; [17] "biosafety level"                      </span></span>
+<span><span class="co">#&gt; [18] "cogem pathogenicity rating"           </span></span>
+<span><span class="co">#&gt; [19] "disease association"                  </span></span>
+<span><span class="co">#&gt; [20] "gram stain"                           </span></span>
+<span><span class="co">#&gt; [21] "habitat"                              </span></span>
+<span><span class="co">#&gt; [22] "hemolysis"                            </span></span>
+<span><span class="co">#&gt; [23] "shape"                                </span></span>
+<span><span class="co">#&gt; [24] "spore shape"                          </span></span>
 <span><span class="co">#&gt; [25] "coding genes"                         </span></span>
 <span><span class="co">#&gt; [26] "genome size"                          </span></span>
 <span><span class="co">#&gt; [27] "growth temperature"                   </span></span>
@@ -402,23 +402,23 @@ attribute (numeric):</li>
 <span><span class="co">#&gt; [1] 124</span></span></code></pre></div>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html" class="external-link">map</a></span><span class="op">(</span><span class="va">sigs</span>, <span class="va">head</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="co">#&gt; $`bugphyzz:aerophilicity|aerobic`</span></span>
-<span><span class="co">#&gt; [1] 1042312  117747    1236 1497346 1562566 1643678</span></span>
+<span><span class="co">#&gt; $`bugphyzz:animal pathogen|FALSE`</span></span>
+<span><span class="co">#&gt; [1] 1042312  117743  118001    1236 1313211 1497346</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; $`bugphyzz:aerophilicity|anaerobic`</span></span>
-<span><span class="co">#&gt; [1]  117743  118001 1313211 1737404  183924  183925</span></span>
+<span><span class="co">#&gt; $`bugphyzz:animal pathogen|TRUE`</span></span>
+<span><span class="co">#&gt; [1]  117747 1737404 2008785  204429 3031852  768503</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; $`bugphyzz:aerophilicity|facultatively anaerobic`</span></span>
-<span><span class="co">#&gt; [1]    1016 1036132 1069494 1078829  111142  111500</span></span>
+<span><span class="co">#&gt; $`bugphyzz:antimicrobial sensitivity|FALSE`</span></span>
+<span><span class="co">#&gt; [1]  117747 1643678  183924  183925  183939  183963</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; $`bugphyzz:antimicrobial resistance|sensitive to amikacin`</span></span>
-<span><span class="co">#&gt; [1]    1733    1773     573 1334054 1334056 1334058</span></span>
+<span><span class="co">#&gt; $`bugphyzz:antimicrobial sensitivity|TRUE`</span></span>
+<span><span class="co">#&gt; [1] 1042312  117743  118001    1236 1313211 1497346</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; $`bugphyzz:antimicrobial resistance|sensitive to capreomycin`</span></span>
-<span><span class="co">#&gt; [1]    1733    1773 1334054 1334056 1334058 1334062</span></span>
+<span><span class="co">#&gt; $`bugphyzz:biofilm formation|FALSE`</span></span>
+<span><span class="co">#&gt; [1]    1006    1053  105841  105972 1079800  109790</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; $`bugphyzz:antimicrobial resistance|sensitive to ethambutol`</span></span>
-<span><span class="co">#&gt; [1]    1733    1773 1334054 1334056 1334058 1334062</span></span></code></pre></div>
+<span><span class="co">#&gt; $`bugphyzz:biofilm formation|TRUE`</span></span>
+<span><span class="co">#&gt; [1]  100053    1018  102684  102862 1033739 1033846</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="run-a-bug-set-enrichment-analysis">Run a bug set enrichment analysis<a class="anchor" aria-label="anchor" href="#run-a-bug-set-enrichment-analysis"></a>
@@ -547,23 +547,23 @@ users can utilize the <code>getTaxonSignatures</code> function.</p>
 <p>Get all signature names associated to the <em>E. coli</em> taxid:</p>
 <div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/getTaxonSignatures.html">getTaxonSignatures</a></span><span class="op">(</span>tax <span class="op">=</span> <span class="st">"562"</span>, bp <span class="op">=</span> <span class="va">bp</span><span class="op">)</span></span>
-<span><span class="co">#&gt;  [1] "bugphyzz:aerophilicity|aerobic"                                       </span></span>
-<span><span class="co">#&gt;  [2] "bugphyzz:aerophilicity|facultatively anaerobic"                       </span></span>
-<span><span class="co">#&gt;  [3] "bugphyzz:arrangement|paired cells"                                    </span></span>
-<span><span class="co">#&gt;  [4] "bugphyzz:biosafety level|biosafety level 1"                           </span></span>
-<span><span class="co">#&gt;  [5] "bugphyzz:cogem pathogenicity rating|cogem pathogenicity rating 2"     </span></span>
-<span><span class="co">#&gt;  [6] "bugphyzz:gram stain|gram stain negative"                              </span></span>
-<span><span class="co">#&gt;  [7] "bugphyzz:habitat|digestive system"                                    </span></span>
-<span><span class="co">#&gt;  [8] "bugphyzz:habitat|feces"                                               </span></span>
-<span><span class="co">#&gt;  [9] "bugphyzz:habitat|human microbiome"                                    </span></span>
-<span><span class="co">#&gt; [10] "bugphyzz:shape|bacillus"                                              </span></span>
-<span><span class="co">#&gt; [11] "bugphyzz:animal pathogen|FALSE"                                       </span></span>
-<span><span class="co">#&gt; [12] "bugphyzz:extreme environment|TRUE"                                    </span></span>
-<span><span class="co">#&gt; [13] "bugphyzz:health associated|FALSE"                                     </span></span>
-<span><span class="co">#&gt; [14] "bugphyzz:host-associated|TRUE"                                        </span></span>
-<span><span class="co">#&gt; [15] "bugphyzz:motility|FALSE"                                              </span></span>
-<span><span class="co">#&gt; [16] "bugphyzz:plant pathogenicity|FALSE"                                   </span></span>
-<span><span class="co">#&gt; [17] "bugphyzz:spore formation|FALSE"                                       </span></span>
+<span><span class="co">#&gt;  [1] "bugphyzz:animal pathogen|FALSE"                                       </span></span>
+<span><span class="co">#&gt;  [2] "bugphyzz:extreme environment|TRUE"                                    </span></span>
+<span><span class="co">#&gt;  [3] "bugphyzz:health associated|FALSE"                                     </span></span>
+<span><span class="co">#&gt;  [4] "bugphyzz:host-associated|TRUE"                                        </span></span>
+<span><span class="co">#&gt;  [5] "bugphyzz:motility|FALSE"                                              </span></span>
+<span><span class="co">#&gt;  [6] "bugphyzz:plant pathogenicity|FALSE"                                   </span></span>
+<span><span class="co">#&gt;  [7] "bugphyzz:spore formation|FALSE"                                       </span></span>
+<span><span class="co">#&gt;  [8] "bugphyzz:aerophilicity|aerobic"                                       </span></span>
+<span><span class="co">#&gt;  [9] "bugphyzz:aerophilicity|facultatively anaerobic"                       </span></span>
+<span><span class="co">#&gt; [10] "bugphyzz:arrangement|paired cells"                                    </span></span>
+<span><span class="co">#&gt; [11] "bugphyzz:biosafety level|biosafety level 1"                           </span></span>
+<span><span class="co">#&gt; [12] "bugphyzz:cogem pathogenicity rating|cogem pathogenicity rating 2"     </span></span>
+<span><span class="co">#&gt; [13] "bugphyzz:gram stain|gram stain negative"                              </span></span>
+<span><span class="co">#&gt; [14] "bugphyzz:habitat|digestive system"                                    </span></span>
+<span><span class="co">#&gt; [15] "bugphyzz:habitat|feces"                                               </span></span>
+<span><span class="co">#&gt; [16] "bugphyzz:habitat|human microbiome"                                    </span></span>
+<span><span class="co">#&gt; [17] "bugphyzz:shape|bacillus"                                              </span></span>
 <span><span class="co">#&gt; [18] "bugphyzz:growth temperature|mesophile| &gt; 25 &amp; &lt;= 45"                  </span></span>
 <span><span class="co">#&gt; [19] "bugphyzz:mutation rate per site per generation|slow| &gt; 0.78 &amp; &lt;= 2.92"</span></span>
 <span><span class="co">#&gt; [20] "bugphyzz:mutation rate per site per year|slow| &gt; 0.08 &amp; &lt;= 7.5"       </span></span>
@@ -576,7 +576,7 @@ users can utilize the <code>getTaxonSignatures</code> function.</p>
 <code class="sourceCode R"><span><span class="fu">sessioninfo</span><span class="fu">::</span><span class="fu"><a href="https://r-lib.github.io/sessioninfo/reference/session_info.html" class="external-link">session_info</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #00BBBB; font-weight: bold;">─ Session info ───────────────────────────────────────────────────────────────</span></span></span>
 <span><span class="co">#&gt;  <span style="color: #555555; font-style: italic;">setting </span> <span style="color: #555555; font-style: italic;">value</span></span></span>
-<span><span class="co">#&gt;  version  R Under development (unstable) (2024-03-20 r86162)</span></span>
+<span><span class="co">#&gt;  version  R Under development (unstable) (2024-03-28 r86224)</span></span>
 <span><span class="co">#&gt;  os       Ubuntu 22.04.4 LTS</span></span>
 <span><span class="co">#&gt;  system   x86_64, linux-gnu</span></span>
 <span><span class="co">#&gt;  ui       X11</span></span>
@@ -584,7 +584,7 @@ users can utilize the <code>getTaxonSignatures</code> function.</p>
 <span><span class="co">#&gt;  collate  en_US.UTF-8</span></span>
 <span><span class="co">#&gt;  ctype    en_US.UTF-8</span></span>
 <span><span class="co">#&gt;  tz       Etc/UTC</span></span>
-<span><span class="co">#&gt;  date     2024-03-22</span></span>
+<span><span class="co">#&gt;  date     2024-04-01</span></span>
 <span><span class="co">#&gt;  pandoc   3.1.1 @ /usr/local/bin/ (via rmarkdown)</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; <span style="color: #00BBBB; font-weight: bold;">─ Packages ───────────────────────────────────────────────────────────────────</span></span></span>
@@ -593,142 +593,142 @@ users can utilize the <code>getTaxonSignatures</code> function.</p>
 <span><span class="co">#&gt;  annotate                   1.81.2      <span style="color: #555555;">2024-01-26</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">Bioconductor 3.19 (R 4.4.0)</span></span></span>
 <span><span class="co">#&gt;  AnnotationDbi              1.65.2      <span style="color: #555555;">2023-11-03</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">Bioconductor</span></span></span>
 <span><span class="co">#&gt;  ape                        5.7-1       <span style="color: #555555;">2023-03-13</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.4.0)</span></span></span>
-<span><span class="co">#&gt;  beachmat                   2.19.1      <span style="color: #555555;">2024-01-22</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">Bioconductor 3.19 (R 4.4.0)</span></span></span>
+<span><span class="co">#&gt;  beachmat                   2.19.4      <span style="color: #555555;">2024-03-28</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">Bioconductor 3.19 (R 4.5.0)</span></span></span>
 <span><span class="co">#&gt;  beeswarm                   0.4.0       <span style="color: #555555;">2021-06-01</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.4.0)</span></span></span>
-<span><span class="co">#&gt;  Biobase                  * 2.63.0      <span style="color: #555555;">2023-10-24</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">Bioconductor</span></span></span>
-<span><span class="co">#&gt;  BiocFileCache              2.11.1      <span style="color: #555555;">2023-10-26</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">Bioconductor</span></span></span>
+<span><span class="co">#&gt;  Biobase                  * 2.63.1      <span style="color: #555555;">2024-03-29</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">Bioconductor 3.19 (R 4.5.0)</span></span></span>
+<span><span class="co">#&gt;  BiocFileCache              2.11.2      <span style="color: #555555;">2024-03-27</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">Bioconductor 3.19 (R 4.5.0)</span></span></span>
 <span><span class="co">#&gt;  BiocGenerics             * 0.49.1      <span style="color: #555555;">2023-11-01</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">Bioconductor</span></span></span>
-<span><span class="co">#&gt;  BiocManager                1.30.22     <span style="color: #555555;">2023-08-08</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.4.0)</span></span></span>
+<span><span class="co">#&gt;  BiocManager                1.30.22     <span style="color: #555555;">2023-08-08</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.5.0)</span></span></span>
 <span><span class="co">#&gt;  BiocNeighbors              1.21.2      <span style="color: #555555;">2023-12-19</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">Bioconductor 3.19 (R 4.4.0)</span></span></span>
-<span><span class="co">#&gt;  BiocParallel               1.37.1      <span style="color: #555555;">2024-03-04</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">Bioconductor 3.19 (R 4.4.0)</span></span></span>
+<span><span class="co">#&gt;  BiocParallel               1.37.1      <span style="color: #555555;">2024-03-04</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">Bioconductor 3.19 (R 4.5.0)</span></span></span>
 <span><span class="co">#&gt;  BiocSingular               1.19.0      <span style="color: #555555;">2023-10-24</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">Bioconductor</span></span></span>
 <span><span class="co">#&gt;  BiocStyle                * 2.31.0      <span style="color: #555555;">2023-10-24</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">Bioconductor</span></span></span>
-<span><span class="co">#&gt;  Biostrings               * 2.71.4      <span style="color: #555555;">2024-03-12</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">Bioconductor 3.19 (R 4.4.0)</span></span></span>
+<span><span class="co">#&gt;  Biostrings               * 2.71.5      <span style="color: #555555;">2024-03-22</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">Bioconductor 3.19 (R 4.5.0)</span></span></span>
 <span><span class="co">#&gt;  bit                        4.0.5       <span style="color: #555555;">2022-11-15</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.4.0)</span></span></span>
 <span><span class="co">#&gt;  bit64                      4.0.5       <span style="color: #555555;">2020-08-30</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.4.0)</span></span></span>
 <span><span class="co">#&gt;  bitops                     1.0-7       <span style="color: #555555;">2021-04-24</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.4.0)</span></span></span>
 <span><span class="co">#&gt;  blob                       1.2.4       <span style="color: #555555;">2023-03-17</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.4.0)</span></span></span>
 <span><span class="co">#&gt;  bluster                    1.13.0      <span style="color: #555555;">2023-10-24</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">Bioconductor</span></span></span>
-<span><span class="co">#&gt;  bookdown                   0.38        <span style="color: #555555;">2024-03-04</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.4.0)</span></span></span>
-<span><span class="co">#&gt;  bslib                      0.6.2       <span style="color: #555555;">2024-03-22</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.4.0)</span></span></span>
-<span><span class="co">#&gt;  bugphyzz                 * 0.99.0      <span style="color: #555555;">2024-03-22</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">Bioconductor</span></span></span>
-<span><span class="co">#&gt;  cachem                     1.0.8       <span style="color: #555555;">2023-05-01</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.4.0)</span></span></span>
-<span><span class="co">#&gt;  cli                        3.6.2       <span style="color: #555555;">2023-12-11</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.4.0)</span></span></span>
-<span><span class="co">#&gt;  cluster                    2.1.6       <span style="color: #555555;">2023-12-01</span> <span style="color: #555555;">[2]</span> <span style="color: #555555;">CRAN (R 4.4.0)</span></span></span>
-<span><span class="co">#&gt;  codetools                  0.2-19      <span style="color: #555555;">2023-02-01</span> <span style="color: #555555;">[2]</span> <span style="color: #555555;">CRAN (R 4.4.0)</span></span></span>
+<span><span class="co">#&gt;  bookdown                   0.38        <span style="color: #555555;">2024-03-04</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.5.0)</span></span></span>
+<span><span class="co">#&gt;  bslib                      0.7.0       <span style="color: #555555;">2024-03-29</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.5.0)</span></span></span>
+<span><span class="co">#&gt;  bugphyzz                 * 0.99.0      <span style="color: #555555;">2024-04-01</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">Bioconductor</span></span></span>
+<span><span class="co">#&gt;  cachem                     1.0.8       <span style="color: #555555;">2023-05-01</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.5.0)</span></span></span>
+<span><span class="co">#&gt;  cli                        3.6.2       <span style="color: #555555;">2023-12-11</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.5.0)</span></span></span>
+<span><span class="co">#&gt;  cluster                    2.1.6       <span style="color: #555555;">2023-12-01</span> <span style="color: #555555;">[2]</span> <span style="color: #555555;">CRAN (R 4.5.0)</span></span></span>
+<span><span class="co">#&gt;  codetools                  0.2-19      <span style="color: #555555;">2023-02-01</span> <span style="color: #555555;">[2]</span> <span style="color: #555555;">CRAN (R 4.5.0)</span></span></span>
 <span><span class="co">#&gt;  colorspace                 2.1-0       <span style="color: #555555;">2023-01-23</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.4.0)</span></span></span>
-<span><span class="co">#&gt;  crayon                     1.5.2       <span style="color: #555555;">2022-09-29</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.4.0)</span></span></span>
-<span><span class="co">#&gt;  curl                       5.2.1       <span style="color: #555555;">2024-03-01</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.4.0)</span></span></span>
-<span><span class="co">#&gt;  DBI                        1.2.2       <span style="color: #555555;">2024-02-16</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.4.0)</span></span></span>
-<span><span class="co">#&gt;  dbplyr                     2.5.0       <span style="color: #555555;">2024-03-19</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.4.0)</span></span></span>
-<span><span class="co">#&gt;  DECIPHER                   2.31.3      <span style="color: #555555;">2024-02-26</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">Bioconductor 3.19 (R 4.4.0)</span></span></span>
+<span><span class="co">#&gt;  crayon                     1.5.2       <span style="color: #555555;">2022-09-29</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.5.0)</span></span></span>
+<span><span class="co">#&gt;  curl                       5.2.1       <span style="color: #555555;">2024-03-01</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.5.0)</span></span></span>
+<span><span class="co">#&gt;  DBI                        1.2.2       <span style="color: #555555;">2024-02-16</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.5.0)</span></span></span>
+<span><span class="co">#&gt;  dbplyr                     2.5.0       <span style="color: #555555;">2024-03-19</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.5.0)</span></span></span>
+<span><span class="co">#&gt;  DECIPHER                   2.31.4      <span style="color: #555555;">2024-03-29</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">Bioconductor 3.19 (R 4.5.0)</span></span></span>
 <span><span class="co">#&gt;  decontam                   1.23.0      <span style="color: #555555;">2023-10-24</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">Bioconductor</span></span></span>
-<span><span class="co">#&gt;  DelayedArray               0.29.9      <span style="color: #555555;">2024-03-01</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">Bioconductor 3.19 (R 4.4.0)</span></span></span>
+<span><span class="co">#&gt;  DelayedArray               0.29.9      <span style="color: #555555;">2024-03-01</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">Bioconductor 3.19 (R 4.5.0)</span></span></span>
 <span><span class="co">#&gt;  DelayedMatrixStats         1.25.1      <span style="color: #555555;">2023-11-09</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">Bioconductor</span></span></span>
-<span><span class="co">#&gt;  desc                       1.4.3       <span style="color: #555555;">2023-12-10</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.4.0)</span></span></span>
-<span><span class="co">#&gt;  digest                     0.6.35      <span style="color: #555555;">2024-03-11</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.4.0)</span></span></span>
+<span><span class="co">#&gt;  desc                       1.4.3       <span style="color: #555555;">2023-12-10</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.5.0)</span></span></span>
+<span><span class="co">#&gt;  digest                     0.6.35      <span style="color: #555555;">2024-03-11</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.5.0)</span></span></span>
 <span><span class="co">#&gt;  DirichletMultinomial       1.45.0      <span style="color: #555555;">2023-10-24</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">Bioconductor</span></span></span>
 <span><span class="co">#&gt;  dplyr                    * 1.1.4       <span style="color: #555555;">2023-11-17</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.4.0)</span></span></span>
-<span><span class="co">#&gt;  edgeR                      4.1.18      <span style="color: #555555;">2024-03-04</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">Bioconductor 3.19 (R 4.4.0)</span></span></span>
+<span><span class="co">#&gt;  edgeR                      4.1.19      <span style="color: #555555;">2024-03-24</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">Bioconductor 3.19 (R 4.5.0)</span></span></span>
 <span><span class="co">#&gt;  EnrichmentBrowser        * 2.33.1      <span style="color: #555555;">2023-10-29</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">Bioconductor</span></span></span>
-<span><span class="co">#&gt;  evaluate                   0.23        <span style="color: #555555;">2023-11-01</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.4.0)</span></span></span>
-<span><span class="co">#&gt;  fansi                      1.0.6       <span style="color: #555555;">2023-12-08</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.4.0)</span></span></span>
-<span><span class="co">#&gt;  fastmap                    1.1.1       <span style="color: #555555;">2023-02-24</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.4.0)</span></span></span>
+<span><span class="co">#&gt;  evaluate                   0.23        <span style="color: #555555;">2023-11-01</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.5.0)</span></span></span>
+<span><span class="co">#&gt;  fansi                      1.0.6       <span style="color: #555555;">2023-12-08</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.5.0)</span></span></span>
+<span><span class="co">#&gt;  fastmap                    1.1.1       <span style="color: #555555;">2023-02-24</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.5.0)</span></span></span>
 <span><span class="co">#&gt;  filelock                   1.0.3       <span style="color: #555555;">2023-12-11</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.4.0)</span></span></span>
-<span><span class="co">#&gt;  fs                         1.6.3       <span style="color: #555555;">2023-07-20</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.4.0)</span></span></span>
+<span><span class="co">#&gt;  fs                         1.6.3       <span style="color: #555555;">2023-07-20</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.5.0)</span></span></span>
 <span><span class="co">#&gt;  generics                   0.1.3       <span style="color: #555555;">2022-07-05</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.4.0)</span></span></span>
-<span><span class="co">#&gt;  GenomeInfoDb             * 1.39.9      <span style="color: #555555;">2024-03-13</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">Bioconductor 3.19 (R 4.4.0)</span></span></span>
-<span><span class="co">#&gt;  GenomeInfoDbData           1.2.11      <span style="color: #555555;">2024-02-04</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">Bioconductor</span></span></span>
-<span><span class="co">#&gt;  GenomicRanges            * 1.55.4      <span style="color: #555555;">2024-03-18</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">Bioconductor 3.19 (R 4.4.0)</span></span></span>
+<span><span class="co">#&gt;  GenomeInfoDb             * 1.39.9      <span style="color: #555555;">2024-03-13</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">Bioconductor 3.19 (R 4.5.0)</span></span></span>
+<span><span class="co">#&gt;  GenomeInfoDbData           1.2.12      <span style="color: #555555;">2024-04-01</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">Bioconductor</span></span></span>
+<span><span class="co">#&gt;  GenomicRanges            * 1.55.4      <span style="color: #555555;">2024-03-18</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">Bioconductor 3.19 (R 4.5.0)</span></span></span>
 <span><span class="co">#&gt;  ggbeeswarm                 0.7.2       <span style="color: #555555;">2023-04-29</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.4.0)</span></span></span>
-<span><span class="co">#&gt;  ggplot2                    3.5.0       <span style="color: #555555;">2024-02-23</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.4.0)</span></span></span>
+<span><span class="co">#&gt;  ggplot2                    3.5.0       <span style="color: #555555;">2024-02-23</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.5.0)</span></span></span>
 <span><span class="co">#&gt;  ggrepel                    0.9.5       <span style="color: #555555;">2024-01-10</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.4.0)</span></span></span>
-<span><span class="co">#&gt;  glue                       1.7.0       <span style="color: #555555;">2024-01-09</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.4.0)</span></span></span>
+<span><span class="co">#&gt;  glue                       1.7.0       <span style="color: #555555;">2024-01-09</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.5.0)</span></span></span>
 <span><span class="co">#&gt;  graph                    * 1.81.0      <span style="color: #555555;">2023-10-24</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">Bioconductor</span></span></span>
 <span><span class="co">#&gt;  gridExtra                  2.3         <span style="color: #555555;">2017-09-09</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.4.0)</span></span></span>
 <span><span class="co">#&gt;  GSEABase                   1.65.1      <span style="color: #555555;">2023-12-07</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">Bioconductor 3.19 (R 4.4.0)</span></span></span>
 <span><span class="co">#&gt;  gtable                     0.3.4       <span style="color: #555555;">2023-08-21</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.4.0)</span></span></span>
-<span><span class="co">#&gt;  htmltools                  0.5.7       <span style="color: #555555;">2023-11-03</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.4.0)</span></span></span>
-<span><span class="co">#&gt;  httr                       1.4.7       <span style="color: #555555;">2023-08-15</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.4.0)</span></span></span>
-<span><span class="co">#&gt;  igraph                     2.0.3       <span style="color: #555555;">2024-03-13</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.4.0)</span></span></span>
+<span><span class="co">#&gt;  htmltools                  0.5.8       <span style="color: #555555;">2024-03-25</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.5.0)</span></span></span>
+<span><span class="co">#&gt;  httr                       1.4.7       <span style="color: #555555;">2023-08-15</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.5.0)</span></span></span>
+<span><span class="co">#&gt;  igraph                     2.0.3       <span style="color: #555555;">2024-03-13</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.5.0)</span></span></span>
 <span><span class="co">#&gt;  IRanges                  * 2.37.1      <span style="color: #555555;">2024-01-19</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">Bioconductor 3.19 (R 4.4.0)</span></span></span>
 <span><span class="co">#&gt;  irlba                      2.3.5.1     <span style="color: #555555;">2022-10-03</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.4.0)</span></span></span>
-<span><span class="co">#&gt;  jquerylib                  0.1.4       <span style="color: #555555;">2021-04-26</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.4.0)</span></span></span>
-<span><span class="co">#&gt;  jsonlite                   1.8.8       <span style="color: #555555;">2023-12-04</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.4.0)</span></span></span>
+<span><span class="co">#&gt;  jquerylib                  0.1.4       <span style="color: #555555;">2021-04-26</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.5.0)</span></span></span>
+<span><span class="co">#&gt;  jsonlite                   1.8.8       <span style="color: #555555;">2023-12-04</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.5.0)</span></span></span>
 <span><span class="co">#&gt;  KEGGgraph                  1.63.0      <span style="color: #555555;">2023-10-24</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">Bioconductor</span></span></span>
 <span><span class="co">#&gt;  KEGGREST                   1.43.0      <span style="color: #555555;">2023-10-24</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">Bioconductor</span></span></span>
-<span><span class="co">#&gt;  knitr                      1.45        <span style="color: #555555;">2023-10-30</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.4.0)</span></span></span>
-<span><span class="co">#&gt;  lattice                    0.22-6      <span style="color: #555555;">2024-03-20</span> <span style="color: #555555;">[2]</span> <span style="color: #555555;">CRAN (R 4.4.0)</span></span></span>
-<span><span class="co">#&gt;  lazyeval                   0.2.2       <span style="color: #555555;">2019-03-15</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.4.0)</span></span></span>
-<span><span class="co">#&gt;  lifecycle                  1.0.4       <span style="color: #555555;">2023-11-07</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.4.0)</span></span></span>
-<span><span class="co">#&gt;  limma                      3.59.6      <span style="color: #555555;">2024-03-15</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">Bioconductor 3.19 (R 4.4.0)</span></span></span>
-<span><span class="co">#&gt;  locfit                     1.5-9.9     <span style="color: #555555;">2024-03-01</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.4.0)</span></span></span>
-<span><span class="co">#&gt;  magrittr                   2.0.3       <span style="color: #555555;">2022-03-30</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.4.0)</span></span></span>
-<span><span class="co">#&gt;  MASS                       7.3-60.2    <span style="color: #555555;">2024-03-21</span> <span style="color: #555555;">[2]</span> <span style="color: #BB00BB; font-weight: bold;">local</span></span></span>
-<span><span class="co">#&gt;  Matrix                     1.7-0       <span style="color: #555555;">2024-03-22</span> <span style="color: #555555;">[2]</span> <span style="color: #555555;">CRAN (R 4.4.0)</span></span></span>
+<span><span class="co">#&gt;  knitr                      1.45        <span style="color: #555555;">2023-10-30</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.5.0)</span></span></span>
+<span><span class="co">#&gt;  lattice                    0.22-6      <span style="color: #555555;">2024-03-20</span> <span style="color: #555555;">[2]</span> <span style="color: #555555;">CRAN (R 4.5.0)</span></span></span>
+<span><span class="co">#&gt;  lazyeval                   0.2.2       <span style="color: #555555;">2019-03-15</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.5.0)</span></span></span>
+<span><span class="co">#&gt;  lifecycle                  1.0.4       <span style="color: #555555;">2023-11-07</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.5.0)</span></span></span>
+<span><span class="co">#&gt;  limma                      3.59.6      <span style="color: #555555;">2024-03-15</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">Bioconductor 3.19 (R 4.5.0)</span></span></span>
+<span><span class="co">#&gt;  locfit                     1.5-9.9     <span style="color: #555555;">2024-03-01</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.5.0)</span></span></span>
+<span><span class="co">#&gt;  magrittr                   2.0.3       <span style="color: #555555;">2022-03-30</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.5.0)</span></span></span>
+<span><span class="co">#&gt;  MASS                       7.3-60.2    <span style="color: #555555;">2024-03-29</span> <span style="color: #555555;">[2]</span> <span style="color: #BB00BB; font-weight: bold;">local</span></span></span>
+<span><span class="co">#&gt;  Matrix                     1.7-0       <span style="color: #555555;">2024-03-22</span> <span style="color: #555555;">[2]</span> <span style="color: #555555;">CRAN (R 4.5.0)</span></span></span>
 <span><span class="co">#&gt;  MatrixGenerics           * 1.15.0      <span style="color: #555555;">2023-10-24</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">Bioconductor</span></span></span>
 <span><span class="co">#&gt;  matrixStats              * 1.2.0       <span style="color: #555555;">2023-12-11</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.4.0)</span></span></span>
-<span><span class="co">#&gt;  memoise                    2.0.1       <span style="color: #555555;">2021-11-26</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.4.0)</span></span></span>
-<span><span class="co">#&gt;  mgcv                       1.9-1       <span style="color: #555555;">2023-12-21</span> <span style="color: #555555;">[2]</span> <span style="color: #555555;">CRAN (R 4.4.0)</span></span></span>
-<span><span class="co">#&gt;  mia                      * 1.11.1      <span style="color: #555555;">2024-01-23</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">Bioconductor 3.19 (R 4.4.0)</span></span></span>
+<span><span class="co">#&gt;  memoise                    2.0.1       <span style="color: #555555;">2021-11-26</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.5.0)</span></span></span>
+<span><span class="co">#&gt;  mgcv                       1.9-1       <span style="color: #555555;">2023-12-21</span> <span style="color: #555555;">[2]</span> <span style="color: #555555;">CRAN (R 4.5.0)</span></span></span>
+<span><span class="co">#&gt;  mia                      * 1.11.9      <span style="color: #555555;">2024-03-26</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">Bioconductor 3.19 (R 4.5.0)</span></span></span>
 <span><span class="co">#&gt;  MicrobiomeBenchmarkData  * 1.5.0       <span style="color: #555555;">2023-10-31</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">Bioconductor</span></span></span>
 <span><span class="co">#&gt;  MultiAssayExperiment     * 1.29.1      <span style="color: #555555;">2024-02-02</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">Bioconductor 3.19 (R 4.4.0)</span></span></span>
 <span><span class="co">#&gt;  munsell                    0.5.0       <span style="color: #555555;">2018-06-12</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.4.0)</span></span></span>
-<span><span class="co">#&gt;  nlme                       3.1-164     <span style="color: #555555;">2023-11-27</span> <span style="color: #555555;">[2]</span> <span style="color: #555555;">CRAN (R 4.4.0)</span></span></span>
+<span><span class="co">#&gt;  nlme                       3.1-164     <span style="color: #555555;">2023-11-27</span> <span style="color: #555555;">[2]</span> <span style="color: #555555;">CRAN (R 4.5.0)</span></span></span>
 <span><span class="co">#&gt;  permute                    0.9-7       <span style="color: #555555;">2022-01-27</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.4.0)</span></span></span>
-<span><span class="co">#&gt;  pillar                     1.9.0       <span style="color: #555555;">2023-03-22</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.4.0)</span></span></span>
-<span><span class="co">#&gt;  pkgconfig                  2.0.3       <span style="color: #555555;">2019-09-22</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.4.0)</span></span></span>
-<span><span class="co">#&gt;  pkgdown                    2.0.7       <span style="color: #555555;">2022-12-14</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.4.0)</span></span></span>
+<span><span class="co">#&gt;  pillar                     1.9.0       <span style="color: #555555;">2023-03-22</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.5.0)</span></span></span>
+<span><span class="co">#&gt;  pkgconfig                  2.0.3       <span style="color: #555555;">2019-09-22</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.5.0)</span></span></span>
+<span><span class="co">#&gt;  pkgdown                    2.0.7       <span style="color: #555555;">2022-12-14</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.5.0)</span></span></span>
 <span><span class="co">#&gt;  plyr                       1.8.9       <span style="color: #555555;">2023-10-02</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.4.0)</span></span></span>
 <span><span class="co">#&gt;  png                        0.1-8       <span style="color: #555555;">2022-11-29</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.4.0)</span></span></span>
-<span><span class="co">#&gt;  purrr                    * 1.0.2       <span style="color: #555555;">2023-08-10</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.4.0)</span></span></span>
-<span><span class="co">#&gt;  R6                         2.5.1       <span style="color: #555555;">2021-08-19</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.4.0)</span></span></span>
-<span><span class="co">#&gt;  ragg                       1.3.0       <span style="color: #555555;">2024-03-13</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.4.0)</span></span></span>
-<span><span class="co">#&gt;  Rcpp                       1.0.12      <span style="color: #555555;">2024-01-09</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.4.0)</span></span></span>
+<span><span class="co">#&gt;  purrr                    * 1.0.2       <span style="color: #555555;">2023-08-10</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.5.0)</span></span></span>
+<span><span class="co">#&gt;  R6                         2.5.1       <span style="color: #555555;">2021-08-19</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.5.0)</span></span></span>
+<span><span class="co">#&gt;  ragg                       1.3.0       <span style="color: #555555;">2024-03-13</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.5.0)</span></span></span>
+<span><span class="co">#&gt;  Rcpp                       1.0.12      <span style="color: #555555;">2024-01-09</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.5.0)</span></span></span>
 <span><span class="co">#&gt;  RCurl                      1.98-1.14   <span style="color: #555555;">2024-01-09</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.4.0)</span></span></span>
 <span><span class="co">#&gt;  reshape2                   1.4.4       <span style="color: #555555;">2020-04-09</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.4.0)</span></span></span>
 <span><span class="co">#&gt;  Rgraphviz                  2.47.0      <span style="color: #555555;">2023-10-24</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">Bioconductor</span></span></span>
-<span><span class="co">#&gt;  rlang                      1.1.3       <span style="color: #555555;">2024-01-10</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.4.0)</span></span></span>
-<span><span class="co">#&gt;  rmarkdown                  2.26        <span style="color: #555555;">2024-03-05</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.4.0)</span></span></span>
-<span><span class="co">#&gt;  RSQLite                    2.3.5       <span style="color: #555555;">2024-01-21</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.4.0)</span></span></span>
+<span><span class="co">#&gt;  rlang                      1.1.3       <span style="color: #555555;">2024-01-10</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.5.0)</span></span></span>
+<span><span class="co">#&gt;  rmarkdown                  2.26        <span style="color: #555555;">2024-03-05</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.5.0)</span></span></span>
+<span><span class="co">#&gt;  RSQLite                    2.3.6       <span style="color: #555555;">2024-03-31</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.5.0)</span></span></span>
 <span><span class="co">#&gt;  rsvd                       1.0.5       <span style="color: #555555;">2021-04-16</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.4.0)</span></span></span>
-<span><span class="co">#&gt;  S4Arrays                   1.3.6       <span style="color: #555555;">2024-03-04</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">Bioconductor 3.19 (R 4.4.0)</span></span></span>
-<span><span class="co">#&gt;  S4Vectors                * 0.41.5      <span style="color: #555555;">2024-03-20</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">Bioconductor 3.19 (R 4.4.0)</span></span></span>
-<span><span class="co">#&gt;  sass                       0.4.9       <span style="color: #555555;">2024-03-15</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.4.0)</span></span></span>
-<span><span class="co">#&gt;  ScaledMatrix               1.11.1      <span style="color: #555555;">2024-03-01</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">Bioconductor 3.19 (R 4.4.0)</span></span></span>
+<span><span class="co">#&gt;  S4Arrays                   1.3.6       <span style="color: #555555;">2024-03-04</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">Bioconductor 3.19 (R 4.5.0)</span></span></span>
+<span><span class="co">#&gt;  S4Vectors                * 0.41.5      <span style="color: #555555;">2024-03-20</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">Bioconductor 3.19 (R 4.5.0)</span></span></span>
+<span><span class="co">#&gt;  sass                       0.4.9       <span style="color: #555555;">2024-03-15</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.5.0)</span></span></span>
+<span><span class="co">#&gt;  ScaledMatrix               1.11.1      <span style="color: #555555;">2024-03-01</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">Bioconductor 3.19 (R 4.5.0)</span></span></span>
 <span><span class="co">#&gt;  scales                     1.3.0       <span style="color: #555555;">2023-11-28</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.4.0)</span></span></span>
 <span><span class="co">#&gt;  scater                     1.31.2      <span style="color: #555555;">2024-01-28</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">Bioconductor 3.19 (R 4.4.0)</span></span></span>
-<span><span class="co">#&gt;  scuttle                    1.13.1      <span style="color: #555555;">2024-03-06</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">Bioconductor 3.19 (R 4.4.0)</span></span></span>
-<span><span class="co">#&gt;  sessioninfo                1.2.2       <span style="color: #555555;">2021-12-06</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.4.0)</span></span></span>
-<span><span class="co">#&gt;  SingleCellExperiment     * 1.25.0      <span style="color: #555555;">2023-10-24</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">Bioconductor</span></span></span>
-<span><span class="co">#&gt;  SparseArray                1.3.4       <span style="color: #555555;">2024-02-11</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">Bioconductor 3.19 (R 4.4.0)</span></span></span>
+<span><span class="co">#&gt;  scuttle                    1.13.1      <span style="color: #555555;">2024-03-06</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">Bioconductor 3.19 (R 4.5.0)</span></span></span>
+<span><span class="co">#&gt;  sessioninfo                1.2.2       <span style="color: #555555;">2021-12-06</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.5.0)</span></span></span>
+<span><span class="co">#&gt;  SingleCellExperiment     * 1.25.1      <span style="color: #555555;">2024-03-27</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">Bioconductor 3.19 (R 4.5.0)</span></span></span>
+<span><span class="co">#&gt;  SparseArray                1.3.4       <span style="color: #555555;">2024-02-11</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">Bioconductor 3.19 (R 4.5.0)</span></span></span>
 <span><span class="co">#&gt;  sparseMatrixStats          1.15.0      <span style="color: #555555;">2023-10-24</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">Bioconductor</span></span></span>
 <span><span class="co">#&gt;  statmod                    1.5.0       <span style="color: #555555;">2023-01-06</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.4.0)</span></span></span>
-<span><span class="co">#&gt;  stringi                    1.8.3       <span style="color: #555555;">2023-12-11</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.4.0)</span></span></span>
-<span><span class="co">#&gt;  stringr                    1.5.1       <span style="color: #555555;">2023-11-14</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.4.0)</span></span></span>
+<span><span class="co">#&gt;  stringi                    1.8.3       <span style="color: #555555;">2023-12-11</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.5.0)</span></span></span>
+<span><span class="co">#&gt;  stringr                    1.5.1       <span style="color: #555555;">2023-11-14</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.5.0)</span></span></span>
 <span><span class="co">#&gt;  SummarizedExperiment     * 1.33.3      <span style="color: #555555;">2024-01-23</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">Bioconductor 3.19 (R 4.4.0)</span></span></span>
-<span><span class="co">#&gt;  systemfonts                1.0.6       <span style="color: #555555;">2024-03-07</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.4.0)</span></span></span>
-<span><span class="co">#&gt;  textshaping                0.3.7       <span style="color: #555555;">2023-10-09</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.4.0)</span></span></span>
-<span><span class="co">#&gt;  tibble                     3.2.1       <span style="color: #555555;">2023-03-20</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.4.0)</span></span></span>
+<span><span class="co">#&gt;  systemfonts                1.0.6       <span style="color: #555555;">2024-03-07</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.5.0)</span></span></span>
+<span><span class="co">#&gt;  textshaping                0.3.7       <span style="color: #555555;">2023-10-09</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.5.0)</span></span></span>
+<span><span class="co">#&gt;  tibble                     3.2.1       <span style="color: #555555;">2023-03-20</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.5.0)</span></span></span>
 <span><span class="co">#&gt;  tidyr                      1.3.1       <span style="color: #555555;">2024-01-24</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.4.0)</span></span></span>
-<span><span class="co">#&gt;  tidyselect                 1.2.1       <span style="color: #555555;">2024-03-11</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.4.0)</span></span></span>
+<span><span class="co">#&gt;  tidyselect                 1.2.1       <span style="color: #555555;">2024-03-11</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.5.0)</span></span></span>
 <span><span class="co">#&gt;  tidytree                   0.4.6       <span style="color: #555555;">2023-12-12</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.4.0)</span></span></span>
 <span><span class="co">#&gt;  treeio                     1.27.0      <span style="color: #555555;">2023-10-24</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">Bioconductor</span></span></span>
 <span><span class="co">#&gt;  TreeSummarizedExperiment * 2.11.0      <span style="color: #555555;">2023-10-24</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">Bioconductor</span></span></span>
-<span><span class="co">#&gt;  utf8                       1.2.4       <span style="color: #555555;">2023-10-22</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.4.0)</span></span></span>
-<span><span class="co">#&gt;  vctrs                      0.6.5       <span style="color: #555555;">2023-12-01</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.4.0)</span></span></span>
+<span><span class="co">#&gt;  utf8                       1.2.4       <span style="color: #555555;">2023-10-22</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.5.0)</span></span></span>
+<span><span class="co">#&gt;  vctrs                      0.6.5       <span style="color: #555555;">2023-12-01</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.5.0)</span></span></span>
 <span><span class="co">#&gt;  vegan                      2.6-4       <span style="color: #555555;">2022-10-11</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.4.0)</span></span></span>
 <span><span class="co">#&gt;  vipor                      0.4.7       <span style="color: #555555;">2023-12-18</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.4.0)</span></span></span>
 <span><span class="co">#&gt;  viridis                    0.6.5       <span style="color: #555555;">2024-01-29</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.4.0)</span></span></span>
 <span><span class="co">#&gt;  viridisLite                0.4.2       <span style="color: #555555;">2023-05-02</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.4.0)</span></span></span>
-<span><span class="co">#&gt;  withr                      3.0.0       <span style="color: #555555;">2024-01-16</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.4.0)</span></span></span>
-<span><span class="co">#&gt;  xfun                       0.42        <span style="color: #555555;">2024-02-08</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.4.0)</span></span></span>
+<span><span class="co">#&gt;  withr                      3.0.0       <span style="color: #555555;">2024-01-16</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.5.0)</span></span></span>
+<span><span class="co">#&gt;  xfun                       0.43        <span style="color: #555555;">2024-03-25</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.5.0)</span></span></span>
 <span><span class="co">#&gt;  XML                        3.99-0.16.1 <span style="color: #555555;">2024-01-22</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.4.0)</span></span></span>
-<span><span class="co">#&gt;  xtable                     1.8-4       <span style="color: #555555;">2019-04-21</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.4.0)</span></span></span>
+<span><span class="co">#&gt;  xtable                     1.8-4       <span style="color: #555555;">2019-04-21</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.5.0)</span></span></span>
 <span><span class="co">#&gt;  XVector                  * 0.43.1      <span style="color: #555555;">2024-01-10</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">Bioconductor 3.19 (R 4.4.0)</span></span></span>
-<span><span class="co">#&gt;  yaml                       2.3.8       <span style="color: #555555;">2023-12-11</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.4.0)</span></span></span>
+<span><span class="co">#&gt;  yaml                       2.3.8       <span style="color: #555555;">2023-12-11</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.5.0)</span></span></span>
 <span><span class="co">#&gt;  yulab.utils                0.1.4       <span style="color: #555555;">2024-01-28</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.4.0)</span></span></span>
-<span><span class="co">#&gt;  zlibbioc                   1.49.3      <span style="color: #555555;">2024-03-13</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">Bioconductor 3.19 (R 4.4.0)</span></span></span>
+<span><span class="co">#&gt;  zlibbioc                   1.49.3      <span style="color: #555555;">2024-03-13</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">Bioconductor 3.19 (R 4.5.0)</span></span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; <span style="color: #555555;"> [1] /usr/local/lib/R/site-library</span></span></span>
 <span><span class="co">#&gt; <span style="color: #555555;"> [2] /usr/local/lib/R/library</span></span></span>
