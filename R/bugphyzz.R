@@ -240,7 +240,14 @@ getTaxonSignatures <- function(tax, bp, ...) {
             Attribute = paste0("bugphyzz:", Attribute, "|", Attribute_value)
         ) |>
         {\(y) split(y, y$Attribute)}() |>
-        lapply(function(x) unique(x[[tax_id_type]]))
+        lapply(function(x) {
+            sig <- x[[tax_id_type]]
+            score <- round(x[["Score"]], 2)
+            names(score) <- sig
+            attr(sig, "Score") <- score
+            class(sig) <- c("signature", class(sig))
+            sig
+        })
 }
 
 .makeSignaturesNumeric <- function(
@@ -248,15 +255,11 @@ getTaxonSignatures <- function(tax, bp, ...) {
 ) {
     if (!is.null(min) || !is.null(max)) {
         if (is.null(min)) {
-            message(
-                "Minimum unespecified. Using ", min(dat$Attribute_value), "."
-            )
+            message("Minimum unespecified. Using ", min(dat$Attribute_value), ".")
             min <- min(dat$Attribute_value)
         }
         if (is.null(max)) {
-            message(
-                "Maximum unespecified. Using ", max(dat$Attribute_value), "."
-            )
+            message("Maximum unespecified. Using ", max(dat$Attribute_value), ".")
             max <- max(dat$Attribute_value)
         }
         dat <- dat |>
@@ -264,9 +267,7 @@ getTaxonSignatures <- function(tax, bp, ...) {
                 Attribute_value >= min & Attribute_value <= max
             ) |>
             dplyr::mutate(
-                Attribute = paste0(
-                    "bugphyzz:", Attribute, "| >=", min, " & <=", max
-                )
+                Attribute = paste0("bugphyzz:", Attribute, "| >=", min, " & <=", max)
             )
     } else {
         thr <- .thresholds() |>
@@ -280,20 +281,74 @@ getTaxonSignatures <- function(tax, bp, ...) {
                 min_values[i] <- min(dat$Attribute_value) - 0.01
             if (is.na(max_values[i]))
                 max_values[i] <- max(dat$Attribute_value)
-            pos <- which(
-                dat$Attribute_value > min_values[i] &
-                    dat$Attribute_value <= max_values[i]
-            )
+            pos <- which(dat$Attribute_value > min_values[i] & dat$Attribute_value <= max_values[i])
             dat$tmp_col[pos] <- attr_name[i]
-            dat$Attribute[pos] <- paste0(
-                "bugphyzz:", dat$Attribute[pos], "|", attr_name[i], "| > ",
-                round(min_values[i], 2), " & <= ", max_values[i]
-            )
+            dat$Attribute[pos] <- paste0("bugphyzz:", dat$Attribute[pos], "|", attr_name[i], "| > ", round(min_values[i], 2), " & <= ", max_values[i])
         }
     }
     dat |>
         {\(y) split(y, y$Attribute)}() |>
-        lapply(function(x) unique(x[[tax_id_type]]))
+        lapply(function(x) {
+            sig <- x[[tax_id_type]]
+            score <- round(x[["Score"]], 2)
+            names(score) <- sig
+            attr(sig, "Score") <- score
+            class(sig) <- c("signature", class(sig))
+            sig
+        })
+}
+
+#'  Method for printing signatures
+#'
+#' @param x A bugphyzz signature.
+#' @param ... Other arguments.
+#'
+#' @return The signature printed on screen.
+#' @export
+#'
+print.signature <- function(x, ...) {
+    ## TODO create unint tests
+    ## Match text
+    attrs <- c(
+        "Score"
+    )
+    for (i in seq_along(attrs)) {
+        attr(x, attrs[i]) <- NULL
+    }
+    print(unclass(x))
+    # output <- BiocBaseUtils::selectSome(obj = x, maxToShow = 7)
+    # cat(output)
+}
+
+#' Get bugphyzz scores from signature
+#'
+#' @param x  A bugphyzz signature
+#' @param ... Other arguments
+#'
+#' @return A named numeric vector.
+#' @export
+#'
+bpScores<- function(x, ...) {
+    UseMethod("bpScores")
+}
+
+#' Function for getting bugphyzz scores from sigantures
+#'
+#' @param x Object of class signature.
+#'
+#' @return A numeric vector with scores. Names are the Taxonomy IDs or Taxon
+#' names.
+#'
+#' @export
+#'
+#' @examples
+#'
+#' bp <- importBugphyzz()
+#' sig <- makeSignature(bp)
+#' bpScores(sig[[1]])
+#'
+bpScores.signature <- function(x, ...) {
+    attr(x, "Score")
 }
 
 .thresholds <- function() {
