@@ -344,7 +344,7 @@ bpScores<- function(x, ...) {
 #' @examples
 #'
 #' bp <- importBugphyzz()
-#' sig <- makeSignature(bp)
+#' sig <- makeSignatures(bp)
 #' bpScores(sig[[1]])
 #'
 bpScores.signature <- function(x, ...) {
