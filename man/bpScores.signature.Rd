@@ -19,7 +19,7 @@ Function for getting bugphyzz scores from sigantures
 \examples{
 
 bp <- importBugphyzz()
-sig <- makeSignature(bp)
+sig <- makeSignatures(bp)
 bpScores(sig[[1]])
 
 }
