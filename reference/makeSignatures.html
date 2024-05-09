@@ -84,41 +84,41 @@ run <code>browseVignettes("bugphyz")</code> for detailed examples.</p>
 
     <div id="arguments">
     <h2>Arguments</h2>
-    <dl><dt>dat</dt>
+    <dl><dt id="arg-dat">dat<a class="anchor" aria-label="anchor" href="#arg-dat"></a></dt>
 <dd><p>A data.frame.</p></dd>
 
 
-<dt>tax_id_type</dt>
+<dt id="arg-tax-id-type">tax_id_type<a class="anchor" aria-label="anchor" href="#arg-tax-id-type"></a></dt>
 <dd><p>A character string. Valid options: NCBI_ID, Taxon_name.</p></dd>
 
 
-<dt>tax_level</dt>
+<dt id="arg-tax-level">tax_level<a class="anchor" aria-label="anchor" href="#arg-tax-level"></a></dt>
 <dd><p>A character vector. Taxonomic rank. Valid options:
 superkingdom, kingdom, phylum, class, order, family, genus, species, strain.
 They can be combined. "mixed" is equivalent to select all valid ranks.</p></dd>
 
 
-<dt>evidence</dt>
+<dt id="arg-evidence">evidence<a class="anchor" aria-label="anchor" href="#arg-evidence"></a></dt>
 <dd><p>A character vector. Valid options: exp, igc, nas, tas, tax,
 asr. They can be combined. Default is all.</p></dd>
 
 
-<dt>frequency</dt>
+<dt id="arg-frequency">frequency<a class="anchor" aria-label="anchor" href="#arg-frequency"></a></dt>
 <dd><p>A character vector. Valid options: always, usually,
 sometimes, rarely, unknown. They can be combined. By default, "rarely" is
 excluded.</p></dd>
 
 
-<dt>min_size</dt>
+<dt id="arg-min-size">min_size<a class="anchor" aria-label="anchor" href="#arg-min-size"></a></dt>
 <dd><p>Minimum number of bugs in a signature. Default is 10.</p></dd>
 
 
-<dt>min</dt>
+<dt id="arg-min">min<a class="anchor" aria-label="anchor" href="#arg-min"></a></dt>
 <dd><p>Minimum value (inclusive). Only for numeric attributes.
 Default is NULL.</p></dd>
 
 
-<dt>max</dt>
+<dt id="arg-max">max<a class="anchor" aria-label="anchor" href="#arg-max"></a></dt>
 <dd><p>Maximum value (inclusive). Only for numeric attributes.
 Default is NULL.</p></dd>
 
@@ -134,7 +134,7 @@ Default is NULL.</p></dd>
     <h2>Examples</h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">bp</span> <span class="op">&lt;-</span> <span class="fu"><a href="importBugphyzz.html">importBugphyzz</a></span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Using data downloaded on 2024-04-17 18:02:16.</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Using data downloaded on 2024-05-09 18:41:48.</span>
 <span class="r-in"><span><span class="va">sigs</span> <span class="op">&lt;-</span> <span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html" class="external-link">map</a></span><span class="op">(</span><span class="va">bp</span>, <span class="va">makeSignatures</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">sigs</span> <span class="op">&lt;-</span> <span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/list_flatten.html" class="external-link">list_flatten</a></span><span class="op">(</span><span class="va">sigs</span>, name_spec <span class="op">=</span> <span class="st">"{inner}"</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
@@ -152,7 +152,7 @@ Default is NULL.</p></dd>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.8.9000.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.9.9000.</p>
 </div>
 
       </footer></div>
