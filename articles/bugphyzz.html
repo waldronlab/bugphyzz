@@ -19,8 +19,6 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
-    
-
     <div class="container template-article">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -33,10 +31,9 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">bugphyzz</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.99.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.99.1</span>
       </span>
     </div>
-
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
 <li>
@@ -48,7 +45,6 @@
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
-     
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
@@ -65,7 +61,6 @@
 <li>
   <a href="https://github.com/waldronlab/bugphyzz/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
-     
   </a>
 </li>
       </ul>
@@ -75,9 +70,6 @@
 <!--/.container -->
 </div>
 <!--/.navbar -->
-
-      
-
       </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
@@ -93,23 +85,47 @@ Gamboa</h4>
 Waldron</h4>
                   <a class="author_email" href="mailto:#"></a><a href="mailto:levi.waldron@sph.cuny.edu" class="email">levi.waldron@sph.cuny.edu</a>
       
-                  
-      
-      <small class="dont-index">Source: <a href="https://github.com/waldronlab/bugphyzz/blob/HEAD/vignettes/bugphyzz.Rmd" class="external-link"><code>vignettes/bugphyzz.Rmd</code></a></small>
+                              <small class="dont-index">Source: <a href="https://github.com/waldronlab/bugphyzz/blob/HEAD/vignettes/bugphyzz.Rmd" class="external-link"><code>vignettes/bugphyzz.Rmd</code></a></small>
       <div class="hidden name"><code>bugphyzz.Rmd</code></div>
-
     </div>
-
-    
-    
-<div class="section level2">
+            <div class="abstract">
+      <p class="abstract">Abstract</p>
+      <p>The <strong>bugphyzz</strong> package simplifies the import of
+      harmonized microbial annotations into R from diverse sources.
+      These annotations, including extended taxa via ancestral state
+      reconstruction, are organized into tidy <code>data.frame</code>
+      objects, facilitating the creation of microbial signatures. These
+      signatures can be used for enrichment analysis of microbiome omic
+      data, akin to gene set enrichment analysis using tools like <a href="https://bioconductor.org/packages/release/bioc/html/EnrichmentBrowser.html" class="external-link">EnrichmentBrowser</a>
+      and <a href="https://bioconductor.org/packages/release/bioc/html/bugsigdbr.html" class="external-link">bugsigdbr</a>,
+      which are also available on Bioconductor. Annotaions are imported
+      from <a href="https://zenodo.org/doi/10.5281/zenodo.10980653" class="external-link">Zenodo</a>.</p>
+    </div>
+    <div class="section level2">
 <h2 id="introduction">Introduction<a class="anchor" aria-label="anchor" href="#introduction"></a>
 </h2>
-<p><a href="https://github.com/waldronlab/bugphyzzExports" class="external-link">bugphyzz</a>
-is an electronic database of standardized microbial annotations that
-allows: 1. annotation of microbial taxa from multiple sources, and 2.
-creation of microbial signatures based on shared attributes for bug set
-enrichment analysis.</p>
+<p>The bugphyzz package offers a convenient way to import a collection
+of harmonized microbial annotations from various sources into R. These
+annotations are available on <a href="https://zenodo.org/doi/10.5281/zenodo.10980653" class="external-link">Zenodo</a>. In
+addition to being harmonized, some annotations have been extended to
+other taxa based on the phylogeny from <a href="https://imedea.uib-csic.es/mmg/ltp/" class="external-link">‘The All-Species Living Tree
+Project’</a> using ancestral state reconstruction (ASR) methods. The
+annotations are provided in tabular format and organized into distinct
+tidy <code>data.frame</code> objects (for details, see the “Data schema”
+section below).</p>
+<p>Once imported, these <code>data.frame</code> objects can be used to
+create microbial signatures, which are lists of taxa with shared
+characteristics. We anticipate these signatures being utilized for
+enrichment analysis of microbiome omic data by implementing workflows
+similar to those used in gene set enrichment analysis; for example,
+using the <a href="https://bioconductor.org/packages/release/bioc/html/EnrichmentBrowser.html" class="external-link">EnrichmentBrowser</a>
+package (a detailed example is provided in a section below).</p>
+<p>A similar package in Bioconductor is the <a href="https://bioconductor.org/packages/release/bioc/html/bugsigdbr.html" class="external-link">bugsigdbr</a>
+package, which imports literature-published microbial signatures from
+the <a href="https://bugsigdb.org/Main_Page" class="external-link">BugSigDB</a> database and
+has been used for bug set enrichment analysis (BSEA). Moreover, the <a href="https://bioconductor.org/packages/release/bioc/vignettes/bugsigdbr/inst/doc/bugsigdbr.html#13_Writing_microbe_signatures_to_file_in_GMT_format" class="external-link">writeGMT
+function</a> from the bugsigdbr package can export bugphyzz signatures
+as GMT text files.</p>
 </div>
 <div class="section level2">
 <h2 id="data-schema">Data schema<a class="anchor" aria-label="anchor" href="#data-schema"></a>
@@ -288,18 +304,18 @@ the <code>names</code> function:</p>
 <code class="sourceCode R"><span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="va">bp</span><span class="op">$</span><span class="va">aerophilicity</span>, width <span class="op">=</span> <span class="fl">50</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Rows: 17,966</span></span>
 <span><span class="co">#&gt; Columns: 12</span></span>
-<span><span class="co">#&gt; $ NCBI_ID                <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 117743, 118001, 1~</span></span>
-<span><span class="co">#&gt; $ Taxon_name             <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "Flavobacteriia",~</span></span>
-<span><span class="co">#&gt; $ Rank                   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "class", "class",~</span></span>
-<span><span class="co">#&gt; $ Attribute              <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "aerophilicity", ~</span></span>
-<span><span class="co">#&gt; $ Attribute_value        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "anaerobic", "ana~</span></span>
-<span><span class="co">#&gt; $ Evidence               <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "asr", "asr", "as~</span></span>
-<span><span class="co">#&gt; $ Frequency              <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "sometimes", "usu~</span></span>
-<span><span class="co">#&gt; $ Score                  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 0.6911516, 0.9992~</span></span>
-<span><span class="co">#&gt; $ Attribute_source       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> NA, NA, NA, NA, N~</span></span>
-<span><span class="co">#&gt; $ Confidence_in_curation <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> NA, NA, NA, NA, N~</span></span>
-<span><span class="co">#&gt; $ Attribute_type         <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "multistate-inter~</span></span>
-<span><span class="co">#&gt; $ Validation             <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 0.88, 0.88, 0.88,~</span></span></code></pre></div>
+<span><span class="co">#&gt; $ NCBI_ID                <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 117743, 118001, 1…</span></span>
+<span><span class="co">#&gt; $ Taxon_name             <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "Flavobacteriia",…</span></span>
+<span><span class="co">#&gt; $ Rank                   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "class", "class",…</span></span>
+<span><span class="co">#&gt; $ Attribute              <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "aerophilicity", …</span></span>
+<span><span class="co">#&gt; $ Attribute_value        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "anaerobic", "ana…</span></span>
+<span><span class="co">#&gt; $ Evidence               <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "asr", "asr", "as…</span></span>
+<span><span class="co">#&gt; $ Frequency              <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "sometimes", "usu…</span></span>
+<span><span class="co">#&gt; $ Score                  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 0.6911516, 0.9992…</span></span>
+<span><span class="co">#&gt; $ Attribute_source       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> NA, NA, NA, NA, N…</span></span>
+<span><span class="co">#&gt; $ Confidence_in_curation <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> NA, NA, NA, NA, N…</span></span>
+<span><span class="co">#&gt; $ Attribute_type         <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "multistate-inter…</span></span>
+<span><span class="co">#&gt; $ Validation             <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 0.88, 0.88, 0.88,…</span></span></code></pre></div>
 <p>Compare the column names with the data schema described above.</p>
 </div>
 <div class="section level2">
@@ -446,8 +462,9 @@ in the subgingival plaque (negative enrichment score).</p>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">dat_name</span> <span class="op">&lt;-</span> <span class="st">'HMP_2012_16S_gingival_V35'</span></span>
 <span><span class="va">tse</span> <span class="op">&lt;-</span> <span class="fu">MicrobiomeBenchmarkData</span><span class="fu">::</span><span class="fu"><a href="http://waldronlab.io/MicrobiomeBenchmarkData/reference/getBenchmarkData.html" class="external-link">getBenchmarkData</a></span><span class="op">(</span><span class="va">dat_name</span>, dryrun <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span></span>
-<span><span class="co">#&gt; Finished HMP_2012_16S_gingival_V35.</span></span>
-<span><span class="va">tse_genus</span> <span class="op">&lt;-</span> <span class="fu">mia</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/mia/man/splitByRanks.html" class="external-link">splitByRanks</a></span><span class="op">(</span><span class="va">tse</span><span class="op">)</span><span class="op">$</span><span class="va">genus</span></span>
+<span><span class="co">#&gt; Finished HMP_2012_16S_gingival_V35.</span></span></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">tse_genus</span> <span class="op">&lt;-</span> <span class="fu">mia</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/mia/man/splitByRanks.html" class="external-link">splitByRanks</a></span><span class="op">(</span><span class="va">tse</span><span class="op">)</span><span class="op">$</span><span class="va">genus</span></span>
 <span><span class="va">min_n_samples</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Round.html" class="external-link">round</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">ncol</a></span><span class="op">(</span><span class="va">tse_genus</span><span class="op">)</span> <span class="op">*</span> <span class="fl">0.2</span><span class="op">)</span></span>
 <span><span class="va">tse_subset</span> <span class="op">&lt;-</span> <span class="va">tse_genus</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/colSums.html" class="external-link">rowSums</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/SummarizedExperiment/man/SummarizedExperiment-class.html" class="external-link">assay</a></span><span class="op">(</span><span class="va">tse_genus</span><span class="op">)</span> <span class="op">&gt;=</span> <span class="fl">1</span><span class="op">)</span> <span class="op">&gt;=</span> <span class="va">min_n_samples</span>,<span class="op">]</span></span>
 <span><span class="va">tse_subset</span></span>
@@ -469,7 +486,7 @@ in the subgingival plaque (negative enrichment score).</p>
 <span><span class="co">#&gt; colTree: NULL</span></span></code></pre></div>
 <p>Perform differential abundance (DA) analysis to get sets of
 microbes:</p>
-<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">tse_subset</span><span class="op">$</span><span class="va">GROUP</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html" class="external-link">ifelse</a></span><span class="op">(</span></span>
 <span>    <span class="va">tse_subset</span><span class="op">$</span><span class="va">body_subsite</span> <span class="op">==</span> <span class="st">'subgingival_plaque'</span>, <span class="fl">0</span>, <span class="fl">1</span></span>
 <span><span class="op">)</span></span>
@@ -484,7 +501,7 @@ microbes:</p>
 <span>    counts <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/SummarizedExperiment/man/SummarizedExperiment-class.html" class="external-link">assay</a></span><span class="op">(</span><span class="va">se</span><span class="op">)</span>, design <span class="op">=</span> <span class="va">design</span>, plot <span class="op">=</span> <span class="cn">FALSE</span></span>
 <span><span class="op">)</span><span class="op">$</span><span class="va">E</span></span></code></pre></div>
 <p>Perform GSEA and display the results:</p>
-<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">gsea</span> <span class="op">&lt;-</span> <span class="fu">EnrichmentBrowser</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/EnrichmentBrowser/man/sbea.html" class="external-link">sbea</a></span><span class="op">(</span></span>
 <span>    method <span class="op">=</span> <span class="st">'gsea'</span>, se <span class="op">=</span> <span class="va">se</span>, gs <span class="op">=</span> <span class="va">aer_sigs_g</span>, perm <span class="op">=</span> <span class="fl">1000</span>,</span>
 <span>    alpha <span class="op">=</span> <span class="fl">0.1</span> </span>
@@ -539,11 +556,11 @@ users can utilize the <code>getTaxonSignatures</code> function.</p>
 <p>Let’s see an example using <em>Escherichia coli</em> (taxid:
 562).</p>
 <p>Get all signature names associated to <em>E. coli</em>:</p>
-<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/getTaxonSignatures.html">getTaxonSignatures</a></span><span class="op">(</span>tax <span class="op">=</span> <span class="st">"Escherichia coli"</span>, bp <span class="op">=</span> <span class="va">bp</span><span class="op">)</span></span>
 <span><span class="co">#&gt; character(0)</span></span></code></pre></div>
 <p>Get all signature names associated to the <em>E. coli</em> taxid:</p>
-<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/getTaxonSignatures.html">getTaxonSignatures</a></span><span class="op">(</span>tax <span class="op">=</span> <span class="st">"562"</span>, bp <span class="op">=</span> <span class="va">bp</span><span class="op">)</span></span>
 <span><span class="co">#&gt;  [1] "bugphyzz:animal pathogen|FALSE"                                       </span></span>
 <span><span class="co">#&gt;  [2] "bugphyzz:extreme environment|TRUE"                                    </span></span>
@@ -570,22 +587,22 @@ users can utilize the <code>getTaxonSignatures</code> function.</p>
 <div class="section level2">
 <h2 id="session-information">Session information<a class="anchor" aria-label="anchor" href="#session-information"></a>
 </h2>
-<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">sessioninfo</span><span class="fu">::</span><span class="fu"><a href="https://r-lib.github.io/sessioninfo/reference/session_info.html" class="external-link">session_info</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt; <span style="color: #00BBBB; font-weight: bold;">- Session info ---------------------------------------------------------------</span></span></span>
+<span><span class="co">#&gt; <span style="color: #00BBBB; font-weight: bold;">─ Session info ───────────────────────────────────────────────────────────────</span></span></span>
 <span><span class="co">#&gt;  <span style="color: #555555; font-style: italic;">setting </span> <span style="color: #555555; font-style: italic;">value</span></span></span>
 <span><span class="co">#&gt;  version  R version 4.4.0 (2024-04-24)</span></span>
 <span><span class="co">#&gt;  os       Ubuntu 22.04.4 LTS</span></span>
 <span><span class="co">#&gt;  system   x86_64, linux-gnu</span></span>
 <span><span class="co">#&gt;  ui       X11</span></span>
 <span><span class="co">#&gt;  language en</span></span>
-<span><span class="co">#&gt;  collate  C</span></span>
-<span><span class="co">#&gt;  ctype    C</span></span>
+<span><span class="co">#&gt;  collate  en_US.UTF-8</span></span>
+<span><span class="co">#&gt;  ctype    en_US.UTF-8</span></span>
 <span><span class="co">#&gt;  tz       UTC</span></span>
-<span><span class="co">#&gt;  date     2024-05-09</span></span>
-<span><span class="co">#&gt;  pandoc   3.1.13 @ /usr/bin/ (via rmarkdown)</span></span>
+<span><span class="co">#&gt;  date     2024-05-20</span></span>
+<span><span class="co">#&gt;  pandoc   3.2 @ /usr/bin/ (via rmarkdown)</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; <span style="color: #00BBBB; font-weight: bold;">- Packages -------------------------------------------------------------------</span></span></span>
+<span><span class="co">#&gt; <span style="color: #00BBBB; font-weight: bold;">─ Packages ───────────────────────────────────────────────────────────────────</span></span></span>
 <span><span class="co">#&gt;  <span style="color: #555555; font-style: italic;">package                 </span> <span style="color: #555555; font-style: italic;">*</span> <span style="color: #555555; font-style: italic;">version    </span> <span style="color: #555555; font-style: italic;">date (UTC)</span> <span style="color: #555555; font-style: italic;">lib</span> <span style="color: #555555; font-style: italic;">source</span></span></span>
 <span><span class="co">#&gt;  abind                      1.4-5       <span style="color: #555555;">2016-07-21</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM (R 4.4.0)</span></span></span>
 <span><span class="co">#&gt;  annotate                   1.82.0      <span style="color: #555555;">2024-04-30</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">Bioconductor 3.19 (R 4.4.0)</span></span></span>
@@ -609,8 +626,8 @@ users can utilize the <code>getTaxonSignatures</code> function.</p>
 <span><span class="co">#&gt;  bluster                    1.14.0      <span style="color: #555555;">2024-04-30</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">Bioconductor 3.19 (R 4.4.0)</span></span></span>
 <span><span class="co">#&gt;  bookdown                   0.39        <span style="color: #555555;">2024-04-15</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM (R 4.4.0)</span></span></span>
 <span><span class="co">#&gt;  bslib                      0.7.0       <span style="color: #555555;">2024-03-29</span> <span style="color: #555555;">[2]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM (R 4.4.0)</span></span></span>
-<span><span class="co">#&gt;  bugphyzz                 * 0.99.0      <span style="color: #555555;">2024-05-09</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">Bioconductor</span></span></span>
-<span><span class="co">#&gt;  cachem                     1.0.8       <span style="color: #555555;">2023-05-01</span> <span style="color: #555555;">[2]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM (R 4.4.0)</span></span></span>
+<span><span class="co">#&gt;  bugphyzz                 * 0.99.1      <span style="color: #555555;">2024-05-20</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">Bioconductor</span></span></span>
+<span><span class="co">#&gt;  cachem                     1.1.0       <span style="color: #555555;">2024-05-16</span> <span style="color: #555555;">[2]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM (R 4.4.0)</span></span></span>
 <span><span class="co">#&gt;  cli                        3.6.2       <span style="color: #555555;">2023-12-11</span> <span style="color: #555555;">[2]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM (R 4.4.0)</span></span></span>
 <span><span class="co">#&gt;  cluster                    2.1.6       <span style="color: #555555;">2023-12-01</span> <span style="color: #555555;">[3]</span> <span style="color: #555555;">CRAN (R 4.4.0)</span></span></span>
 <span><span class="co">#&gt;  codetools                  0.2-20      <span style="color: #555555;">2024-03-31</span> <span style="color: #555555;">[3]</span> <span style="color: #555555;">CRAN (R 4.4.0)</span></span></span>
@@ -631,12 +648,12 @@ users can utilize the <code>getTaxonSignatures</code> function.</p>
 <span><span class="co">#&gt;  EnrichmentBrowser        * 2.34.1      <span style="color: #555555;">2024-05-06</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">Bioconductor 3.19 (R 4.4.0)</span></span></span>
 <span><span class="co">#&gt;  evaluate                   0.23        <span style="color: #555555;">2023-11-01</span> <span style="color: #555555;">[2]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM (R 4.4.0)</span></span></span>
 <span><span class="co">#&gt;  fansi                      1.0.6       <span style="color: #555555;">2023-12-08</span> <span style="color: #555555;">[2]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM (R 4.4.0)</span></span></span>
-<span><span class="co">#&gt;  fastmap                    1.1.1       <span style="color: #555555;">2023-02-24</span> <span style="color: #555555;">[2]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM (R 4.4.0)</span></span></span>
+<span><span class="co">#&gt;  fastmap                    1.2.0       <span style="color: #555555;">2024-05-15</span> <span style="color: #555555;">[2]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM (R 4.4.0)</span></span></span>
 <span><span class="co">#&gt;  filelock                   1.0.3       <span style="color: #555555;">2023-12-11</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM (R 4.4.0)</span></span></span>
 <span><span class="co">#&gt;  fs                         1.6.4       <span style="color: #555555;">2024-04-25</span> <span style="color: #555555;">[2]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM (R 4.4.0)</span></span></span>
 <span><span class="co">#&gt;  generics                   0.1.3       <span style="color: #555555;">2022-07-05</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM (R 4.4.0)</span></span></span>
 <span><span class="co">#&gt;  GenomeInfoDb             * 1.40.0      <span style="color: #555555;">2024-04-30</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">Bioconductor 3.19 (R 4.4.0)</span></span></span>
-<span><span class="co">#&gt;  GenomeInfoDbData           1.2.12      <span style="color: #555555;">2024-05-09</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">Bioconductor</span></span></span>
+<span><span class="co">#&gt;  GenomeInfoDbData           1.2.12      <span style="color: #555555;">2024-05-20</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">Bioconductor</span></span></span>
 <span><span class="co">#&gt;  GenomicRanges            * 1.56.0      <span style="color: #555555;">2024-05-01</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">Bioconductor 3.19 (R 4.4.0)</span></span></span>
 <span><span class="co">#&gt;  ggbeeswarm                 0.7.2       <span style="color: #555555;">2023-04-29</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM (R 4.4.0)</span></span></span>
 <span><span class="co">#&gt;  ggplot2                    3.5.1       <span style="color: #555555;">2024-04-23</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM (R 4.4.0)</span></span></span>
@@ -661,10 +678,10 @@ users can utilize the <code>getTaxonSignatures</code> function.</p>
 <span><span class="co">#&gt;  lattice                    0.22-6      <span style="color: #555555;">2024-03-20</span> <span style="color: #555555;">[3]</span> <span style="color: #555555;">CRAN (R 4.4.0)</span></span></span>
 <span><span class="co">#&gt;  lazyeval                   0.2.2       <span style="color: #555555;">2019-03-15</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM (R 4.4.0)</span></span></span>
 <span><span class="co">#&gt;  lifecycle                  1.0.4       <span style="color: #555555;">2023-11-07</span> <span style="color: #555555;">[2]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM (R 4.4.0)</span></span></span>
-<span><span class="co">#&gt;  limma                      3.60.0      <span style="color: #555555;">2024-04-30</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">Bioconductor 3.19 (R 4.4.0)</span></span></span>
+<span><span class="co">#&gt;  limma                      3.60.2      <span style="color: #555555;">2024-05-19</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">Bioconductor 3.19 (R 4.4.0)</span></span></span>
 <span><span class="co">#&gt;  locfit                     1.5-9.9     <span style="color: #555555;">2024-03-01</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM (R 4.4.0)</span></span></span>
 <span><span class="co">#&gt;  magrittr                   2.0.3       <span style="color: #555555;">2022-03-30</span> <span style="color: #555555;">[2]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM (R 4.4.0)</span></span></span>
-<span><span class="co">#&gt;  MASS                       7.3-60.2    <span style="color: #555555;">2024-04-30</span> <span style="color: #555555;">[3]</span> <span style="color: #BB00BB; font-weight: bold;">local</span></span></span>
+<span><span class="co">#&gt;  MASS                       7.3-60.2    <span style="color: #555555;">2024-05-06</span> <span style="color: #555555;">[3]</span> <span style="color: #BB00BB; font-weight: bold;">local</span></span></span>
 <span><span class="co">#&gt;  Matrix                     1.7-0       <span style="color: #555555;">2024-03-22</span> <span style="color: #555555;">[3]</span> <span style="color: #555555;">CRAN (R 4.4.0)</span></span></span>
 <span><span class="co">#&gt;  MatrixGenerics           * 1.16.0      <span style="color: #555555;">2024-04-30</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">Bioconductor 3.19 (R 4.4.0)</span></span></span>
 <span><span class="co">#&gt;  matrixStats              * 1.3.0       <span style="color: #555555;">2024-04-11</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM (R 4.4.0)</span></span></span>
@@ -678,19 +695,19 @@ users can utilize the <code>getTaxonSignatures</code> function.</p>
 <span><span class="co">#&gt;  permute                    0.9-7       <span style="color: #555555;">2022-01-27</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM (R 4.4.0)</span></span></span>
 <span><span class="co">#&gt;  pillar                     1.9.0       <span style="color: #555555;">2023-03-22</span> <span style="color: #555555;">[2]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM (R 4.4.0)</span></span></span>
 <span><span class="co">#&gt;  pkgconfig                  2.0.3       <span style="color: #555555;">2019-09-22</span> <span style="color: #555555;">[2]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM (R 4.4.0)</span></span></span>
-<span><span class="co">#&gt;  pkgdown                    <span style="color: #BB00BB; font-weight: bold;">2.0.9.9000 </span> <span style="color: #555555;">2024-05-09</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">Github (r-lib/pkgdown@3e320c8)</span></span></span>
+<span><span class="co">#&gt;  pkgdown                    <span style="color: #BB00BB; font-weight: bold;">2.0.9.9000 </span> <span style="color: #555555;">2024-05-20</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">Github (r-lib/pkgdown@f0f2824)</span></span></span>
 <span><span class="co">#&gt;  plyr                       1.8.9       <span style="color: #555555;">2023-10-02</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM (R 4.4.0)</span></span></span>
 <span><span class="co">#&gt;  png                        0.1-8       <span style="color: #555555;">2022-11-29</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM (R 4.4.0)</span></span></span>
 <span><span class="co">#&gt;  purrr                    * 1.0.2       <span style="color: #555555;">2023-08-10</span> <span style="color: #555555;">[2]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM (R 4.4.0)</span></span></span>
 <span><span class="co">#&gt;  R6                         2.5.1       <span style="color: #555555;">2021-08-19</span> <span style="color: #555555;">[2]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM (R 4.4.0)</span></span></span>
-<span><span class="co">#&gt;  ragg                       1.3.1       <span style="color: #555555;">2024-05-06</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM (R 4.4.0)</span></span></span>
+<span><span class="co">#&gt;  ragg                       1.3.2       <span style="color: #555555;">2024-05-15</span> <span style="color: #555555;">[2]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM (R 4.4.0)</span></span></span>
 <span><span class="co">#&gt;  rappdirs                   0.3.3       <span style="color: #555555;">2021-01-31</span> <span style="color: #555555;">[2]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM (R 4.4.0)</span></span></span>
 <span><span class="co">#&gt;  Rcpp                       1.0.12      <span style="color: #555555;">2024-01-09</span> <span style="color: #555555;">[2]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM (R 4.4.0)</span></span></span>
 <span><span class="co">#&gt;  RCurl                      1.98-1.14   <span style="color: #555555;">2024-01-09</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM (R 4.4.0)</span></span></span>
 <span><span class="co">#&gt;  reshape2                   1.4.4       <span style="color: #555555;">2020-04-09</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM (R 4.4.0)</span></span></span>
 <span><span class="co">#&gt;  Rgraphviz                  2.48.0      <span style="color: #555555;">2024-04-30</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">Bioconductor 3.19 (R 4.4.0)</span></span></span>
 <span><span class="co">#&gt;  rlang                      1.1.3       <span style="color: #555555;">2024-01-10</span> <span style="color: #555555;">[2]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM (R 4.4.0)</span></span></span>
-<span><span class="co">#&gt;  rmarkdown                  2.26.2      <span style="color: #555555;">2024-05-09</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">Github (rstudio/rmarkdown@3d99b8e)</span></span></span>
+<span><span class="co">#&gt;  rmarkdown                  2.27.1      <span style="color: #555555;">2024-05-20</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">Github (rstudio/rmarkdown@e1c93a9)</span></span></span>
 <span><span class="co">#&gt;  RSQLite                    2.3.6       <span style="color: #555555;">2024-03-31</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM (R 4.4.0)</span></span></span>
 <span><span class="co">#&gt;  rsvd                       1.0.5       <span style="color: #555555;">2021-04-16</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM (R 4.4.0)</span></span></span>
 <span><span class="co">#&gt;  S4Arrays                   1.4.0       <span style="color: #555555;">2024-04-30</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">Bioconductor 3.19 (R 4.4.0)</span></span></span>
@@ -705,10 +722,10 @@ users can utilize the <code>getTaxonSignatures</code> function.</p>
 <span><span class="co">#&gt;  SparseArray                1.4.3       <span style="color: #555555;">2024-05-07</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">Bioconductor 3.19 (R 4.4.0)</span></span></span>
 <span><span class="co">#&gt;  sparseMatrixStats          1.16.0      <span style="color: #555555;">2024-04-30</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">Bioconductor 3.19 (R 4.4.0)</span></span></span>
 <span><span class="co">#&gt;  statmod                    1.5.0       <span style="color: #555555;">2023-01-06</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM (R 4.4.0)</span></span></span>
-<span><span class="co">#&gt;  stringi                    1.8.4       <span style="color: #555555;">2024-05-06</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM (R 4.4.0)</span></span></span>
+<span><span class="co">#&gt;  stringi                    1.8.4       <span style="color: #555555;">2024-05-06</span> <span style="color: #555555;">[2]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM (R 4.4.0)</span></span></span>
 <span><span class="co">#&gt;  stringr                    1.5.1       <span style="color: #555555;">2023-11-14</span> <span style="color: #555555;">[2]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM (R 4.4.0)</span></span></span>
 <span><span class="co">#&gt;  SummarizedExperiment     * 1.34.0      <span style="color: #555555;">2024-05-01</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">Bioconductor 3.19 (R 4.4.0)</span></span></span>
-<span><span class="co">#&gt;  systemfonts                1.0.6       <span style="color: #555555;">2024-03-07</span> <span style="color: #555555;">[2]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM (R 4.4.0)</span></span></span>
+<span><span class="co">#&gt;  systemfonts                1.1.0       <span style="color: #555555;">2024-05-15</span> <span style="color: #555555;">[2]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM (R 4.4.0)</span></span></span>
 <span><span class="co">#&gt;  textshaping                0.3.7       <span style="color: #555555;">2023-10-09</span> <span style="color: #555555;">[2]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM (R 4.4.0)</span></span></span>
 <span><span class="co">#&gt;  tibble                     3.2.1       <span style="color: #555555;">2023-03-20</span> <span style="color: #555555;">[2]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM (R 4.4.0)</span></span></span>
 <span><span class="co">#&gt;  tidyr                      1.3.1       <span style="color: #555555;">2024-01-24</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM (R 4.4.0)</span></span></span>
@@ -719,12 +736,12 @@ users can utilize the <code>getTaxonSignatures</code> function.</p>
 <span><span class="co">#&gt;  UCSC.utils                 1.0.0       <span style="color: #555555;">2024-04-30</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">Bioconductor 3.19 (R 4.4.0)</span></span></span>
 <span><span class="co">#&gt;  utf8                       1.2.4       <span style="color: #555555;">2023-10-22</span> <span style="color: #555555;">[2]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM (R 4.4.0)</span></span></span>
 <span><span class="co">#&gt;  vctrs                      0.6.5       <span style="color: #555555;">2023-12-01</span> <span style="color: #555555;">[2]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM (R 4.4.0)</span></span></span>
-<span><span class="co">#&gt;  vegan                      2.6-4       <span style="color: #555555;">2022-10-11</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM (R 4.4.0)</span></span></span>
+<span><span class="co">#&gt;  vegan                      2.6-6       <span style="color: #555555;">2024-05-14</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM (R 4.4.0)</span></span></span>
 <span><span class="co">#&gt;  vipor                      0.4.7       <span style="color: #555555;">2023-12-18</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM (R 4.4.0)</span></span></span>
 <span><span class="co">#&gt;  viridis                    0.6.5       <span style="color: #555555;">2024-01-29</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM (R 4.4.0)</span></span></span>
 <span><span class="co">#&gt;  viridisLite                0.4.2       <span style="color: #555555;">2023-05-02</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM (R 4.4.0)</span></span></span>
 <span><span class="co">#&gt;  withr                      3.0.0       <span style="color: #555555;">2024-01-16</span> <span style="color: #555555;">[2]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM (R 4.4.0)</span></span></span>
-<span><span class="co">#&gt;  xfun                       0.43        <span style="color: #555555;">2024-03-25</span> <span style="color: #555555;">[2]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM (R 4.4.0)</span></span></span>
+<span><span class="co">#&gt;  xfun                       0.44        <span style="color: #555555;">2024-05-15</span> <span style="color: #555555;">[2]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM (R 4.4.0)</span></span></span>
 <span><span class="co">#&gt;  XML                        3.99-0.16.1 <span style="color: #555555;">2024-01-22</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM (R 4.4.0)</span></span></span>
 <span><span class="co">#&gt;  xtable                     1.8-4       <span style="color: #555555;">2019-04-21</span> <span style="color: #555555;">[2]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM (R 4.4.0)</span></span></span>
 <span><span class="co">#&gt;  XVector                  * 0.44.0      <span style="color: #555555;">2024-04-30</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">Bioconductor 3.19 (R 4.4.0)</span></span></span>
@@ -736,37 +753,23 @@ users can utilize the <code>getTaxonSignatures</code> function.</p>
 <span><span class="co">#&gt; <span style="color: #555555;"> [2] /usr/local/lib/R/site-library</span></span></span>
 <span><span class="co">#&gt; <span style="color: #555555;"> [3] /usr/local/lib/R/library</span></span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; <span style="color: #00BBBB; font-weight: bold;">------------------------------------------------------------------------------</span></span></span></code></pre></div>
+<span><span class="co">#&gt; <span style="color: #00BBBB; font-weight: bold;">──────────────────────────────────────────────────────────────────────────────</span></span></span></code></pre></div>
 </div>
   </div>
-
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
-
         <nav id="toc" data-toggle="toc"><h2 data-toc-skip>Contents</h2>
     </nav>
 </div>
-
 </div>
-
-
-
       <footer><div class="copyright">
   <p></p>
 <p>Developed by Samuel Gamboa, Levi Waldron, Kelly Eckenrode, Jonathan Ye, Jennifer Wokaty.</p>
 </div>
-
 <div class="pkgdown">
   <p></p>
 <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.9.9000.</p>
 </div>
-
       </footer>
 </div>
-
-  
-
-
-  
-
   </body>
 </html>
