@@ -1,10 +1,10 @@
 pandoc: '3.2'
 pkgdown: 2.0.9.9000
-pkgdown_sha: f0f28244ce8aa6ea4fffc08c7f9e688b4a8daeb9
+pkgdown_sha: fd9a50ccd6bd08d6422fa7c195e45d75f168adce
 articles:
   articles/attributes: attributes.html
   bugphyzz: bugphyzz.html
-last_built: 2024-05-20T20:23Z
+last_built: 2024-05-21T17:18Z
 urls:
   reference: https://waldronlab.io/bugphyzz/reference
   article: https://waldronlab.io/bugphyzz/articles
