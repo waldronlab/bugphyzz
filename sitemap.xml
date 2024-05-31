@@ -1,51 +1,19 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://waldronlab.io/bugphyzz/404.html</loc>
-  </url>
-  <url>
-    <loc>https://waldronlab.io/bugphyzz/CODE_OF_CONDUCT.html</loc>
-  </url>
-  <url>
-    <loc>https://waldronlab.io/bugphyzz/CONTRIBUTING.html</loc>
-  </url>
-  <url>
-    <loc>https://waldronlab.io/bugphyzz/SUPPORT.html</loc>
-  </url>
-  <url>
-    <loc>https://waldronlab.io/bugphyzz/articles/attributes.html</loc>
-  </url>
-  <url>
-    <loc>https://waldronlab.io/bugphyzz/articles/bugphyzz.html</loc>
-  </url>
-  <url>
-    <loc>https://waldronlab.io/bugphyzz/articles/index.html</loc>
-  </url>
-  <url>
-    <loc>https://waldronlab.io/bugphyzz/authors.html</loc>
-  </url>
-  <url>
-    <loc>https://waldronlab.io/bugphyzz/index.html</loc>
-  </url>
-  <url>
-    <loc>https://waldronlab.io/bugphyzz/news/index.html</loc>
-  </url>
-  <url>
-    <loc>https://waldronlab.io/bugphyzz/reference/getTaxonSignatures.html</loc>
-  </url>
-  <url>
-    <loc>https://waldronlab.io/bugphyzz/reference/importBugphyzz.html</loc>
-  </url>
-  <url>
-    <loc>https://waldronlab.io/bugphyzz/reference/index.html</loc>
-  </url>
-  <url>
-    <loc>https://waldronlab.io/bugphyzz/reference/makeSignatures.html</loc>
-  </url>
-  <url>
-    <loc>https://waldronlab.io/bugphyzz/reference/physiologies.html</loc>
-  </url>
-  <url>
-    <loc>https://waldronlab.io/bugphyzz/reference/showPhys.html</loc>
-  </url>
+<urlset xmlns = 'http://www.sitemaps.org/schemas/sitemap/0.9'>
+<url><loc>https://waldronlab.io/bugphyzz/404.html</loc></url>
+<url><loc>https://waldronlab.io/bugphyzz/CODE_OF_CONDUCT.html</loc></url>
+<url><loc>https://waldronlab.io/bugphyzz/CONTRIBUTING.html</loc></url>
+<url><loc>https://waldronlab.io/bugphyzz/SUPPORT.html</loc></url>
+<url><loc>https://waldronlab.io/bugphyzz/articles/attributes.html</loc></url>
+<url><loc>https://waldronlab.io/bugphyzz/articles/bugphyzz.html</loc></url>
+<url><loc>https://waldronlab.io/bugphyzz/articles/index.html</loc></url>
+<url><loc>https://waldronlab.io/bugphyzz/authors.html</loc></url>
+<url><loc>https://waldronlab.io/bugphyzz/index.html</loc></url>
+<url><loc>https://waldronlab.io/bugphyzz/news/index.html</loc></url>
+<url><loc>https://waldronlab.io/bugphyzz/reference/getTaxonSignatures.html</loc></url>
+<url><loc>https://waldronlab.io/bugphyzz/reference/importBugphyzz.html</loc></url>
+<url><loc>https://waldronlab.io/bugphyzz/reference/index.html</loc></url>
+<url><loc>https://waldronlab.io/bugphyzz/reference/makeSignatures.html</loc></url>
+<url><loc>https://waldronlab.io/bugphyzz/reference/physiologies.html</loc></url>
+<url><loc>https://waldronlab.io/bugphyzz/reference/showPhys.html</loc></url>
 </urlset>
+
