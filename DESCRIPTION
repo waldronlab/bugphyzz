@@ -1,6 +1,6 @@
 Package: bugphyzz
 Title: A harmonized data resource and software for enrichment analysis of microbial physiologies
-Version: 1.7.0
+Version: 1.7.1
 Authors@R: c(
     person("Samuel", "Gamboa", , "Samuel.Gamboa.Tuz@gmail.com", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0002-6863-7943")),
