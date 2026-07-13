@@ -1,0 +1,17 @@
+aerophilicity
+animal pathogen
+biosafety level
+country
+geographic location
+gram stain
+growth medium
+growth temperature
+halophily
+hemolysis
+isolation site
+metabolite production
+metabolite utilization
+motility
+pathogenicity human
+shape
+spore formation
