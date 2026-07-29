@@ -253,7 +253,7 @@ showPhys <- function(whichNames = 'all') {
         ) |>
         dplyr::mutate(
             Attribute_value_min = sub('minus', '-', Attribute_value_min),
-            Attribute_value_max = sub('minus', '-', Attribute_value_min)
+            Attribute_value_max = sub('minus', '-', Attribute_value_max)
         ) |>
         dplyr::mutate(
             Attribute_value_min = as.double(Attribute_value_min),
