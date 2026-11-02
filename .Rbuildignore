@@ -13,3 +13,5 @@
 ^vignettes/articles$
 ^protraits_data$
 ^misc$
+^inst/backup$
+^vignettes/Outline_workflow\.(png|svg)$
