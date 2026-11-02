@@ -1,5 +1,8 @@
 # bugphyzz
 
+[![Bioconductor CI](https://github.com/waldronlab/bugphyzz/actions/workflows/ci.yml/badge.svg)](https://github.com/waldronlab/bugphyzz/actions/workflows/ci.yml)
+[![codecov](https://codecov.io/gh/waldronlab/bugphyzz/graph/badge.svg)](https://codecov.io/gh/waldronlab/bugphyzz)
+
 `bugphyzz` is a collection of bacterial physiological features to be used as a
 resource for physiological discovery and producing signatures.
 We are continuously curating `bugphyzz` databases through 3 main methods:
