@@ -7,8 +7,10 @@
 importBugphyzz(
   version = "10.5281/zenodo.12574596",
   forceDownload = FALSE,
-  v = 0.8,
-  excludeRarely = TRUE
+  mccThreshold = 0.7,
+  r2Threshold = 0.5,
+  excludeRarely = TRUE,
+  v = NULL
 )
 }
 \arguments{
@@ -18,10 +20,17 @@ latest release on Zenodo.  Options: Zenodo DOI, GitHub commit hash, or devel.}
 \item{forceDownload}{Logical value. Force a fresh download of the data or
 use the one stored in the cache (if available). Default is FALSE.}
 
-\item{v}{Validation value. Default 0.8 (see details).}
+\item{mccThreshold}{Minimum Matthews correlation coefficient (MCC) for
+keeping ASR annotations of discrete attributes. Default 0.7 (see details).}
 
-\item{excludeRarely}{Default is TRUE. Exclude values with
-Frequency == FALSE (see details).}
+\item{r2Threshold}{Minimum R-squared for keeping ASR annotations of numeric
+attributes. Default 0.5 (see details).}
+
+\item{excludeRarely}{Default is TRUE. Exclude annotations with
+Frequency "rarely" or "never" (see details).}
+
+\item{v}{Deprecated. A single threshold applied to both MCC and R-squared.
+If supplied, it overrides \code{mccThreshold} and \code{r2Threshold} with a warning.}
 }
 \value{
 A list of tidy data frames.
@@ -39,17 +48,20 @@ The data structure of the data.frames imported with \code{importBugphyzz} are
 detailed in the main vignette. Please run \code{browseVignettes("bugphyzz")}.
 }
 
-\subsection{Validation (\code{v} argument)}{
+\subsection{Validation (\code{mccThreshold} and \code{r2Threshold} arguments)}{
 
 Data imported with \code{importBugphyzz} includes annotations imputed through
 ancestral state reconstruction (ASR) methods. A 10-fold cross-validation
 approach was implemented to assess the reliability of the data imputed.
-Mathew's correlation coefficient (MCC) and R-squared (R2) were used for the
+Matthews correlation coefficient (MCC) and R-squared (R2) were used for the
 validation of discrete and numeric attributes.
 Details can be found at: https://github.com/waldronlab/taxPProValidation.
-By default, imputed annotations with a MCC or R2 value greater than 0.5 are
-imported. The minimum value can be adjusted with the \code{v} argument (only
-values between 0 and 1).
+By default, imputed annotations are kept when the MCC of the attribute
+value is at least 0.7 (discrete attributes) or the R2 of the attribute is
+at least 0.5 (numeric attributes). These are the thresholds used in the
+bugphyzz manuscript. Set either threshold to 0 to keep all imputed
+annotations. Curated annotations (any Evidence other than "asr") are never
+filtered by these thresholds.
 }
 
 \subsection{Frequency (excludeRarely argument)}{
@@ -57,7 +69,7 @@ values between 0 and 1).
 One of the variables in the bugphyzz data.frames is "Frequency", which
 can adopt values of
 "always", "usually", "sometimes", "rarely", or "never". By default
-"never" and "rarely" are excluded. "rarely" could be included with
+"never" and "rarely" are excluded. They can be included with
 \code{excludeRarely = FALSE}. To learn more about these frequency keywords
 please check the bugphyzz vignette with \code{browseVignettes("bugphyzz")}.
 }

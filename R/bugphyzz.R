@@ -3,7 +3,8 @@ utils::globalVariables(c(
     "Attribute", "Attribute_group", "Attribute_new", "Attribute_range",
     "Attribute_value", "Attribute_value_max", "Attribute_value_min", "Br-C10:1",
     "Evidence", "Frequency", "NCBI_ID", "Oxo-C19:1", "Taxon_name", "Unit",
-    "attribute", "functionname", "gram_stain", "physiology", "unit", "value"
+    "attribute", "functionname", "gram_stain", "physiology", "unit", "value",
+    ".attr_key", ".value_key"
 ))
 
 #' Import bugphyzz
@@ -17,9 +18,14 @@ utils::globalVariables(c(
 #' latest release on Zenodo.  Options: Zenodo DOI, GitHub commit hash, or devel.
 #' @param forceDownload Logical value. Force a fresh download of the data or
 #' use the one stored in the cache (if available). Default is FALSE.
-#' @param v Validation value. Default 0.8 (see details).
-#' @param excludeRarely Default is TRUE. Exclude values with
-#' Frequency == FALSE (see details).
+#' @param mccThreshold Minimum Matthews correlation coefficient (MCC) for
+#' keeping ASR annotations of discrete attributes. Default 0.7 (see details).
+#' @param r2Threshold Minimum R-squared for keeping ASR annotations of numeric
+#' attributes. Default 0.5 (see details).
+#' @param excludeRarely Default is TRUE. Exclude annotations with
+#' Frequency "rarely" or "never" (see details).
+#' @param v Deprecated. A single threshold applied to both MCC and R-squared.
+#' If supplied, it overrides `mccThreshold` and `r2Threshold` with a warning.
 #'
 #' @details
 #'
@@ -27,22 +33,25 @@ utils::globalVariables(c(
 #' The data structure of the data.frames imported with `importBugphyzz` are
 #' detailed in the main vignette. Please run `browseVignettes("bugphyzz")`.
 #'
-#' ## Validation (`v` argument)
+#' ## Validation (`mccThreshold` and `r2Threshold` arguments)
 #' Data imported with `importBugphyzz` includes annotations imputed through
 #' ancestral state reconstruction (ASR) methods. A 10-fold cross-validation
 #' approach was implemented to assess the reliability of the data imputed.
-#' Mathew's correlation coefficient (MCC) and R-squared (R2) were used for the
+#' Matthews correlation coefficient (MCC) and R-squared (R2) were used for the
 #' validation of discrete and numeric attributes.
 #' Details can be found at: https://github.com/waldronlab/taxPProValidation.
-#' By default, imputed annotations with a MCC or R2 value greater than 0.5 are
-#' imported. The minimum value can be adjusted with the `v` argument (only
-#' values between 0 and 1).
+#' By default, imputed annotations are kept when the MCC of the attribute
+#' value is at least 0.7 (discrete attributes) or the R2 of the attribute is
+#' at least 0.5 (numeric attributes). These are the thresholds used in the
+#' bugphyzz manuscript. Set either threshold to 0 to keep all imputed
+#' annotations. Curated annotations (any Evidence other than "asr") are never
+#' filtered by these thresholds.
 #'
 #' ## Frequency (excludeRarely argument)
 #' One of the variables in the bugphyzz data.frames is "Frequency", which
 #' can adopt values of
 #' "always", "usually", "sometimes", "rarely", or "never". By default
-#' "never" and "rarely" are excluded. "rarely" could be included with
+#' "never" and "rarely" are excluded. They can be included with
 #' `excludeRarely = FALSE`. To learn more about these frequency keywords
 #' please check the bugphyzz vignette with `browseVignettes("bugphyzz")`.
 #' 
@@ -60,10 +69,26 @@ utils::globalVariables(c(
 #' names(bp)
 #'
 importBugphyzz <- function(
-        version = "10.5281/zenodo.12574596", forceDownload = FALSE, v = 0.8,
-        excludeRarely = TRUE
-
+        version = "10.5281/zenodo.12574596", forceDownload = FALSE,
+        mccThreshold = 0.7, r2Threshold = 0.5, excludeRarely = TRUE, v = NULL
 ) {
+    if (!is.null(v)) {
+        warning(
+            "The `v` argument is deprecated. Use `mccThreshold` and",
+            " `r2Threshold` instead. Using v = ", v, " for both.",
+            call. = FALSE
+        )
+        mccThreshold <- v
+        r2Threshold <- v
+    }
+    for (thr in list(mccThreshold, r2Threshold)) {
+        if (!is.numeric(thr) || length(thr) != 1 || thr < 0 || thr > 1) {
+            stop(
+                "`mccThreshold` and `r2Threshold` must be single numbers",
+                " between 0 and 1.", call. = FALSE
+            )
+        }
+    }
 
     ## output is a list of three data.frames
     ## one of each: binary, multistate, numeric
@@ -81,28 +106,37 @@ importBugphyzz <- function(
 
     output <- purrr::map(output, ~ {
         attrType <- unique(.x$Attribute_type)
+        ## Join on lower-case keys: attribute names in the exports keep the
+        ## case of the curation sheets (e.g. "COGEM pathogenicity rating").
+        x <- dplyr::mutate(.x, .attr_key = tolower(Attribute))
         if (attrType == "binary") {
-            val <- dplyr::select(val, Attribute = attribute, value)
-            o <- dplyr::left_join(.x, val, by = "Attribute" )
+            val <- dplyr::select(val, .attr_key = attribute, value)
+            o <- dplyr::left_join(x, val, by = ".attr_key")
         } else if (
             attrType == "multistate-intersection" ||
             attrType == "multistate-union"
         ) {
             val <- dplyr::select(
-                val, Attribute = physiology, Attribute_value = attribute, value
+                val, .attr_key = physiology, .value_key = attribute, value
             )
             o <- dplyr::left_join(
-                dplyr::mutate(.x, Attribute_value = tolower(Attribute_value)),
-                val, by = c("Attribute", "Attribute_value")
-            )
+                dplyr::mutate(
+                    x, Attribute_value = tolower(Attribute_value),
+                    .value_key = Attribute_value
+                ),
+                val, by = c(".attr_key", ".value_key")
+            ) |>
+                dplyr::select(-.value_key)
         } else if (attrType == "numeric") {
-            val <- dplyr::select(val, Attribute = attribute, value)
-            o <- dplyr::left_join(.x, val, by = "Attribute") |>
+            val <- dplyr::select(val, .attr_key = attribute, value)
+            o <- dplyr::left_join(x, val, by = ".attr_key") |>
                 dplyr::rename(NSTI = nsti)
         }
+        thr <- if (attrType == "numeric") r2Threshold else mccThreshold
         o |>
+            dplyr::select(-.attr_key) |>
             dplyr::filter(
-                !(value < v & Evidence == "asr")
+                Evidence != "asr" | (!is.na(value) & value >= thr)
             ) |>
             dplyr::mutate(value = ifelse(Evidence != "asr", NA, value)) |>
             dplyr::rename(Validation = value)
@@ -110,7 +144,7 @@ importBugphyzz <- function(
 
     if (excludeRarely) {
         output <- purrr::map(
-            output, ~ dplyr::filter(.x, Frequency != "rarely")
+            output, ~ dplyr::filter(.x, !Frequency %in% c("rarely", "never"))
         )
     }
     return(output)
