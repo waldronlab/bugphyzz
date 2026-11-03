@@ -81,14 +81,8 @@ importBugphyzz <- function(
         mccThreshold <- v
         r2Threshold <- v
     }
-    for (thr in list(mccThreshold, r2Threshold)) {
-        if (!is.numeric(thr) || length(thr) != 1 || thr < 0 || thr > 1) {
-            stop(
-                "`mccThreshold` and `r2Threshold` must be single numbers",
-                " between 0 and 1.", call. = FALSE
-            )
-        }
-    }
+    .checkThreshold(mccThreshold, "mccThreshold")
+    .checkThreshold(r2Threshold, "r2Threshold")
 
     ## output is a list of three data.frames
     ## one of each: binary, multistate, numeric
@@ -104,7 +98,34 @@ importBugphyzz <- function(
         dplyr::mutate(physiology = tolower(physiology)) |>
         dplyr::mutate(attribute = tolower(attribute))
 
-    output <- purrr::map(output, ~ {
+    output <- .filterAsr(output, val, mccThreshold, r2Threshold)
+
+    if (excludeRarely) {
+        output <- purrr::map(
+            output,
+            ~ dplyr::filter(
+                .x, !is.na(Frequency) & !Frequency %in% c("rarely", "never")
+            )
+        )
+    }
+    return(output)
+}
+
+.checkThreshold <- function(x, name) {
+    if (!is.numeric(x) || length(x) != 1 || is.na(x) || x < 0 || x > 1) {
+        stop(
+            "`", name, "` must be a single number between 0 and 1.",
+            call. = FALSE
+        )
+    }
+    invisible(TRUE)
+}
+
+## Join validation scores and drop ASR annotations below the threshold for
+## their attribute type. `output` is a named list of data.frames, one per
+## attribute; `val` has columns physiology, attribute (lower case) and value.
+.filterAsr <- function(output, val, mccThreshold, r2Threshold) {
+    purrr::map(output, ~ {
         attrType <- unique(.x$Attribute_type)
         ## Join on lower-case keys: attribute names in the exports keep the
         ## case of the curation sheets (e.g. "COGEM pathogenicity rating").
@@ -141,13 +162,6 @@ importBugphyzz <- function(
             dplyr::mutate(value = ifelse(Evidence != "asr", NA, value)) |>
             dplyr::rename(Validation = value)
     })
-
-    if (excludeRarely) {
-        output <- purrr::map(
-            output, ~ dplyr::filter(.x, !Frequency %in% c("rarely", "never"))
-        )
-    }
-    return(output)
 }
 
 #' Make signatures
