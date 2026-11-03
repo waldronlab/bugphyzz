@@ -7,6 +7,9 @@
   temperature are included again.
 + `excludeRarely = TRUE` now also drops annotations with Frequency "never", as
   the documentation already said.
++ Imputed annotations with no cross-validation score are now dropped (they were
+  kept before). Validation scores are matched case-insensitively, so attributes
+  such as "COGEM pathogenicity rating" are no longer lost.
 
 # bugphyzz 1.7.2
 + Levi Waldron is now the maintainer.
