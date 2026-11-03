@@ -130,8 +130,12 @@ importBugphyzz <- function(
         ## Join on lower-case keys: attribute names in the exports keep the
         ## case of the curation sheets (e.g. "COGEM pathogenicity rating").
         x <- dplyr::mutate(.x, .attr_key = tolower(Attribute))
+        ## Binary and numeric attributes are validated as a whole and have
+        ## physiology == attribute in the validation table. Multistate values
+        ## such as "coccus" repeat across physiologies, so keep them apart.
+        valWhole <- dplyr::filter(val, physiology == attribute)
         if (attrType == "binary") {
-            val <- dplyr::select(val, .attr_key = attribute, value)
+            val <- dplyr::select(valWhole, .attr_key = attribute, value)
             o <- dplyr::left_join(x, val, by = ".attr_key")
         } else if (
             attrType == "multistate-intersection" ||
@@ -149,7 +153,7 @@ importBugphyzz <- function(
             ) |>
                 dplyr::select(-.value_key)
         } else if (attrType == "numeric") {
-            val <- dplyr::select(val, .attr_key = attribute, value)
+            val <- dplyr::select(valWhole, .attr_key = attribute, value)
             o <- dplyr::left_join(x, val, by = ".attr_key") |>
                 dplyr::rename(NSTI = nsti)
         }
