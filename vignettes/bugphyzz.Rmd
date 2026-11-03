@@ -125,7 +125,9 @@ Metadata associated with attribute values:
     * Validation: Score from the
     [10-fold cross-validation analysis](https://github.com/waldronlab/taxPProValidation).
     Matthews correlation coefficient (MCC) for discrete attributes and
-    R-squared for numeric attributes. Default threshold value is 0.5 and above.
+    R-squared for numeric attributes. By default `importBugphyzz()` keeps
+    imputed annotations with MCC of at least 0.7 or R-squared of at least 0.5
+    (`mccThreshold` and `r2Threshold` arguments).
     * NSTI: Nearest sequence taxon index from [PICRUSt2](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7365738/)
     or the [castor package](https://cran.r-project.org/web/packages/castor/index.html).
     Relevant for numeric values only.

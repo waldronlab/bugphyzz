@@ -1,6 +1,6 @@
 Package: bugphyzz
 Title: A harmonized data resource and software for enrichment analysis of microbial physiologies
-Version: 1.7.2
+Version: 1.7.3
 Authors@R: c(
     person("Samuel", "Gamboa", , "Samuel.Gamboa.Tuz@gmail.com", role = "aut",
            comment = c(ORCID = "0000-0002-6863-7943")),
@@ -25,7 +25,6 @@ Config/testthat/edition: 3
 Encoding: UTF-8
 LazyData: false
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.3.1
 VignetteBuilder: knitr
 Depends: 
     R (>= 4.4)
@@ -65,3 +64,4 @@ Suggests:
     BiocStyle
 URL: https://github.com/waldronlab/bugphyzz
 BugReports: https://github.com/waldronlab/bugphyzz/issues
+Config/roxygen2/version: 8.0.0
