@@ -1,3 +1,13 @@
+# bugphyzz 1.7.6
++ New source `NCBI_RefSeq` in `attribute_sources.tsv`: genome size, G+C
+  content and protein-coding gene count of one RefSeq assembly per
+  bacterial or archaeal species (77,673 species), built by
+  `sources/ncbi_assemblies` in bugphyzzExports (issue waldronlab/bugphyzzExports#74,
+  added in waldronlab/bugphyzzExports#81).
++ `.getBacDive()` returns the NCBI id columns as character, as the other
+  importers do; `read.csv` had made them integer, which failed a test added
+  in 1.7.5.
+
 # bugphyzz 1.7.5
 + README now documents the whole pipeline: curation sheets, programmatic
   sources, export, cross-validation, Zenodo release, and the related
