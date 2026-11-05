@@ -1,0 +1,46 @@
+attribute_group	source_term	attribute
+aerophilicity	facultative aerobe	facultatively anaerobic
+aerophilicity	aerotolerant	anaerobic
+aerophilicity	microaerotolerant	anaerobic
+biosafety level	biosafety level 1+	biosafety level 1
+biosafety level	biosafety level L1	biosafety level 1
+biosafety level	biosafety level 3**	biosafety level 3
+disease association	arthritis	Arthritis
+disease association	caries	Caries
+disease association	Endocarditis	endocarditis
+disease association	Fever	fever
+disease association	Infection	infection
+disease association	Infection caused by Escherichia coli (disorder)	infection
+disease association	Meningitis	meningitis
+disease association	meningitis septicemia	meningitis
+disease association	meningitis septicemia	septicemia
+disease association	periodontal disorder	Periodontal disorder
+disease association	Periodontal Disorder	Periodontal disorder
+disease association	septicemia arthritis	septicemia
+disease association	septicemia arthritis	Arthritis
+disease association	Tetnus	Tetanus
+disease association	tumors	Tumor
+disease association	urlnary tract infection	urinary tract infection
+habitat	Waste and sludge water	waste and sludge water
+hemolysis	CAMP test	camp test
+shape	rod-shaped	bacillus
+shape	coccus-shaped	coccus
+shape	sphere-shaped	coccus
+shape	diplococcus-shaped	coccus
+shape	oval-shaped	elliptic
+shape	ovoid-shaped	elliptic
+shape	ellipsoidal	elliptic
+shape	vibrio-shaped	vibrio
+shape	vibriod cell	vibrio
+shape	curved-shaped	vibrio
+shape	crescent-shaped	vibrio
+shape	spiral-shaped	spirillum
+shape	helical-shaped	spirillum
+shape	filament-shaped	filamentous
+shape	pleomorphic-shaped	pleiomorphic cell
+shape	square	rectangle
+shape	flask-shaped	
+shape	ring-shaped	
+shape	star-shaped	
+shape	spore-shaped	
+shape	other	
