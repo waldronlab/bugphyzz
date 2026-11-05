@@ -20,7 +20,8 @@
 #'
 #' @details
 #' Rows come from three places: the curation Google Sheets listed in
-#' `inst/extdata/spreadsheet_links.tsv`, the BacDive sheet, and the
+#' `inst/extdata/spreadsheet_links.tsv`, the BacDive strain table (built from
+#' the BacDive API, `sources/bacdive` in bugphyzzExports), and the other
 #' programmatic sources above. The last are produced by scripts, never edited
 #' by hand, and are cached with BiocFileCache like the exports.
 #'
@@ -43,7 +44,9 @@ physiologies <- function(
     if (cond1 && cond2) {
         spreadsheets <- .importSpreadsheets(keyword = keyword)
         spreadsheets <- spreadsheets[names(spreadsheets) %in% keyword]
-        bacdive <- .reshapeBacDive(.getBacDive(verbose = FALSE))
+        bacdive <- .reshapeBacDive(
+            .getBacDive(verbose = FALSE, forceDownload = forceDownload)
+        )
         bacdive <- bacdive[names(bacdive) %in% keyword]
         physiologies <- lapply(seq_along(keyword), function(i) {
             df1 <- spreadsheets[[keyword[i]]]
@@ -61,7 +64,9 @@ physiologies <- function(
             message('Finished ', keyword[i], '.')
         }
     } else if (!cond1 && cond2) {
-        bacdive <- .reshapeBacDive(.getBacDive(verbose = FALSE))
+        bacdive <- .reshapeBacDive(
+            .getBacDive(verbose = FALSE, forceDownload = forceDownload)
+        )
         physiologies <- bacdive[names(bacdive) %in% keyword]
         ## Not creating a vector. Only using the side effect of the for loop.
         for (i in seq_along(keyword)) {

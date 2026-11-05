@@ -38,7 +38,8 @@ should be used by developers/curators of the package.
 }
 \details{
 Rows come from three places: the curation Google Sheets listed in
-\code{inst/extdata/spreadsheet_links.tsv}, the BacDive sheet, and the
+\code{inst/extdata/spreadsheet_links.tsv}, the BacDive strain table (built from
+the BacDive API, \code{sources/bacdive} in bugphyzzExports), and the other
 programmatic sources above. The last are produced by scripts, never edited
 by hand, and are cached with BiocFileCache like the exports.
 }
