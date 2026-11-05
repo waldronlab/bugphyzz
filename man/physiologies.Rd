@@ -4,7 +4,12 @@
 \alias{physiologies}
 \title{Import physiologies (for devs)}
 \usage{
-physiologies(keyword = "all", fullSource = FALSE)
+physiologies(
+  keyword = "all",
+  fullSource = FALSE,
+  sources = TRUE,
+  forceDownload = FALSE
+)
 }
 \arguments{
 \item{keyword}{Character vector with one or more valid keywords.
@@ -14,6 +19,14 @@ physiologies are imported.}
 \item{fullSource}{Logical. If \code{TRUE}, the Attribute_source column will
 contain full source information. If \code{FALSE}, the Attribute_source column
 will contain shortened versions of the sources. Default is \code{FALSE}.}
+
+\item{sources}{Logical. Also read the programmatic sources (Bergey's
+Manual extraction, Madin et al. 2020, ...) kept under \verb{sources/} in
+\url{https://github.com/waldronlab/bugphyzzExports}. Default is \code{TRUE}.}
+
+\item{forceDownload}{Logical. Re-download the programmatic sources instead
+of using the cached copy. Default is \code{FALSE}. The location can be changed
+with \code{options(bugphyzz.sourcesBaseUrl = ...)}, e.g. to a local checkout.}
 }
 \value{
 A list of data.frames in tidy format.
@@ -22,6 +35,12 @@ A list of data.frames in tidy format.
 \code{physiologies} imports a list of data.frames. This data is in "raw"
 state before cleaning and going through the data imputation steps. It
 should be used by developers/curators of the package.
+}
+\details{
+Rows come from three places: the curation Google Sheets listed in
+\code{inst/extdata/spreadsheet_links.tsv}, the BacDive sheet, and the
+programmatic sources above. The last are produced by scripts, never edited
+by hand, and are cached with BiocFileCache like the exports.
 }
 \examples{
 l <- physiologies('all')

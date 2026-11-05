@@ -16,3 +16,4 @@ OlsenI_2001	high	exp	Olsen I, Nichols FC. Are Sphingolipids and Serine Dipeptide
 PATRIC	medium	igc	https://www.patricbrc.org; V3.6.7
 ProTraits	medium	igc	http://protraits.irb.hr/
 The Microbe Directory	low	nas	https://github.com/dcdanko/MD2
+Bergeys_2026	high	exp	Bergey's Manual of Systematics of Archaea and Bacteria, genus chapters (Wiley, ISBN 9781118960608), traits extracted from the published abstracts with an LLM in 2026; see sources/bergeys_2026 in https://github.com/waldronlab/bugphyzzExports
