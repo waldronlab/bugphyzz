@@ -51,7 +51,10 @@ A source term can map to several attributes; an empty \code{attribute} drops
 the row on purpose.
 }
 \examples{
+\dontrun{
+## Reads every curation sheet and source over the network (several minutes)
 l <- physiologies('all')
 df <- physiologies('aerophilicity')[[1]]
+}
 
 }

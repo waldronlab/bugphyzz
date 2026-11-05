@@ -288,7 +288,7 @@ getTaxonSignatures <- function(tax, bp, ...) {
 # Non exported functions ----------------------------------------------------
 .makeSignaturesDiscrete <- function(dat, taxIdType = "NCBI_ID") {
     dat$Attribute <- paste0(
-        "bugphyz:", dat$Attribute, "|", dat$Attribute_value
+        "bugphyzz:", dat$Attribute, "|", dat$Attribute_value
     )
     dat |> 
         {\(y) S4Vectors::split(y, y$Attribute)}() |>
@@ -413,7 +413,11 @@ getTaxonSignatures <- function(tax, bp, ...) {
     )
     tempDir <- tempdir()
     utils::unzip(zipfile = rpath, exdir = tempDir, junkpaths = TRUE)
-    files <- list.files(tempDir, pattern = "csv", full.names = TRUE)
+    ## Only the three export tables; the archive also holds sources/*.csv.gz
+    files <- list.files(
+        tempDir, pattern = "^bugphyzz_(binary|multistate|numeric)\\.csv$",
+        full.names = TRUE
+    )
     lapply(files, function(x) {
         utils::read.csv(x, header = TRUE, skip = 1) |> 
             dplyr::mutate(Attribute = tolower(Attribute))

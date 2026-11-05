@@ -1,3 +1,4 @@
+testthat::skip_if_offline()
 library(purrr)
 library(S4Vectors)
 bp <- map(importBugphyzz(), DataFrame)
