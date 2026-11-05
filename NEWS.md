@@ -1,4 +1,7 @@
 # bugphyzz 1.7.5
++ README now documents the whole pipeline: curation sheets, programmatic
+  sources, export, cross-validation, Zenodo release, and the related
+  repositories.
 + BacDive data now come from the BacDive API (free since February 2026)
   through `sources/bacdive` in bugphyzzExports instead of a 2023 Google
   Sheet snapshot: every strain in BacDive, each with the NCBI taxid BacDive

@@ -15,7 +15,9 @@ importBugphyzz(
 }
 \arguments{
 \item{version}{Character string indicating the version. Default is the
-latest release on Zenodo.  Options: Zenodo DOI, GitHub commit hash, or devel.}
+Zenodo release the package was built against (v1.0.3). Options: a Zenodo
+DOI, a GitHub commit hash of bugphyzzExports, or "devel" for the weekly
+export.}
 
 \item{forceDownload}{Logical value. Force a fresh download of the data or
 use the one stored in the cache (if available). Default is FALSE.}
