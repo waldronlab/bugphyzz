@@ -29,6 +29,7 @@ VignetteBuilder: knitr
 Depends: 
     R (>= 4.4)
 Imports: 
+    rlang,
     dplyr,
     utils,
     purrr,

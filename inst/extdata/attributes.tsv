@@ -461,3 +461,5 @@
 "COGEM pathogenicity rating 2"	"COGEM pathogenicity rating"	"logical"	NA	NA
 "COGEM pathogenicity rating 3"	"COGEM pathogenicity rating"	"logical"	NA	NA
 "COGEM pathogenicity rating 4"	"COGEM pathogenicity rating"	"logical"	NA	NA
+"vibrio"	"shape"	"logical"	NA	"Curved rod (vibrioid) cell shape"
+"gc content"	"gc content"	"numeric"	NA	"G+C content of genomic DNA, mol%"

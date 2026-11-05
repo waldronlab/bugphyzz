@@ -71,11 +71,21 @@ physiologies <- function(
 
     ## Programmatic sources kept in waldronlab/bugphyzzExports, sources/
     if (sources) {
-        src <- .importSources(keyword = keyword, forceDownload = forceDownload)
-        for (k in intersect(names(src), names(physiologies))) {
+        src <- tryCatch(
+            .importSources(keyword = keyword, forceDownload = forceDownload),
+            error = function(e) {
+                warning(
+                    "Programmatic sources could not be read (",
+                    conditionMessage(e), "). Using sheets only.", call. = FALSE
+                )
+                list()
+            }
+        )
+        for (k in names(src)) {
             physiologies[[k]] <- dplyr::bind_rows(physiologies[[k]], src[[k]])
         }
     }
+    physiologies <- physiologies[!vapply(physiologies, is.null, logical(1))]
 
     physiologies <- lapply(physiologies, function(df) {
         df <- df |>
@@ -181,6 +191,8 @@ showPhys <- function(whichNames = 'all') {
     )
     links <- utils::read.table(fname, header = TRUE, sep = '\t')
     links <- links[links[['physiology']] %in% keyword,]
+    ## a physiology with no sheet link comes only from programmatic sources
+    links <- links[!is.na(links[['link']]) & nzchar(links[['link']]),]
     spreadsheets <- lapply(seq_len(nrow(links)), function(i) {
         physName <- links[i, 'physiology', drop = FALSE][[1]]
         attrType <- links[i, 'attribute_type', drop = FALSE][[1]]
@@ -281,7 +293,7 @@ showPhys <- function(whichNames = 'all') {
         ) |>
         dplyr::mutate(
             Attribute_value_min = sub('minus', '-', Attribute_value_min),
-            Attribute_value_max = sub('minus', '-', Attribute_value_min)
+            Attribute_value_max = sub('minus', '-', Attribute_value_max)
         ) |>
         dplyr::mutate(
             Attribute_value_min = as.double(Attribute_value_min),
@@ -409,8 +421,11 @@ showPhys <- function(whichNames = 'all') {
 
 .importSources <- function(keyword, forceDownload = FALSE) {
     base <- .sourcesBaseUrl()
+    ## cache entries are keyed on the base URL so a local checkout or another
+    ## branch never shadows the default location
+    tag <- substr(rlang::hash(base), 1, 8)
     mpath <- .getResource(
-        "sources_manifest.tsv", paste0(base, "manifest.tsv"),
+        paste0("sources_", tag, "_manifest.tsv"), paste0(base, "manifest.tsv"),
         force = forceDownload, verbose = FALSE
     )
     manifest <- utils::read.table(
@@ -421,15 +436,21 @@ showPhys <- function(whichNames = 'all') {
     out <- lapply(split(manifest, manifest$physiology), function(m) {
         dplyr::bind_rows(lapply(seq_len(nrow(m)), function(i) {
             fpath <- .getResource(
-                paste0("sources_", gsub("/", "_", m$file[i])),
+                paste0("sources_", tag, "_", gsub("/", "_", m$file[i])),
                 paste0(base, m$file[i]), force = forceDownload, verbose = FALSE
             )
             df <- utils::read.table(
                 fpath, header = TRUE, sep = "\t", quote = "", comment.char = "",
                 stringsAsFactors = FALSE, colClasses = "character"
             )
-            df$Attribute_value <- type.convert(df$Attribute_value, as.is = TRUE)
-            .processSheet(df, physName = m$physiology[i], attrType = m$attribute_type[i])
+            attrType <- m$attribute_type[i]
+            if (attrType %in% .discreteAttributeTypes()) {
+                df$Attribute_value <- as.logical(df$Attribute_value)
+            } else if (attrType == "numeric") {
+                df$Attribute_value <- as.numeric(df$Attribute_value)
+            }
+            ## range values stay character ("12-43", "<5"); .modifyRange parses them
+            .processSheet(df, physName = m$physiology[i], attrType = attrType)
         }))
     })
     out

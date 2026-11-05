@@ -30,3 +30,6 @@ width	small	NA	0.9	μm
 width	average	0.9	3.5	μm
 width	large	3.5	12	μm
 width	very large	12	NA	μm
+gc content	low	NA	40	mol%
+gc content	medium	40	60	mol%
+gc content	high	60	NA	mol%
