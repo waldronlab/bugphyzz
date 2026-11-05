@@ -72,3 +72,16 @@ test_that(".getBacDive reads the gzipped strain table from the sources base URL"
     bd2 <- bugphyzz:::.getBacDive(forceDownload = FALSE)
     expect_equal(nrow(bd2), nrow(bd))
 })
+
+test_that(".importBacDiveTable reads every id column as character", {
+    withr::local_envvar(R_USER_CACHE_DIR = withr::local_tempdir())
+    d <- withr::local_tempdir(); dir.create(file.path(d, "bacdive"))
+    con <- gzfile(file.path(d, "bacdive", "bacdive.csv.gz"), "w")
+    writeLines(c("BacDive_ID,Taxon_name,NCBI_ID,Rank,Parent_name,Parent_NCBI_ID,Parent_rank,Seq16S_NCBI_ID,Genome_ID,Type_strain,Gram_stain",
+                 "1,Acetobacter aceti B 4114,435,strain,Acetobacter aceti,434,species,123456,2345678,no,negative"), con); close(con)
+    withr::local_options(bugphyzz.sourcesBaseUrl = paste0(d, "/"))
+    bd <- bugphyzz:::.importBacDiveTable(forceDownload = TRUE)
+    ids <- c("ncbi_id", "parent_ncbi_id", "seq16s_ncbi_id", "genome_id")
+    expect_true(all(ids %in% colnames(bd)))
+    expect_true(all(vapply(bd[ids], is.character, logical(1))))
+})
