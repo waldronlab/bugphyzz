@@ -56,11 +56,18 @@
         dplyr::mutate(Attribute = gsub('_', ' ', Attribute)) |>
         ## A strain can carry several values from different references (e.g.
         ## "anaerobe;facultative anaerobe"); keep every one as its own row.
-        ## The halophily and metabolite parsers below split on ';' too and
-        ## work the same on one item per row.
-        tidyr::separate_longer_delim(
-            Attribute_value, delim = ';'
+        ## Only single-value attributes are split here: halophily and the
+        ## metabolite columns parse ';' themselves, and the paired columns
+        ## (culture temperature and its growth flag, biosafety level and its
+        ## comment) hold one value per strain by construction.
+        dplyr::mutate(
+            Attribute_value = ifelse(
+                Attribute %in% .multiValuedBDAttributes(),
+                Attribute_value, gsub(';', '\u00a7', Attribute_value)
+            )
         ) |>
+        tidyr::separate_longer_delim(Attribute_value, delim = ';') |>
+        dplyr::mutate(Attribute_value = gsub('\u00a7', ';', Attribute_value)) |>
         dplyr::mutate(Attribute_value = stringr::str_squish(Attribute_value)) |>
         dplyr::filter(Attribute_value != '') |>
         dplyr::mutate(
@@ -344,4 +351,12 @@
     df[['Attribute_value']] <- TRUE
     df[['Attribute_type']] <- 'discrete'
     return(df)
+}
+
+## BacDive columns where several references can give different values
+.multiValuedBDAttributes <- function() {
+    c('oxygen tolerance', 'gram stain', 'cell shape', 'motility',
+      'spore formation', 'hemolysis', 'sample type', 'country',
+      'geographic location', 'cultivation medium used', 'colony color',
+      'incubation period')
 }
