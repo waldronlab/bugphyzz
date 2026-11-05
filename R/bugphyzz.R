@@ -411,15 +411,23 @@ getTaxonSignatures <- function(tax, bp, ...) {
         rname = paste0("bugphyzz.zip"),
         url = fileNamesUrl, verbose = TRUE, force = forceDownload
     )
-    tempDir <- tempdir()
-    utils::unzip(zipfile = rpath, exdir = tempDir, junkpaths = TRUE)
-    ## Only the three export tables; the archive also holds sources/*.csv.gz
+    .readZenodoZip(rpath)
+}
+
+## Read the three export tables from a Zenodo deposit (the GitHub archive of
+## a bugphyzzExports tag, which also holds sources/*.csv.gz). Extract into a
+## fresh directory so leftovers in tempdir() cannot be picked up.
+.readZenodoZip <- function(rpath) {
+    exdir <- tempfile("bugphyzz")
+    dir.create(exdir)
+    on.exit(unlink(exdir, recursive = TRUE), add = TRUE)
+    utils::unzip(zipfile = rpath, exdir = exdir, junkpaths = TRUE)
     files <- list.files(
-        tempDir, pattern = "^bugphyzz_(binary|multistate|numeric)\\.csv$",
+        exdir, pattern = "^bugphyzz_(binary|multistate|numeric)\\.csv$",
         full.names = TRUE
     )
     lapply(files, function(x) {
-        utils::read.csv(x, header = TRUE, skip = 1) |> 
+        utils::read.csv(x, header = TRUE, skip = 1) |>
             dplyr::mutate(Attribute = tolower(Attribute))
     })
 }

@@ -4,8 +4,8 @@
   GMT files needs updating; bugphyzzExports v1.1.0 onward carries the new
   names.
 + `importBugphyzz()` reads only the three `bugphyzz_*.csv` tables from a
-  Zenodo deposit. The archive now also holds `sources/`, whose `.csv.gz`
-  files matched the old pattern.
+  Zenodo deposit, extracted into a fresh directory. The archive now also
+  holds `sources/`, whose `.csv.gz` files matched the old pattern.
 + `attributes.tsv`: the group typo `extreme environemnt`, the plural
   `mutation rates` and a trailing semicolon are fixed, so those values match
   their physiology; the `Butyrate-Producing Bacteria` row keeps the sheet's
