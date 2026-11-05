@@ -1,3 +1,4 @@
+testthat::skip_if_offline()
 taxID <- "562"
 taxName <- "Escherichia coli"
 bp <- importBugphyzz()

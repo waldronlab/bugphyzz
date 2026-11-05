@@ -171,10 +171,10 @@
 "COGEM pathogenicity rating"	"COGEM pathogenicity rating"	"integer"	NA	NA
 "antimicrobial sensitivity"	"antimicrobial sensitivity"	"logical"	NA	NA
 "biofilm formation"	"biofilm formation"	"logical"	"APO:0000159"	"The ability to form a layer on solid surfaces with or without other microorganisms."
-"Butyrate-Producing Bacteria"	"Butyrate-Producing Bacteria;butyrate producing"	"numeric"	"NCIT:C126417"	"Any anaerobic bacteria that metabolizes complex carbohydrates to produce butyrate. These microorganisms may form colonies in the intestines of mammals; their presence may aid the host by catabolizing undigested fiber and starch. Additionally, butyrate is metabolized by colonic epithelial cells and may protect the host against ulcerative colitis and cancer."
+"Butyrate-Producing Bacteria"	"butyrate producing"	"numeric"	"NCIT:C126417"	"Any anaerobic bacteria that metabolizes complex carbohydrates to produce butyrate. These microorganisms may form colonies in the intestines of mammals; their presence may aid the host by catabolizing undigested fiber and starch. Additionally, butyrate is metabolized by colonic epithelial cells and may protect the host against ulcerative colitis and cancer."
 "acetate producing"	"acetate producing"	"numeric"	NA	NA
 "lactate producing"	"lactate producing"	"numeric"	NA	NA
-"mutation rate per site per year"	"mutation rates per site per year"	"numeric"	NA	NA
+"mutation rate per site per year"	"mutation rate per site per year"	"numeric"	NA	NA
 "mutation rate per site per generation"	"mutation rate per site per generation"	"numeric"	NA	NA
 "hydrogen gas producing"	"hydrogen gas producing"	"numeric"	NA	NA
 "width"	"width"	"numeric"	"PATO:0000921"	"A 1-D extent quality which is equal to the distance from one side of an object to another side which is opposite."
@@ -182,7 +182,7 @@
 "fatty acid composition"	NA	"logical"	NA	NA
 "human urine"	"habitat;isolation site"	"logical"	"MCO:0000662"	"No definition provided"
 "v-formation"	"arrangement"	"logical"	NA	NA
-"extreme environment"	"extreme environemnt"	"logical"	NA	NA
+"extreme environment"	"extreme environment"	"logical"	NA	NA
 "gut"	NA	"logical"	"OHMI:0000020"	"A human being's gut microbiota contains tens of trillions of microorganisms, including at least 1000 different species of known bacteria with more than 3 million genes (150 times more than human genes). Microbiota can, in total, weigh up to 2 kg. One third of our gut microbiota is common to most people, while two thirds are specific to each one of us. In other words, the microbiota in your intestine is like an individual identity card. URL: http://www.gutmicrobiotaforhealth.com/en/about-gut-microbiota-info/"
 "rumen"	"habitat;isolation site"	"logical"	"NCIT:C98778"	"Largest forestomach of ruminants where bacterial fermentation occurs"
 "Health associated"	"health associated"	"logical"	NA	NA
@@ -445,7 +445,7 @@
 "slow"	"mutation rate per site per generation;mutation rate per site per year"	"logical"	NA	NA
 "medium"	"mutation rate per site per generation;mutation rate per site per year"	"logical"	NA	NA
 "fast"	"mutation rate per site per generation;mutation rate per site per year"	"logical"	NA	NA
-"medium fast"	"mutation rate per site per year;"	"logical"	NA	NA
+"medium fast"	"mutation rate per site per year"	"logical"	NA	NA
 "spore formation"	"spore formation"	"logical"	NA	NA
 "Sphingolipid producing"	"sphingolipid producing"	"logical"	NA	NA
 "pathogenicity human"	"pathogenicity human"	"logical"	NA	NA

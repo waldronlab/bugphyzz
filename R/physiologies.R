@@ -37,8 +37,11 @@
 #' @export
 #'
 #' @examples
+#' \dontrun{
+#' ## Reads every curation sheet and source over the network (several minutes)
 #' l <- physiologies('all')
 #' df <- physiologies('aerophilicity')[[1]]
+#' }
 #'
 physiologies <- function(
         keyword = 'all', fullSource = FALSE, sources = TRUE,

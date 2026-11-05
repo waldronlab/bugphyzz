@@ -1,3 +1,20 @@
+# bugphyzz 1.7.8
++ `makeSignatures()` names discrete signatures `bugphyzz:` like the range
+  ones; they were `bugphyz:` (#256). Code that matched the old prefix in the
+  GMT files needs updating; bugphyzzExports v1.1.0 onward carries the new
+  names.
++ `importBugphyzz()` reads only the three `bugphyzz_*.csv` tables from a
+  Zenodo deposit, extracted into a fresh directory. The archive now also
+  holds `sources/`, whose `.csv.gz` files matched the old pattern.
++ `attributes.tsv`: the group typo `extreme environemnt`, the plural
+  `mutation rates` and a trailing semicolon are fixed, so those values match
+  their physiology; the `Butyrate-Producing Bacteria` row keeps the sheet's
+  spelling and loses the unused mixed-case group (#281). Rows without an
+  `attribute_group` are unchanged.
++ Tests that download data skip when offline, and the `physiologies()`
+  example is no longer run on check (#266, in part).
++ `rlang` was listed in both Imports and Suggests; now Imports only.
+
 # bugphyzz 1.7.7
 + New synonym table `inst/extdata/attribute_synonyms.tsv` maps source terms
   to the controlled vocabulary in `attributes.tsv`; `physiologies()` applies
