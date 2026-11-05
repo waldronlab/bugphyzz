@@ -1,3 +1,9 @@
+# bugphyzz 1.7.9
++ `attributes.tsv` gains `resistance to beta-lactam` and `resistance to
+  carbapenems`, the names bugphyzzExports gives these antimicrobial
+  resistance terms when it pairs resistant and sensitive values
+  (waldronlab/bugphyzzExports#83).
+
 # bugphyzz 1.7.8
 + `makeSignatures()` names discrete signatures `bugphyzz:` like the range
   ones; they were `bugphyz:` (#256). Code that matched the old prefix in the
