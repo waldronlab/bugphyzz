@@ -2,7 +2,8 @@
 + New source `NCBI_RefSeq` in `attribute_sources.tsv`: genome size, G+C
   content and protein-coding gene count of one RefSeq assembly per
   bacterial or archaeal species (77,673 species), built by
-  `sources/ncbi_assemblies` in bugphyzzExports (waldronlab/bugphyzzExports#74).
+  `sources/ncbi_assemblies` in bugphyzzExports (issue waldronlab/bugphyzzExports#74,
+  added in waldronlab/bugphyzzExports#81).
 
 # bugphyzz 1.7.5
 + README now documents the whole pipeline: curation sheets, programmatic
