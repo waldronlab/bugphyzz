@@ -24,6 +24,9 @@
     )
     bacdive <- utils::read.csv(gzfile(fpath), stringsAsFactors = FALSE)
     colnames(bacdive) <- tolower(colnames(bacdive))
+    ## ids are character everywhere else; read.csv would make them integer
+    for (col in c('ncbi_id', 'parent_ncbi_id', 'seq16s_ncbi_id', 'genome_id'))
+        bacdive[[col]] <- as.character(bacdive[[col]])
     return(bacdive)
 }
 
