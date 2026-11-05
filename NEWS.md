@@ -1,3 +1,11 @@
+# bugphyzz 1.7.4
++ `physiologies()` now also reads programmatic sources kept under `sources/`
+  in waldronlab/bugphyzzExports (manifest plus one TSV per physiology, cached
+  with BiocFileCache): a 2026 extraction of Bergey's Manual genus abstracts
+  (`Bergeys_2026`, new entry in `attribute_sources.tsv`) and the full Madin
+  et al. 2020 species traits. `sources = FALSE` turns this off;
+  `options(bugphyzz.sourcesBaseUrl = ...)` points it at a local checkout.
+
 # bugphyzz 1.7.3
 + `importBugphyzz()` now filters imputed (ASR) annotations with separate
   thresholds for discrete and numeric attributes: `mccThreshold` (default 0.7)

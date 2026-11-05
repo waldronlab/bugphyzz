@@ -11,6 +11,18 @@
 #' @param fullSource Logical. If `TRUE`, the Attribute_source column will
 #' contain full source information. If `FALSE`, the Attribute_source column
 #' will contain shortened versions of the sources. Default is `FALSE`.
+#' @param sources Logical. Also read the programmatic sources (Bergey's
+#' Manual extraction, Madin et al. 2020, ...) kept under `sources/` in
+#' \url{https://github.com/waldronlab/bugphyzzExports}. Default is `TRUE`.
+#' @param forceDownload Logical. Re-download the programmatic sources instead
+#' of using the cached copy. Default is `FALSE`. The location can be changed
+#' with `options(bugphyzz.sourcesBaseUrl = ...)`, e.g. to a local checkout.
+#'
+#' @details
+#' Rows come from three places: the curation Google Sheets listed in
+#' `inst/extdata/spreadsheet_links.tsv`, the BacDive sheet, and the
+#' programmatic sources above. The last are produced by scripts, never edited
+#' by hand, and are cached with BiocFileCache like the exports.
 #'
 #' @return A list of data.frames in tidy format.
 #'
@@ -20,7 +32,10 @@
 #' l <- physiologies('all')
 #' df <- physiologies('aerophilicity')[[1]]
 #'
-physiologies <- function(keyword = 'all', fullSource = FALSE) {
+physiologies <- function(
+        keyword = 'all', fullSource = FALSE, sources = TRUE,
+        forceDownload = FALSE
+) {
     keyword <- .checkKeyword(keyword)
     cond1 <- any(keyword %in% showPhys('spreadsheets'))
     cond2 <- any(keyword %in% showPhys('bacdive'))
@@ -53,6 +68,24 @@ physiologies <- function(keyword = 'all', fullSource = FALSE) {
             message('Finished ', keyword[i], '.')
         }
     }
+
+    ## Programmatic sources kept in waldronlab/bugphyzzExports, sources/
+    if (sources) {
+        src <- tryCatch(
+            .importSources(keyword = keyword, forceDownload = forceDownload),
+            error = function(e) {
+                warning(
+                    "Programmatic sources could not be read (",
+                    conditionMessage(e), "). Using sheets only.", call. = FALSE
+                )
+                list()
+            }
+        )
+        for (k in names(src)) {
+            physiologies[[k]] <- dplyr::bind_rows(physiologies[[k]], src[[k]])
+        }
+    }
+    physiologies <- physiologies[!vapply(physiologies, is.null, logical(1))]
 
     physiologies <- lapply(physiologies, function(df) {
         df <- df |>
@@ -153,50 +186,57 @@ showPhys <- function(whichNames = 'all') {
 
 ## Helper function for physiologies
 .importSpreadsheets <- function(keyword) {
-    parentColNames <- c('Parent_name', 'Parent_NCBI_ID', 'Parent_rank')
     fname <- system.file(
         'extdata', 'spreadsheet_links.tsv', package = 'bugphyzz'
     )
     links <- utils::read.table(fname, header = TRUE, sep = '\t')
     links <- links[links[['physiology']] %in% keyword,]
+    ## a physiology with no sheet link comes only from programmatic sources
+    links <- links[!is.na(links[['link']]) & nzchar(links[['link']]),]
     spreadsheets <- lapply(seq_len(nrow(links)), function(i) {
         physName <- links[i, 'physiology', drop = FALSE][[1]]
         attrType <- links[i, 'attribute_type', drop = FALSE][[1]]
         url <- links[i, 'link', drop = FALSE][[1]]
         df <- dplyr::distinct(utils::read.csv(url))
-        df[['Attribute_type']] <- attrType
-        df[['Attribute_group']] <- physName
-        df[['NCBI_ID']] <- as.character(df[['NCBI_ID']])
-        df <- df[!is.na(df[['Attribute_value']]),]
-        
-        if (unique(df[['Attribute_type']]) == 'numeric') {
-            df <- .numericToRange(df)
-        } else if (unique(df[['Attribute_type']] == 'range')) {
-            df <- .modifyRange(df)
-        } else if (
-            unique(df[['Attribute_type']] %in% .discreteAttributeTypes())
-        ) {
-            df <- dplyr::filter(
-                df, Attribute_value == TRUE | Attribute_value == FALSE
-            )
-        }
-        if (all(parentColNames %in% colnames(df))) {
-            df$Parent_NCBI_ID <- stringr::str_squish(
-                as.character(df$Parent_NCBI_ID)
-            )
-        } else {
-            ## ranksParents is an internal object (data.frame) in bugphyzz
-            rp <- purrr::modify_at(
-                .x = ranksParents,
-                .at = c('NCBI_ID', 'Parent_NCBI_ID'),
-                .f = as.character
-            )
-            df <- dplyr::left_join(df, rp, by = "NCBI_ID")
-        }
-        df
+        .processSheet(df, physName = physName, attrType = attrType)
     })
     names(spreadsheets) <- links$physiology
     return(spreadsheets)
+}
+
+## Shared by .importSpreadsheets and .importSources
+.processSheet <- function(df, physName, attrType) {
+    parentColNames <- c('Parent_name', 'Parent_NCBI_ID', 'Parent_rank')
+    df[['Attribute_type']] <- attrType
+    df[['Attribute_group']] <- physName
+    df[['NCBI_ID']] <- as.character(df[['NCBI_ID']])
+    df <- df[!is.na(df[['Attribute_value']]),]
+
+    if (unique(df[['Attribute_type']]) == 'numeric') {
+        df <- .numericToRange(df)
+    } else if (unique(df[['Attribute_type']] == 'range')) {
+        df <- .modifyRange(df)
+    } else if (
+        unique(df[['Attribute_type']] %in% .discreteAttributeTypes())
+    ) {
+        df <- dplyr::filter(
+            df, Attribute_value == TRUE | Attribute_value == FALSE
+        )
+    }
+    if (all(parentColNames %in% colnames(df))) {
+        df$Parent_NCBI_ID <- stringr::str_squish(
+            as.character(df$Parent_NCBI_ID)
+        )
+    } else {
+        ## ranksParents is an internal object (data.frame) in bugphyzz
+        rp <- purrr::modify_at(
+            .x = ranksParents,
+            .at = c('NCBI_ID', 'Parent_NCBI_ID'),
+            .f = as.character
+        )
+        df <- dplyr::left_join(df, rp, by = "NCBI_ID")
+    }
+    df
 }
 
 ## Helper function for .importSpreadsheets
@@ -253,7 +293,7 @@ showPhys <- function(whichNames = 'all') {
         ) |>
         dplyr::mutate(
             Attribute_value_min = sub('minus', '-', Attribute_value_min),
-            Attribute_value_max = sub('minus', '-', Attribute_value_min)
+            Attribute_value_max = sub('minus', '-', Attribute_value_max)
         ) |>
         dplyr::mutate(
             Attribute_value_min = as.double(Attribute_value_min),
@@ -366,4 +406,52 @@ showPhys <- function(whichNames = 'all') {
     links <- dplyr::bind_rows(phys_links, custom_links)
     x |>
         dplyr::left_join(links, by = c("dataset" = "physiology"))
+}
+
+
+## Programmatic sources: manifest and files in waldronlab/bugphyzzExports,
+## sources/. Each file has the curation-sheet column layout, so it goes
+## through the same processing as a Google Sheet.
+.sourcesBaseUrl <- function() {
+    getOption(
+        "bugphyzz.sourcesBaseUrl",
+        "https://raw.githubusercontent.com/waldronlab/bugphyzzExports/devel/sources/"
+    )
+}
+
+.importSources <- function(keyword, forceDownload = FALSE) {
+    base <- .sourcesBaseUrl()
+    ## cache entries are keyed on the base URL so a local checkout or another
+    ## branch never shadows the default location
+    tag <- substr(rlang::hash(base), 1, 8)
+    mpath <- .getResource(
+        paste0("sources_", tag, "_manifest.tsv"), paste0(base, "manifest.tsv"),
+        force = forceDownload, verbose = FALSE
+    )
+    manifest <- utils::read.table(
+        mpath, header = TRUE, sep = "\t", quote = "", stringsAsFactors = FALSE
+    )
+    manifest <- manifest[manifest$physiology %in% keyword, , drop = FALSE]
+    if (!nrow(manifest)) return(list())
+    out <- lapply(split(manifest, manifest$physiology), function(m) {
+        dplyr::bind_rows(lapply(seq_len(nrow(m)), function(i) {
+            fpath <- .getResource(
+                paste0("sources_", tag, "_", gsub("/", "_", m$file[i])),
+                paste0(base, m$file[i]), force = forceDownload, verbose = FALSE
+            )
+            df <- utils::read.table(
+                fpath, header = TRUE, sep = "\t", quote = "", comment.char = "",
+                stringsAsFactors = FALSE, colClasses = "character"
+            )
+            attrType <- m$attribute_type[i]
+            if (attrType %in% .discreteAttributeTypes()) {
+                df$Attribute_value <- as.logical(df$Attribute_value)
+            } else if (attrType == "numeric") {
+                df$Attribute_value <- as.numeric(df$Attribute_value)
+            }
+            ## range values stay character ("12-43", "<5"); .modifyRange parses them
+            .processSheet(df, physName = m$physiology[i], attrType = attrType)
+        }))
+    })
+    out
 }
