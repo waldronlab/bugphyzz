@@ -1,3 +1,19 @@
+# bugphyzz 1.7.7
++ New synonym table `inst/extdata/attribute_synonyms.tsv` maps source terms
+  to the controlled vocabulary in `attributes.tsv`; `physiologies()` applies
+  it to sheet, BacDive and `sources/` rows alike. The export drops any value
+  not in the vocabulary, which until now discarded every BacDive shape
+  ("rod-shaped", "coccus-shaped", ...), the 2020 Bergey's "vibriod cell",
+  BacDive's "facultative aerobe", "biosafety level 1+" and others (#229,
+  #264). Shape rows with a valid value go from 25,556 to 41,268, habitat
+  from 4,906 to 5,703; aerophilicity, disease association, biosafety level
+  and hemolysis gain a few dozen each. "aerotolerant" and "microaerotolerant"
+  become "anaerobic". Shape terms with no vocabulary equivalent (flask-,
+  ring-, star-, spore-shaped, "other") are dropped by the table on purpose.
++ A test checks that every discrete value from every sheet and source is in
+  the vocabulary after mapping, so a new unmapped term fails here instead of
+  disappearing in the export.
+
 # bugphyzz 1.7.6
 + New source `NCBI_RefSeq` in `attribute_sources.tsv`: genome size, G+C
   content and protein-coding gene count of one RefSeq assembly per

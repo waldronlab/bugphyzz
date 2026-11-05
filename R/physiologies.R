@@ -25,6 +25,13 @@
 #' programmatic sources above. The last are produced by scripts, never edited
 #' by hand, and are cached with BiocFileCache like the exports.
 #'
+#' Attribute values from all three are mapped to the controlled vocabulary
+#' in `inst/extdata/attributes.tsv` with the synonym table
+#' `inst/extdata/attribute_synonyms.tsv` (columns `attribute_group`,
+#' `source_term`, `attribute`), e.g. BacDive's "rod-shaped" to "bacillus".
+#' A source term can map to several attributes; an empty `attribute` drops
+#' the row on purpose.
+#'
 #' @return A list of data.frames in tidy format.
 #'
 #' @export
@@ -100,7 +107,8 @@ physiologies <- function(
                 .at = c('Frequency', 'Evidence', 'Confidence_in_curation'),
                 ~ stringr::str_squish(stringr::str_to_lower(.x))
             ) |>
-            dplyr::distinct()
+            dplyr::distinct() |>
+            .applySynonyms()
 
         if (fullSource) {
             df$Attribute_source <- df$fullSource
@@ -350,6 +358,53 @@ showPhys <- function(whichNames = 'all') {
     cols <- reqCols[colsLgl]
     df |>
         dplyr::relocate(dplyr::all_of(cols))
+}
+
+## Helper function for physiologies. Maps source terms (BacDive's
+## "rod-shaped", the 2020 Bergey's "vibriod cell", ...) to the controlled
+## vocabulary in attributes.tsv, using inst/extdata/attribute_synonyms.tsv.
+## A source term may map to several attributes (one row each); an empty
+## attribute drops the row on purpose. Only rows with Attribute_value TRUE are
+## mapped: some mappings are lossy ("aerotolerant" to "anaerobic"), so a FALSE
+## row keeps its source term and fails the vocabulary check instead of
+## silently changing meaning. Terms not in the table are unchanged.
+.applySynonyms <- function(df) {
+    if (!all(c('Attribute', 'Attribute_value') %in% colnames(df)))
+        return(df)
+    syn <- .attributeSynonyms()
+    syn <- data.frame(
+        Attribute_group = syn$attribute_group, Attribute = syn$source_term,
+        .synonym = syn$attribute, .mapTrue = TRUE, check.names = FALSE
+    )
+    df$.mapTrue <- df$Attribute_value %in% TRUE
+    df <- dplyr::left_join(
+        df, syn, by = c('Attribute_group', 'Attribute', '.mapTrue'),
+        relationship = 'many-to-many'
+    )
+    df <- df[is.na(df$.synonym) | nzchar(df$.synonym), , drop = FALSE]
+    df$Attribute <- dplyr::coalesce(df$.synonym, df$Attribute)
+    df$.synonym <- NULL
+    df$.mapTrue <- NULL
+    dplyr::distinct(df)
+}
+
+.attributeSynonyms <- function() {
+    fname <- system.file(
+        'extdata', 'attribute_synonyms.tsv', package = 'bugphyzz'
+    )
+    utils::read.table(
+        fname, header = TRUE, sep = '\t', quote = '', comment.char = '',
+        na.strings = character(0), stringsAsFactors = FALSE
+    )
+}
+
+## Valid attributes for a physiology, matched on attribute_group the way the
+## export (taxPPro::filterDataDiscrete) matches them.
+.validAttributes <- function(group) {
+    fname <- system.file('extdata', 'attributes.tsv', package = 'bugphyzz')
+    df <- utils::read.table(fname, sep = '\t', header = TRUE)
+    rgx <- paste0('\\b', group, '\\b')
+    unique(df$attribute[grepl(rgx, df$attribute_group)])
 }
 
 ## Helper function for physiologies

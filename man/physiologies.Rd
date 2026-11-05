@@ -42,6 +42,13 @@ Rows come from three places: the curation Google Sheets listed in
 the BacDive API, \code{sources/bacdive} in bugphyzzExports), and the other
 programmatic sources above. The last are produced by scripts, never edited
 by hand, and are cached with BiocFileCache like the exports.
+
+Attribute values from all three are mapped to the controlled vocabulary
+in \code{inst/extdata/attributes.tsv} with the synonym table
+\code{inst/extdata/attribute_synonyms.tsv} (columns \code{attribute_group},
+\code{source_term}, \code{attribute}), e.g. BacDive's "rod-shaped" to "bacillus".
+A source term can map to several attributes; an empty \code{attribute} drops
+the row on purpose.
 }
 \examples{
 l <- physiologies('all')
