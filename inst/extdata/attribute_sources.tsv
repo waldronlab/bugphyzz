@@ -1,6 +1,6 @@
 Attribute_source	Confidence_in_curation	Evidence	full_source
 Asnicar_2021	medium	igc	Asnicar F, Berry SE, Valdes AM, et al. Microbiome connections with host metabolism and habitual diet from 1,098 deeply phenotyped individuals. Nat Med. 2021;27(2):321-332. doi:10.1038/s41591-020-01183-8
-BacDive	high	exp	https://bacdive.dsmz.de/
+BacDive	high	exp	Schober I, Koblitz J, Sardà Carbasse J, et al. BacDive in 2025: the core database for prokaryotic strain data. Nucleic Acids Res. 2025;53(D1):D748-D756. doi:10.1093/nar/gkae959. https://bacdive.dsmz.de (CC BY 4.0)
 BacMap	low	nas	http://bacmap.wishartlab.com
 Barcenilla_2000	high	exp	Barcenilla A, Pryde SE, Martin JC, Duncan SH, Stewart CS, Henderson C, Flint HJ. Phylogenetic relationships of butyrate-producing bacteria from the human gut. Appl Environ Microbiol. 2000 Apr;66(4):1654-61. doi: 10.1128/aem.66.4.1654-1661.2000. PMID: 10742256; PMCID: PMC92037.
 Bergey's Manual	high	exp	https://www.bergeys.org/

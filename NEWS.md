@@ -1,3 +1,10 @@
+# bugphyzz 1.7.5
++ BacDive data now come from the BacDive API (free since February 2026)
+  through `sources/bacdive` in bugphyzzExports instead of a 2023 Google
+  Sheet snapshot: every strain in BacDive, each with the NCBI taxid BacDive
+  assigns (the sheet had one for 6% of strains), plus G+C content, cell
+  length and cell width, which the sheet never carried.
+
 # bugphyzz 1.7.4
 + `physiologies()` now also reads programmatic sources kept under `sources/`
   in waldronlab/bugphyzzExports (manifest plus one TSV per physiology, cached

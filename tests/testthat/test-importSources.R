@@ -54,3 +54,16 @@ test_that(".modifyRange keeps both ends of a range", {
     expect_equal(r$Attribute_value_min, c(66, 65.29, -Inf, 10))
     expect_equal(r$Attribute_value_max, c(68, 65.29, 5, Inf))
 })
+
+test_that(".getBacDive reads the gzipped strain table from the sources base URL", {
+    withr::local_envvar(R_USER_CACHE_DIR = withr::local_tempdir())
+    d <- withr::local_tempdir(); dir.create(file.path(d, "bacdive"))
+    con <- gzfile(file.path(d, "bacdive", "bacdive.csv.gz"), "w")
+    writeLines(c("BacDive_ID,Taxon_name,NCBI_ID,Rank,Parent_name,Parent_NCBI_ID,Parent_rank,Seq16S_NCBI_ID,Genome_ID,Type_strain,Gram_stain,Cell_shape,Motility,Oxygen_tolerance",
+                 "1,Acetobacter aceti B 4114,,strain,Acetobacter aceti,435,species,,,no,negative,rod-shaped,no,aerobe"), con); close(con)
+    withr::local_options(bugphyzz.sourcesBaseUrl = paste0(d, "/"))
+    bd <- bugphyzz:::.getBacDive(forceDownload = TRUE)
+    expect_true(all(c("gram stain", "shape", "motility", "aerophilicity") %in% bd$Attribute))
+    expect_equal(bd$Parent_NCBI_ID[1], "435")
+    expect_equal(bd$Attribute_value[bd$Attribute == "aerophilicity"], "aerobe")
+})

@@ -1,17 +1,28 @@
 
 ## Main function for importing BacDive
-.getBacDive <- function(verbose = FALSE ) {
-    bacdiveData <- .importBacDiveExcel(verbose = verbose)
+.getBacDive <- function(verbose = FALSE, forceDownload = FALSE) {
+    bacdiveData <- .importBacDiveTable(
+        verbose = verbose, forceDownload = forceDownload
+    )
     colnames(bacdiveData) <- .changeBDColNames(colnames(bacdiveData))
     .getTidyBD(bacdiveData)
 }
 
-## Helper function for .getBacDive
-.importBacDiveExcel <- function(verbose = FALSE) {
+## Helper function for .getBacDive. The table is built from the BacDive API
+## by sources/bacdive in waldronlab/bugphyzzExports (one row per strain, the
+## layout of the former Google Sheet) and read through the same cache and
+## base URL as the other programmatic sources.
+.importBacDiveTable <- function(verbose = FALSE, forceDownload = FALSE) {
     if (verbose)
         message('Importing BacDive...')
-    url <- 'https://docs.google.com/spreadsheets/d/1mq3Crfis_CoJimLVrIoDFGf592bvMAqo/export?format=csv'
-    bacdive <- utils::read.csv(url)
+    base <- .sourcesBaseUrl()
+    tag <- substr(rlang::hash(base), 1, 8)
+    fpath <- .getResource(
+        paste0("sources_", tag, "_bacdive_bacdive.csv.gz"),
+        paste0(base, "bacdive/bacdive.csv.gz"),
+        force = forceDownload, verbose = FALSE
+    )
+    bacdive <- utils::read.csv(gzfile(fpath), stringsAsFactors = FALSE)
     colnames(bacdive) <- tolower(colnames(bacdive))
     return(bacdive)
 }
@@ -43,6 +54,15 @@
         ) |>
         dplyr::filter(Attribute_value != '') |>
         dplyr::mutate(Attribute = gsub('_', ' ', Attribute)) |>
+        ## A strain can carry several values from different references (e.g.
+        ## "anaerobe;facultative anaerobe"); keep every one as its own row.
+        ## The halophily and metabolite parsers below split on ';' too and
+        ## work the same on one item per row.
+        tidyr::separate_longer_delim(
+            Attribute_value, delim = ';'
+        ) |>
+        dplyr::mutate(Attribute_value = stringr::str_squish(Attribute_value)) |>
+        dplyr::filter(Attribute_value != '') |>
         dplyr::mutate(
             Attribute = dplyr::case_when(
                 Attribute == 'oxygen tolerance' ~ 'aerophilicity',
