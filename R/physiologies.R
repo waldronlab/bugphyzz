@@ -109,6 +109,8 @@ physiologies <- function(
             ) |>
             dplyr::distinct() |>
             .applySynonyms()
+        ## the synonym table can drop every row of a group
+        if (!nrow(df)) return(df)
 
         if (fullSource) {
             df$Attribute_source <- df$fullSource
