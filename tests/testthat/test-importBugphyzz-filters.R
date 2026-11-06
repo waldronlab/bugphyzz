@@ -117,3 +117,16 @@ test_that("bad thresholds error", {
     expect_error(importMocked(r2Threshold = NA_real_), "r2Threshold")
     expect_error(importMocked(mccThreshold = "a"), "mccThreshold")
 })
+
+test_that("shipped validation table is v1.0.5 and has one row per key", {
+    f <- system.file("extdata", "validation_summary.tsv", package = "bugphyzz")
+    v <- utils::read.delim(f)
+    expect_false(anyDuplicated(v[c("rank", "physiology", "attribute")]) > 0)
+    all_rank <- v[v$rank == "all", ]
+    gc <- all_rank[all_rank$physiology == "gc content", ]
+    expect_equal(nrow(gc), 1L)
+    expect_gte(gc$r2_mean, 0.5)
+    aer <- all_rank[all_rank$attribute == "aerobic", ]
+    expect_equal(nrow(aer), 1L)
+    expect_false("tail" %in% all_rank$attribute[all_rank$physiology == "shape"])
+})
