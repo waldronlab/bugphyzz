@@ -6,11 +6,6 @@
   antimicrobial sensitivity, biofilm formation, COGEM pathogenicity rating,
   extreme environment, optimal ph and plant pathogenicity.
 
-# bugphyzz 1.7.11
-+ `physiologies()` no longer fails on a curation sheet that has no data rows.
-  The Microbe Directory moved from the sheets to bugphyzzExports `sources/`
-  (waldronlab/bugphyzzExports#87), which left seven sheets with only a note.
-
 # bugphyzz 1.7.10
 + ASR annotations are filtered against validation v1.0.5
   (waldronlab/taxPProValidation#5), re-run with folds assigned per species
