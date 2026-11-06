@@ -1,3 +1,12 @@
+# bugphyzz 1.7.10
++ ASR annotations are filtered against validation v1.0.5
+  (waldronlab/taxPProValidation#5), re-run with folds assigned per species
+  on the 2026-11 sources. `gc content` predictions are now kept (R2 0.92).
+  Predictions of "aerobic", the "spirillum" shape and COGEM rating 3 are
+  dropped: their MCC fell below 0.7 once strains were no longer predicted
+  from their own species. Genome size, coding genes and growth temperature
+  validate better than before.
+
 # bugphyzz 1.7.9
 + `attributes.tsv` gains `resistance to beta-lactam` and `resistance to
   carbapenems`, the names bugphyzzExports gives these antimicrobial

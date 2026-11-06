@@ -107,25 +107,22 @@ Columns:
 
 ## validation_summary.tsv
 
-This file was obtained from the waldronlab/taxPProValidtion repository hosted
-on GitHub. It contains the results of a 10-fold cross-validation analysis
-of the ancestral state reconstruction (ASR) methods used to get
-annotations for the package.
+This file was obtained from the waldronlab/taxPProValidation repository
+hosted on GitHub. It contains the results of a 10-fold cross-validation of the
+ancestral state reconstruction (ASR) methods used to get annotations for the
+package. Folds are assigned per species, so strains are never predicted from
+their own species (waldronlab/taxPProValidation#1).
 
 Detailed information (code and explanation) can be found on the repository.
 
-The file was downloaded on May 31, 2024 from this URL (pay attention to 
-the commit hash):
-
-https://raw.githubusercontent.com/waldronlab/taxPProValidation/a7a31b0/validation_summary.tsv 
-
-The code used, which was executed directly in the extdata directory, was:
-
-This is version 1.0.4
+This is version 1.0.5, from waldronlab/taxPProValidation#5 (commit e1b0831),
+downloaded on November 5, 2026 with:
 
 ```bash
-wget https://raw.githubusercontent.com/waldronlab/taxPProValidation/cc45761/validation_summary.tsv
+wget https://raw.githubusercontent.com/waldronlab/taxPProValidation/e1b0831/validation_summary.tsv
 ```
+
+Version 1.0.4 came from commit cc45761 (downloaded May 31, 2024).
 
 | Column name | Description |
 | ----------- | ----------- |
