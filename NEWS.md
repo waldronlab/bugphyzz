@@ -5,7 +5,9 @@
   Predictions of "aerobic", the "spirillum" shape and COGEM rating 3 are
   dropped: their MCC fell below 0.7 once strains were no longer predicted
   from their own species. Genome size, coding genes and growth temperature
-  validate better than before.
+  validate better than before. The shape value "tail" has too few species
+  for 10 folds and no longer has a validation row, so its predictions are
+  dropped at any threshold.
 
 # bugphyzz 1.7.9
 + `attributes.tsv` gains `resistance to beta-lactam` and `resistance to
