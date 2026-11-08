@@ -1,3 +1,13 @@
+# bugphyzz 1.7.13
++ ASR annotations are filtered against validation v1.0.6
+  (waldronlab/taxPProValidation#7): the cross-validation now drops the rows
+  the bugphyzzExports export drops (the 2020 Bergey's scrape and the sheet
+  overrides) and was re-run on the sources of bugphyzzExports v1.1.0. At rank
+  "all", COGEM pathogenicity rating 3 passes MCC 0.7; coding genes, genome
+  size and G+C content improve. host-associated (only TRUE values since The
+  Microbe Directory import) and biofilm formation (too little of the tree)
+  are not validated, so the export drops their imputed annotations.
+
 # bugphyzz 1.7.12
 + `importBugphyzz()` gains `includeDroppedAsr`: with a `devel` or commit
   version it adds back the imputed annotations the export removed at the
