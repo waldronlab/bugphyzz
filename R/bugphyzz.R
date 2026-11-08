@@ -140,11 +140,14 @@ importBugphyzz <- function(
     )
     message("Importing dropped ASR annotations...")
     rpath <- .getResource(
-        rname = "bugphyzz_asr_dropped.csv.gz", url = url, verbose = TRUE,
-        force = forceDownload
+        rname = paste0("bugphyzz_asr_dropped_", version, ".csv.gz"),
+        url = url, verbose = TRUE, force = forceDownload
     )
-    dropped <- utils::read.csv(gzfile(rpath), header = TRUE, skip = 1) |>
-        dplyr::mutate(Attribute = tolower(Attribute))
+    dropped <- utils::read.csv(
+        gzfile(rpath), header = TRUE, skip = 1, colClasses = "character"
+    ) |>
+        dplyr::mutate(Attribute = tolower(Attribute)) |>
+        dplyr::select(-dplyr::any_of("Validation"))
     types <- c(binary = "binary", multistate = "multistate", numeric = "numeric")
     lapply(seq_along(output), function(i) {
         type <- types[[i]]
@@ -153,7 +156,13 @@ importBugphyzz <- function(
         } else {
             dplyr::filter(dropped, Attribute_type == type)
         }
-        dplyr::bind_rows(output[[i]], dplyr::select(part, -Validation))
+        ## the side file is read as character; give each column the type it
+        ## has in the main table so bind_rows() can't fail on a type clash
+        part <- part[intersect(names(output[[i]]), names(part))]
+        for (col in names(part)) {
+            part[[col]] <- methods::as(part[[col]], class(output[[i]][[col]])[1])
+        }
+        dplyr::bind_rows(output[[i]], part)
     })
 }
 
