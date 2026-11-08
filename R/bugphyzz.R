@@ -62,6 +62,12 @@ utils::globalVariables(c(
 #' will always return a shortened version of the source. Please use
 #' vigette("sources", "bugphyz") to see the full sources.
 #'
+#' @param includeDroppedAsr Logical. If TRUE, add back the imputed (ASR)
+#' annotations the export removed for failing the default thresholds (or for
+#' frequency "rarely"/"never"), so that `mccThreshold` and `r2Threshold` can
+#' be set below the export's 0.7 and 0.5. Only for `version = "devel"` or a
+#' commit hash; Zenodo releases carry only the filtered data. Default FALSE.
+#'
 #' @return A list of tidy data frames.
 #' @export
 #'
@@ -72,7 +78,8 @@ utils::globalVariables(c(
 #'
 importBugphyzz <- function(
         version = "10.5281/zenodo.12574596", forceDownload = FALSE,
-        mccThreshold = 0.7, r2Threshold = 0.5, excludeRarely = TRUE, v = NULL
+        mccThreshold = 0.7, r2Threshold = 0.5, excludeRarely = TRUE,
+        includeDroppedAsr = FALSE, v = NULL
 ) {
     if (!is.null(v)) {
         warning(
@@ -89,6 +96,9 @@ importBugphyzz <- function(
     ## output is a list of three data.frames
     ## one of each: binary, multistate, numeric
     output <- .downloadResource(version, forceDownload)
+    if (includeDroppedAsr) {
+        output <- .addDroppedAsr(output, version, forceDownload)
+    }
 
     output <- lapply(output, function(x) split(x, x$Attribute))
     output <- purrr::list_flatten(output)
@@ -111,6 +121,40 @@ importBugphyzz <- function(
         )
     }
     return(output)
+}
+
+## The export applies the default thresholds and writes the ASR rows it
+## removed to bugphyzz_asr_dropped.csv.gz (devel and commit versions only).
+## Add them back so the thresholds below can be set lower than the export's.
+.addDroppedAsr <- function(output, version, forceDownload) {
+    if (stringr::str_detect(version, "^10.5281/zenodo.[0-9]+$")) {
+        stop(
+            "`includeDroppedAsr = TRUE` needs a GitHub version ('devel' or a",
+            " commit hash); releases on Zenodo carry only the filtered data.",
+            call. = FALSE
+        )
+    }
+    url <- paste0(
+        "https://github.com/waldronlab/bugphyzzExports/raw/", version,
+        "/bugphyzz_asr_dropped.csv.gz"
+    )
+    message("Importing dropped ASR annotations...")
+    rpath <- .getResource(
+        rname = "bugphyzz_asr_dropped.csv.gz", url = url, verbose = TRUE,
+        force = forceDownload
+    )
+    dropped <- utils::read.csv(gzfile(rpath), header = TRUE, skip = 1) |>
+        dplyr::mutate(Attribute = tolower(Attribute))
+    types <- c(binary = "binary", multistate = "multistate", numeric = "numeric")
+    lapply(seq_along(output), function(i) {
+        type <- types[[i]]
+        part <- if (type == "multistate") {
+            dplyr::filter(dropped, grepl("^multistate", Attribute_type))
+        } else {
+            dplyr::filter(dropped, Attribute_type == type)
+        }
+        dplyr::bind_rows(output[[i]], dplyr::select(part, -Validation))
+    })
 }
 
 .checkThreshold <- function(x, name) {

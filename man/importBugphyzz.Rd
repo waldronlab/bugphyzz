@@ -10,6 +10,7 @@ importBugphyzz(
   mccThreshold = 0.7,
   r2Threshold = 0.5,
   excludeRarely = TRUE,
+  includeDroppedAsr = FALSE,
   v = NULL
 )
 }
@@ -30,6 +31,12 @@ attributes. Default 0.5 (see details).}
 
 \item{excludeRarely}{Default is TRUE. Exclude annotations with
 Frequency "rarely" or "never" (see details).}
+
+\item{includeDroppedAsr}{Logical. If TRUE, add back the imputed (ASR)
+annotations the export removed for failing the default thresholds (or for
+frequency "rarely"/"never"), so that \code{mccThreshold} and \code{r2Threshold} can
+be set below the export's 0.7 and 0.5. Only for \code{version = "devel"} or a
+commit hash; Zenodo releases carry only the filtered data. Default FALSE.}
 
 \item{v}{Deprecated. A single threshold applied to both MCC and R-squared.
 If supplied, it overrides \code{mccThreshold} and \code{r2Threshold} with a warning.}

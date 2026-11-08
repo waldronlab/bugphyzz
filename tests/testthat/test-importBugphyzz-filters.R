@@ -130,3 +130,29 @@ test_that("shipped validation table is v1.0.5 and has one row per key", {
     expect_equal(nrow(aer), 1L)
     expect_false("tail" %in% all_rank$attribute[all_rank$physiology == "shape"])
 })
+
+test_that("includeDroppedAsr refuses a Zenodo version and binds a GitHub side file", {
+    expect_error(
+        .addDroppedAsr(list(), "10.5281/zenodo.12574596", FALSE),
+        "GitHub version"
+    )
+    output <- list(
+        data.frame(Attribute = "motility", Attribute_type = "binary", Evidence = "exp"),
+        data.frame(Attribute = "shape", Attribute_type = "multistate-intersection", Evidence = "exp"),
+        data.frame(Attribute = "length", Attribute_type = "numeric", Evidence = "exp")
+    )
+    dropped <- data.frame(
+        Attribute = c("motility", "shape", "length", "habitat"),
+        Attribute_type = c("binary", "multistate-intersection", "numeric", "multistate-union"),
+        Evidence = "asr", Validation = c(0.5, 0.4, 0.3, NA)
+    )
+    tmp <- tempfile(fileext = ".csv.gz")
+    con <- gzfile(tmp, "w"); cat("# header\n", file = con)
+    write.table(dropped, con, sep = ",", row.names = FALSE, append = TRUE, col.names = TRUE)
+    close(con)
+    local_mocked_bindings(.getResource = function(...) tmp)
+    out <- .addDroppedAsr(output, "devel", FALSE)
+    expect_equal(sapply(out, nrow), c(2L, 3L, 2L))
+    expect_false("Validation" %in% names(out[[1]]))
+    expect_equal(sum(out[[2]]$Evidence == "asr"), 2L)
+})
