@@ -130,3 +130,55 @@ test_that("shipped validation table is v1.0.5 and has one row per key", {
     expect_equal(nrow(aer), 1L)
     expect_false("tail" %in% all_rank$attribute[all_rank$physiology == "shape"])
 })
+
+test_that("includeDroppedAsr refuses a Zenodo version", {
+    expect_error(
+        .addDroppedAsr(list(), "10.5281/zenodo.12574596", FALSE),
+        "GitHub version"
+    )
+})
+
+test_that("includeDroppedAsr brings dropped ASR rows under a lower threshold", {
+    cols <- function(...) data.frame(..., stringsAsFactors = FALSE)
+    main <- list(
+        binary = cols(NCBI_ID = "562", Taxon_name = "Escherichia coli", Rank = "species",
+            Attribute = "motility", Attribute_value = "TRUE", Evidence = "exp",
+            Frequency = "always", Score = 1, Attribute_source = "BacDive",
+            Confidence_in_curation = "high", Attribute_type = "binary", NSTI = NA_real_),
+        multistate = cols(NCBI_ID = "1279", Taxon_name = "Staphylococcus", Rank = "genus",
+            Attribute = "aerophilicity", Attribute_value = "anaerobic", Evidence = "asr",
+            Frequency = "usually", Score = 0.8, Attribute_source = NA_character_,
+            Confidence_in_curation = NA_character_, Attribute_type = "multistate-intersection", NSTI = 0.1),
+        numeric = cols(NCBI_ID = "562", Taxon_name = "Escherichia coli", Rank = "species",
+            Attribute = "length", Attribute_value = "2", Evidence = "exp",
+            Frequency = "always", Score = 1, Attribute_source = "BacDive",
+            Confidence_in_curation = "high", Attribute_type = "numeric", nsti = NA_real_)
+    )
+    dropped <- cols(NCBI_ID = c("1279", "1279"), Taxon_name = "Staphylococcus", Rank = "genus",
+        Attribute = "aerophilicity", Attribute_value = c("aerobic", "aerobic"),
+        Evidence = "asr", Frequency = c("usually", "never"), Score = c(0.7, 0.1),
+        Attribute_source = NA, Confidence_in_curation = NA,
+        Attribute_type = "multistate-intersection", NSTI = 0.1, Validation = 0.66)
+    tmp <- tempfile(fileext = ".csv.gz")
+    con <- gzfile(tmp, "w"); cat("# header\n", file = con)
+    suppressWarnings(write.table(dropped, con, sep = ",", row.names = FALSE, append = TRUE, col.names = TRUE))
+    close(con)
+    val <- data.frame(rank = "all", physiology = "aerophilicity",
+        attribute = c("aerobic", "anaerobic"), mcc_mean = c(0.66, 0.85), r2_mean = NA_real_,
+        value = c(0.66, 0.85))
+    local_mocked_bindings(
+        .downloadResource = function(version, forceDownload) main,
+        .getResource = function(...) tmp,
+        .validationData = function() val
+    )
+    bp <- importBugphyzz(version = "devel", includeDroppedAsr = TRUE)
+    expect_equal(sort(unique(bp$aerophilicity$Attribute_value)), "anaerobic")
+    bp <- importBugphyzz(version = "devel", includeDroppedAsr = TRUE, mccThreshold = 0.6)
+    expect_equal(sum(bp$aerophilicity$Attribute_value == "aerobic"), 1L)   # "never" row still excluded
+    expect_false("Validation" %in% names(bp$aerophilicity) && all(is.na(bp$aerophilicity$Validation)))
+    bp <- importBugphyzz(version = "devel", includeDroppedAsr = TRUE, mccThreshold = 0.6, excludeRarely = FALSE)
+    expect_equal(sum(bp$aerophilicity$Attribute_value == "aerobic"), 2L)
+    expect_type(bp$aerophilicity$Score, "double")
+    bp <- importBugphyzz(version = "devel", includeDroppedAsr = FALSE)
+    expect_false("aerobic" %in% bp$aerophilicity$Attribute_value)
+})

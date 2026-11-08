@@ -1,3 +1,9 @@
+# bugphyzz 1.7.12
++ `importBugphyzz()` gains `includeDroppedAsr`: with a `devel` or commit
+  version it adds back the imputed annotations the export removed at the
+  default thresholds, so `mccThreshold` and `r2Threshold` can be set lower
+  to evaluate a threshold against known ground truth.
+
 # bugphyzz 1.7.11
 + The Microbe Directory now comes from bugphyzzExports `sources/`
   (waldronlab/bugphyzzExports#87), imported from its published table with
