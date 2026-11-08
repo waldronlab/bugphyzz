@@ -118,7 +118,7 @@ test_that("bad thresholds error", {
     expect_error(importMocked(mccThreshold = "a"), "mccThreshold")
 })
 
-test_that("shipped validation table is v1.0.5 and has one row per key", {
+test_that("shipped validation table is v1.0.6 and has one row per key", {
     f <- system.file("extdata", "validation_summary.tsv", package = "bugphyzz")
     v <- utils::read.delim(f)
     expect_false(anyDuplicated(v[c("rank", "physiology", "attribute")]) > 0)
@@ -129,6 +129,12 @@ test_that("shipped validation table is v1.0.5 and has one row per key", {
     aer <- all_rank[all_rank$attribute == "aerobic", ]
     expect_equal(nrow(aer), 1L)
     expect_false("tail" %in% all_rank$attribute[all_rank$physiology == "shape"])
+    ## v1.0.6: no rows for physiologies that could not be validated, and
+    ## COGEM rating 3 passes MCC 0.7
+    expect_false(any(v$physiology %in% c("host-associated", "biofilm formation")))
+    cog3 <- all_rank[all_rank$attribute == "COGEM pathogenicity rating 3", ]
+    expect_equal(nrow(cog3), 1L)
+    expect_gte(cog3$mcc_mean, 0.7)
 })
 
 test_that("includeDroppedAsr refuses a Zenodo version", {
