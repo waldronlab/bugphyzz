@@ -1,3 +1,31 @@
+# bugphyzz 1.7.15
++ Imputed annotations are kept or dropped per attribute, as in
+  bugphyzzExports ADR 0006: all states of an attribute together, by the lower
+  95% bound of its cross-validated Cohen's kappa (linearly weighted for
+  ordered states) or R2, with held-out taxa weighted to the phylogenetic
+  distance of the taxa to be imputed. The scores are in the new
+  `inst/extdata/validation_attributes.tsv` (waldronlab/taxPProValidation#12);
+  per-state precision is in `validation_states.tsv`. With the shipped table,
+  aerophilicity keeps its aerobic and facultatively anaerobic imputations,
+  gram stain its "variable" ones, and COGEM pathogenicity rating loses its
+  imputations (#292).
++ `importBugphyzz()` arguments: `kappaThreshold` (default 0.7) replaces
+  `mccThreshold`, and `r2Threshold` (0.5) now applies per attribute;
+  `asrScoreThreshold` (0.5) filters imputed annotations by `Score`. Setting
+  any of them below its default reads the export's dropped imputed
+  annotations as well, from GitHub versions or from Zenodo deposits that
+  contain them, so `includeDroppedAsr` is removed. `mccThreshold` and
+  `includeDroppedAsr` were never in a Bioconductor release.
++ `excludeRarely` is deprecated: `excludeRarely = FALSE` is
+  `asrScoreThreshold = 0`. Curated annotations with Frequency "rarely" or
+  "never" are always excluded; `physiologies()` returns all curated data.
+  `v` now sets `kappaThreshold` and `r2Threshold`.
++ `attributes.tsv` gains `ordinal_position`, the order of the states of
+  aerophilicity, gram stain, biosafety level and COGEM pathogenicity rating.
++ Downloads are cached per version: switching `version` without
+  `forceDownload = TRUE` used to return the tables of the version downloaded
+  first.
+
 # bugphyzz 1.7.14
 + ASR annotations are filtered against validation v1.0.7
   (waldronlab/taxPProValidation#11): the cross-validation now calls a

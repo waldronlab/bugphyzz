@@ -4,7 +4,7 @@ utils::globalVariables(c(
     "Attribute_value", "Attribute_value_max", "Attribute_value_min", "Br-C10:1",
     "Evidence", "Frequency", "NCBI_ID", "Oxo-C19:1", "Taxon_name", "Unit",
     "attribute", "functionname", "gram_stain", "physiology", "unit", "value",
-    ".attr_key", ".value_key"
+    ".attr_key", ".value_key", "score_lcb", "rank", "Attribute_type"
 ))
 
 #' Import bugphyzz
@@ -20,14 +20,19 @@ utils::globalVariables(c(
 #' export.
 #' @param forceDownload Logical value. Force a fresh download of the data or
 #' use the one stored in the cache (if available). Default is FALSE.
-#' @param mccThreshold Minimum Matthews correlation coefficient (MCC) for
-#' keeping ASR annotations of discrete attributes. Default 0.7 (see details).
-#' @param r2Threshold Minimum R-squared for keeping ASR annotations of numeric
-#' attributes. Default 0.5 (see details).
-#' @param excludeRarely Default is TRUE. Exclude annotations with
-#' Frequency "rarely" or "never" (see details).
-#' @param v Deprecated. A single threshold applied to both MCC and R-squared.
-#' If supplied, it overrides `mccThreshold` and `r2Threshold` with a warning.
+#' @param kappaThreshold Minimum cross-validated Cohen's kappa (lower 95%
+#' bound) for keeping the imputed annotations of a discrete attribute.
+#' Default 0.7 (see details).
+#' @param r2Threshold Minimum cross-validated R-squared (lower 95% bound) for
+#' keeping the imputed annotations of a numeric attribute. Default 0.5 (see
+#' details).
+#' @param asrScoreThreshold Minimum `Score` of an imputed annotation.
+#' Default 0.5 (see details).
+#' @param excludeRarely Deprecated. `excludeRarely = FALSE` is equivalent to
+#' `asrScoreThreshold = 0`; curated annotations with Frequency "rarely" or
+#' "never" are always excluded.
+#' @param v Deprecated. A single threshold applied to both `kappaThreshold`
+#' and `r2Threshold`.
 #'
 #' @details
 #'
@@ -35,38 +40,40 @@ utils::globalVariables(c(
 #' The data structure of the data.frames imported with `importBugphyzz` are
 #' detailed in the main vignette. Please run `browseVignettes("bugphyzz")`.
 #'
-#' ## Validation (`mccThreshold` and `r2Threshold` arguments)
+#' ## Imputed annotations (`kappaThreshold`, `r2Threshold`)
 #' Data imported with `importBugphyzz` includes annotations imputed through
-#' ancestral state reconstruction (ASR) methods. A 10-fold cross-validation
-#' approach was implemented to assess the reliability of the data imputed.
-#' Matthews correlation coefficient (MCC) and R-squared (R2) were used for the
-#' validation of discrete and numeric attributes.
-#' Details can be found at: https://github.com/waldronlab/taxPProValidation.
-#' By default, imputed annotations are kept when the MCC of the attribute
-#' value is at least 0.7 (discrete attributes) or the R2 of the attribute is
-#' at least 0.5 (numeric attributes). These are the thresholds used in the
-#' bugphyzz manuscript. Set either threshold to 0 to keep all imputed
-#' annotations. Curated annotations (any Evidence other than "asr") are never
+#' ancestral state reconstruction (ASR), with Evidence "asr". An attribute's
+#' imputed annotations are kept all together or not at all, based on a
+#' cross-validation of the reconstruction
+#' (https://github.com/waldronlab/taxPProValidation): Cohen's kappa for
+#' discrete attributes (linearly weighted for attributes with ordered
+#' states, such as aerophilicity) and R-squared for numeric attributes, with
+#' held-out taxa weighted to match the phylogenetic distance of the taxa to
+#' be imputed. The threshold applies to the lower bound of the 95%
+#' confidence interval of the score. The defaults are the thresholds applied
+#' by the export (bugphyzzExports ADR 0006). Curated annotations are never
 #' filtered by these thresholds.
 #'
-#' ## Frequency (excludeRarely argument)
-#' One of the variables in the bugphyzz data.frames is "Frequency", which
-#' can adopt values of
-#' "always", "usually", "sometimes", "rarely", or "never". By default
-#' "never" and "rarely" are excluded. They can be included with
-#' `excludeRarely = FALSE`. To learn more about these frequency keywords
-#' please check the bugphyzz vignette with `browseVignettes("bugphyzz")`.
-#' 
+#' ## Score of imputed annotations (`asrScoreThreshold`)
+#' For discrete attributes, `Score` is the posterior probability of the
+#' imputed state. For numeric attributes it is a step function of the
+#' distance to the nearest annotated taxon (NSTI): 0.9 up to 0.05, 0.5 up to
+#' 0.15, 0.1 up to 0.2 and 0 beyond. Raise `asrScoreThreshold` to keep fewer,
+#' more reliable imputed annotations.
+#'
+#' ## Thresholds below the defaults
+#' The export removes imputed annotations below the default thresholds and
+#' keeps them in a separate file. Setting any threshold below its default
+#' makes `importBugphyzz` read that file as well, for versions that have it.
+#'
+#' ## Frequency
+#' Curated annotations with Frequency "rarely" or "never" are excluded. Use
+#' `physiologies()` for all curated data.
+#'
 #' ## Sources
 #' By default, the datasets imported with the `importBugphuzz` function
 #' will always return a shortened version of the source. Please use
 #' vigette("sources", "bugphyz") to see the full sources.
-#'
-#' @param includeDroppedAsr Logical. If TRUE, add back the imputed (ASR)
-#' annotations the export removed for failing the default thresholds (or for
-#' frequency "rarely"/"never"), so that `mccThreshold` and `r2Threshold` can
-#' be set below the export's 0.7 and 0.5. Only for `version = "devel"` or a
-#' commit hash; Zenodo releases carry only the filtered data. Default FALSE.
 #'
 #' @return A list of tidy data frames.
 #' @export
@@ -78,92 +85,87 @@ utils::globalVariables(c(
 #'
 importBugphyzz <- function(
         version = "10.5281/zenodo.12574596", forceDownload = FALSE,
-        mccThreshold = 0.7, r2Threshold = 0.5, excludeRarely = TRUE,
-        includeDroppedAsr = FALSE, v = NULL
+        kappaThreshold = 0.7, r2Threshold = 0.5, asrScoreThreshold = 0.5,
+        excludeRarely, v = NULL
 ) {
     if (!is.null(v)) {
         warning(
-            "The `v` argument is deprecated. Use `mccThreshold` and",
+            "The `v` argument is deprecated. Use `kappaThreshold` and",
             " `r2Threshold` instead. Using v = ", v, " for both.",
             call. = FALSE
         )
-        mccThreshold <- v
+        kappaThreshold <- v
         r2Threshold <- v
     }
-    .checkThreshold(mccThreshold, "mccThreshold")
+    if (!missing(excludeRarely)) {
+        warning(
+            "The `excludeRarely` argument is deprecated. Use",
+            " `asrScoreThreshold` instead.", call. = FALSE
+        )
+        if (isFALSE(excludeRarely)) asrScoreThreshold <- 0
+    }
+    .checkThreshold(kappaThreshold, "kappaThreshold")
     .checkThreshold(r2Threshold, "r2Threshold")
+    .checkThreshold(asrScoreThreshold, "asrScoreThreshold")
 
     ## output is a list of three data.frames
     ## one of each: binary, multistate, numeric
-    output <- .downloadResource(version, forceDownload)
-    if (includeDroppedAsr) {
-        output <- .addDroppedAsr(output, version, forceDownload)
-    }
+    belowDefaults <- kappaThreshold < .exportThresholds[["kappa"]] ||
+        r2Threshold < .exportThresholds[["r2"]] ||
+        asrScoreThreshold < .exportThresholds[["score"]]
+    output <- .downloadResource(version, forceDownload, dropped = belowDefaults)
 
     output <- lapply(output, function(x) split(x, x$Attribute))
     output <- purrr::list_flatten(output)
-
     names(output) <- purrr::map_chr(output, ~ unique(.x$Attribute))
-    val <- .validationData() |>
+
+    val <- .validationAttributes() |>
         dplyr::filter(rank == "all") |>
-        dplyr::select(physiology, attribute, value) |>
-        dplyr::mutate(physiology = tolower(physiology)) |>
-        dplyr::mutate(attribute = tolower(attribute))
-
-    output <- .filterAsr(output, val, mccThreshold, r2Threshold)
-
-    if (excludeRarely) {
-        output <- purrr::map(
-            output,
-            ~ dplyr::filter(
-                .x, !is.na(Frequency) & !Frequency %in% c("rarely", "never")
-            )
+        dplyr::transmute(
+            .attr_key = tolower(physiology), Validation = score_lcb
         )
-    }
-    return(output)
+    .filterAsr(output, val, kappaThreshold, r2Threshold, asrScoreThreshold)
 }
 
-## The export applies the default thresholds and writes the ASR rows it
-## removed to bugphyzz_asr_dropped.csv.gz (devel and commit versions only).
-## Add them back so the thresholds below can be set lower than the export's.
-.addDroppedAsr <- function(output, version, forceDownload) {
-    if (stringr::str_detect(version, "^10.5281/zenodo.[0-9]+$")) {
-        stop(
-            "`includeDroppedAsr = TRUE` needs a GitHub version ('devel' or a",
-            " commit hash); releases on Zenodo carry only the filtered data.",
-            call. = FALSE
-        )
-    }
-    url <- paste0(
-        "https://github.com/waldronlab/bugphyzzExports/raw/", version,
-        "/bugphyzz_asr_dropped.csv.gz"
-    )
-    message("Importing dropped ASR annotations...")
-    rpath <- .getResource(
-        rname = paste0("bugphyzz_asr_dropped_", version, ".csv.gz"),
-        url = url, verbose = TRUE, force = forceDownload
-    )
-    dropped <- utils::read.csv(
-        gzfile(rpath), header = TRUE, skip = 1, colClasses = "character"
-    ) |>
+## Thresholds the export applies (bugphyzzExports ADR 0006). Imputed rows
+## below them are in bugphyzz_asr_dropped.csv.gz, not in the main tables.
+.exportThresholds <- c(kappa = 0.7, r2 = 0.5, score = 0.5)
+
+## Append the dropped imputed rows to the three main tables. `dropped` is
+## the side file read as character; each column gets the type it has in the
+## main table (numeric for integer columns) so bind_rows() can't fail on a
+## type clash or truncate a fractional Score.
+.bindDropped <- function(output, dropped) {
+    dropped <- dropped |>
         dplyr::mutate(Attribute = tolower(Attribute)) |>
         dplyr::select(-dplyr::any_of("Validation"))
-    types <- c(binary = "binary", multistate = "multistate", numeric = "numeric")
+    types <- c("binary", "multistate", "numeric")
     lapply(seq_along(output), function(i) {
-        type <- types[[i]]
-        part <- if (type == "multistate") {
+        part <- if (types[i] == "multistate") {
             dplyr::filter(dropped, grepl("^multistate", Attribute_type))
         } else {
-            dplyr::filter(dropped, Attribute_type == type)
+            dplyr::filter(dropped, Attribute_type == types[i])
         }
-        ## the side file is read as character; give each column the type it
-        ## has in the main table so bind_rows() can't fail on a type clash
         part <- part[intersect(names(output[[i]]), names(part))]
         for (col in names(part)) {
-            part[[col]] <- methods::as(part[[col]], class(output[[i]][[col]])[1])
+            target <- output[[i]][[col]]
+            part[[col]] <- if (is.numeric(target)) {
+                ## integer when every value happened to be whole (Score 1)
+                as.numeric(part[[col]])
+            } else {
+                methods::as(part[[col]], class(target)[1])
+            }
         }
         dplyr::bind_rows(output[[i]], part)
     })
+}
+
+.noDroppedWarning <- function(version) {
+    warning(
+        "Version ", version, " has no file of dropped imputed annotations;",
+        " thresholds below the defaults keep only what it ships.",
+        call. = FALSE
+    )
 }
 
 .checkThreshold <- function(x, name) {
@@ -176,50 +178,32 @@ importBugphyzz <- function(
     invisible(TRUE)
 }
 
-## Join validation scores and drop ASR annotations below the threshold for
-## their attribute type. `output` is a named list of data.frames, one per
-## attribute; `val` has columns physiology, attribute (lower case) and value.
-.filterAsr <- function(output, val, mccThreshold, r2Threshold) {
+## Keep curated rows except Frequency "rarely"/"never" (or missing), and
+## imputed rows whose attribute passes its threshold and whose Score is at
+## least asrScoreThreshold. `output` is a named list of data.frames, one per
+## attribute; `val` has one row per attribute: .attr_key (lower case) and
+## Validation (lower 95% bound of kappa or R2).
+.filterAsr <- function(output, val, kappaThreshold, r2Threshold,
+                       asrScoreThreshold) {
     purrr::map(output, ~ {
         attrType <- unique(.x$Attribute_type)
-        ## Join on lower-case keys: attribute names in the exports keep the
-        ## case of the curation sheets (e.g. "COGEM pathogenicity rating").
-        x <- dplyr::mutate(.x, .attr_key = tolower(Attribute))
-        ## Binary and numeric attributes are validated as a whole and have
-        ## physiology == attribute in the validation table. Multistate values
-        ## such as "coccus" repeat across physiologies, so keep them apart.
-        valWhole <- dplyr::filter(val, physiology == attribute)
-        if (attrType == "binary") {
-            val <- dplyr::select(valWhole, .attr_key = attribute, value)
-            o <- dplyr::left_join(x, val, by = ".attr_key")
-        } else if (
-            attrType == "multistate-intersection" ||
-            attrType == "multistate-union"
-        ) {
-            val <- dplyr::select(
-                val, .attr_key = physiology, .value_key = attribute, value
-            )
-            o <- dplyr::left_join(
-                dplyr::mutate(
-                    x, Attribute_value = tolower(Attribute_value),
-                    .value_key = Attribute_value
-                ),
-                val, by = c(".attr_key", ".value_key")
-            ) |>
-                dplyr::select(-.value_key)
-        } else if (attrType == "numeric") {
-            val <- dplyr::select(valWhole, .attr_key = attribute, value)
-            o <- dplyr::left_join(x, val, by = ".attr_key") |>
-                dplyr::rename(NSTI = nsti)
+        thr <- if (attrType == "numeric") r2Threshold else kappaThreshold
+        o <- dplyr::mutate(.x, .attr_key = tolower(Attribute)) |>
+            dplyr::left_join(val, by = ".attr_key") |>
+            dplyr::select(-.attr_key)
+        if ("nsti" %in% names(o)) o <- dplyr::rename(o, NSTI = nsti)
+        isAsr <- o$Evidence %in% "asr"
+        keepAsr <- !is.na(o$Validation) & o$Validation >= thr &
+            !is.na(o$Score) & o$Score >= asrScoreThreshold
+        keepCurated <- !is.na(o$Frequency) &
+            !o$Frequency %in% c("rarely", "never")
+        o <- o[ifelse(isAsr, keepAsr, keepCurated), , drop = FALSE]
+        o$Validation[!o$Evidence %in% "asr"] <- NA
+        ## multistate values have always been returned in lower case
+        if (grepl("^multistate", attrType)) {
+            o$Attribute_value <- tolower(o$Attribute_value)
         }
-        thr <- if (attrType == "numeric") r2Threshold else mccThreshold
-        o |>
-            dplyr::select(-.attr_key) |>
-            dplyr::filter(
-                Evidence != "asr" | (!is.na(value) & value >= thr)
-            ) |>
-            dplyr::mutate(value = ifelse(Evidence != "asr", NA, value)) |>
-            dplyr::rename(Validation = value)
+        o
     })
 }
 
@@ -419,39 +403,38 @@ getTaxonSignatures <- function(tax, bp, ...) {
         )
 }
 
-.validationData <- function() {
+## Attribute-level cross-validation scores (bugphyzzExports ADR 0006), from
+## waldronlab/taxPProValidation: one row per rank and physiology, with the
+## lower 95% bound of kappa (discrete) or R2 (numeric) in score_lcb.
+.validationAttributes <- function() {
     fname <- system.file(
-        "extdata", "validation_summary.tsv", package = "bugphyzz"
+        "extdata", "validation_attributes.tsv", package = "bugphyzz"
     )
     utils::read.table(
-        file = fname, header = TRUE, sep = "\t", row.names = NULL
-    ) |>
-        dplyr::mutate(
-            value = dplyr::case_when(
-                !is.na(mcc_mean) & is.na(r2_mean) ~ mcc_mean,
-                is.na(mcc_mean) & !is.na(r2_mean) ~ r2_mean
-            )
-        )
+        file = fname, header = TRUE, sep = "\t", row.names = NULL,
+        quote = "", comment.char = ""
+    )
 }
 
-## Import a version of bupghyzz
-.downloadResource <- function(version, forceDownload) {
+## Import a version of bugphyzz. With dropped = TRUE, the imputed rows the
+## export removed (bugphyzz_asr_dropped.csv.gz) are appended where the
+## version has them.
+.downloadResource <- function(version, forceDownload, dropped = FALSE) {
     if (stringr::str_detect(version, "^10.5281/zenodo.[0-9]+$")) {
         suffix <- sub("^10.5281/zenodo\\.", "", version)
-        output <- .downloadZ(suffix, forceDownload)
+        output <- .downloadZ(suffix, forceDownload, dropped)
     } else if (
         version == "devel" ||
             stringr::str_detect(version, stringr::regex("^[:alnum:]{7}$"))
         ){
-        output <- .downloadGH(version, forceDownload)
+        output <- .downloadGH(version, forceDownload, dropped)
     } else {
         stop("Version must be a Zenodo DOI, GitHub commit hash, or 'devel'.")
     }
     return(output)
 }
 
-## Function for downloading data from Zenodo
-.downloadZ <- function(record, forceDownload) {
+.downloadZ <- function(record, forceDownload, dropped = FALSE) {
     baseUrl <- paste0("https://zenodo.org/api/records/", record)
     req <- httr2::request(baseUrl)
     res <- httr2::req_perform(req)
@@ -461,16 +444,22 @@ getTaxonSignatures <- function(tax, bp, ...) {
         "(^.*)(api/)(.*)(/content$)", "\\1\\3", fileNamesApi
     )
     rpath <- .getResource(
-        rname = paste0("bugphyzz.zip"),
+        rname = paste0("bugphyzz_zenodo_", record, ".zip"),
         url = fileNamesUrl, verbose = TRUE, force = forceDownload
     )
-    .readZenodoZip(rpath)
+    out <- .readZenodoZip(rpath, dropped)
+    if (!dropped) return(out$tables)
+    if (is.null(out$dropped)) {
+        .noDroppedWarning(paste0("10.5281/zenodo.", record))
+        return(out$tables)
+    }
+    .bindDropped(out$tables, out$dropped)
 }
 
-## Read the three export tables from a Zenodo deposit (the GitHub archive of
-## a bugphyzzExports tag, which also holds sources/*.csv.gz). Extract into a
-## fresh directory so leftovers in tempdir() cannot be picked up.
-.readZenodoZip <- function(rpath) {
+## A Zenodo deposit is the GitHub archive of a bugphyzzExports tag, so it also
+## carries sources/*.csv.gz and other files. Only the three export tables
+## (and, if asked, the dropped imputations) are read.
+.readZenodoZip <- function(rpath, dropped = FALSE) {
     exdir <- tempfile("bugphyzz")
     dir.create(exdir)
     on.exit(unlink(exdir, recursive = TRUE), add = TRUE)
@@ -479,27 +468,66 @@ getTaxonSignatures <- function(tax, bp, ...) {
         exdir, pattern = "^bugphyzz_(binary|multistate|numeric)\\.csv$",
         full.names = TRUE
     )
-    lapply(files, function(x) {
+    tables <- lapply(files, function(x) {
         utils::read.csv(x, header = TRUE, skip = 1) |>
             dplyr::mutate(Attribute = tolower(Attribute))
     })
+    if (!dropped) return(list(tables = tables, dropped = NULL))
+    droppedFile <- file.path(exdir, "bugphyzz_asr_dropped.csv.gz")
+    droppedTable <- if (file.exists(droppedFile)) .readDropped(droppedFile)
+    list(tables = tables, dropped = droppedTable)
 }
 
-## Function for downloading data from GitHub
-.downloadGH <- function(version, forceDownload) {
+## FALSE only for a 404 (older versions have no dropped file); other
+## failures are errors.
+.urlExists <- function(url) {
+    resp <- httr2::request(url) |>
+        httr2::req_method("HEAD") |>
+        httr2::req_error(is_error = function(resp) FALSE) |>
+        httr2::req_perform()
+    status <- httr2::resp_status(resp)
+    if (status == 404) return(FALSE)
+    if (status >= 400) {
+        stop("Could not reach ", url, " (HTTP ", status, ").", call. = FALSE)
+    }
+    TRUE
+}
+
+.readDropped <- function(path) {
+    utils::read.csv(
+        gzfile(path), header = TRUE, skip = 1, colClasses = "character"
+    )
+}
+
+.downloadGH <- function(version, forceDownload, dropped = FALSE) {
     fileSuffix <- c("binary", "multistate", "numeric")
     urls <- paste0(
         "https://github.com/waldronlab/bugphyzzExports/raw/", version,
         "/bugphyzz_", fileSuffix, ".csv"
     )
     names(urls) <-  c("binary", "multistate", "numeric")
-    lapply(seq_len(length(urls)), function(i) {
+    tables <- lapply(seq_len(length(urls)), function(i) {
         message("Importing ", names(urls)[i], " data...")
         rpath <- .getResource(
-            rname = paste0("bugphyzz_", names(urls)[i], ".csv"),
+            rname = paste0("bugphyzz_", names(urls)[i], "_", version, ".csv"),
             url = urls[i], verbose = TRUE, force = forceDownload
         )
         utils::read.csv(rpath, header = TRUE, skip = 1) |>
             dplyr::mutate(Attribute = tolower(Attribute))
     })
+    if (!dropped) return(tables)
+    message("Importing dropped imputed annotations...")
+    url <- paste0(
+        "https://github.com/waldronlab/bugphyzzExports/raw/", version,
+        "/bugphyzz_asr_dropped.csv.gz"
+    )
+    if (!.urlExists(url)) {
+        .noDroppedWarning(version)
+        return(tables)
+    }
+    rpath <- .getResource(
+        rname = paste0("bugphyzz_asr_dropped_", version, ".csv.gz"),
+        url = url, verbose = TRUE, force = forceDownload
+    )
+    .bindDropped(tables, .readDropped(rpath))
 }

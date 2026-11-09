@@ -122,12 +122,14 @@ Metadata associated with attribute values:
 9. _Support values_:
     * Frequency and Score: Confidence that a given taxon exhibits a trait
     based on the curator’s knowledge or results of ASR or IBD.
-    * Validation: Score from the
-    [10-fold cross-validation analysis](https://github.com/waldronlab/taxPProValidation).
-    Matthews correlation coefficient (MCC) for discrete attributes and
-    R-squared for numeric attributes. By default `importBugphyzz()` keeps
-    imputed annotations with MCC of at least 0.7 or R-squared of at least 0.5
-    (`mccThreshold` and `r2Threshold` arguments).
+    * Validation: Score of the attribute in the
+    [10-fold cross-validation analysis](https://github.com/waldronlab/taxPProValidation),
+    for imputed annotations: the lower 95% bound of Cohen's kappa (linearly
+    weighted for attributes with ordered states) for discrete attributes and
+    of R-squared for numeric attributes. By default `importBugphyzz()` keeps
+    the imputed annotations of attributes with kappa of at least 0.7 or
+    R-squared of at least 0.5 (`kappaThreshold` and `r2Threshold` arguments),
+    and imputed annotations with Score of at least 0.5 (`asrScoreThreshold`).
     * NSTI: Nearest sequence taxon index from [PICRUSt2](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7365738/)
     or the [castor package](https://cran.r-project.org/web/packages/castor/index.html).
     Relevant for numeric values only.

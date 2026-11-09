@@ -3,12 +3,13 @@
 
 mockExports <- function() {
     binary <- data.frame(
-        NCBI_ID = 1:4, Taxon_name = paste0("t", 1:4), Rank = "species",
+        NCBI_ID = 1:5, Taxon_name = paste0("t", 1:5), Rank = "species",
         Attribute = "spore formation", Attribute_value = TRUE,
-        Evidence = c("exp", "asr", "asr", "asr"),
-        Frequency = c("always", "usually", "rarely", "never"),
-        Score = c(1, 0.9, 0.2, 0), Attribute_source = c("BacDive", NA, NA, NA),
-        Confidence_in_curation = c("high", NA, NA, NA),
+        Evidence = c("exp", "asr", "asr", "asr", "exp"),
+        Frequency = c("always", "usually", "rarely", "never", "rarely"),
+        Score = c(1, 0.9, 0.2, 0, 0.1),
+        Attribute_source = c("BacDive", NA, NA, NA, "BacDive"),
+        Confidence_in_curation = c("high", NA, NA, NA, "high"),
         Attribute_type = "binary", stringsAsFactors = FALSE
     )
     multistate <- data.frame(
@@ -38,84 +39,109 @@ mockExports <- function() {
     list(binary = binary, multistate = multistate, numeric = numeric)
 }
 
-mockValidation <- function() {
+mockValidationAttributes <- function() {
     data.frame(
         rank = "all",
         physiology = c(
-            "spore formation", "aerophilicity", "aerophilicity",
-            "aerophilicity", "COGEM pathogenicity rating",
-            "COGEM pathogenicity rating", "genome size", "width"
+            "spore formation", "aerophilicity", "COGEM pathogenicity rating",
+            "genome size", "width"
         ),
-        attribute = c(
-            "spore formation", "aerobic", "anaerobic",
-            "facultatively anaerobic", "COGEM pathogenicity rating 1",
-            "COGEM pathogenicity rating 2", "genome size", "width"
-        ),
-        mcc_mean = c(0.88, 0.71, 0.84, 0.23, 0.74, 0.71, NA, NA),
-        r2_mean = c(NA, NA, NA, NA, NA, NA, 0.72, 0.04),
+        score_lcb = c(0.88, 0.79, 0.55, 0.80, 0.00),
         stringsAsFactors = FALSE
-    ) |>
-        dplyr::mutate(value = ifelse(is.na(mcc_mean), r2_mean, mcc_mean))
+    )
 }
 
-importMocked <- function(...) {
+importMocked <- function(..., env = parent.frame()) {
     testthat::local_mocked_bindings(
-        .downloadResource = function(version, forceDownload) mockExports(),
-        .validationData = function() mockValidation()
+        .downloadResource = function(version, forceDownload, dropped = FALSE)
+            mockExports(),
+        .validationAttributes = function() mockValidationAttributes(),
+        .env = env
     )
     importBugphyzz(...)
 }
 
-test_that("default thresholds keep MCC >= 0.7 and R2 >= 0.5 ASR rows", {
+test_that("defaults keep whole attributes with a lower bound of at least 0.7 (0.5)", {
     bp <- importMocked()
-    ## spore formation: ASR usually kept; rarely and never dropped
+    ## spore formation: imputed rows with Score >= 0.5 kept, curated "rarely" dropped
     expect_equal(bp[["spore formation"]]$NCBI_ID, 1:2)
-    ## aerophilicity: anaerobic (0.84) kept, facultatively anaerobic (0.23) dropped
-    expect_equal(bp[["aerophilicity"]]$Attribute_value, c("aerobic", "anaerobic"))
-    ## curated rows never carry a validation score
+    ## aerophilicity passes, so every imputed state is kept
+    expect_equal(
+        bp[["aerophilicity"]]$Attribute_value,
+        c("aerobic", "anaerobic", "facultatively anaerobic")
+    )
     expect_true(is.na(bp[["aerophilicity"]]$Validation[1]))
-    expect_equal(bp[["aerophilicity"]]$Validation[2], 0.84)
-    ## numeric: genome size (0.72) kept, width (0.04) dropped
+    expect_equal(bp[["aerophilicity"]]$Validation[2:3], c(0.79, 0.79))
+    ## COGEM fails (0.55): only the curated row is left
+    expect_equal(bp[["COGEM pathogenicity rating"]]$Evidence, "nas")
+    ## numeric: genome size (0.80) kept, width (0.00) dropped
     expect_equal(nrow(bp[["genome size"]]), 2)
-    expect_equal(nrow(bp[["width"]]), 1)
     expect_equal(bp[["width"]]$Evidence, "exp")
     expect_true("NSTI" %in% names(bp[["genome size"]]))
 })
 
-test_that("validation join is case-insensitive", {
-    bp <- importMocked()
-    expect_equal(nrow(bp[["COGEM pathogenicity rating"]]), 3)
-    expect_equal(
-        bp[["COGEM pathogenicity rating"]]$Validation, c(NA, 0.74, 0.71)
-    )
+test_that("validation join is case-insensitive and multistate values are lower case", {
+    bp <- importMocked(kappaThreshold = 0.5)
+    cogem <- bp[["COGEM pathogenicity rating"]]
+    expect_equal(nrow(cogem), 3)
+    expect_equal(cogem$Validation, c(NA, 0.55, 0.55))
+    expect_true(all(cogem$Attribute_value == tolower(cogem$Attribute_value)))
 })
 
 test_that("thresholds apply by attribute type", {
-    bp <- importMocked(mccThreshold = 0.9, r2Threshold = 0)
+    bp <- importMocked(kappaThreshold = 0.9, r2Threshold = 0)
     expect_equal(bp[["aerophilicity"]]$Evidence, "exp")
     expect_equal(nrow(bp[["width"]]), 2)
-    bp <- importMocked(mccThreshold = 0, r2Threshold = 0.9)
-    expect_equal(nrow(bp[["aerophilicity"]]), 3)
+    bp <- importMocked(kappaThreshold = 0, r2Threshold = 0.9)
+    expect_equal(nrow(bp[["COGEM pathogenicity rating"]]), 3)
     expect_equal(bp[["genome size"]]$Evidence, "igc")
 })
 
-test_that("excludeRarely = FALSE keeps rarely and never", {
-    bp <- importMocked(excludeRarely = FALSE)
+test_that("asrScoreThreshold filters imputed rows only", {
+    bp <- importMocked(asrScoreThreshold = 0.95)
+    expect_equal(bp[["spore formation"]]$Evidence, "exp")
+    expect_equal(bp[["aerophilicity"]]$Evidence, "exp")
+    bp <- importMocked(asrScoreThreshold = 0)
     expect_equal(bp[["spore formation"]]$NCBI_ID, 1:4)
 })
 
+test_that("excludeRarely is deprecated; FALSE means asrScoreThreshold = 0", {
+    expect_warning(bp <- importMocked(excludeRarely = FALSE), "deprecated")
+    ## imputed rarely/never kept, curated rarely still excluded
+    expect_equal(bp[["spore formation"]]$NCBI_ID, 1:4)
+    expect_warning(bp <- importMocked(excludeRarely = TRUE), "deprecated")
+    expect_equal(bp[["spore formation"]]$NCBI_ID, 1:2)
+})
+
 test_that("v is deprecated and sets both thresholds", {
-    expect_warning(bp <- importMocked(v = 0.8), "deprecated")
-    ## 0.8 drops aerobic (0.71), COGEM (0.74, 0.71) and genome size (0.72)
-    expect_equal(bp[["aerophilicity"]]$Attribute_value, c("aerobic", "anaerobic"))
-    expect_equal(bp[["COGEM pathogenicity rating"]]$Evidence, "nas")
+    expect_warning(bp <- importMocked(v = 0.85), "deprecated")
+    ## 0.85 drops aerophilicity (0.79) and genome size (0.80), keeps spore formation (0.88)
+    expect_equal(bp[["aerophilicity"]]$Evidence, "exp")
     expect_equal(bp[["genome size"]]$Evidence, "igc")
+    expect_equal(bp[["spore formation"]]$NCBI_ID, 1:2)
 })
 
 test_that("bad thresholds error", {
-    expect_error(importMocked(mccThreshold = 2), "mccThreshold")
+    expect_error(importMocked(kappaThreshold = 2), "kappaThreshold")
     expect_error(importMocked(r2Threshold = NA_real_), "r2Threshold")
-    expect_error(importMocked(mccThreshold = "a"), "mccThreshold")
+    expect_error(importMocked(asrScoreThreshold = "a"), "asrScoreThreshold")
+})
+
+test_that("only thresholds below the defaults ask for the dropped imputations", {
+    asked <- NULL
+    local_mocked_bindings(
+        .downloadResource = function(version, forceDownload, dropped = FALSE) {
+            asked <<- c(asked, dropped)
+            mockExports()
+        },
+        .validationAttributes = function() mockValidationAttributes()
+    )
+    importBugphyzz()
+    importBugphyzz(kappaThreshold = 0.8, asrScoreThreshold = 0.9)
+    importBugphyzz(kappaThreshold = 0.6)
+    importBugphyzz(r2Threshold = 0.4)
+    importBugphyzz(asrScoreThreshold = 0.2)
+    expect_equal(asked, c(FALSE, FALSE, TRUE, TRUE, TRUE))
 })
 
 test_that("shipped validation table is v1.0.7 and has one row per key", {
@@ -144,54 +170,88 @@ test_that("shipped validation table is v1.0.7 and has one row per key", {
     expect_gte(all_rank$mcc_mean[all_rank$attribute == "anaerobic"], 0.9)
 })
 
-test_that("includeDroppedAsr refuses a Zenodo version", {
-    expect_error(
-        .addDroppedAsr(list(), "10.5281/zenodo.12574596", FALSE),
-        "GitHub version"
-    )
-})
 
-test_that("includeDroppedAsr brings dropped ASR rows under a lower threshold", {
+droppedFixture <- function() {
     cols <- function(...) data.frame(..., stringsAsFactors = FALSE)
     main <- list(
         binary = cols(NCBI_ID = "562", Taxon_name = "Escherichia coli", Rank = "species",
             Attribute = "motility", Attribute_value = "TRUE", Evidence = "exp",
             Frequency = "always", Score = 1, Attribute_source = "BacDive",
-            Confidence_in_curation = "high", Attribute_type = "binary", NSTI = NA_real_),
+            Confidence_in_curation = "high", Attribute_type = "binary"),
         multistate = cols(NCBI_ID = "1279", Taxon_name = "Staphylococcus", Rank = "genus",
-            Attribute = "aerophilicity", Attribute_value = "anaerobic", Evidence = "asr",
-            Frequency = "usually", Score = 0.8, Attribute_source = NA_character_,
-            Confidence_in_curation = NA_character_, Attribute_type = "multistate-intersection", NSTI = 0.1),
+            Attribute = "COGEM pathogenicity rating", Attribute_value = "COGEM pathogenicity rating 1",
+            Evidence = "nas", Frequency = "always", Score = 1,
+            Attribute_source = "The Microbe Directory", Confidence_in_curation = "low",
+            Attribute_type = "multistate-intersection"),
         numeric = cols(NCBI_ID = "562", Taxon_name = "Escherichia coli", Rank = "species",
-            Attribute = "length", Attribute_value = "2", Evidence = "exp",
+            Attribute = "length", Attribute_value = 2, Evidence = "exp",
             Frequency = "always", Score = 1, Attribute_source = "BacDive",
             Confidence_in_curation = "high", Attribute_type = "numeric", nsti = NA_real_)
     )
-    dropped <- cols(NCBI_ID = c("1279", "1279"), Taxon_name = "Staphylococcus", Rank = "genus",
-        Attribute = "aerophilicity", Attribute_value = c("aerobic", "aerobic"),
-        Evidence = "asr", Frequency = c("usually", "never"), Score = c(0.7, 0.1),
+    dropped <- cols(NCBI_ID = c("1280", "1281"), Taxon_name = c("a", "b"), Rank = "species",
+        Attribute = "COGEM pathogenicity rating",
+        Attribute_value = "COGEM pathogenicity rating 2",
+        Evidence = "asr", Frequency = c("sometimes", "rarely"), Score = c(0.7, 0.2),
         Attribute_source = NA, Confidence_in_curation = NA,
-        Attribute_type = "multistate-intersection", NSTI = 0.1, Validation = 0.66)
+        Attribute_type = "multistate-intersection", Validation = 0.55)
     tmp <- tempfile(fileext = ".csv.gz")
     con <- gzfile(tmp, "w"); cat("# header\n", file = con)
-    suppressWarnings(write.table(dropped, con, sep = ",", row.names = FALSE, append = TRUE, col.names = TRUE))
+    suppressWarnings(write.table(dropped, con, sep = ",", row.names = FALSE,
+        append = TRUE, col.names = TRUE))
     close(con)
-    val <- data.frame(rank = "all", physiology = "aerophilicity",
-        attribute = c("aerobic", "anaerobic"), mcc_mean = c(0.66, 0.85), r2_mean = NA_real_,
-        value = c(0.66, 0.85))
+    list(main = main, droppedFile = tmp)
+}
+
+test_that("lower thresholds bring back dropped imputations from GitHub versions", {
+    fx <- droppedFixture()
     local_mocked_bindings(
-        .downloadResource = function(version, forceDownload) main,
-        .getResource = function(...) tmp,
-        .validationData = function() val
+        .urlExists = function(url) TRUE,
+        .getResource = function(rname, url, ...) {
+            if (grepl("asr_dropped", rname)) return(fx$droppedFile)
+            f <- tempfile(fileext = ".csv")
+            tbl <- fx$main[[sub("^bugphyzz_([a-z]+)_.*$", "\\1", rname)]]
+            writeLines("# header", f)
+            suppressWarnings(utils::write.table(tbl, f, sep = ",",
+                row.names = FALSE, append = TRUE))
+            f
+        },
+        .validationAttributes = function() mockValidationAttributes()
     )
-    bp <- importBugphyzz(version = "devel", includeDroppedAsr = TRUE)
-    expect_equal(sort(unique(bp$aerophilicity$Attribute_value)), "anaerobic")
-    bp <- importBugphyzz(version = "devel", includeDroppedAsr = TRUE, mccThreshold = 0.6)
-    expect_equal(sum(bp$aerophilicity$Attribute_value == "aerobic"), 1L)   # "never" row still excluded
-    expect_false("Validation" %in% names(bp$aerophilicity) && all(is.na(bp$aerophilicity$Validation)))
-    bp <- importBugphyzz(version = "devel", includeDroppedAsr = TRUE, mccThreshold = 0.6, excludeRarely = FALSE)
-    expect_equal(sum(bp$aerophilicity$Attribute_value == "aerobic"), 2L)
-    expect_type(bp$aerophilicity$Score, "double")
-    bp <- importBugphyzz(version = "devel", includeDroppedAsr = FALSE)
-    expect_false("aerobic" %in% bp$aerophilicity$Attribute_value)
+    bp <- suppressMessages(importBugphyzz(version = "devel"))
+    expect_equal(bp[["cogem pathogenicity rating"]]$Evidence, "nas")
+    bp <- suppressMessages(importBugphyzz(version = "devel", kappaThreshold = 0.5))
+    expect_equal(sum(bp[["cogem pathogenicity rating"]]$Evidence == "asr"), 1L)
+    bp <- suppressMessages(importBugphyzz(
+        version = "devel", kappaThreshold = 0.5, asrScoreThreshold = 0
+    ))
+    expect_equal(sum(bp[["cogem pathogenicity rating"]]$Evidence == "asr"), 2L)
+    expect_type(bp[["cogem pathogenicity rating"]]$Score, "double")
+})
+
+test_that("a version without the dropped file warns and keeps what it ships", {
+    fx <- droppedFixture()
+    local_mocked_bindings(
+        .urlExists = function(url) !grepl("asr_dropped", url),
+        .getResource = function(rname, url, ...) {
+            f <- tempfile(fileext = ".csv")
+            tbl <- fx$main[[sub("^bugphyzz_([a-z]+)_.*$", "\\1", rname)]]
+            writeLines("# header", f)
+            suppressWarnings(utils::write.table(tbl, f, sep = ",",
+                row.names = FALSE, append = TRUE))
+            f
+        }
+    )
+    expect_warning(
+        out <- suppressMessages(.downloadGH("abc1234", FALSE, dropped = TRUE)),
+        "no file of dropped"
+    )
+    expect_length(out, 3)
+})
+
+test_that("shipped attribute-level validation table has one row per rank and physiology", {
+    v <- .validationAttributes()
+    expect_true(all(c("rank", "physiology", "metric", "score_lcb") %in% names(v)))
+    expect_false(anyDuplicated(v[c("rank", "physiology")]) > 0)
+    expect_true(all(v$metric %in% c("kappa", "weighted kappa", "r2")))
+    expect_true(all(v$score_lcb <= v$score_mean, na.rm = TRUE))
 })

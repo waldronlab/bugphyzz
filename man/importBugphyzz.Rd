@@ -7,10 +7,10 @@
 importBugphyzz(
   version = "10.5281/zenodo.12574596",
   forceDownload = FALSE,
-  mccThreshold = 0.7,
+  kappaThreshold = 0.7,
   r2Threshold = 0.5,
-  excludeRarely = TRUE,
-  includeDroppedAsr = FALSE,
+  asrScoreThreshold = 0.5,
+  excludeRarely,
   v = NULL
 )
 }
@@ -23,23 +23,23 @@ export.}
 \item{forceDownload}{Logical value. Force a fresh download of the data or
 use the one stored in the cache (if available). Default is FALSE.}
 
-\item{mccThreshold}{Minimum Matthews correlation coefficient (MCC) for
-keeping ASR annotations of discrete attributes. Default 0.7 (see details).}
+\item{kappaThreshold}{Minimum cross-validated Cohen's kappa (lower 95\%
+bound) for keeping the imputed annotations of a discrete attribute.
+Default 0.7 (see details).}
 
-\item{r2Threshold}{Minimum R-squared for keeping ASR annotations of numeric
-attributes. Default 0.5 (see details).}
+\item{r2Threshold}{Minimum cross-validated R-squared (lower 95\% bound) for
+keeping the imputed annotations of a numeric attribute. Default 0.5 (see
+details).}
 
-\item{excludeRarely}{Default is TRUE. Exclude annotations with
-Frequency "rarely" or "never" (see details).}
+\item{asrScoreThreshold}{Minimum \code{Score} of an imputed annotation.
+Default 0.5 (see details).}
 
-\item{includeDroppedAsr}{Logical. If TRUE, add back the imputed (ASR)
-annotations the export removed for failing the default thresholds (or for
-frequency "rarely"/"never"), so that \code{mccThreshold} and \code{r2Threshold} can
-be set below the export's 0.7 and 0.5. Only for \code{version = "devel"} or a
-commit hash; Zenodo releases carry only the filtered data. Default FALSE.}
+\item{excludeRarely}{Deprecated. \code{excludeRarely = FALSE} is equivalent to
+\code{asrScoreThreshold = 0}; curated annotations with Frequency "rarely" or
+"never" are always excluded.}
 
-\item{v}{Deprecated. A single threshold applied to both MCC and R-squared.
-If supplied, it overrides \code{mccThreshold} and \code{r2Threshold} with a warning.}
+\item{v}{Deprecated. A single threshold applied to both \code{kappaThreshold}
+and \code{r2Threshold}.}
 }
 \value{
 A list of tidy data frames.
@@ -57,30 +57,42 @@ The data structure of the data.frames imported with \code{importBugphyzz} are
 detailed in the main vignette. Please run \code{browseVignettes("bugphyzz")}.
 }
 
-\subsection{Validation (\code{mccThreshold} and \code{r2Threshold} arguments)}{
+\subsection{Imputed annotations (\code{kappaThreshold}, \code{r2Threshold})}{
 
 Data imported with \code{importBugphyzz} includes annotations imputed through
-ancestral state reconstruction (ASR) methods. A 10-fold cross-validation
-approach was implemented to assess the reliability of the data imputed.
-Matthews correlation coefficient (MCC) and R-squared (R2) were used for the
-validation of discrete and numeric attributes.
-Details can be found at: https://github.com/waldronlab/taxPProValidation.
-By default, imputed annotations are kept when the MCC of the attribute
-value is at least 0.7 (discrete attributes) or the R2 of the attribute is
-at least 0.5 (numeric attributes). These are the thresholds used in the
-bugphyzz manuscript. Set either threshold to 0 to keep all imputed
-annotations. Curated annotations (any Evidence other than "asr") are never
+ancestral state reconstruction (ASR), with Evidence "asr". An attribute's
+imputed annotations are kept all together or not at all, based on a
+cross-validation of the reconstruction
+(https://github.com/waldronlab/taxPProValidation): Cohen's kappa for
+discrete attributes (linearly weighted for attributes with ordered
+states, such as aerophilicity) and R-squared for numeric attributes, with
+held-out taxa weighted to match the phylogenetic distance of the taxa to
+be imputed. The threshold applies to the lower bound of the 95\%
+confidence interval of the score. The defaults are the thresholds applied
+by the export (bugphyzzExports ADR 0006). Curated annotations are never
 filtered by these thresholds.
 }
 
-\subsection{Frequency (excludeRarely argument)}{
+\subsection{Score of imputed annotations (\code{asrScoreThreshold})}{
 
-One of the variables in the bugphyzz data.frames is "Frequency", which
-can adopt values of
-"always", "usually", "sometimes", "rarely", or "never". By default
-"never" and "rarely" are excluded. They can be included with
-\code{excludeRarely = FALSE}. To learn more about these frequency keywords
-please check the bugphyzz vignette with \code{browseVignettes("bugphyzz")}.
+For discrete attributes, \code{Score} is the posterior probability of the
+imputed state. For numeric attributes it is a step function of the
+distance to the nearest annotated taxon (NSTI): 0.9 up to 0.05, 0.5 up to
+0.15, 0.1 up to 0.2 and 0 beyond. Raise \code{asrScoreThreshold} to keep fewer,
+more reliable imputed annotations.
+}
+
+\subsection{Thresholds below the defaults}{
+
+The export removes imputed annotations below the default thresholds and
+keeps them in a separate file. Setting any threshold below its default
+makes \code{importBugphyzz} read that file as well, for versions that have it.
+}
+
+\subsection{Frequency}{
+
+Curated annotations with Frequency "rarely" or "never" are excluded. Use
+\code{physiologies()} for all curated data.
 }
 
 \subsection{Sources}{

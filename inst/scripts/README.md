@@ -1,7 +1,9 @@
 # Description about the files in the extdata directory
 
-All of the files in the extdata directory, with the exeception of
-the `validation_summary.tsv` file, were manually created/edited.
+All of the files in the extdata directory, with the exception of
+`validation_attributes.tsv`, `validation_states.tsv` and
+`validation_summary.tsv` (from waldronlab/taxPProValidation), were manually
+created/edited.
 
 These files are necessary for 1) the bugphyzz package to work properly and
 2) a convenient way for curators to update the files.
@@ -43,6 +45,7 @@ Columns:
 | ontology | Mapping to an ontology term (if possible). |
 | attribute_group | The group(s) where an attribute name could be found. |
 | description | The meaning of the attribute described in the 'attribute' column. |
+| ordinal_position | Position of the state on an ordered scale (1 = lowest), used for linearly weighted kappa in the cross-validation; NA for states without an order. Set for aerophilicity (aerobic, facultatively anaerobic, anaerobic), gram stain (negative, variable, positive), biosafety level and COGEM pathogenicity rating (bugphyzzExports ADR 0006). |
 
 ## spreadsheet_custmolinks.tsv
 
@@ -105,7 +108,31 @@ Columns:
 | unit | units used for numeric data. |
 
 
+## validation_attributes.tsv and validation_states.tsv
+
+From waldronlab/taxPProValidation (`create_attribute_summary.R`, #12,
+waldronlab/taxPProValidation#13). `importBugphyzz()` keeps or drops all
+imputed annotations of an attribute by `score_lcb` in
+`validation_attributes.tsv` (bugphyzzExports ADR 0006): one row per rank and
+physiology, with Cohen's kappa (`metric` "kappa", or "weighted kappa" for
+attributes with an `ordinal_position` in attributes.tsv) or R2 ("r2"),
+held-out tips weighted to the NSTI distribution of the tips to be imputed;
+`score_mean`, `score_sd` and `score_lcb` (lower bound of a two-sided 95%
+t-interval over folds), the unweighted score, the number of held-out tips,
+the effective sample size of the weights as a fraction, the largest weight
+and the median NSTI of held-out and target tips. `validation_states.tsv`
+gives the precision of each predicted state of discrete attributes, with the
+same weights, and the number of predictions.
+
+Copied from the attribute-kappa branch of waldronlab/taxPProValidation
+(waldronlab/taxPProValidation#13) on November 9, 2026 (discrete scores from
+the v1.0.7 folds, numeric re-run on November 9).
+
 ## validation_summary.tsv
+
+Per-value scores, kept for reference (the manuscript's supplementary table);
+since 1.7.15 `importBugphyzz()` filters with `validation_attributes.tsv`
+instead.
 
 This file was obtained from the waldronlab/taxPProValidation repository
 hosted on GitHub. It contains the results of a 10-fold cross-validation of the

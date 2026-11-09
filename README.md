@@ -23,7 +23,7 @@ sigs <- makeSignatures(bp[["aerophilicity"]], taxIdType = "NCBI_ID", taxLevel = 
 getTaxonSignatures("562", bp)                # the 21 signatures containing E. coli
 ```
 
-`importBugphyzz()` downloads the released annotations from Zenodo (the release pinned in its `version` default; pass another DOI, or `version = "devel"` for the weekly export) and keeps imputed annotations only where they passed cross-validation (`mccThreshold`, `r2Threshold`). See `vignette("bugphyzz")` for the data schema and an enrichment example, and `vignette("sources")` for the sources.
+`importBugphyzz()` downloads the released annotations from Zenodo (the release pinned in its `version` default; pass another DOI, or `version = "devel"` for the weekly export) and keeps an attribute's imputed annotations only if the attribute passed cross-validation (`kappaThreshold`, `r2Threshold`; imputed annotations can also be filtered by `asrScoreThreshold`). See `vignette("bugphyzz")` for the data schema and an enrichment example, and `vignette("sources")` for the sources.
 
 ## How the data are produced
 
@@ -35,7 +35,7 @@ The package is the user-facing end of a pipeline spread over several repositorie
 | 2. Programmatic sources | [bugphyzzExports](https://github.com/waldronlab/bugphyzzExports), `sources/` | Scripted imports kept under version control with the script and pinned upstream version: Bergey's Manual genus abstracts (LLM extraction), Madin et al. 2020, BacDive (API), NCBI RefSeq assemblies (genome size, G+C, coding genes). Corrections go in each source's `overrides.tsv`, never in the output. |
 | 3. Raw import | this package, `physiologies()` | Reads steps 1 and 2 into one tidy table per physiology; for curators and the export, not for users. |
 | 4. Harmonization, conflict resolution, propagation | [taxPPro](https://github.com/waldronlab/taxPPro) (R package) and [bugphyzzExports](https://github.com/waldronlab/bugphyzzExports) `inst/scripts/export_bugphyzz.R` | Resolves conflicting annotations by source confidence, propagates strain annotations to species, runs ancestral state reconstruction on the LTP tree (phytools for discrete, castor for numeric), applies the validation thresholds, writes CSV and GMT files. A GitHub Action runs it weekly and commits to `devel`. |
-| 5. Cross-validation | [taxPProValidation](https://github.com/waldronlab/taxPProValidation) | 10-fold cross-validation of the reconstruction per attribute value; its `validation_summary.tsv` is copied to [`inst/extdata/`](inst/extdata/) here and decides which imputed annotations ship. Re-run when sources change. |
+| 5. Cross-validation | [taxPProValidation](https://github.com/waldronlab/taxPProValidation) | 10-fold cross-validation of the reconstruction; its `validation_attributes.tsv` (one score per attribute, bugphyzzExports ADR 0006) is copied to [`inst/extdata/`](inst/extdata/) here and decides which imputed annotations ship, with `validation_states.tsv` (per-state precision) and `validation_summary.tsv` (per-value scores, for reference). Re-run when sources change. |
 | 6. Release | [Zenodo](https://zenodo.org/doi/10.5281/zenodo.10980653) | Versioned deposits of the exported files; `importBugphyzz()` pins one release as its default and is updated with each deposit. |
 | 7. Analyses and paper | [bugphyzzAnalyses](https://github.com/waldronlab/bugphyzzAnalyses), [bugphyzz-manuscript](https://github.com/waldronlab/bugphyzz-manuscript) (private) | Articles reproducing the manuscript figures; manuscript issues. |
 
