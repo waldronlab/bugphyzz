@@ -1,0 +1,63 @@
+method	rank	physiology	metric	n_folds	score_mean	score_sd	score_lcb	unweighted_mean	n_heldout	ess_fraction	max_weight	nsti_median_heldout	nsti_median_targets
+phytools-ltp	all	COGEM pathogenicity rating	weighted kappa	10	0.632	0.111	0.552	0.764	525	0.472	4.539	0.075	0.151
+phytools-ltp	species	COGEM pathogenicity rating	weighted kappa	10	0.689	0.133	0.594	0.788	519	0.54	3.656	0.072	0.152
+phytools-ltp	all	aerophilicity	weighted kappa	10	0.797	0.016	0.786	0.796	13407	0.96	3.795	0.025	0.026
+phytools-ltp	genus	aerophilicity	weighted kappa	10	0.813	0.052	0.776	0.812	1557	0.975	1.201	0.06	0.065
+phytools-ltp	species	aerophilicity	weighted kappa	10	0.773	0.023	0.757	0.769	10185	0.944	3.138	0.033	0.032
+phytools-ltp	strain	aerophilicity	weighted kappa	10	0.811	0.036	0.786	0.806	1665	0.973	1.171	0.081	0.085
+phytools-ltp	all	animal pathogen	kappa	10	0.523	0.135	0.426	0.539	1134	0.48	4.546	0.049	0.127
+phytools-ltp	species	animal pathogen	kappa	10	0.551	0.157	0.438	0.554	986	0.502	4.257	0.053	0.13
+phytools-ltp	all	antimicrobial sensitivity	kappa	10	0.388	0.273	0.193	0.437	367	0.639	2.221	0.081	0.168
+phytools-ltp	species	antimicrobial sensitivity	kappa	10	0.367	0.266	0.177	0.391	361	0.675	2.015	0.086	0.17
+phytools-ltp	all	arrangement	kappa	10	0.402	0.053	0.364	0.431	1144	0.91	1.376	0.058	0.082
+phytools-ltp	genus	arrangement	kappa	10	0.365	0.071	0.315	0.376	767	0.951	1.261	0.075	0.091
+phytools-ltp	all	biosafety level	weighted kappa	10	0.517	0.058	0.475	0.527	10696	0.958	1.679	0.029	0.035
+phytools-ltp	species	biosafety level	kappa	10	0.512	0.063	0.467	0.53	8797	0.869	2.721	0.029	0.041
+phytools-ltp	strain	biosafety level	kappa	10	0.534	0.109	0.456	0.533	1889	0.976	1.135	0.078	0.081
+castor-ltp	all	coding genes	r2	10	0.888	0.009	0.882	0.879	15916	0.916	2.53	0.027	0.02
+castor-ltp	species	coding genes	r2	10	0.881	0.011	0.873	0.878	15205	0.922	2.946	0.027	0.023
+castor-ltp	strain	coding genes	r2	10	0.618	0.071	0.567	0.637	711	0.932	1.375	0.113	0.123
+phytools-ltp	all	extreme environment	kappa	10	0.502	0.129	0.41	0.55	826	0.773	2.315	0.074	0.119
+phytools-ltp	species	extreme environment	kappa	10	0.511	0.123	0.423	0.556	816	0.775	2.267	0.072	0.12
+castor-ltp	all	gc content	r2	10	0.946	0.006	0.942	0.946	19745	0.819	1.828	0.022	0.009
+castor-ltp	genus	gc content	r2	10	0.766	0.023	0.75	0.759	1702	0.975	1.137	0.059	0.061
+castor-ltp	species	gc content	r2	10	0.947	0.004	0.944	0.95	16438	0.869	3.299	0.027	0.018
+castor-ltp	strain	gc content	r2	10	0.798	0.034	0.774	0.785	1605	0.98	1.129	0.085	0.085
+castor-ltp	all	genome size	r2	10	0.889	0.01	0.882	0.88	16000	0.916	2.617	0.027	0.02
+castor-ltp	species	genome size	r2	10	0.881	0.006	0.876	0.879	15290	0.926	2.793	0.027	0.023
+castor-ltp	strain	genome size	r2	10	0.615	0.104	0.541	0.63	710	0.929	1.391	0.115	0.123
+phytools-ltp	all	gram stain	weighted kappa	10	0.936	0.01	0.929	0.94	14112	0.96	2.738	0.024	0.027
+phytools-ltp	genus	gram stain	weighted kappa	10	0.826	0.058	0.785	0.831	1508	0.974	1.164	0.06	0.067
+phytools-ltp	species	gram stain	weighted kappa	10	0.952	0.009	0.945	0.956	11189	0.934	3.366	0.03	0.032
+phytools-ltp	strain	gram stain	weighted kappa	10	0.9	0.029	0.879	0.897	1415	0.963	1.232	0.084	0.089
+castor-ltp	all	growth temperature	r2	10	0.759	0.028	0.739	0.746	15686	0.947	1.28	0.026	0.02
+castor-ltp	genus	growth temperature	r2	10	0.541	0.112	0.46	0.594	495	0.874	1.479	0.081	0.116
+castor-ltp	species	growth temperature	r2	10	0.666	0.043	0.635	0.666	13241	0.952	2.607	0.029	0.026
+castor-ltp	strain	growth temperature	r2	10	0.751	0.049	0.716	0.755	1950	0.969	1.187	0.077	0.08
+phytools-ltp	all	hemolysis	kappa	10	0.294	0.157	0.182	0.452	419	0.205	6.689	0.049	0.247
+phytools-ltp	species	hemolysis	kappa	10	0.325	0.33	0.089	0.455	322	0.196	6.876	0.048	0.257
+castor-ltp	all	length	r2	10	0.356	0.191	0.22	0.333	5920	0.963	2.288	0.041	0.045
+castor-ltp	genus	length	r2	10	0.192	0.252	0.012	0.2	684	0.907	1.723	0.079	0.101
+castor-ltp	species	length	r2	10	0.36	0.263	0.172	0.336	4644	0.894	2.839	0.047	0.056
+castor-ltp	strain	length	r2	10	0.19	0.25	0.012	0.188	592	0.963	1.251	0.126	0.123
+phytools-ltp	all	motility	kappa	10	0.603	0.024	0.586	0.61	10896	0.973	1.697	0.028	0.03
+phytools-ltp	genus	motility	kappa	10	0.377	0.051	0.34	0.379	1417	0.967	1.188	0.058	0.07
+phytools-ltp	species	motility	kappa	10	0.608	0.01	0.601	0.618	8309	0.947	2.49	0.035	0.039
+phytools-ltp	strain	motility	kappa	10	0.546	0.053	0.508	0.554	1170	0.948	1.221	0.085	0.095
+castor-ltp	all	optimal ph	r2	10	0.239	0.061	0.195	0.265	2925	0.871	2.719	0.052	0.066
+castor-ltp	species	optimal ph	r2	10	0.237	0.05	0.201	0.267	2924	0.877	2.591	0.052	0.066
+phytools-ltp	all	plant pathogenicity	kappa	10	0.539	0.247	0.362	0.601	668	0.617	3.098	0.065	0.134
+phytools-ltp	species	plant pathogenicity	kappa	10	0.479	0.257	0.295	0.548	660	0.632	2.885	0.065	0.135
+phytools-ltp	all	shape	kappa	10	0.564	0.023	0.548	0.566	11687	0.983	2.094	0.027	0.029
+phytools-ltp	genus	shape	kappa	10	0.476	0.058	0.434	0.489	1695	0.971	1.19	0.058	0.062
+phytools-ltp	species	shape	kappa	10	0.517	0.037	0.491	0.525	8559	0.955	2.474	0.036	0.038
+phytools-ltp	strain	shape	kappa	10	0.545	0.035	0.52	0.545	1422	0.958	1.224	0.083	0.09
+phytools-ltp	all	spore formation	kappa	10	0.873	0.023	0.856	0.886	6893	0.926	2.673	0.032	0.041
+phytools-ltp	genus	spore formation	kappa	10	0.694	0.086	0.633	0.723	1054	0.909	2.044	0.065	0.079
+phytools-ltp	species	spore formation	kappa	10	0.873	0.03	0.852	0.89	5273	0.916	2.428	0.041	0.051
+phytools-ltp	strain	spore formation	kappa	10	0.771	0.072	0.719	0.778	566	0.974	1.193	0.124	0.123
+phytools-ltp	all	spore shape	kappa	10	0.406	0.297	0.193	0.43	332	0.036	38.895	0.063	0.39
+castor-ltp	all	width	r2	10	0.082	0.085	0.021	0.083	5877	0.969	2.16	0.041	0.045
+castor-ltp	genus	width	r2	10	0.082	0.103	0.008	0.086	747	0.913	1.499	0.071	0.094
+castor-ltp	species	width	r2	10	0.163	0.033	0.139	0.176	4542	0.856	3.399	0.047	0.057
+castor-ltp	strain	width	r2	10	0.068	0.059	0.026	0.069	588	0.976	1.214	0.127	0.122
