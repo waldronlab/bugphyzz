@@ -138,8 +138,9 @@ test_that("shipped validation table is v1.0.7 and has one row per key", {
     ## v1.0.7: predictions called positive at the shipped score (>= 0.5);
     ## shape "filamentous" passes at genus rank, anaerobic reaches 0.9
     fil <- v[v$rank == "genus" & v$attribute == "filamentous" & v$physiology == "shape", ]
+    expect_equal(nrow(fil), 1L)
     expect_gte(fil$mcc_mean, 0.7)
-    expect_gte(aer$mcc_mean, 0.65)
+    expect_gte(aer$mcc_mean, 0.68)
     expect_gte(all_rank$mcc_mean[all_rank$attribute == "anaerobic"], 0.9)
 })
 
