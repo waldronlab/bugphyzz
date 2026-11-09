@@ -26,6 +26,16 @@
   `forceDownload = TRUE` used to return the tables of the version downloaded
   first.
 
+# bugphyzz 1.7.14
++ ASR annotations are filtered against validation v1.0.7
+  (waldronlab/taxPProValidation#11): the cross-validation now calls a
+  predicted state positive at the score the export ships (0.5 or more)
+  instead of above 0.8, so the MCC describes the data users receive. Same
+  predictions as v1.0.6. The export and `importBugphyzz()` filter on the
+  rank "all" rows, where no class changes side of MCC 0.7, so the released
+  annotations do not change; anaerobic rises to 0.90 and aerobic to 0.68.
+  Shape "filamentous" passes at genus rank, which the filters do not use.
+
 # bugphyzz 1.7.13
 + ASR annotations are filtered against validation v1.0.6
   (waldronlab/taxPProValidation#7): the cross-validation now drops the rows

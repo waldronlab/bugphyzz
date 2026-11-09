@@ -142,13 +142,15 @@ their own species (waldronlab/taxPProValidation#1).
 
 Detailed information (code and explanation) can be found on the repository.
 
-This is version 1.0.6, from waldronlab/taxPProValidation#7 (commit 16aed99),
-downloaded on November 8, 2026 with:
+This is version 1.0.7, from waldronlab/taxPProValidation#11 (commit d80efe7),
+downloaded on November 9, 2026 with:
 
 ```bash
-wget https://raw.githubusercontent.com/waldronlab/taxPProValidation/16aed99/validation_summary.tsv
+wget https://raw.githubusercontent.com/waldronlab/taxPProValidation/d80efe7/validation_summary.tsv
 ```
 
+Version 1.0.6 came from waldronlab/taxPProValidation#7 (commit 16aed99,
+downloaded November 8, 2026).
 Version 1.0.5 came from waldronlab/taxPProValidation#5 (commit 8996e05,
 downloaded November 5, 2026).
 Version 1.0.4 came from commit cc45761 (downloaded May 31, 2024).
