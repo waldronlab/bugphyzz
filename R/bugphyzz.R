@@ -4,7 +4,7 @@ utils::globalVariables(c(
     "Attribute_value", "Attribute_value_max", "Attribute_value_min", "Br-C10:1",
     "Evidence", "Frequency", "NCBI_ID", "Oxo-C19:1", "Taxon_name", "Unit",
     "attribute", "functionname", "gram_stain", "physiology", "unit", "value",
-    ".attr_key", ".value_key", "score_lcb", "rank"
+    ".attr_key", ".value_key", "score_lcb", "rank", "Attribute_type"
 ))
 
 #' Import bugphyzz
@@ -478,6 +478,21 @@ getTaxonSignatures <- function(tax, bp, ...) {
     list(tables = tables, dropped = droppedTable)
 }
 
+## FALSE only for a 404 (older versions have no dropped file); other
+## failures are errors.
+.urlExists <- function(url) {
+    resp <- httr2::request(url) |>
+        httr2::req_method("HEAD") |>
+        httr2::req_error(is_error = function(resp) FALSE) |>
+        httr2::req_perform()
+    status <- httr2::resp_status(resp)
+    if (status == 404) return(FALSE)
+    if (status >= 400) {
+        stop("Could not reach ", url, " (HTTP ", status, ").", call. = FALSE)
+    }
+    TRUE
+}
+
 .readDropped <- function(path) {
     utils::read.csv(
         gzfile(path), header = TRUE, skip = 1, colClasses = "character"
@@ -506,16 +521,13 @@ getTaxonSignatures <- function(tax, bp, ...) {
         "https://github.com/waldronlab/bugphyzzExports/raw/", version,
         "/bugphyzz_asr_dropped.csv.gz"
     )
-    rpath <- tryCatch(
-        .getResource(
-            rname = paste0("bugphyzz_asr_dropped_", version, ".csv.gz"),
-            url = url, verbose = TRUE, force = forceDownload
-        ),
-        error = function(e) NULL
-    )
-    if (is.null(rpath)) {
+    if (!.urlExists(url)) {
         .noDroppedWarning(version)
         return(tables)
     }
+    rpath <- .getResource(
+        rname = paste0("bugphyzz_asr_dropped_", version, ".csv.gz"),
+        url = url, verbose = TRUE, force = forceDownload
+    )
     .bindDropped(tables, .readDropped(rpath))
 }

@@ -1,7 +1,9 @@
 # Description about the files in the extdata directory
 
-All of the files in the extdata directory, with the exeception of
-the `validation_summary.tsv` file, were manually created/edited.
+All of the files in the extdata directory, with the exception of
+`validation_attributes.tsv`, `validation_states.tsv` and
+`validation_summary.tsv` (from waldronlab/taxPProValidation), were manually
+created/edited.
 
 These files are necessary for 1) the bugphyzz package to work properly and
 2) a convenient way for curators to update the files.
@@ -122,11 +124,15 @@ and the median NSTI of held-out and target tips. `validation_states.tsv`
 gives the precision of each predicted state of discrete attributes, with the
 same weights, and the number of predictions.
 
-Copied from the attribute-kappa branch of waldronlab/taxPProValidation on
-November 9, 2026 (discrete scores from the v1.0.7 folds, numeric re-run on
-November 9).
+Copied from the attribute-kappa branch of waldronlab/taxPProValidation
+(waldronlab/taxPProValidation#13) on November 9, 2026 (discrete scores from
+the v1.0.7 folds, numeric re-run on November 9).
 
 ## validation_summary.tsv
+
+Per-value scores, kept for reference (the manuscript's supplementary table);
+since 1.7.15 `importBugphyzz()` filters with `validation_attributes.tsv`
+instead.
 
 This file was obtained from the waldronlab/taxPProValidation repository
 hosted on GitHub. It contains the results of a 10-fold cross-validation of the

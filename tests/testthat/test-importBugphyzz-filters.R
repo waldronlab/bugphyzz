@@ -198,6 +198,7 @@ droppedFixture <- function() {
 test_that("lower thresholds bring back dropped imputations from GitHub versions", {
     fx <- droppedFixture()
     local_mocked_bindings(
+        .urlExists = function(url) TRUE,
         .getResource = function(rname, url, ...) {
             if (grepl("asr_dropped", rname)) return(fx$droppedFile)
             f <- tempfile(fileext = ".csv")
@@ -223,8 +224,8 @@ test_that("lower thresholds bring back dropped imputations from GitHub versions"
 test_that("a version without the dropped file warns and keeps what it ships", {
     fx <- droppedFixture()
     local_mocked_bindings(
+        .urlExists = function(url) !grepl("asr_dropped", url),
         .getResource = function(rname, url, ...) {
-            if (grepl("asr_dropped", rname)) stop("404")
             f <- tempfile(fileext = ".csv")
             tbl <- fx$main[[sub("^bugphyzz_([a-z]+)_.*$", "\\1", rname)]]
             writeLines("# header", f)
