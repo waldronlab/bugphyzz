@@ -1,3 +1,11 @@
+# bugphyzz 1.7.16
++ `attributes.tsv`: three antimicrobial resistance values the export writes
+  as the FALSE side of a paired attribute (sensitive to beta-lactam,
+  erythromycin A, kanamycin A) are in the vocabulary, and the
+  butyrate-producing attribute's group also carries the name the export gives it,
+  `butyrate-producing bacteria` (part of #281). Both made the shipped
+  data fail `checkCuration()` in the tests (bugphyzzExports#99).
+
 # bugphyzz 1.7.15
 + Imputed annotations are kept or dropped per attribute, as in
   bugphyzzExports ADR 0006: all states of an attribute together, by the lower

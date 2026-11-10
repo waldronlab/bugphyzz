@@ -255,3 +255,15 @@ test_that("shipped attribute-level validation table has one row per rank and phy
     expect_true(all(v$metric %in% c("kappa", "weighted kappa", "r2")))
     expect_true(all(v$score_lcb <= v$score_mean, na.rm = TRUE))
 })
+
+test_that("attributes.tsv holds the names the export writes (bugphyzzExports#99)", {
+    a <- utils::read.delim(
+        system.file("extdata", "attributes.tsv", package = "bugphyzz")
+    )
+    expect_true(all(c(
+        "sensitive to beta-lactam", "sensitive to erythromycin A",
+        "sensitive to kanamycin A"
+    ) %in% a$attribute))
+    groups <- unique(unlist(strsplit(tolower(a$attribute_group), ";")))
+    expect_true("butyrate-producing bacteria" %in% groups)
+})
