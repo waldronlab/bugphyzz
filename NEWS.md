@@ -1,3 +1,12 @@
+# bugphyzz 1.7.17
++ `importBugphyzz()` defaults to the bugphyzz data release v1.1.0
+  (10.5281/zenodo.24114812, 2026-11-10), replacing v1.0.3 of June 2024:
+  466,663 annotations for 93,838 taxa across 33 attributes and 18 sources,
+  59,521 of them imputed. The deposit also carries the imputations the
+  thresholds left out, so a threshold below the export's works on the
+  release as well as on `devel`.
++ The author field names Andres Wokaty, correcting a wrong given name.
+
 # bugphyzz 1.7.16
 + `attributes.tsv`: three antimicrobial resistance values the export writes
   as the FALSE side of a paired attribute (sensitive to beta-lactam,
