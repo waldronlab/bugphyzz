@@ -5,41 +5,46 @@ phytools-ltp	all	COGEM pathogenicity rating	COGEM pathogenicity rating 3	15	0.93
 phytools-ltp	species	COGEM pathogenicity rating	COGEM pathogenicity rating 1	199	0.814
 phytools-ltp	species	COGEM pathogenicity rating	COGEM pathogenicity rating 2	304	0.871
 phytools-ltp	species	COGEM pathogenicity rating	COGEM pathogenicity rating 3	16	0.885
-phytools-ltp	all	aerophilicity	aerobic	10008	0.907
-phytools-ltp	all	aerophilicity	anaerobic	2580	0.928
-phytools-ltp	all	aerophilicity	facultatively anaerobic	819	0.374
-phytools-ltp	genus	aerophilicity	aerobic	912	0.877
-phytools-ltp	genus	aerophilicity	anaerobic	481	0.923
-phytools-ltp	genus	aerophilicity	facultatively anaerobic	164	0.616
-phytools-ltp	species	aerophilicity	aerobic	8283	0.911
-phytools-ltp	species	aerophilicity	anaerobic	1495	0.902
-phytools-ltp	species	aerophilicity	facultatively anaerobic	407	0.374
+phytools-ltp	all	aerophilicity	aerobic	10564	0.909
+phytools-ltp	all	aerophilicity	anaerobic	2664	0.923
+phytools-ltp	all	aerophilicity	facultatively anaerobic	936	0.388
+phytools-ltp	genus	aerophilicity	aerobic	1037	0.879
+phytools-ltp	genus	aerophilicity	anaerobic	530	0.929
+phytools-ltp	genus	aerophilicity	facultatively anaerobic	180	0.645
+phytools-ltp	species	aerophilicity	aerobic	8753	0.911
+phytools-ltp	species	aerophilicity	anaerobic	1532	0.898
+phytools-ltp	species	aerophilicity	facultatively anaerobic	467	0.389
 phytools-ltp	strain	aerophilicity	aerobic	989	0.858
 phytools-ltp	strain	aerophilicity	anaerobic	601	0.931
 phytools-ltp	strain	aerophilicity	facultatively anaerobic	75	0.404
-phytools-ltp	all	animal pathogen	FALSE	396	0.759
-phytools-ltp	all	animal pathogen	TRUE	738	0.774
-phytools-ltp	species	animal pathogen	FALSE	408	0.783
-phytools-ltp	species	animal pathogen	TRUE	578	0.773
+phytools-ltp	all	animal pathogen	FALSE	316	0.78
+phytools-ltp	all	animal pathogen	TRUE	1118	0.727
+phytools-ltp	species	animal pathogen	FALSE	340	0.78
+phytools-ltp	species	animal pathogen	TRUE	842	0.758
 phytools-ltp	all	antimicrobial sensitivity	FALSE	67	0.641
 phytools-ltp	all	antimicrobial sensitivity	TRUE	300	0.788
 phytools-ltp	species	antimicrobial sensitivity	FALSE	55	0.661
 phytools-ltp	species	antimicrobial sensitivity	TRUE	306	0.769
-phytools-ltp	all	arrangement	branched	167	0.547
-phytools-ltp	all	arrangement	cell chain	349	0.502
-phytools-ltp	all	arrangement	cell cluster	125	0.44
-phytools-ltp	all	arrangement	filamentous	107	0.451
-phytools-ltp	all	arrangement	paired cells	315	0.575
-phytools-ltp	all	arrangement	rosettes	8	0.287
-phytools-ltp	all	arrangement	single	66	0.694
-phytools-ltp	all	arrangement	tetrads	7	0
-phytools-ltp	genus	arrangement	branched	146	0.673
-phytools-ltp	genus	arrangement	cell chain	239	0.475
-phytools-ltp	genus	arrangement	cell cluster	86	0.424
-phytools-ltp	genus	arrangement	filamentous	89	0.472
-phytools-ltp	genus	arrangement	paired cells	180	0.436
-phytools-ltp	genus	arrangement	rosettes	10	0.237
-phytools-ltp	genus	arrangement	single	17	0.595
+phytools-ltp	all	arrangement	branched	177	0.567
+phytools-ltp	all	arrangement	cell chain	376	0.535
+phytools-ltp	all	arrangement	cell cluster	156	0.457
+phytools-ltp	all	arrangement	filamentous	101	0.463
+phytools-ltp	all	arrangement	paired cells	322	0.527
+phytools-ltp	all	arrangement	rosettes	8	0.35
+phytools-ltp	all	arrangement	single	71	0.623
+phytools-ltp	all	arrangement	tetrads	10	0
+phytools-ltp	genus	arrangement	branched	146	0.668
+phytools-ltp	genus	arrangement	cell chain	244	0.46
+phytools-ltp	genus	arrangement	cell cluster	91	0.434
+phytools-ltp	genus	arrangement	filamentous	94	0.46
+phytools-ltp	genus	arrangement	paired cells	172	0.434
+phytools-ltp	genus	arrangement	rosettes	9	0.247
+phytools-ltp	genus	arrangement	single	20	0.614
+phytools-ltp	species	arrangement	branched	7	0.523
+phytools-ltp	species	arrangement	cell chain	87	0.908
+phytools-ltp	species	arrangement	cell cluster	45	0.783
+phytools-ltp	species	arrangement	filamentous	34	0.334
+phytools-ltp	species	arrangement	paired cells	81	0.652
 phytools-ltp	all	biosafety level	biosafety level 1	9945	0.955
 phytools-ltp	all	biosafety level	biosafety level 2	741	0.613
 phytools-ltp	all	biosafety level	biosafety level 3	10	0.297
@@ -51,74 +56,93 @@ phytools-ltp	all	extreme environment	FALSE	690	0.836
 phytools-ltp	all	extreme environment	TRUE	136	0.784
 phytools-ltp	species	extreme environment	FALSE	676	0.837
 phytools-ltp	species	extreme environment	TRUE	140	0.781
-phytools-ltp	all	gram stain	gram stain negative	8463	0.981
-phytools-ltp	all	gram stain	gram stain positive	5622	0.949
-phytools-ltp	all	gram stain	gram stain variable	27	0.21
-phytools-ltp	genus	gram stain	gram stain negative	1010	0.939
-phytools-ltp	genus	gram stain	gram stain positive	492	0.879
-phytools-ltp	genus	gram stain	gram stain variable	6	0
-phytools-ltp	species	gram stain	gram stain negative	6527	0.989
-phytools-ltp	species	gram stain	gram stain positive	4653	0.957
-phytools-ltp	species	gram stain	gram stain variable	9	0
+phytools-ltp	all	gram stain	gram stain negative	9314	0.982
+phytools-ltp	all	gram stain	gram stain positive	5858	0.95
+phytools-ltp	all	gram stain	gram stain variable	22	0.223
+phytools-ltp	genus	gram stain	gram stain negative	1270	0.951
+phytools-ltp	genus	gram stain	gram stain positive	562	0.885
+phytools-ltp	genus	gram stain	gram stain variable	5	0
+phytools-ltp	species	gram stain	gram stain negative	7106	0.989
+phytools-ltp	species	gram stain	gram stain positive	4831	0.954
+phytools-ltp	species	gram stain	gram stain variable	5	0
 phytools-ltp	strain	gram stain	gram stain negative	914	0.97
 phytools-ltp	strain	gram stain	gram stain positive	493	0.922
 phytools-ltp	strain	gram stain	gram stain variable	8	0.174
+phytools-ltp	all	halophily class	halophilic	409	0.79
+phytools-ltp	all	halophily class	halotolerant	68	0.452
+phytools-ltp	species	halophily class	halophilic	364	0.794
+phytools-ltp	species	halophily class	halotolerant	47	0.685
 phytools-ltp	all	hemolysis	alpha	86	0.426
 phytools-ltp	all	hemolysis	beta	57	0.431
 phytools-ltp	all	hemolysis	gamma	276	0.801
 phytools-ltp	species	hemolysis	alpha	73	0.253
 phytools-ltp	species	hemolysis	beta	45	0.283
 phytools-ltp	species	hemolysis	gamma	204	0.77
-phytools-ltp	all	motility	FALSE	6150	0.836
-phytools-ltp	all	motility	TRUE	4746	0.766
-phytools-ltp	genus	motility	FALSE	796	0.708
-phytools-ltp	genus	motility	TRUE	621	0.67
-phytools-ltp	species	motility	FALSE	4666	0.835
-phytools-ltp	species	motility	TRUE	3643	0.772
+phytools-ltp	all	host-associated	FALSE	18	0.71
+phytools-ltp	all	host-associated	TRUE	886	0.969
+phytools-ltp	species	host-associated	FALSE	14	0.664
+phytools-ltp	species	host-associated	TRUE	751	0.969
+phytools-ltp	all	motility	FALSE	6599	0.838
+phytools-ltp	all	motility	TRUE	5000	0.776
+phytools-ltp	genus	motility	FALSE	885	0.705
+phytools-ltp	genus	motility	TRUE	649	0.656
+phytools-ltp	species	motility	FALSE	4998	0.837
+phytools-ltp	species	motility	TRUE	3897	0.774
 phytools-ltp	strain	motility	FALSE	736	0.839
 phytools-ltp	strain	motility	TRUE	434	0.705
-phytools-ltp	all	plant pathogenicity	FALSE	624	0.967
-phytools-ltp	all	plant pathogenicity	TRUE	44	0.68
-phytools-ltp	species	plant pathogenicity	FALSE	618	0.966
-phytools-ltp	species	plant pathogenicity	TRUE	42	0.657
-phytools-ltp	all	shape	bacillus	9764	0.906
-phytools-ltp	all	shape	coccobacillus	109	0.111
-phytools-ltp	all	shape	coccus	1175	0.772
-phytools-ltp	all	shape	elliptic	83	0.232
-phytools-ltp	all	shape	filamentous	265	0.521
-phytools-ltp	all	shape	pleiomorphic cell	48	0.243
-phytools-ltp	all	shape	spirillum	142	0.586
-phytools-ltp	all	shape	vibrio	101	0.318
-phytools-ltp	genus	shape	bacillus	1330	0.823
-phytools-ltp	genus	shape	coccobacillus	6	0
-phytools-ltp	genus	shape	coccus	162	0.62
-phytools-ltp	genus	shape	elliptic	14	0.507
-phytools-ltp	genus	shape	filamentous	105	0.849
-phytools-ltp	genus	shape	pleiomorphic cell	9	0
-phytools-ltp	genus	shape	spirillum	44	0.364
-phytools-ltp	genus	shape	vibrio	25	0.449
-phytools-ltp	species	shape	bacillus	7441	0.901
-phytools-ltp	species	shape	coccobacillus	82	0.161
-phytools-ltp	species	shape	coccus	750	0.731
-phytools-ltp	species	shape	elliptic	50	0.161
-phytools-ltp	species	shape	filamentous	89	0.531
-phytools-ltp	species	shape	pleiomorphic cell	28	0.204
-phytools-ltp	species	shape	spirillum	91	0.627
-phytools-ltp	species	shape	vibrio	28	0.266
+phytools-ltp	all	plant pathogenicity	FALSE	621	0.961
+phytools-ltp	all	plant pathogenicity	TRUE	99	0.695
+phytools-ltp	species	plant pathogenicity	FALSE	619	0.958
+phytools-ltp	species	plant pathogenicity	TRUE	79	0.754
+phytools-ltp	all	shape	bacillus	10398	0.91
+phytools-ltp	all	shape	coccobacillus	143	0.26
+phytools-ltp	all	shape	coccus	1171	0.773
+phytools-ltp	all	shape	elliptic	85	0.206
+phytools-ltp	all	shape	filamentous	283	0.506
+phytools-ltp	all	shape	pleiomorphic cell	47	0.209
+phytools-ltp	all	shape	spirillum	150	0.609
+phytools-ltp	all	shape	vibrio	98	0.377
+phytools-ltp	genus	shape	bacillus	1453	0.833
+phytools-ltp	genus	shape	coccobacillus	8	0.141
+phytools-ltp	genus	shape	coccus	155	0.665
+phytools-ltp	genus	shape	elliptic	17	0.486
+phytools-ltp	genus	shape	filamentous	105	0.855
+phytools-ltp	genus	shape	pleiomorphic cell	8	0
+phytools-ltp	genus	shape	spirillum	37	0.446
+phytools-ltp	genus	shape	vibrio	27	0.449
+phytools-ltp	species	shape	bacillus	7987	0.904
+phytools-ltp	species	shape	coccobacillus	124	0.361
+phytools-ltp	species	shape	coccus	725	0.747
+phytools-ltp	species	shape	elliptic	50	0.233
+phytools-ltp	species	shape	filamentous	87	0.544
+phytools-ltp	species	shape	pleiomorphic cell	25	0.15
+phytools-ltp	species	shape	spirillum	109	0.593
+phytools-ltp	species	shape	vibrio	25	0.189
 phytools-ltp	strain	shape	bacillus	1208	0.89
 phytools-ltp	strain	shape	coccus	161	0.799
 phytools-ltp	strain	shape	elliptic	30	0.186
 phytools-ltp	strain	shape	filamentous	12	0.452
 phytools-ltp	strain	shape	spirillum	11	0.531
-phytools-ltp	all	spore formation	FALSE	4852	0.966
-phytools-ltp	all	spore formation	TRUE	2041	0.904
-phytools-ltp	genus	spore formation	FALSE	817	0.92
-phytools-ltp	genus	spore formation	TRUE	237	0.803
-phytools-ltp	species	spore formation	FALSE	3609	0.967
-phytools-ltp	species	spore formation	TRUE	1664	0.901
+phytools-ltp	all	spore formation	FALSE	5250	0.969
+phytools-ltp	all	spore formation	TRUE	2125	0.912
+phytools-ltp	genus	spore formation	FALSE	881	0.934
+phytools-ltp	genus	spore formation	TRUE	259	0.812
+phytools-ltp	species	spore formation	FALSE	3934	0.97
+phytools-ltp	species	spore formation	TRUE	1735	0.908
 phytools-ltp	strain	spore formation	FALSE	435	0.946
 phytools-ltp	strain	spore formation	TRUE	131	0.827
-phytools-ltp	all	spore shape	bacillus	48	0.619
-phytools-ltp	all	spore shape	coccus	56	0.327
-phytools-ltp	all	spore shape	elliptic	31	0.349
-phytools-ltp	all	spore shape	endospore	197	0.941
+phytools-ltp	all	spore shape	bacillus	51	0.624
+phytools-ltp	all	spore shape	coccus	53	0.389
+phytools-ltp	all	spore shape	elliptic	38	0.382
+phytools-ltp	all	spore shape	endospore	204	0.772
+phytools-ltp	all	temperature class	hyperthermophile	11	0.554
+phytools-ltp	all	temperature class	mesophile	129	0.518
+phytools-ltp	all	temperature class	psychrophile	114	0.483
+phytools-ltp	all	temperature class	psychrotolerant	41	0.235
+phytools-ltp	all	temperature class	thermophile	240	0.649
+phytools-ltp	all	temperature class	thermotolerant	7	0
+phytools-ltp	species	temperature class	mesophile	80	0.526
+phytools-ltp	species	temperature class	psychrophile	111	0.468
+phytools-ltp	species	temperature class	psychrotolerant	43	0.202
+phytools-ltp	species	temperature class	thermophile	180	0.668
+phytools-ltp	species	temperature class	thermotolerant	5	0

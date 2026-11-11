@@ -124,9 +124,15 @@ and the median NSTI of held-out and target tips. `validation_states.tsv`
 gives the precision of each predicted state of discrete attributes, with the
 same weights, and the number of predictions.
 
-Copied from the attribute-kappa branch of waldronlab/taxPProValidation
-(waldronlab/taxPProValidation#13) on November 9, 2026 (discrete scores from
-the v1.0.7 folds, numeric re-run on November 9).
+Version 1.0.8, from waldronlab/taxPProValidation#14 (commit 9e20f76), copied
+on November 11, 2026: a re-run with the Wikipedia_2026 source and the
+attributes `halophily class` and `temperature class` (`ph class` has too few
+annotated tips to be predicted).
+
+The first tables came from the attribute-kappa branch of
+waldronlab/taxPProValidation (waldronlab/taxPProValidation#13), copied on
+November 9, 2026 (discrete scores from the v1.0.7 folds, numeric re-run on
+November 9).
 
 ## validation_summary.tsv
 
@@ -142,12 +148,15 @@ their own species (waldronlab/taxPProValidation#1).
 
 Detailed information (code and explanation) can be found on the repository.
 
-This is version 1.0.7, from waldronlab/taxPProValidation#11 (commit d80efe7),
-downloaded on November 9, 2026 with:
+This is version 1.0.8, from waldronlab/taxPProValidation#14 (commit 9e20f76),
+downloaded on November 11, 2026 with:
 
 ```bash
-wget https://raw.githubusercontent.com/waldronlab/taxPProValidation/d80efe7/validation_summary.tsv
+wget https://raw.githubusercontent.com/waldronlab/taxPProValidation/9e20f76/validation_summary.tsv
 ```
+
+Version 1.0.7 came from waldronlab/taxPProValidation#11 (commit d80efe7,
+downloaded November 9, 2026).
 
 Version 1.0.6 came from waldronlab/taxPProValidation#7 (commit 16aed99,
 downloaded November 8, 2026).

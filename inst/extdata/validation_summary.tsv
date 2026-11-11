@@ -1,31 +1,36 @@
 method	rank	physiology	attribute	mcc_mean	mcc_sd	r2_mean	r2_sd	ltp_bp	bp	ltp_bp_phys	bp_phys	ltp	nsti_mean	nsti_sd	ltp_bp_per	ltp_bp_phys_per
-phytools-ltp	all	aerophilicity	aerobic	0.68	0.02	NA	NA	9578	13054	13297	19351	23501	0.034	0.041	41	57
-phytools-ltp	all	aerophilicity	anaerobic	0.9	0.02	NA	NA	2952	4849	13297	19351	23501	0.034	0.041	13	57
-phytools-ltp	all	aerophilicity	facultatively anaerobic	0.28	0.04	NA	NA	1859	3261	13297	19351	23501	0.034	0.041	8	57
-phytools-ltp	genus	aerophilicity	aerobic	0.69	0.05	NA	NA	872	904	1557	1617	23501	0.074	0.056	4	7
-phytools-ltp	genus	aerophilicity	anaerobic	0.87	0.04	NA	NA	554	575	1557	1617	23501	0.074	0.056	2	7
-phytools-ltp	genus	aerophilicity	facultatively anaerobic	0.53	0.11	NA	NA	277	286	1557	1617	23501	0.074	0.056	1	7
-phytools-ltp	species	aerophilicity	aerobic	0.65	0.03	NA	NA	7785	9900	10079	13658	23501	0.048	0.056	33	43
-phytools-ltp	species	aerophilicity	anaerobic	0.87	0.02	NA	NA	1729	2911	10079	13658	23501	0.048	0.056	7	43
-phytools-ltp	species	aerophilicity	facultatively anaerobic	0.24	0.05	NA	NA	1276	1921	10079	13658	23501	0.048	0.056	5	43
+phytools-ltp	all	aerophilicity	aerobic	0.68	0.01	NA	NA	10163	13693	14053	20188	23501	0.032	0.039	43	60
+phytools-ltp	all	aerophilicity	anaerobic	0.9	0.01	NA	NA	3057	4973	14053	20188	23501	0.032	0.039	13	60
+phytools-ltp	all	aerophilicity	facultatively anaerobic	0.3	0.04	NA	NA	1999	3432	14053	20188	23501	0.032	0.039	9	60
+phytools-ltp	genus	aerophilicity	aerobic	0.7	0.03	NA	NA	988	1025	1747	1817	23501	0.069	0.053	4	7
+phytools-ltp	genus	aerophilicity	anaerobic	0.88	0.03	NA	NA	605	630	1747	1817	23501	0.069	0.053	3	7
+phytools-ltp	genus	aerophilicity	facultatively anaerobic	0.54	0.08	NA	NA	305	316	1747	1817	23501	0.069	0.053	1	7
+phytools-ltp	species	aerophilicity	aerobic	0.64	0.02	NA	NA	8254	10418	10645	14295	23501	0.046	0.054	35	45
+phytools-ltp	species	aerophilicity	anaerobic	0.87	0.02	NA	NA	1783	2980	10645	14295	23501	0.046	0.054	8	45
+phytools-ltp	species	aerophilicity	facultatively anaerobic	0.25	0.06	NA	NA	1388	2062	10645	14295	23501	0.046	0.054	6	45
 phytools-ltp	strain	aerophilicity	aerobic	0.63	0.07	NA	NA	921	2250	1661	4076	23501	0.095	0.065	4	7
 phytools-ltp	strain	aerophilicity	anaerobic	0.88	0.03	NA	NA	669	1363	1661	4076	23501	0.095	0.065	3	7
 phytools-ltp	strain	aerophilicity	facultatively anaerobic	0.27	0.18	NA	NA	306	1054	1661	4076	23501	0.095	0.065	1	7
-phytools-ltp	all	arrangement	branched	0.53	0.16	NA	NA	145	164	1143	2027	23501	0.093	0.068	1	5
-phytools-ltp	all	arrangement	cell chain	0.27	0.18	NA	NA	322	556	1143	2027	23501	0.093	0.068	1	5
-phytools-ltp	all	arrangement	cell cluster	0.21	0.13	NA	NA	185	238	1143	2027	23501	0.093	0.068	1	5
-phytools-ltp	all	arrangement	filamentous	0.37	0.19	NA	NA	154	237	1143	2027	23501	0.093	0.068	1	5
-phytools-ltp	all	arrangement	paired cells	0.26	0.15	NA	NA	563	971	1143	2027	23501	0.093	0.068	2	5
-phytools-ltp	all	arrangement	rosettes	0	0	NA	NA	30	34	1143	2027	23501	0.093	0.068	0	5
-phytools-ltp	all	arrangement	single	0.39	0.13	NA	NA	581	998	1143	2027	23501	0.093	0.068	2	5
-phytools-ltp	all	arrangement	tetrads	0	0	NA	NA	46	63	1143	2027	23501	0.093	0.068	0	5
-phytools-ltp	genus	arrangement	branched	0.55	0.16	NA	NA	135	145	780	856	23501	0.105	0.078	1	3
-phytools-ltp	genus	arrangement	cell chain	0.04	0.14	NA	NA	211	217	780	856	23501	0.105	0.078	1	3
-phytools-ltp	genus	arrangement	cell cluster	0.03	0.11	NA	NA	158	181	780	856	23501	0.105	0.078	1	3
-phytools-ltp	genus	arrangement	filamentous	0.37	0.21	NA	NA	130	169	780	856	23501	0.105	0.078	1	3
-phytools-ltp	genus	arrangement	paired cells	0.04	0.14	NA	NA	382	397	780	856	23501	0.105	0.078	2	3
-phytools-ltp	genus	arrangement	rosettes	0	0.01	NA	NA	30	34	780	856	23501	0.105	0.078	0	3
-phytools-ltp	genus	arrangement	single	0.17	0.23	NA	NA	434	454	780	856	23501	0.105	0.078	2	3
+phytools-ltp	all	arrangement	branched	0.53	0.08	NA	NA	159	180	1221	2140	23501	0.093	0.068	1	5
+phytools-ltp	all	arrangement	cell chain	0.27	0.13	NA	NA	339	583	1221	2140	23501	0.093	0.068	1	5
+phytools-ltp	all	arrangement	cell cluster	0.28	0.25	NA	NA	220	284	1221	2140	23501	0.093	0.068	1	5
+phytools-ltp	all	arrangement	filamentous	0.37	0.2	NA	NA	157	249	1221	2140	23501	0.093	0.068	1	5
+phytools-ltp	all	arrangement	paired cells	0.27	0.11	NA	NA	590	1010	1221	2140	23501	0.093	0.068	3	5
+phytools-ltp	all	arrangement	rosettes	0	0	NA	NA	31	36	1221	2140	23501	0.093	0.068	0	5
+phytools-ltp	all	arrangement	single	0.28	0.23	NA	NA	602	1029	1221	2140	23501	0.093	0.068	3	5
+phytools-ltp	all	arrangement	tetrads	-0.01	0.01	NA	NA	53	70	1221	2140	23501	0.093	0.068	0	5
+phytools-ltp	genus	arrangement	branched	0.56	0.07	NA	NA	136	146	790	870	23501	0.104	0.078	1	3
+phytools-ltp	genus	arrangement	cell chain	0.05	0.12	NA	NA	215	221	790	870	23501	0.104	0.078	1	3
+phytools-ltp	genus	arrangement	cell cluster	0	0.09	NA	NA	162	187	790	870	23501	0.104	0.078	1	3
+phytools-ltp	genus	arrangement	filamentous	0.35	0.17	NA	NA	130	171	790	870	23501	0.104	0.078	1	3
+phytools-ltp	genus	arrangement	paired cells	0.05	0.14	NA	NA	385	400	790	870	23501	0.104	0.078	2	3
+phytools-ltp	genus	arrangement	rosettes	0	0	NA	NA	30	34	790	870	23501	0.104	0.078	0	3
+phytools-ltp	genus	arrangement	single	0.15	0.26	NA	NA	438	458	790	870	23501	0.104	0.078	2	3
+phytools-ltp	species	arrangement	branched	0.33	0.46	NA	NA	13	15	254	625	23501	0.256	0.153	0	1
+phytools-ltp	species	arrangement	cell chain	0.62	0.18	NA	NA	91	197	254	625	23501	0.256	0.153	0	1
+phytools-ltp	species	arrangement	cell cluster	0.5	0.32	NA	NA	48	62	254	625	23501	0.256	0.153	0	1
+phytools-ltp	species	arrangement	filamentous	0.73	0.17	NA	NA	27	77	254	625	23501	0.256	0.153	0	1
+phytools-ltp	species	arrangement	paired cells	0.78	0.18	NA	NA	119	352	254	625	23501	0.256	0.153	1	1
 phytools-ltp	all	biosafety level	biosafety level 1	0.54	0.05	NA	NA	9703	12277	10592	13790	23501	0.048	0.048	41	45
 phytools-ltp	all	biosafety level	biosafety level 2	0.52	0.05	NA	NA	1028	1687	10592	13790	23501	0.048	0.048	4	45
 phytools-ltp	all	biosafety level	biosafety level 3	0.27	0.44	NA	NA	12	24	10592	13790	23501	0.048	0.048	0	45
@@ -39,94 +44,111 @@ phytools-ltp	all	COGEM pathogenicity rating	COGEM pathogenicity rating 3	0.71	0.
 phytools-ltp	species	COGEM pathogenicity rating	COGEM pathogenicity rating 1	0.78	0.06	NA	NA	187	748	498	1438	23501	0.178	0.128	1	2
 phytools-ltp	species	COGEM pathogenicity rating	COGEM pathogenicity rating 2	0.78	0.1	NA	NA	289	646	498	1438	23501	0.178	0.128	1	2
 phytools-ltp	species	COGEM pathogenicity rating	COGEM pathogenicity rating 3	0.67	0.39	NA	NA	22	44	498	1438	23501	0.178	0.128	0	2
-phytools-ltp	all	gram stain	gram stain negative	0.94	0.01	NA	NA	8478	12846	13995	20829	23501	0.034	0.039	36	60
-phytools-ltp	all	gram stain	gram stain positive	0.93	0.01	NA	NA	5580	8109	13995	20829	23501	0.034	0.039	24	60
-phytools-ltp	all	gram stain	gram stain variable	0.12	0.18	NA	NA	102	122	13995	20829	23501	0.034	0.039	0	60
-phytools-ltp	genus	gram stain	gram stain negative	0.85	0.04	NA	NA	1005	1051	1508	1560	23501	0.076	0.06	4	6
-phytools-ltp	genus	gram stain	gram stain positive	0.81	0.06	NA	NA	510	518	1508	1560	23501	0.076	0.06	2	6
-phytools-ltp	genus	gram stain	gram stain variable	0	0.01	NA	NA	53	54	1508	1560	23501	0.076	0.06	0	6
-phytools-ltp	species	gram stain	gram stain negative	0.96	0.01	NA	NA	6552	9586	11074	15678	23501	0.048	0.053	28	47
-phytools-ltp	species	gram stain	gram stain positive	0.95	0.01	NA	NA	4583	6212	11074	15678	23501	0.048	0.053	20	47
-phytools-ltp	species	gram stain	gram stain variable	0	0	NA	NA	33	34	11074	15678	23501	0.048	0.053	0	47
+phytools-ltp	all	gram stain	gram stain negative	0.94	0.01	NA	NA	9334	13809	15075	22038	23501	0.032	0.039	40	64
+phytools-ltp	all	gram stain	gram stain positive	0.94	0.01	NA	NA	5822	8389	15075	22038	23501	0.032	0.039	25	64
+phytools-ltp	all	gram stain	gram stain variable	0.1	0.15	NA	NA	123	150	15075	22038	23501	0.032	0.039	1	64
+phytools-ltp	genus	gram stain	gram stain negative	0.85	0.03	NA	NA	1268	1329	1837	1908	23501	0.069	0.058	5	8
+phytools-ltp	genus	gram stain	gram stain positive	0.81	0.04	NA	NA	577	589	1837	1908	23501	0.069	0.058	2	8
+phytools-ltp	genus	gram stain	gram stain variable	0	0	NA	NA	61	62	1837	1908	23501	0.069	0.058	0	8
+phytools-ltp	species	gram stain	gram stain negative	0.96	0.01	NA	NA	7145	10271	11825	16539	23501	0.046	0.053	30	50
+phytools-ltp	species	gram stain	gram stain positive	0.95	0.01	NA	NA	4758	6421	11825	16539	23501	0.046	0.053	20	50
+phytools-ltp	species	gram stain	gram stain variable	0	0	NA	NA	46	54	11825	16539	23501	0.046	0.053	0	50
 phytools-ltp	strain	gram stain	gram stain negative	0.9	0.03	NA	NA	921	2209	1413	3591	23501	0.1	0.066	4	6
 phytools-ltp	strain	gram stain	gram stain positive	0.9	0.03	NA	NA	487	1379	1413	3591	23501	0.1	0.066	2	6
 phytools-ltp	strain	gram stain	gram stain variable	0.14	0.3	NA	NA	16	34	1413	3591	23501	0.1	0.066	0	6
+phytools-ltp	all	halophily class	halophilic	0.48	0.1	NA	NA	376	439	474	552	23501	0.215	0.125	2	2
+phytools-ltp	all	halophily class	halotolerant	0.5	0.08	NA	NA	106	120	474	552	23501	0.215	0.125	0	2
+phytools-ltp	species	halophily class	halophilic	0.49	0.19	NA	NA	328	391	408	486	23501	0.228	0.127	1	2
+phytools-ltp	species	halophily class	halotolerant	0.52	0.19	NA	NA	87	101	408	486	23501	0.228	0.127	0	2
 phytools-ltp	all	hemolysis	alpha	0.33	0.14	NA	NA	89	113	415	564	23501	0.278	0.188	0	2
 phytools-ltp	all	hemolysis	beta	0.39	0.29	NA	NA	94	142	415	564	23501	0.278	0.188	0	2
 phytools-ltp	all	hemolysis	gamma	0.44	0.09	NA	NA	270	356	415	564	23501	0.278	0.188	1	2
 phytools-ltp	species	hemolysis	alpha	0.43	0.19	NA	NA	71	77	318	373	23501	0.287	0.188	0	1
 phytools-ltp	species	hemolysis	beta	0.37	0.17	NA	NA	80	106	318	373	23501	0.287	0.188	0	1
 phytools-ltp	species	hemolysis	gamma	0.46	0.23	NA	NA	200	226	318	373	23501	0.287	0.188	1	1
-phytools-ltp	all	shape	bacillus	0.53	0.03	NA	NA	9299	13317	11607	16870	23501	0.036	0.038	40	49
-phytools-ltp	all	shape	coccobacillus	0.06	0.05	NA	NA	275	333	11607	16870	23501	0.036	0.038	1	49
-phytools-ltp	all	shape	coccus	0.69	0.05	NA	NA	1545	2356	11607	16870	23501	0.036	0.038	7	49
-phytools-ltp	all	shape	elliptic	0.14	0.09	NA	NA	454	603	11607	16870	23501	0.036	0.038	2	49
-phytools-ltp	all	shape	filamentous	0.53	0.09	NA	NA	392	567	11607	16870	23501	0.036	0.038	2	49
-phytools-ltp	all	shape	pleiomorphic cell	0.17	0.16	NA	NA	239	275	11607	16870	23501	0.036	0.038	1	49
-phytools-ltp	all	shape	spirillum	0.5	0.1	NA	NA	229	408	11607	16870	23501	0.036	0.038	1	49
-phytools-ltp	all	shape	vibrio	0.28	0.09	NA	NA	357	433	11607	16870	23501	0.036	0.038	2	49
-phytools-ltp	genus	shape	bacillus	0.35	0.05	NA	NA	1196	1257	1695	1830	23501	0.068	0.051	5	7
-phytools-ltp	genus	shape	coccobacillus	0	0	NA	NA	49	50	1695	1830	23501	0.068	0.051	0	7
-phytools-ltp	genus	shape	coccus	0.49	0.07	NA	NA	369	418	1695	1830	23501	0.068	0.051	2	7
-phytools-ltp	genus	shape	elliptic	0.28	0.32	NA	NA	150	169	1695	1830	23501	0.068	0.051	1	7
-phytools-ltp	genus	shape	filamentous	0.79	0.06	NA	NA	247	287	1695	1830	23501	0.068	0.051	1	7
-phytools-ltp	genus	shape	pleiomorphic cell	0	0.01	NA	NA	161	173	1695	1830	23501	0.068	0.051	1	7
-phytools-ltp	genus	shape	spirillum	0.35	0.31	NA	NA	82	92	1695	1830	23501	0.068	0.051	0	7
-phytools-ltp	genus	shape	vibrio	0.28	0.19	NA	NA	222	229	1695	1830	23501	0.068	0.051	1	7
-phytools-ltp	species	shape	bacillus	0.55	0.04	NA	NA	6978	9252	8481	11464	23501	0.054	0.057	30	36
-phytools-ltp	species	shape	coccobacillus	0.09	0.1	NA	NA	226	283	8481	11464	23501	0.054	0.057	1	36
-phytools-ltp	species	shape	coccus	0.64	0.06	NA	NA	965	1422	8481	11464	23501	0.054	0.057	4	36
-phytools-ltp	species	shape	elliptic	0.11	0.1	NA	NA	224	243	8481	11464	23501	0.054	0.057	1	36
-phytools-ltp	species	shape	filamentous	0.44	0.1	NA	NA	126	246	8481	11464	23501	0.054	0.057	1	36
-phytools-ltp	species	shape	pleiomorphic cell	0.15	0.19	NA	NA	73	96	8481	11464	23501	0.054	0.057	0	36
-phytools-ltp	species	shape	spirillum	0.54	0.21	NA	NA	128	247	8481	11464	23501	0.054	0.057	1	36
-phytools-ltp	species	shape	vibrio	0.13	0.15	NA	NA	114	168	8481	11464	23501	0.054	0.057	0	36
+phytools-ltp	all	shape	bacillus	0.53	0.01	NA	NA	9913	14025	12291	17680	23501	0.035	0.038	42	52
+phytools-ltp	all	shape	coccobacillus	0.2	0.09	NA	NA	331	410	12291	17680	23501	0.035	0.038	1	52
+phytools-ltp	all	shape	coccus	0.7	0.03	NA	NA	1598	2428	12291	17680	23501	0.035	0.038	7	52
+phytools-ltp	all	shape	elliptic	0.11	0.1	NA	NA	451	609	12291	17680	23501	0.035	0.038	2	52
+phytools-ltp	all	shape	filamentous	0.5	0.06	NA	NA	413	608	12291	17680	23501	0.035	0.038	2	52
+phytools-ltp	all	shape	pleiomorphic cell	0.16	0.14	NA	NA	263	309	12291	17680	23501	0.035	0.038	1	52
+phytools-ltp	all	shape	spirillum	0.5	0.12	NA	NA	243	429	12291	17680	23501	0.035	0.038	1	52
+phytools-ltp	all	shape	vibrio	0.3	0.12	NA	NA	399	490	12291	17680	23501	0.035	0.038	2	52
+phytools-ltp	genus	shape	bacillus	0.34	0.05	NA	NA	1302	1367	1810	1956	23501	0.066	0.05	6	8
+phytools-ltp	genus	shape	coccobacillus	0.05	0.16	NA	NA	50	51	1810	1956	23501	0.066	0.05	0	8
+phytools-ltp	genus	shape	coccus	0.5	0.08	NA	NA	375	425	1810	1956	23501	0.066	0.05	2	8
+phytools-ltp	genus	shape	elliptic	0.37	0.38	NA	NA	151	172	1810	1956	23501	0.066	0.05	1	8
+phytools-ltp	genus	shape	filamentous	0.79	0.09	NA	NA	247	291	1810	1956	23501	0.066	0.05	1	8
+phytools-ltp	genus	shape	pleiomorphic cell	0	0.01	NA	NA	164	178	1810	1956	23501	0.066	0.05	1	8
+phytools-ltp	genus	shape	spirillum	0.41	0.3	NA	NA	82	93	1810	1956	23501	0.066	0.05	0	8
+phytools-ltp	genus	shape	vibrio	0.26	0.2	NA	NA	226	233	1810	1956	23501	0.066	0.05	1	8
+phytools-ltp	species	shape	bacillus	0.54	0.04	NA	NA	7486	9850	9050	12148	23501	0.053	0.056	32	39
+phytools-ltp	species	shape	coccobacillus	0.26	0.08	NA	NA	281	359	9050	12148	23501	0.053	0.056	1	39
+phytools-ltp	species	shape	coccus	0.65	0.03	NA	NA	1012	1487	9050	12148	23501	0.053	0.056	4	39
+phytools-ltp	species	shape	elliptic	0.12	0.13	NA	NA	220	246	9050	12148	23501	0.053	0.056	1	39
+phytools-ltp	species	shape	filamentous	0.4	0.11	NA	NA	147	283	9050	12148	23501	0.053	0.056	1	39
+phytools-ltp	species	shape	pleiomorphic cell	0.09	0.12	NA	NA	94	125	9050	12148	23501	0.053	0.056	0	39
+phytools-ltp	species	shape	spirillum	0.56	0.18	NA	NA	142	267	9050	12148	23501	0.053	0.056	1	39
+phytools-ltp	species	shape	vibrio	0.11	0.16	NA	NA	152	221	9050	12148	23501	0.053	0.056	1	39
 phytools-ltp	strain	shape	bacillus	0.55	0.08	NA	NA	1125	2808	1431	3576	23501	0.099	0.065	5	6
 phytools-ltp	strain	shape	coccus	0.66	0.05	NA	NA	211	516	1431	3576	23501	0.099	0.065	1	6
 phytools-ltp	strain	shape	elliptic	0.06	0.16	NA	NA	80	191	1431	3576	23501	0.099	0.065	0	6
 phytools-ltp	strain	shape	filamentous	0.26	0.37	NA	NA	19	34	1431	3576	23501	0.099	0.065	0	6
 phytools-ltp	strain	shape	spirillum	0.32	0.44	NA	NA	19	69	1431	3576	23501	0.099	0.065	0	6
-phytools-ltp	all	spore shape	bacillus	0.57	0.33	NA	NA	39	41	329	736	23501	0.358	0.209	0	1
-phytools-ltp	all	spore shape	coccus	0.41	0.29	NA	NA	57	58	329	736	23501	0.358	0.209	0	1
-phytools-ltp	all	spore shape	elliptic	0.14	0.24	NA	NA	72	74	329	736	23501	0.358	0.209	0	1
-phytools-ltp	all	spore shape	endospore	0.48	0.18	NA	NA	206	610	329	736	23501	0.358	0.209	1	1
+phytools-ltp	all	spore shape	bacillus	0.67	0.21	NA	NA	42	44	343	752	23501	0.356	0.212	0	1
+phytools-ltp	all	spore shape	coccus	0.24	0.29	NA	NA	63	64	343	752	23501	0.356	0.212	0	1
+phytools-ltp	all	spore shape	elliptic	0.23	0.16	NA	NA	78	82	343	752	23501	0.356	0.212	0	1
+phytools-ltp	all	spore shape	endospore	0.46	0.2	NA	NA	206	610	343	752	23501	0.356	0.212	1	1
+phytools-ltp	all	temperature class	hyperthermophile	0.49	0.44	NA	NA	17	34	538	684	23501	0.158	0.095	0	2
+phytools-ltp	all	temperature class	mesophile	0.41	0.13	NA	NA	139	173	538	684	23501	0.158	0.095	1	2
+phytools-ltp	all	temperature class	psychrophile	0.59	0.13	NA	NA	105	116	538	684	23501	0.158	0.095	0	2
+phytools-ltp	all	temperature class	psychrotolerant	0.32	0.25	NA	NA	59	71	538	684	23501	0.158	0.095	0	2
+phytools-ltp	all	temperature class	thermophile	0.62	0.18	NA	NA	214	284	538	684	23501	0.158	0.095	1	2
+phytools-ltp	all	temperature class	thermotolerant	-0.01	0.01	NA	NA	15	17	538	684	23501	0.158	0.095	0	2
+phytools-ltp	species	temperature class	mesophile	0.34	0.21	NA	NA	103	137	424	570	23501	0.176	0.104	0	2
+phytools-ltp	species	temperature class	psychrophile	0.53	0.16	NA	NA	97	108	424	570	23501	0.176	0.104	0	2
+phytools-ltp	species	temperature class	psychrotolerant	0.31	0.23	NA	NA	56	68	424	570	23501	0.176	0.104	0	2
+phytools-ltp	species	temperature class	thermophile	0.63	0.14	NA	NA	148	218	424	570	23501	0.176	0.104	1	2
+phytools-ltp	species	temperature class	thermotolerant	0	0.01	NA	NA	12	14	424	570	23501	0.176	0.104	0	2
 castor-ltp	all	coding genes	coding genes	NA	NA	0.88	0.01	NA	NA	15795	80750	23031	0.033	0.042	NA	69
 castor-ltp	species	coding genes	coding genes	NA	NA	0.88	0.01	NA	NA	15085	77892	23031	0.038	0.051	NA	65
 castor-ltp	strain	coding genes	coding genes	NA	NA	0.64	0.07	NA	NA	710	2858	23031	0.131	0.077	NA	3
-castor-ltp	all	gc content	gc content	NA	NA	0.95	0	NA	NA	19609	84394	23031	0.018	0.031	NA	85
-castor-ltp	genus	gc content	gc content	NA	NA	0.76	0.03	NA	NA	1702	1786	23031	0.068	0.05	NA	7
+castor-ltp	all	gc content	gc content	NA	NA	0.95	0.01	NA	NA	19611	84396	23031	0.018	0.03	NA	85
+castor-ltp	genus	gc content	gc content	NA	NA	0.76	0.02	NA	NA	1704	1788	23031	0.068	0.051	NA	7
 castor-ltp	species	gc content	gc content	NA	NA	0.95	0	NA	NA	16304	79399	23031	0.034	0.05	NA	71
 castor-ltp	strain	gc content	gc content	NA	NA	0.78	0.04	NA	NA	1603	3209	23031	0.094	0.064	NA	7
 castor-ltp	all	genome size	genome size	NA	NA	0.88	0.01	NA	NA	15865	82102	23031	0.033	0.042	NA	69
 castor-ltp	species	genome size	genome size	NA	NA	0.88	0.01	NA	NA	15156	79238	23031	0.038	0.051	NA	66
 castor-ltp	strain	genome size	genome size	NA	NA	0.63	0.1	NA	NA	709	2864	23031	0.131	0.077	NA	3
-castor-ltp	all	growth temperature	growth temperature	NA	NA	0.75	0.03	NA	NA	15546	23282	23031	0.03	0.036	NA	68
-castor-ltp	genus	growth temperature	growth temperature	NA	NA	0.59	0.1	NA	NA	495	514	23031	0.125	0.081	NA	2
-castor-ltp	species	growth temperature	growth temperature	NA	NA	0.67	0.04	NA	NA	13105	18183	23031	0.04	0.05	NA	57
+castor-ltp	all	growth temperature	growth temperature	NA	NA	0.75	0.02	NA	NA	15575	23312	23031	0.03	0.036	NA	68
+castor-ltp	genus	growth temperature	growth temperature	NA	NA	0.57	0.15	NA	NA	505	524	23031	0.123	0.079	NA	2
+castor-ltp	species	growth temperature	growth temperature	NA	NA	0.66	0.04	NA	NA	13124	18203	23031	0.04	0.05	NA	57
 castor-ltp	strain	growth temperature	growth temperature	NA	NA	0.76	0.05	NA	NA	1946	4585	23031	0.088	0.06	NA	8
-castor-ltp	all	length	length	NA	NA	0.33	0.18	NA	NA	5896	6623	23031	0.056	0.051	NA	26
-castor-ltp	genus	length	length	NA	NA	0.2	0.26	NA	NA	684	736	23031	0.113	0.078	NA	3
-castor-ltp	species	length	length	NA	NA	0.34	0.18	NA	NA	4620	4824	23031	0.076	0.072	NA	20
+castor-ltp	all	length	length	NA	NA	0.26	0.24	NA	NA	5966	6735	23031	0.055	0.049	NA	26
+castor-ltp	genus	length	length	NA	NA	0.24	0.24	NA	NA	695	748	23031	0.113	0.078	NA	3
+castor-ltp	species	length	length	NA	NA	0.25	0.25	NA	NA	4679	4924	23031	0.073	0.067	NA	20
 castor-ltp	strain	length	length	NA	NA	0.19	0.25	NA	NA	592	1063	23031	0.139	0.087	NA	3
-castor-ltp	all	optimal ph	optimal ph	NA	NA	0.27	0.06	NA	NA	2899	4004	23031	0.089	0.081	NA	13
-castor-ltp	species	optimal ph	optimal ph	NA	NA	0.27	0.05	NA	NA	2898	4001	23031	0.089	0.081	NA	13
-castor-ltp	all	width	width	NA	NA	0.08	0.08	NA	NA	5853	6587	23031	0.055	0.051	NA	25
-castor-ltp	genus	width	width	NA	NA	0.09	0.11	NA	NA	747	820	23031	0.106	0.075	NA	3
-castor-ltp	species	width	width	NA	NA	0.18	0.03	NA	NA	4518	4717	23031	0.078	0.073	NA	20
+castor-ltp	all	optimal ph	optimal ph	NA	NA	0.3	0.08	NA	NA	2949	4062	23031	0.088	0.081	NA	13
+castor-ltp	species	optimal ph	optimal ph	NA	NA	0.31	0.09	NA	NA	2943	4054	23031	0.089	0.081	NA	13
+castor-ltp	all	width	width	NA	NA	0.21	0.31	NA	NA	5917	6691	23031	0.054	0.049	NA	26
+castor-ltp	genus	width	width	NA	NA	0.07	0.11	NA	NA	758	833	23031	0.106	0.075	NA	3
+castor-ltp	species	width	width	NA	NA	0.04	0.05	NA	NA	4571	4808	23031	0.075	0.069	NA	20
 castor-ltp	strain	width	width	NA	NA	0.07	0.06	NA	NA	588	1050	23031	0.138	0.085	NA	3
-phytools-ltp	all	animal pathogen	animal pathogen	0.55	0.08	NA	NA	NA	NA	1106	2776	23501	0.147	0.106	NA	5
-phytools-ltp	species	animal pathogen	animal pathogen	0.57	0.12	NA	NA	NA	NA	958	2413	23501	0.15	0.106	NA	4
+phytools-ltp	all	animal pathogen	animal pathogen	0.51	0.07	NA	NA	NA	NA	1405	3174	23501	0.125	0.089	NA	6
+phytools-ltp	species	animal pathogen	animal pathogen	0.55	0.08	NA	NA	NA	NA	1153	2704	23501	0.146	0.106	NA	5
 phytools-ltp	all	antimicrobial sensitivity	antimicrobial sensitivity	0.45	0.23	NA	NA	NA	NA	353	1083	23501	0.207	0.165	NA	2
 phytools-ltp	species	antimicrobial sensitivity	antimicrobial sensitivity	0.42	0.22	NA	NA	NA	NA	347	1066	23501	0.208	0.165	NA	1
 phytools-ltp	all	extreme environment	extreme environment	0.57	0.1	NA	NA	NA	NA	805	2770	23501	0.137	0.095	NA	3
 phytools-ltp	species	extreme environment	extreme environment	0.58	0.07	NA	NA	NA	NA	795	2753	23501	0.138	0.095	NA	3
-phytools-ltp	all	motility	motility	0.61	0.02	NA	NA	NA	NA	10816	14819	23501	0.038	0.04	NA	46
-phytools-ltp	genus	motility	motility	0.38	0.05	NA	NA	NA	NA	1417	1515	23501	0.077	0.056	NA	6
-phytools-ltp	species	motility	motility	0.62	0.01	NA	NA	NA	NA	8231	10705	23501	0.055	0.058	NA	35
+phytools-ltp	all	host-associated	host-associated	0.66	0.11	NA	NA	NA	NA	889	1945	23501	0.151	0.113	NA	4
+phytools-ltp	species	host-associated	host-associated	0.62	0.36	NA	NA	NA	NA	750	1791	23501	0.185	0.136	NA	3
+phytools-ltp	all	motility	motility	0.62	0.02	NA	NA	NA	NA	11518	15630	23501	0.037	0.04	NA	49
+phytools-ltp	genus	motility	motility	0.36	0.1	NA	NA	NA	NA	1534	1639	23501	0.075	0.055	NA	7
+phytools-ltp	species	motility	motility	0.62	0.03	NA	NA	NA	NA	8816	11392	23501	0.054	0.057	NA	38
 phytools-ltp	strain	motility	motility	0.56	0.06	NA	NA	NA	NA	1168	2599	23501	0.11	0.078	NA	5
-phytools-ltp	all	plant pathogenicity	plant pathogenicity	0.64	0.24	NA	NA	NA	NA	650	2205	23501	0.156	0.108	NA	3
-phytools-ltp	species	plant pathogenicity	plant pathogenicity	0.58	0.19	NA	NA	NA	NA	642	2181	23501	0.157	0.108	NA	3
-phytools-ltp	all	spore formation	spore formation	0.89	0.02	NA	NA	NA	NA	6823	9716	23501	0.054	0.054	NA	29
-phytools-ltp	genus	spore formation	spore formation	0.73	0.08	NA	NA	NA	NA	1054	1093	23501	0.097	0.081	NA	4
-phytools-ltp	species	spore formation	spore formation	0.89	0.02	NA	NA	NA	NA	5203	7562	23501	0.071	0.071	NA	22
+phytools-ltp	all	plant pathogenicity	plant pathogenicity	0.7	0.2	NA	NA	NA	NA	702	2268	23501	0.155	0.109	NA	3
+phytools-ltp	species	plant pathogenicity	plant pathogenicity	0.7	0.1	NA	NA	NA	NA	680	2229	23501	0.156	0.109	NA	3
+phytools-ltp	all	spore formation	spore formation	0.89	0.02	NA	NA	NA	NA	7303	10236	23501	0.053	0.054	NA	31
+phytools-ltp	genus	spore formation	spore formation	0.75	0.06	NA	NA	NA	NA	1140	1182	23501	0.095	0.081	NA	5
+phytools-ltp	species	spore formation	spore formation	0.9	0.02	NA	NA	NA	NA	5597	7993	23501	0.07	0.07	NA	24
 phytools-ltp	strain	spore formation	spore formation	0.78	0.07	NA	NA	NA	NA	566	1061	23501	0.141	0.091	NA	2
