@@ -4,7 +4,14 @@ pnames <- showPhys()
 p <- suppressWarnings(physiologies())
 test_that("physiologies works", {
     expect_true(all(map_lgl(p, is.data.frame)))
-    expect_true(all(names(p) == pnames))
+    expect_identical(names(p), pnames[pnames %in% names(p)])
+    ## a physiology may be missing only if it has no sheet: it is read from
+    ## bugphyzzExports sources/, which can lag behind this package
+    links <- utils::read.delim(
+        system.file("extdata", "spreadsheet_links.tsv", package = "bugphyzz")
+    )
+    sourceOnly <- links$physiology[is.na(links$link) | !nzchar(links$link)]
+    expect_true(all(setdiff(pnames, names(p)) %in% sourceOnly))
 })
 
 ## Every discrete value from every sheet and source must be in the controlled
