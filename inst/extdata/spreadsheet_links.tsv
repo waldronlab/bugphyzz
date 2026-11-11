@@ -31,3 +31,6 @@ genome size	NA	numeric	numeric	https://docs.google.com/spreadsheets/d/e/2PACX-1v
 coding genes	NA	numeric	numeric	https://docs.google.com/spreadsheets/d/e/2PACX-1vTnz-m2zfMkOiPOEjZgq6Q04TNP44qsC1DUYcGnSuDT37k_jyIP9HavVw8qNgGcQU-H4mO8_zobnqTE/pub?output=csv	https://docs.google.com/spreadsheets/d/1MVQ3o4fRYA4EOjp9mNAF0AvyQ0SzzdTMoZXruAIHmb4
 sphingolipid producing	NA	discrete	binary	https://docs.google.com/spreadsheets/d/e/2PACX-1vQsNoXw2Noa29eSM0kbn_MCMFGC40nTQffmBHqiqY0Aalax0tHVVjNZBg83t9p0vyLpoSxwkfoWwySL/pub?gid=0&single=true&output=csv	https://docs.google.com/spreadsheets/d/1mVeLtc94SykCBBHhxxPhrbUgFopZ4OMWHrM_c5-grjU
 gc content	NA	range	range		
+halophily class	NA	discrete	multistate-intersection		
+temperature class	NA	discrete	multistate-intersection		
+ph class	NA	discrete	multistate-intersection		
