@@ -49,3 +49,28 @@ test_that(".applySynonyms maps, splits, drops and leaves other terms alone", {
     rng <- data.frame(NCBI_ID = "1", Attribute_group = "shape")
     expect_identical(bugphyzz:::.applySynonyms(rng), rng)
 })
+
+test_that("Wikipedia_2026 and its class physiologies are in the package tables (#296)", {
+    src <- utils::read.delim(
+        system.file("extdata", "attribute_sources.tsv", package = "bugphyzz"),
+        quote = ""
+    )
+    w <- src[src$Attribute_source == "Wikipedia_2026", ]
+    expect_identical(nrow(w), 1L)
+    expect_identical(w$Confidence_in_curation, "medium")
+    expect_identical(w$Evidence, "nas")
+    classes <- c("halophily class", "temperature class", "ph class")
+    expect_true(all(classes %in% showPhys()))
+    expect_setequal(
+        bugphyzz:::.validAttributes("halophily class"),
+        c("halophilic", "halotolerant", "non-halophilic")
+    )
+    expect_true(all(
+        c("psychrotolerant", "thermophile") %in%
+            bugphyzz:::.validAttributes("temperature class")
+    ))
+    expect_true(all(
+        c("acidophile", "neutrophile") %in% bugphyzz:::.validAttributes("ph class")
+    ))
+    expect_true("skin" %in% bugphyzz:::.validAttributes("habitat"))
+})

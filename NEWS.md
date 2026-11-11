@@ -19,6 +19,10 @@
   `sources/`: the 2026 Bergey's Manual extraction, Madin et al. 2020,
   BacDive, The Microbe Directory and NCBI RefSeq assemblies (#275).
 + New attribute `gc content` and new shape value `vibrio`.
++ New source `Wikipedia_2026` (confidence medium, evidence nas): traits
+  stated in English Wikipedia introductions, with the new attributes
+  `halophily class`, `temperature class` and `ph class`; `skin` is also a
+  habitat (#296).
 + `attribute_synonyms.tsv` maps source terms to the controlled
   vocabulary (#264).
 + New arguments `kappaThreshold`, `r2Threshold` and `asrScoreThreshold`;

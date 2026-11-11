@@ -245,7 +245,7 @@
 "gastrointestinal tract"	"habitat"	"logical"	"FMA:71132"	NA	NA
 "mammal"	"habitat"	"logical"	"OMIT:0009396"	NA	NA
 "dairy product"	"isolation site"	"logical"	"NCIT:C413"	"Food made from the milk of some mammals, most commonly cows, goats and sheep."	NA
-"skin"	"isolation site"	"logical"	"NCIT:C12470"	"An organ that constitutes the external surface of the body. It consists of the epidermis, dermis, and skin appendages."	NA
+"skin"	"habitat;isolation site"	"logical"	"NCIT:C12470"	"An organ that constitutes the external surface of the body. It consists of the epidermis, dermis, and skin appendages."	NA
 "cerebral spinal fluid"	"habitat"	"logical"	"ZFA:0001626"	"Portion of organism substance that is a clear fluid that occupies the subarachnoid space and the ventricular system around and inside the brain."	NA
 "lotic water body"	"habitat"	"logical"	"ENVO:01000618"	"A lotic water body is a water body in which the accumulated water, in its totality, is flowing."	NA
 "animal"	"habitat;isolation site"	"logical"	"NCIT:C14182"	"A living organism that has membranous cell walls, requires oxygen and organic foods, and is capable of voluntary movement, as distinguished from a plant or mineral."	NA
@@ -267,8 +267,8 @@
 "chemoheterotroph"	NA	"logical"	"ECOCORE:00000132"	"A heterotroph which is capable of obtaining energy from the bonds in a chemical compound."	NA
 "oligotroph"	NA	"logical"	NA	NA	NA
 "autotroph"	NA	"logical"	"MICRO:0001446"	"A prokaryote capable of carrying out the role of autotrophy, where carbon dioxide is the source of carbon."	NA
-"acidophile"	NA	"logical"	"MICRO:0001390"	"Prokaryote specialized with respect to pH, which grows optimally at moderately acidic pH values (pH 4-6)."	NA
-"alkaliphile"	NA	"logical"	"MICRO:0001394"	"Prokaryote specialized with respect to pH, which grows optimally at moderately alkaline pH values (pH 8-10)."	NA
+"acidophile"	"ph class"	"logical"	"MICRO:0001390"	"Prokaryote specialized with respect to pH, which grows optimally at moderately acidic pH values (pH 4-6)."	NA
+"alkaliphile"	"ph class"	"logical"	"MICRO:0001394"	"Prokaryote specialized with respect to pH, which grows optimally at moderately alkaline pH values (pH 8-10)."	NA
 "cellulose degradation"	NA	"logical"	"UPa:UPA00696"	"Degradation of cellulose."	NA
 "hydrogen sulfide gas release"	NA	"logical"	NA	NA	NA
 "methanogen"	NA	"logical"	"MICRO:0000166"	"Prokaryotic metabolically differentiated cell, specialized for the production of methane. Found only in the archaeal domain of life."	NA
@@ -438,10 +438,10 @@
 "neutral"	"optimal ph"	"logical"	NA	NA	NA
 "alkaline"	"optimal ph"	"logical"	NA	NA	NA
 "very alkaline"	"optimal ph"	"logical"	NA	NA	NA
-"psychrophile"	"growth temperature"	"logical"	NA	NA	NA
-"mesophile"	"growth temperature"	"logical"	NA	NA	NA
-"thermophile"	"growth temperature"	"logical"	NA	NA	NA
-"hyperthermophile"	"growth temperature"	"logical"	NA	NA	NA
+"psychrophile"	"growth temperature;temperature class"	"logical"	NA	NA	NA
+"mesophile"	"growth temperature;temperature class"	"logical"	NA	NA	NA
+"thermophile"	"growth temperature;temperature class"	"logical"	NA	NA	NA
+"hyperthermophile"	"growth temperature;temperature class"	"logical"	NA	NA	NA
 "small"	"width;length;genome size;coding genes"	"logical"	NA	NA	NA
 "average"	"width;length;genome size;coding genes"	"logical"	NA	NA	NA
 "large"	"width;length;genome size;coding genes"	"logical"	NA	NA	NA
@@ -468,3 +468,11 @@
 "COGEM pathogenicity rating 4"	"COGEM pathogenicity rating"	"logical"	NA	NA	4
 "vibrio"	"shape"	"logical"	NA	"Curved rod (vibrioid) cell shape"	NA
 "gc content"	"gc content"	"numeric"	NA	"G+C content of genomic DNA, mol%"	NA
+"psychrotolerant"	"temperature class"	"logical"	NA	"Grows at low temperature but has its optimum above the psychrophile range (psychrotrophic)"	NA
+"thermotolerant"	"temperature class"	"logical"	NA	"Mesophile able to grow at elevated temperature"	NA
+"acidotolerant"	"ph class"	"logical"	NA	"Grows at acidic pH but has a neutral optimum"	NA
+"neutrophile"	"ph class"	"logical"	NA	"Grows optimally near neutral pH"	NA
+"alkalitolerant"	"ph class"	"logical"	NA	"Grows at alkaline pH but has a neutral optimum"	NA
+"halophilic"	"halophily class"	"logical"	NA	"Requires salt (NaCl) for growth"	NA
+"halotolerant"	"halophily class"	"logical"	NA	"Grows in the presence of salt but does not require it"	NA
+"non-halophilic"	"halophily class"	"logical"	NA	"Does not require or tolerate elevated salt"	NA

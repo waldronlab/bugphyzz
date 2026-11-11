@@ -100,7 +100,11 @@ physiologies <- function(
             physiologies[[k]] <- dplyr::bind_rows(physiologies[[k]], src[[k]])
         }
     }
-    physiologies <- physiologies[!vapply(physiologies, is.null, logical(1))]
+    ## a physiology read only from programmatic sources has nothing when its
+    ## source is not in the manifest or the sources could not be read
+    physiologies <- physiologies[
+        vapply(physiologies, function(x) length(x) > 0, logical(1))
+    ]
 
     physiologies <- lapply(physiologies, function(df) {
         df <- df |>
