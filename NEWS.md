@@ -2,9 +2,12 @@
 
 ## SIGNIFICANT USER-VISIBLE CHANGES
 
-+ `importBugphyzz()` defaults to data release v1.1.0
-  (10.5281/zenodo.24114812): 466,663 annotations for 93,838 taxa,
-  33 attributes and 18 sources.
++ `importBugphyzz()` defaults to data release v1.2.0
+  (10.5281/zenodo.24166279): 477,741 annotations for 93,900 taxa,
+  36 attributes and 19 sources.
++ The data are licensed CC BY-SA 4.0 from release v1.2.0, because they
+  include annotations derived from Wikipedia; earlier releases are
+  CC BY 4.0. The package stays Artistic-2.0.
 + Imputed annotations are kept or dropped per attribute, by the lower 95%
   bound of a distance-matched Cohen's kappa, or R2 for numeric
   attributes (#292).
