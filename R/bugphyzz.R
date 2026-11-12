@@ -15,7 +15,7 @@ utils::globalVariables(c(
 #' `vignette("bugphyzz", "bugphyzz").
 #'
 #' @param version Character string indicating the version. Default is the
-#' Zenodo release the package was built against (v1.1.0, November 2026). Options: a Zenodo
+#' Zenodo release the package was built against (v1.2.0, November 2026). Options: a Zenodo
 #' DOI, a GitHub commit hash of bugphyzzExports, or "devel" for the weekly
 #' export.
 #' @param forceDownload Logical value. Force a fresh download of the data or
@@ -84,7 +84,7 @@ utils::globalVariables(c(
 #' names(bp)
 #'
 importBugphyzz <- function(
-        version = "10.5281/zenodo.24114812", forceDownload = FALSE,
+        version = "10.5281/zenodo.24166279", forceDownload = FALSE,
         kappaThreshold = 0.7, r2Threshold = 0.5, asrScoreThreshold = 0.5,
         excludeRarely, v = NULL
 ) {
