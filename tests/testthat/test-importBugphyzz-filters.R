@@ -144,7 +144,7 @@ test_that("only thresholds below the defaults ask for the dropped imputations", 
     expect_equal(asked, c(FALSE, FALSE, TRUE, TRUE, TRUE))
 })
 
-test_that("shipped validation table is v1.0.7 and has one row per key", {
+test_that("shipped validation table is v1.0.8 and has one row per key", {
     f <- system.file("extdata", "validation_summary.tsv", package = "bugphyzz")
     v <- utils::read.delim(f)
     expect_false(anyDuplicated(v[c("rank", "physiology", "attribute")]) > 0)
@@ -157,7 +157,7 @@ test_that("shipped validation table is v1.0.7 and has one row per key", {
     expect_false("tail" %in% all_rank$attribute[all_rank$physiology == "shape"])
     ## v1.0.6: no rows for physiologies that could not be validated, and
     ## COGEM rating 3 passes MCC 0.7
-    expect_false(any(v$physiology %in% c("host-associated", "biofilm formation")))
+    expect_false(any(v$physiology %in% "biofilm formation"))
     cog3 <- all_rank[all_rank$attribute == "COGEM pathogenicity rating 3", ]
     expect_equal(nrow(cog3), 1L)
     expect_gte(cog3$mcc_mean, 0.7)
@@ -168,6 +168,20 @@ test_that("shipped validation table is v1.0.7 and has one row per key", {
     expect_gte(fil$mcc_mean, 0.7)
     expect_gte(aer$mcc_mean, 0.68)
     expect_gte(all_rank$mcc_mean[all_rank$attribute == "anaerobic"], 0.9)
+    ## v1.0.8: with the Wikipedia_2026 source, host-associated has two
+    ## values and is validated; halophily class and temperature class are
+    ## scored and stay below the kappa threshold; ph class is too sparse
+    expect_true("host-associated" %in% all_rank$physiology)
+    va <- utils::read.delim(system.file(
+        "extdata", "validation_attributes.tsv", package = "bugphyzz"
+    ))
+    va <- va[va$rank == "all", ]
+    cls <- va[va$physiology %in% c("halophily class", "temperature class"), ]
+    expect_equal(nrow(cls), 2L)
+    expect_true(all(cls$score_lcb < 0.7))
+    expect_false("ph class" %in% va$physiology)
+    pass <- va$physiology[va$metric != "r2" & va$score_lcb >= 0.7]
+    expect_setequal(pass, c("aerophilicity", "gram stain", "spore formation"))
 })
 
 
