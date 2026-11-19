@@ -34,8 +34,8 @@
 + Validation scores per attribute and per state ship as
   `validation_attributes.tsv` and `validation_states.tsv`.
 + New antimicrobial resistance attributes `resistance to beta-lactam` and
-  `resistance to carbapenems`, with `sensitive to` counterparts
-  (#281, @lwaldron).
+  `resistance to carbapenems`, matching the names bugphyzzExports writes
+  (waldronlab/bugphyzzExports#83, @lwaldron).
 
 ## BUG FIXES AND MINOR IMPROVEMENTS
 
@@ -44,6 +44,10 @@
 + Downloads are cached per version.
 + Levi Waldron is the maintainer (#257, @lwaldron).
 + Typos and missing terms in `attributes.tsv` are fixed (#281, @lwaldron).
++ `attributes.tsv` gains `sensitive to beta-lactam`, `sensitive to
+  erythromycin A` and `sensitive to kanamycin A`, and accepts the name
+  `butyrate-producing bacteria`, so the export passes `checkCuration()`
+  (waldronlab/bugphyzzExports#99, @lwaldron).
 + Tests that download data skip when offline (#266, @lwaldron).
 
 # bugphyzz 0.99.3
