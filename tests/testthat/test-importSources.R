@@ -25,10 +25,32 @@ test_that(".importSources reads a manifest and processes files like sheets", {
     expect_equal(length(bugphyzz:::.importSources("habitat")), 0)
 })
 
-test_that("physiologies() merges sources and sources = FALSE skips them", {
-    testthat::skip_if_offline()
+## The curation sheets are read from <base>/sheets/<physiology>.csv, so these
+## tests give the temp base URL a tiny sheet file (ADR 0007, #306).
+.writeSheet <- function(dir) {
+    dir.create(file.path(dir, "sheets"), showWarnings = FALSE)
+    writeLines(c("NCBI_ID,Genome_ID,Accession_ID,Taxon_name,Attribute,Attribute_value,Attribute_source,Frequency,Note",
+                 "561,,,Escherichia,sphingolipid producing,TRUE,BacMap,always,"),
+               file.path(dir, "sheets", "sphingolipid_producing.csv"))
+}
+
+test_that(".importSpreadsheets reads a sheet from the base URL, offline", {
     withr::local_envvar(R_USER_CACHE_DIR = withr::local_tempdir())
     d <- withr::local_tempdir()
+    .writeSheet(d)
+    withr::local_options(bugphyzz.sourcesBaseUrl = paste0(d, "/"))
+    out <- bugphyzz:::.importSpreadsheets("sphingolipid producing", forceDownload = TRUE)
+    expect_equal(names(out), "sphingolipid producing")
+    sp <- out[["sphingolipid producing"]]
+    expect_equal(nrow(sp), 1)
+    expect_true(all(sp$Attribute_value))
+    expect_equal(unique(sp$Attribute_group), "sphingolipid producing")
+})
+
+test_that("physiologies() merges sources and sources = FALSE skips them", {
+    withr::local_envvar(R_USER_CACHE_DIR = withr::local_tempdir())
+    d <- withr::local_tempdir()
+    .writeSheet(d)
     writeLines(c("source\tphysiology\tattribute_type\tfile", "Test\tsphingolipid producing\tbinary\tsp.tsv"), file.path(d, "manifest.tsv"))
     writeLines(c("NCBI_ID\tGenome_ID\tAccession_ID\tTaxon_name\tAttribute\tAttribute_value\tAttribute_source\tFrequency\tNote",
                  "562\t\t\tEscherichia coli\tsphingolipid producing\tTRUE\tBergeys_2026\talways\tdoi"), file.path(d, "sp.tsv"))
@@ -42,9 +64,11 @@ test_that("physiologies() merges sources and sources = FALSE skips them", {
 })
 
 test_that("physiologies() warns and continues when sources are unreachable", {
-    testthat::skip_if_offline()
+    ## sheets reachable, programmatic sources (no manifest.tsv) are not
     withr::local_envvar(R_USER_CACHE_DIR = withr::local_tempdir())
-    withr::local_options(bugphyzz.sourcesBaseUrl = paste0(withr::local_tempdir(), "/nowhere/"))
+    d <- withr::local_tempdir()
+    .writeSheet(d)
+    withr::local_options(bugphyzz.sourcesBaseUrl = paste0(d, "/"))
     expect_warning(suppressMessages(physiologies("sphingolipid producing")), "Programmatic sources")
 })
 

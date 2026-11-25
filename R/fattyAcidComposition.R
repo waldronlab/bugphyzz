@@ -1,9 +1,18 @@
-## Function for importing fatty acid compositions
-.fattyAcidComposition <- function(){
-    link <- .customLinks() |>
+## Function for importing fatty acid compositions. The sheet is snapshotted as
+## CSV in waldronlab/bugphyzzExports, sources/sheets/ (ADR 0007); the `link`
+## column of spreadsheet_customlinks.tsv holds the path there, resolved against
+## .sourcesBaseUrl() and read through the cache like .importSpreadsheets().
+.fattyAcidComposition <- function(forceDownload = FALSE){
+    relPath <- .customLinks() |>
         dplyr::filter(functionname == "fattyAcidComposition") |>
         dplyr::pull(link)
-    fac_wide <- utils::read.csv(link, check.names = FALSE)
+    base <- .sourcesBaseUrl()
+    tag <- substr(rlang::hash(base), 1, 8)
+    fpath <- .getResource(
+        paste0("sources_", tag, "_", gsub("/", "_", relPath)),
+        paste0(base, relPath), force = forceDownload, verbose = FALSE
+    )
+    fac_wide <- utils::read.csv(fpath, check.names = FALSE)
     fac_long <- fac_wide |>
         tidyr::pivot_longer(
             cols = `Br-C10:1`:`Oxo-C19:1`,
