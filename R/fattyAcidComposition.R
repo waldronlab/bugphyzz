@@ -6,12 +6,7 @@
     relPath <- .customLinks() |>
         dplyr::filter(functionname == "fattyAcidComposition") |>
         dplyr::pull(link)
-    base <- .sourcesBaseUrl()
-    tag <- substr(rlang::hash(base), 1, 8)
-    fpath <- .getResource(
-        paste0("sources_", tag, "_", gsub("/", "_", relPath)),
-        paste0(base, relPath), force = forceDownload, verbose = FALSE
-    )
+    fpath <- .getSourceResource(relPath, force = forceDownload)
     fac_wide <- utils::read.csv(fpath, check.names = FALSE)
     fac_long <- fac_wide |>
         tidyr::pivot_longer(

@@ -231,18 +231,11 @@ showPhys <- function(whichNames = 'all') {
     links <- links[links[['physiology']] %in% keyword,]
     ## a physiology with no sheet link comes only from programmatic sources
     links <- links[!is.na(links[['link']]) & nzchar(links[['link']]),]
-    base <- .sourcesBaseUrl()
-    ## cache entries are keyed on the base URL so a local checkout or another
-    ## branch never shadows the default location
-    tag <- substr(rlang::hash(base), 1, 8)
     spreadsheets <- lapply(seq_len(nrow(links)), function(i) {
         physName <- links[i, 'physiology', drop = FALSE][[1]]
         attrType <- links[i, 'attribute_type', drop = FALSE][[1]]
         relPath <- links[i, 'link', drop = FALSE][[1]]
-        fpath <- .getResource(
-            paste0("sources_", tag, "_", gsub("/", "_", relPath)),
-            paste0(base, relPath), force = forceDownload, verbose = FALSE
-        )
+        fpath <- .getSourceResource(relPath, force = forceDownload)
         df <- dplyr::distinct(utils::read.csv(fpath))
         .processSheet(df, physName = physName, attrType = attrType)
     })
@@ -512,15 +505,20 @@ showPhys <- function(whichNames = 'all') {
     )
 }
 
-.importSources <- function(keyword, forceDownload = FALSE) {
+## Resolve a path under sources/ (e.g. "sheets/aerophilicity.csv") against the
+## base URL and read it through the cache. Cache entries are keyed on the base
+## URL so a local checkout or another branch never shadows the default.
+.getSourceResource <- function(relPath, force = FALSE) {
     base <- .sourcesBaseUrl()
-    ## cache entries are keyed on the base URL so a local checkout or another
-    ## branch never shadows the default location
     tag <- substr(rlang::hash(base), 1, 8)
-    mpath <- .getResource(
-        paste0("sources_", tag, "_manifest.tsv"), paste0(base, "manifest.tsv"),
-        force = forceDownload, verbose = FALSE
+    .getResource(
+        paste0("sources_", tag, "_", gsub("/", "_", relPath)),
+        paste0(base, relPath), force = force, verbose = FALSE
     )
+}
+
+.importSources <- function(keyword, forceDownload = FALSE) {
+    mpath <- .getSourceResource("manifest.tsv", force = forceDownload)
     manifest <- utils::read.table(
         mpath, header = TRUE, sep = "\t", quote = "", stringsAsFactors = FALSE
     )
@@ -528,10 +526,7 @@ showPhys <- function(whichNames = 'all') {
     if (!nrow(manifest)) return(list())
     out <- lapply(split(manifest, manifest$physiology), function(m) {
         dplyr::bind_rows(lapply(seq_len(nrow(m)), function(i) {
-            fpath <- .getResource(
-                paste0("sources_", tag, "_", gsub("/", "_", m$file[i])),
-                paste0(base, m$file[i]), force = forceDownload, verbose = FALSE
-            )
+            fpath <- .getSourceResource(m$file[i], force = forceDownload)
             df <- utils::read.table(
                 fpath, header = TRUE, sep = "\t", quote = "", comment.char = "",
                 stringsAsFactors = FALSE, colClasses = "character"
