@@ -123,8 +123,6 @@ physiologies <- function(
             df$Attribute_source <- df$fullSource
         }
         df$full_source <- NULL
-        ## read from attribute_sources.tsv by taxPPro when sources disagree
-        df$Priority <- NULL
 
         df <- .reorderColumns(
             df = df,
@@ -344,6 +342,9 @@ showPhys <- function(whichNames = 'all') {
         file = fpath, header = TRUE, sep = '\t', quote = '',
         check.names = FALSE, comment.char = ''
     )
+    ## Priority is for taxPPro, which reads it from the file when sources of
+    ## the same confidence have a value for a taxon; it is not an annotation
+    sourceData$Priority <- NULL
     dplyr::left_join(dat, sourceData, by = 'Attribute_source')
 }
 

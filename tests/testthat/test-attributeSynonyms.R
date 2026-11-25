@@ -83,4 +83,10 @@ test_that("every source has a priority, unique within its confidence level (bugp
     expect_true(is.integer(src$Priority) && !anyNA(src$Priority))
     for (p in split(src$Priority, src$Confidence_in_curation))
         expect_setequal(p, seq_along(p))
+    ## the column is not joined to the annotations
+    joined <- bugphyzz:::.addSourceInfo(
+        data.frame(Attribute_source = "ProTraits")
+    )
+    expect_false("Priority" %in% names(joined))
+    expect_identical(joined$Confidence_in_curation, "low")
 })
