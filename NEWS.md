@@ -1,3 +1,12 @@
+# bugphyzz 1.9.1
+
+## SIGNIFICANT USER-VISIBLE CHANGES
+
++ ProTraits goes from confidence `medium` to `low`: its values are
+  predictions from text mining and comparative genomics (Brbić et al.
+  2016), and the resource is no longer maintained
+  (waldronlab/bugphyzzExports#66, @lwaldron).
+
 # bugphyzz 1.8.0
 
 ## SIGNIFICANT USER-VISIBLE CHANGES
