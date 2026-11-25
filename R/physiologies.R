@@ -14,16 +14,21 @@
 #' @param sources Logical. Also read the programmatic sources (Bergey's
 #' Manual extraction, Madin et al. 2020, ...) kept under `sources/` in
 #' \url{https://github.com/waldronlab/bugphyzzExports}. Default is `TRUE`.
-#' @param forceDownload Logical. Re-download the programmatic sources instead
-#' of using the cached copy. Default is `FALSE`. The location can be changed
-#' with `options(bugphyzz.sourcesBaseUrl = ...)`, e.g. to a local checkout.
+#' @param forceDownload Logical. Re-download the curation sheets and the
+#' programmatic sources instead of using the cached copy. Default is `FALSE`.
+#' The location can be changed with `options(bugphyzz.sourcesBaseUrl = ...)`,
+#' e.g. to a local checkout.
 #'
 #' @details
-#' Rows come from three places: the curation Google Sheets listed in
-#' `inst/extdata/spreadsheet_links.tsv`, the BacDive strain table (built from
-#' the BacDive API, `sources/bacdive` in bugphyzzExports), and the other
-#' programmatic sources above. The last are produced by scripts, never edited
-#' by hand, and are cached with BiocFileCache like the exports.
+#' Rows come from three places, all read from `sources/` in
+#' \url{https://github.com/waldronlab/bugphyzzExports} and cached with
+#' BiocFileCache: the curation sheets snapshotted in `sources/sheets/` (one
+#' CSV per physiology, listed by the `link` column of
+#' `inst/extdata/spreadsheet_links.tsv`, bugphyzzExports ADR 0007), the BacDive
+#' strain table (built from the BacDive API, `sources/bacdive`), and the other
+#' programmatic sources above (produced by scripts, never edited by hand).
+#' Because the sheets are now cached, a change to a sheet shows up only after
+#' `forceDownload = TRUE`.
 #'
 #' Attribute values from all three are mapped to the controlled vocabulary
 #' in `inst/extdata/attributes.tsv` with the synonym table
@@ -52,7 +57,9 @@ physiologies <- function(
     cond2 <- any(keyword %in% showPhys('bacdive'))
 
     if (cond1 && cond2) {
-        spreadsheets <- .importSpreadsheets(keyword = keyword)
+        spreadsheets <- .importSpreadsheets(
+            keyword = keyword, forceDownload = forceDownload
+        )
         spreadsheets <- spreadsheets[names(spreadsheets) %in% keyword]
         bacdive <- .reshapeBacDive(
             .getBacDive(verbose = FALSE, forceDownload = forceDownload)
@@ -67,7 +74,9 @@ physiologies <- function(
         })
         names(physiologies) <- keyword
     } else if (cond1 && !cond2) {
-        spreadsheets <- .importSpreadsheets(keyword = keyword)
+        spreadsheets <- .importSpreadsheets(
+            keyword = keyword, forceDownload = forceDownload
+        )
         physiologies <- spreadsheets[names(spreadsheets) %in% keyword]
         ## Not creating a vector. Only usin the side effect of the for loop.
         for (i in seq_along(keyword)) {
@@ -91,7 +100,9 @@ physiologies <- function(
             error = function(e) {
                 warning(
                     "Programmatic sources could not be read (",
-                    conditionMessage(e), "). Using sheets only.", call. = FALSE
+                    conditionMessage(e),
+                    "). Continuing with the curation sheet data only.",
+                    call. = FALSE
                 )
                 list()
             }
@@ -206,8 +217,13 @@ showPhys <- function(whichNames = 'all') {
     return(keyword)
 }
 
-## Helper function for physiologies
-.importSpreadsheets <- function(keyword) {
+## Helper function for physiologies. The curation sheets are snapshotted as
+## CSV in waldronlab/bugphyzzExports, sources/sheets/ (ADR 0007). The `link`
+## column of spreadsheet_links.tsv holds the path there (e.g.
+## "sheets/aerophilicity.csv"), resolved against .sourcesBaseUrl() and read
+## through the cache like the programmatic sources, so an unreachable base URL
+## is a hard error: without the sheets there is no curation data to return.
+.importSpreadsheets <- function(keyword, forceDownload = FALSE) {
     fname <- system.file(
         'extdata', 'spreadsheet_links.tsv', package = 'bugphyzz'
     )
@@ -218,8 +234,9 @@ showPhys <- function(whichNames = 'all') {
     spreadsheets <- lapply(seq_len(nrow(links)), function(i) {
         physName <- links[i, 'physiology', drop = FALSE][[1]]
         attrType <- links[i, 'attribute_type', drop = FALSE][[1]]
-        url <- links[i, 'link', drop = FALSE][[1]]
-        df <- dplyr::distinct(utils::read.csv(url))
+        relPath <- links[i, 'link', drop = FALSE][[1]]
+        fpath <- .getSourceResource(relPath, force = forceDownload)
+        df <- dplyr::distinct(utils::read.csv(fpath))
         .processSheet(df, physName = physName, attrType = attrType)
     })
     names(spreadsheets) <- links$physiology
@@ -488,15 +505,20 @@ showPhys <- function(whichNames = 'all') {
     )
 }
 
-.importSources <- function(keyword, forceDownload = FALSE) {
+## Resolve a path under sources/ (e.g. "sheets/aerophilicity.csv") against the
+## base URL and read it through the cache. Cache entries are keyed on the base
+## URL so a local checkout or another branch never shadows the default.
+.getSourceResource <- function(relPath, force = FALSE) {
     base <- .sourcesBaseUrl()
-    ## cache entries are keyed on the base URL so a local checkout or another
-    ## branch never shadows the default location
     tag <- substr(rlang::hash(base), 1, 8)
-    mpath <- .getResource(
-        paste0("sources_", tag, "_manifest.tsv"), paste0(base, "manifest.tsv"),
-        force = forceDownload, verbose = FALSE
+    .getResource(
+        paste0("sources_", tag, "_", gsub("/", "_", relPath)),
+        paste0(base, relPath), force = force, verbose = FALSE
     )
+}
+
+.importSources <- function(keyword, forceDownload = FALSE) {
+    mpath <- .getSourceResource("manifest.tsv", force = forceDownload)
     manifest <- utils::read.table(
         mpath, header = TRUE, sep = "\t", quote = "", stringsAsFactors = FALSE
     )
@@ -504,10 +526,7 @@ showPhys <- function(whichNames = 'all') {
     if (!nrow(manifest)) return(list())
     out <- lapply(split(manifest, manifest$physiology), function(m) {
         dplyr::bind_rows(lapply(seq_len(nrow(m)), function(i) {
-            fpath <- .getResource(
-                paste0("sources_", tag, "_", gsub("/", "_", m$file[i])),
-                paste0(base, m$file[i]), force = forceDownload, verbose = FALSE
-            )
+            fpath <- .getSourceResource(m$file[i], force = forceDownload)
             df <- utils::read.table(
                 fpath, header = TRUE, sep = "\t", quote = "", comment.char = "",
                 stringsAsFactors = FALSE, colClasses = "character"

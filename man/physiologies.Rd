@@ -24,9 +24,10 @@ will contain shortened versions of the sources. Default is \code{FALSE}.}
 Manual extraction, Madin et al. 2020, ...) kept under \verb{sources/} in
 \url{https://github.com/waldronlab/bugphyzzExports}. Default is \code{TRUE}.}
 
-\item{forceDownload}{Logical. Re-download the programmatic sources instead
-of using the cached copy. Default is \code{FALSE}. The location can be changed
-with \code{options(bugphyzz.sourcesBaseUrl = ...)}, e.g. to a local checkout.}
+\item{forceDownload}{Logical. Re-download the curation sheets and the
+programmatic sources instead of using the cached copy. Default is \code{FALSE}.
+The location can be changed with \code{options(bugphyzz.sourcesBaseUrl = ...)},
+e.g. to a local checkout.}
 }
 \value{
 A list of data.frames in tidy format.
@@ -37,11 +38,15 @@ state before cleaning and going through the data imputation steps. It
 should be used by developers/curators of the package.
 }
 \details{
-Rows come from three places: the curation Google Sheets listed in
-\code{inst/extdata/spreadsheet_links.tsv}, the BacDive strain table (built from
-the BacDive API, \code{sources/bacdive} in bugphyzzExports), and the other
-programmatic sources above. The last are produced by scripts, never edited
-by hand, and are cached with BiocFileCache like the exports.
+Rows come from three places, all read from \verb{sources/} in
+\url{https://github.com/waldronlab/bugphyzzExports} and cached with
+BiocFileCache: the curation sheets snapshotted in \verb{sources/sheets/} (one
+CSV per physiology, listed by the \code{link} column of
+\code{inst/extdata/spreadsheet_links.tsv}, bugphyzzExports ADR 0007), the BacDive
+strain table (built from the BacDive API, \code{sources/bacdive}), and the other
+programmatic sources above (produced by scripts, never edited by hand).
+Because the sheets are now cached, a change to a sheet shows up only after
+\code{forceDownload = TRUE}.
 
 Attribute values from all three are mapped to the controlled vocabulary
 in \code{inst/extdata/attributes.tsv} with the synonym table

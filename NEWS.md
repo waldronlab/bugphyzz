@@ -2,6 +2,14 @@
 
 ## SIGNIFICANT USER-VISIBLE CHANGES
 
++ `physiologies()` reads the curation sheets from the snapshot in
+  bugphyzzExports `sources/sheets/` instead of live from Google Sheets
+  (bugphyzzExports ADR 0007, #306, @lwaldron). The sheet data is now cached
+  with BiocFileCache like the other sources, so a change to a sheet shows up
+  only after `forceDownload = TRUE`. `physiologies()` and
+  `.importSpreadsheets()` gain the pass-through `forceDownload`, and the
+  location can be pointed at a local checkout with
+  `options(bugphyzz.sourcesBaseUrl = ...)`.
 + ProTraits goes from confidence `medium` to `low`: its values are
   predictions from text mining and comparative genomics (Brbić et al.
   2016), and the resource is no longer maintained

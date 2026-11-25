@@ -47,10 +47,10 @@ Columns:
 | description | The meaning of the attribute described in the 'attribute' column. |
 | ordinal_position | Position of the state on an ordered scale (1 = lowest), used for linearly weighted kappa in the cross-validation; NA for states without an order. Set for aerophilicity (aerobic, facultatively anaerobic, anaerobic), gram stain (negative, variable, positive), biosafety level and COGEM pathogenicity rating (bugphyzzExports ADR 0006). |
 
-## spreadsheet_custmolinks.tsv
+## spreadsheet_customlinks.tsv
 
-Links for datasets in google spreadsheets that are not in tidy format and
-need to be converted to tidy format.
+Links for datasets that are not in tidy format and need to be converted to
+tidy format.
 
 Columns:
 
@@ -58,13 +58,13 @@ Columns:
 | --- | --- |
 | physiology | Name of the physiology or attribute group. |
 | ontology | If applicably, mapping to an ontology term. |
-| link | Link to the csv export. |
+| link | Path to the snapshotted CSV under `sources/sheets/` in bugphyzzExports (e.g. `sheets/fatty_acid_composition.csv`), resolved against `options(bugphyzz.sourcesBaseUrl)` (bugphyzzExports ADR 0007). |
 | functionname | The name of the function (unexported) in bugphyzz. |
-| source_link |  Link to the source spreadsheet on Google Docs. |
+| source_link |  Link to the historical source spreadsheet on Google Docs. |
 
 ## spreadsheet_links.tsv
 
-Links for datasets in spreadsheets that are already in tidy format.
+Links for datasets that are already in tidy format.
 
 Columns:
 
@@ -73,8 +73,8 @@ Columns:
 | physiology | Name of the dataset. Equivalent to attribute group. |
 | ontolgy | Mapping to an ontology term if applicable. |
 | sig_type | The type of the signature. Either range for numeric or logical for categorical and binary values. |
-| link | Link to the csv export. |
-| source_link | Link to the source spreadsheet. |
+| link | Path to the snapshotted CSV under `sources/sheets/` in bugphyzzExports (e.g. `sheets/aerophilicity.csv`), resolved against `options(bugphyzz.sourcesBaseUrl)` (bugphyzzExports ADR 0007). Empty for a source-only attribute. |
+| source_link | Link to the historical source spreadsheet on Google Docs. |
 
 ## curation_template.tsv
 
