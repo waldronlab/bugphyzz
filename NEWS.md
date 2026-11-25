@@ -1,3 +1,15 @@
+# bugphyzz 1.9.2
+
+## SIGNIFICANT USER-VISIBLE CHANGES
+
++ `attribute_sources.tsv` has a `Priority` column: the order of the
+  sources within a confidence level, 1 first. bugphyzzExports (through
+  taxPPro) uses it to choose the source credited with a value when
+  sources of the same confidence have the taxon, in place of the
+  alphabetically last source name. Wikipedia_2026 is last among the
+  medium sources and ProTraits last among the low ones
+  (waldronlab/bugphyzzExports#66, @lwaldron).
+
 # bugphyzz 1.9.1
 
 ## SIGNIFICANT USER-VISIBLE CHANGES

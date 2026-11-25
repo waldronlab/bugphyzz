@@ -41,7 +41,10 @@ sources <- readr::read_tsv(sources_fname, show_col_types = FALSE) |>
 
 The `r nrow(sources)` sources of annotations in bugphyzza.
 exp = experimental data; igc = inferred from genome context; tas = traceable
-author statement; nast = non-traceable author statement.
+author statement; nast = non-traceable author statement. Priority is the
+order of the sources within a confidence level: when sources of the same
+confidence have a value for a taxon, the one with the lowest number is
+credited.
 
 ```{r, echo=FALSE}
 knitr::kable(sources)

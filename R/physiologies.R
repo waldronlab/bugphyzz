@@ -123,6 +123,8 @@ physiologies <- function(
             df$Attribute_source <- df$fullSource
         }
         df$full_source <- NULL
+        ## read from attribute_sources.tsv by taxPPro when sources disagree
+        df$Priority <- NULL
 
         df <- .reorderColumns(
             df = df,
