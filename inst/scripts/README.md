@@ -20,6 +20,7 @@ Columns:
 | --- | --- |
 | Attribute_source | The abbreviated name of the source. This is the one used in the output of `importBugphyzz`.|
 | Confidence_in_curation | One of three: high, medium, low.|
+| Priority | Order of the source within its confidence level, 1 first; no two sources of a level share a number. When sources of the same confidence have a value for a taxon, the export credits the one with the lowest number (waldronlab/bugphyzzExports#66). |
 | Evidence \* | The type of evidence supporting the annotations in the original source. |
 | full_source | The full name of the source. It could be a citation, a link to webpage or project, etc. |
 

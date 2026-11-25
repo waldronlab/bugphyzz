@@ -74,3 +74,19 @@ test_that("Wikipedia_2026 and its class physiologies are in the package tables (
     ))
     expect_true("skin" %in% bugphyzz:::.validAttributes("habitat"))
 })
+
+test_that("every source has a priority, unique within its confidence level (bugphyzzExports#66)", {
+    src <- utils::read.delim(
+        system.file("extdata", "attribute_sources.tsv", package = "bugphyzz"),
+        quote = ""
+    )
+    expect_true(is.integer(src$Priority) && !anyNA(src$Priority))
+    for (p in split(src$Priority, src$Confidence_in_curation))
+        expect_setequal(p, seq_along(p))
+    ## the column is not joined to the annotations
+    joined <- bugphyzz:::.addSourceInfo(
+        data.frame(Attribute_source = "ProTraits")
+    )
+    expect_false("Priority" %in% names(joined))
+    expect_identical(joined$Confidence_in_curation, "low")
+})
