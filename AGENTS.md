@@ -17,8 +17,6 @@ are `getTaxonSignatures()`, `physiologies()` and `showPhys()`.
 - Install the dependencies (network) from the repo root:
   `Rscript -e 'BiocManager::install(remotes::local_package_deps(dependencies = TRUE))'`,
   plus `devtools` and `BiocCheck` for the commands below.
-- If `Rscript` is not found, R's bin directory is not on `PATH` (on macOS it is usually
-  `/usr/local/bin`).
 
 ## Layout
 
