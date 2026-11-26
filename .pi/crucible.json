@@ -1,0 +1,23 @@
+{
+  "$schema": "https://raw.githubusercontent.com/seandavi/pi-crucible/main/schema/crucible.schema.json",
+  "design": "AGENTS.md, README.md, the vignettes and inst/scripts/README.md (the inst/extdata tables) are the design record; bugphyzzExports docs/adr/ holds the data decisions. Read them before changing anything, and say in the spec when a change departs from them.",
+  "spec": {
+    "design": "files to add or change, the functions or interfaces and their signatures, data and config changes, the tests that prove it"
+  },
+  "implement": "Tests must not use the network or real credentials; use small fixtures written in the test. Follow AGENTS.md for setup and conventions.",
+  "checks": [
+    {
+      "name": "document",
+      "command": "Rscript -e 'devtools::document()' && git diff --exit-code -- man NAMESPACE"
+    },
+    {
+      "name": "test",
+      "command": "Rscript -e 'devtools::test(stop_on_failure = TRUE)'"
+    }
+  ],
+  "lenses": {
+    "code": "CODE review. Correctness against the spec and the issue's acceptance criteria; tests that would catch a regression; clear module boundaries; dead code; error handling; the spec and the code agree (a stale spec is \"major\").",
+    "security": "SECURITY review. Input validation; secrets never in code, fixtures, logs or CI; injection (shell, SQL, HTML); untrusted URLs and paths; least privilege; CI safe for pull requests from forks.",
+    "ux": "UX review, for whoever uses this change: names, defaults and error messages that say what to do next; docs and examples a first-time user can follow."
+  }
+}

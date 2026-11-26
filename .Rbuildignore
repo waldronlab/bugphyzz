@@ -15,3 +15,5 @@
 ^misc$
 ^inst/backup$
 ^vignettes/Outline_workflow\.(png|svg)$
+^AGENTS\.md$
+^\.pi$
