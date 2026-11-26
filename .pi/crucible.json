@@ -8,7 +8,7 @@
   "checks": [
     {
       "name": "document",
-      "command": "Rscript -e 'devtools::document()' && git diff --exit-code -- man NAMESPACE"
+      "command": "Rscript -e 'devtools::document()' && test -z \"$(git status --porcelain -- man NAMESPACE)\""
     },
     {
       "name": "test",

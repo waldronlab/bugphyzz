@@ -70,7 +70,6 @@ it in bugphyzz. The ones that matter most for a change here:
 
 Data releases follow bugphyzzExports `RELEASING.md` and are tracked in one checklist issue here (v1.3.0
 is #313). Work that gates a release goes on that checklist.
-- waldronlab/bugphyzzAnalyses and the private bugphyzz-manuscript only use the package.
 
 ## Commands
 
